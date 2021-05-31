@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct Secret_LanguageApp: App {
+    
+    @AppStorage( "token" ) private var token = ""
+    
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if token != "" {
+                ContentView()
+            } else {
+                Introduction()
+            }
         }
     }
 }
