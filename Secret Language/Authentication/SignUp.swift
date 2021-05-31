@@ -10,7 +10,6 @@ import SwiftUI
 struct SignUp: View {
     @ObservedObject var authVM = AuthViewModel()
     @State private var fullscreen: Bool = false
-    @State private var editing: Bool = false
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -23,68 +22,60 @@ struct SignUp: View {
             Background()
             
             
-            VStack( alignment: .leading) {
-                                
-                if editing {
-                    
-                    HStack {
-                        Spacer()
-                        
-                        VStack {
-                            Image("phoneNumberimg")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 150, height: 150)
-                            
-                            Text( "Secret Language" )
-                                .foregroundColor(.white)
-                                .font(.custom("times", size: 26))
-                                .padding()
-                        }
-                        
-                        Spacer()
-                    }
-
-                } else {
-                    Text( NSLocalizedString("joinUs", comment: ""))
-                        .foregroundColor(.white)
-                        .font(.custom("times", size: 26))
-                        .padding(.bottom)
-                    
-                    Text( NSLocalizedString("birthdayToStart", comment: ""))
-                        .foregroundColor(.accentColor)
-                        .font(.custom("Gilroy-Regular", size: 14))
-                }
+            VStack( alignment: .leading, spacing: 20) {
                 
-                
-                Spacer()
-                
-                
-                Text( NSLocalizedString("birthday", comment: "") )
-                    .foregroundColor(.gray)
-                    .font(.custom("Gilroy-Regular", size: 10))
-                
-                Button(action: {
-                    fullscreen.toggle()
-                }, label: {
-                    Text( dateFormatter.string(from: authVM.birthdayDate))
-                        .foregroundColor(.white)
-                        .font(.custom("times", size: 20))
-                })
-                Divider()
+                Text( NSLocalizedString("joinUs", comment: ""))
+                    .foregroundColor(.white)
+                    .font(.custom("times", size: 26))
                     .padding(.bottom)
-                                
-                TextField(NSLocalizedString("phoneNumber", comment: ""), text: $authVM.phoneNumber) { editing in
-                    withAnimation {
-                        self.editing.toggle()
-                    }
-                } onCommit: {
-                }
-                .font(.custom("times", size: 20))
-                .foregroundColor(.white)
-                .keyboardType(.phonePad)
                 
-                Divider()
+                Text( NSLocalizedString("birthdayToStart", comment: ""))
+                    .foregroundColor(.accentColor)
+                    .font(.custom("Gilroy-Regular", size: 14))
+                
+                HStack {
+                    Spacer()
+                    
+                    Image("phoneNumberimg")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 150, height: 150)
+                    
+                    Spacer()
+                }.padding(.bottom, 20)
+                
+                                
+                
+                VStack( alignment: .leading) {
+                    Text( NSLocalizedString("birthday", comment: "") )
+                        .foregroundColor(.gray)
+                        .font(.custom("Gilroy-Regular", size: 10))
+                    
+                    Button(action: {
+                        fullscreen.toggle()
+                    }, label: {
+                        Text( dateFormatter.string(from: authVM.birthdayDate))
+                            .foregroundColor(.white)
+                            .font(.custom("times", size: 20))
+                    })
+                    Divider()
+                        .padding(.bottom)
+                }
+                                
+                VStack( alignment: .leading) {
+                    Text( NSLocalizedString("phoneNumber", comment: "") )
+                        .foregroundColor(.gray)
+                        .font(.custom("Gilroy-Regular", size: 10))
+                    
+                    TextField(NSLocalizedString("phoneNumber", comment: ""), text: $authVM.phoneNumber)
+                    .font(.custom("times", size: 20))
+                    .foregroundColor(.white)
+                    .keyboardType(.phonePad)
+                    
+                    Divider()
+                }
+                
+                
                 
                 Spacer()
                 

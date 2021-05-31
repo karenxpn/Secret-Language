@@ -14,21 +14,40 @@ struct BirthdayPicker: View {
     
     var body: some View {
         
-        NavigationView {
-            ZStack {
-                Background()
+        ZStack {
+            Background()
+            
+            VStack {
                 
+                Text( NSLocalizedString("chooseBirthday", comment: ""))
+                    .foregroundColor(.white)
+                    .font(.custom("times", size: 26))
+                
+                Spacer()
                 DatePicker("", selection: $authVM.birthdayDate, displayedComponents: .date)
                     .datePickerStyle(WheelDatePickerStyle())
                     .labelsHidden()
                     .colorMultiply(.accentColor)
-            }.navigationBarItems(trailing: Button(action: {
-                presentationMode.wrappedValue.dismiss()
-            }, label: {
-                Text( "Save" )
-            }))
-        }
+                Spacer()
+                
+                
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image("proceed")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 50, height: 50)
+                    })
+                }
 
+            }.padding()
+            .padding(.top, 50)
+        }
+        
     }
 }
 
