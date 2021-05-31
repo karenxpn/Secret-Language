@@ -35,6 +35,8 @@
 		FFDB158B26655DD500341E8F /* CheckVerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB158A26655DD500341E8F /* CheckVerificationCode.swift */; };
 		FFDB158D26655E7800341E8F /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB158C26655E7800341E8F /* CustomAlert.swift */; };
 		FFDB158F2665607000341E8F /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB158E2665607000341E8F /* AppColors.swift */; };
+		FFDB159526658C3400341E8F /* MockAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB159426658C3400341E8F /* MockAuthService.swift */; };
+		FFDB159726658EDF00341E8F /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB159626658EDF00341E8F /* AuthViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,8 @@
 		FFDB158A26655DD500341E8F /* CheckVerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckVerificationCode.swift; sourceTree = "<group>"; };
 		FFDB158C26655E7800341E8F /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		FFDB158E2665607000341E8F /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		FFDB159426658C3400341E8F /* MockAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthService.swift; sourceTree = "<group>"; };
+		FFDB159626658EDF00341E8F /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +208,8 @@
 		FFBEA68E2664E42A0033B2ED /* Secret LanguageTests */ = {
 			isa = PBXGroup;
 			children = (
+				FFDB159126658C1100341E8F /* Services */,
+				FFDB159026658C0B00341E8F /* ViewModels */,
 				FFBEA68F2664E42A0033B2ED /* Secret_LanguageTests.swift */,
 				FFBEA6912664E42A0033B2ED /* Info.plist */,
 			);
@@ -281,6 +287,22 @@
 				FFDB15782664F1BD00341E8F /* Gilroy-Regular.ttf */,
 			);
 			path = font;
+			sourceTree = "<group>";
+		};
+		FFDB159026658C0B00341E8F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FFDB159626658EDF00341E8F /* AuthViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FFDB159126658C1100341E8F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FFDB159426658C3400341E8F /* MockAuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -549,6 +571,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFBEA6902664E42A0033B2ED /* Secret_LanguageTests.swift in Sources */,
+				FFDB159526658C3400341E8F /* MockAuthService.swift in Sources */,
+				FFDB159726658EDF00341E8F /* AuthViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

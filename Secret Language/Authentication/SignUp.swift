@@ -110,9 +110,7 @@ struct SignUp: View {
                         EmptyView()
                     }
                 }
-                
-                // proceed
-                
+                                
             }.padding()
             .padding(.top, 30)
             

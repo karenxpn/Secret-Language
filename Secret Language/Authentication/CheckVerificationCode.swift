@@ -16,6 +16,8 @@ struct CheckVerificationCode: View {
             Background()
             
             CustomAlert(isPresented: $authVM.showAlert, alertMessage: authVM.checkVerificationCodeAlertMessage, alignment: .bottom)
+                .offset(y: authVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+                .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
         }
     }
 }

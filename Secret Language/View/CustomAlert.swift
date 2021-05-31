@@ -18,20 +18,21 @@ struct CustomAlert: View {
             VStack( alignment: .leading, spacing: 10) {
                 
                 Text( NSLocalizedString("alert", comment: ""))
-                    .font(.custom("Gilroy-ExtraBold", size: 20))
+                    .font(.custom("Gilroy-Regular", size: 20))
+                    .fontWeight(.heavy)
                     .foregroundColor(.white)
                     .padding(.top, 20)
                 
                 Text( alertMessage )
                     .foregroundColor(.gray)
-                    .font(.custom("Gilroy-Light", size: 14))
+                    .font(.custom("Gilroy-Regular", size: 14))
                     .padding(.bottom, 20)
                 
                 Button(action: {
                     isPresented.toggle()
                 }, label: {
                     Text( NSLocalizedString("gotIt", comment: ""))
-                        .font(.custom("Gilroy-ExtraBold", size: 18))
+                        .font(.custom("Gilroy-Regular", size: 18))
                         .foregroundColor(.white)
                         .frame(width: UIScreen.main.bounds.size.width - 24, height: 50)
                         .background(AppColors.accentColor)
