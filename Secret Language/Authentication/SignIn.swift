@@ -1,5 +1,5 @@
 //
-//  SignUp.swift
+//  SignIn.swift
 //  Secret Language
 //
 //  Created by Karen Mirakyan on 31.05.21.
@@ -7,24 +7,16 @@
 
 import SwiftUI
 
-struct SignUp: View {
+struct SignIn: View {
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var authVM = AuthViewModel()
-    @State private var fullscreen: Bool = false
-    
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        return formatter
-    }
     
     var body: some View {
         ZStack {
             Background()
             
-            
             VStack( alignment: .leading, spacing: 20) {
-                
-                Text( NSLocalizedString("joinUs", comment: ""))
+                Text( NSLocalizedString("welcomeBack", comment: ""))
                     .foregroundColor(.white)
                     .font(.custom("times", size: 26))
                     .padding(.bottom)
@@ -44,30 +36,13 @@ struct SignUp: View {
                     Spacer()
                 }.padding(.bottom, 20)
                 
-                                
                 
-                VStack( alignment: .leading) {
-                    Text( NSLocalizedString("birthday", comment: "") )
-                        .foregroundColor(.gray)
-                        .font(.custom("Gilroy-Regular", size: 10))
-                    
-                    Button(action: {
-                        fullscreen.toggle()
-                    }, label: {
-                        Text( dateFormatter.string(from: authVM.birthdayDate))
-                            .foregroundColor(.white)
-                            .font(.custom("times", size: 20))
-                    })
-                    Divider()
-                        .padding(.bottom)
-                }
-                                
                 VStack( alignment: .leading) {
                     Text( NSLocalizedString("phoneNumber", comment: "") )
                         .foregroundColor(.gray)
                         .font(.custom("Gilroy-Regular", size: 10))
                     
-                    TextField(NSLocalizedString("phoneNumber", comment: ""), text: $authVM.signUpPhoneNumber)
+                    TextField(NSLocalizedString("phoneNumber", comment: ""), text: $authVM.signInPhoneNumber)
                     .font(.custom("times", size: 20))
                     .foregroundColor(.white)
                     .keyboardType(.phonePad)
@@ -75,24 +50,26 @@ struct SignUp: View {
                     Divider()
                 }
                 
+                
                 Spacer()
                 
                 HStack {
+                    
                     VStack( alignment: .leading) {
-                        Text( NSLocalizedString("alreadyHaveAccount", comment: ""))
+                        Text( NSLocalizedString("dontHaveAccount", comment: ""))
                             .foregroundColor(.white)
                             .font(.custom("Gilroy-Regular", size: 14))
                         
-                        // sign in
-                        NavigationLink(
-                            destination: SignIn(),
-                            label: {
-                                Text( NSLocalizedString("signin", comment: "") )
-                                    .font(.custom("Gilroy-Regular", size: 14))
-                                    .foregroundColor(.accentColor)
-                                    .underline(true, color: .accentColor)
-                                    .padding(.top, 8)
-                            })
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Text( NSLocalizedString("signUp", comment: "") )
+                                .font(.custom("Gilroy-Regular", size: 14))
+                                .foregroundColor(.accentColor)
+                                .underline(true, color: .accentColor)
+                                .padding(.top, 8)
+                        }
+
                     }
                     
                     Spacer()
@@ -104,23 +81,17 @@ struct SignUp: View {
                             .frame(width: 50, height: 50)
                     })
                 }
-                
-                // proceed
-                
             }.padding()
             .padding(.top, 30)
         }.navigationBarHidden(true)
-        .fullScreenCover(isPresented: $fullscreen, content: {
-            BirthdayPicker()
-                .environmentObject(authVM)
-        }).onTapGesture {
+        .onTapGesture {
             UIApplication.shared.endEditing()
         }
     }
 }
 
-struct SignUp_Previews: PreviewProvider {
+struct SignIn_Previews: PreviewProvider {
     static var previews: some View {
-        SignUp()
+        SignIn()
     }
 }

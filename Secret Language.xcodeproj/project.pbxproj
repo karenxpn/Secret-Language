@@ -27,6 +27,7 @@
 		FFDB157B2664F2C800341E8F /* BirthdayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB157A2664F2C800341E8F /* BirthdayPicker.swift */; };
 		FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB157C2664FDBC00341E8F /* AuthViewModel.swift */; };
 		FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB157E26650A0E00341E8F /* Extensions.swift */; };
+		FFDB1581266522BE00341E8F /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB1580266522BE00341E8F /* SignIn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		FFDB157A2664F2C800341E8F /* BirthdayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayPicker.swift; sourceTree = "<group>"; };
 		FFDB157C2664FDBC00341E8F /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		FFDB157E26650A0E00341E8F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FFDB1580266522BE00341E8F /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				FFDB156A2664E97E00341E8F /* Introduction.swift */,
 				FFDB15742664EDFC00341E8F /* SignUp.swift */,
 				FFDB157A2664F2C800341E8F /* BirthdayPicker.swift */,
+				FFDB1580266522BE00341E8F /* SignIn.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFDB157B2664F2C800341E8F /* BirthdayPicker.swift in Sources */,
+				FFDB1581266522BE00341E8F /* SignIn.swift in Sources */,
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
 				FFDB15752664EDFC00341E8F /* SignUp.swift in Sources */,
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,

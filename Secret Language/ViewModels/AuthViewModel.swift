@@ -8,5 +8,6 @@
 import Foundation
 class AuthViewModel: ObservableObject {
     @Published var birthdayDate: Date = Date()
-    @Published var phoneNumber: String = ""
+    @Published var signUpPhoneNumber: String = ""
+    @Published var signInPhoneNumber: String = ""
 }

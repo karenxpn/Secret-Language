@@ -16,5 +16,8 @@
 "birthday" = "Birthday";
 "phoneNumber" = "Phone Number";
 "alreadyHaveAccount" = "If you already have an account";
+"dontHaveAccount" = "If you have’nt an account";
 "signin" = "Sign In";
+"signUp" = "Sign Up";
 "chooseBirthday" = "Please Choose Your Birthday";
+"welcomeBack" = "Welcome back! We are missed you!";
