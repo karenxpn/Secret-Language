@@ -65,8 +65,10 @@ class AuthViewModel: ObservableObject {
         dataManager.sendVerificationCode(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate))
             .sink { response in
                 if response.error != nil {
-                    self.sendVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
-                    self.showAlert.toggle()
+//                    self.sendVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
+//                    self.showAlert.toggle()
+                    self.navigateToCheckVerificationCode.toggle()
+
                 } else {
                     self.navigateToCheckVerificationCode.toggle()
                 }

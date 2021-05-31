@@ -23,3 +23,8 @@
 "welcomeBack" = "Welcome back! We are missed you!";
 "gotIt" = "Got it!";
 "alert" = "Secret Language Alert";
+"verification" = "Verification";
+"verificationCode" = "Verification Code";
+"verificationCodeSent" = "We have sent you a code confirming your number";
+"verify" = "Verify";
+"resendCode" = "Resend Code";
