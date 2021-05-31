@@ -97,7 +97,9 @@ struct SignUp: View {
                     
                     Spacer()
                     
-                    Button(action: {}, label: {
+                    Button(action: {
+                        // perform api request for sign up
+                    }, label: {
                         Image("proceed")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
