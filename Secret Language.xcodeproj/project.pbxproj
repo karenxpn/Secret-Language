@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
+		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
+		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
+		FFBEA6852664E42A0033B2ED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6842664E42A0033B2ED /* Preview Assets.xcassets */; };
+		FFBEA6902664E42A0033B2ED /* Secret_LanguageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA68F2664E42A0033B2ED /* Secret_LanguageTests.swift */; };
+		FFBEA69B2664E42A0033B2ED /* Secret_LanguageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA69A2664E42A0033B2ED /* Secret_LanguageUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FFBEA68C2664E42A0033B2ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFBEA6722664E4290033B2ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FFBEA6792664E4290033B2ED;
+			remoteInfo = "Secret Language";
+		};
+		FFBEA6972664E42A0033B2ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFBEA6722664E4290033B2ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FFBEA6792664E4290033B2ED;
+			remoteInfo = "Secret Language";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
+		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FFBEA6812664E42A0033B2ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FFBEA6842664E42A0033B2ED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FFBEA6862664E42A0033B2ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFBEA68B2664E42A0033B2ED /* Secret LanguageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Secret LanguageTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFBEA68F2664E42A0033B2ED /* Secret_LanguageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageTests.swift; sourceTree = "<group>"; };
+		FFBEA6912664E42A0033B2ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFBEA6962664E42A0033B2ED /* Secret LanguageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Secret LanguageUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFBEA69A2664E42A0033B2ED /* Secret_LanguageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageUITests.swift; sourceTree = "<group>"; };
+		FFBEA69C2664E42A0033B2ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FFBEA6772664E4290033B2ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFBEA6882664E42A0033B2ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFBEA6932664E42A0033B2ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FFBEA6712664E4290033B2ED = {
+			isa = PBXGroup;
+			children = (
+				FFBEA67C2664E4290033B2ED /* Secret Language */,
+				FFBEA68E2664E42A0033B2ED /* Secret LanguageTests */,
+				FFBEA6992664E42A0033B2ED /* Secret LanguageUITests */,
+				FFBEA67B2664E4290033B2ED /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FFBEA67B2664E4290033B2ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFBEA67A2664E4290033B2ED /* Secret Language.app */,
+				FFBEA68B2664E42A0033B2ED /* Secret LanguageTests.xctest */,
+				FFBEA6962664E42A0033B2ED /* Secret LanguageUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FFBEA67C2664E4290033B2ED /* Secret Language */ = {
+			isa = PBXGroup;
+			children = (
+				FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */,
+				FFBEA67F2664E4290033B2ED /* ContentView.swift */,
+				FFBEA6812664E42A0033B2ED /* Assets.xcassets */,
+				FFBEA6862664E42A0033B2ED /* Info.plist */,
+				FFBEA6832664E42A0033B2ED /* Preview Content */,
+			);
+			path = "Secret Language";
+			sourceTree = "<group>";
+		};
+		FFBEA6832664E42A0033B2ED /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FFBEA6842664E42A0033B2ED /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FFBEA68E2664E42A0033B2ED /* Secret LanguageTests */ = {
+			isa = PBXGroup;
+			children = (
+				FFBEA68F2664E42A0033B2ED /* Secret_LanguageTests.swift */,
+				FFBEA6912664E42A0033B2ED /* Info.plist */,
+			);
+			path = "Secret LanguageTests";
+			sourceTree = "<group>";
+		};
+		FFBEA6992664E42A0033B2ED /* Secret LanguageUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FFBEA69A2664E42A0033B2ED /* Secret_LanguageUITests.swift */,
+				FFBEA69C2664E42A0033B2ED /* Info.plist */,
+			);
+			path = "Secret LanguageUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FFBEA6792664E4290033B2ED /* Secret Language */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFBEA69F2664E42A0033B2ED /* Build configuration list for PBXNativeTarget "Secret Language" */;
+			buildPhases = (
+				FFBEA6762664E4290033B2ED /* Sources */,
+				FFBEA6772664E4290033B2ED /* Frameworks */,
+				FFBEA6782664E4290033B2ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Secret Language";
+			productName = "Secret Language";
+			productReference = FFBEA67A2664E4290033B2ED /* Secret Language.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FFBEA68A2664E42A0033B2ED /* Secret LanguageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFBEA6A22664E42A0033B2ED /* Build configuration list for PBXNativeTarget "Secret LanguageTests" */;
+			buildPhases = (
+				FFBEA6872664E42A0033B2ED /* Sources */,
+				FFBEA6882664E42A0033B2ED /* Frameworks */,
+				FFBEA6892664E42A0033B2ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFBEA68D2664E42A0033B2ED /* PBXTargetDependency */,
+			);
+			name = "Secret LanguageTests";
+			productName = "Secret LanguageTests";
+			productReference = FFBEA68B2664E42A0033B2ED /* Secret LanguageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FFBEA6952664E42A0033B2ED /* Secret LanguageUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFBEA6A52664E42A0033B2ED /* Build configuration list for PBXNativeTarget "Secret LanguageUITests" */;
+			buildPhases = (
+				FFBEA6922664E42A0033B2ED /* Sources */,
+				FFBEA6932664E42A0033B2ED /* Frameworks */,
+				FFBEA6942664E42A0033B2ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFBEA6982664E42A0033B2ED /* PBXTargetDependency */,
+			);
+			name = "Secret LanguageUITests";
+			productName = "Secret LanguageUITests";
+			productReference = FFBEA6962664E42A0033B2ED /* Secret LanguageUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FFBEA6722664E4290033B2ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					FFBEA6792664E4290033B2ED = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					FFBEA68A2664E42A0033B2ED = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = FFBEA6792664E4290033B2ED;
+					};
+					FFBEA6952664E42A0033B2ED = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = FFBEA6792664E4290033B2ED;
+					};
+				};
+			};
+			buildConfigurationList = FFBEA6752664E4290033B2ED /* Build configuration list for PBXProject "Secret Language" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FFBEA6712664E4290033B2ED;
+			productRefGroup = FFBEA67B2664E4290033B2ED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FFBEA6792664E4290033B2ED /* Secret Language */,
+				FFBEA68A2664E42A0033B2ED /* Secret LanguageTests */,
+				FFBEA6952664E42A0033B2ED /* Secret LanguageUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FFBEA6782664E4290033B2ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFBEA6852664E42A0033B2ED /* Preview Assets.xcassets in Resources */,
+				FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFBEA6892664E42A0033B2ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFBEA6942664E42A0033B2ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FFBEA6762664E4290033B2ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
+				FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFBEA6872664E42A0033B2ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFBEA6902664E42A0033B2ED /* Secret_LanguageTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFBEA6922664E42A0033B2ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFBEA69B2664E42A0033B2ED /* Secret_LanguageUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FFBEA68D2664E42A0033B2ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FFBEA6792664E4290033B2ED /* Secret Language */;
+			targetProxy = FFBEA68C2664E42A0033B2ED /* PBXContainerItemProxy */;
+		};
+		FFBEA6982664E42A0033B2ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FFBEA6792664E4290033B2ED /* Secret Language */;
+			targetProxy = FFBEA6972664E42A0033B2ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FFBEA69D2664E42A0033B2ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FFBEA69E2664E42A0033B2ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FFBEA6A02664E42A0033B2ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Secret Language/Preview Content\"";
+				DEVELOPMENT_TEAM = 9TN7Y68V59;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Secret Language/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sln.app.Secret-Language";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FFBEA6A12664E42A0033B2ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Secret Language/Preview Content\"";
+				DEVELOPMENT_TEAM = 9TN7Y68V59;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Secret Language/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sln.app.Secret-Language";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FFBEA6A32664E42A0033B2ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9TN7Y68V59;
+				INFOPLIST_FILE = "Secret LanguageTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sln.app.Secret-LanguageTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Secret Language.app/Secret Language";
+			};
+			name = Debug;
+		};
+		FFBEA6A42664E42A0033B2ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9TN7Y68V59;
+				INFOPLIST_FILE = "Secret LanguageTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sln.app.Secret-LanguageTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Secret Language.app/Secret Language";
+			};
+			name = Release;
+		};
+		FFBEA6A62664E42A0033B2ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9TN7Y68V59;
+				INFOPLIST_FILE = "Secret LanguageUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sln.app.Secret-LanguageUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Secret Language";
+			};
+			name = Debug;
+		};
+		FFBEA6A72664E42A0033B2ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9TN7Y68V59;
+				INFOPLIST_FILE = "Secret LanguageUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sln.app.Secret-LanguageUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Secret Language";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FFBEA6752664E4290033B2ED /* Build configuration list for PBXProject "Secret Language" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFBEA69D2664E42A0033B2ED /* Debug */,
+				FFBEA69E2664E42A0033B2ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFBEA69F2664E42A0033B2ED /* Build configuration list for PBXNativeTarget "Secret Language" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFBEA6A02664E42A0033B2ED /* Debug */,
+				FFBEA6A12664E42A0033B2ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFBEA6A22664E42A0033B2ED /* Build configuration list for PBXNativeTarget "Secret LanguageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFBEA6A32664E42A0033B2ED /* Debug */,
+				FFBEA6A42664E42A0033B2ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFBEA6A52664E42A0033B2ED /* Build configuration list for PBXNativeTarget "Secret LanguageUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFBEA6A62664E42A0033B2ED /* Debug */,
+				FFBEA6A72664E42A0033B2ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FFBEA6722664E4290033B2ED /* Project object */;
+}
