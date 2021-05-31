@@ -13,6 +13,7 @@
 		FFBEA6852664E42A0033B2ED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6842664E42A0033B2ED /* Preview Assets.xcassets */; };
 		FFBEA6902664E42A0033B2ED /* Secret_LanguageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA68F2664E42A0033B2ED /* Secret_LanguageTests.swift */; };
 		FFBEA69B2664E42A0033B2ED /* Secret_LanguageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA69A2664E42A0033B2ED /* Secret_LanguageUITests.swift */; };
+		FFBEA6A92664E4D00033B2ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6A82664E4D00033B2ED /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		FFBEA6962664E42A0033B2ED /* Secret LanguageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Secret LanguageUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA69A2664E42A0033B2ED /* Secret_LanguageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageUITests.swift; sourceTree = "<group>"; };
 		FFBEA69C2664E42A0033B2ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFBEA6A82664E4D00033B2ED /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +97,18 @@
 		FFBEA67C2664E4290033B2ED /* Secret Language */ = {
 			isa = PBXGroup;
 			children = (
+				FFBEA6AF2664E63F0033B2ED /* Utils */,
+				FFBEA6AE2664E63A0033B2ED /* Models */,
+				FFBEA6AD2664E6340033B2ED /* Services */,
+				FFBEA6AC2664E62E0033B2ED /* ViewModels */,
+				FFBEA6AB2664E6230033B2ED /* View */,
+				FFBEA6AA2664E6180033B2ED /* Authentication */,
 				FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */,
 				FFBEA67F2664E4290033B2ED /* ContentView.swift */,
 				FFBEA6812664E42A0033B2ED /* Assets.xcassets */,
 				FFBEA6862664E42A0033B2ED /* Info.plist */,
 				FFBEA6832664E42A0033B2ED /* Preview Content */,
+				FFBEA6A82664E4D00033B2ED /* LaunchScreen.storyboard */,
 			);
 			path = "Secret Language";
 			sourceTree = "<group>";
@@ -128,6 +137,48 @@
 				FFBEA69C2664E42A0033B2ED /* Info.plist */,
 			);
 			path = "Secret LanguageUITests";
+			sourceTree = "<group>";
+		};
+		FFBEA6AA2664E6180033B2ED /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		FFBEA6AB2664E6230033B2ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFBEA6AC2664E62E0033B2ED /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FFBEA6AD2664E6340033B2ED /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FFBEA6AE2664E63A0033B2ED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FFBEA6AF2664E63F0033B2ED /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFBEA6A92664E4D00033B2ED /* LaunchScreen.storyboard in Resources */,
 				FFBEA6852664E42A0033B2ED /* Preview Assets.xcassets in Resources */,
 				FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */,
 			);
@@ -427,7 +479,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sln.app.Secret-Language";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xpn-development.Secret-Language";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -449,7 +501,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sln.app.Secret-Language";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xpn-development.Secret-Language";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
