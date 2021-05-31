@@ -79,10 +79,15 @@ struct SignIn: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 50, height: 50)
-                    })
+                    }).disabled(!authVM.isSignInProceedClickable)
                 }
             }.padding()
             .padding(.top, 30)
+            
+            CustomAlert(isPresented: $authVM.showAlert, alertMessage: authVM.loginAlertMessage, alignment: .bottom)
+                .offset(y: authVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+                .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
+            
         }.navigationBarHidden(true)
         .onTapGesture {
             UIApplication.shared.endEditing()

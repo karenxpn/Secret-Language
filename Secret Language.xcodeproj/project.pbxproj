@@ -32,6 +32,9 @@
 		FFDB158526653DC500341E8F /* GlobalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB158426653DC500341E8F /* GlobalResponse.swift */; };
 		FFDB158726653E8900341E8F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB158626653E8900341E8F /* NetworkError.swift */; };
 		FFDB158926653F5600341E8F /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB158826653F5600341E8F /* Credentials.swift */; };
+		FFDB158B26655DD500341E8F /* CheckVerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB158A26655DD500341E8F /* CheckVerificationCode.swift */; };
+		FFDB158D26655E7800341E8F /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB158C26655E7800341E8F /* CustomAlert.swift */; };
+		FFDB158F2665607000341E8F /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB158E2665607000341E8F /* AppColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +92,9 @@
 		FFDB158426653DC500341E8F /* GlobalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalResponse.swift; sourceTree = "<group>"; };
 		FFDB158626653E8900341E8F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		FFDB158826653F5600341E8F /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		FFDB158A26655DD500341E8F /* CheckVerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckVerificationCode.swift; sourceTree = "<group>"; };
+		FFDB158C26655E7800341E8F /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		FFDB158E2665607000341E8F /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +224,7 @@
 			children = (
 				FFDB156A2664E97E00341E8F /* Introduction.swift */,
 				FFDB15742664EDFC00341E8F /* SignUp.swift */,
+				FFDB158A26655DD500341E8F /* CheckVerificationCode.swift */,
 				FFDB157A2664F2C800341E8F /* BirthdayPicker.swift */,
 				FFDB1580266522BE00341E8F /* SignIn.swift */,
 			);
@@ -228,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				FFDB15762664EE9800341E8F /* Background.swift */,
+				FFDB158C26655E7800341E8F /* CustomAlert.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				FFDB157E26650A0E00341E8F /* Extensions.swift */,
+				FFDB158E2665607000341E8F /* AppColors.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -519,6 +528,7 @@
 				FFDB158526653DC500341E8F /* GlobalResponse.swift in Sources */,
 				FFDB157B2664F2C800341E8F /* BirthdayPicker.swift in Sources */,
 				FFDB1581266522BE00341E8F /* SignIn.swift in Sources */,
+				FFDB158D26655E7800341E8F /* CustomAlert.swift in Sources */,
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,
 				FFDB15752664EDFC00341E8F /* SignUp.swift in Sources */,
@@ -526,7 +536,9 @@
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,
 				FFDB158326653D6E00341E8F /* AuthService.swift in Sources */,
+				FFDB158B26655DD500341E8F /* CheckVerificationCode.swift in Sources */,
 				FFDB158726653E8900341E8F /* NetworkError.swift in Sources */,
+				FFDB158F2665607000341E8F /* AppColors.swift in Sources */,
 				FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */,
 				FFDB15772664EE9800341E8F /* Background.swift in Sources */,
 			);

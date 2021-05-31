@@ -98,19 +98,28 @@ struct SignUp: View {
                     Spacer()
                     
                     Button(action: {
-                        // perform api request for sign up
+                        authVM.sendVerificationCode()
                     }, label: {
                         Image("proceed")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 50, height: 50)
-                    })
+                    }).disabled(!authVM.isSendVerificationCodeClickable)
+                    
+                    NavigationLink(destination: CheckVerificationCode().environmentObject(authVM), isActive: $authVM.navigateToCheckVerificationCode) {
+                        EmptyView()
+                    }
                 }
                 
                 // proceed
                 
             }.padding()
             .padding(.top, 30)
+            
+            CustomAlert(isPresented: $authVM.showAlert, alertMessage: authVM.sendVerificationCodeAlertMessage, alignment: .bottom)
+                .offset(y: authVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+                .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
+            
         }.navigationBarHidden(true)
         .fullScreenCover(isPresented: $fullscreen, content: {
             BirthdayPicker()
