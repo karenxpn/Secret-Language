@@ -73,9 +73,7 @@ struct SignUp: View {
                     .keyboardType(.phonePad)
                     
                     Divider()
-                }
-                
-                
+                }                
                 
                 Spacer()
                 
