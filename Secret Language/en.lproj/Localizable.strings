@@ -36,3 +36,5 @@
 "neutral" = "I'm a Neutral";
 "moreGenders" = "I want to see more Genders";
 "search" = "Search";
+"lookingConnections" = "What kind of connectionare you looking for?";
+"chooseModel" = "Choose a mode depending on what you’re looking for. You can switch this at any time.";

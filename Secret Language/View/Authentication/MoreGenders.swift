@@ -21,31 +21,36 @@ struct MoreGenders: View {
         ZStack {
             Background()
             
-            List {
-                // search field
-                
-                TextField(NSLocalizedString("search", comment: ""), text: $authVM.genderFilter)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 25).fill(AppColors.boxColor))
-                    .padding()
-                    .listRowBackground(Color.clear)
-                    .listRowInsets(EdgeInsets())
-                
-                
-                ForEach( authVM.moreGenders.filter { authVM.genderFilter.isEmpty ? true : $0.localizedCaseInsensitiveContains(authVM.genderFilter)}, id: \.self ) { gender in
+            if authVM.loadingGenders {
+                ProgressView()
+            } else {
+                List {
+                    // search field
                     
-                    Button(action: {
-                        authVM.signUpGender = gender
-                        presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        Text( gender )
-                            .foregroundColor(.white)
-                            .font(.custom("Gilroy-Regular", size: 16))
-                            .padding()
-                    })
+                    TextField(NSLocalizedString("search", comment: ""), text: $authVM.genderFilter)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 25).fill(AppColors.boxColor))
+                        .padding()
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets())
+                    
+                    
+                    ForEach( authVM.moreGenders.filter { authVM.genderFilter.isEmpty ? true : $0.localizedCaseInsensitiveContains(authVM.genderFilter)}, id: \.self ) { gender in
+                        
+                        Button(action: {
+                            authVM.signUpGender = gender
+                            presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            Text( gender )
+                                .foregroundColor(.white)
+                                .font(.custom("Gilroy-Regular", size: 16))
+                                .padding()
+                        })
 
-                }.listRowBackground(Color.clear)
-                .listRowInsets(EdgeInsets())
+                    }.listRowBackground(Color.clear)
+                    .listRowInsets(EdgeInsets())
+                }
+
             }
             
         }.navigationBarTitle(Text( NSLocalizedString("iam", comment: "")), displayMode: .inline)

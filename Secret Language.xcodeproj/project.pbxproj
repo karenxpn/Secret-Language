@@ -42,6 +42,9 @@
 		FFDB15A726669AA000341E8F /* ChooseGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15A626669AA000341E8F /* ChooseGender.swift */; };
 		FFDB15A926669B9400341E8F /* TopGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15A826669B9400341E8F /* TopGender.swift */; };
 		FFDB15AB26669F7C00341E8F /* MoreGenders.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15AA26669F7C00341E8F /* MoreGenders.swift */; };
+		FFDB15AD2666C03F00341E8F /* ConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15AC2666C03F00341E8F /* ConnectionType.swift */; };
+		FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15AE2666C0E100341E8F /* SingleConnectionType.swift */; };
+		FFDB15B12666C18900341E8F /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = FFDB15B02666C18900341E8F /* Avenir.ttc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +111,9 @@
 		FFDB15A626669AA000341E8F /* ChooseGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGender.swift; sourceTree = "<group>"; };
 		FFDB15A826669B9400341E8F /* TopGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGender.swift; sourceTree = "<group>"; };
 		FFDB15AA26669F7C00341E8F /* MoreGenders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreGenders.swift; sourceTree = "<group>"; };
+		FFDB15AC2666C03F00341E8F /* ConnectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionType.swift; sourceTree = "<group>"; };
+		FFDB15AE2666C0E100341E8F /* SingleConnectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleConnectionType.swift; sourceTree = "<group>"; };
+		FFDB15B02666C18900341E8F /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Avenir.ttc; path = ../../../../../../System/Library/Fonts/Avenir.ttc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +252,8 @@
 				FFDB15A626669AA000341E8F /* ChooseGender.swift */,
 				FFDB15A826669B9400341E8F /* TopGender.swift */,
 				FFDB15AA26669F7C00341E8F /* MoreGenders.swift */,
+				FFDB15AC2666C03F00341E8F /* ConnectionType.swift */,
+				FFDB15AE2666C0E100341E8F /* SingleConnectionType.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -298,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				FFDB156D2664EA2D00341E8F /* Times.ttc */,
+				FFDB15B02666C18900341E8F /* Avenir.ttc */,
 				FFDB15782664F1BD00341E8F /* Gilroy-Regular.ttf */,
 			);
 			path = font;
@@ -441,6 +450,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFDB15B12666C18900341E8F /* Avenir.ttc in Resources */,
 				FFDB156E2664EA2D00341E8F /* Times.ttc in Resources */,
 				FFDB15712664EAFB00341E8F /* Localizable.strings in Resources */,
 				FFBEA6B12664E72D0033B2ED /* .gitignore in Resources */,
@@ -584,7 +594,9 @@
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,
 				FFDB15AB26669F7C00341E8F /* MoreGenders.swift in Sources */,
 				FFDB15752664EDFC00341E8F /* SignUp.swift in Sources */,
+				FFDB15AD2666C03F00341E8F /* ConnectionType.swift in Sources */,
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,
+				FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
 				FFDB15A926669B9400341E8F /* TopGender.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,

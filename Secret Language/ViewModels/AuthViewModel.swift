@@ -37,6 +37,9 @@ class AuthViewModel: ObservableObject {
     @Published var isSendVerificationCodeClickable: Bool = false
     @Published var isCheckVerificationCodeClickable: Bool = false
     @Published var isSignInProceedClickable: Bool = false
+    
+    @Published var loadingGenders: Bool = false
+    @Published var connectionType: String = ""
 
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
