@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftUIX
 
-public struct OTPTextFieldView: View {
+struct OTPTextFieldView: View {
     
     var maxDigits: Int = 6
     
@@ -17,12 +17,10 @@ public struct OTPTextFieldView: View {
     
     var handler: (String, (Bool) -> Void) -> Void
     
-    public var body: some View {
-        VStack() {
-            ZStack {
-                pinDots
-                backgroundField
-            }
+    var body: some View {
+        ZStack {
+            pinDots
+            backgroundField
         }
     }
     
@@ -32,16 +30,14 @@ public struct OTPTextFieldView: View {
                 ZStack {
                     
                     RoundedRectangle(cornerRadius: 5)
-                                    .fill(AppColors.boxColor)
+                        .fill(AppColors.boxColor)
                         .frame(width: 45, height: 45)
-
-
+                    
+                    
                     Text(self.getDigits(at: index))
                         .foregroundColor(.white)
                         .font(.custom("Gilroy-Regular", size: 30))
                 }
-                
-                
             }
         }
         .padding(.horizontal)
@@ -55,11 +51,10 @@ public struct OTPTextFieldView: View {
         
         return CocoaTextField("", text: boundPin, onCommit: submitPin)
             .keyboardType(.numberPad)
-            .isFirstResponder(true)
+//            .isFirstResponder(true)
             .foregroundColor(.clear)
             .accentColor(.clear)
     }
-    
     
     
     private func submitPin() {
