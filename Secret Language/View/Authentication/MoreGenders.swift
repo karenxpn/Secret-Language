@@ -12,6 +12,10 @@ struct MoreGenders: View {
     @EnvironmentObject var authVM: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
 
+    init() {
+        UITableView.appearance().backgroundColor = UIColor.clear
+        UITableViewCell.appearance().backgroundColor = UIColor.clear
+    }
     
     var body: some View {
         ZStack {
@@ -20,7 +24,15 @@ struct MoreGenders: View {
             List {
                 // search field
                 
-                ForEach( authVM.moreGenders, id: \.self ) { gender in
+                TextField(NSLocalizedString("search", comment: ""), text: $authVM.genderFilter)
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 25).fill(AppColors.boxColor))
+                    .padding()
+                    .listRowBackground(Color.clear)
+                    .listRowInsets(EdgeInsets())
+                
+                
+                ForEach( authVM.moreGenders.filter { authVM.genderFilter.isEmpty ? true : $0.localizedCaseInsensitiveContains(authVM.genderFilter)}, id: \.self ) { gender in
                     
                     Button(action: {
                         authVM.signUpGender = gender
@@ -29,6 +41,7 @@ struct MoreGenders: View {
                         Text( gender )
                             .foregroundColor(.white)
                             .font(.custom("Gilroy-Regular", size: 16))
+                            .padding()
                     })
 
                 }.listRowBackground(Color.clear)

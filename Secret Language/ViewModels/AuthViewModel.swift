@@ -32,6 +32,8 @@ class AuthViewModel: ObservableObject {
     @Published var navigateToCheckVerificationCode: Bool = false
     @Published var navigateToChooseGender: Bool = false
     
+    @Published var genderFilter: String = ""
+    
     @Published var isSendVerificationCodeClickable: Bool = false
     @Published var isCheckVerificationCodeClickable: Bool = false
     @Published var isSignInProceedClickable: Bool = false
