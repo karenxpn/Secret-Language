@@ -53,17 +53,13 @@ struct ChooseGender: View {
                 HStack {
                     Spacer()
                     
-                    NavigationLink(
-                        destination: ConnectionType().environmentObject(authVM),
-                        label: {
-                            Image("proceed")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 50, height: 50)
-                        }).disabled(authVM.signUpGender.isEmpty)
+                    NavigationLink( destination: ConnectionType().environmentObject(authVM), label: {
+                        Image("proceed")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 50, height: 50)
+                    }).disabled(authVM.signUpGender.isEmpty)
                 }
-                
-                
                 
             }.padding()
             

@@ -40,6 +40,9 @@ class AuthViewModel: ObservableObject {
     
     @Published var loadingGenders: Bool = false
     @Published var connectionType: String = ""
+    
+    @Published var loadingConnectionsType: Bool = false
+    @Published var connectionTypes = [String]()
 
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()

@@ -16,19 +16,14 @@ struct TopGender: View {
         
         Button(action: {
             authVM.signUpGender = gender
-        }, label: {
-            HStack {
-                Spacer()
-                
-                Text( gender )
-                    .font(.custom("times", size: 16))
-                    .foregroundColor(authVM.signUpGender == gender ? .black : .white)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .padding(.vertical)
-                    .background(authVM.signUpGender == gender ? .accentColor : AppColors.boxColor)
-                    .cornerRadius(15)
-                Spacer()
-            }
+        }, label: {            
+            Text( gender )
+                .font(.custom("times", size: 16))
+                .foregroundColor(authVM.signUpGender == gender ? .black : .white)
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding()
+                .background(authVM.signUpGender == gender ? .accentColor : AppColors.boxColor)
+                .cornerRadius(15)
         })
     }
 }

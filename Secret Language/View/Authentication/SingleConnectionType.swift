@@ -31,7 +31,6 @@ struct SingleConnectionType: View {
             .background(authVM.connectionType == type ? .accentColor : AppColors.boxColor)
             .cornerRadius(15)
         })
-
     }
 }
 
