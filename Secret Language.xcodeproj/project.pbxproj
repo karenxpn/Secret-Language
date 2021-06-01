@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -37,8 +37,8 @@
 		FFDB158F2665607000341E8F /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB158E2665607000341E8F /* AppColors.swift */; };
 		FFDB159526658C3400341E8F /* MockAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB159426658C3400341E8F /* MockAuthService.swift */; };
 		FFDB159726658EDF00341E8F /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB159626658EDF00341E8F /* AuthViewModelTests.swift */; };
-		FFDB159A2665A1E700341E8F /* SectionedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15992665A1E700341E8F /* SectionedTextField.swift */; };
-		FFDB159C2665A21400341E8F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB159B2665A21400341E8F /* CustomTextField.swift */; };
+		FFDB15A02666571A00341E8F /* OTPTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB159F2666571A00341E8F /* OTPTextFieldView.swift */; };
+		FFDB15A32666576900341E8F /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = FFDB15A22666576900341E8F /* SwiftUIX */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,8 +101,7 @@
 		FFDB158E2665607000341E8F /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		FFDB159426658C3400341E8F /* MockAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthService.swift; sourceTree = "<group>"; };
 		FFDB159626658EDF00341E8F /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
-		FFDB15992665A1E700341E8F /* SectionedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedTextField.swift; sourceTree = "<group>"; };
-		FFDB159B2665A21400341E8F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		FFDB159F2666571A00341E8F /* OTPTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F367D6D86DC2C2254AB6F287 /* Pods_Secret_Language.framework in Frameworks */,
+				FFDB15A32666576900341E8F /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,8 +313,7 @@
 		FFDB15982665A1D300341E8F /* OTP */ = {
 			isa = PBXGroup;
 			children = (
-				FFDB15992665A1E700341E8F /* SectionedTextField.swift */,
-				FFDB159B2665A21400341E8F /* CustomTextField.swift */,
+				FFDB159F2666571A00341E8F /* OTPTextFieldView.swift */,
 			);
 			path = OTP;
 			sourceTree = "<group>";
@@ -337,6 +336,9 @@
 			dependencies = (
 			);
 			name = "Secret Language";
+			packageProductDependencies = (
+				FFDB15A22666576900341E8F /* SwiftUIX */,
+			);
 			productName = "Secret Language";
 			productReference = FFBEA67A2664E4290033B2ED /* Secret Language.app */;
 			productType = "com.apple.product-type.application";
@@ -411,6 +413,9 @@
 				Base,
 			);
 			mainGroup = FFBEA6712664E4290033B2ED;
+			packageReferences = (
+				FFDB15A12666576900341E8F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+			);
 			productRefGroup = FFBEA67B2664E4290033B2ED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -561,6 +566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFDB15A02666571A00341E8F /* OTPTextFieldView.swift in Sources */,
 				FFDB158526653DC500341E8F /* GlobalResponse.swift in Sources */,
 				FFDB157B2664F2C800341E8F /* BirthdayPicker.swift in Sources */,
 				FFDB1581266522BE00341E8F /* SignIn.swift in Sources */,
@@ -569,7 +575,6 @@
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,
 				FFDB15752664EDFC00341E8F /* SignUp.swift in Sources */,
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,
-				FFDB159C2665A21400341E8F /* CustomTextField.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,
 				FFDB158326653D6E00341E8F /* AuthService.swift in Sources */,
@@ -577,7 +582,6 @@
 				FFDB158726653E8900341E8F /* NetworkError.swift in Sources */,
 				FFDB158F2665607000341E8F /* AppColors.swift in Sources */,
 				FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */,
-				FFDB159A2665A1E700341E8F /* SectionedTextField.swift in Sources */,
 				FFDB15772664EE9800341E8F /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -917,6 +921,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FFDB15A12666576900341E8F /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FFDB15A22666576900341E8F /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFDB15A12666576900341E8F /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FFBEA6722664E4290033B2ED /* Project object */;
 }

@@ -24,9 +24,15 @@ struct CheckVerificationCode: View {
                 Text( NSLocalizedString("verificationCodeSent", comment: ""))
                     .foregroundColor(.accentColor)
                     .font(.custom("times", size: 15))
-                                
+                
                 Spacer()
-                SectionedTextField()
+                
+                
+                OTPTextFieldView { otp, completionHandler in
+                    
+                    print(otp)
+                    // do smth with otp
+                }
                 
                 Spacer()
                 
@@ -54,7 +60,7 @@ struct CheckVerificationCode: View {
                     })
                     Spacer()
                 }
-
+                
                 
             }.padding()
             
@@ -63,6 +69,9 @@ struct CheckVerificationCode: View {
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
         }.navigationBarTitle(Text( NSLocalizedString("verification", comment: "") ), displayMode: .inline)
+        .onAppear(perform: {
+            
+        })
     }
 }
 

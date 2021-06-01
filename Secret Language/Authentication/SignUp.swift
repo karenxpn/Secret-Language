@@ -21,7 +21,6 @@ struct SignUp: View {
         ZStack {
             Background()
             
-            
             VStack( alignment: .leading, spacing: 20) {
                 
                 Text( NSLocalizedString("joinUs", comment: ""))
