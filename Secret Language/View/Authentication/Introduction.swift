@@ -65,7 +65,8 @@ struct Introduction: View {
                     })
                 }
             }.navigationBarHidden(true)
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }.navigationBarHidden(true)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

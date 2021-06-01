@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CheckVerificationCode: View {
     
-    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authVM: AuthViewModel
     
     var body: some View {
@@ -36,6 +35,10 @@ struct CheckVerificationCode: View {
                 
                 Spacer()
                 
+                NavigationLink( destination: ChooseGender().environmentObject(authVM), isActive: $authVM.navigateToChooseGender, label: {
+                    EmptyView()
+                })
+                
                 Button(action: {
                     authVM.checkVerificationCode()
                 }, label: {
@@ -47,11 +50,14 @@ struct CheckVerificationCode: View {
                         .background(AppColors.accentColor)
                         .cornerRadius(25)
                 })
+//                .disabled(!authVM.isCheckVerificationCodeClickable)
                 
                 HStack {
                     Spacer()
                     
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Button(action: {
+                        
+                    }, label: {
                         Text( NSLocalizedString("resendCode", comment: ""))
                             .font(.custom("Gilroy-Regular", size: 16))
                             .foregroundColor(.blue)
@@ -69,9 +75,6 @@ struct CheckVerificationCode: View {
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
         }.navigationBarTitle(Text( NSLocalizedString("verification", comment: "") ), displayMode: .inline)
-        .onAppear(perform: {
-            
-        })
     }
 }
 

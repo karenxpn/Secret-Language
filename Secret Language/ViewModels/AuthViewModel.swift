@@ -17,6 +17,9 @@ class AuthViewModel: ObservableObject {
     @Published var birthdayDate: Date = Date()
     @Published var signUpPhoneNumber: String = ""
     @Published var singUpVerificationCode: String = ""
+    @Published var signUpGender: String = ""
+    
+    @Published var moreGenders = ["Trans Woman", "Man", "Woman", "al;skfj", "al;dskfj", "a;lsdkfj"]
     
     @Published var signInPhoneNumber: String = ""
     
@@ -27,6 +30,7 @@ class AuthViewModel: ObservableObject {
     @Published var loginAlertMessage: String = ""
     
     @Published var navigateToCheckVerificationCode: Bool = false
+    @Published var navigateToChooseGender: Bool = false
     
     @Published var isSendVerificationCodeClickable: Bool = false
     @Published var isCheckVerificationCodeClickable: Bool = false
@@ -68,7 +72,6 @@ class AuthViewModel: ObservableObject {
 //                    self.sendVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
 //                    self.showAlert.toggle()
                     self.navigateToCheckVerificationCode.toggle()
-
                 } else {
                     self.navigateToCheckVerificationCode.toggle()
                 }
@@ -79,10 +82,11 @@ class AuthViewModel: ObservableObject {
         dataManager.checkVerificationCode(phoneNumber: signUpPhoneNumber, code: singUpVerificationCode)
             .sink { response in
                 if response.error != nil {
-                    self.checkVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
-                    self.showAlert.toggle()
+//                    self.checkVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
+//                    self.showAlert.toggle()
+                    self.navigateToChooseGender = true
                 } else {
-                    // do smth
+                    self.navigateToChooseGender.toggle()
                 }
             }.store(in: &cancellableSet)
     }

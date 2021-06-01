@@ -28,3 +28,10 @@
 "verificationCodeSent" = "We have sent you a code confirming your number";
 "verify" = "Verify";
 "resendCode" = "Resend Code";
+"iam" = "I am";
+"indicateGender" = "Indicate your gender.";
+"helpUs" = "Help us keep SL safe and honest by matches input your gender.";
+"male" = "I'm a Male";
+"female" = "I'm a Female";
+"neutral" = "I'm a Neutral";
+"moreGenders" = "I want to see more Genders";

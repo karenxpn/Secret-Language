@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct SignUp: View {
-    @ObservedObject var authVM = AuthViewModel()
+    @StateObject var authVM = AuthViewModel()
     @State private var fullscreen: Bool = false
+    @State private var login: Bool = false
+    
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -80,7 +82,10 @@ struct SignUp: View {
                             .foregroundColor(.white)
                             .font(.custom("Gilroy-Regular", size: 14))
                         
-                        // sign in
+                        NavigationLink(destination: EmptyView()) {
+                            EmptyView()
+                        }
+                        
                         NavigationLink( destination: SignIn(), label: {
                             Text( NSLocalizedString("signin", comment: "") )
                                 .font(.custom("Gilroy-Regular", size: 14))
@@ -92,6 +97,16 @@ struct SignUp: View {
                     
                     Spacer()
                     
+                    NavigationLink(destination: EmptyView()) {
+                        EmptyView()
+                    }
+                    
+                    NavigationLink(destination: CheckVerificationCode()
+                                    .environmentObject(authVM),
+                                   isActive: $authVM.navigateToCheckVerificationCode) {
+                        EmptyView()
+                    }.hidden()
+                    
                     Button(action: {
                         authVM.sendVerificationCode()
                     }, label: {
@@ -101,9 +116,6 @@ struct SignUp: View {
                             .frame(width: 50, height: 50)
                     }).disabled(!authVM.isSendVerificationCodeClickable)
                     
-                    NavigationLink(destination: CheckVerificationCode().environmentObject(authVM), isActive: $authVM.navigateToCheckVerificationCode) {
-                        EmptyView()
-                    }
                 }
                 
             }.padding()
@@ -114,6 +126,7 @@ struct SignUp: View {
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
         }.navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         .fullScreenCover(isPresented: $fullscreen, content: {
             BirthdayPicker()
                 .environmentObject(authVM)

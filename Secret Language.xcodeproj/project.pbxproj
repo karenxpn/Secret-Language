@@ -39,6 +39,9 @@
 		FFDB159726658EDF00341E8F /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB159626658EDF00341E8F /* AuthViewModelTests.swift */; };
 		FFDB15A02666571A00341E8F /* OTPTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB159F2666571A00341E8F /* OTPTextFieldView.swift */; };
 		FFDB15A32666576900341E8F /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = FFDB15A22666576900341E8F /* SwiftUIX */; };
+		FFDB15A726669AA000341E8F /* ChooseGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15A626669AA000341E8F /* ChooseGender.swift */; };
+		FFDB15A926669B9400341E8F /* TopGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15A826669B9400341E8F /* TopGender.swift */; };
+		FFDB15AB26669F7C00341E8F /* MoreGenders.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15AA26669F7C00341E8F /* MoreGenders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +105,9 @@
 		FFDB159426658C3400341E8F /* MockAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthService.swift; sourceTree = "<group>"; };
 		FFDB159626658EDF00341E8F /* AuthViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelTests.swift; sourceTree = "<group>"; };
 		FFDB159F2666571A00341E8F /* OTPTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextFieldView.swift; sourceTree = "<group>"; };
+		FFDB15A626669AA000341E8F /* ChooseGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGender.swift; sourceTree = "<group>"; };
+		FFDB15A826669B9400341E8F /* TopGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopGender.swift; sourceTree = "<group>"; };
+		FFDB15AA26669F7C00341E8F /* MoreGenders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreGenders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +243,9 @@
 				FFDB158A26655DD500341E8F /* CheckVerificationCode.swift */,
 				FFDB157A2664F2C800341E8F /* BirthdayPicker.swift */,
 				FFDB1580266522BE00341E8F /* SignIn.swift */,
+				FFDB15A626669AA000341E8F /* ChooseGender.swift */,
+				FFDB15A826669B9400341E8F /* TopGender.swift */,
+				FFDB15AA26669F7C00341E8F /* MoreGenders.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -573,12 +582,15 @@
 				FFDB158D26655E7800341E8F /* CustomAlert.swift in Sources */,
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,
+				FFDB15AB26669F7C00341E8F /* MoreGenders.swift in Sources */,
 				FFDB15752664EDFC00341E8F /* SignUp.swift in Sources */,
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
+				FFDB15A926669B9400341E8F /* TopGender.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,
 				FFDB158326653D6E00341E8F /* AuthService.swift in Sources */,
 				FFDB158B26655DD500341E8F /* CheckVerificationCode.swift in Sources */,
+				FFDB15A726669AA000341E8F /* ChooseGender.swift in Sources */,
 				FFDB158726653E8900341E8F /* NetworkError.swift in Sources */,
 				FFDB158F2665607000341E8F /* AppColors.swift in Sources */,
 				FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */,
