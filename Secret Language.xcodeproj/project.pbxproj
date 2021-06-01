@@ -187,7 +187,6 @@
 				FFBEA6AD2664E6340033B2ED /* Services */,
 				FFBEA6AC2664E62E0033B2ED /* ViewModels */,
 				FFBEA6AB2664E6230033B2ED /* View */,
-				FFBEA6AA2664E6180033B2ED /* Authentication */,
 				FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */,
 				FFBEA67F2664E4290033B2ED /* ContentView.swift */,
 				FFBEA6812664E42A0033B2ED /* Assets.xcassets */,
@@ -245,6 +244,7 @@
 		FFBEA6AB2664E6230033B2ED /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FFBEA6AA2664E6180033B2ED /* Authentication */,
 				FFDB15762664EE9800341E8F /* Background.swift */,
 				FFDB158C26655E7800341E8F /* CustomAlert.swift */,
 			);

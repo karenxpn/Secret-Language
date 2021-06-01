@@ -43,8 +43,6 @@ struct SignUp: View {
                     Spacer()
                 }.padding(.bottom, 20)
                 
-                                
-                
                 VStack( alignment: .leading) {
                     Text( NSLocalizedString("birthday", comment: "") )
                         .foregroundColor(.gray)
@@ -60,16 +58,16 @@ struct SignUp: View {
                     Divider()
                         .padding(.bottom)
                 }
-                                
+                
                 VStack( alignment: .leading) {
                     Text( NSLocalizedString("phoneNumber", comment: "") )
                         .foregroundColor(.gray)
                         .font(.custom("Gilroy-Regular", size: 10))
                     
                     TextField(NSLocalizedString("phoneNumber", comment: ""), text: $authVM.signUpPhoneNumber)
-                    .font(.custom("times", size: 20))
-                    .foregroundColor(.white)
-                    .keyboardType(.phonePad)
+                        .font(.custom("times", size: 20))
+                        .foregroundColor(.white)
+                        .keyboardType(.phonePad)
                     
                     Divider()
                 }
@@ -83,15 +81,13 @@ struct SignUp: View {
                             .font(.custom("Gilroy-Regular", size: 14))
                         
                         // sign in
-                        NavigationLink(
-                            destination: SignIn(),
-                            label: {
-                                Text( NSLocalizedString("signin", comment: "") )
-                                    .font(.custom("Gilroy-Regular", size: 14))
-                                    .foregroundColor(.accentColor)
-                                    .underline(true, color: .accentColor)
-                                    .padding(.top, 8)
-                            })
+                        NavigationLink( destination: SignIn(), label: {
+                            Text( NSLocalizedString("signin", comment: "") )
+                                .font(.custom("Gilroy-Regular", size: 14))
+                                .foregroundColor(.accentColor)
+                                .underline(true, color: .accentColor)
+                                .padding(.top, 8)
+                        })
                     }
                     
                     Spacer()
@@ -109,7 +105,7 @@ struct SignUp: View {
                         EmptyView()
                     }
                 }
-                                
+                
             }.padding()
             .padding(.top, 30)
             

@@ -28,11 +28,9 @@ struct OTPTextFieldView: View {
         HStack(spacing:14) {
             ForEach(0..<maxDigits) { index in
                 ZStack {
-                    
                     RoundedRectangle(cornerRadius: 5)
                         .fill(AppColors.boxColor)
                         .frame(width: 45, height: 45)
-                    
                     
                     Text(self.getDigits(at: index))
                         .foregroundColor(.white)
