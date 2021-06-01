@@ -15,40 +15,44 @@ struct ConnectionType: View {
         ZStack {
             Background()
             
-            VStack( alignment: .leading, spacing: 20 ) {
-                Text(NSLocalizedString("lookingConnections", comment: ""))
-                    .foregroundColor(.white)
-                    .font(.custom("times", size: 26))
-                    .padding(.bottom)
+            if authVM.loadingConnectionsType {
+                ProgressView()
+            } else {
+                VStack( alignment: .leading, spacing: 20 ) {
+                    Text(NSLocalizedString("lookingConnections", comment: ""))
+                        .foregroundColor(.white)
+                        .font(.custom("times", size: 26))
+                        .padding(.bottom)
 
-                Text( NSLocalizedString("chooseModel", comment: ""))
-                    .foregroundColor(.accentColor)
-                    .font(.custom("Gilroy-Regular", size: 14))
-                
-                
-                SingleConnectionType(type: "Romance", description: "Find that spark in an emprowered community")
-                    .environmentObject(authVM)
-                
-                SingleConnectionType(type: "Networking", description: "Make new friends at every stage of your life")
-                    .environmentObject(authVM)
-                
-                SingleConnectionType(type: "Business", description: "Move your career forward the modern way")
-                    .environmentObject(authVM)
-                
-                Spacer()
-                
-                HStack {
+                    Text( NSLocalizedString("chooseModel", comment: ""))
+                        .foregroundColor(.accentColor)
+                        .font(.custom("Gilroy-Regular", size: 14))
+                    
+                    
+                    SingleConnectionType(type: "Romance", description: "Find that spark in an emprowered community")
+                        .environmentObject(authVM)
+                    
+                    SingleConnectionType(type: "Networking", description: "Make new friends at every stage of your life")
+                        .environmentObject(authVM)
+                    
+                    SingleConnectionType(type: "Business", description: "Move your career forward the modern way")
+                        .environmentObject(authVM)
+                    
                     Spacer()
                     
-                    Button(action: {}, label: {
-                        Image("proceed")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 50, height: 50)
-                    }).disabled(authVM.connectionType.isEmpty)
-                }
-                
-            }.padding()
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {}, label: {
+                            Image("proceed")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 50, height: 50)
+                        }).disabled(authVM.connectionType.isEmpty)
+                    }
+                    
+                }.padding()
+            }
         }
     }
 }
