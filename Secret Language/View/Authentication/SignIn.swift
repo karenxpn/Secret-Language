@@ -50,7 +50,6 @@ struct SignIn: View {
                     Divider()
                 }
                 
-                
                 Spacer()
                 
                 HStack {
@@ -74,7 +73,13 @@ struct SignIn: View {
                     
                     Spacer()
                     
-                    Button(action: {}, label: {
+                    NavigationLink(destination: SignInCheckVerificationCode().environmentObject(authVM), isActive: $authVM.navigateToSignInVerificationCode) {
+                        EmptyView()
+                    }
+                    
+                    Button(action: {
+                        authVM.sendSignInVerificationCode()
+                    }, label: {
                         Image("proceed")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -84,7 +89,7 @@ struct SignIn: View {
             }.padding()
             .padding(.top, 30)
             
-            CustomAlert(isPresented: $authVM.showAlert, alertMessage: authVM.loginAlertMessage, alignment: .bottom)
+            CustomAlert(isPresented: $authVM.showAlert, alertMessage: authVM.sendVerificationCodeAlertMessage, alignment: .bottom)
                 .offset(y: authVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             

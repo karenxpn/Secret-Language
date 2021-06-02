@@ -28,6 +28,7 @@ struct BirthdayPicker: View {
                     .datePickerStyle(WheelDatePickerStyle())
                     .labelsHidden()
                     .colorMultiply(.accentColor)
+
                 Spacer()
                 
                 
@@ -54,6 +55,7 @@ struct BirthdayPicker: View {
 struct BirthdayPicker_Previews: PreviewProvider {
     static var previews: some View {
         BirthdayPicker()
+            .environmentObject(AuthViewModel())
     }
 }
 

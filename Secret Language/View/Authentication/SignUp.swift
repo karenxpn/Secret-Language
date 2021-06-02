@@ -45,7 +45,7 @@ struct SignUp: View {
                     Spacer()
                 }.padding(.bottom, 20)
                 
-                VStack( alignment: .leading) {
+                VStack( alignment: .leading ) {
                     Text( NSLocalizedString("birthday", comment: "") )
                         .foregroundColor(.gray)
                         .font(.custom("Gilroy-Regular", size: 10))

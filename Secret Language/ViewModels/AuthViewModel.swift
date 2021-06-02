@@ -12,7 +12,6 @@ import SwiftUI
 class AuthViewModel: ObservableObject {
     
     @AppStorage("token") private var token: String = ""
-
     
     @Published var birthdayDate: Date = Date()
     @Published var signUpPhoneNumber: String = ""
@@ -23,16 +22,21 @@ class AuthViewModel: ObservableObject {
     @Published var moreGenders = [GenderModel]()
     
     @Published var signInPhoneNumber: String = ""
+    @Published var signInVerificationCode: String = ""
     
+    @Published var navigateToSignInVerificationCode: Bool = false
+        
     // alerts
     @Published var showAlert: Bool = false
     @Published var sendVerificationCodeAlertMessage: String = ""
-    @Published var checkVerificationCodeAlertMessage: String = ""
-    @Published var loginAlertMessage: String = ""
     
+    @Published var showCheckVerificationCodeAlert: Bool = false
+    @Published var checkVerificationCodeAlertMessage: String = ""
+        
     @Published var navigateToCheckVerificationCode: Bool = false
     @Published var navigateToChooseGender: Bool = false
     
+    // check publishers validation
     @Published var isSendVerificationCodeClickable: Bool = false
     @Published var isCheckVerificationCodeClickable: Bool = false
     @Published var isSignInProceedClickable: Bool = false
@@ -89,19 +93,32 @@ class AuthViewModel: ObservableObject {
             .sink { response in
                 if response.error != nil {
                     self.checkVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
-                    self.showAlert.toggle()
+                    self.showCheckVerificationCodeAlert.toggle()
                 } else {
                     self.navigateToChooseGender.toggle()
                 }
             }.store(in: &cancellableSet)
     }
     
-    func singIn() {
-        dataManager.login(phoneNumber: signInPhoneNumber)
+    func sendSignInVerificationCode() {
+        
+        dataManager.sendSignInVerificationCode(phoneNumber: signInPhoneNumber)
             .sink { response in
                 if response.error != nil {
-                    self.loginAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
+                    self.sendVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
                     self.showAlert.toggle()
+                } else {
+                    self.navigateToSignInVerificationCode.toggle()
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func checkSignInVerificationCode() {
+        dataManager.checkSignInVerificationCode(phoneNumber: signInPhoneNumber, code: signInVerificationCode)
+            .sink { response in
+                if response.error != nil {
+                    self.checkVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
+                    self.showCheckVerificationCodeAlert.toggle()
                 } else {
                     // do smth
                 }

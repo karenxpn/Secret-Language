@@ -12,10 +12,12 @@ import Alamofire
 protocol AuthServiceProtocol {
     func sendVerificationCode( phoneNumber: String, birthday: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func checkVerificationCode( phoneNumber: String, code: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
-    func login( phoneNumber: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     
     func fetchConnectionTypes() -> AnyPublisher<DataResponse<[ConnectionTypeModel], NetworkError>, Never>
     func fetchAllGenders() -> AnyPublisher<DataResponse<[GenderModel], NetworkError>, Never>
+    
+    func sendSignInVerificationCode( phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func checkSignInVerificationCode( phoneNumber: String, code: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
 }
 
 class AuthService {
@@ -25,6 +27,45 @@ class AuthService {
 }
 
 extension AuthService: AuthServiceProtocol {
+    func sendSignInVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)auth/signin/send-code")!
+        
+        return AF.request(url,
+                          method: .post,
+                          parameters: ["phoneNumber": phoneNumber],
+                          encoder: JSONParameterEncoder.default)
+            .validate()
+            .publishDecodable(type: GlobalResponse.self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func checkSignInVerificationCode(phoneNumber: String, code: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)auth/signin/check-code")!
+        
+        return AF.request(url,
+                          method: .post,
+                          parameters: ["phoneNumber": phoneNumber,
+                                       "verification-code": code],
+                          encoder: JSONParameterEncoder.default)
+            .validate()
+            .publishDecodable(type: GlobalResponse.self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func fetchAllGenders() -> AnyPublisher<DataResponse<[GenderModel], NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)auth/connection-types")!
         
@@ -85,26 +126,7 @@ extension AuthService: AuthServiceProtocol {
         return AF.request(url,
                           method: .post,
                           parameters: ["phoneNumber": phoneNumber,
-                                       "reset_code": code],
-                          encoder: JSONParameterEncoder.default)
-            .validate()
-            .publishDecodable(type: GlobalResponse.self)
-            .map { response in
-                response.mapError { error in
-                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
-                    return NetworkError(initialError: error, backendError: backendError)
-                }
-            }
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
-    }
-    
-    func login(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)auth/singin")!
-        
-        return AF.request(url,
-                          method: .post,
-                          parameters: ["phoneNumber": phoneNumber],
+                                       "verification-code": code],
                           encoder: JSONParameterEncoder.default)
             .validate()
             .publishDecodable(type: GlobalResponse.self)

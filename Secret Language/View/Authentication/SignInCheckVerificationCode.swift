@@ -1,13 +1,13 @@
 //
-//  CheckVerificationCode.swift
+//  SignInCheckVerificationCode.swift
 //  Secret Language
 //
-//  Created by Karen Mirakyan on 31.05.21.
+//  Created by Karen Mirakyan on 03.06.21.
 //
 
 import SwiftUI
 
-struct CheckVerificationCode: View {
+struct SignInCheckVerificationCode: View {
     
     @EnvironmentObject var authVM: AuthViewModel
     
@@ -30,19 +30,16 @@ struct CheckVerificationCode: View {
                 OTPTextFieldView { otp, completionHandler in
                     
                     print(otp)
-                    authVM.singUpVerificationCode = otp
-                    authVM.checkVerificationCode()
+                    authVM.signInVerificationCode = otp
+                    authVM.checkSignInVerificationCode()
                     // do smth with otp
                 }
                 
                 Spacer()
-                
-                NavigationLink( destination: ChooseGender().environmentObject(authVM), isActive: $authVM.navigateToChooseGender, label: {
-                    EmptyView()
-                })
+
                 
                 Button(action: {
-                    authVM.checkVerificationCode()
+                    authVM.checkSignInVerificationCode()
                 }, label: {
                     Text( NSLocalizedString("verify", comment: "") )
                         .foregroundColor(.black)
@@ -79,9 +76,9 @@ struct CheckVerificationCode: View {
     }
 }
 
-struct CheckVerificationCode_Previews: PreviewProvider {
+struct SignInCheckVerificationCode_Previews: PreviewProvider {
     static var previews: some View {
-        CheckVerificationCode()
+        SignInCheckVerificationCode()
             .environmentObject(AuthViewModel())
     }
 }

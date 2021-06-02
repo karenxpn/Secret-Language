@@ -12,6 +12,7 @@
 		F9F0370ED83B1C5E52915185 /* Pods_Secret_Language_Secret_LanguageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731E76360732012C1B0620D4 /* Pods_Secret_Language_Secret_LanguageUITests.framework */; };
 		FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */; };
 		FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40D2667BBA200BD3838 /* GenderModel.swift */; };
+		FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 		C6F55590BE354F6F63F39112 /* Pods-Secret LanguageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Secret LanguageTests.release.xcconfig"; path = "Target Support Files/Pods-Secret LanguageTests/Pods-Secret LanguageTests.release.xcconfig"; sourceTree = "<group>"; };
 		FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTypeModel.swift; sourceTree = "<group>"; };
 		FF58C40D2667BBA200BD3838 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
+		FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCheckVerificationCode.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				FFDB158A26655DD500341E8F /* CheckVerificationCode.swift */,
 				FFDB157A2664F2C800341E8F /* BirthdayPicker.swift */,
 				FFDB1580266522BE00341E8F /* SignIn.swift */,
+				FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */,
 				FFDB15A626669AA000341E8F /* ChooseGender.swift */,
 				FFDB15A826669B9400341E8F /* TopGender.swift */,
 				FFDB15AA26669F7C00341E8F /* MoreGenders.swift */,
@@ -599,6 +602,7 @@
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,
 				FFDB15AB26669F7C00341E8F /* MoreGenders.swift in Sources */,
+				FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */,
 				FFDB15752664EDFC00341E8F /* SignUp.swift in Sources */,
 				FFDB15AD2666C03F00341E8F /* ConnectionType.swift in Sources */,
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,
