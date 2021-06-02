@@ -47,20 +47,6 @@ class AuthViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.checkVerificationCodeAlertMessage.isEmpty)
     }
     
-    func testSignInWithError() {
-        service.loginError = true
-        viewModel.singIn()
-        
-        XCTAssertFalse(viewModel.loginAlertMessage.isEmpty)
-    }
-    
-    func testSignInWithSuccess() {
-        service.loginError = false
-        viewModel.singIn()
-        
-        XCTAssertTrue(viewModel.loginAlertMessage.isEmpty)
-    }
-    
     func testGetAllGendersWithError() {
         service.fetchAllGendersError = true
         viewModel.getAllGenders()
@@ -87,6 +73,36 @@ class AuthViewModelTests: XCTestCase {
         viewModel.getConnectionTypes()
         
         XCTAssertFalse(viewModel.connectionTypes.isEmpty)
+    }
+    
+    
+    // sign in
+    func testSendSignInVerificationCodeWithError() {
+        service.sendSignInVerificatioCodeError = true
+        viewModel.sendSignInVerificationCode()
+        
+        XCTAssertFalse(viewModel.sendVerificationCodeAlertMessage.isEmpty)
+    }
+    
+    func testSendSignInVerificationCodeWithSuccess() {
+        service.sendSignInVerificatioCodeError = false
+        viewModel.sendSignInVerificationCode()
+        
+        XCTAssertTrue(viewModel.sendVerificationCodeAlertMessage.isEmpty)
+    }
+    
+    func testCheckSignInVerificationCodeWithError() {
+        service.checkSignInVerificationCodeError = true
+        viewModel.checkSignInVerificationCode()
+        
+        XCTAssertFalse(viewModel.checkVerificationCodeAlertMessage.isEmpty)
+    }
+    
+    func testCheckSignInVerificationCodeWithSuccess() {
+        service.checkSignInVerificationCodeError = false
+        viewModel.checkSignInVerificationCode()
+        
+        XCTAssertTrue(viewModel.checkVerificationCodeAlertMessage.isEmpty)
     }
 
 }

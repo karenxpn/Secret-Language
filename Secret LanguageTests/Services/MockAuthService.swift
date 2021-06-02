@@ -11,6 +11,28 @@ import Combine
 @testable import Secret_Language
 
 class MockAuthService: AuthServiceProtocol {
+    func sendSignInVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        var result: Result<GlobalResponse, NetworkError>
+        
+        if sendSignInVerificatioCodeError       { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
+        else                                    { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
+        
+        let dataResponse = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(dataResponse)
+        return publisher.eraseToAnyPublisher()
+    }
+    
+    func checkSignInVerificationCode(phoneNumber: String, code: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        var result: Result<GlobalResponse, NetworkError>
+        
+        if checkSignInVerificationCodeError     { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
+        else                                    { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
+        
+        let dataResponse = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(dataResponse)
+        return publisher.eraseToAnyPublisher()
+    }
+    
     func fetchConnectionTypes() -> AnyPublisher<DataResponse<[ConnectionTypeModel], NetworkError>, Never> {
         var result: Result<[ConnectionTypeModel], NetworkError>
         
@@ -43,7 +65,8 @@ class MockAuthService: AuthServiceProtocol {
     var fetchAllGendersError: Bool = false
     var sendVerificationError: Bool = false
     var checkVerificationError: Bool = false
-    var loginError: Bool = false
+    var sendSignInVerificatioCodeError: Bool = false
+    var checkSignInVerificationCodeError: Bool = false
     
     func sendVerificationCode(phoneNumber: String, birthday: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         var result: Result<GlobalResponse, NetworkError>
@@ -61,17 +84,6 @@ class MockAuthService: AuthServiceProtocol {
         
         if checkVerificationError   { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
         else                        { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
-        
-        let dataResponse = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
-        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(dataResponse)
-        return publisher.eraseToAnyPublisher()
-    }
-    
-    func login(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        var result: Result<GlobalResponse, NetworkError>
-        
-        if loginError   { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
-        else            { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
         
         let dataResponse = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
         let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(dataResponse)
