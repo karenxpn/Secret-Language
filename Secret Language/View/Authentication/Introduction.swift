@@ -31,7 +31,6 @@ struct Introduction: View {
                         .multilineTextAlignment(.center)
                         .padding()
                     
-                    
                     HStack {
                         
                         Spacer()

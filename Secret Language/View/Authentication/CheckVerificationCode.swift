@@ -30,6 +30,8 @@ struct CheckVerificationCode: View {
                 OTPTextFieldView { otp, completionHandler in
                     
                     print(otp)
+                    authVM.singUpVerificationCode = otp
+                    authVM.checkVerificationCode()
                     // do smth with otp
                 }
                 
@@ -49,8 +51,7 @@ struct CheckVerificationCode: View {
                         .padding()
                         .background(AppColors.accentColor)
                         .cornerRadius(25)
-                })
-//                .disabled(!authVM.isCheckVerificationCodeClickable)
+                }).disabled(!authVM.isCheckVerificationCodeClickable)
                 
                 HStack {
                     Spacer()

@@ -60,5 +60,33 @@ class AuthViewModelTests: XCTestCase {
         
         XCTAssertTrue(viewModel.loginAlertMessage.isEmpty)
     }
+    
+    func testGetAllGendersWithError() {
+        service.fetchAllGendersError = true
+        viewModel.getAllGenders()
+        
+        XCTAssertTrue(viewModel.moreGenders.isEmpty)
+    }
+    
+    func testGetAllGendersWithSuccess() {
+        service.fetchAllGendersError = false
+        viewModel.getAllGenders()
+        
+        XCTAssertFalse(viewModel.moreGenders.isEmpty)
+    }
+    
+    func testGetConnectionTypesWithError() {
+        service.fetchConnectionTypesError = true
+        viewModel.getConnectionTypes()
+        
+        XCTAssertTrue(viewModel.connectionTypes.isEmpty)
+    }
+    
+    func testGetConnectionTypesWithSuccess() {
+        service.fetchConnectionTypesError = false
+        viewModel.getConnectionTypes()
+        
+        XCTAssertFalse(viewModel.connectionTypes.isEmpty)
+    }
 
 }

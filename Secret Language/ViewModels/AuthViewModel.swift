@@ -19,7 +19,8 @@ class AuthViewModel: ObservableObject {
     @Published var singUpVerificationCode: String = ""
     @Published var signUpGender: String = ""
     
-    @Published var moreGenders = ["Trans Woman", "Man", "Woman", "al;skfj", "al;dskfj", "a;lsdkfj"]
+    @Published var genderFilter: String = ""
+    @Published var moreGenders = [GenderModel]()
     
     @Published var signInPhoneNumber: String = ""
     
@@ -32,8 +33,6 @@ class AuthViewModel: ObservableObject {
     @Published var navigateToCheckVerificationCode: Bool = false
     @Published var navigateToChooseGender: Bool = false
     
-    @Published var genderFilter: String = ""
-    
     @Published var isSendVerificationCodeClickable: Bool = false
     @Published var isCheckVerificationCodeClickable: Bool = false
     @Published var isSignInProceedClickable: Bool = false
@@ -41,8 +40,8 @@ class AuthViewModel: ObservableObject {
     @Published var loadingGenders: Bool = false
     @Published var connectionType: String = ""
     
-    @Published var loadingConnectionsType: Bool = false
-    @Published var connectionTypes = [String]()
+    @Published var loadingConnectionTypes: Bool = false
+    @Published var connectionTypes = [ConnectionTypeModel]()
 
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -77,9 +76,8 @@ class AuthViewModel: ObservableObject {
         dataManager.sendVerificationCode(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate))
             .sink { response in
                 if response.error != nil {
-//                    self.sendVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
-//                    self.showAlert.toggle()
-                    self.navigateToCheckVerificationCode.toggle()
+                    self.sendVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
+                    self.showAlert.toggle()
                 } else {
                     self.navigateToCheckVerificationCode.toggle()
                 }
@@ -90,9 +88,8 @@ class AuthViewModel: ObservableObject {
         dataManager.checkVerificationCode(phoneNumber: signUpPhoneNumber, code: singUpVerificationCode)
             .sink { response in
                 if response.error != nil {
-//                    self.checkVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
-//                    self.showAlert.toggle()
-                    self.navigateToChooseGender = true
+                    self.checkVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
+                    self.showAlert.toggle()
                 } else {
                     self.navigateToChooseGender.toggle()
                 }
@@ -105,9 +102,31 @@ class AuthViewModel: ObservableObject {
                 if response.error != nil {
                     self.loginAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
                     self.showAlert.toggle()
-
                 } else {
                     // do smth
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func getAllGenders() {
+        
+        loadingGenders = true
+        dataManager.fetchAllGenders()
+            .sink { response in
+                self.loadingGenders = false
+                if response.error == nil {
+                    self.moreGenders = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func getConnectionTypes() {
+        loadingConnectionTypes = true
+        dataManager.fetchConnectionTypes()
+            .sink { response  in
+                self.loadingConnectionTypes = false
+                if response.error == nil {
+                    self.connectionTypes = response.value!
                 }
             }.store(in: &cancellableSet)
     }

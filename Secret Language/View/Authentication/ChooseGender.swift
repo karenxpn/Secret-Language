@@ -34,18 +34,14 @@ struct ChooseGender: View {
                     .environmentObject(authVM)
                 
                 NavigationLink( destination: MoreGenders().environmentObject(authVM), label: {
-                    HStack {
-                        Spacer()
-                        
-                        Text( NSLocalizedString("moreGenders", comment: "") )
-                            .font(.custom("times", size: 16))
-                            .foregroundColor(.white)
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .padding(.vertical)
-                            .background(AppColors.boxColor)
-                            .cornerRadius(15)
-                        Spacer()
-                    }
+                    
+                    Text( NSLocalizedString("moreGenders", comment: "") )
+                        .font(.custom("times", size: 16))
+                        .foregroundColor(.white)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding()
+                        .background(AppColors.boxColor)
+                        .cornerRadius(15)
                 })
                 
                 Spacer()

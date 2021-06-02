@@ -15,7 +15,7 @@ struct ConnectionType: View {
         ZStack {
             Background()
             
-            if authVM.loadingConnectionsType {
+            if authVM.loadingConnectionTypes {
                 ProgressView()
             } else {
                 VStack( alignment: .leading, spacing: 20 ) {
@@ -28,15 +28,10 @@ struct ConnectionType: View {
                         .foregroundColor(.accentColor)
                         .font(.custom("Gilroy-Regular", size: 14))
                     
-                    
-                    SingleConnectionType(type: "Romance", description: "Find that spark in an emprowered community")
-                        .environmentObject(authVM)
-                    
-                    SingleConnectionType(type: "Networking", description: "Make new friends at every stage of your life")
-                        .environmentObject(authVM)
-                    
-                    SingleConnectionType(type: "Business", description: "Move your career forward the modern way")
-                        .environmentObject(authVM)
+                    ForEach( authVM.connectionTypes, id: \.id ) { connection in
+                        SingleConnectionType(connection: connection)
+                            .environmentObject(authVM)
+                    }
                     
                     Spacer()
                     
@@ -53,6 +48,8 @@ struct ConnectionType: View {
                     
                 }.padding()
             }
+        }.onAppear {
+            authVM.getConnectionTypes()
         }
     }
 }

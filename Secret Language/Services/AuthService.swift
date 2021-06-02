@@ -13,6 +13,9 @@ protocol AuthServiceProtocol {
     func sendVerificationCode( phoneNumber: String, birthday: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func checkVerificationCode( phoneNumber: String, code: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func login( phoneNumber: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    
+    func fetchConnectionTypes() -> AnyPublisher<DataResponse<[ConnectionTypeModel], NetworkError>, Never>
+    func fetchAllGenders() -> AnyPublisher<DataResponse<[GenderModel], NetworkError>, Never>
 }
 
 class AuthService {
@@ -22,6 +25,40 @@ class AuthService {
 }
 
 extension AuthService: AuthServiceProtocol {
+    func fetchAllGenders() -> AnyPublisher<DataResponse<[GenderModel], NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)auth/connection-types")!
+        
+        return AF.request(url,
+                          method: .get)
+            .validate()
+            .publishDecodable(type: [GenderModel].self )
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchConnectionTypes() -> AnyPublisher<DataResponse<[ConnectionTypeModel], NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)auth/connection-types")!
+        
+        return AF.request(url,
+                          method: .get)
+            .validate()
+            .publishDecodable(type: [ConnectionTypeModel].self )
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func sendVerificationCode(phoneNumber: String, birthday: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)auth/send-code")!
         

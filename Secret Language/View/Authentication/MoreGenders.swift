@@ -35,13 +35,13 @@ struct MoreGenders: View {
                         .listRowInsets(EdgeInsets())
                     
                     
-                    ForEach( authVM.moreGenders.filter { authVM.genderFilter.isEmpty ? true : $0.localizedCaseInsensitiveContains(authVM.genderFilter)}, id: \.self ) { gender in
+                    ForEach( authVM.moreGenders.filter { authVM.genderFilter.isEmpty ? true : $0.gender.localizedCaseInsensitiveContains(authVM.genderFilter)}, id: \.id ) { gender in
                         
                         Button(action: {
-                            authVM.signUpGender = gender
+                            authVM.signUpGender = gender.gender
                             presentationMode.wrappedValue.dismiss()
                         }, label: {
-                            Text( gender )
+                            Text( gender.gender )
                                 .foregroundColor(.white)
                                 .font(.custom("Gilroy-Regular", size: 16))
                                 .padding()
@@ -55,6 +55,7 @@ struct MoreGenders: View {
             
         }.navigationBarTitle(Text( NSLocalizedString("iam", comment: "")), displayMode: .inline)
         .onAppear {
+            authVM.getAllGenders()
             // get all genders
         }
     }
