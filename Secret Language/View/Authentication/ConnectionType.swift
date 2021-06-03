@@ -38,7 +38,9 @@ struct ConnectionType: View {
                     HStack {
                         Spacer()
                         
-                        Button(action: {}, label: {
+                        Button(action: {
+                            authVM.signUp()
+                        }, label: {
                             Image("proceed")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
@@ -48,6 +50,11 @@ struct ConnectionType: View {
                     
                 }.padding()
             }
+            
+            CustomAlert(isPresented: $authVM.showSignUpAlert, alertMessage: authVM.signUpAlertMessage, alignment: .bottom)
+                .offset(y: authVM.showSignUpAlert ? 0 : UIScreen.main.bounds.size.height)
+                .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
+            
         }.onAppear {
             authVM.getConnectionTypes()
         }

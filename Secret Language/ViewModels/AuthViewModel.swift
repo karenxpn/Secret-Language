@@ -30,6 +30,9 @@ class AuthViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var sendVerificationCodeAlertMessage: String = ""
     
+    @Published var showSignUpAlert: Bool = false
+    @Published var signUpAlertMessage: String = ""
+    
     @Published var showCheckVerificationCodeAlert: Bool = false
     @Published var checkVerificationCodeAlertMessage: String = ""
         
@@ -95,6 +98,18 @@ class AuthViewModel: ObservableObject {
                     self.showCheckVerificationCodeAlert.toggle()
                 } else {
                     self.navigateToChooseGender.toggle()
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func signUp() {
+        dataManager.signUp(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate), gender: signUpGender, connectionType: connectionType)
+            .sink { response in
+                if response.error != nil {
+                    self.signUpAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
+                    self.showSignUpAlert.toggle()
+                } else {
+                    // get the token and proceed
                 }
             }.store(in: &cancellableSet)
     }
