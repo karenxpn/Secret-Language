@@ -9,6 +9,8 @@ target 'Secret Language' do
 	pod 'Alamofire', '~> 5.2'
 	pod 'SDWebImageSwiftUI'
 	pod 'SDWebImageSVGCoder'
+	pod 'Introspect'
+
 
   target 'Secret LanguageTests' do
     inherit! :search_paths
