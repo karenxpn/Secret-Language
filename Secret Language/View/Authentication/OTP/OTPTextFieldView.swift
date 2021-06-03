@@ -49,7 +49,6 @@ struct OTPTextFieldView: View {
         
         return CocoaTextField("", text: boundPin, onCommit: submitPin)
             .keyboardType(.numberPad)
-//            .isFirstResponder(true)
             .foregroundColor(.clear)
             .accentColor(.clear)
     }

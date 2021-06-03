@@ -29,6 +29,7 @@ struct CheckVerificationCode: View {
                 
                 OTPTextFieldView { otp, completionHandler in
                     print(otp)
+                    UIApplication.shared.endEditing()
                     authVM.singUpVerificationCode = otp
                     authVM.checkVerificationCode()
                 }
@@ -39,34 +40,35 @@ struct CheckVerificationCode: View {
                     EmptyView()
                 })
                 
-                Button(action: {
-                    authVM.checkVerificationCode()
-                }, label: {
-                    Text( NSLocalizedString("verify", comment: "") )
-                        .foregroundColor(.black)
-                        .font(.custom("times", size: 16))
-                        .frame(width: UIScreen.main.bounds.size.width * 0.8)
-                        .padding()
-                        .background(AppColors.accentColor)
-                        .cornerRadius(25)
-                }).disabled(!authVM.isCheckVerificationCodeClickable)
-                
                 HStack {
                     Spacer()
                     
-                    Button(action: {
+                    VStack( spacing: 20) {
+                        Button(action: {
+                            authVM.checkVerificationCode()
+                        }, label: {
+                            Text( NSLocalizedString("verify", comment: "") )
+                                .foregroundColor(.black)
+                                .font(.custom("times", size: 16))
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .padding()
+                                .background(AppColors.accentColor)
+                                .cornerRadius(25)
+                        }).disabled(!authVM.isCheckVerificationCodeClickable)
                         
-                    }, label: {
-                        Text( NSLocalizedString("resendCode", comment: ""))
-                            .font(.custom("Gilroy-Regular", size: 16))
-                            .foregroundColor(.blue)
-                            .underline()
-                        
-                    })
+                        Button(action: {
+                            
+                        }, label: {
+                            Text( NSLocalizedString("resendCode", comment: ""))
+                                .font(.custom("Gilroy-Regular", size: 16))
+                                .foregroundColor(.blue)
+                                .underline()
+                            
+                        })
+                    }
+                                        
                     Spacer()
                 }
-                
-                
             }.padding()
             
             CustomAlert(isPresented: $authVM.showCheckVerificationCodeAlert, alertMessage: authVM.checkVerificationCodeAlertMessage, alignment: .bottom)

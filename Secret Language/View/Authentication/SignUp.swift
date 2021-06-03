@@ -108,6 +108,7 @@ struct SignUp: View {
                     }.hidden()
                     
                     Button(action: {
+                        UIApplication.shared.endEditing()
                         authVM.sendVerificationCode()
                     }, label: {
                         Image("proceed")
