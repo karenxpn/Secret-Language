@@ -59,7 +59,6 @@ class AuthViewModel: ObservableObject {
     init( dataManager: AuthServiceProtocol = AuthService.shared) {
         self.dataManager = dataManager
         
-        
         isSignUpPhoneNumberValidPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.isSendVerificationCodeClickable, on: self)

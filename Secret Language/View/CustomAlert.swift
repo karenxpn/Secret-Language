@@ -41,7 +41,7 @@ struct CustomAlert: View {
                 
             }.padding()
             .background(AppColors.blueColor)
-            .cornerRadius(25)
+            .cornerRadius([.topLeft, .topRight], 25)
             .frame(width: proxy.size.width, height: proxy.size.height, alignment: alignment)
         }.background(Color.gray.opacity( 0.75 ))
         .edgesIgnoringSafeArea(.all)

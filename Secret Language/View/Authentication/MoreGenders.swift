@@ -34,7 +34,6 @@ struct MoreGenders: View {
                         .listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets())
                     
-                    
                     ForEach( authVM.moreGenders.filter { authVM.genderFilter.isEmpty ? true : $0.gender.localizedCaseInsensitiveContains(authVM.genderFilter)}, id: \.id ) { gender in
                         
                         Button(action: {
@@ -50,13 +49,12 @@ struct MoreGenders: View {
                     }.listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
                 }
-
             }
             
         }.navigationBarTitle(Text( NSLocalizedString("iam", comment: "")), displayMode: .inline)
         .onAppear {
-            authVM.getAllGenders()
             // get all genders
+            authVM.getAllGenders()
         }
     }
 }

@@ -104,5 +104,4 @@ class AuthViewModelTests: XCTestCase {
         
         XCTAssertTrue(viewModel.checkVerificationCodeAlertMessage.isEmpty)
     }
-
 }

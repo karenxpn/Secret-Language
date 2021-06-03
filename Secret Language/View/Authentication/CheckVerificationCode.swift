@@ -28,11 +28,9 @@ struct CheckVerificationCode: View {
                 
                 
                 OTPTextFieldView { otp, completionHandler in
-                    
                     print(otp)
                     authVM.singUpVerificationCode = otp
                     authVM.checkVerificationCode()
-                    // do smth with otp
                 }
                 
                 Spacer()
