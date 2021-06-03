@@ -75,6 +75,20 @@ class AuthViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.connectionTypes.isEmpty)
     }
     
+    func testSignUpWithError() {
+        service.signupError = true
+        viewModel.signUp()
+        
+        XCTAssertFalse(viewModel.signUpAlertMessage.isEmpty)
+    }
+    
+    func testSignUpWithSuccess() {
+        service.signupError = false
+        viewModel.signUp()
+        
+        XCTAssertTrue(viewModel.signUpAlertMessage.isEmpty)
+    }
+    
     
     // sign in
     func testSendSignInVerificationCodeWithError() {

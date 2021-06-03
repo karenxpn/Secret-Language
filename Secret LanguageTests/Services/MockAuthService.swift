@@ -11,6 +11,17 @@ import Combine
 @testable import Secret_Language
 
 class MockAuthService: AuthServiceProtocol {
+    func signUp(phoneNumber: String, birthday: String, gender: String, connectionType: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        var result: Result<GlobalResponse, NetworkError>
+        
+        if signupError  { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
+        else            { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
+    }
+    
     func sendSignInVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         var result: Result<GlobalResponse, NetworkError>
         
@@ -67,6 +78,7 @@ class MockAuthService: AuthServiceProtocol {
     var checkVerificationError: Bool = false
     var sendSignInVerificatioCodeError: Bool = false
     var checkSignInVerificationCodeError: Bool = false
+    var signupError: Bool = false
     
     func sendVerificationCode(phoneNumber: String, birthday: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         var result: Result<GlobalResponse, NetworkError>
