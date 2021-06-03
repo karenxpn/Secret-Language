@@ -82,7 +82,7 @@ class AuthViewModel: ObservableObject {
         dataManager.sendVerificationCode(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate))
             .sink { response in
                 if response.error != nil {
-                    self.sendVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
+                    self.sendVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
                     self.showAlert.toggle()
                 } else {
                     self.navigateToCheckVerificationCode.toggle()
@@ -94,7 +94,7 @@ class AuthViewModel: ObservableObject {
         dataManager.checkVerificationCode(phoneNumber: signUpPhoneNumber, code: singUpVerificationCode)
             .sink { response in
                 if response.error != nil {
-                    self.checkVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
+                    self.checkVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
                     self.showCheckVerificationCodeAlert.toggle()
                 } else {
                     self.navigateToChooseGender.toggle()
@@ -106,7 +106,7 @@ class AuthViewModel: ObservableObject {
         dataManager.signUp(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate), gender: signUpGender, connectionType: connectionType)
             .sink { response in
                 if response.error != nil {
-                    self.signUpAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
+                    self.signUpAlertMessage = self.createErrorMessage(error: response.error!)
                     self.showSignUpAlert.toggle()
                 } else {
                     // get the token and proceed
@@ -119,7 +119,7 @@ class AuthViewModel: ObservableObject {
         dataManager.sendSignInVerificationCode(phoneNumber: signInPhoneNumber)
             .sink { response in
                 if response.error != nil {
-                    self.sendVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
+                    self.sendVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
                     self.showAlert.toggle()
                 } else {
                     self.navigateToSignInVerificationCode.toggle()
@@ -131,7 +131,7 @@ class AuthViewModel: ObservableObject {
         dataManager.checkSignInVerificationCode(phoneNumber: signInPhoneNumber, code: signInVerificationCode)
             .sink { response in
                 if response.error != nil {
-                    self.checkVerificationCodeAlertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message.first ?? "Please try again later"
+                    self.checkVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
                     self.showCheckVerificationCodeAlert.toggle()
                 } else {
                     // do smth
@@ -180,5 +180,9 @@ class AuthViewModel: ObservableObject {
         $signInPhoneNumber
             .map { !$0.isEmpty }
             .eraseToAnyPublisher()
+    }
+    
+    func createErrorMessage( error: NetworkError ) -> String {
+        return error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message.first ?? "Please try again later"
     }
 }
