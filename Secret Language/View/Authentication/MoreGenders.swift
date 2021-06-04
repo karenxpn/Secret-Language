@@ -34,13 +34,13 @@ struct MoreGenders: View {
                         .listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets())
                     
-                    ForEach( authVM.moreGenders.filter { authVM.genderFilter.isEmpty ? true : $0.gender.localizedCaseInsensitiveContains(authVM.genderFilter)}, id: \.id ) { gender in
+                    ForEach( authVM.moreGenders.filter { authVM.genderFilter.isEmpty ? true : $0.gender_name.localizedCaseInsensitiveContains(authVM.genderFilter)}, id: \.id ) { gender in
                         
                         Button(action: {
-                            authVM.signUpGender = gender.gender
+                            authVM.signUpGender = gender.gender_name
                             presentationMode.wrappedValue.dismiss()
                         }, label: {
-                            Text( gender.gender )
+                            Text( gender.gender_name )
                                 .foregroundColor(.white)
                                 .font(.custom("Gilroy-Regular", size: 16))
                                 .padding()

@@ -8,6 +8,6 @@
 import Foundation
 struct ConnectionTypeModel: Codable, Identifiable {
     var id: Int
-    var type: String
+    var name: String
     var description: String
 }

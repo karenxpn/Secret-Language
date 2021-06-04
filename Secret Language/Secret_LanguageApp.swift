@@ -13,7 +13,9 @@ struct Secret_LanguageApp: App {
     @AppStorage( "token" ) private var token = ""
     
     init() {
+
         let newAppearance = UINavigationBarAppearance()
+//        newAppearance.setBackIndicatorImage(UIImage(named: "back"), transitionMaskImage: UIImage(named: "back"))
         newAppearance.configureWithOpaqueBackground()
         newAppearance.backgroundColor = .none
         newAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white, .font: UIFont( name: "Gilroy-Regular", size: 20)!]

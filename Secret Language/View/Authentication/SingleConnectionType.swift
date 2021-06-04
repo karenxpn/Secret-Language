@@ -15,11 +15,11 @@ struct SingleConnectionType: View {
     var body: some View {
         
         Button(action: {
-            authVM.connectionType = connection.type
+            authVM.connectionType = connection.name
         }, label: {
             VStack {
-                Text( connection.type )
-                    .foregroundColor(authVM.connectionType == connection.type ? .black : .white)
+                Text( connection.name )
+                    .foregroundColor(authVM.connectionType == connection.name ? .black : .white)
                     .font(.custom("times", size: 16))
                 
                 Text( connection.description )
@@ -27,7 +27,7 @@ struct SingleConnectionType: View {
                     .font(.custom("Avenir", size: 10))
             }.frame(minWidth: 0, maxWidth: .infinity)
             .padding()
-            .background(authVM.connectionType == connection.type ? .accentColor : AppColors.boxColor)
+            .background(authVM.connectionType == connection.name ? .accentColor : AppColors.boxColor)
             .cornerRadius(15)
         })
     }
@@ -35,7 +35,7 @@ struct SingleConnectionType: View {
 
 struct SingleConnectionType_Previews: PreviewProvider {
     static var previews: some View {
-        SingleConnectionType(connection: ConnectionTypeModel(id: 1, type: "type", description: "desctiprion"))
+        SingleConnectionType(connection: ConnectionTypeModel(id: 1, name: "type", description: "desctiprion"))
             .environmentObject(AuthViewModel())
     }
 }

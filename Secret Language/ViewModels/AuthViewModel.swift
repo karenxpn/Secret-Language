@@ -82,8 +82,10 @@ class AuthViewModel: ObservableObject {
         dataManager.sendVerificationCode(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate))
             .sink { response in
                 if response.error != nil {
-                    self.sendVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
-                    self.showAlert.toggle()
+//                    self.sendVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
+//                    self.showAlert.toggle()
+                    self.navigateToCheckVerificationCode.toggle()
+
                 } else {
                     self.navigateToCheckVerificationCode.toggle()
                 }

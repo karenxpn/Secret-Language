@@ -8,5 +8,5 @@
 import Foundation
 struct GenderModel: Identifiable, Codable {
     var id: Int
-    var gender: String
+    var gender_name: String
 }
