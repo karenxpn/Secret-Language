@@ -12,6 +12,9 @@ struct BirthdayPicker: View {
     @EnvironmentObject var authVM: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
     
+    let dateLimit = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
+
+    
     var body: some View {
         
         ZStack {
@@ -24,7 +27,7 @@ struct BirthdayPicker: View {
                     .font(.custom("times", size: 26))
                 
                 Spacer()
-                DatePicker("", selection: $authVM.birthdayDate, displayedComponents: .date)
+                DatePicker("", selection: $authVM.birthdayDate, in: ...dateLimit ,displayedComponents: .date)
                     .datePickerStyle(WheelDatePickerStyle())
                     .labelsHidden()
                     .colorMultiply(.accentColor)

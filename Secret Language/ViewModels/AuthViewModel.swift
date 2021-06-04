@@ -13,7 +13,7 @@ class AuthViewModel: ObservableObject {
     
     @AppStorage("token") private var token: String = ""
     
-    @Published var birthdayDate: Date = Date()
+    @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     @Published var signUpPhoneNumber: String = ""
     @Published var singUpVerificationCode: String = ""
     @Published var signUpGender: String = ""
@@ -82,10 +82,8 @@ class AuthViewModel: ObservableObject {
         dataManager.sendVerificationCode(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate))
             .sink { response in
                 if response.error != nil {
-//                    self.sendVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
-//                    self.showAlert.toggle()
-                    self.navigateToCheckVerificationCode.toggle()
-
+                    self.sendVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
+                    self.showAlert.toggle()
                 } else {
                     self.navigateToCheckVerificationCode.toggle()
                 }
