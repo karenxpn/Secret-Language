@@ -11,6 +11,14 @@ import Combine
 @testable import Secret_Language
 
 class MockAuthService: AuthServiceProtocol {
+    func resendVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let result = Result<GlobalResponse, NetworkError>.success(globalResponse)
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
+    }
+    
     func signUp(phoneNumber: String, birthday: String, gender: String, connectionType: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         var result: Result<GlobalResponse, NetworkError>
         
@@ -69,8 +77,8 @@ class MockAuthService: AuthServiceProtocol {
     
     let globalResponse = GlobalResponse(status: "success", message: "Success")
     let networkError = NetworkError(initialError: AFError.explicitlyCancelled, backendError: nil)
-    let genders = [GenderModel(id: 1, gender: "Male"), GenderModel(id: 2, gender: "Female")]
-    let connectionTypes = [ConnectionTypeModel(id: 1, type: "Business", description: "desctiption")]
+    let genders = [GenderModel(id: 1, gender_name: "Male"), GenderModel(id: 2, gender_name: "Female")]
+    let connectionTypes = [ConnectionTypeModel(id: 1, name: "Business", description: "desctiption")]
     
     var fetchConnectionTypesError: Bool = false
     var fetchAllGendersError: Bool = false
