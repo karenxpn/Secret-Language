@@ -20,6 +20,8 @@ protocol AuthServiceProtocol {
     func checkSignInVerificationCode( phoneNumber: String, code: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     
     func signUp( phoneNumber: String, birthday: String, gender: String, connectionType: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    
+    func resendVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
 }
 
 class AuthService {
@@ -29,6 +31,25 @@ class AuthService {
 }
 
 extension AuthService: AuthServiceProtocol {
+    func resendVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)auth/resend-code")!
+        
+        return AF.request(url,
+                          method: .post,
+                          parameters: ["phoneNumber": phoneNumber],
+                          encoder: JSONParameterEncoder.default)
+            .validate()
+            .publishDecodable(type: GlobalResponse.self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     
     func sendSignInVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)auth/signin/send-code")!

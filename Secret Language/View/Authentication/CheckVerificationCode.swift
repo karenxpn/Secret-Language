@@ -57,7 +57,7 @@ struct CheckVerificationCode: View {
                         }).disabled(!authVM.isCheckVerificationCodeClickable)
                         
                         Button(action: {
-                            authVM.sendVerificationCode()
+                            authVM.resendSignUpVerificationCode()
                         }, label: {
                             Text( NSLocalizedString("resendCode", comment: ""))
                                 .font(.custom("Gilroy-Regular", size: 16))

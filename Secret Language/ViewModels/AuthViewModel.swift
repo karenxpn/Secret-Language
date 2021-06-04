@@ -92,6 +92,12 @@ class AuthViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
+    func resendSignUpVerificationCode() {
+        dataManager.resendVerificationCode(phoneNumber: signUpPhoneNumber)
+            .sink { _ in
+            }.store(in: &cancellableSet)
+    }
+    
     func checkVerificationCode() {
         dataManager.checkVerificationCode(phoneNumber: signUpPhoneNumber, code: singUpVerificationCode)
             .sink { response in
@@ -138,6 +144,12 @@ class AuthViewModel: ObservableObject {
                 } else {
                     // do smth
                 }
+            }.store(in: &cancellableSet)
+    }
+    
+    func resendSignInVerificationCode() {
+        dataManager.resendVerificationCode(phoneNumber: signInPhoneNumber)
+            .sink { _ in
             }.store(in: &cancellableSet)
     }
     

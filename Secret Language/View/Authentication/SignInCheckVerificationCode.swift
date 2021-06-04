@@ -54,7 +54,7 @@ struct SignInCheckVerificationCode: View {
                     Spacer()
                     
                     Button(action: {
-                        authVM.sendSignInVerificationCode()
+                        authVM.resendSignInVerificationCode()
                     }, label: {
                         Text( NSLocalizedString("resendCode", comment: ""))
                             .font(.custom("Gilroy-Regular", size: 16))
