@@ -12,8 +12,7 @@ struct BirthdayPicker: View {
     @EnvironmentObject var authVM: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
     
-    let dateLimit = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
-
+    let dateLimit = Calendar.current.date(byAdding: .year, value: -17, to: Date()) ?? Date()
     
     var body: some View {
         
