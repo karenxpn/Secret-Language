@@ -37,7 +37,7 @@ struct MoreGenders: View {
                     ForEach( authVM.moreGenders.filter { authVM.genderFilter.isEmpty ? true : $0.gender_name.localizedCaseInsensitiveContains(authVM.genderFilter)}, id: \.id ) { gender in
                         
                         Button(action: {
-                            authVM.signUpGender = gender.gender_name
+                            authVM.signUpGender = gender.id
                             presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Text( gender.gender_name )

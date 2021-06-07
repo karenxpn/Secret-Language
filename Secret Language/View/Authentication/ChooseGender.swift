@@ -23,14 +23,14 @@ struct ChooseGender: View {
                 Text( NSLocalizedString("helpUs", comment: ""))
                     .foregroundColor(.accentColor)
                     .font(.custom("Gilroy-Regular", size: 14))
-                
-                TopGender(gender: NSLocalizedString("male", comment: ""))
+                                
+                TopGender(gender: GenderModel(id: 1, gender_name: NSLocalizedString("male", comment: "")) )
                     .environmentObject(authVM)
                 
-                TopGender(gender: NSLocalizedString("female", comment: ""))
+                TopGender(gender: GenderModel(id: 2, gender_name: NSLocalizedString("female", comment: "")))
                     .environmentObject(authVM)
                 
-                TopGender(gender: NSLocalizedString("neutral", comment: ""))
+                TopGender(gender: GenderModel(id: 3, gender_name: NSLocalizedString("neutral", comment: "")))
                     .environmentObject(authVM)
                 
                 NavigationLink( destination: MoreGenders().environmentObject(authVM), label: {
@@ -54,7 +54,7 @@ struct ChooseGender: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 50, height: 50)
-                    }).disabled(authVM.signUpGender.isEmpty)
+                    }).disabled(authVM.signUpGender == nil)
                 }
                 
             }.padding()

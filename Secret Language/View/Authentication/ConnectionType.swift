@@ -45,7 +45,7 @@ struct ConnectionType: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 50, height: 50)
-                        }).disabled(authVM.connectionType.isEmpty)
+                        }).disabled(authVM.connectionType == nil)
                     }
                     
                 }.padding()

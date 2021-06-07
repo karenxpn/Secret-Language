@@ -16,7 +16,7 @@ class AuthViewModel: ObservableObject {
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     @Published var signUpPhoneNumber: String = ""
     @Published var singUpVerificationCode: String = ""
-    @Published var signUpGender: String = ""
+    @Published var signUpGender: Int? = nil
     
     @Published var genderFilter: String = ""
     @Published var moreGenders = [GenderModel]()
@@ -45,7 +45,7 @@ class AuthViewModel: ObservableObject {
     @Published var isSignInProceedClickable: Bool = false
     
     @Published var loadingGenders: Bool = false
-    @Published var connectionType: String = ""
+    @Published var connectionType: Int? = nil
     
     @Published var loadingConnectionTypes: Bool = false
     @Published var connectionTypes = [ConnectionTypeModel]()
@@ -111,7 +111,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func signUp() {
-        dataManager.signUp(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate), gender: signUpGender, connectionType: connectionType)
+        dataManager.signUp(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate), gender: signUpGender!, connectionType: connectionType!)
             .sink { response in
                 if response.error != nil {
                     self.signUpAlertMessage = self.createErrorMessage(error: response.error!)

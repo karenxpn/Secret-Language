@@ -10,19 +10,19 @@ import SwiftUI
 struct TopGender: View {
     
     @EnvironmentObject var authVM: AuthViewModel
-    let gender: String
+    let gender: GenderModel
     
     var body: some View {
         
         Button(action: {
-            authVM.signUpGender = gender
+            authVM.signUpGender = gender.id
         }, label: {            
-            Text( gender )
+            Text( gender.gender_name )
                 .font(.custom("times", size: 16))
-                .foregroundColor(authVM.signUpGender == gender ? .black : .white)
+                .foregroundColor(authVM.signUpGender == gender.id ? .black : .white)
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding()
-                .background(authVM.signUpGender == gender ? .accentColor : AppColors.boxColor)
+                .background(authVM.signUpGender == gender.id ? .accentColor : AppColors.boxColor)
                 .cornerRadius(15)
         })
     }
@@ -30,7 +30,7 @@ struct TopGender: View {
 
 struct TopGender_Previews: PreviewProvider {
     static var previews: some View {
-        TopGender( gender: "I'm Male")
+        TopGender( gender: GenderModel(id: 1, gender_name: "male"))
             .environmentObject(AuthViewModel())
     }
 }
