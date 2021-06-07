@@ -51,7 +51,8 @@ struct MoreGenders: View {
                 }
             }
             
-        }.navigationBarTitle(Text( NSLocalizedString("iam", comment: "")), displayMode: .inline)
+        }.navigationBarTitle(Text( "" ), displayMode: .inline)
+        .navigationBarTitleView(AuthNavTitle(title: NSLocalizedString("iam", comment: "")), displayMode: .inline)
         .onAppear {
             // get all genders
             authVM.getAllGenders()

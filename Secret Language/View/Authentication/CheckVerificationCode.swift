@@ -75,7 +75,8 @@ struct CheckVerificationCode: View {
                 .offset(y: authVM.showCheckVerificationCodeAlert ? 0 : UIScreen.main.bounds.size.height)
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
-        }.navigationBarTitle(Text( NSLocalizedString("verification", comment: "") ), displayMode: .inline)
+        }.navigationBarTitle(Text( "" ), displayMode: .inline)
+        .navigationBarTitleView(AuthNavTitle(title: NSLocalizedString("verification", comment: "")), displayMode: .inline)
     }
 }
 

@@ -11,6 +11,21 @@ import Combine
 @testable import Secret_Language
 
 class MockAuthService: AuthServiceProtocol {
+    
+    let globalResponse = GlobalResponse(status: "success", message: "Success")
+    let networkError = NetworkError(initialError: AFError.explicitlyCancelled, backendError: nil)
+    let genders = [GenderModel(id: 1, gender_name: "Male"), GenderModel(id: 2, gender_name: "Female")]
+    let connectionTypes = [ConnectionTypeModel(id: 1, name: "Business", description: "desctiption")]
+    
+    var fetchConnectionTypesError: Bool = false
+    var fetchAllGendersError: Bool = false
+    var sendVerificationError: Bool = false
+    var checkVerificationError: Bool = false
+    var sendSignInVerificatioCodeError: Bool = false
+    var checkSignInVerificationCodeError: Bool = false
+    var signupError: Bool = false
+    
+    
     func resendVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let result = Result<GlobalResponse, NetworkError>.success(globalResponse)
         let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
@@ -73,20 +88,6 @@ class MockAuthService: AuthServiceProtocol {
         let publisher = CurrentValueSubject<DataResponse<[GenderModel], NetworkError>, Never>(response)
         return publisher.eraseToAnyPublisher()
     }
-    
-    
-    let globalResponse = GlobalResponse(status: "success", message: "Success")
-    let networkError = NetworkError(initialError: AFError.explicitlyCancelled, backendError: nil)
-    let genders = [GenderModel(id: 1, gender_name: "Male"), GenderModel(id: 2, gender_name: "Female")]
-    let connectionTypes = [ConnectionTypeModel(id: 1, name: "Business", description: "desctiption")]
-    
-    var fetchConnectionTypesError: Bool = false
-    var fetchAllGendersError: Bool = false
-    var sendVerificationError: Bool = false
-    var checkVerificationError: Bool = false
-    var sendSignInVerificatioCodeError: Bool = false
-    var checkSignInVerificationCodeError: Bool = false
-    var signupError: Bool = false
     
     func sendVerificationCode(phoneNumber: String, birthday: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         var result: Result<GlobalResponse, NetworkError>

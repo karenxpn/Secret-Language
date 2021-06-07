@@ -116,7 +116,6 @@ struct SignUp: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 50, height: 50)
                     }).disabled(!authVM.isSendVerificationCodeClickable)
-                    
                 }
                 
             }.padding()
@@ -128,6 +127,7 @@ struct SignUp: View {
             
         }.navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .navigationBarTitle(Text( "" ))
         .fullScreenCover(isPresented: $fullscreen, content: {
             BirthdayPicker()
                 .environmentObject(authVM)

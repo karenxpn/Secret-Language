@@ -59,7 +59,8 @@ struct ChooseGender: View {
                 
             }.padding()
             
-        }.navigationBarTitle(Text( NSLocalizedString("iam", comment: "") ), displayMode: .inline)
+        }.navigationBarTitle(Text( "" ), displayMode: .inline)
+        .navigationBarTitleView(AuthNavTitle(title: NSLocalizedString("iam", comment: "")), displayMode: .inline)
     }
 }
 

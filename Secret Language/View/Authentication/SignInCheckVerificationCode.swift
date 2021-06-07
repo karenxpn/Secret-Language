@@ -36,43 +36,44 @@ struct SignInCheckVerificationCode: View {
                 }
                 
                 Spacer()
-
-                
-                Button(action: {
-                    authVM.checkSignInVerificationCode()
-                }, label: {
-                    Text( NSLocalizedString("verify", comment: "") )
-                        .foregroundColor(.black)
-                        .font(.custom("times", size: 16))
-                        .frame(width: UIScreen.main.bounds.size.width * 0.8)
-                        .padding()
-                        .background(AppColors.accentColor)
-                        .cornerRadius(25)
-                }).disabled(!authVM.isCheckVerificationCodeClickable)
                 
                 HStack {
                     Spacer()
                     
-                    Button(action: {
-                        authVM.resendSignInVerificationCode()
-                    }, label: {
-                        Text( NSLocalizedString("resendCode", comment: ""))
-                            .font(.custom("Gilroy-Regular", size: 16))
-                            .foregroundColor(.blue)
-                            .underline()
+                    VStack( spacing: 20) {
+                        Button(action: {
+                            authVM.checkSignInVerificationCode()
+                        }, label: {
+                            Text( NSLocalizedString("verify", comment: "") )
+                                .foregroundColor(.black)
+                                .font(.custom("times", size: 16))
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .padding()
+                                .background(AppColors.accentColor)
+                                .cornerRadius(25)
+                        }).disabled(!authVM.isCheckVerificationCodeClickable)
                         
-                    })
+                        Button(action: {
+                            authVM.resendSignInVerificationCode()
+                        }, label: {
+                            Text( NSLocalizedString("resendCode", comment: ""))
+                                .font(.custom("Gilroy-Regular", size: 16))
+                                .foregroundColor(.blue)
+                                .underline()
+                        })
+                    }
+                                        
                     Spacer()
-                }
-                
-                
+                }                
             }.padding()
             
             CustomAlert(isPresented: $authVM.showCheckVerificationCodeAlert, alertMessage: authVM.checkVerificationCodeAlertMessage, alignment: .bottom)
                 .offset(y: authVM.showCheckVerificationCodeAlert ? 0 : UIScreen.main.bounds.size.height)
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
-        }.navigationBarTitle(Text( NSLocalizedString("verification", comment: "") ), displayMode: .inline)
+        }.navigationBarTitle(Text( "" ), displayMode: .inline)
+        .navigationBarTitleView(AuthNavTitle(title: NSLocalizedString("verification", comment: "")), displayMode: .inline)
+    
     }
 }
 
