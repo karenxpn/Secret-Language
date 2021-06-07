@@ -73,7 +73,6 @@ struct SignInCheckVerificationCode: View {
             
         }.navigationBarTitle(Text( "" ), displayMode: .inline)
         .navigationBarTitleView(AuthNavTitle(title: NSLocalizedString("verification", comment: "")), displayMode: .inline)
-    
     }
 }
 
