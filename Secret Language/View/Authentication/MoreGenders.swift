@@ -25,7 +25,6 @@ struct MoreGenders: View {
                 ProgressView()
             } else {
                 List {
-                    // search field
                     
                     TextField(NSLocalizedString("search", comment: ""), text: $authVM.genderFilter)
                         .padding()

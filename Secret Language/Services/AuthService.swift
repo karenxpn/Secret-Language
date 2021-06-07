@@ -50,7 +50,6 @@ extension AuthService: AuthServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    
     func sendSignInVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)auth/signin/send-code")!
         
@@ -90,8 +89,11 @@ extension AuthService: AuthServiceProtocol {
             .eraseToAnyPublisher()
     }
     
+    
+    // sign up
+    
     func fetchAllGenders() -> AnyPublisher<DataResponse<[GenderModel], NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)auth/connection-types")!
+        let url = URL(string: "\(Credentials.BASE_URL)genders")!
         
         return AF.request(url,
                           method: .get)
@@ -108,7 +110,7 @@ extension AuthService: AuthServiceProtocol {
     }
     
     func fetchConnectionTypes() -> AnyPublisher<DataResponse<[ConnectionTypeModel], NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)auth/connection-types")!
+        let url = URL(string: "\(Credentials.BASE_URL)interests")!
         
         return AF.request(url,
                           method: .get)
@@ -125,7 +127,7 @@ extension AuthService: AuthServiceProtocol {
     }
     
     func sendVerificationCode(phoneNumber: String, birthday: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)auth/sign-up/send-code")!
+        let url = URL(string: "\(Credentials.BASE_URL)auth/sign-up")!
         
         return AF.request(url,
                           method: .post,
@@ -150,7 +152,7 @@ extension AuthService: AuthServiceProtocol {
         return AF.request(url,
                           method: .post,
                           parameters: ["phoneNumber": phoneNumber,
-                                       "verification-code": code],
+                                       "otp": code],
                           encoder: JSONParameterEncoder.default)
             .validate()
             .publishDecodable(type: GlobalResponse.self)
@@ -167,7 +169,7 @@ extension AuthService: AuthServiceProtocol {
     func signUp( phoneNumber: String, birthday: String, gender: Int, connectionType: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         
         let model = SignUpRequest(phoneNumber: phoneNumber, birthday: birthday, gender: gender, interested_in: connectionType)
-        let url = URL(string: "\(Credentials.BASE_URL)auth/sign-up/confirmation")!
+        let url = URL(string: "\(Credentials.BASE_URL)auth/sign-up/confirm")!
 
         return AF.request(url,
                           method: .post,
