@@ -12,7 +12,8 @@ struct BirthdayPicker: View {
     @EnvironmentObject var authVM: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
     
-    let dateLimit = Calendar.current.date(byAdding: .year, value: -17, to: Date()) ?? Date()
+    let dateMinLimit = Calendar.current.date(byAdding: .year, value: -17, to: Date()) ?? Date()
+    let dateMaxLimit = Calendar.current.date(byAdding: .year, value: -150, to: Date()) ?? Date()
     
     var body: some View {
         
@@ -26,7 +27,7 @@ struct BirthdayPicker: View {
                     .font(.custom("times", size: 26))
                 
                 Spacer()
-                DatePicker("", selection: $authVM.birthdayDate, in: ...dateLimit ,displayedComponents: .date)
+                DatePicker("", selection: $authVM.birthdayDate, in: dateMaxLimit...dateMinLimit ,displayedComponents: .date)
                     .datePickerStyle(WheelDatePickerStyle())
                     .labelsHidden()
                     .colorMultiply(.accentColor)
