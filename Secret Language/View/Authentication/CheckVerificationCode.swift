@@ -10,6 +10,8 @@ import SwiftUI
 struct CheckVerificationCode: View {
     
     @EnvironmentObject var authVM: AuthViewModel
+    @State private var timeRemaining = 60
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
@@ -54,16 +56,28 @@ struct CheckVerificationCode: View {
                                 .cornerRadius(25)
                         }).disabled(!authVM.isCheckVerificationCodeClickable)
                         
+                        if timeRemaining != 0 {
+                            Text( "\(timeRemaining) seconds")
+                                .font(.custom("Gilroy-Regular", size: 16))
+                                .onReceive(timer) { _ in
+                                    if timeRemaining > 0 {
+                                        timeRemaining -= 1
+                                    }
+                                }
+                        }
+                        
+                        
                         Button(action: {
                             authVM.resendSignUpVerificationCode()
+                            
                         }, label: {
                             Text( NSLocalizedString("resendCode", comment: ""))
                                 .font(.custom("Gilroy-Regular", size: 16))
                                 .foregroundColor(.blue)
                                 .underline()
-                        })
+                        }).disabled(timeRemaining != 0)
                     }
-                                        
+                    
                     Spacer()
                 }
             }.padding()
