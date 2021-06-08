@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>50x50</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="50x50">
+            <rect id="Rectangle" fill="#FFFFFF" opacity="0.1" x="0" y="0" width="50" height="50" rx="8"></rect>
+            <path d="M28.0004343,18.789908 C28.3858201,18.4045222 28.3858201,17.7796883 28.0004343,17.3943025 C27.6150485,17.0089167 26.9902146,17.0089167 26.6048288,17.3943025 L20.0258815,23.9732499 C19.6404957,24.3586357 19.6404957,24.9834696 20.0258815,25.3688554 L26.6048288,31.9478027 C26.9902146,32.3331886 27.6150485,32.3331886 28.0004343,31.9478027 C28.3858201,31.5624169 28.3858201,30.9375831 28.0004343,30.5521973 L22.1192897,24.6710526 L28.0004343,18.789908 Z" id="Shape" stroke="#AE9463" fill="#AE9463" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

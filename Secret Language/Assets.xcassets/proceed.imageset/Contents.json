@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "splash-screen.png",
+      "filename" : "proceed.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Bitmap.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Bitmap (1).png",
       "idiom" : "universal",
       "scale" : "3x"
     }

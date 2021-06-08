@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  Secret Language
+
+  Created by Karen Mirakyan on 31.05.21.
+  
+*/
+
+"introMeeting" = "This is NOT a dating app, but you could meet new people that are ideal for.. ";
+"introRomance" = "#romance";
+"introFriendship" = "#friendship";
+"introBusiness" = "#business";
+"next" = "Next";
+"joinUs" = "Join us and let’s find the best matches.";
+"birthdayToStart" = "To start just tell us your birthday and the exact your phone number";
+"birthday" = "Birthday";
+"phoneNumber" = "Phone Number";
+"alreadyHaveAccount" = "If you already have an account";
+"dontHaveAccount" = "If you have’nt an account";
+"signin" = "Sign In";
+"signUp" = "Sign Up";
+"chooseBirthday" = "Please Choose Your Birthday";
+"welcomeBack" = "Welcome back! We are missed you!";
+"gotIt" = "Got it!";
+"alert" = "Secret Language Alert";
+"verification" = "Verification";
+"verificationCode" = "Verification Code";
+"verificationCodeSent" = "We have sent you a code confirming your number";
+"verify" = "Verify";
+"resendCode" = "Resend Code";
+"iam" = "I am";
+"indicateGender" = "Indicate your gender.";
+"helpUs" = "Help us keep SL safe and honest by matches input your gender.";
+"male" = "I'm a Male";
+"female" = "I'm a Female";
+"neutral" = "I'm a Neutral";
+"moreGenders" = "I want to see more Genders";
+"search" = "Search";
+"lookingConnections" = "What kind of connectionare you looking for?";
+"chooseModel" = "Choose a mode depending on what you’re looking for. You can switch this at any time.";
+"lookingFor" = "Looking For";

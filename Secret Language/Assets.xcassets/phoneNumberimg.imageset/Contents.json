@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "splash-screen.png",
+      "filename" : "phoneNumberimg.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Bitmap.png",
+      "filename" : "Ресурс 3xxhdpi.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Bitmap (1).png",
+      "filename" : "Ресурс 3xxhdpi (1).png",
       "idiom" : "universal",
       "scale" : "3x"
     }
