@@ -49,8 +49,8 @@ class MockAuthService: AuthServiceProtocol {
     func sendSignInVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         var result: Result<GlobalResponse, NetworkError>
         
-        if sendSignInVerificatioCodeError       { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
-        else                                    { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
+        if sendSignInVerificatioCodeError   { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
+        else                                { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
         
         let dataResponse = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
         let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(dataResponse)
@@ -60,8 +60,8 @@ class MockAuthService: AuthServiceProtocol {
     func checkSignInVerificationCode(phoneNumber: String, code: String) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
         var result: Result<AuthResponse, NetworkError>
         
-        if checkSignInVerificationCodeError     { result = Result<AuthResponse, NetworkError>.failure(networkError)}
-        else                                    { result = Result<AuthResponse, NetworkError>.success(token)}
+        if checkSignInVerificationCodeError { result = Result<AuthResponse, NetworkError>.failure(networkError)}
+        else                                { result = Result<AuthResponse, NetworkError>.success(token)}
         
         let dataResponse = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
         let publisher = CurrentValueSubject<DataResponse<AuthResponse, NetworkError>, Never>(dataResponse)

@@ -51,7 +51,7 @@ extension AuthService: AuthServiceProtocol {
     }
     
     func sendSignInVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)auth/sign-in/send-code")!
+        let url = URL(string: "\(Credentials.BASE_URL)auth/sign-in")!
         
         return AF.request(url,
                           method: .post,

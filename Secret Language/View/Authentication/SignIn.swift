@@ -78,6 +78,7 @@ struct SignIn: View {
                     }
                     
                     Button(action: {
+                        UIApplication.shared.endEditing()
                         authVM.sendSignInVerificationCode()
                     }, label: {
                         Image("proceed")

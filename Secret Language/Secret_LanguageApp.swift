@@ -22,7 +22,6 @@ struct Secret_LanguageApp: App {
         UINavigationBar.appearance().standardAppearance = newAppearance
     }
     
-    
     var body: some Scene {
         WindowGroup {
             if token != "" {
