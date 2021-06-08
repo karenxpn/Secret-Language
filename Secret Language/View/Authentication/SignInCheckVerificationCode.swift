@@ -31,8 +31,7 @@ struct SignInCheckVerificationCode: View {
                 
                 
                 OTPTextFieldView { otp, completionHandler in
-                    
-                    print(otp)
+                    UIApplication.shared.endEditing()
                     authVM.signInVerificationCode = otp
                     authVM.checkSignInVerificationCode()
                     // do smth with otp
@@ -57,7 +56,7 @@ struct SignInCheckVerificationCode: View {
                         }).disabled(!authVM.isCheckVerificationCodeClickable)
                         
                         if timeRemaining != 0 {
-                            Text( "\(timeRemaining) seconds")
+                            Text( "\(timeRemaining) \(timeRemaining > 0 ? "seconds" : "second")")
                                 .font(.custom("Gilroy-Regular", size: 16))
                                 .onReceive(timer) { _ in
                                     if timeRemaining > 0 {
@@ -67,7 +66,9 @@ struct SignInCheckVerificationCode: View {
                         }
                         
                         Button(action: {
-                            self.timeRemaining = 60
+                            withAnimation {
+                                self.timeRemaining = 60
+                            }
                             authVM.resendSignInVerificationCode()
                         }, label: {
                             Text( NSLocalizedString("resendCode", comment: ""))

@@ -57,7 +57,7 @@ struct CheckVerificationCode: View {
                         }).disabled(!authVM.isCheckVerificationCodeClickable)
                         
                         if timeRemaining != 0 {
-                            Text( "\(timeRemaining) seconds")
+                            Text( "\(timeRemaining) \(timeRemaining > 0 ? "seconds" : "second")")
                                 .font(.custom("Gilroy-Regular", size: 16))
                                 .onReceive(timer) { _ in
                                     if timeRemaining > 0 {
@@ -68,8 +68,10 @@ struct CheckVerificationCode: View {
                         
                         
                         Button(action: {
+                            withAnimation {
+                                self.timeRemaining = 60
+                            }
                             authVM.resendSignUpVerificationCode()
-                            
                         }, label: {
                             Text( NSLocalizedString("resendCode", comment: ""))
                                 .font(.custom("Gilroy-Regular", size: 16))
