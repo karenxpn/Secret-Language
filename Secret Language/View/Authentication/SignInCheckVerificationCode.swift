@@ -56,7 +56,7 @@ struct SignInCheckVerificationCode: View {
                         }).disabled(!authVM.isCheckVerificationCodeClickable)
                         
                         if timeRemaining != 0 {
-                            Text( "\(timeRemaining) \(timeRemaining > 0 ? "seconds" : "second")")
+                            Text( "\(timeRemaining / 60):\(timeRemaining % 60) Remaining")
                                 .font(.custom("Gilroy-Regular", size: 16))
                                 .onReceive(timer) { _ in
                                     if timeRemaining > 0 {
@@ -67,7 +67,7 @@ struct SignInCheckVerificationCode: View {
                         
                         Button(action: {
                             withAnimation {
-                                self.timeRemaining = 60
+                                timeRemaining = 60
                             }
                             authVM.resendSignInVerificationCode()
                         }, label: {
