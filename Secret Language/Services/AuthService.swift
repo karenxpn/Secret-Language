@@ -17,9 +17,9 @@ protocol AuthServiceProtocol {
     func fetchAllGenders() -> AnyPublisher<DataResponse<[GenderModel], NetworkError>, Never>
     
     func sendSignInVerificationCode( phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
-    func checkSignInVerificationCode( phoneNumber: String, code: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func checkSignInVerificationCode( phoneNumber: String, code: String ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never>
     
-    func signUp( phoneNumber: String, birthday: String, gender: Int, connectionType: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func signUp( phoneNumber: String, birthday: String, gender: Int, connectionType: Int ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never>
     
     func resendVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
 }
@@ -51,7 +51,7 @@ extension AuthService: AuthServiceProtocol {
     }
     
     func sendSignInVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)auth/signin/send-code")!
+        let url = URL(string: "\(Credentials.BASE_URL)auth/sign-in/send-code")!
         
         return AF.request(url,
                           method: .post,
@@ -69,16 +69,16 @@ extension AuthService: AuthServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func checkSignInVerificationCode(phoneNumber: String, code: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)auth/signin/check-code")!
+    func checkSignInVerificationCode(phoneNumber: String, code: String) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)auth/sign-in/check-code")!
         
         return AF.request(url,
                           method: .post,
                           parameters: ["phoneNumber": phoneNumber,
-                                       "verification-code": code],
+                                       "otp": code],
                           encoder: JSONParameterEncoder.default)
             .validate()
-            .publishDecodable(type: GlobalResponse.self)
+            .publishDecodable(type: AuthResponse.self)
             .map { response in
                 response.mapError { error in
                     let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
@@ -88,7 +88,6 @@ extension AuthService: AuthServiceProtocol {
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
-    
     
     // sign up
     
@@ -166,7 +165,7 @@ extension AuthService: AuthServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func signUp( phoneNumber: String, birthday: String, gender: Int, connectionType: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+    func signUp( phoneNumber: String, birthday: String, gender: Int, connectionType: Int ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
         
         let model = SignUpRequest(phoneNumber: phoneNumber, birthday: birthday, gender: gender, interested_in: connectionType)
         let url = URL(string: "\(Credentials.BASE_URL)auth/sign-up/confirm")!
@@ -176,7 +175,7 @@ extension AuthService: AuthServiceProtocol {
                           parameters: model,
                           encoder: JSONParameterEncoder.default)
             .validate()
-            .publishDecodable(type: GlobalResponse.self)
+            .publishDecodable(type: AuthResponse.self)
             .map { response in
                 response.mapError { error in
                     let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}

@@ -111,13 +111,14 @@ class AuthViewModel: ObservableObject {
     }
     
     func signUp() {
-        dataManager.signUp(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate), gender: signUpGender!, connectionType: connectionType!)
+        dataManager.signUp(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate), gender: signUpGender ?? 0, connectionType: connectionType ?? 0)
             .sink { response in
                 if response.error != nil {
                     self.signUpAlertMessage = self.createErrorMessage(error: response.error!)
                     self.showSignUpAlert.toggle()
                 } else {
                     // get the token and proceed
+                    self.token = response.value!.token
                 }
             }.store(in: &cancellableSet)
     }
@@ -144,7 +145,7 @@ class AuthViewModel: ObservableObject {
                     
                     self.signInVerificationCode = ""
                 } else {
-                    // do smth
+                    self.token = response.value!.token
                 }
             }.store(in: &cancellableSet)
     }

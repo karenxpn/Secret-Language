@@ -55,7 +55,9 @@ struct ConnectionType: View {
                 .offset(y: authVM.showSignUpAlert ? 0 : UIScreen.main.bounds.size.height)
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
-        }.onAppear {
+        }.navigationBarTitle(Text( "" ), displayMode: .inline)
+        .navigationBarTitleView(AuthNavTitle(title: NSLocalizedString("lookingFor", comment: "")), displayMode: .inline)
+        .onAppear {
             authVM.getConnectionTypes()
         }
     }

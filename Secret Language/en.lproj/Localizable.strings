@@ -38,3 +38,4 @@
 "search" = "Search";
 "lookingConnections" = "What kind of connectionare you looking for?";
 "chooseModel" = "Choose a mode depending on what you’re looking for. You can switch this at any time.";
+"lookingFor" = "Looking For";

@@ -26,9 +26,7 @@ struct CheckVerificationCode: View {
                 
                 Spacer()
                 
-                
                 OTPTextFieldView { otp, completionHandler in
-                    print(otp)
                     UIApplication.shared.endEditing()
                     authVM.singUpVerificationCode = otp
                     authVM.checkVerificationCode()
@@ -63,7 +61,6 @@ struct CheckVerificationCode: View {
                                 .font(.custom("Gilroy-Regular", size: 16))
                                 .foregroundColor(.blue)
                                 .underline()
-                            
                         })
                     }
                                         
