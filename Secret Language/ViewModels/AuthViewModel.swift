@@ -202,6 +202,6 @@ class AuthViewModel: ObservableObject {
     }
     
     func createErrorMessage( error: NetworkError ) -> String {
-        return error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message.first ?? "Please try again later"
+        return error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
     }
 }
