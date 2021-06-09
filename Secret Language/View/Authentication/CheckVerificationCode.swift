@@ -36,7 +36,7 @@ struct CheckVerificationCode: View {
                 
                 Spacer()
                 
-                NavigationLink( destination: ChooseGender().environmentObject(authVM), isActive: $authVM.navigateToChooseGender, label: {
+                NavigationLink( destination: UserFullName().environmentObject(authVM), isActive: $authVM.navigateToFullNamePage, label: {
                     EmptyView()
                 })
                 

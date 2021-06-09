@@ -24,6 +24,7 @@
 		FFCEDDEF266E491F0073BE20 /* AuthNavTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDDEE266E491F0073BE20 /* AuthNavTitle.swift */; };
 		FFCEDDF1266E642C0073BE20 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDDF0266E642C0073BE20 /* SignUpRequest.swift */; };
 		FFCEDDF3266FB0350073BE20 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDDF2266FB0350073BE20 /* AuthResponse.swift */; };
+		FFCEDDF5267100010073BE20 /* UserFullName.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDDF4267100010073BE20 /* UserFullName.swift */; };
 		FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB156A2664E97E00341E8F /* Introduction.swift */; };
 		FFDB156E2664EA2D00341E8F /* Times.ttc in Resources */ = {isa = PBXBuildFile; fileRef = FFDB156D2664EA2D00341E8F /* Times.ttc */; };
 		FFDB15712664EAFB00341E8F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FFDB15732664EAFB00341E8F /* Localizable.strings */; };
@@ -100,6 +101,7 @@
 		FFCEDDEE266E491F0073BE20 /* AuthNavTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavTitle.swift; sourceTree = "<group>"; };
 		FFCEDDF0266E642C0073BE20 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
 		FFCEDDF2266FB0350073BE20 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		FFCEDDF4267100010073BE20 /* UserFullName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFullName.swift; sourceTree = "<group>"; };
 		FFDB156A2664E97E00341E8F /* Introduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Introduction.swift; sourceTree = "<group>"; };
 		FFDB156D2664EA2D00341E8F /* Times.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Times.ttc; path = ../../../../../../System/Library/Fonts/Times.ttc; sourceTree = "<group>"; };
 		FFDB15722664EAFB00341E8F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				FFDB15742664EDFC00341E8F /* SignUp.swift */,
 				FFDB158A26655DD500341E8F /* CheckVerificationCode.swift */,
 				FFDB157A2664F2C800341E8F /* BirthdayPicker.swift */,
+				FFCEDDF4267100010073BE20 /* UserFullName.swift */,
 				FFDB1580266522BE00341E8F /* SignIn.swift */,
 				FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */,
 				FFDB15A626669AA000341E8F /* ChooseGender.swift */,
@@ -617,6 +620,7 @@
 				FFDB15AD2666C03F00341E8F /* ConnectionType.swift in Sources */,
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,
 				FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */,
+				FFCEDDF5267100010073BE20 /* UserFullName.swift in Sources */,
 				FFCEDDF1266E642C0073BE20 /* SignUpRequest.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
 				FFDB15A926669B9400341E8F /* TopGender.swift in Sources */,

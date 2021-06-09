@@ -9,6 +9,7 @@ import Foundation
 struct SignUpRequest: Codable {
     var phoneNumber: String
     var birthday: String
+    var name: String
     var gender: Int
     var interested_in : Int
 }

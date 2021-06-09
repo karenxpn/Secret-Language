@@ -19,7 +19,7 @@ protocol AuthServiceProtocol {
     func sendSignInVerificationCode( phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func checkSignInVerificationCode( phoneNumber: String, code: String ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never>
     
-    func signUp( phoneNumber: String, birthday: String, gender: Int, connectionType: Int ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never>
+    func signUp( phoneNumber: String, birthday: String, fullName: String, gender: Int, connectionType: Int ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never>
     
     func resendVerificationCode(phoneNumber: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
 }
@@ -165,9 +165,9 @@ extension AuthService: AuthServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func signUp( phoneNumber: String, birthday: String, gender: Int, connectionType: Int ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
+    func signUp( phoneNumber: String, birthday: String, fullName: String, gender: Int, connectionType: Int ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
         
-        let model = SignUpRequest(phoneNumber: phoneNumber, birthday: birthday, gender: gender, interested_in: connectionType)
+        let model = SignUpRequest(phoneNumber: phoneNumber, birthday: birthday, name: fullName, gender: gender, interested_in: connectionType)
         let url = URL(string: "\(Credentials.BASE_URL)auth/sign-up/confirm")!
 
         return AF.request(url,

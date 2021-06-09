@@ -25,6 +25,9 @@
 "alert" = "Secret Language Alert";
 "verification" = "Verification";
 "verificationCode" = "Verification Code";
+"enterFullName" = "Enter Full Name";
+"pleaseEnterFullName" = "Please enter Your full name, so that people can find you with ease!";
+"fullNameMayHelp" = "Your full name may help you and your frinds get in touch with each other.";
 "verificationCodeSent" = "We have sent you a code confirming your number";
 "verify" = "Verify";
 "resendCode" = "Resend Code";

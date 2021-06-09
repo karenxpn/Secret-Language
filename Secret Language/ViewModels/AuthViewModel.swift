@@ -16,6 +16,7 @@ class AuthViewModel: ObservableObject {
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     @Published var signUpPhoneNumber: String = ""
     @Published var singUpVerificationCode: String = ""
+    @Published var signUpFullName: String = ""
     @Published var signUpGender: Int? = nil
     
     @Published var genderFilter: String = ""
@@ -37,6 +38,7 @@ class AuthViewModel: ObservableObject {
     @Published var checkVerificationCodeAlertMessage: String = ""
         
     @Published var navigateToCheckVerificationCode: Bool = false
+    @Published var navigateToFullNamePage: Bool = false
     @Published var navigateToChooseGender: Bool = false
     
     // check publishers validation
@@ -105,13 +107,13 @@ class AuthViewModel: ObservableObject {
                     
                     self.singUpVerificationCode = ""
                 } else {
-                    self.navigateToChooseGender.toggle()
+                    self.navigateToFullNamePage.toggle()
                 }
             }.store(in: &cancellableSet)
     }
     
     func signUp() {
-        dataManager.signUp(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate), gender: signUpGender ?? 0, connectionType: connectionType ?? 0)
+        dataManager.signUp(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate), fullName: signUpFullName, gender: signUpGender ?? 0, connectionType: connectionType ?? 0)
             .sink { response in
                 if response.error != nil {
                     self.signUpAlertMessage = self.createErrorMessage(error: response.error!)
