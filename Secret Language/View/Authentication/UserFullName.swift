@@ -40,7 +40,11 @@ struct UserFullName: View {
                 Spacer()
                 
                 VStack( alignment: .leading) {
-                    TextField(NSLocalizedString("enterFullName", comment: ""), text: $authVM.signUpFullName)
+                    Text( NSLocalizedString("enterFullName", comment: "") )
+                        .foregroundColor(.gray)
+                        .font(.custom("Gilroy-Regular", size: 10))
+                    
+                    TextField(NSLocalizedString("John Smith", comment: ""), text: $authVM.signUpFullName)
                         .font(.custom("times", size: 20))
                         .foregroundColor(.white)
                     
