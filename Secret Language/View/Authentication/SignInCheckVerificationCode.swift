@@ -13,6 +13,8 @@ struct SignInCheckVerificationCode: View {
     @State private var timeRemaining = 60
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    @Binding var hideNavBar: Bool
+    @Binding var hideBackButton: Bool
     
     var body: some View {
         ZStack {
@@ -86,14 +88,18 @@ struct SignInCheckVerificationCode: View {
                 .offset(y: authVM.showCheckVerificationCodeAlert ? 0 : UIScreen.main.bounds.size.height)
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
-        }.navigationBarTitle(Text( "" ), displayMode: .inline)
+        }.navigationBarTitle("")
         .navigationBarTitleView(AuthNavTitle(title: NSLocalizedString("verification", comment: "")), displayMode: .inline)
+        .onAppear(perform: {
+            hideNavBar = false
+            hideBackButton = false
+        })
     }
 }
 
 struct SignInCheckVerificationCode_Previews: PreviewProvider {
     static var previews: some View {
-        SignInCheckVerificationCode()
+        SignInCheckVerificationCode(hideNavBar: .constant(false), hideBackButton: .constant(false))
             .environmentObject(AuthViewModel())
     }
 }

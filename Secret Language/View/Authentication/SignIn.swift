@@ -11,6 +11,9 @@ struct SignIn: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var authVM = AuthViewModel()
     
+    @State private var hideNavBar: Bool = true
+    @State private var hideBackButton: Bool = false
+    
     var body: some View {
         ZStack {
             Background()
@@ -68,14 +71,13 @@ struct SignIn: View {
                                 .underline(true, color: .accentColor)
                                 .padding(.top, 8)
                         }
-
                     }
                     
                     Spacer()
                     
-                    NavigationLink(destination: SignInCheckVerificationCode().environmentObject(authVM), isActive: $authVM.navigateToSignInVerificationCode) {
+                    NavigationLink(destination: SignInCheckVerificationCode(hideNavBar: $hideNavBar, hideBackButton: $hideBackButton).environmentObject(authVM), isActive: $authVM.navigateToSignInVerificationCode) {
                         EmptyView()
-                    }
+                    }.hidden()
                     
                     Button(action: {
                         UIApplication.shared.endEditing()
@@ -88,14 +90,19 @@ struct SignIn: View {
                     }).disabled(!authVM.isSignInProceedClickable)
                 }
             }.padding()
+            .padding(.top, 30)
             
             CustomAlert(isPresented: $authVM.showAlert, alertMessage: authVM.sendVerificationCodeAlertMessage, alignment: .bottom)
                 .offset(y: authVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
-        }.navigationBarHidden(false)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarTitle(Text( "" ), displayMode: .inline)
+        }.onAppear(perform: {
+            hideNavBar = true
+            hideBackButton = true
+        })
+        .navigationBarTitle("")
+        .navigationBarHidden(hideNavBar)
+        .navigationBarBackButtonHidden(hideBackButton)
         .onTapGesture {
             UIApplication.shared.endEditing()
         }

@@ -70,7 +70,6 @@ struct UserFullName: View {
                             .frame(width: 50, height: 50)
                     }).disabled(authVM.signUpFullName.isEmpty)
                 }
-
                 
             }.padding()
         }.navigationBarTitle(Text( "" ), displayMode: .inline)

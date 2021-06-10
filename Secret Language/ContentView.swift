@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @AppStorage( "token" ) private var token: String = ""
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Button {
+            self.token = ""
+        } label: {
+            Text( "Logout")
+                .padding()
+        }
     }
 }
 
