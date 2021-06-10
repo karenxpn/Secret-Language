@@ -34,7 +34,7 @@ struct CustomTabBar: View {
                                 .padding(.vertical, 10)
                                 .padding(.horizontal, 6)
                                 .onTapGesture {
-                                    withAnimation{
+                                    withAnimation {
                                         currentTab = id
                                     }
                                 }
