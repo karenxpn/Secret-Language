@@ -10,13 +10,36 @@ import SwiftUI
 struct ContentView: View {
     
     @AppStorage( "token" ) private var token: String = ""
+    @State private var currentTab: Int = 0
+    
     var body: some View {
-        Button {
-            self.token = ""
-        } label: {
-            Text( "Logout")
-                .padding()
-        }
+        ZStack( alignment: .bottom) {
+            
+            Background()
+            VStack {
+                
+                if currentTab == 0 {
+                    Matches()
+                        .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                } else if currentTab == 1 {
+                    Reports()
+                        .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                } else if currentTab == 2 {
+                    Search()
+                        .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                } else if currentTab == 3 {
+                    Chat()
+                        .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                } else if currentTab == 4 {
+                    Profile()
+                        .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                }
+            }
+        
+            CustomTabBar( currentTab: $currentTab )
+                .offset(y: -20)
+            
+        }.edgesIgnoringSafeArea(.bottom)
     }
 }
 
