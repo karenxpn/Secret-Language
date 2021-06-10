@@ -35,7 +35,7 @@ class MockAuthService: AuthServiceProtocol {
         return publisher.eraseToAnyPublisher()
     }
     
-    func signUp(phoneNumber: String, birthday: String, gender: Int, connectionType: Int) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
+    func signUp(phoneNumber: String, birthday: String, fullName: String, gender: Int, connectionType: Int) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
         var result: Result<AuthResponse, NetworkError>
         
         if signupError  { result = Result<AuthResponse, NetworkError>.failure(networkError)}
