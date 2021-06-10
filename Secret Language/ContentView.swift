@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @AppStorage( "token" ) private var token: String = ""
     @State private var currentTab: Int = 0
     
     var body: some View {

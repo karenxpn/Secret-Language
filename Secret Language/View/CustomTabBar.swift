@@ -28,10 +28,10 @@ struct CustomTabBar: View {
                             Spacer()
                             Image(icons[id])
                                 .resizable()
-                                .aspectRatio(contentMode: .fit)
+                                .aspectRatio(contentMode: .fill)
                                 .foregroundColor(id == currentTab ? .accentColor : .white)
-                                .frame(width: 24, height: 24)
-                                .padding(.vertical)
+                                .frame(width: 20, height: 20)
+                                .padding(.vertical, 10)
                                 .padding(.horizontal, 6)
                                 .onTapGesture {
                                     withAnimation{
