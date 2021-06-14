@@ -59,10 +59,12 @@
 		FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15AE2666C0E100341E8F /* SingleConnectionType.swift */; };
 		FFDB15B12666C18900341E8F /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = FFDB15B02666C18900341E8F /* Avenir.ttc */; };
 		FFE0E4122677E5DC008FA78C /* SingleMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E4112677E5DC008FA78C /* SingleMatch.swift */; };
-		FFE0E4142677E6F6008FA78C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E4132677E6F6008FA78C /* Card.swift */; };
+		FFE0E4142677E6F6008FA78C /* MatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E4132677E6F6008FA78C /* MatchModel.swift */; };
 		FFE0E4162677F97F008FA78C /* FilterMatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E4152677F97F008FA78C /* FilterMatches.swift */; };
 		FFE0E4182677FD89008FA78C /* MatchesNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E4172677FD89008FA78C /* MatchesNavBar.swift */; };
 		FFE0E41A26780053008FA78C /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFE0E41926780053008FA78C /* Gilroy-Bold.ttf */; };
+		FFE0E41C2678082B008FA78C /* MatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E41B2678082B008FA78C /* MatchService.swift */; };
+		FFE0E41E2678090D008FA78C /* MatchesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E41D2678090D008FA78C /* MatchesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,10 +148,12 @@
 		FFDB15AE2666C0E100341E8F /* SingleConnectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleConnectionType.swift; sourceTree = "<group>"; };
 		FFDB15B02666C18900341E8F /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Avenir.ttc; path = ../../../../../../System/Library/Fonts/Avenir.ttc; sourceTree = "<group>"; };
 		FFE0E4112677E5DC008FA78C /* SingleMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMatch.swift; sourceTree = "<group>"; };
-		FFE0E4132677E6F6008FA78C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		FFE0E4132677E6F6008FA78C /* MatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchModel.swift; sourceTree = "<group>"; };
 		FFE0E4152677F97F008FA78C /* FilterMatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMatches.swift; sourceTree = "<group>"; };
 		FFE0E4172677FD89008FA78C /* MatchesNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesNavBar.swift; sourceTree = "<group>"; };
 		FFE0E41926780053008FA78C /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gilroy-Bold.ttf"; path = "../../../../Library/Fonts/Gilroy-Bold.ttf"; sourceTree = "<group>"; };
+		FFE0E41B2678082B008FA78C /* MatchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchService.swift; sourceTree = "<group>"; };
+		FFE0E41D2678090D008FA78C /* MatchesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				FFDB157C2664FDBC00341E8F /* AuthViewModel.swift */,
+				FFE0E41D2678090D008FA78C /* MatchesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				FFDB158226653D6E00341E8F /* AuthService.swift */,
+				FFE0E41B2678082B008FA78C /* MatchService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -338,7 +344,7 @@
 				FF58C40D2667BBA200BD3838 /* GenderModel.swift */,
 				FFCEDDF0266E642C0073BE20 /* SignUpRequest.swift */,
 				FFCEDDF2266FB0350073BE20 /* AuthResponse.swift */,
-				FFE0E4132677E6F6008FA78C /* Card.swift */,
+				FFE0E4132677E6F6008FA78C /* MatchModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -688,7 +694,7 @@
 				FFCEDDFF267235FB0073BE20 /* Chat.swift in Sources */,
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,
-				FFE0E4142677E6F6008FA78C /* Card.swift in Sources */,
+				FFE0E4142677E6F6008FA78C /* MatchModel.swift in Sources */,
 				FFDB15AB26669F7C00341E8F /* MoreGenders.swift in Sources */,
 				FFCEDDEF266E491F0073BE20 /* AuthNavTitle.swift in Sources */,
 				FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */,
@@ -712,9 +718,11 @@
 				FFE0E4162677F97F008FA78C /* FilterMatches.swift in Sources */,
 				FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */,
 				FFDB15A726669AA000341E8F /* ChooseGender.swift in Sources */,
+				FFE0E41E2678090D008FA78C /* MatchesViewModel.swift in Sources */,
 				FFDB158726653E8900341E8F /* NetworkError.swift in Sources */,
 				FFDB158F2665607000341E8F /* AppColors.swift in Sources */,
 				FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */,
+				FFE0E41C2678082B008FA78C /* MatchService.swift in Sources */,
 				FFCEDE082672367B0073BE20 /* Reports.swift in Sources */,
 				FFDB15772664EE9800341E8F /* Background.swift in Sources */,
 				FFE0E4122677E5DC008FA78C /* SingleMatch.swift in Sources */,

@@ -8,17 +8,29 @@
 import SwiftUI
 
 struct Matches: View {
+    
+    @ObservedObject var matchesVM = MatchesViewModel()
     var body: some View {
         
         NavigationView {
             ZStack {
-                
                 Background()
-                ForEach( Card.data ) { card in
-                    SingleMatch(card: CardViewModel(card: card))
-                        .padding(.horizontal, 8)
+                
+                ZStack {
+                    ForEach( MatchModel.data ) { card in
+                        SingleMatch(match: MatchViewModel(match: card))
+                            .padding(.horizontal, 8)
+                    }
                 }
+                
+                CustomAlert(isPresented: $matchesVM.showAlert, alertMessage: matchesVM.alertMessage, alignment: .center)
+                    .offset(y: matchesVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+                    .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
+
             }.edgesIgnoringSafeArea(.bottom)
+            .onAppear(perform: {
+                matchesVM.getMatches()
+            })
             .navigationBarTitle( "" )
             .navigationBarTitleView(MatchesNavBar(title: NSLocalizedString("matches", comment: "")), displayMode: .inline)
             .navigationBarItems(trailing: NavigationLink(
