@@ -16,13 +16,17 @@ struct Matches: View {
             ZStack {
                 Background()
                 
-                ZStack {
-                    ForEach( MatchModel.data ) { card in
-                        SingleMatch(match: MatchViewModel(match: card))
-                            .padding(.horizontal, 8)
+                if matchesVM.loadingMatches {
+                    ProgressView()
+                } else {
+                    ZStack {
+                        ForEach( matchesVM.matches ) { match in
+                            SingleMatch(match: match)
+                                .padding(.horizontal, 8)
+                        }
                     }
                 }
-                
+                                
                 CustomAlert(isPresented: $matchesVM.showAlert, alertMessage: matchesVM.alertMessage, alignment: .center)
                     .offset(y: matchesVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                     .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))

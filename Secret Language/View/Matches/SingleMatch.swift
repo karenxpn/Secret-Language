@@ -17,11 +17,11 @@ struct SingleMatch: View {
                 Image(match.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height * 0.7)
+                    .frame(width: UIScreen.main.bounds.size.width - 24, height: UIScreen.main.bounds.size.height * 0.7)
                     .clipped()
                     .cornerRadius(15)
-                    .padding(.bottom)
-                
+                    .padding(.vertical)
+
                 Text( match.name )
                     .foregroundColor(.white)
                     .font(.custom("times", size: 20))

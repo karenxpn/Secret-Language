@@ -14,12 +14,12 @@ class MatchesViewModel: ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     @Published var matches = [MatchViewModel]()
     
-    private var cancellableSet: Set<AnyCancellable> = []
-    var dataManager: MatchServiceProtocol
-    
     @Published var loadingMatches: Bool = false
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    
+    private var cancellableSet: Set<AnyCancellable> = []
+    var dataManager: MatchServiceProtocol
     
     init( dataManager: MatchServiceProtocol = MatchService.shared) {
         self.dataManager = dataManager
