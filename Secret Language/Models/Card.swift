@@ -18,12 +18,12 @@ struct Card: Identifiable, Codable {
     
     static var data: [Card] {
         [
-            Card(name: "Rosie", imageName: "p0", age: 21, bio: "Insta - roooox 💋", ideal: ["Family", "Romance"]),
-            Card(name: "Betty", imageName: "p1", age: 23, bio: "Like exercising, going out, pub, working 🍻", ideal: ["Family", "Romance"]),
-            Card(name: "Abigail", imageName: "p2", age: 26, bio: "hi, let's be friends", ideal: ["Family", "Romance"]),
-            Card(name: "Zoé", imageName: "p3", age: 20, bio: "Law grad", ideal: ["Family", "Romance"]),
-            Card(name: "Tilly", imageName: "p4", age: 21, bio: "Follow me on IG", ideal: ["Family", "Romance"]),
-            Card(name: "Penny", imageName: "p5", age: 24, bio: "J'aime la vie et le vin 🍷", ideal: ["Family", "Romance"]),
+            Card(name: "Rosie", imageName: "testImage", age: 21, bio: "Insta - roooox 💋", ideal: ["Family", "Romance"]),
+            Card(name: "Betty", imageName: "testImage", age: 23, bio: "Like exercising, going out, pub, working 🍻", ideal: ["Family", "Romance"]),
+            Card(name: "Abigail", imageName: "testImage", age: 26, bio: "hi, let's be friends", ideal: ["Family", "Romance"]),
+            Card(name: "Zoé", imageName: "testImage", age: 20, bio: "Law grad", ideal: ["Family", "Romance"]),
+            Card(name: "Tilly", imageName: "testImage", age: 21, bio: "Follow me on IG", ideal: ["Family", "Romance"]),
+            Card(name: "Penny", imageName: "testImage", age: 24, bio: "J'aime la vie et le vin 🍷", ideal: ["Family", "Romance"]),
         ]
     }
 }
@@ -58,8 +58,6 @@ struct CardViewModel: Identifiable {
     
     // Card x position
     var x: CGFloat = 0.0
-    // Card y position
-    var y: CGFloat = 0.0
     // Card rotation angle
     var degree: Double = 0.0
     
