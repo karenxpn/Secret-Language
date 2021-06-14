@@ -58,6 +58,8 @@
 		FFDB15AD2666C03F00341E8F /* ConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15AC2666C03F00341E8F /* ConnectionType.swift */; };
 		FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15AE2666C0E100341E8F /* SingleConnectionType.swift */; };
 		FFDB15B12666C18900341E8F /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = FFDB15B02666C18900341E8F /* Avenir.ttc */; };
+		FFE0E4122677E5DC008FA78C /* SingleMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E4112677E5DC008FA78C /* SingleMatch.swift */; };
+		FFE0E4142677E6F6008FA78C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E4132677E6F6008FA78C /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +142,8 @@
 		FFDB15AC2666C03F00341E8F /* ConnectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionType.swift; sourceTree = "<group>"; };
 		FFDB15AE2666C0E100341E8F /* SingleConnectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleConnectionType.swift; sourceTree = "<group>"; };
 		FFDB15B02666C18900341E8F /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Avenir.ttc; path = ../../../../../../System/Library/Fonts/Avenir.ttc; sourceTree = "<group>"; };
+		FFE0E4112677E5DC008FA78C /* SingleMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMatch.swift; sourceTree = "<group>"; };
+		FFE0E4132677E6F6008FA78C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +332,7 @@
 				FF58C40D2667BBA200BD3838 /* GenderModel.swift */,
 				FFCEDDF0266E642C0073BE20 /* SignUpRequest.swift */,
 				FFCEDDF2266FB0350073BE20 /* AuthResponse.swift */,
+				FFE0E4132677E6F6008FA78C /* Card.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				FFCEDDFB267235D10073BE20 /* Matches.swift */,
+				FFE0E4112677E5DC008FA78C /* SingleMatch.swift */,
 			);
 			path = Matches;
 			sourceTree = "<group>";
@@ -672,6 +678,7 @@
 				FFCEDDFF267235FB0073BE20 /* Chat.swift in Sources */,
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,
+				FFE0E4142677E6F6008FA78C /* Card.swift in Sources */,
 				FFDB15AB26669F7C00341E8F /* MoreGenders.swift in Sources */,
 				FFCEDDEF266E491F0073BE20 /* AuthNavTitle.swift in Sources */,
 				FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */,
@@ -699,6 +706,7 @@
 				FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */,
 				FFCEDE082672367B0073BE20 /* Reports.swift in Sources */,
 				FFDB15772664EE9800341E8F /* Background.swift in Sources */,
+				FFE0E4122677E5DC008FA78C /* SingleMatch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

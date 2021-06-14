@@ -9,7 +9,12 @@ import SwiftUI
 
 struct Matches: View {
     var body: some View {
-        Text("Matches")
+        ZStack {
+            ForEach( Card.data ) { card in
+                SingleMatch(card: CardViewModel(card: card))
+                    .padding(8)
+            }
+        }
     }
 }
 
