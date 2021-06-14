@@ -19,7 +19,7 @@ struct CustomTabBar: View {
                     
                     RoundedRectangle(cornerRadius: 50, style: .continuous)
                         .fill(AppColors.tabBg)
-                        .opacity(0.8)
+//                        .opacity(0.8)
                     
                     HStack {
                         

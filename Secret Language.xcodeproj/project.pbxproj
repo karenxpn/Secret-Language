@@ -60,6 +60,9 @@
 		FFDB15B12666C18900341E8F /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = FFDB15B02666C18900341E8F /* Avenir.ttc */; };
 		FFE0E4122677E5DC008FA78C /* SingleMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E4112677E5DC008FA78C /* SingleMatch.swift */; };
 		FFE0E4142677E6F6008FA78C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E4132677E6F6008FA78C /* Card.swift */; };
+		FFE0E4162677F97F008FA78C /* FilterMatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E4152677F97F008FA78C /* FilterMatches.swift */; };
+		FFE0E4182677FD89008FA78C /* MatchesNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E4172677FD89008FA78C /* MatchesNavBar.swift */; };
+		FFE0E41A26780053008FA78C /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFE0E41926780053008FA78C /* Gilroy-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +147,9 @@
 		FFDB15B02666C18900341E8F /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Avenir.ttc; path = ../../../../../../System/Library/Fonts/Avenir.ttc; sourceTree = "<group>"; };
 		FFE0E4112677E5DC008FA78C /* SingleMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMatch.swift; sourceTree = "<group>"; };
 		FFE0E4132677E6F6008FA78C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		FFE0E4152677F97F008FA78C /* FilterMatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMatches.swift; sourceTree = "<group>"; };
+		FFE0E4172677FD89008FA78C /* MatchesNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesNavBar.swift; sourceTree = "<group>"; };
+		FFE0E41926780053008FA78C /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gilroy-Bold.ttf"; path = "../../../../Library/Fonts/Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,6 +357,8 @@
 			children = (
 				FFCEDDFB267235D10073BE20 /* Matches.swift */,
 				FFE0E4112677E5DC008FA78C /* SingleMatch.swift */,
+				FFE0E4152677F97F008FA78C /* FilterMatches.swift */,
+				FFE0E4172677FD89008FA78C /* MatchesNavBar.swift */,
 			);
 			path = Matches;
 			sourceTree = "<group>";
@@ -390,6 +398,7 @@
 		FFDB156C2664EA1E00341E8F /* font */ = {
 			isa = PBXGroup;
 			children = (
+				FFE0E41926780053008FA78C /* Gilroy-Bold.ttf */,
 				FFDB156D2664EA2D00341E8F /* Times.ttc */,
 				FFDB15B02666C18900341E8F /* Avenir.ttc */,
 				FFDB15782664F1BD00341E8F /* Gilroy-Regular.ttf */,
@@ -538,6 +547,7 @@
 				FFDB15B12666C18900341E8F /* Avenir.ttc in Resources */,
 				FFDB156E2664EA2D00341E8F /* Times.ttc in Resources */,
 				FFDB15712664EAFB00341E8F /* Localizable.strings in Resources */,
+				FFE0E41A26780053008FA78C /* Gilroy-Bold.ttf in Resources */,
 				FFBEA6B12664E72D0033B2ED /* .gitignore in Resources */,
 				FFBEA6A92664E4D00033B2ED /* LaunchScreen.storyboard in Resources */,
 				FFBEA6852664E42A0033B2ED /* Preview Assets.xcassets in Resources */,
@@ -699,6 +709,7 @@
 				FFDB158B26655DD500341E8F /* CheckVerificationCode.swift in Sources */,
 				FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */,
 				FFCEDDFC267235D10073BE20 /* Matches.swift in Sources */,
+				FFE0E4162677F97F008FA78C /* FilterMatches.swift in Sources */,
 				FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */,
 				FFDB15A726669AA000341E8F /* ChooseGender.swift in Sources */,
 				FFDB158726653E8900341E8F /* NetworkError.swift in Sources */,
@@ -707,6 +718,7 @@
 				FFCEDE082672367B0073BE20 /* Reports.swift in Sources */,
 				FFDB15772664EE9800341E8F /* Background.swift in Sources */,
 				FFE0E4122677E5DC008FA78C /* SingleMatch.swift in Sources */,
+				FFE0E4182677FD89008FA78C /* MatchesNavBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

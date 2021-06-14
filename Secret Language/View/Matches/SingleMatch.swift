@@ -13,7 +13,7 @@ struct SingleMatch: View {
     var body: some View {
         
         ZStack ( alignment: .top, content: {
-            ScrollView {
+            ScrollView( showsIndicators: false ) {
                 Image(card.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -26,19 +26,27 @@ struct SingleMatch: View {
                     .foregroundColor(.white)
                     .font(.custom("times", size: 20))
                 
-                HStack {
+                HStack( spacing: 0) {
                     Text( NSLocalizedString("idealFor", comment: ""))
                         .foregroundColor(.gray)
                         .font(.custom("avenir", size: 14))
                     
-                    ForEach( card.ideal, id: \.self ) { ideal in
-                        Text(ideal)
+                    ForEach( 0..<card.ideal.count ) { index in
+                        Text("\(index == card.ideal.count - 1 ? "\(card.ideal[index])." : "\(card.ideal[index]), ")")
                             .foregroundColor(.accentColor)
                             .font(.custom("avenir", size: 14))
                     }
                 }
-            }
-            
+                
+                Text( "..." )
+                    .foregroundColor(.white)
+                    .font(.title2)
+                
+                Divider()
+                    .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                
+            }.padding(.top, 1)
+
             // yea and no actions
             
             Image( "leftSwipeIcon" )
@@ -56,7 +64,7 @@ struct SingleMatch: View {
                 .opacity(Double(card.x/10 - 1))
             
         }).background(Background())
-        .padding()
+        .cornerRadius(15)
         .offset(x: card.x)
         .rotationEffect(.init(degrees: card.degree))
         .gesture(
