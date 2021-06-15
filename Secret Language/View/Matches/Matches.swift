@@ -16,11 +16,18 @@ struct Matches: View {
         NavigationView {
             ZStack {
                 Background()
-                
+
                 if matchesVM.loadingMatches {
                     ProgressView()
                 } else {
                     ZStack {
+                        
+                        Text( NSLocalizedString("congratsOnLookingThroughEveryone", comment: ""))
+                            .foregroundColor(.white)
+                            .font(.custom("Avenir", size: 18))
+                            .multilineTextAlignment(.center)
+                            .padding()
+                        
                         ForEach( matchesVM.matches ) { match in
                             SingleMatch(match: match)
                                 .padding(.horizontal, 8)

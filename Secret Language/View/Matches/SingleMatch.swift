@@ -91,24 +91,32 @@ struct SingleMatch: View {
                     .frame(width: 150, height: 150)
                     
                 
-                Text( match.title )
-                    .foregroundColor(.white)
-                    .font(.custom("times", size: 24))
-                    .fontWeight(.bold)
-                    .padding(8)
-                
-                Text( match.content)
-                    .foregroundColor(.accentColor)
-                    .font(.custom("times-italic", size: 18))
-                    .multilineTextAlignment(.center)
-                    .padding(8)
-                
-                Text( match.advice )
-                    .foregroundColor(.white)
-                    .font(.custom("times", size: 18))
-                    .multilineTextAlignment(.center)
-                    .padding(8)
-                
+                VStack {
+                    Text( match.title )
+                        .foregroundColor(.white)
+                        .font(.custom("times", size: 24))
+                        .fontWeight(.bold)
+                        .padding(8)
+                    
+                    Text( match.content)
+                        .foregroundColor(.accentColor)
+                        .font(.custom("times-italic", size: 18))
+                        .multilineTextAlignment(.center)
+                        .padding(8)
+                    
+                    Text( "\(NSLocalizedString("advice", comment: "")) \(match.advice)" )
+                        .foregroundColor(.white)
+                        .font(.custom("times", size: 18))
+                        .multilineTextAlignment(.center)
+                        .padding(8)
+                    
+                    
+                    Text( "\(NSLocalizedString("problematic", comment: "")) \(match.problematic)" )
+                        .foregroundColor(.white)
+                        .font(.custom("times", size: 18))
+                        .multilineTextAlignment(.center)
+                        .padding(8)
+                }
                 
                 Divider()
                     .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
@@ -143,6 +151,9 @@ struct SingleMatch: View {
                             value.translation.width < -50 {
                             match.x = value.translation.width
                             match.degree = 7 * (value.translation.width > 0 ? 1 : -1)
+                        } else {
+                            match.x = 0
+                            match.degree = 0
                         }
                     }
                 })

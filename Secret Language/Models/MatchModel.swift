@@ -70,6 +70,10 @@ struct MatchViewModel: Identifiable {
         self.match.advice
     }
     
+    var problematic: String {
+        self.match.problematic
+    }
+    
     var partnerBirthday: String {
         self.match.user_birthday
     }
