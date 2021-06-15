@@ -65,6 +65,9 @@
 		FFE0E41A26780053008FA78C /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FFE0E41926780053008FA78C /* Gilroy-Bold.ttf */; };
 		FFE0E41C2678082B008FA78C /* MatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E41B2678082B008FA78C /* MatchService.swift */; };
 		FFE0E41E2678090D008FA78C /* MatchesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E41D2678090D008FA78C /* MatchesViewModel.swift */; };
+		FFE0E42226794DAB008FA78C /* MockMatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E42126794DAB008FA78C /* MockMatchService.swift */; };
+		FFE0E42426794ECC008FA78C /* MatchesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E42326794ECC008FA78C /* MatchesViewModelTests.swift */; };
+		FFE0E42826794F97008FA78C /* CategoryItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E42726794F97008FA78C /* CategoryItemModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +157,9 @@
 		FFE0E41926780053008FA78C /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gilroy-Bold.ttf"; path = "../../../../Library/Fonts/Gilroy-Bold.ttf"; sourceTree = "<group>"; };
 		FFE0E41B2678082B008FA78C /* MatchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchService.swift; sourceTree = "<group>"; };
 		FFE0E41D2678090D008FA78C /* MatchesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesViewModel.swift; sourceTree = "<group>"; };
+		FFE0E42126794DAB008FA78C /* MockMatchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMatchService.swift; sourceTree = "<group>"; };
+		FFE0E42326794ECC008FA78C /* MatchesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesViewModelTests.swift; sourceTree = "<group>"; };
+		FFE0E42726794F97008FA78C /* CategoryItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +351,7 @@
 				FFCEDDF0266E642C0073BE20 /* SignUpRequest.swift */,
 				FFCEDDF2266FB0350073BE20 /* AuthResponse.swift */,
 				FFE0E4132677E6F6008FA78C /* MatchModel.swift */,
+				FFE0E42726794F97008FA78C /* CategoryItemModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -416,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				FFDB159626658EDF00341E8F /* AuthViewModelTests.swift */,
+				FFE0E42326794ECC008FA78C /* MatchesViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -424,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				FFDB159426658C3400341E8F /* MockAuthService.swift */,
+				FFE0E42126794DAB008FA78C /* MockMatchService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -726,6 +735,7 @@
 				FFCEDE082672367B0073BE20 /* Reports.swift in Sources */,
 				FFDB15772664EE9800341E8F /* Background.swift in Sources */,
 				FFE0E4122677E5DC008FA78C /* SingleMatch.swift in Sources */,
+				FFE0E42826794F97008FA78C /* CategoryItemModel.swift in Sources */,
 				FFE0E4182677FD89008FA78C /* MatchesNavBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -734,7 +744,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFE0E42426794ECC008FA78C /* MatchesViewModelTests.swift in Sources */,
 				FFBEA6902664E42A0033B2ED /* Secret_LanguageTests.swift in Sources */,
+				FFE0E42226794DAB008FA78C /* MockMatchService.swift in Sources */,
 				FFDB159526658C3400341E8F /* MockAuthService.swift in Sources */,
 				FFDB159726658EDF00341E8F /* AuthViewModelTests.swift in Sources */,
 			);

@@ -18,12 +18,14 @@ class MatchesViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
+    @Published var loadingFilter: Bool = false
+    
     @Published var dataFilterGenders = ["Male", "Female", "Everyone"]
-    @Published var dataFilterCategories = ["All", "Romance", "Friendship", "Business"]
+    @Published var dataFilterCategories = [ConnectionTypeModel]()
     @Published var dataFilterGender: String = ""
-    @Published var dataFilterCategory: String = "All"
+    @Published var dataFilterCategory: Int = 0
     @Published var selectedCategories = [String]()
-    @Published var categoryItems = ["work", "love", "art", "cool", "sibling", "stay", "family", "night", "sun", "teach", "sleep"]
+    @Published var categoryItems = [CategoryItemModel]()
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: MatchServiceProtocol
@@ -34,7 +36,7 @@ class MatchesViewModel: ObservableObject {
     
     func getMatches() {
         loadingMatches = true
-        dataManager.fetchMatchs(token: token)
+        dataManager.fetchMatches(token: token)
             .sink { response in
                 self.loadingMatches = false
                 if response.error != nil {
@@ -42,6 +44,18 @@ class MatchesViewModel: ObservableObject {
                     self.showAlert.toggle()
                 } else {
                     self.matches = response.value!.map{ MatchViewModel(match: $0 )}
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func getFilterCategoriesWithItems() {
+        loadingFilter = true
+        Publishers.Zip(dataManager.fetchCategories(token: token), dataManager.fetchAllCategoryItems(token: token))
+            .sink { category, categoryItems in
+                self.loadingFilter = false
+                if category.error == nil && categoryItems.error == nil {
+                    self.categoryItems = categoryItems.value!
+                    self.dataFilterCategories = [ConnectionTypeModel(id: 0, name: "All", description: "")] + category.value!
                 }
             }.store(in: &cancellableSet)
     }

@@ -7,33 +7,26 @@
 
 import Foundation
 import SwiftUI
-//MARK: - DATA
+
 struct MatchModel: Identifiable, Codable {
     var id: Int
-    var title: String
-
-    var s1: String
-    var s2: String
-    var s3: String
-
-    var w1: String
-    var w2: String
-    var w3: String
+    var username: String
+    var name: String
+    var age: Int
+    var sln: String
+    var sln_description: String
 
     var report: String
     var advice: String
-    var ideal: String
-    var problematic: String
+    var ideal_for: String
     
     var image: String
-    var name: String
-    var content: String
+    var famous_years: String
     var my_birthday: String
     var my_birthday_name: String
     var user_birthday: String
     var user_birthday_name: String
 }
-
 
 struct MatchViewModel: Identifiable {
     
@@ -50,28 +43,36 @@ struct MatchViewModel: Identifiable {
         self.match.name
     }
     
+    var age: Int {
+        self.match.age
+    }
+    
     var image: String {
         self.match.image
     }
     
     var ideal: String {
-        self.match.ideal
+        self.match.ideal_for
     }
     
     var title: String {
-        self.match.title
+        self.match.sln
     }
     
-    var content: String {
-        self.match.content
+    var sln_description: String {
+        self.match.sln_description
+    }
+    
+    var report: String {
+        self.match.report
+    }
+    
+    var famous_years: String {
+        self.match.famous_years
     }
     
     var advice: String {
         self.match.advice
-    }
-    
-    var problematic: String {
-        self.match.problematic
     }
     
     var partnerBirthday: String {
