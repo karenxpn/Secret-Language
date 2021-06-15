@@ -17,7 +17,8 @@ struct SingleMatch: View {
                 Image(match.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.size.width - 24, height: UIScreen.main.bounds.size.height * 0.7)
+                    .frame(width: UIScreen.main.bounds.size.width - 24,
+                           height: UIScreen.main.bounds.size.height * 0.7)
                     .clipped()
                     .cornerRadius(15)
                     .padding(.vertical)
@@ -31,16 +32,37 @@ struct SingleMatch: View {
                         .foregroundColor(.gray)
                         .font(.custom("avenir", size: 14))
                     
-                    ForEach( 0..<match.ideal.count ) { index in
-                        Text("\(index == match.ideal.count - 1 ? "\(match.ideal[index])." : "\(match.ideal[index]), ")")
-                            .foregroundColor(.accentColor)
-                            .font(.custom("avenir", size: 14))
-                    }
+                    Text(match.ideal)
+                        .foregroundColor(.accentColor)
+                        .font(.custom("avenir", size: 14))
                 }
                 
                 Text( "..." )
                     .foregroundColor(.white)
                     .font(.title2)
+                    .padding(.bottom, 8)
+                
+                // birthdays, etc
+                
+                
+                Text( match.title )
+                    .foregroundColor(.white)
+                    .font(.custom("times", size: 24))
+                    .fontWeight(.bold)
+                    .padding(8)
+                
+                Text( match.content)
+                    .foregroundColor(.accentColor)
+                    .font(.custom("times-italic", size: 18))
+                    .multilineTextAlignment(.center)
+                    .padding(8)
+                
+                Text( match.advice )
+                    .foregroundColor(.white)
+                    .font(.custom("times", size: 18))
+                    .multilineTextAlignment(.center)
+                    .padding(8)
+                
                 
                 Divider()
                     .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
@@ -71,7 +93,8 @@ struct SingleMatch: View {
             DragGesture()
                 .onChanged({ value in
                     withAnimation(.default) {
-                        if value.translation.width > 50 || value.translation.width < -50 {
+                        if value.translation.width > 50 ||
+                            value.translation.width < -50 {
                             match.x = value.translation.width
                             match.degree = 7 * (value.translation.width > 0 ? 1 : -1)
                         }
@@ -99,6 +122,6 @@ struct SingleMatch: View {
 
 struct SingleMatch_Previews: PreviewProvider {
     static var previews: some View {
-        SingleMatch(match: MatchViewModel(match: MatchModel(name: "Rosie", imageName: "testImage", age: 21, bio: "Insta - roooox 💋", ideal: ["Family", "Romance"])))
+        SingleMatch(match: MatchViewModel(match: MatchModel(id: 1, title: "title", s1: "relaxed", s2: "social", s3: "asdf", w1: "relaxed", w2: "social", w3: "asdf", report: "report", advice: "Since 1701, this very rare name has only been given the poeple born on this day in these years: 1737 1774 1830 1867 1923 1979 2916", ideal: "Business", problematic: "for love", image: "", name: "Name Surname", content: "``This name describes the life energy of this day. People born during this day will ratain and radiate its energy and will exhibit most of the personality traits we discovered for their day, week, month, season and year as shown below``")))
     }
 }

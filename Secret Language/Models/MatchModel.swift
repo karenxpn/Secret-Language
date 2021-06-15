@@ -9,23 +9,25 @@ import Foundation
 import SwiftUI
 //MARK: - DATA
 struct MatchModel: Identifiable, Codable {
-    let id: String = UUID().uuidString
-    let name: String
-    let imageName: String
-    let age: Int
-    let bio: String
-    let ideal: [String]
+    var id: Int
+    var title: String
+
+    var s1: String
+    var s2: String
+    var s3: String
+
+    var w1: String
+    var w2: String
+    var w3: String
+
+    var report: String
+    var advice: String
+    var ideal: String
+    var problematic: String
     
-    static var data: [MatchModel] {
-        [
-            MatchModel(name: "Rosie", imageName: "testImage", age: 21, bio: "Insta - roooox 💋", ideal: ["Family", "Romance"]),
-            MatchModel(name: "Betty", imageName: "testImage", age: 23, bio: "Like exercising, going out, pub, working 🍻", ideal: ["Family", "Romance"]),
-            MatchModel(name: "Abigail", imageName: "testImage", age: 26, bio: "hi, let's be friends", ideal: ["Family", "Romance"]),
-            MatchModel(name: "Zoé", imageName: "testImage", age: 20, bio: "Law grad", ideal: ["Family", "Romance"]),
-            MatchModel(name: "Tilly", imageName: "testImage", age: 21, bio: "Follow me on IG", ideal: ["Family", "Romance"]),
-            MatchModel(name: "Penny", imageName: "testImage", age: 24, bio: "J'aime la vie et le vin 🍷", ideal: ["Family", "Romance"]),
-        ]
-    }
+    var image: String
+    var name: String
+    var content: String
 }
 
 
@@ -36,7 +38,7 @@ struct MatchViewModel: Identifiable {
         self.match = match
     }
     
-    var id: String {
+    var id: Int {
         self.match.id
     }
     
@@ -45,15 +47,23 @@ struct MatchViewModel: Identifiable {
     }
     
     var image: String {
-        self.match.imageName
+        self.match.image
     }
     
-    var bio: String {
-        self.match.bio
-    }
-    
-    var ideal: [String] {
+    var ideal: String {
         self.match.ideal
+    }
+    
+    var title: String {
+        self.match.title
+    }
+    
+    var content: String {
+        self.match.content
+    }
+    
+    var advice: String {
+        self.match.advice
     }
     
     // Card x position

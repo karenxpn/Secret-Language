@@ -36,7 +36,7 @@ struct ContentView: View {
             }
         
             CustomTabBar( currentTab: $currentTab )
-                .offset(y: -20)
+//                .offset(y: -10)
             
         }.edgesIgnoringSafeArea(.bottom)
     }

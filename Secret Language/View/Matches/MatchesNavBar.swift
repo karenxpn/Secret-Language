@@ -14,7 +14,7 @@ struct MatchesNavBar: View {
     var body: some View {
         Text(title)
             .foregroundColor(.white)
-            .font(.custom("Gilroy-Bold", size: 15))
+            .font(.custom("Gilroy-Bold", size: 17))
     }
 }
 

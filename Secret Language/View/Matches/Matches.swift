@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Matches: View {
     
+    @State private var showFilter: Bool = false
     @ObservedObject var matchesVM = MatchesViewModel()
     var body: some View {
         
@@ -37,13 +38,17 @@ struct Matches: View {
             })
             .navigationBarTitle( "" )
             .navigationBarTitleView(MatchesNavBar(title: NSLocalizedString("matches", comment: "")), displayMode: .inline)
-            .navigationBarItems(trailing: NavigationLink(
-                                    destination: FilterMatches(),
-                                    label: {
-                                        Image( "filterIcon" )
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 20, height: 20)
-                                    }))
+            .navigationBarItems(trailing: Button(action: {
+                showFilter.toggle()
+            }, label: {
+                Image( "filterIcon" )
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20, height: 20)
+            }))
+            .fullScreenCover(isPresented: $showFilter, content: {
+                FilterMatches()
+                    .environmentObject(matchesVM)
+            })
         }
         
     }

@@ -18,6 +18,11 @@ class MatchesViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
+    @Published var dataFilterGenders = ["Male", "Female", "Everyone"]
+    @Published var dataFilterCategories = ["Romance", "Friendship", "Business"]
+    @Published var dataFilterGender: String = ""
+    @Published var dataFilterCategory: String = ""
+    
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: MatchServiceProtocol
     
