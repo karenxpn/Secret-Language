@@ -28,6 +28,10 @@ struct MatchModel: Identifiable, Codable {
     var image: String
     var name: String
     var content: String
+    var my_birthday: String
+    var my_birthday_name: String
+    var user_birthday: String
+    var user_birthday_name: String
 }
 
 
@@ -64,6 +68,22 @@ struct MatchViewModel: Identifiable {
     
     var advice: String {
         self.match.advice
+    }
+    
+    var partnerBirthday: String {
+        self.match.user_birthday
+    }
+    
+    var partnerBirthdayWeek: String {
+        self.match.user_birthday_name
+    }
+    
+    var myBirthday: String {
+        self.match.my_birthday
+    }
+    
+    var myBirthdayWeek: String {
+        self.match.my_birthday_name
     }
     
     // Card x position

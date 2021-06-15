@@ -19,9 +19,11 @@ class MatchesViewModel: ObservableObject {
     @Published var alertMessage: String = ""
     
     @Published var dataFilterGenders = ["Male", "Female", "Everyone"]
-    @Published var dataFilterCategories = ["Romance", "Friendship", "Business"]
+    @Published var dataFilterCategories = ["All", "Romance", "Friendship", "Business"]
     @Published var dataFilterGender: String = ""
-    @Published var dataFilterCategory: String = ""
+    @Published var dataFilterCategory: String = "All"
+    @Published var selectedCategories = [String]()
+    @Published var categoryItems = ["work", "love", "art", "cool", "sibling", "stay", "family", "night", "sun", "teach", "sleep"]
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: MatchServiceProtocol

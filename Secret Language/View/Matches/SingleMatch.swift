@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct SingleMatch: View {
     
@@ -14,7 +15,11 @@ struct SingleMatch: View {
         
         ZStack ( alignment: .top, content: {
             ScrollView( showsIndicators: false ) {
-                Image(match.image)
+                
+                WebImage(url: URL(string: match.image))
+                    .placeholder(content: {
+                        ProgressView()
+                    })
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: UIScreen.main.bounds.size.width - 24,
@@ -44,6 +49,47 @@ struct SingleMatch: View {
                 
                 // birthdays, etc
                 
+                HStack {
+                    VStack( alignment: .leading) {
+                        Text( match.myBirthday )
+                            .font(.custom("times", size: 16))
+                            .foregroundColor(.white)
+                        
+                        HStack( spacing: 0) {
+                            Text( NSLocalizedString("weekOf", comment: ""))
+                                .foregroundColor(.gray)
+                                .font(.custom("Avenir", size: 12))
+                            
+                            Text( match.myBirthdayWeek )
+                                .foregroundColor(.accentColor)
+                                .font(.custom("Avenir", size: 12))
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    VStack( alignment: .trailing) {
+                        Text( match.partnerBirthday )
+                            .font(.custom("times", size: 16))
+                            .foregroundColor(.white)
+                        
+                        HStack( spacing: 0) {
+                            Text( NSLocalizedString("weekOf", comment: ""))
+                                .foregroundColor(.gray)
+                                .font(.custom("Avenir", size: 12))
+                            
+                            Text( match.partnerBirthdayWeek )
+                                .foregroundColor(.accentColor)
+                                .font(.custom("Avenir", size: 12))
+                        }
+                    }
+                }.padding(.horizontal)
+                
+                Image("phoneNumberimg")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 150, height: 150)
+                    
                 
                 Text( match.title )
                     .foregroundColor(.white)
@@ -122,6 +168,6 @@ struct SingleMatch: View {
 
 struct SingleMatch_Previews: PreviewProvider {
     static var previews: some View {
-        SingleMatch(match: MatchViewModel(match: MatchModel(id: 1, title: "title", s1: "relaxed", s2: "social", s3: "asdf", w1: "relaxed", w2: "social", w3: "asdf", report: "report", advice: "Since 1701, this very rare name has only been given the poeple born on this day in these years: 1737 1774 1830 1867 1923 1979 2916", ideal: "Business", problematic: "for love", image: "", name: "Name Surname", content: "``This name describes the life energy of this day. People born during this day will ratain and radiate its energy and will exhibit most of the personality traits we discovered for their day, week, month, season and year as shown below``")))
+        SingleMatch(match: MatchViewModel(match: MatchModel(id: 1, title: "Solved Blissful Wizard", s1: "relaxed", s2: "social", s3: "asdf", w1: "relaxed", w2: "social", w3: "asdf", report: "report", advice: "Since 1701, this very rare name has only been given the poeple born on this day in these years: 1737 1774 1830 1867 1923 1979 2916", ideal: "Business", problematic: "for love", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", name: "Name Surname", content: "``This name describes the life energy of this day. People born during this day will ratain and radiate its energy and will exhibit most of the personality traits we discovered for their day, week, month, season and year as shown below``", my_birthday: "December 26, 1993", my_birthday_name: "Ruler", user_birthday: "January 23, 1983", user_birthday_name: "Ruler")))
     }
 }

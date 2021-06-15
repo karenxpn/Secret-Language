@@ -46,3 +46,5 @@
 "matches" = "Matches";
 "dataFilters" = "Data Filters";
 "categories" = "Categories: ";
+"idealForOptional" = "Ideal For (Optional):";
+"weekOf" = "Week of: ";
