@@ -42,8 +42,8 @@ struct FilterMatches: View {
                                             .background(RoundedRectangle(cornerRadius: 4)
                                                             .strokeBorder(matchesVM.dataFilterGender == gender ? AppColors.accentColor : Color.clear, lineWidth: 1.5)
                                                             .background(matchesVM.dataFilterGender == gender ? .black : AppColors.dataFilterGendersBg)
-                                                            )
-                                            
+                                            )
+                                        
                                     }
                                     Spacer()
                                 }
@@ -63,16 +63,16 @@ struct FilterMatches: View {
                                         
                                         Button {
                                             withAnimation {
-                                                matchesVM.dataFilterCategory = category.id
+                                                matchesVM.dataFilterCategory = category.name
                                             }
                                         } label: {
                                             Text( category.name )
                                                 .font(.custom("times", size: 16))
-                                                .foregroundColor(matchesVM.dataFilterCategory == category.id ? .accentColor : .systemGray3)
+                                                .foregroundColor(matchesVM.dataFilterCategory == category.name ? .accentColor : .systemGray3)
                                                 .padding(.top, 8)
                                         }
                                         
-                                        if matchesVM.dataFilterCategory == category.id {
+                                        if matchesVM.dataFilterCategory == category.name {
                                             Capsule()
                                                 .fill(AppColors.accentColor)
                                                 .frame(width: UIScreen.main.bounds.size.width / 5, height: 2)
@@ -88,20 +88,31 @@ struct FilterMatches: View {
                                 .foregroundColor(.gray)
                                 .padding(.top)
                         }.padding()
-
+                        
                         
                         let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
                         LazyVGrid(columns: columns, alignment: .leading, content: {
-                            ForEach(matchesVM.categoryItems, id: \.id ) { item in
+                            ForEach(matchesVM.categoryItems.filter { matchesVM.dataFilterCategory == NSLocalizedString("all", comment: "") ? true : matchesVM.dataFilterCategory == $0.type}, id: \.id ) { item in
 
                                 Button(action: {
+
+                                    if matchesVM.selectedCategories.contains(item.id) {
+                                        if let index = matchesVM.selectedCategories.firstIndex(of: item.id) {
+                                            matchesVM.selectedCategories.remove(at: index)
+                                        }
+                                    } else {
+                                        matchesVM.selectedCategories.append(item.id)
+                                    }
 
                                 }, label: {
                                     Text( item.name )
                                         .font(.custom("Gilroy-Regular", size: 14))
                                         .padding(.vertical, 6)
                                         .padding(.horizontal)
-                                        .background(AppColors.dataFilterCategoryItemBg)
+                                        .background(RoundedRectangle(cornerRadius: 4)
+                                                        .strokeBorder(matchesVM.selectedCategories.contains(item.id) ? AppColors.accentColor : Color.clear, lineWidth: 1.5)
+                                                        .background(matchesVM.selectedCategories.contains(item.id) ? .black : AppColors.dataFilterCategoryItemBg)
+                                        )
                                         .cornerRadius(5)
                                 })
                             }
@@ -111,20 +122,31 @@ struct FilterMatches: View {
                             Spacer()
                             
                             Button(action: {
+                                // perform api request and close the view
                                 presentationMode.wrappedValue.dismiss()
                             }, label: {
                                 Image("proceed")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 50, height: 50)
-                            })
+                            }).disabled( matchesVM.dataFilterGender.isEmpty)
                         }.padding()
                         
                     }.padding(.top, 1)
                 }
-            
+                
             }.navigationBarTitle("")
             .navigationBarTitleView(MatchesNavBar(title: NSLocalizedString("dataFilters", comment: "")), displayMode: .inline)
+            .navigationBarItems(trailing: Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }, label: {
+                Image("close")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 18, height: 18)
+                    .padding([.leading, .top, .bottom])
+                
+            }))
             .onAppear(perform: {
                 matchesVM.getFilterCategoriesWithItems()
             })

@@ -104,8 +104,14 @@ struct SingleMatch: View {
                         .multilineTextAlignment(.center)
                         .padding(8)
                     
-                    Text( NSLocalizedString("relationshipPersonality", comment: ""))
+                    Text( "\(NSLocalizedString("since1701", comment: "")) \(match.famous_years)")
+                        .foregroundColor(.white)
                         .font(.custom("times", size: 16))
+                        .multilineTextAlignment(.center)
+                        .padding(8)
+                    
+                    Text( NSLocalizedString("relationshipPersonality", comment: ""))
+                        .font(.custom("times", size: 18))
                         .foregroundColor(.white)
                     
                     Text( match.report)
@@ -113,15 +119,13 @@ struct SingleMatch: View {
                         .font(.custom("times-italic", size: 18))
                         .padding(8)
                     
-                    Text( "\(NSLocalizedString("since1701", comment: "")) \(match.famous_years)")
-                        .foregroundColor(.white)
+                    Text( NSLocalizedString("advice", comment: ""))
                         .font(.custom("times", size: 18))
-                        .multilineTextAlignment(.center)
-                        .padding(8)
+                        .foregroundColor(.accentColor)
                     
-                    Text( "\(NSLocalizedString("advice", comment: "")) \(match.advice)" )
+                    Text( match.advice )
                         .foregroundColor(.white)
-                        .font(.custom("times", size: 18))
+                        .font(.custom("times", size: 16))
                         .multilineTextAlignment(.center)
                         .padding(8)
                 }

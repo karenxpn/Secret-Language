@@ -8,6 +8,6 @@
 import Foundation
 struct CategoryItemModel: Identifiable, Codable {
     var id: Int
-    var category: String
+    var type: String
     var name: String
 }

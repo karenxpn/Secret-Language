@@ -23,7 +23,7 @@ class MatchService {
 
 extension MatchService: MatchServiceProtocol {
     func fetchCategories(token: String) -> AnyPublisher<DataResponse<[ConnectionTypeModel], NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)get-categories")!
+        let url = URL(string: "\(Credentials.BASE_URL)interests")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,

@@ -23,9 +23,9 @@ class MatchesViewModel: ObservableObject {
     @Published var dataFilterGenders = ["Male", "Female", "Everyone"]
     @Published var dataFilterCategories = [ConnectionTypeModel]()
     @Published var dataFilterGender: String = ""
-    @Published var dataFilterCategory: Int = 0
-    @Published var selectedCategories = [String]()
-    @Published var categoryItems = [CategoryItemModel]()
+    @Published var dataFilterCategory: String = NSLocalizedString("all", comment: "")
+    @Published var selectedCategories = [Int]()
+    @Published var categoryItems = [CategoryItemModel(id: 1, type: "Romance", name: "work"), CategoryItemModel(id: 2, type: "Business", name: "Work")]
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: MatchServiceProtocol
@@ -53,9 +53,12 @@ class MatchesViewModel: ObservableObject {
         Publishers.Zip(dataManager.fetchCategories(token: token), dataManager.fetchAllCategoryItems(token: token))
             .sink { category, categoryItems in
                 self.loadingFilter = false
-                if category.error == nil && categoryItems.error == nil {
-                    self.categoryItems = categoryItems.value!
+                
+                if category.error == nil {
                     self.dataFilterCategories = [ConnectionTypeModel(id: 0, name: "All", description: "")] + category.value!
+                }
+                if categoryItems.error == nil {
+                    self.categoryItems = categoryItems.value!
                 }
             }.store(in: &cancellableSet)
     }
