@@ -87,8 +87,7 @@ struct FilterMatches: View {
                                 .padding(.top)
                         }.padding()
                         
-                        
-                        let columns: [GridItem] = [ GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+                        let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
                         LazyVGrid(columns: columns, alignment: .leading, content: {
                             ForEach(matchesVM.categoryItems, id: \.self ) { item in
 

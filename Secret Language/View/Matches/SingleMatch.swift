@@ -112,7 +112,7 @@ struct SingleMatch: View {
                     
                     Text( NSLocalizedString("relationshipPersonality", comment: ""))
                         .font(.custom("times", size: 18))
-                        .foregroundColor(.white)
+                        .foregroundColor(.accentColor)
                     
                     Text( match.report)
                         .foregroundColor(.white)

@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct Profile: View {
+    @AppStorage( "token" ) private var token: String = ""
+    
     var body: some View {
-        Text("Profile")
+        Button {
+            self.token = ""
+        } label: {
+            Text( "Log out" )
+                .foregroundColor(.white)
+                .padding()
+        }
+
     }
 }
 

@@ -10,6 +10,7 @@
 		C63C8FB5A81741925F890367 /* Pods_Secret_LanguageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1463E33D33EB9CF8F6687EC0 /* Pods_Secret_LanguageTests.framework */; };
 		F367D6D86DC2C2254AB6F287 /* Pods_Secret_Language.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99836560B2CD5C4DCAFBA777 /* Pods_Secret_Language.framework */; };
 		F9F0370ED83B1C5E52915185 /* Pods_Secret_Language_Secret_LanguageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731E76360732012C1B0620D4 /* Pods_Secret_Language_Secret_LanguageUITests.framework */; };
+		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */; };
 		FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40D2667BBA200BD3838 /* GenderModel.swift */; };
 		FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */; };
@@ -97,6 +98,7 @@
 		96D6A18BE03511218FBB1D7E /* Pods-Secret Language.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Secret Language.release.xcconfig"; path = "Target Support Files/Pods-Secret Language/Pods-Secret Language.release.xcconfig"; sourceTree = "<group>"; };
 		99836560B2CD5C4DCAFBA777 /* Pods_Secret_Language.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Secret_Language.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6F55590BE354F6F63F39112 /* Pods-Secret LanguageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Secret LanguageTests.release.xcconfig"; path = "Target Support Files/Pods-Secret LanguageTests/Pods-Secret LanguageTests.release.xcconfig"; sourceTree = "<group>"; };
+		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTypeModel.swift; sourceTree = "<group>"; };
 		FF58C40D2667BBA200BD3838 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 		FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCheckVerificationCode.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 			children = (
 				FFDB157C2664FDBC00341E8F /* AuthViewModel.swift */,
 				FFE0E41D2678090D008FA78C /* MatchesViewModel.swift */,
+				FF42BD98267B8B1D000DCA6D /* LocationManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				FFDB15A02666571A00341E8F /* OTPTextFieldView.swift in Sources */,
 				FFDB158526653DC500341E8F /* GlobalResponse.swift in Sources */,
 				FFDB157B2664F2C800341E8F /* BirthdayPicker.swift in Sources */,
+				FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */,
 				FFDB1581266522BE00341E8F /* SignIn.swift in Sources */,
 				FFDB158D26655E7800341E8F /* CustomAlert.swift in Sources */,
 				FFCEDDFF267235FB0073BE20 /* Chat.swift in Sources */,
