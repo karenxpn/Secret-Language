@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct SingleMatch: View {
     
+    @EnvironmentObject var matchesVM: MatchesViewModel
     @State var match: MatchViewModel
     var body: some View {
         
@@ -174,10 +175,14 @@ struct SingleMatch: View {
                                 match.x = 0; match.degree = 0;
                             case let x where x > 100:
                                 match.x = 500; match.degree = 12
+                                // swipe right
+                                matchesVM.sendFriendRequest(username: match.username)
                             case (-100)...(-1):
                                 match.x = 0; match.degree = 0;
                             case let x where x < -100:
                                 match.x  = -500; match.degree = -12
+                                matchesVM.removeMatch(username: match.username)
+                                // swipe left
                             default:
                                 match.x = 0;
                         }

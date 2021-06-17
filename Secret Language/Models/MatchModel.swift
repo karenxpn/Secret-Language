@@ -43,6 +43,10 @@ struct MatchViewModel: Identifiable {
         self.match.name
     }
     
+    var username: String {
+        self.match.username
+    }
+    
     var age: Int {
         self.match.age
     }

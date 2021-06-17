@@ -33,6 +33,7 @@ struct Matches: View {
                         
                         ForEach( matchesVM.matches ) { match in
                             SingleMatch(match: match)
+                                .environmentObject( matchesVM )
                                 .padding(.horizontal, 8)
                         }
                     }
