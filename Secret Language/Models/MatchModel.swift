@@ -15,7 +15,7 @@ struct MatchModel: Identifiable, Codable {
     var age: Int
     var sln: String
     var sln_description: String
-
+    
     var report: String
     var advice: String
     var ideal_for: String
@@ -64,7 +64,8 @@ struct MatchViewModel: Identifiable {
     }
     
     var report: String {
-        self.match.report
+        self.match.report.replacingOccurrences(of: "\\n", with: "\n")
+            .replacingOccurrences(of: "\\r", with: "\r")
     }
     
     var famous_years: String {
@@ -73,6 +74,8 @@ struct MatchViewModel: Identifiable {
     
     var advice: String {
         self.match.advice
+            .replacingOccurrences(of: "\\n", with: "\n")
+            .replacingOccurrences(of: "\\r", with: "\r")
     }
     
     var partnerBirthday: String {

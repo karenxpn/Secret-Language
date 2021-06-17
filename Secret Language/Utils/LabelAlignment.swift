@@ -18,7 +18,7 @@ struct LabelAlignment: UIViewRepresentable {
         label.textAlignment = NSTextAlignment(rawValue: textAlignmentStyle.rawValue)!
         label.numberOfLines = 0
         label.preferredMaxLayoutWidth = width
-        label.font = UIFont(name: "times", size: 18)
+        label.font = UIFont(name: "times", size: 16)
         label.setContentHuggingPriority(.required, for: .horizontal)
         label.setContentHuggingPriority(.required, for: .vertical)
 
