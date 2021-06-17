@@ -114,10 +114,8 @@ struct SingleMatch: View {
                         .font(.custom("times", size: 18))
                         .foregroundColor(.accentColor)
                     
-                    Text( match.report)
-                        .foregroundColor(.white)
-                        .font(.custom("times-italic", size: 18))
-                        .padding(8)
+                    LabelAlignment(text: match.report, textAlignmentStyle: .justified, width: UIScreen.main.bounds.width - 30)
+                    
                     
                     Text( NSLocalizedString("advice", comment: ""))
                         .font(.custom("times", size: 18))

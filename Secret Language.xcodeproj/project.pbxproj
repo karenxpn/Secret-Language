@@ -12,6 +12,7 @@
 		F9F0370ED83B1C5E52915185 /* Pods_Secret_Language_Secret_LanguageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 731E76360732012C1B0620D4 /* Pods_Secret_Language_Secret_LanguageUITests.framework */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
+		FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */; };
 		FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */; };
 		FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40D2667BBA200BD3838 /* GenderModel.swift */; };
 		FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */; };
@@ -101,6 +102,7 @@
 		C6F55590BE354F6F63F39112 /* Pods-Secret LanguageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Secret LanguageTests.release.xcconfig"; path = "Target Support Files/Pods-Secret LanguageTests/Pods-Secret LanguageTests.release.xcconfig"; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignment.swift; sourceTree = "<group>"; };
 		FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTypeModel.swift; sourceTree = "<group>"; };
 		FF58C40D2667BBA200BD3838 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 		FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCheckVerificationCode.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			children = (
 				FFDB157E26650A0E00341E8F /* Extensions.swift */,
 				FFDB158E2665607000341E8F /* AppColors.swift */,
+				FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,
 				FFCEDDF3266FB0350073BE20 /* AuthResponse.swift in Sources */,
 				FFDB158326653D6E00341E8F /* AuthService.swift in Sources */,
+				FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */,
 				FFDB158B26655DD500341E8F /* CheckVerificationCode.swift in Sources */,
 				FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */,
 				FFCEDDFC267235D10073BE20 /* Matches.swift in Sources */,
