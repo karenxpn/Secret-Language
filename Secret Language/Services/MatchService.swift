@@ -42,7 +42,7 @@ extension MatchService: MatchServiceProtocol {
     }
     
     func fetchAllCategoryItems(token: String) -> AnyPublisher<DataResponse<[CategoryItemModel], NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)get-category-items")!
+        let url = URL(string: "\(Credentials.BASE_URL)relationship/getIdealForTags")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,

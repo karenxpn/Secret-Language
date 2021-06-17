@@ -24,8 +24,8 @@ class MatchesViewModel: ObservableObject {
     @Published var dataFilterCategories = [ConnectionTypeModel]()
     @Published var dataFilterGender: String = ""
     @Published var dataFilterCategory: String = NSLocalizedString("all", comment: "")
-    @Published var selectedCategories = [Int]()
-    @Published var categoryItems = [CategoryItemModel(id: 1, type: "Romance", name: "work"), CategoryItemModel(id: 2, type: "Business", name: "Work")]
+    @Published var selectedCategories = [String]()
+    @Published var categoryItems = [CategoryItemModel]()
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: MatchServiceProtocol

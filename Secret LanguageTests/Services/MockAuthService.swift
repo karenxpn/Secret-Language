@@ -16,7 +16,7 @@ class MockAuthService: AuthServiceProtocol {
     let networkError = NetworkError(initialError: AFError.explicitlyCancelled, backendError: nil)
     let genders = [GenderModel(id: 1, gender_name: "Male"), GenderModel(id: 2, gender_name: "Female")]
     let connectionTypes = [ConnectionTypeModel(id: 1, name: "Business", description: "desctiption")]
-    let token = AuthResponse(token: "")
+    let tokenResponse = AuthResponse(token: "")
     
     var fetchConnectionTypesError: Bool = false
     var fetchAllGendersError: Bool = false
@@ -35,11 +35,11 @@ class MockAuthService: AuthServiceProtocol {
         return publisher.eraseToAnyPublisher()
     }
     
-    func signUp(phoneNumber: String, birthday: String, fullName: String, gender: Int, connectionType: Int) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
+    func signUp(token: String, fullName: String, gender: Int, connectionType: Int) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
         var result: Result<AuthResponse, NetworkError>
         
         if signupError  { result = Result<AuthResponse, NetworkError>.failure(networkError)}
-        else            { result = Result<AuthResponse, NetworkError>.success(token)}
+        else            { result = Result<AuthResponse, NetworkError>.success(tokenResponse)}
         
         let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
         let publisher = CurrentValueSubject<DataResponse<AuthResponse, NetworkError>, Never>(response)
@@ -61,7 +61,7 @@ class MockAuthService: AuthServiceProtocol {
         var result: Result<AuthResponse, NetworkError>
         
         if checkSignInVerificationCodeError { result = Result<AuthResponse, NetworkError>.failure(networkError)}
-        else                                { result = Result<AuthResponse, NetworkError>.success(token)}
+        else                                { result = Result<AuthResponse, NetworkError>.success(tokenResponse)}
         
         let dataResponse = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
         let publisher = CurrentValueSubject<DataResponse<AuthResponse, NetworkError>, Never>(dataResponse)
@@ -101,14 +101,14 @@ class MockAuthService: AuthServiceProtocol {
         return publisher.eraseToAnyPublisher()
     }
     
-    func checkVerificationCode(phoneNumber: String, code: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        var result: Result<GlobalResponse, NetworkError>
+    func checkVerificationCode(phoneNumber: String, code: String) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
+        var result: Result<AuthResponse, NetworkError>
         
-        if checkVerificationError   { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
-        else                        { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
+        if checkVerificationError   { result = Result<AuthResponse, NetworkError>.failure(networkError)}
+        else                        { result = Result<AuthResponse, NetworkError>.success(tokenResponse)}
         
         let dataResponse = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
-        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(dataResponse)
+        let publisher = CurrentValueSubject<DataResponse<AuthResponse, NetworkError>, Never>(dataResponse)
         return publisher.eraseToAnyPublisher()
     }
 }

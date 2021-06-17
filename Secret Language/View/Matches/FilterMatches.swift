@@ -43,7 +43,6 @@ struct FilterMatches: View {
                                                             .strokeBorder(matchesVM.dataFilterGender == gender ? AppColors.accentColor : Color.clear, lineWidth: 1.5)
                                                             .background(matchesVM.dataFilterGender == gender ? .black : AppColors.dataFilterGendersBg)
                                             )
-                                        
                                     }
                                     Spacer()
                                 }
@@ -82,7 +81,6 @@ struct FilterMatches: View {
                                 }
                             }
                             
-                            
                             Text( NSLocalizedString("idealForOptional", comment: ""))
                                 .font(.custom("times", size: 16))
                                 .foregroundColor(.gray)
@@ -90,28 +88,28 @@ struct FilterMatches: View {
                         }.padding()
                         
                         
-                        let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
+                        let columns: [GridItem] = [ GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
                         LazyVGrid(columns: columns, alignment: .leading, content: {
-                            ForEach(matchesVM.categoryItems.filter { matchesVM.dataFilterCategory == NSLocalizedString("all", comment: "") ? true : matchesVM.dataFilterCategory == $0.type}, id: \.id ) { item in
+                            ForEach(matchesVM.categoryItems, id: \.self ) { item in
 
                                 Button(action: {
 
-                                    if matchesVM.selectedCategories.contains(item.id) {
-                                        if let index = matchesVM.selectedCategories.firstIndex(of: item.id) {
+                                    if matchesVM.selectedCategories.contains(item.name) {
+                                        if let index = matchesVM.selectedCategories.firstIndex(of: item.name) {
                                             matchesVM.selectedCategories.remove(at: index)
                                         }
                                     } else {
-                                        matchesVM.selectedCategories.append(item.id)
+                                        matchesVM.selectedCategories.append(item.name)
                                     }
 
                                 }, label: {
                                     Text( item.name )
                                         .font(.custom("Gilroy-Regular", size: 14))
                                         .padding(.vertical, 6)
-                                        .padding(.horizontal)
+                                        .padding(.horizontal, 10)
                                         .background(RoundedRectangle(cornerRadius: 4)
-                                                        .strokeBorder(matchesVM.selectedCategories.contains(item.id) ? AppColors.accentColor : Color.clear, lineWidth: 1.5)
-                                                        .background(matchesVM.selectedCategories.contains(item.id) ? .black : AppColors.dataFilterCategoryItemBg)
+                                                        .strokeBorder(matchesVM.selectedCategories.contains(item.name) ? AppColors.accentColor : Color.clear, lineWidth: 1.5)
+                                                        .background(matchesVM.selectedCategories.contains(item.name) ? .black : AppColors.dataFilterCategoryItemBg)
                                         )
                                         .cornerRadius(5)
                                 })

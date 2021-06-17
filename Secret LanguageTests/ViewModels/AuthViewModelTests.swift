@@ -10,7 +10,6 @@ import XCTest
 
 class AuthViewModelTests: XCTestCase {
 
-    
     var service: MockAuthService!
     var viewModel: AuthViewModel!
     

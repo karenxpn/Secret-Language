@@ -6,8 +6,6 @@
 //
 
 import Foundation
-struct CategoryItemModel: Identifiable, Codable {
-    var id: Int
-    var type: String
+struct CategoryItemModel: Codable, Hashable{
     var name: String
 }
