@@ -62,4 +62,11 @@ class MatchesViewModel: ObservableObject {
                 }
             }.store(in: &cancellableSet)
     }
+    
+    func sendLocation(location: Location) {
+        dataManager.sendLocation(token: token, location: location)
+            .sink { response in
+                print(response)
+            }.store(in: &cancellableSet)
+    }
 }

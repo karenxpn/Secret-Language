@@ -6,12 +6,6 @@
 //
 
 import SwiftUI
-
-struct Location: Codable, Equatable {
-    var userLatitude: String
-    var userLongitude: String
-}
-
 struct Matches: View {
     
     @State private var showFilter: Bool = false
@@ -52,9 +46,15 @@ struct Matches: View {
             .onAppear(perform: {
                 matchesVM.getMatches()
                 
+                if userLocation != nil {
+                    matchesVM.sendLocation(location: userLocation!)
+                }
             }).onChange(of: locationManager.lastLocation, perform: { value in
-                userLocation = Location(userLatitude: "\(locationManager.lastLocation?.coordinate.latitude ?? 0)", userLongitude: "\(locationManager.lastLocation?.coordinate.longitude ?? 0)")
-                print(userLocation)
+                userLocation = Location(lat: locationManager.lastLocation?.coordinate.latitude ?? 0.0, lng: locationManager.lastLocation?.coordinate.longitude ?? 0.0)
+                
+                if userLocation != nil {
+                    matchesVM.sendLocation(location: userLocation!)
+                }
             })
             .navigationBarTitle( "" )
             .navigationBarTitleView(MatchesNavBar(title: NSLocalizedString("matches", comment: "")), displayMode: .inline)
