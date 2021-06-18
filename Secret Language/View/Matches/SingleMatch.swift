@@ -47,9 +47,7 @@ struct SingleMatch: View {
                     .foregroundColor(.white)
                     .font(.title2)
                     .padding(.bottom, 8)
-                
-                // birthdays, etc
-                
+                                
                 HStack {
                     VStack( alignment: .leading) {
                         Text( match.myBirthday )
@@ -90,7 +88,6 @@ struct SingleMatch: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 150, height: 150)
-                    
                 
                 VStack {
                     Text( match.title )
@@ -175,14 +172,12 @@ struct SingleMatch: View {
                                 match.x = 0; match.degree = 0;
                             case let x where x > 100:
                                 match.x = 500; match.degree = 12
-                                // swipe right
                                 matchesVM.sendFriendRequest(username: match.username)
                             case (-100)...(-1):
                                 match.x = 0; match.degree = 0;
                             case let x where x < -100:
                                 match.x  = -500; match.degree = -12
                                 matchesVM.removeMatch(username: match.username)
-                                // swipe left
                             default:
                                 match.x = 0;
                         }

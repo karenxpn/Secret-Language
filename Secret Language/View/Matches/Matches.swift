@@ -47,12 +47,9 @@ struct Matches: View {
             .onAppear(perform: {
                 matchesVM.getMatches()
                 
-                if userLocation != nil {
-                    matchesVM.sendLocation(location: userLocation!)
-                }
-            }).onChange(of: locationManager.lastLocation, perform: { value in
-                userLocation = Location(lat: locationManager.lastLocation?.coordinate.latitude ?? 0.0, lng: locationManager.lastLocation?.coordinate.longitude ?? 0.0)
-                
+                userLocation = Location(lat: locationManager.lastLocation?.coordinate.latitude ?? 0.0,
+                                        lng: locationManager.lastLocation?.coordinate.longitude ?? 0.0)
+
                 if userLocation != nil {
                     matchesVM.sendLocation(location: userLocation!)
                 }
