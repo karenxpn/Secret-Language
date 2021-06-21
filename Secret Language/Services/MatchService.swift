@@ -145,5 +145,5 @@ extension MatchService: MatchServiceProtocol {
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
 
-    }    
+    }
 }

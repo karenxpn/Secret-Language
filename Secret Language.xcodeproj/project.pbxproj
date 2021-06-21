@@ -16,6 +16,7 @@
 		FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */; };
 		FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40D2667BBA200BD3838 /* GenderModel.swift */; };
 		FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */; };
+		FF99A0322680BD7200F234CD /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0312680BD7200F234CD /* FriendsViewModel.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -31,7 +32,7 @@
 		FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDDF626722A050073BE20 /* CustomTabBar.swift */; };
 		FFCEDDFC267235D10073BE20 /* Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDDFB267235D10073BE20 /* Matches.swift */; };
 		FFCEDDFF267235FB0073BE20 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDDFE267235FB0073BE20 /* Chat.swift */; };
-		FFCEDE02267236200073BE20 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDE01267236200073BE20 /* Profile.swift */; };
+		FFCEDE02267236200073BE20 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDE01267236200073BE20 /* Friends.swift */; };
 		FFCEDE05267236500073BE20 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDE04267236500073BE20 /* Search.swift */; };
 		FFCEDE082672367B0073BE20 /* Reports.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDE072672367B0073BE20 /* Reports.swift */; };
 		FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB156A2664E97E00341E8F /* Introduction.swift */; };
@@ -106,6 +107,7 @@
 		FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTypeModel.swift; sourceTree = "<group>"; };
 		FF58C40D2667BBA200BD3838 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 		FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCheckVerificationCode.swift; sourceTree = "<group>"; };
+		FF99A0312680BD7200F234CD /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -127,7 +129,7 @@
 		FFCEDDF626722A050073BE20 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		FFCEDDFB267235D10073BE20 /* Matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matches.swift; sourceTree = "<group>"; };
 		FFCEDDFE267235FB0073BE20 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
-		FFCEDE01267236200073BE20 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		FFCEDE01267236200073BE20 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		FFCEDE04267236500073BE20 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		FFCEDE072672367B0073BE20 /* Reports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reports.swift; sourceTree = "<group>"; };
 		FFDB156A2664E97E00341E8F /* Introduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Introduction.swift; sourceTree = "<group>"; };
@@ -318,7 +320,7 @@
 			children = (
 				FFCEDE06267236700073BE20 /* Reports */,
 				FFCEDE03267236440073BE20 /* Search */,
-				FFCEDE00267236150073BE20 /* Profile */,
+				FFCEDE00267236150073BE20 /* Friends */,
 				FFCEDDFD267235E90073BE20 /* Chats */,
 				FFCEDDFA267235B90073BE20 /* Matches */,
 				FFBEA6AA2664E6180033B2ED /* Authentication */,
@@ -335,6 +337,7 @@
 				FFDB157C2664FDBC00341E8F /* AuthViewModel.swift */,
 				FFE0E41D2678090D008FA78C /* MatchesViewModel.swift */,
 				FF42BD98267B8B1D000DCA6D /* LocationManager.swift */,
+				FF99A0312680BD7200F234CD /* FriendsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -393,12 +396,12 @@
 			path = Chats;
 			sourceTree = "<group>";
 		};
-		FFCEDE00267236150073BE20 /* Profile */ = {
+		FFCEDE00267236150073BE20 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
-				FFCEDE01267236200073BE20 /* Profile.swift */,
+				FFCEDE01267236200073BE20 /* Friends.swift */,
 			);
-			path = Profile;
+			path = Friends;
 			sourceTree = "<group>";
 		};
 		FFCEDE03267236440073BE20 /* Search */ = {
@@ -718,6 +721,7 @@
 				FFCEDDEF266E491F0073BE20 /* AuthNavTitle.swift in Sources */,
 				FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */,
 				FFDB15752664EDFC00341E8F /* SignUp.swift in Sources */,
+				FF99A0322680BD7200F234CD /* FriendsViewModel.swift in Sources */,
 				FFDB15AD2666C03F00341E8F /* ConnectionType.swift in Sources */,
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,
 				FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */,
@@ -725,7 +729,7 @@
 				FFCEDDF1266E642C0073BE20 /* SignUpRequest.swift in Sources */,
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
-				FFCEDE02267236200073BE20 /* Profile.swift in Sources */,
+				FFCEDE02267236200073BE20 /* Friends.swift in Sources */,
 				FFDB15A926669B9400341E8F /* TopGender.swift in Sources */,
 				FFCEDE05267236500073BE20 /* Search.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,
