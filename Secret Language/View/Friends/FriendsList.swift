@@ -15,14 +15,18 @@ struct FriendsList: View {
         ZStack {
             Background()
             
-            ScrollView {
-                LazyVStack {
-                    ForEach(friendsVM.friendsList, id: \.id ) { friend in
-                        FriendListCell(friend: friend)
-                            .environmentObject(friendsVM)
-                    }
-                }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
-            }.padding(.top, 1)
+            if friendsVM.loadingFriends {
+                ProgressView()
+            } else {
+                ScrollView {
+                    LazyVStack {
+                        ForEach(friendsVM.friendsList, id: \.id ) { friend in
+                            FriendListCell(friend: friend)
+                                .environmentObject(friendsVM)
+                        }
+                    }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                }.padding(.top, 1)
+            }
         }.navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("myFriends", comment: "")), displayMode: .inline)
         .onAppear(perform: {

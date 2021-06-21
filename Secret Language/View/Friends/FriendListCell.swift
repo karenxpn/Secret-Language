@@ -47,14 +47,6 @@ struct FriendListCell: View {
             }, label: {
                 Text("👋🏻")
                     .font(.title)
-//                    .foregroundColor( .accentColor )
-//                    .font(.custom("Gilroy-Regular", size: 14))
-//                    .padding(.vertical, 8)
-//                    .padding(.horizontal, 18)
-//                    .background(RoundedRectangle(cornerRadius: 4)
-//                                    .strokeBorder(AppColors.accentColor, lineWidth: 1.5)
-//                                    .background(AppColors.dataFilterGendersBg)
-//                )
             })
         }.padding()
     }

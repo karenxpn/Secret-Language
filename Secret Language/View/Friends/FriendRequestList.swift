@@ -21,15 +21,19 @@ struct FriendRequestList: View {
         ZStack {
             Background()
             
-            List {
-                ForEach(0..<friendsVM.requestsList.count, id: \.self ) { index in
-                    FriendRequestCell(request: friendsVM.requestsList[index])
-                        .environmentObject(friendsVM)
-                }.onDelete(perform: { indexSet in
-                    
-                }).listRowBackground(Color.clear)
-                .listRowInsets(EdgeInsets())
-            }.padding(.top, 1)
+            if friendsVM.loadingRequests {
+                ProgressView()
+            } else {
+                List {
+                    ForEach(0..<friendsVM.requestsList.count, id: \.self ) { index in
+                        FriendRequestCell(request: friendsVM.requestsList[index])
+                            .environmentObject(friendsVM)
+                    }.onDelete(perform: { indexSet in
+                        
+                    }).listRowBackground(Color.clear)
+                    .listRowInsets(EdgeInsets())
+                }.padding(.top, 1)
+            }
         }.navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("myRequests", comment: "")), displayMode: .inline)
         .onAppear(perform: {

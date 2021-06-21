@@ -23,6 +23,7 @@
 		FF99A03A2680C6CE00F234CD /* FriendListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0392680C6CE00F234CD /* FriendListCell.swift */; };
 		FF99A03C2680E98B00F234CD /* FriendRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A03B2680E98B00F234CD /* FriendRequestList.swift */; };
 		FF99A03E2680E9A000F234CD /* FriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A03D2680E9A000F234CD /* FriendRequestCell.swift */; };
+		FF99A0402681114400F234CD /* FriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A03F2681114400F234CD /* FriendsService.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -120,6 +121,7 @@
 		FF99A0392680C6CE00F234CD /* FriendListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListCell.swift; sourceTree = "<group>"; };
 		FF99A03B2680E98B00F234CD /* FriendRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestList.swift; sourceTree = "<group>"; };
 		FF99A03D2680E9A000F234CD /* FriendRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestCell.swift; sourceTree = "<group>"; };
+		FF99A03F2681114400F234CD /* FriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsService.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			children = (
 				FFDB158226653D6E00341E8F /* AuthService.swift */,
 				FFE0E41B2678082B008FA78C /* MatchService.swift */,
+				FF99A03F2681114400F234CD /* FriendsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,
 				FFE0E4142677E6F6008FA78C /* MatchModel.swift in Sources */,
 				FF99A0342680C5C000F234CD /* UserPreviewModel.swift in Sources */,
+				FF99A0402681114400F234CD /* FriendsService.swift in Sources */,
 				FFDB15AB26669F7C00341E8F /* MoreGenders.swift in Sources */,
 				FFCEDDEF266E491F0073BE20 /* AuthNavTitle.swift in Sources */,
 				FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */,
