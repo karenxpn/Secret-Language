@@ -26,22 +26,22 @@ struct FilterMatches: View {
                         
                         VStack( alignment: .leading) {
                             HStack {
-                                ForEach( matchesVM.dataFilterGenders, id: \.self ) { gender in
+                                ForEach( matchesVM.dataFilterGenders, id: \.id ) { gender in
                                     
                                     Spacer()
                                     Button {
                                         withAnimation {
-                                            matchesVM.dataFilterGender = gender
+                                            matchesVM.dataFilterGender = gender.id
                                         }
                                     } label: {
-                                        Text( gender )
+                                        Text( gender.gender_name )
                                             .font(.custom("times", size: 16))
-                                            .foregroundColor(matchesVM.dataFilterGender == gender ? .accentColor : .systemGray3)
+                                            .foregroundColor(matchesVM.dataFilterGender == gender.id ? .accentColor : .systemGray3)
                                             .padding(.vertical, 8)
                                             .padding(.horizontal, 18)
                                             .background(RoundedRectangle(cornerRadius: 4)
-                                                            .strokeBorder(matchesVM.dataFilterGender == gender ? AppColors.accentColor : Color.clear, lineWidth: 1.5)
-                                                            .background(matchesVM.dataFilterGender == gender ? .black : AppColors.dataFilterGendersBg)
+                                                            .strokeBorder(matchesVM.dataFilterGender == gender.id ? AppColors.accentColor : Color.clear, lineWidth: 1.5)
+                                                            .background(matchesVM.dataFilterGender == gender.id ? .black : AppColors.dataFilterGendersBg)
                                             )
                                     }
                                     Spacer()
@@ -62,16 +62,16 @@ struct FilterMatches: View {
                                         
                                         Button {
                                             withAnimation {
-                                                matchesVM.dataFilterCategory = category.name
+                                                matchesVM.dataFilterCategory = category.id
                                             }
                                         } label: {
                                             Text( category.name )
                                                 .font(.custom("times", size: 16))
-                                                .foregroundColor(matchesVM.dataFilterCategory == category.name ? .accentColor : .systemGray3)
+                                                .foregroundColor(matchesVM.dataFilterCategory == category.id ? .accentColor : .systemGray3)
                                                 .padding(.top, 8)
                                         }
                                         
-                                        if matchesVM.dataFilterCategory == category.name {
+                                        if matchesVM.dataFilterCategory == category.id {
                                             Capsule()
                                                 .fill(AppColors.accentColor)
                                                 .frame(width: UIScreen.main.bounds.size.width / 5, height: 2)
@@ -120,13 +120,14 @@ struct FilterMatches: View {
                             
                             Button(action: {
                                 // perform api request and close the view
+                                matchesVM.getMatches()
                                 presentationMode.wrappedValue.dismiss()
                             }, label: {
                                 Image("proceed")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 50, height: 50)
-                            }).disabled( matchesVM.dataFilterGender.isEmpty)
+                            })
                         }.padding()
                         
                     }.padding(.top, 1)

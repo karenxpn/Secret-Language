@@ -64,11 +64,7 @@ struct Matches: View {
                     .frame(width: 20, height: 20)
                     .padding([.leading, .top, .bottom])
             }))
-            .fullScreenCover(isPresented: $showFilter, onDismiss: {
-                print( "Dismissed" )
-                matchesVM.getMatches()
-                // reload searched on dismiss
-            }, content: {
+            .fullScreenCover(isPresented: $showFilter, content: {
                 FilterMatches()
                     .environmentObject(matchesVM)
             })

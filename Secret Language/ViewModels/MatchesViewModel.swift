@@ -20,10 +20,12 @@ class MatchesViewModel: ObservableObject {
     
     @Published var loadingFilter: Bool = false
     
-    @Published var dataFilterGenders = ["Male", "Female", "Everyone"]
+    @Published var dataFilterGenders = [GenderModel(id: 1, gender_name: "Male"),
+                                        GenderModel(id: 2, gender_name: "Female"),
+                                        GenderModel(id: 0, gender_name: "Everyone")]
     @Published var dataFilterCategories = [ConnectionTypeModel]()
-    @Published var dataFilterGender: String = ""
-    @Published var dataFilterCategory: String = NSLocalizedString("all", comment: "")
+    @Published var dataFilterGender: Int = 0
+    @Published var dataFilterCategory: Int = 0
     @Published var selectedCategories = [String]()
     @Published var categoryItems = [CategoryItemModel]()
     
@@ -36,7 +38,7 @@ class MatchesViewModel: ObservableObject {
     
     func getMatches() {
         loadingMatches = true
-        dataManager.fetchMatches(token: token)
+        dataManager.fetchMatches(token: token, params: GetMatchesRequest(gender: dataFilterGender, interestedIn: dataFilterCategory, idealFor: selectedCategories))
             .sink { response in
                 self.loadingMatches = false
                 if response.error != nil {

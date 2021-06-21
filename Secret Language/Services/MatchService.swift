@@ -10,7 +10,7 @@ import Alamofire
 import Combine
 
 protocol MatchServiceProtocol {
-    func fetchMatches( token: String ) -> AnyPublisher<DataResponse<[MatchModel], NetworkError>, Never>
+    func fetchMatches( token: String, params: GetMatchesRequest ) -> AnyPublisher<DataResponse<[MatchModel], NetworkError>, Never>
     func fetchCategories( token: String ) -> AnyPublisher<DataResponse<[ConnectionTypeModel], NetworkError>, Never>
     func fetchAllCategoryItems( token: String ) -> AnyPublisher<DataResponse<[CategoryItemModel], NetworkError>, Never>
     func sendLocation( token: String, location: Location) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
@@ -127,12 +127,14 @@ extension MatchService: MatchServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func fetchMatches(token: String) -> AnyPublisher<DataResponse<[MatchModel], NetworkError>, Never> {
+    func fetchMatches(token: String, params: GetMatchesRequest) -> AnyPublisher<DataResponse<[MatchModel], NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/searchUsers")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
-                          method: .get,
+                          method: .post,
+                          parameters: params,
+                          encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
             .publishDecodable(type: [MatchModel].self)
