@@ -25,7 +25,9 @@ struct FriendRequestList: View {
                 ForEach(0..<friendsVM.requestsList.count, id: \.self ) { index in
                     FriendRequestCell(request: friendsVM.requestsList[index])
                         .environmentObject(friendsVM)
-                }.listRowBackground(Color.clear)
+                }.onDelete(perform: { indexSet in
+                    
+                }).listRowBackground(Color.clear)
                 .listRowInsets(EdgeInsets())
             }.padding(.top, 1)
         }.navigationBarTitle("")

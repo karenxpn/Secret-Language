@@ -79,7 +79,7 @@ struct Friends: View {
                             
                             Spacer()
                             
-                            NavigationLink( destination: Text("Requests"),
+                            NavigationLink( destination: FriendRequestList().environmentObject(friendsVM),
                                 label: {
                                     VStack {
                                         Text( "\(friendsVM.requestsCount)" )
