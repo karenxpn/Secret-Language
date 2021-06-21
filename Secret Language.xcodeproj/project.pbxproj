@@ -17,6 +17,12 @@
 		FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40D2667BBA200BD3838 /* GenderModel.swift */; };
 		FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */; };
 		FF99A0322680BD7200F234CD /* FriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0312680BD7200F234CD /* FriendsViewModel.swift */; };
+		FF99A0342680C5C000F234CD /* UserPreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0332680C5C000F234CD /* UserPreviewModel.swift */; };
+		FF99A0362680C61C00F234CD /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0352680C61C00F234CD /* FriendsList.swift */; };
+		FF99A0382680C65300F234CD /* FriendsNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0372680C65300F234CD /* FriendsNavBar.swift */; };
+		FF99A03A2680C6CE00F234CD /* FriendListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0392680C6CE00F234CD /* FriendListCell.swift */; };
+		FF99A03C2680E98B00F234CD /* FriendRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A03B2680E98B00F234CD /* FriendRequestList.swift */; };
+		FF99A03E2680E9A000F234CD /* FriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A03D2680E9A000F234CD /* FriendRequestCell.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -108,6 +114,12 @@
 		FF58C40D2667BBA200BD3838 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 		FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCheckVerificationCode.swift; sourceTree = "<group>"; };
 		FF99A0312680BD7200F234CD /* FriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModel.swift; sourceTree = "<group>"; };
+		FF99A0332680C5C000F234CD /* UserPreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewModel.swift; sourceTree = "<group>"; };
+		FF99A0352680C61C00F234CD /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
+		FF99A0372680C65300F234CD /* FriendsNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsNavBar.swift; sourceTree = "<group>"; };
+		FF99A0392680C6CE00F234CD /* FriendListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListCell.swift; sourceTree = "<group>"; };
+		FF99A03B2680E98B00F234CD /* FriendRequestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestList.swift; sourceTree = "<group>"; };
+		FF99A03D2680E9A000F234CD /* FriendRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestCell.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -363,6 +375,7 @@
 				FFE0E4132677E6F6008FA78C /* MatchModel.swift */,
 				FFE0E42726794F97008FA78C /* CategoryItemModel.swift */,
 				FF42BD9A267BCE1F000DCA6D /* Location.swift */,
+				FF99A0332680C5C000F234CD /* UserPreviewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -400,6 +413,11 @@
 			isa = PBXGroup;
 			children = (
 				FFCEDE01267236200073BE20 /* Friends.swift */,
+				FF99A0352680C61C00F234CD /* FriendsList.swift */,
+				FF99A0392680C6CE00F234CD /* FriendListCell.swift */,
+				FF99A03B2680E98B00F234CD /* FriendRequestList.swift */,
+				FF99A03D2680E9A000F234CD /* FriendRequestCell.swift */,
+				FF99A0372680C65300F234CD /* FriendsNavBar.swift */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -709,6 +727,7 @@
 			files = (
 				FFDB15A02666571A00341E8F /* OTPTextFieldView.swift in Sources */,
 				FFDB158526653DC500341E8F /* GlobalResponse.swift in Sources */,
+				FF99A03C2680E98B00F234CD /* FriendRequestList.swift in Sources */,
 				FFDB157B2664F2C800341E8F /* BirthdayPicker.swift in Sources */,
 				FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */,
 				FFDB1581266522BE00341E8F /* SignIn.swift in Sources */,
@@ -717,6 +736,7 @@
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,
 				FFE0E4142677E6F6008FA78C /* MatchModel.swift in Sources */,
+				FF99A0342680C5C000F234CD /* UserPreviewModel.swift in Sources */,
 				FFDB15AB26669F7C00341E8F /* MoreGenders.swift in Sources */,
 				FFCEDDEF266E491F0073BE20 /* AuthNavTitle.swift in Sources */,
 				FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */,
@@ -732,15 +752,18 @@
 				FFCEDE02267236200073BE20 /* Friends.swift in Sources */,
 				FFDB15A926669B9400341E8F /* TopGender.swift in Sources */,
 				FFCEDE05267236500073BE20 /* Search.swift in Sources */,
+				FF99A0382680C65300F234CD /* FriendsNavBar.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,
 				FFCEDDF3266FB0350073BE20 /* AuthResponse.swift in Sources */,
 				FFDB158326653D6E00341E8F /* AuthService.swift in Sources */,
+				FF99A03E2680E9A000F234CD /* FriendRequestCell.swift in Sources */,
 				FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */,
 				FFDB158B26655DD500341E8F /* CheckVerificationCode.swift in Sources */,
 				FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */,
 				FFCEDDFC267235D10073BE20 /* Matches.swift in Sources */,
 				FFE0E4162677F97F008FA78C /* FilterMatches.swift in Sources */,
 				FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */,
+				FF99A0362680C61C00F234CD /* FriendsList.swift in Sources */,
 				FFDB15A726669AA000341E8F /* ChooseGender.swift in Sources */,
 				FFE0E41E2678090D008FA78C /* MatchesViewModel.swift in Sources */,
 				FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */,
@@ -749,6 +772,7 @@
 				FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */,
 				FFE0E41C2678082B008FA78C /* MatchService.swift in Sources */,
 				FFCEDE082672367B0073BE20 /* Reports.swift in Sources */,
+				FF99A03A2680C6CE00F234CD /* FriendListCell.swift in Sources */,
 				FFDB15772664EE9800341E8F /* Background.swift in Sources */,
 				FFE0E4122677E5DC008FA78C /* SingleMatch.swift in Sources */,
 				FFE0E42826794F97008FA78C /* CategoryItemModel.swift in Sources */,

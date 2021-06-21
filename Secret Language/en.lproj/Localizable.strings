@@ -58,3 +58,6 @@
 "friends" = "Friends";
 "pending" = "Pending";
 "requests" = "Requests";
+"myRequests" = "My Requests";
+"myFriends" = "My Friends";
+"accept" = "Accept";
