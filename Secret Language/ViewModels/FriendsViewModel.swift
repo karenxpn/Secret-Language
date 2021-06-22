@@ -14,9 +14,9 @@ class FriendsViewModel: ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     
     @Published var searchText: String = ""
-    @Published var friendsCount: Int = 22
-    @Published var pendingCount: Int = 45
-    @Published var requestsCount: Int = 3
+    @Published var friendsCount: Int = 0
+    @Published var pendingCount: Int = 0
+    @Published var requestsCount: Int = 0
     
     @Published var loading: Bool = false
     @Published var showAlert: Bool = false

@@ -18,7 +18,9 @@ struct Friends: View {
             ZStack {
                 Background()
                 
-                
+                if friendsVM.loading {
+                    ProgressView()
+                } else {
                     VStack( alignment: .leading, spacing: 20) {
                         Text( NSLocalizedString("letsFindFriends", comment: ""))
                             .foregroundColor(.white)
@@ -35,7 +37,7 @@ struct Friends: View {
                             HStack {
                                 
                                 Image("searchIcon")
-
+                                
                                 TextField(NSLocalizedString("search", comment: ""), text: $friendsVM.searchText)
                                     .padding(.vertical, 8)
                                     .padding(.horizontal)
@@ -50,60 +52,56 @@ struct Friends: View {
                             Spacer()
                         }
                         
-                        if friendsVM.loading {
-                            ProgressView()
-                        } else {
-                            HStack {
-                                
-                                Spacer()
-                                
-                                NavigationLink( destination: FriendsList(), label: {
-                                        VStack {
-                                            Text( "\(friendsVM.friendsCount)" )
-                                                .foregroundColor(.white)
-                                                .font(.custom("Avenir", size: 20))
-                                                .fontWeight(.bold)
-                                            
-                                            Text( NSLocalizedString("friends", comment: ""))
-                                                .foregroundColor(.white)
-                                                .font(.custom("Gilroy-Regular", size: 14))
-                                        }
-                                    })
-                                
-                                Spacer()
-                                
-                                NavigationLink( destination: Text("Pending"),
-                                    label: {
-                                        VStack {
-                                            Text( "\(friendsVM.pendingCount)" )
-                                                .foregroundColor(.white)
-                                                .font(.custom("Avenir", size: 20))
-                                                .fontWeight(.bold)
-                                            
-                                            Text( NSLocalizedString("pending", comment: ""))
-                                                .foregroundColor(.white)
-                                                .font(.custom("Gilroy-Regular", size: 14))
-                                        }
-                                    })
-                                
-                                Spacer()
-                                
-                                NavigationLink( destination: FriendRequestList(),
-                                    label: {
-                                        VStack {
-                                            Text( "\(friendsVM.requestsCount)" )
-                                                .foregroundColor(.white)
-                                                .font(.custom("Avenir", size: 20))
-                                                .fontWeight(.bold)
-                                            
-                                            Text( NSLocalizedString("requests", comment: ""))
-                                                .foregroundColor(.white)
-                                                .font(.custom("Gilroy-Regular", size: 14))
-                                        }
-                                    })
-                                
-                                Spacer()
-                            }
+                        HStack {
+                            
+                            Spacer()
+                            
+                            NavigationLink( destination: FriendsList(), label: {
+                                VStack {
+                                    Text( "\(friendsVM.friendsCount)" )
+                                        .foregroundColor(.white)
+                                        .font(.custom("Avenir", size: 20))
+                                        .fontWeight(.bold)
+                                    
+                                    Text( NSLocalizedString("friends", comment: ""))
+                                        .foregroundColor(.white)
+                                        .font(.custom("Gilroy-Regular", size: 14))
+                                }
+                            })
+                            
+                            Spacer()
+                            
+                            NavigationLink( destination: Text("Pending"),
+                                            label: {
+                                                VStack {
+                                                    Text( "\(friendsVM.pendingCount)" )
+                                                        .foregroundColor(.white)
+                                                        .font(.custom("Avenir", size: 20))
+                                                        .fontWeight(.bold)
+                                                    
+                                                    Text( NSLocalizedString("pending", comment: ""))
+                                                        .foregroundColor(.white)
+                                                        .font(.custom("Gilroy-Regular", size: 14))
+                                                }
+                                            })
+                            
+                            Spacer()
+                            
+                            NavigationLink( destination: FriendRequestList(),
+                                            label: {
+                                                VStack {
+                                                    Text( "\(friendsVM.requestsCount)" )
+                                                        .foregroundColor(.white)
+                                                        .font(.custom("Avenir", size: 20))
+                                                        .fontWeight(.bold)
+                                                    
+                                                    Text( NSLocalizedString("requests", comment: ""))
+                                                        .foregroundColor(.white)
+                                                        .font(.custom("Gilroy-Regular", size: 14))
+                                                }
+                                            })
+                            
+                            Spacer()
                         }
                         
                         ScrollView {
@@ -112,15 +110,18 @@ struct Friends: View {
                         
                     }.padding()
                     .padding(.top, 30)
-
+                }
+                
                 CustomAlert(isPresented: $friendsVM.showAlert, alertMessage: friendsVM.alertMessage, alignment: .center)
                     .offset(y: friendsVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                     .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
-
+                
             }.navigationBarTitle("")
             .navigationBarHidden(true)
             .onTapGesture {
                 UIApplication.shared.endEditing()
+            }.onAppear {
+                friendsVM.getCounts()
             }
         }.navigationBarHidden(true)
         .navigationViewStyle(StackNavigationViewStyle())
