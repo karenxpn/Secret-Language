@@ -12,9 +12,10 @@ import SwiftUI
 class AuthViewModel: ObservableObject {
     
     @AppStorage("token") private var token: String = ""
+    @AppStorage( "initialToken" ) private var initialToken: String = ""
     
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
-    @Published var signUpPhoneNumber: String = ""
+    @Published var signUpPhoneNumber: String = "+"
     @Published var singUpVerificationCode: String = ""
     @Published var signUpFullName: String = ""
     @Published var signUpGender: Int? = nil
@@ -22,7 +23,7 @@ class AuthViewModel: ObservableObject {
     @Published var genderFilter: String = ""
     @Published var moreGenders = [GenderModel]()
     
-    @Published var signInPhoneNumber: String = ""
+    @Published var signInPhoneNumber: String = "+"
     @Published var signInVerificationCode: String = ""
     
     @Published var navigateToSignInVerificationCode: Bool = false
@@ -107,19 +108,19 @@ class AuthViewModel: ObservableObject {
                     
                     self.singUpVerificationCode = ""
                 } else {
+                    self.initialToken = response.value!.token
                     self.navigateToFullNamePage.toggle()
                 }
             }.store(in: &cancellableSet)
     }
     
     func signUp() {
-        dataManager.signUp(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate), fullName: signUpFullName, gender: signUpGender ?? 0, connectionType: connectionType ?? 0)
+        dataManager.signUp(token: initialToken, fullName: signUpFullName, gender: signUpGender ?? 0, connectionType: connectionType ?? 0)
             .sink { response in
                 if response.error != nil {
                     self.signUpAlertMessage = self.createErrorMessage(error: response.error!)
                     self.showSignUpAlert.toggle()
                 } else {
-                    // get the token and proceed
                     self.token = response.value!.token
                 }
             }.store(in: &cancellableSet)

@@ -30,13 +30,13 @@ struct ContentView: View {
                     Chat()
                         .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 } else if currentTab == 4 {
-                    Profile()
+                    Friends()
                         .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 }
             }
         
             CustomTabBar( currentTab: $currentTab )
-                .offset(y: -20)
+//                .offset(y: -10)
             
         }.edgesIgnoringSafeArea(.bottom)
     }

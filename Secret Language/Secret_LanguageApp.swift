@@ -13,7 +13,6 @@ struct Secret_LanguageApp: App {
     @AppStorage( "token" ) private var token = ""
     
     init() {
-
         let newAppearance = UINavigationBarAppearance()
         newAppearance.setBackIndicatorImage(UIImage(named: "back"), transitionMaskImage: UIImage(named: "back"))
         newAppearance.configureWithOpaqueBackground()

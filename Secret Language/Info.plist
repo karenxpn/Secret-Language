@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Alow your location to get your matches in more accurate way</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -9,6 +11,7 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Gilroy-Bold.ttf</string>
 		<string>Avenir.ttc</string>
 		<string>Gilroy-Regular.ttf</string>
 		<string>Times.ttc</string>
