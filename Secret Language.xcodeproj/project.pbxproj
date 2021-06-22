@@ -156,7 +156,7 @@
 		FFCEDE072672367B0073BE20 /* Reports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reports.swift; sourceTree = "<group>"; };
 		FFDB156A2664E97E00341E8F /* Introduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Introduction.swift; sourceTree = "<group>"; };
 		FFDB156D2664EA2D00341E8F /* Times.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Times.ttc; path = ../../../../../../System/Library/Fonts/Times.ttc; sourceTree = "<group>"; };
-		FFDB15722664EAFB00341E8F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FFDB15722664EAFB00341E8F /* en */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; tabWidth = 4; };
 		FFDB15742664EDFC00341E8F /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		FFDB15762664EE9800341E8F /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		FFDB15782664F1BD00341E8F /* Gilroy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Gilroy-Regular.ttf"; path = "../../../../Library/Fonts/Gilroy-Regular.ttf"; sourceTree = "<group>"; };

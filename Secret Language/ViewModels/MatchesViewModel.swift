@@ -71,14 +71,14 @@ class MatchesViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
-    func removeMatch( username: String ) {
-        dataManager.removeFromMatches(token: token, username: username)
+    func removeMatch( userID: Int ) {
+        dataManager.removeFromMatches(token: token, userID: userID)
             .sink { _ in
             }.store(in: &cancellableSet)
     }
     
-    func sendFriendRequest( username: String ) {
-        dataManager.sendFriendRequest(token: token, username: username)
+    func sendFriendRequest( userID: Int ) {
+        dataManager.sendFriendRequest(token: token, userID: userID)
             .sink { _ in
             }.store(in: &cancellableSet)
     }

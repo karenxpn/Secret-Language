@@ -15,9 +15,9 @@ protocol MatchServiceProtocol {
     func fetchAllCategoryItems( token: String ) -> AnyPublisher<DataResponse<[CategoryItemModel], NetworkError>, Never>
     func sendLocation( token: String, location: Location) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     
-    func removeFromMatches( token: String, username: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func removeFromMatches( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     
-    func sendFriendRequest( token: String, username: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func sendFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
 }
 
 class MatchService {
@@ -27,13 +27,13 @@ class MatchService {
 }
 
 extension MatchService: MatchServiceProtocol {
-    func sendFriendRequest(token: String, username: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+    func sendFriendRequest(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/sendFriendRequest")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
                           method: .post,
-                          parameters: ["username" : username],
+                          parameters: ["id" : userID],
                           headers: headers)
             .validate()
             .publishDecodable(type: GlobalResponse.self)
@@ -47,13 +47,13 @@ extension MatchService: MatchServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func removeFromMatches(token: String, username: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+    func removeFromMatches(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/addSwipeLeftUser")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
                           method: .post,
-                          parameters: ["username" : username],
+                          parameters: ["id" : userID],
                           headers: headers)
             .validate()
             .publishDecodable(type: GlobalResponse.self)

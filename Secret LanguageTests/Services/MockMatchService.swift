@@ -20,7 +20,7 @@ class MockMatchService: MatchServiceProtocol {
         return publisher.eraseToAnyPublisher()
     }
     
-    func removeFromMatches(token: String, username: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+    func removeFromMatches(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let result: Result<GlobalResponse, NetworkError> = Result<GlobalResponse, NetworkError>.success(globalResponse)
         let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
         
@@ -28,7 +28,7 @@ class MockMatchService: MatchServiceProtocol {
         return publisher.eraseToAnyPublisher()
     }
     
-    func sendFriendRequest(token: String, username: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+    func sendFriendRequest(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let result: Result<GlobalResponse, NetworkError> = Result<GlobalResponse, NetworkError>.success(globalResponse)
         let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
         
