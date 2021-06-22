@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FriendRequestList: View {
     
-    @EnvironmentObject var friendsVM: FriendsViewModel
+    @ObservedObject var friendsVM = FriendsViewModel()
     
     init() {
        UITableView.appearance().separatorStyle = .none
@@ -21,7 +21,7 @@ struct FriendRequestList: View {
         ZStack {
             Background()
             
-            if friendsVM.loadingRequests {
+            if friendsVM.loading {
                 ProgressView()
             } else {
                 List {
@@ -34,10 +34,15 @@ struct FriendRequestList: View {
                     .listRowInsets(EdgeInsets())
                 }.padding(.top, 1)
             }
+            
+            CustomAlert(isPresented: $friendsVM.showAlert, alertMessage: friendsVM.alertMessage, alignment: .center)
+                .offset(y: friendsVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+                .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
+            
         }.navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("myRequests", comment: "")), displayMode: .inline)
         .onAppear(perform: {
-            // get friend requests
+            friendsVM.getFriendRequests()
         })
     }
 }

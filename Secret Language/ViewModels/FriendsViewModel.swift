@@ -18,8 +18,9 @@ class FriendsViewModel: ObservableObject {
     @Published var pendingCount: Int = 45
     @Published var requestsCount: Int = 3
     
-    @Published var loadingFriends: Bool = false
-    @Published var loadingRequests: Bool = false
+    @Published var loading: Bool = false
+    @Published var showAlert: Bool = false
+    @Published var alertMessage: String = ""
     
     @Published var friendsList = [UserPreviewModel]()
     @Published var requestsList = [UserPreviewModel]()
@@ -32,12 +33,12 @@ class FriendsViewModel: ObservableObject {
     }
     
     func getFriends() {
-        loadingFriends = true
+        loading = true
         dataManager.fetchFriends(token: token)
             .sink { response in
-                self.loadingFriends = false
+                self.loading = false
                 if response.error != nil {
-                    
+                    self.makeAlert(with: response.error!, for: &self.alertMessage)
                 } else {
                     self.friendsList = response.value!
                 }
@@ -45,16 +46,38 @@ class FriendsViewModel: ObservableObject {
     }
     
     func getFriendRequests() {
-        loadingRequests = true
+        loading = true
         dataManager.fetchFriendRequests(token: token)
             .sink { response in
-                self.loadingRequests = false
+                self.loading = false
                 if response.error != nil {
-                    
+                    self.makeAlert(with: response.error!, for: &self.alertMessage)
                 } else {
                     self.requestsList = response.value!
                 }
             }.store(in: &cancellableSet)
+    }
+    
+    func getCounts() {
+        loading = true
+
+        dataManager.fetchFriendsAndRequestsCount(token: token)
+            .sink { response in
+                self.loading = false
+
+                if response.error != nil {
+                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                } else {
+                    self.friendsCount = response.value!.friends
+                    self.pendingCount = response.value!.pending
+                    self.requestsCount = response.value!.requests
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func makeAlert(with error: NetworkError, for message: inout String ) {
+        message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
+        self.showAlert.toggle()
     }
 
 }

@@ -9,13 +9,13 @@ import SwiftUI
 
 struct FriendsList: View {
     
-    @EnvironmentObject var friendsVM: FriendsViewModel
+    @ObservedObject var friendsVM = FriendsViewModel()
     
     var body: some View {
         ZStack {
             Background()
             
-            if friendsVM.loadingFriends {
+            if friendsVM.loading {
                 ProgressView()
             } else {
                 ScrollView {
@@ -27,10 +27,15 @@ struct FriendsList: View {
                     }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 }.padding(.top, 1)
             }
+            
+            CustomAlert(isPresented: $friendsVM.showAlert, alertMessage: friendsVM.alertMessage, alignment: .center)
+                .offset(y: friendsVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+                .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
+            
         }.navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("myFriends", comment: "")), displayMode: .inline)
         .onAppear(perform: {
-            // get friend requests
+            friendsVM.getFriends()
         })
     }
 }
