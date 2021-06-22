@@ -28,6 +28,8 @@
 		FF99A0442681D91100F234CD /* FriendsAndRequestsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0432681D91100F234CD /* FriendsAndRequestsModel.swift */; };
 		FF99A0462681DB4E00F234CD /* FriendsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0452681DB4E00F234CD /* FriendsViewModelTests.swift */; };
 		FF99A0482681DB6400F234CD /* MockFriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0472681DB6400F234CD /* MockFriendsService.swift */; };
+		FF99A04A2682900200F234CD /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0492682900200F234CD /* ContactModel.swift */; };
+		FF99A04C268297A600F234CD /* ContactListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A04B268297A600F234CD /* ContactListCell.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -130,6 +132,8 @@
 		FF99A0432681D91100F234CD /* FriendsAndRequestsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsAndRequestsModel.swift; sourceTree = "<group>"; };
 		FF99A0452681DB4E00F234CD /* FriendsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewModelTests.swift; sourceTree = "<group>"; };
 		FF99A0472681DB6400F234CD /* MockFriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFriendsService.swift; sourceTree = "<group>"; };
+		FF99A0492682900200F234CD /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
+		FF99A04B268297A600F234CD /* ContactListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListCell.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -389,6 +393,7 @@
 				FF99A0332680C5C000F234CD /* UserPreviewModel.swift */,
 				FF99A0412681354500F234CD /* GetMatchesRequest.swift */,
 				FF99A0432681D91100F234CD /* FriendsAndRequestsModel.swift */,
+				FF99A0492682900200F234CD /* ContactModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				FFCEDE01267236200073BE20 /* Friends.swift */,
+				FF99A04B268297A600F234CD /* ContactListCell.swift */,
 				FF99A0352680C61C00F234CD /* FriendsList.swift */,
 				FF99A0392680C6CE00F234CD /* FriendListCell.swift */,
 				FF99A03B2680E98B00F234CD /* FriendRequestList.swift */,
@@ -758,11 +764,13 @@
 				FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */,
 				FFDB15752664EDFC00341E8F /* SignUp.swift in Sources */,
 				FF99A0322680BD7200F234CD /* FriendsViewModel.swift in Sources */,
+				FF99A04A2682900200F234CD /* ContactModel.swift in Sources */,
 				FFDB15AD2666C03F00341E8F /* ConnectionType.swift in Sources */,
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,
 				FF99A0422681354500F234CD /* GetMatchesRequest.swift in Sources */,
 				FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */,
 				FFCEDDF5267100010073BE20 /* UserFullName.swift in Sources */,
+				FF99A04C268297A600F234CD /* ContactListCell.swift in Sources */,
 				FFCEDDF1266E642C0073BE20 /* SignUpRequest.swift in Sources */,
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,

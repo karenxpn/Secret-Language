@@ -70,7 +70,7 @@ struct Friends: View {
                             })
                             
                             Spacer()
-                            
+                             
                             NavigationLink( destination: Text("Pending"),
                                             label: {
                                                 VStack {
@@ -100,12 +100,16 @@ struct Friends: View {
                                                         .font(.custom("Gilroy-Regular", size: 14))
                                                 }
                                             })
-                            
                             Spacer()
                         }
                         
-                        ScrollView {
-                            Text( "contacts here" )
+                        ScrollView( showsIndicators: false ) {
+                            LazyVStack {
+                                ForEach( friendsVM.contacts, id: \.id ) { contact in
+                                    ContactListCell(contact: contact)
+                                        .environmentObject(friendsVM)
+                                }
+                            }.padding(.bottom, UIScreen.main.bounds.size.height * 0.1)
                         }
                         
                     }.padding()
@@ -122,6 +126,7 @@ struct Friends: View {
                 UIApplication.shared.endEditing()
             }.onAppear {
                 friendsVM.getCounts()
+                friendsVM.permissions()
             }
         }.navigationBarHidden(true)
         .navigationViewStyle(StackNavigationViewStyle())

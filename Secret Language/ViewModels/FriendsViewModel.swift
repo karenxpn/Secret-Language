@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Contacts
 import Combine
 import SwiftUI
 
@@ -24,6 +25,10 @@ class FriendsViewModel: ObservableObject {
     
     @Published var friendsList = [UserPreviewModel]()
     @Published var requestsList = [UserPreviewModel]()
+    
+    // contacts
+    @Published var contacts = [ContactModel]()
+    @Published var permissionError: PermissionsError? = .none
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: FriendsServiceProtocol
@@ -91,6 +96,43 @@ class FriendsViewModel: ObservableObject {
                     self.friendsList = response.value!
                 }
             }.store(in: &cancellableSet)
+    }
+    
+    // contacts
+    func getContacts() {
+        ContactModel.fetchContacts { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let contacts):
+                DispatchQueue.main.async {
+                    self.contacts = contacts
+                }
+            case .failure(let error):
+                self.permissionError = .fetchError(error)
+            }
+        }
+    }
+    
+    func permissions() {
+        switch CNContactStore.authorizationStatus(for: .contacts) {
+        case .authorized:
+            getContacts()
+        case .notDetermined, .restricted, .denied:
+            CNContactStore().requestAccess(for: .contacts) { granted, error in
+                switch granted {
+                case true:
+                    self.getContacts()
+                case false:
+                    DispatchQueue.main.async {
+                        self.permissionError = .userError
+                    }
+                }
+                
+            }
+            
+        default:
+            fatalError("Unknown Error!" )
+        }
     }
     
     
