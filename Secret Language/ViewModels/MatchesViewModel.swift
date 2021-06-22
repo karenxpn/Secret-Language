@@ -23,6 +23,7 @@ class MatchesViewModel: ObservableObject {
     @Published var dataFilterGenders = [GenderModel(id: 1, gender_name: "Male"),
                                         GenderModel(id: 2, gender_name: "Female"),
                                         GenderModel(id: 0, gender_name: "Everyone")]
+    
     @Published var dataFilterCategories = [ConnectionTypeModel]()
     @Published var dataFilterGender: Int = 0
     @Published var dataFilterCategory: Int = 0
@@ -71,15 +72,19 @@ class MatchesViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
-    func removeMatch( userID: Int ) {
-        dataManager.removeFromMatches(token: token, matchID: userID)
-            .sink { _ in
+    func removeMatch( matchID: Int ) {
+        print(matchID)
+        dataManager.removeFromMatches(token: token, matchID:  matchID)
+            .sink { response in
+                print(matchID)
+                print(response)
             }.store(in: &cancellableSet)
     }
     
     func sendFriendRequest( matchID: Int ) {
         dataManager.sendFriendRequest(token: token, matchID: matchID)
-            .sink { _ in
+            .sink { response in
+                print(response)
             }.store(in: &cancellableSet)
     }
 }

@@ -34,6 +34,7 @@ extension MatchService: MatchServiceProtocol {
         return AF.request(url,
                           method: .post,
                           parameters: ["id" : matchID],
+                          encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
             .publishDecodable(type: GlobalResponse.self)
@@ -54,6 +55,7 @@ extension MatchService: MatchServiceProtocol {
         return AF.request(url,
                           method: .post,
                           parameters: ["id" : matchID],
+                          encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
             .publishDecodable(type: GlobalResponse.self)

@@ -75,6 +75,26 @@ class FriendsViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
+    func acceptFriendRequest( userID: Int ) {
+        dataManager.acceptFriendRequest(token: token, userID: userID)
+            .sink { response in
+                if response.error == nil {
+                    self.friendsList = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func rejectFriendRequest( userID: Int ) {
+        dataManager.rejectFriendRequest(token: token, userID: userID)
+            .sink { response in
+                if response.error == nil {
+                    self.friendsList = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    
+    
     func makeAlert(with error: NetworkError, for message: inout String ) {
         message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
         self.showAlert.toggle()

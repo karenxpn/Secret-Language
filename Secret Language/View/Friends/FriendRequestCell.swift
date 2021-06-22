@@ -45,7 +45,7 @@ struct FriendRequestCell: View {
                 Spacer()
                 
                 Button(action: {
-                    
+                    friendsVM.acceptFriendRequest(userID: request.id)
                 }, label: {
                     Text(NSLocalizedString("accept", comment: ""))
                         .foregroundColor( .accentColor )

@@ -12,9 +12,9 @@ struct FriendRequestList: View {
     @ObservedObject var friendsVM = FriendsViewModel()
     
     init() {
-       UITableView.appearance().separatorStyle = .none
-       UITableViewCell.appearance().backgroundColor = .none
-       UITableView.appearance().backgroundColor = .none
+        UITableView.appearance().separatorStyle = .none
+        UITableViewCell.appearance().backgroundColor = .none
+        UITableView.appearance().backgroundColor = .none
     }
     
     var body: some View {
@@ -29,7 +29,10 @@ struct FriendRequestList: View {
                         FriendRequestCell(request: friendsVM.requestsList[index])
                             .environmentObject(friendsVM)
                     }.onDelete(perform: { indexSet in
-                        
+                        if let removeIndex = indexSet.first {
+                            friendsVM.rejectFriendRequest(userID: friendsVM.requestsList[removeIndex].id)
+                            friendsVM.requestsList.remove(at: removeIndex)
+                        }
                     }).listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
                 }.padding(.top, 1)
