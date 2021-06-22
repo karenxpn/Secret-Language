@@ -30,19 +30,25 @@ struct Friends: View {
                             .font(.custom("Gilroy-Regular", size: 14))
                         
                         HStack {
+                            Spacer()
                             
-                            Image("searchIcon")
+                            HStack {
+                                
+                                Image("searchIcon")
 
-                            TextField(NSLocalizedString("search", comment: ""), text: $friendsVM.searchText)
-                                .padding(.vertical, 8)
-                                .padding(.horizontal)
-                                .frame(height: 50)
-                                .listRowBackground(Color.clear)
-                                .listRowInsets(EdgeInsets())
+                                TextField(NSLocalizedString("search", comment: ""), text: $friendsVM.searchText)
+                                    .padding(.vertical, 8)
+                                    .padding(.horizontal)
+                                    .frame(height: 50)
+                                    .listRowBackground(Color.clear)
+                                    .listRowInsets(EdgeInsets())
+                                
+                            }.padding(.horizontal)
+                            .background(RoundedRectangle(cornerRadius: 25).fill(AppColors.boxColor))
+                            .frame(width: UIScreen.main.bounds.size.width * 0.9)
                             
-                        }.padding(.horizontal)
-                        .background(RoundedRectangle(cornerRadius: 25).fill(AppColors.boxColor))
-                        .frame(width: UIScreen.main.bounds.size.width * 0.9)
+                            Spacer()
+                        }
                         
                         if friendsVM.loading {
                             ProgressView()
@@ -114,6 +120,9 @@ struct Friends: View {
             }.navigationBarTitle("")
             .navigationBarHidden(true)
         }.navigationViewStyle(StackNavigationViewStyle())
+        .onTapGesture {
+            UIApplication.shared.endEditing()
+        }
     }
 }
 

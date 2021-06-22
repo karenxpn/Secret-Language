@@ -46,14 +46,14 @@ class FriendsViewModelTests: XCTestCase {
         XCTAssertTrue(!viewModel.requestsList.isEmpty)
     }
     
-    func getCountWithError() {
+    func testgetCountWithError() {
         service.fetchFriendsAndRequestsCountError = true
         viewModel.getCounts()
         
         XCTAssertFalse(viewModel.alertMessage.isEmpty)
     }
     
-    func getCountWithSuccess() {
+    func testgetCountWithSuccess() {
         service.fetchFriendsAndRequestsCountError = false
         viewModel.getCounts()
         
