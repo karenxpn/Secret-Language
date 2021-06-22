@@ -172,7 +172,7 @@ struct SingleMatch: View {
                                 match.x = 0; match.degree = 0;
                             case let x where x > 100:
                                 match.x = 500; match.degree = 12
-                                matchesVM.sendFriendRequest(userID: match.id)
+                                matchesVM.sendFriendRequest(matchID: match.id)
                             case (-100)...(-1):
                                 match.x = 0; match.degree = 0;
                             case let x where x < -100:
