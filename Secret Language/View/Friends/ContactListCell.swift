@@ -15,7 +15,7 @@ struct ContactListCell: View {
     var body: some View {
         HStack {
             
-            Image(systemName: "person.crop.circle")
+            Image(uiImage: getImage())
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 55, height: 55)
@@ -26,7 +26,7 @@ struct ContactListCell: View {
                     .foregroundColor(.white)
                     .font(.custom("times", size: 18))
                 
-                Text( contact.phone ?? "not provided" )
+                Text( contact.phone)
                     .foregroundColor(.gray)
                     .font(.custom("Gilroy-Regualr", size: 15))
             }
@@ -44,9 +44,17 @@ struct ContactListCell: View {
                     .background(RoundedRectangle(cornerRadius: 4)
                                     .strokeBorder(AppColors.accentColor, lineWidth: 1.5)
                                     .background(AppColors.dataFilterGendersBg)
-                )
+                    )
             }
         }.padding(.vertical, 10)
-        
     }
+    
+    func getImage() -> UIImage {
+        if contact.image == nil {
+            return UIImage(systemName: "person.crop.circle")!
+        }
+        
+        return UIImage(data: contact.image!)!
+    }
+    
 }

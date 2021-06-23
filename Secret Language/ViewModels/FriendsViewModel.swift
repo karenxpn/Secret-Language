@@ -100,16 +100,9 @@ class FriendsViewModel: ObservableObject {
     
     // contacts
     func getContacts() {
-        ContactModel.fetchContacts { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let contacts):
-                DispatchQueue.main.async {
-                    self.contacts = contacts
-                }
-            case .failure(let error):
-                self.permissionError = .fetchError(error)
-            }
+        
+        dataManager.fetchContacts { contacts in
+            self.contacts = contacts
         }
     }
     
@@ -127,7 +120,6 @@ class FriendsViewModel: ObservableObject {
                         self.permissionError = .userError
                     }
                 }
-                
             }
             
         default:

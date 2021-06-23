@@ -9,31 +9,12 @@ import Foundation
 import Contacts
 
 struct ContactModel: Identifiable {
-    let contact: CNContact
-    var id: String { contact.identifier }
-    var firstName: String { contact.givenName }
-    var lastName: String { contact.familyName }
-    var phone: String? { contact.phoneNumbers.map( \.value ).first?.stringValue}
-//    var image: Data? { contact.imageData }
+    var id: String
+    var firstName: String
+    var lastName: String
+    var phone: String
+    var image: Data?
     
-    static func fetchContacts( _ completion: @escaping( Result<[ContactModel], Error> ) -> Void ) {
-        let containerID = CNContactStore().defaultContainerIdentifier()
-        let predicate = CNContact.predicateForContactsInContainer(withIdentifier: containerID)
-        let descriptor = [
-            CNContactIdentifierKey,
-            CNContactGivenNameKey,
-            CNContactFamilyNameKey,
-            CNContactPhoneNumbersKey,
-//            CNContactImageDataKey
-        ] as [CNKeyDescriptor]
-        
-        do {
-            let rawContacts = try CNContactStore().unifiedContacts(matching: predicate, keysToFetch: descriptor)
-            completion( .success(rawContacts.map { .init(contact: $0) } ))
-        } catch {
-            completion( .failure(error))
-        }
-    }
 }
 
 enum PermissionsError: Identifiable {

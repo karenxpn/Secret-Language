@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Contacts
 import Alamofire
 import Combine
 
@@ -16,6 +17,8 @@ protocol FriendsServiceProtocol {
     
     func acceptFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
     func rejectFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
+    
+    func fetchContacts(completion: @escaping ( [ContactModel] ) -> ())
 }
 
 class FriendsService {
@@ -25,6 +28,39 @@ class FriendsService {
 }
 
 extension FriendsService: FriendsServiceProtocol {
+    func fetchContacts(completion: @escaping ([ContactModel]) -> ()) {
+        let keyToFetch = [
+            CNContactIdentifierKey,
+            CNContactGivenNameKey,
+            CNContactFamilyNameKey,
+            CNContactPhoneNumbersKey,
+            CNContactImageDataKey
+        ] as [CNKeyDescriptor]
+        
+        let fetchRequest = CNContactFetchRequest(keysToFetch: keyToFetch)
+        
+        do {
+            let store = CNContactStore()
+            var contactList: [ContactModel] = []
+            
+            try store.enumerateContacts(with: fetchRequest, usingBlock: { contactInfo, _ in
+                let id = contactInfo.identifier
+                let firstName = contactInfo.givenName
+                let lastName = contactInfo.familyName
+                let phone = contactInfo.phoneNumbers.first!.value.stringValue
+                let image = contactInfo.imageData
+                contactList.append(ContactModel(id: id, firstName: firstName, lastName: lastName, phone: phone, image: image))
+            })
+            
+            DispatchQueue.main.async {
+                completion( contactList )
+            }
+            
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
     func acceptFriendRequest(token: String, userID: Int) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/acceptFriendRequest")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
