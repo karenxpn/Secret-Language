@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Friends: View {
     
+    @AppStorage( "storedContacts" ) private var contactsStored: Bool = false
     @ObservedObject var friendsVM = FriendsViewModel()
     
     var body: some View {
@@ -129,7 +130,11 @@ struct Friends: View {
                 UIApplication.shared.endEditing()
             }.onAppear {
                 friendsVM.getCounts()
-                friendsVM.permissions()
+                if !contactsStored {
+                    friendsVM.permissions()
+                } else {
+                    friendsVM.getContacts()
+                }
             }
         }.navigationBarHidden(true)
         .navigationViewStyle(StackNavigationViewStyle())

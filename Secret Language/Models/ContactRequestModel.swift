@@ -1,20 +1,16 @@
 //
-//  ContactModel.swift
+//  ContactRequestModel.swift
 //  Secret Language
 //
 //  Created by Karen Mirakyan on 23.06.21.
 //
 
 import Foundation
-import Contacts
-
-struct ContactModel: Identifiable {
-    var id: String
+struct ContactRequestModel: Codable {
     var firstName: String
     var lastName: String
     var phone: String
     var image: Data?
-    
 }
 
 enum PermissionsError: Identifiable {

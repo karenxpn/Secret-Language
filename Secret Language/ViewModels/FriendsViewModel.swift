@@ -12,6 +12,7 @@ import SwiftUI
 
 class FriendsViewModel: ObservableObject {
     
+    @AppStorage( "storedContacts" ) private var contactsStored: Bool = false
     @AppStorage( "token" ) private var token: String = ""
     
     @Published var searchText: String = ""
@@ -28,7 +29,7 @@ class FriendsViewModel: ObservableObject {
     @Published var pendingList = [UserPreviewModel]()
     
     // contacts
-    @Published var contacts = [ContactModel]()
+    @Published var contacts = [ContactResponseModel]()
     @Published var permissionError: PermissionsError? = .none
     
     private var cancellableSet: Set<AnyCancellable> = []
@@ -122,22 +123,40 @@ class FriendsViewModel: ObservableObject {
     }
     
     // contacts
-    func getContacts() {
+    func postContacts() {
         
         dataManager.fetchContacts { contacts in
-            self.contacts = contacts
+            
+            self.dataManager.postContacts(contacts: contacts, token: self.token)
+                .sink { response in
+                    if response.error == nil {
+                        self.contactsStored = true
+                        self.contacts = response.value!
+                    } else {
+                        print(response.error!)
+                    }
+                }.store(in: &self.cancellableSet)
         }
+    }
+    
+    func getContacts() {
+        dataManager.fetchContacts(token: token)
+            .sink { response in
+                if response.error == nil {
+                    self.contacts = response.value!
+                }
+            }.store(in: &cancellableSet)
     }
     
     func permissions() {
         switch CNContactStore.authorizationStatus(for: .contacts) {
         case .authorized:
-            getContacts()
+            postContacts()
         case .notDetermined, .restricted, .denied:
             CNContactStore().requestAccess(for: .contacts) { granted, error in
                 switch granted {
                 case true:
-                    self.getContacts()
+                    self.postContacts()
                 case false:
                     DispatchQueue.main.async {
                         self.permissionError = .userError

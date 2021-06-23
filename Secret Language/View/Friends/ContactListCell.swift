@@ -10,7 +10,7 @@ import SwiftUI
 struct ContactListCell: View {
     
     @EnvironmentObject var friendsVM: FriendsViewModel
-    let contact: ContactModel
+    let contact: ContactResponseModel
     
     var body: some View {
         HStack {
