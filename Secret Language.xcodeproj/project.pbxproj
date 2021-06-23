@@ -30,6 +30,8 @@
 		FF99A0482681DB6400F234CD /* MockFriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0472681DB6400F234CD /* MockFriendsService.swift */; };
 		FF99A04A2682900200F234CD /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0492682900200F234CD /* ContactModel.swift */; };
 		FF99A04C268297A600F234CD /* ContactListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A04B268297A600F234CD /* ContactListCell.swift */; };
+		FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A04D268367C500F234CD /* PendingRequestsList.swift */; };
+		FF99A0502683684400F234CD /* PendingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A04F2683684400F234CD /* PendingListCell.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -134,6 +136,8 @@
 		FF99A0472681DB6400F234CD /* MockFriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFriendsService.swift; sourceTree = "<group>"; };
 		FF99A0492682900200F234CD /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		FF99A04B268297A600F234CD /* ContactListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListCell.swift; sourceTree = "<group>"; };
+		FF99A04D268367C500F234CD /* PendingRequestsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestsList.swift; sourceTree = "<group>"; };
+		FF99A04F2683684400F234CD /* PendingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingListCell.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -434,6 +438,8 @@
 				FF99A04B268297A600F234CD /* ContactListCell.swift */,
 				FF99A0352680C61C00F234CD /* FriendsList.swift */,
 				FF99A0392680C6CE00F234CD /* FriendListCell.swift */,
+				FF99A04D268367C500F234CD /* PendingRequestsList.swift */,
+				FF99A04F2683684400F234CD /* PendingListCell.swift */,
 				FF99A03B2680E98B00F234CD /* FriendRequestList.swift */,
 				FF99A03D2680E9A000F234CD /* FriendRequestCell.swift */,
 				FF99A0372680C65300F234CD /* FriendsNavBar.swift */,
@@ -779,6 +785,7 @@
 				FFDB15A926669B9400341E8F /* TopGender.swift in Sources */,
 				FFCEDE05267236500073BE20 /* Search.swift in Sources */,
 				FF99A0382680C65300F234CD /* FriendsNavBar.swift in Sources */,
+				FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,
 				FFCEDDF3266FB0350073BE20 /* AuthResponse.swift in Sources */,
 				FFDB158326653D6E00341E8F /* AuthService.swift in Sources */,
@@ -800,6 +807,7 @@
 				FFCEDE082672367B0073BE20 /* Reports.swift in Sources */,
 				FF99A03A2680C6CE00F234CD /* FriendListCell.swift in Sources */,
 				FFDB15772664EE9800341E8F /* Background.swift in Sources */,
+				FF99A0502683684400F234CD /* PendingListCell.swift in Sources */,
 				FFE0E4122677E5DC008FA78C /* SingleMatch.swift in Sources */,
 				FFE0E42826794F97008FA78C /* CategoryItemModel.swift in Sources */,
 				FFE0E4182677FD89008FA78C /* MatchesNavBar.swift in Sources */,

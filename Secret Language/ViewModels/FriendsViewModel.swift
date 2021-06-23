@@ -25,6 +25,7 @@ class FriendsViewModel: ObservableObject {
     
     @Published var friendsList = [UserPreviewModel]()
     @Published var requestsList = [UserPreviewModel]()
+    @Published var pendingList = [UserPreviewModel]()
     
     // contacts
     @Published var contacts = [ContactModel]()
@@ -59,6 +60,19 @@ class FriendsViewModel: ObservableObject {
                     self.makeAlert(with: response.error!, for: &self.alertMessage)
                 } else {
                     self.requestsList = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func getPendingRequests() {
+        loading = true
+        dataManager.fetchPendingRequests(token: token)
+            .sink { response in
+                self.loading = false
+                if response.error != nil {
+                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                } else {
+                    self.pendingList = response.value!
                 }
             }.store(in: &cancellableSet)
     }
@@ -123,12 +137,10 @@ class FriendsViewModel: ObservableObject {
             }
             
         default:
-            fatalError("Unknown Error!" )
+            fatalError( "Unknown Error!" )
         }
     }
-    
-    
-    
+        
     func makeAlert(with error: NetworkError, for message: inout String ) {
         message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
         self.showAlert.toggle()

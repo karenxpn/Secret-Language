@@ -52,6 +52,7 @@ struct ContactListCell: View {
     func getImage() -> UIImage {
         if contact.image == nil {
             return UIImage(systemName: "person.crop.circle")!
+                .withTintColor(.white, renderingMode: .alwaysTemplate)
         }
         
         return UIImage(data: contact.image!)!

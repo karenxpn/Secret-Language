@@ -60,5 +60,7 @@
 "requests" = "Requests";
 "myRequests" = "My Requests";
 "myFriends" = "My Friends";
+"myPendings" = "My Pending Requests";
 "accept" = "Accept";
 "invite" = "Invite";
+"pending" = "Pending";

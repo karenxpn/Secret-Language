@@ -73,7 +73,7 @@ struct Friends: View {
                                 
                                 Spacer()
                                 
-                                NavigationLink( destination: Text("Pending"),
+                                NavigationLink( destination: PendingRequestsList(),
                                                 label: {
                                                     VStack {
                                                         Text( "\(friendsVM.pendingCount)" )
