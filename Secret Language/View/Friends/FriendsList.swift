@@ -32,7 +32,8 @@ struct FriendsList: View {
                 .offset(y: friendsVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
-        }.navigationBarTitle(Text( "" ), displayMode: .inline)
+        }.edgesIgnoringSafeArea(.bottom)
+        .navigationBarTitle(Text( "" ), displayMode: .inline)
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("myFriends", comment: "")), displayMode: .inline)
         .onAppear(perform: {
             friendsVM.getFriends()

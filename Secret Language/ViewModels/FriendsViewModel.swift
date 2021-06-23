@@ -112,6 +112,15 @@ class FriendsViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
+    func withdrawFriendRequest( userID: Int ) {
+        dataManager.withdrawFriendRequest(token: token, userID: userID)
+            .sink { response in
+                if response.error == nil {
+                    self.pendingList = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
     // contacts
     func getContacts() {
         

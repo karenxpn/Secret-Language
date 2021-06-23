@@ -43,9 +43,9 @@ struct PendingListCell: View {
             Spacer()
             
             Button(action: {
-                
+                friendsVM.withdrawFriendRequest(userID: pendingRequest.id)
             }, label: {
-                Text(NSLocalizedString("pending", comment: ""))
+                Text(NSLocalizedString("withdraw", comment: ""))
                     .foregroundColor( .accentColor )
                     .font(.custom("Gilroy-Regular", size: 14))
                     .padding(.vertical, 8)
@@ -62,5 +62,6 @@ struct PendingListCell: View {
 struct PendingListCell_Previews: PreviewProvider {
     static var previews: some View {
         PendingListCell(pendingRequest: UserPreviewModel(id: 1, name: "John Smith", image: "", ideal_for: "Business"))
+            .environmentObject(FriendsViewModel())
     }
 }

@@ -29,7 +29,8 @@ struct PendingRequestsList: View {
                 }
             }
             
-        }.navigationBarTitle("")
+        }.edgesIgnoringSafeArea(.bottom)
+        .navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("myPendings", comment: "")), displayMode: .inline)
         .onAppear(perform: {
             friendsVM.getPendingRequests()
