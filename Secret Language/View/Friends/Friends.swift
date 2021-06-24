@@ -105,19 +105,9 @@ struct Friends: View {
                                                 })
                                 Spacer()
                             }
-                            
-                            LazyVStack {
-                                ForEach( friendsVM.contacts.filter {
-                                            self.friendsVM.searchText.isEmpty ? true : $0.firstName.localizedCaseInsensitiveContains(self.friendsVM.searchText)}, id: \.id ) { contact in
-                                    ContactListCell(contact: contact)
-                                        .environmentObject(friendsVM)
-                                }
-                            }.padding(.bottom, UIScreen.main.bounds.size.height * 0.1)
-                            
                         }.padding()
                         .padding(.top, 30)
                     }
-                    
                 }
                 
                 CustomAlert(isPresented: $friendsVM.showAlert, alertMessage: friendsVM.alertMessage, alignment: .center)
@@ -131,11 +121,6 @@ struct Friends: View {
                 UIApplication.shared.endEditing()
             }.onAppear {
                 friendsVM.getCounts()
-//                if !contactsStored {
-//                    friendsVM.permissions()
-//                } else {
-//                    friendsVM.getContacts()
-//                }
             }
         }.navigationBarHidden(true)
         .navigationViewStyle(StackNavigationViewStyle())

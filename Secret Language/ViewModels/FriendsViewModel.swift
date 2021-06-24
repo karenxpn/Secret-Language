@@ -28,10 +28,6 @@ class FriendsViewModel: ObservableObject {
     @Published var requestsList = [UserPreviewModel]()
     @Published var pendingList = [UserPreviewModel]()
     
-    // contacts
-    @Published var contacts = [ContactResponseModel]()
-    @Published var permissionError: PermissionsError? = .none
-    
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: FriendsServiceProtocol
     
@@ -120,53 +116,6 @@ class FriendsViewModel: ObservableObject {
                     self.pendingList = response.value!
                 }
             }.store(in: &cancellableSet)
-    }
-    
-    // contacts
-    func postContacts() {
-        
-        dataManager.fetchContacts { contacts in
-            
-            self.dataManager.postContacts(contacts: contacts, token: self.token)
-                .sink { response in
-                    if response.error == nil {
-                        self.contactsStored = true
-                        self.contacts = response.value!
-                    } else {
-                        print(response.error!)
-                    }
-                }.store(in: &self.cancellableSet)
-        }
-    }
-    
-    func getContacts() {
-        dataManager.fetchContacts(token: token)
-            .sink { response in
-                if response.error == nil {
-                    self.contacts = response.value!
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func permissions() {
-        switch CNContactStore.authorizationStatus(for: .contacts) {
-        case .authorized:
-            postContacts()
-        case .notDetermined, .restricted, .denied:
-            CNContactStore().requestAccess(for: .contacts) { granted, error in
-                switch granted {
-                case true:
-                    self.postContacts()
-                case false:
-                    DispatchQueue.main.async {
-                        self.permissionError = .userError
-                    }
-                }
-            }
-            
-        default:
-            fatalError( "Unknown Error!" )
-        }
     }
         
     func makeAlert(with error: NetworkError, for message: inout String ) {

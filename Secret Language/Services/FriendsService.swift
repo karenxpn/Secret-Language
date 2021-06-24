@@ -22,11 +22,6 @@ protocol FriendsServiceProtocol {
     func withdrawFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
     
     func fetchPendingRequests( token: String ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
-    
-    func fetchContacts(completion: @escaping ( [ContactRequestModel] ) -> ())
-    func postContacts( contacts: [ContactRequestModel], token: String ) -> AnyPublisher<DataResponse<[ContactResponseModel], NetworkError>, Never>
-    
-    func fetchContacts( token: String ) -> AnyPublisher<DataResponse<[ContactResponseModel], NetworkError>, Never>
 }
 
 class FriendsService {
@@ -97,82 +92,6 @@ extension FriendsService: FriendsServiceProtocol {
             .eraseToAnyPublisher()
     }
     // pending requests end
-    
-    
-    // contacts
-    func fetchContacts(completion: @escaping ([ContactRequestModel]) -> ()) {
-        let keyToFetch = [
-            CNContactIdentifierKey,
-            CNContactGivenNameKey,
-            CNContactFamilyNameKey,
-            CNContactPhoneNumbersKey,
-            CNContactImageDataKey
-        ] as [CNKeyDescriptor]
-        
-        let fetchRequest = CNContactFetchRequest(keysToFetch: keyToFetch)
-        
-        do {
-            let store = CNContactStore()
-            var contactList: [ContactRequestModel] = []
-            
-            try store.enumerateContacts(with: fetchRequest, usingBlock: { contactInfo, _ in
-                let firstName = contactInfo.givenName
-                let lastName = contactInfo.familyName
-                let phone = contactInfo.phoneNumbers.first!.value.stringValue
-                let image = contactInfo.imageData
-                contactList.append(ContactRequestModel( firstName: firstName, lastName: lastName, phone: phone, image: image))
-            })
-            
-            DispatchQueue.main.async {
-                completion( contactList )
-            }
-            
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-    }
-    
-    func postContacts(contacts: [ContactRequestModel], token: String) -> AnyPublisher<DataResponse<[ContactResponseModel], NetworkError>, Never> {
-        
-        let url = URL(string: "\(Credentials.BASE_URL)user/sendContacts")!
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
-        
-        return AF.request(url,
-                          method: .post,
-                          parameters: contacts,
-                          encoder: JSONParameterEncoder.default,
-                          headers: headers)
-            .validate()
-            .publishDecodable(type: [ContactResponseModel].self)
-            .map { response in
-                response.mapError { error in
-                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
-                    return NetworkError(initialError: error, backendError: backendError)
-                }
-            }
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
-    }
-    
-    func fetchContacts(token: String) -> AnyPublisher<DataResponse<[ContactResponseModel], NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/getContacts")!
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
-        
-        return AF.request(url,
-                          method: .get,
-                          headers: headers)
-            .validate()
-            .publishDecodable(type: [ContactResponseModel].self)
-            .map { response in
-                response.mapError { error in
-                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
-                    return NetworkError(initialError: error, backendError: backendError)
-                }
-            }
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
-    }
-    // contacts end
     
     
     // friend requests
