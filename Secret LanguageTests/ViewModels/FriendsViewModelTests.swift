@@ -46,6 +46,22 @@ class FriendsViewModelTests: XCTestCase {
         XCTAssertTrue(!viewModel.requestsList.isEmpty)
     }
     
+    func testGetPendingRequestsWithError() {
+        service.fetchPendingRequestsError = true
+        viewModel.getPendingRequests()
+        
+        XCTAssertTrue(viewModel.pendingList.isEmpty)
+        XCTAssertTrue(viewModel.showAlert)
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+    }
+    
+    func testGetPendingRequestsWithSuccess() {
+        service.fetchPendingRequestsError = false
+        viewModel.getPendingRequests()
+        
+        XCTAssertEqual(viewModel.pendingList.count, 1)
+    }
+    
     func testgetCountWithError() {
         service.fetchFriendsAndRequestsCountError = true
         viewModel.getCounts()
@@ -58,6 +74,48 @@ class FriendsViewModelTests: XCTestCase {
         viewModel.getCounts()
         
         XCTAssertEqual(viewModel.friendsCount, 12)
+    }
+    
+    func testAcceptFriendRequestWithError() {
+        service.acceptFriendRequestError = true
+        viewModel.acceptFriendRequest(userID: 1)
+        
+        XCTAssertTrue(viewModel.requestsList.isEmpty)
+    }
+    
+    func testAcceptFriendRequestWithSuccess() {
+        service.acceptFriendRequestError = false
+        viewModel.acceptFriendRequest(userID: 1)
+        
+        XCTAssertEqual(viewModel.requestsList.count, 1)
+    }
+    
+    func testRejectFriendRequestWithError() {
+        service.rejectFriendRequestError = true
+        viewModel.rejectFriendRequest(userID: 1)
+        
+        XCTAssertTrue(viewModel.requestsList.isEmpty)
+    }
+    
+    func testRejectFriendRequestWithSuccess() {
+        service.rejectFriendRequestError = false
+        viewModel.rejectFriendRequest(userID: 1)
+        
+        XCTAssertEqual(viewModel.requestsList.count, 1)
+    }
+    
+    func testWithdrawRequestWithError() {
+        service.withdrawRequestError = true
+        viewModel.withdrawFriendRequest(userID: 1)
+        
+        XCTAssertTrue(viewModel.pendingList.isEmpty)
+    }
+    
+    func testWithdrawRequestWithSuccess() {
+        service.withdrawRequestError = false
+        viewModel.withdrawFriendRequest(userID: 1)
+        
+        XCTAssertEqual(viewModel.pendingList.count, 1)
     }
 
 }

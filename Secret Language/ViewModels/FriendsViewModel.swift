@@ -99,7 +99,7 @@ class FriendsViewModel: ObservableObject {
         dataManager.acceptFriendRequest(token: token, userID: userID)
             .sink { response in
                 if response.error == nil {
-                    self.friendsList = response.value!
+                    self.requestsList = response.value!
                 }
             }.store(in: &cancellableSet)
     }
@@ -108,7 +108,7 @@ class FriendsViewModel: ObservableObject {
         dataManager.rejectFriendRequest(token: token, userID: userID)
             .sink { response in
                 if response.error == nil {
-                    self.friendsList = response.value!
+                    self.requestsList = response.value!
                 }
             }.store(in: &cancellableSet)
     }

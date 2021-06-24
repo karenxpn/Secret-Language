@@ -107,7 +107,8 @@ struct Friends: View {
                             }
                             
                             LazyVStack {
-                                ForEach( friendsVM.contacts, id: \.id ) { contact in
+                                ForEach( friendsVM.contacts.filter {
+                                            self.friendsVM.searchText.isEmpty ? true : $0.firstName.localizedCaseInsensitiveContains(self.friendsVM.searchText)}, id: \.id ) { contact in
                                     ContactListCell(contact: contact)
                                         .environmentObject(friendsVM)
                                 }

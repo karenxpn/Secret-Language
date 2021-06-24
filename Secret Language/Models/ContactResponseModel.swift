@@ -12,5 +12,5 @@ struct ContactResponseModel: Identifiable, Codable {
     var lastName: String
     var phone: String
     var image: Data?
-    
+    var invited: Bool
 }
