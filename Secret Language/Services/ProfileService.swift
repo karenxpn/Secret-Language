@@ -10,7 +10,7 @@ import Contacts
 import Alamofire
 import Combine
 
-protocol FriendsServiceProtocol {
+protocol ProfileServiceProtocol {
     func fetchFriendRequests( token: String ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
     func acceptFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
     func rejectFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
@@ -24,13 +24,13 @@ protocol FriendsServiceProtocol {
     func fetchPendingRequests( token: String ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
 }
 
-class FriendsService {
-    static let shared = FriendsService()
+class ProfileService {
+    static let shared = ProfileService()
     
     private init() { }
 }
 
-extension FriendsService: FriendsServiceProtocol {
+extension ProfileService: ProfileServiceProtocol {
     
     func fetchFriendsAndRequestsCount(token: String) -> AnyPublisher<DataResponse<FriendsAndRequestsModel, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/friendsRequestsCounts")!

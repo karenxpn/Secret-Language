@@ -9,35 +9,35 @@ import SwiftUI
 
 struct PendingRequestsList: View {
     
-    @ObservedObject var friendsVM = FriendsViewModel()
+    @ObservedObject var profileVM = ProfileViewModel()
     
     var body: some View {
         ZStack {
             
             Background()
             
-            if friendsVM.loading {
+            if profileVM.loading {
                 ProgressView()
             } else {
                 ScrollView {
                     LazyVStack {
-                        ForEach(friendsVM.pendingList, id: \.id ) { request in
+                        ForEach(profileVM.pendingList, id: \.id ) { request in
                             PendingListCell(pendingRequest: request)
-                                .environmentObject(friendsVM)
+                                .environmentObject(profileVM)
                         }
                     }
                 }
             }
             
-            CustomAlert(isPresented: $friendsVM.showAlert, alertMessage: friendsVM.alertMessage, alignment: .center)
-                .offset(y: friendsVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+            CustomAlert(isPresented: $profileVM.showAlert, alertMessage: profileVM.alertMessage, alignment: .center)
+                .offset(y: profileVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
         }.edgesIgnoringSafeArea(.bottom)
         .navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("myPendings", comment: "")), displayMode: .inline)
         .onAppear(perform: {
-            friendsVM.getPendingRequests()
+            profileVM.getPendingRequests()
         })
     }
 }

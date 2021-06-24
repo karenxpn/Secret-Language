@@ -8,14 +8,14 @@
 import XCTest
 @testable import Secret_Language
 
-class FriendsViewModelTests: XCTestCase {
+class ProfileViewModelTests: XCTestCase {
 
-    var service: MockFriendsService!
-    var viewModel: FriendsViewModel!
+    var service: MockProfileService!
+    var viewModel: ProfileViewModel!
     
     override func setUp() {
-        self.service = MockFriendsService()
-        self.viewModel = FriendsViewModel(dataManager: self.service)
+        self.service = MockProfileService()
+        self.viewModel = ProfileViewModel(dataManager: self.service)
     }
     
     func testGetFriendsWithError() {

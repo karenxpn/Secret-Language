@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct FriendListCell: View {
     
-    @EnvironmentObject var friendsVM: FriendsViewModel
+    @EnvironmentObject var profileVM: ProfileViewModel
     let friend: UserPreviewModel
     
     var body: some View {
@@ -56,6 +56,6 @@ struct FriendListCell: View {
 struct FriendListtCell_Previews: PreviewProvider {
     static var previews: some View {
         FriendListCell( friend: UserPreviewModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"))
-            .environmentObject(FriendsViewModel())
+            .environmentObject(ProfileViewModel())
     }
 }

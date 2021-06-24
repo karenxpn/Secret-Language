@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct FriendRequestCell: View {
     
-    @EnvironmentObject var friendsVM: FriendsViewModel
+    @EnvironmentObject var profileVM: ProfileViewModel
     let request: UserPreviewModel
     var body: some View {
         
@@ -46,7 +46,7 @@ struct FriendRequestCell: View {
                 Spacer()
                 
                 Button(action: {
-                    friendsVM.acceptFriendRequest(userID: request.id)
+                    profileVM.acceptFriendRequest(userID: request.id)
                 }, label: {
                     Text(NSLocalizedString("accept", comment: ""))
                         .foregroundColor( .accentColor )
@@ -66,6 +66,6 @@ struct FriendRequestCell: View {
 struct FriendRequestCell_Previews: PreviewProvider {
     static var previews: some View {
         FriendRequestCell( request: UserPreviewModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"))
-            .environmentObject(FriendsViewModel())
+            .environmentObject(ProfileViewModel())
     }
 }

@@ -10,7 +10,7 @@ import Alamofire
 import Combine
 @testable import Secret_Language
 
-class MockFriendsService: FriendsServiceProtocol {
+class MockProfileService: ProfileServiceProtocol {
     let networkError = NetworkError(initialError: AFError.explicitlyCancelled, backendError: nil)
     let users = [UserPreviewModel(id: 1, name: "John Smith", image: "", ideal: "Business")]
     let friendsAndRequests = FriendsAndRequestsModel(friends: 12, pending: 12, requests: 12)

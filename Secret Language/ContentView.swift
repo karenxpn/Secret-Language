@@ -30,7 +30,7 @@ struct ContentView: View {
                     Chat()
                         .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 } else if currentTab == 4 {
-                    Friends()
+                    Profile()
                         .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 }
             }

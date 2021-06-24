@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FriendRequestList: View {
     
-    @ObservedObject var friendsVM = FriendsViewModel()
+    @ObservedObject var profileVM = ProfileViewModel()
     
     init() {
         UITableView.appearance().separatorStyle = .none
@@ -21,32 +21,32 @@ struct FriendRequestList: View {
         ZStack {
             Background()
             
-            if friendsVM.loading {
+            if profileVM.loading {
                 ProgressView()
             } else {
                 List {
-                    ForEach(0..<friendsVM.requestsList.count, id: \.self ) { index in
-                        FriendRequestCell(request: friendsVM.requestsList[index])
-                            .environmentObject(friendsVM)
+                    ForEach(0..<profileVM.requestsList.count, id: \.self ) { index in
+                        FriendRequestCell(request: profileVM.requestsList[index])
+                            .environmentObject(profileVM)
                     }.onDelete(perform: { indexSet in
                         if let removeIndex = indexSet.first {
-                            friendsVM.rejectFriendRequest(userID: friendsVM.requestsList[removeIndex].id)
-                            friendsVM.requestsList.remove(at: removeIndex)
+                            profileVM.rejectFriendRequest(userID: profileVM.requestsList[removeIndex].id)
+                            profileVM.requestsList.remove(at: removeIndex)
                         }
                     }).listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
                 }.padding(.top, 1)
             }
             
-            CustomAlert(isPresented: $friendsVM.showAlert, alertMessage: friendsVM.alertMessage, alignment: .center)
-                .offset(y: friendsVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+            CustomAlert(isPresented: $profileVM.showAlert, alertMessage: profileVM.alertMessage, alignment: .center)
+                .offset(y: profileVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
         }.edgesIgnoringSafeArea(.bottom)
         .navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("myRequests", comment: "")), displayMode: .inline)
         .onAppear(perform: {
-            friendsVM.getFriendRequests()
+            profileVM.getFriendRequests()
         })
     }
 }
@@ -54,6 +54,6 @@ struct FriendRequestList: View {
 struct FriendRequestList_Previews: PreviewProvider {
     static var previews: some View {
         FriendRequestList()
-            .environmentObject(FriendsViewModel())
+            .environmentObject(ProfileViewModel())
     }
 }

@@ -10,7 +10,7 @@ import Contacts
 import Combine
 import SwiftUI
 
-class FriendsViewModel: ObservableObject {
+class ProfileViewModel: ObservableObject {
     
     @AppStorage( "storedContacts" ) private var contactsStored: Bool = false
     @AppStorage( "token" ) private var token: String = ""
@@ -29,9 +29,9 @@ class FriendsViewModel: ObservableObject {
     @Published var pendingList = [UserPreviewModel]()
     
     private var cancellableSet: Set<AnyCancellable> = []
-    var dataManager: FriendsServiceProtocol
+    var dataManager: ProfileServiceProtocol
     
-    init( dataManager: FriendsServiceProtocol = FriendsService.shared) {
+    init( dataManager: ProfileServiceProtocol = ProfileService.shared) {
         self.dataManager = dataManager
     }
     

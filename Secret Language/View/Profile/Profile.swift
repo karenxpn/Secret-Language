@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct Friends: View {
+struct Profile: View {
     
     @AppStorage( "storedContacts" ) private var contactsStored: Bool = false
-    @ObservedObject var friendsVM = FriendsViewModel()
+    @ObservedObject var profileVM = ProfileViewModel()
     
     var body: some View {
         
@@ -19,7 +19,7 @@ struct Friends: View {
             ZStack {
                 Background()
                 
-                if friendsVM.loading {
+                if profileVM.loading {
                     ProgressView()
                 } else {
                     
@@ -41,7 +41,7 @@ struct Friends: View {
                                     
                                     Image("searchIcon")
                                     
-                                    TextField(NSLocalizedString("search", comment: ""), text: $friendsVM.searchText)
+                                    TextField(NSLocalizedString("search", comment: ""), text: $profileVM.searchText)
                                         .padding(.vertical, 8)
                                         .padding(.horizontal)
                                         .frame(height: 50)
@@ -61,7 +61,7 @@ struct Friends: View {
                                 
                                 NavigationLink( destination: FriendsList(), label: {
                                     VStack {
-                                        Text( "\(friendsVM.friendsCount)" )
+                                        Text( "\(profileVM.friendsCount)" )
                                             .foregroundColor(.white)
                                             .font(.custom("Avenir", size: 20))
                                             .fontWeight(.bold)
@@ -77,7 +77,7 @@ struct Friends: View {
                                 NavigationLink( destination: PendingRequestsList(),
                                                 label: {
                                                     VStack {
-                                                        Text( "\(friendsVM.pendingCount)" )
+                                                        Text( "\(profileVM.pendingCount)" )
                                                             .foregroundColor(.white)
                                                             .font(.custom("Avenir", size: 20))
                                                             .fontWeight(.bold)
@@ -93,7 +93,7 @@ struct Friends: View {
                                 NavigationLink( destination: FriendRequestList(),
                                                 label: {
                                                     VStack {
-                                                        Text( "\(friendsVM.requestsCount)" )
+                                                        Text( "\(profileVM.requestsCount)" )
                                                             .foregroundColor(.white)
                                                             .font(.custom("Avenir", size: 20))
                                                             .fontWeight(.bold)
@@ -110,8 +110,8 @@ struct Friends: View {
                     }
                 }
                 
-                CustomAlert(isPresented: $friendsVM.showAlert, alertMessage: friendsVM.alertMessage, alignment: .center)
-                    .offset(y: friendsVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+                CustomAlert(isPresented: $profileVM.showAlert, alertMessage: profileVM.alertMessage, alignment: .center)
+                    .offset(y: profileVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                     .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
                 
             }.edgesIgnoringSafeArea(.bottom)
@@ -120,7 +120,7 @@ struct Friends: View {
             .onTapGesture {
                 UIApplication.shared.endEditing()
             }.onAppear {
-                friendsVM.getCounts()
+                profileVM.getCounts()
             }
         }.navigationBarHidden(true)
         .navigationViewStyle(StackNavigationViewStyle())
@@ -129,6 +129,6 @@ struct Friends: View {
 
 struct Profile_Previews: PreviewProvider {
     static var previews: some View {
-        Friends()
+        Profile()
     }
 }

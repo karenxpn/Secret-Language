@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct PendingListCell: View {
     
-    @EnvironmentObject var friendsVM: FriendsViewModel
+    @EnvironmentObject var profileVM: ProfileViewModel
     let pendingRequest: UserPreviewModel
     
     var body: some View {
@@ -44,7 +44,7 @@ struct PendingListCell: View {
             Spacer()
             
             Button(action: {
-                friendsVM.withdrawFriendRequest(userID: pendingRequest.id)
+                profileVM.withdrawFriendRequest(userID: pendingRequest.id)
             }, label: {
                 Text(NSLocalizedString("withdraw", comment: ""))
                     .foregroundColor( .accentColor )
@@ -63,6 +63,6 @@ struct PendingListCell: View {
 struct PendingListCell_Previews: PreviewProvider {
     static var previews: some View {
         PendingListCell(pendingRequest: UserPreviewModel(id: 1, name: "John Smith", image: "", ideal: "Business"))
-            .environmentObject(FriendsViewModel())
+            .environmentObject(ProfileViewModel())
     }
 }
