@@ -62,20 +62,6 @@ class ProfileViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.pendingList.count, 1)
     }
     
-    func testgetCountWithError() {
-        service.fetchFriendsAndRequestsCountError = true
-        viewModel.getCounts()
-        
-        XCTAssertFalse(viewModel.alertMessage.isEmpty)
-    }
-    
-    func testgetCountWithSuccess() {
-        service.fetchFriendsAndRequestsCountError = false
-        viewModel.getCounts()
-        
-        XCTAssertEqual(viewModel.friendsCount, 12)
-    }
-    
     func testAcceptFriendRequestWithError() {
         service.acceptFriendRequestError = true
         viewModel.acceptFriendRequest(userID: 1)
@@ -118,4 +104,47 @@ class ProfileViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.pendingList.count, 1)
     }
 
+    func testGetProfileWithError() {
+        service.fetchProfileError = true
+        viewModel.getProfile()
+        
+        XCTAssertTrue(viewModel.profile == nil)
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+    }
+    
+    func testGetProfileWithSuccess() {
+        service.fetchProfileError = false
+        viewModel.getProfile()
+        
+        XCTAssertTrue(viewModel.alertMessage.isEmpty)
+        XCTAssertTrue(viewModel.profile != nil)
+    }
+    
+    func testUpdateProfileImageWithError() {
+        service.updateProfileImageError = true
+        viewModel.updateProfileImage(image: Data(count: 0))
+        
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+    }
+    
+    func testUpdateProfileImageWithSuccess() {
+        service.updateProfileImageError = false
+        viewModel.updateProfileImage(image: Data(count: 0))
+        
+        XCTAssertTrue(viewModel.alertMessage.isEmpty)
+    }
+    
+    func testDeleteProfileImageWithError() {
+        service.deleteProfileImageError = true
+        viewModel.deleteProfileImage()
+        
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+    }
+    
+    func testDeleteProfileImageWithSuccess() {
+        service.deleteProfileImageError = false
+        viewModel.deleteProfileImage()
+        
+        XCTAssertTrue(viewModel.alertMessage.isEmpty)
+    }
 }
