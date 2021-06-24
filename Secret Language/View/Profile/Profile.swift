@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct Profile: View {
     
-    @AppStorage( "storedContacts" ) private var contactsStored: Bool = false
     @ObservedObject var profileVM = ProfileViewModel()
+    @State private var showPicker: Bool = false
     
     var body: some View {
         
@@ -21,39 +22,42 @@ struct Profile: View {
                 
                 if profileVM.loading {
                     ProgressView()
-                } else {
+                } else if profileVM.profile != nil {
                     
                     ScrollView( showsIndicators: false ) {
-                        VStack( alignment: .leading, spacing: 20) {
-                            Text( NSLocalizedString("letsFindFriends", comment: ""))
-                                .foregroundColor(.white)
-                                .font(.custom("times", size: 26))
-                                .padding(.bottom)
+                        
+                        VStack( spacing: 20) {
                             
-                            Text( NSLocalizedString("toStartSearch", comment: ""))
-                                .foregroundColor(.accentColor)
-                                .font(.custom("Gilroy-Regular", size: 14))
-                            
-                            HStack {
-                                Spacer()
+                            Menu {
+                                Button(action: {
+                                    showPicker.toggle()
+                                }, label: {
+                                    Text( NSLocalizedString("changeProfileImage", comment: "") )
+                                })
                                 
-                                HStack {
+                                Button {
+                                    profileVM.deleteProfileImage()
+                                } label: {
+                                    Text( NSLocalizedString("removeProfileImage", comment: "") )
+                                }
+                            } label: {
+                                ZStack( alignment: .bottomTrailing) {
+                                    WebImage(url: URL(string: profileVM.profile!.image))
+                                        .placeholder(content: {
+                                            ProgressView()
+                                        })
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 110, height: 110)
+                                        .clipShape(Circle())
                                     
-                                    Image("searchIcon")
-                                    
-                                    TextField(NSLocalizedString("search", comment: ""), text: $profileVM.searchText)
-                                        .padding(.vertical, 8)
-                                        .padding(.horizontal)
-                                        .frame(height: 50)
-                                        .listRowBackground(Color.clear)
-                                        .listRowInsets(EdgeInsets())
-                                    
-                                }.padding(.horizontal)
-                                .background(RoundedRectangle(cornerRadius: 25).fill(AppColors.boxColor))
-                                .frame(width: UIScreen.main.bounds.size.width * 0.9)
-                                
-                                Spacer()
+                                    Image("camera")
+                                }
                             }
+                            
+                            Text( "\(profileVM.profile!.name), \(profileVM.profile!.age)")
+                                .foregroundColor(.white)
+                                .font(.custom("AppleMyungjo", size: 20))
                             
                             HStack {
                                 
@@ -61,7 +65,7 @@ struct Profile: View {
                                 
                                 NavigationLink( destination: FriendsList(), label: {
                                     VStack {
-                                        Text( "\(profileVM.friendsCount)" )
+                                        Text( "\(profileVM.profile!.friends)" )
                                             .foregroundColor(.white)
                                             .font(.custom("Avenir", size: 20))
                                             .fontWeight(.bold)
@@ -77,7 +81,7 @@ struct Profile: View {
                                 NavigationLink( destination: PendingRequestsList(),
                                                 label: {
                                                     VStack {
-                                                        Text( "\(profileVM.pendingCount)" )
+                                                        Text( "\(profileVM.profile!.pending)" )
                                                             .foregroundColor(.white)
                                                             .font(.custom("Avenir", size: 20))
                                                             .fontWeight(.bold)
@@ -93,7 +97,7 @@ struct Profile: View {
                                 NavigationLink( destination: FriendRequestList(),
                                                 label: {
                                                     VStack {
-                                                        Text( "\(profileVM.requestsCount)" )
+                                                        Text( "\(profileVM.profile!.requests)" )
                                                             .foregroundColor(.white)
                                                             .font(.custom("Avenir", size: 20))
                                                             .fontWeight(.bold)
@@ -107,7 +111,7 @@ struct Profile: View {
                             }
                         }.padding()
                         .padding(.top, 30)
-                    }
+                    }.padding(.top, 1)
                 }
                 
                 CustomAlert(isPresented: $profileVM.showAlert, alertMessage: profileVM.alertMessage, alignment: .center)
@@ -116,14 +120,22 @@ struct Profile: View {
                 
             }.edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle("")
-            .navigationBarHidden(true)
+            .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("profile", comment: "")), displayMode: .inline)
+            .navigationBarItems(trailing: NavigationLink(
+                                    destination: Settings(),
+                                    label: {
+                                        Image("settings")
+                                            .padding([.leading, .top, .bottom])
+                                    }))
             .onTapGesture {
                 UIApplication.shared.endEditing()
             }.onAppear {
-                profileVM.getCounts()
+                profileVM.getProfile()
+            }.sheet(isPresented: $showPicker) {
+                ProfileImagePicker()
+                    .environmentObject( profileVM )
             }
-        }.navigationBarHidden(true)
-        .navigationViewStyle(StackNavigationViewStyle())
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

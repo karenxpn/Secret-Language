@@ -53,8 +53,6 @@
 "advice" = "ADVICE";
 "since1701" = "Since 1701, this very rare name has only been given the poeple born on this day in these years:";
 "all" = "All";
-"letsFindFriends" = "Let’s find your friends";
-"toStartSearch" = "To start just write the name of your fiend and we'll find them.";
 "friends" = "Friends";
 "pending" = "Pending";
 "requests" = "Requests";
@@ -64,3 +62,7 @@
 "accept" = "Accept";
 "invite" = "Invite";
 "withdraw" = "Withdraw";
+"profile" = "Profile";
+"settings" = "Settings";
+"removeProfileImage" = "Remove Profile Image";
+"changeProfileImage" = "Change Profile Image";

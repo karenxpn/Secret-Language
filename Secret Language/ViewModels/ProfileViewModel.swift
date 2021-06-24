@@ -12,17 +12,15 @@ import SwiftUI
 
 class ProfileViewModel: ObservableObject {
     
-    @AppStorage( "storedContacts" ) private var contactsStored: Bool = false
     @AppStorage( "token" ) private var token: String = ""
     
     @Published var searchText: String = ""
-    @Published var friendsCount: Int = 0
-    @Published var pendingCount: Int = 0
-    @Published var requestsCount: Int = 0
     
     @Published var loading: Bool = false
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    
+    @Published var profile: UserModel? = nil
     
     @Published var friendsList = [UserPreviewModel]()
     @Published var requestsList = [UserPreviewModel]()
@@ -74,23 +72,6 @@ class ProfileViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
-    func getCounts() {
-        loading = true
-
-        dataManager.fetchFriendsAndRequestsCount(token: token)
-            .sink { response in
-                self.loading = false
-
-                if response.error != nil {
-                    self.makeAlert(with: response.error!, for: &self.alertMessage)
-                } else {
-                    self.friendsCount = response.value!.friends
-                    self.pendingCount = response.value!.pending
-                    self.requestsCount = response.value!.requests
-                }
-            }.store(in: &cancellableSet)
-    }
-    
     func acceptFriendRequest( userID: Int ) {
         dataManager.acceptFriendRequest(token: token, userID: userID)
             .sink { response in
@@ -114,6 +95,43 @@ class ProfileViewModel: ObservableObject {
             .sink { response in
                 if response.error == nil {
                     self.pendingList = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func updateProfileImage(image: Data) {
+        dataManager.updateProfileImage(token: self.token, image: image)
+            .sink { (dataResponse) in
+                
+                if dataResponse.error != nil {
+                    self.makeAlert(with: dataResponse.error!, for: &self.alertMessage)
+                } else {
+                    self.getProfile()
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func deleteProfileImage() {
+        dataManager.deleteProfileImage(token: token)
+            .sink { response in
+                if response.error != nil {
+                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                } else {
+                    self.getProfile()
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func getProfile() {
+        
+        loading = true
+        dataManager.fetchProfile(token: token)
+            .sink { response in
+                self.loading = false
+                if response.error != nil {
+                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                } else {
+                    self.profile = response.value!
                 }
             }.store(in: &cancellableSet)
     }

@@ -13,6 +13,10 @@
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */; };
+		FF4AB0F6268503530085EA9A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4AB0F5268503530085EA9A /* UserModel.swift */; };
+		FF4AB0F8268503DC0085EA9A /* AppleMyungjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF4AB0F7268503DC0085EA9A /* AppleMyungjo.ttf */; };
+		FF4AB0FB268504A20085EA9A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4AB0FA268504A20085EA9A /* Settings.swift */; };
+		FF4AB0FD2685091B0085EA9A /* ProfileImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4AB0FC2685091B0085EA9A /* ProfileImagePicker.swift */; };
 		FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */; };
 		FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40D2667BBA200BD3838 /* GenderModel.swift */; };
 		FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */; };
@@ -25,7 +29,6 @@
 		FF99A03E2680E9A000F234CD /* FriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A03D2680E9A000F234CD /* FriendRequestCell.swift */; };
 		FF99A0402681114400F234CD /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A03F2681114400F234CD /* ProfileService.swift */; };
 		FF99A0422681354500F234CD /* GetMatchesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0412681354500F234CD /* GetMatchesRequest.swift */; };
-		FF99A0442681D91100F234CD /* FriendsAndRequestsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0432681D91100F234CD /* FriendsAndRequestsModel.swift */; };
 		FF99A0462681DB4E00F234CD /* ProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0452681DB4E00F234CD /* ProfileViewModelTests.swift */; };
 		FF99A0482681DB6400F234CD /* MockProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0472681DB6400F234CD /* MockProfileService.swift */; };
 		FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A04D268367C500F234CD /* PendingRequestsList.swift */; };
@@ -117,6 +120,10 @@
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignment.swift; sourceTree = "<group>"; };
+		FF4AB0F5268503530085EA9A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		FF4AB0F7268503DC0085EA9A /* AppleMyungjo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AppleMyungjo.ttf; path = ../../../../../../System/Library/Fonts/Supplemental/AppleMyungjo.ttf; sourceTree = "<group>"; };
+		FF4AB0FA268504A20085EA9A /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		FF4AB0FC2685091B0085EA9A /* ProfileImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePicker.swift; sourceTree = "<group>"; };
 		FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTypeModel.swift; sourceTree = "<group>"; };
 		FF58C40D2667BBA200BD3838 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 		FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCheckVerificationCode.swift; sourceTree = "<group>"; };
@@ -129,7 +136,6 @@
 		FF99A03D2680E9A000F234CD /* FriendRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestCell.swift; sourceTree = "<group>"; };
 		FF99A03F2681114400F234CD /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		FF99A0412681354500F234CD /* GetMatchesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMatchesRequest.swift; sourceTree = "<group>"; };
-		FF99A0432681D91100F234CD /* FriendsAndRequestsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsAndRequestsModel.swift; sourceTree = "<group>"; };
 		FF99A0452681DB4E00F234CD /* ProfileViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelTests.swift; sourceTree = "<group>"; };
 		FF99A0472681DB6400F234CD /* MockProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProfileService.swift; sourceTree = "<group>"; };
 		FF99A04D268367C500F234CD /* PendingRequestsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestsList.swift; sourceTree = "<group>"; };
@@ -246,6 +252,14 @@
 				1463E33D33EB9CF8F6687EC0 /* Pods_Secret_LanguageTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF4AB0F9268504970085EA9A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FF4AB0FA268504A20085EA9A /* Settings.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		FFBEA6712664E4290033B2ED = {
@@ -392,7 +406,7 @@
 				FF42BD9A267BCE1F000DCA6D /* Location.swift */,
 				FF99A0332680C5C000F234CD /* UserPreviewModel.swift */,
 				FF99A0412681354500F234CD /* GetMatchesRequest.swift */,
-				FF99A0432681D91100F234CD /* FriendsAndRequestsModel.swift */,
+				FF4AB0F5268503530085EA9A /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -429,6 +443,7 @@
 		FFCEDE00267236150073BE20 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				FF4AB0F9268504970085EA9A /* Settings */,
 				FFCEDE01267236200073BE20 /* Profile.swift */,
 				FF99A0352680C61C00F234CD /* FriendsList.swift */,
 				FF99A0392680C6CE00F234CD /* FriendListCell.swift */,
@@ -437,6 +452,7 @@
 				FF99A03B2680E98B00F234CD /* FriendRequestList.swift */,
 				FF99A03D2680E9A000F234CD /* FriendRequestCell.swift */,
 				FF99A0372680C65300F234CD /* FriendsNavBar.swift */,
+				FF4AB0FC2685091B0085EA9A /* ProfileImagePicker.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -460,6 +476,7 @@
 		FFDB156C2664EA1E00341E8F /* font */ = {
 			isa = PBXGroup;
 			children = (
+				FF4AB0F7268503DC0085EA9A /* AppleMyungjo.ttf */,
 				FFE0E41926780053008FA78C /* Gilroy-Bold.ttf */,
 				FFDB156D2664EA2D00341E8F /* Times.ttc */,
 				FFDB15B02666C18900341E8F /* Avenir.ttc */,
@@ -617,6 +634,7 @@
 				FFBEA6B12664E72D0033B2ED /* .gitignore in Resources */,
 				FFBEA6A92664E4D00033B2ED /* LaunchScreen.storyboard in Resources */,
 				FFBEA6852664E42A0033B2ED /* Preview Assets.xcassets in Resources */,
+				FF4AB0F8268503DC0085EA9A /* AppleMyungjo.ttf in Resources */,
 				FFDB15792664F1BD00341E8F /* Gilroy-Regular.ttf in Resources */,
 				FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */,
 			);
@@ -773,11 +791,12 @@
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
 				FFCEDE02267236200073BE20 /* Profile.swift in Sources */,
-				FF99A0442681D91100F234CD /* FriendsAndRequestsModel.swift in Sources */,
 				FFDB15A926669B9400341E8F /* TopGender.swift in Sources */,
 				FFCEDE05267236500073BE20 /* Search.swift in Sources */,
+				FF4AB0FB268504A20085EA9A /* Settings.swift in Sources */,
 				FF99A0382680C65300F234CD /* FriendsNavBar.swift in Sources */,
 				FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */,
+				FF4AB0F6268503530085EA9A /* UserModel.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,
 				FFCEDDF3266FB0350073BE20 /* AuthResponse.swift in Sources */,
 				FFDB158326653D6E00341E8F /* AuthService.swift in Sources */,
@@ -789,6 +808,7 @@
 				FFE0E4162677F97F008FA78C /* FilterMatches.swift in Sources */,
 				FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */,
 				FF99A0362680C61C00F234CD /* FriendsList.swift in Sources */,
+				FF4AB0FD2685091B0085EA9A /* ProfileImagePicker.swift in Sources */,
 				FFDB15A726669AA000341E8F /* ChooseGender.swift in Sources */,
 				FFE0E41E2678090D008FA78C /* MatchesViewModel.swift in Sources */,
 				FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */,
