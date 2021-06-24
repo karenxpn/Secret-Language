@@ -162,7 +162,7 @@ extension ProfileService: ProfileServiceProtocol {
     
     // profile
     func fetchProfile(token: String) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/getMe")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/me")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,

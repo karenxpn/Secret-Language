@@ -110,7 +110,10 @@ struct Profile: View {
                                 Spacer()
                             }
                         }.padding()
-                        .padding(.top, 30)
+                        .padding(.top, 20)
+                        
+                        EmptyList()
+                        
                     }.padding(.top, 1)
                 }
                 
