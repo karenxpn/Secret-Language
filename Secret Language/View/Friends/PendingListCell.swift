@@ -34,9 +34,10 @@ struct PendingListCell: View {
                         .foregroundColor(.gray)
                         .font(.custom("Gilroy-Regular", size: 15))
                     
-                    Text( pendingRequest.ideal_for)
+                    Text( pendingRequest.ideal)
                         .foregroundColor(.accentColor)
                         .font(.custom("Gilroy-Regular", size: 15))
+                        .lineLimit(1)
                 }
             }
             
@@ -61,7 +62,7 @@ struct PendingListCell: View {
 
 struct PendingListCell_Previews: PreviewProvider {
     static var previews: some View {
-        PendingListCell(pendingRequest: UserPreviewModel(id: 1, name: "John Smith", image: "", ideal_for: "Business"))
+        PendingListCell(pendingRequest: UserPreviewModel(id: 1, name: "John Smith", image: "", ideal: "Business"))
             .environmentObject(FriendsViewModel())
     }
 }

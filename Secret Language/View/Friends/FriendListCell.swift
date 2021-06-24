@@ -34,9 +34,10 @@ struct FriendListCell: View {
                         .foregroundColor(.gray)
                         .font(.custom("Gilroy-Regular", size: 15))
                     
-                    Text( friend.ideal_for)
+                    Text( friend.ideal)
                         .foregroundColor(.accentColor)
                         .font(.custom("Gilroy-Regular", size: 15))
+                        .lineLimit(1)
                 }
             }
             
@@ -54,7 +55,7 @@ struct FriendListCell: View {
 
 struct FriendListtCell_Previews: PreviewProvider {
     static var previews: some View {
-        FriendListCell( friend: UserPreviewModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal_for: "Business"))
+        FriendListCell( friend: UserPreviewModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"))
             .environmentObject(FriendsViewModel())
     }
 }

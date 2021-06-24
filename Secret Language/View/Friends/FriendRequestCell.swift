@@ -36,9 +36,10 @@ struct FriendRequestCell: View {
                             .foregroundColor(.gray)
                             .font(.custom("Gilroy-Regular", size: 15))
                         
-                        Text( request.ideal_for)
+                        Text( request.ideal)
                             .foregroundColor(.accentColor)
                             .font(.custom("Gilroy-Regular", size: 15))
+                            .lineLimit(1)
                     }
                 }
                 
@@ -64,7 +65,7 @@ struct FriendRequestCell: View {
 
 struct FriendRequestCell_Previews: PreviewProvider {
     static var previews: some View {
-        FriendRequestCell( request: UserPreviewModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal_for: "Business"))
+        FriendRequestCell( request: UserPreviewModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"))
             .environmentObject(FriendsViewModel())
     }
 }

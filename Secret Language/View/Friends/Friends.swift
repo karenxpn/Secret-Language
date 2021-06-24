@@ -129,12 +129,12 @@ struct Friends: View {
             .onTapGesture {
                 UIApplication.shared.endEditing()
             }.onAppear {
-                friendsVM.getCounts()
-                if !contactsStored {
-                    friendsVM.permissions()
-                } else {
-                    friendsVM.getContacts()
-                }
+//                friendsVM.getCounts()
+//                if !contactsStored {
+//                    friendsVM.permissions()
+//                } else {
+//                    friendsVM.getContacts()
+//                }
             }
         }.navigationBarHidden(true)
         .navigationViewStyle(StackNavigationViewStyle())
