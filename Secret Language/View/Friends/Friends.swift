@@ -129,7 +129,7 @@ struct Friends: View {
             .onTapGesture {
                 UIApplication.shared.endEditing()
             }.onAppear {
-//                friendsVM.getCounts()
+                friendsVM.getCounts()
 //                if !contactsStored {
 //                    friendsVM.permissions()
 //                } else {

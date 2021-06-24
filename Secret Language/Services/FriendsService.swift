@@ -58,7 +58,7 @@ extension FriendsService: FriendsServiceProtocol {
     
     // pending requests
     func withdrawFriendRequest(token: String, userID: Int) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/withdrawRequest")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/withdrawFriendRequest")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
