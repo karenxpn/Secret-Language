@@ -8,9 +8,26 @@
 import Foundation
 import Alamofire
 import Combine
+import PusherSwift
 @testable import Secret_Language
 
 class MockProfileService: ProfileServiceProtocol {
+    func fetchFriendRequestsWithPusher(channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
+        
+    }
+    
+    func fetchFriendsWithPusher(channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
+        
+    }
+    
+    func fetchPendingRequestsWithPusher(channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
+        
+    }
+    
+    func fetchProfileWithPusher(channel: PusherChannel, username: String, completion: @escaping (UserModel) -> ()) {
+        
+    }
+    
     func fetchProfile(token: String) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
         var result: Result<UserModel, NetworkError>
         

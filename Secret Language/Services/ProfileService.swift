@@ -32,7 +32,6 @@ protocol ProfileServiceProtocol {
     func deleteProfileImage( token: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func updateProfileImage( token: String, image: Data ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     
-    // add fetch Friends, pending requests, request with pusher
 }
 
 class ProfileService {
@@ -44,7 +43,7 @@ class ProfileService {
 extension ProfileService: ProfileServiceProtocol {
     func fetchFriendRequestsWithPusher(channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
         
-        channel.bind(eventName: "friendRequests", eventCallback: { (event: PusherEvent) -> Void in
+        channel.bind(eventName: "myRequests", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {
                 if let data = stringData.data(using: .utf8) {
                     
@@ -65,7 +64,7 @@ extension ProfileService: ProfileServiceProtocol {
     
     func fetchFriendsWithPusher(channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
         
-        channel.bind(eventName: "friends", eventCallback: { (event: PusherEvent) -> Void in
+        channel.bind(eventName: "myFriends", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {
                 if let data = stringData.data(using: .utf8) {
                     
