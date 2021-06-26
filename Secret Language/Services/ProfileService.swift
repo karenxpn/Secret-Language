@@ -13,20 +13,20 @@ import PusherSwift
 
 protocol ProfileServiceProtocol {
     func fetchFriendRequests( token: String ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
-    func fetchFriendRequestsWithPusher( pusher: Pusher, username: String, completion: @escaping ([UserPreviewModel]) -> () )
+    func fetchFriendRequestsWithPusher( channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> () )
     func acceptFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
     func rejectFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
     
     
     func fetchFriends( token: String ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
-    func fetchFriendsWithPusher( pusher: Pusher, username: String, completion: @escaping ([UserPreviewModel]) -> () )
+    func fetchFriendsWithPusher( channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> () )
     func withdrawFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
     
     func fetchPendingRequests( token: String ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
-    func fetchPendingRequestsWithPusher( pusher: Pusher, username: String, completion: @escaping ([UserPreviewModel]) -> () )
+    func fetchPendingRequestsWithPusher( channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> () )
     
     func fetchProfile( token: String ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
-    func fetchProfileWithPusher( pusher: Pusher, username: String, completion: @escaping ( UserModel ) -> () )
+    func fetchProfileWithPusher( channel: PusherChannel, username: String, completion: @escaping ( UserModel ) -> () )
     
     
     func deleteProfileImage( token: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
@@ -42,8 +42,7 @@ class ProfileService {
 }
 
 extension ProfileService: ProfileServiceProtocol {
-    func fetchFriendRequestsWithPusher(pusher: Pusher, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
-        let channel = pusher.subscribe("aaa")
+    func fetchFriendRequestsWithPusher(channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
         
         channel.bind(eventName: "friendRequests", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {
@@ -64,8 +63,7 @@ extension ProfileService: ProfileServiceProtocol {
         })
     }
     
-    func fetchFriendsWithPusher(pusher: Pusher, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
-        let channel = pusher.subscribe("aaa")
+    func fetchFriendsWithPusher(channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
         
         channel.bind(eventName: "friends", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {
@@ -86,8 +84,7 @@ extension ProfileService: ProfileServiceProtocol {
         })
     }
     
-    func fetchPendingRequestsWithPusher(pusher: Pusher, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
-        let channel = pusher.subscribe("aaa")
+    func fetchPendingRequestsWithPusher(channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
         
         channel.bind(eventName: "pendingRequests", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {
@@ -108,8 +105,7 @@ extension ProfileService: ProfileServiceProtocol {
         })
     }
     
-    func fetchProfileWithPusher(pusher: Pusher, username: String, completion: @escaping (UserModel) -> ()) {
-        let channel = pusher.subscribe("aaa")
+    func fetchProfileWithPusher(channel: PusherChannel, username: String, completion: @escaping (UserModel) -> ()) {
         
         channel.bind(eventName: "getMe", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {

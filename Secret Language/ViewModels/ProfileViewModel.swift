@@ -30,11 +30,11 @@ class ProfileViewModel: ObservableObject {
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ProfileServiceProtocol
-    var pusher: Pusher
+    var channel: PusherChannel
     
     init( dataManager: ProfileServiceProtocol = ProfileService.shared) {
         self.dataManager = dataManager
-        self.pusher = PusherManager.shared.pusher
+        self.channel = PusherManager.shared.channel
     }
     
     func getFriends() {
@@ -141,25 +141,25 @@ class ProfileViewModel: ObservableObject {
     }
     
     func getProfileWithPusher() {
-        dataManager.fetchProfileWithPusher(pusher: pusher, username: username) { profile in
+        dataManager.fetchProfileWithPusher(channel: channel, username: username) { profile in
             self.profile = profile
         }
     }
     
     func getFriendsWithPusher() {
-        dataManager.fetchFriendsWithPusher(pusher: pusher, username: username) { friends in
+        dataManager.fetchFriendsWithPusher(channel: channel, username: username) { friends in
             self.friendsList = friends
         }
     }
     
     func getFriendRequestsWithPusher() {
-        dataManager.fetchFriendRequestsWithPusher(pusher: pusher, username: username) { requests in
+        dataManager.fetchFriendRequestsWithPusher(channel: channel, username: username) { requests in
             self.requestsList = requests
         }
     }
     
     func getPendingRequestsWithPusher() {
-        dataManager.fetchPendingRequestsWithPusher(pusher: pusher, username: username) { requests in
+        dataManager.fetchPendingRequestsWithPusher(channel: channel, username: username) { requests in
             self.pendingList = requests
         }
     }
