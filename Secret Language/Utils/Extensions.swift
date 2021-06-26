@@ -14,7 +14,6 @@ extension UIApplication {
     }
 }
 
-
 extension String {
     
     var digits: [Int] {
@@ -29,6 +28,18 @@ extension String {
     }
 }
 
+func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+    if let data = text.data(using: .utf8) {
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:AnyObject]
+            return json
+        } catch {
+            print("Something went wrong")
+        }
+    }
+    return nil
+}
+
 extension Int {
     
     var numberString: String {
@@ -36,5 +47,19 @@ extension Int {
         guard self < 10 else { return "0" }
         
         return String(self)
+    }
+}
+
+extension UIImage {
+    func fixOrientation() -> UIImage? {
+        if self.imageOrientation == UIImage.Orientation.up {
+            return self
+        }
+
+        UIGraphicsBeginImageContext(self.size)
+        self.draw(in: CGRect(origin: .zero, size: self.size))
+        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return normalizedImage
     }
 }

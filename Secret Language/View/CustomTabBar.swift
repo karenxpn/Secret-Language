@@ -19,7 +19,6 @@ struct CustomTabBar: View {
                     
                     RoundedRectangle(cornerRadius: 50, style: .continuous)
                         .fill(AppColors.tabBg)
-//                        .opacity(0.8)
                     
                     HStack {
                         
@@ -29,7 +28,7 @@ struct CustomTabBar: View {
                             Image(icons[id])
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .foregroundColor(id == currentTab ? .accentColor : .white)
+                                .foregroundColor(id == currentTab ? .accentColor : AppColors.tabIcon)
                                 .frame(width: 20, height: 20)
                                 .padding(.vertical, 10)
                                 .padding(.horizontal, 6)
