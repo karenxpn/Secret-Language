@@ -9,10 +9,12 @@ import Foundation
 import Contacts
 import Combine
 import SwiftUI
+import PusherSwift
 
 class ProfileViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
+    @AppStorage( "username" ) private var username: String = ""
     
     @Published var searchText: String = ""
     
@@ -28,9 +30,11 @@ class ProfileViewModel: ObservableObject {
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ProfileServiceProtocol
+    var pusher: Pusher
     
     init( dataManager: ProfileServiceProtocol = ProfileService.shared) {
         self.dataManager = dataManager
+        self.pusher = PusherManager.shared.pusher
     }
     
     func getFriends() {
@@ -134,6 +138,30 @@ class ProfileViewModel: ObservableObject {
                     self.profile = response.value!
                 }
             }.store(in: &cancellableSet)
+    }
+    
+    func getProfileWithPusher() {
+        dataManager.fetchProfileWithPusher(pusher: pusher, username: username) { profile in
+            self.profile = profile
+        }
+    }
+    
+    func getFriendsWithPusher() {
+        dataManager.fetchFriendsWithPusher(pusher: pusher, username: username) { friends in
+            self.friendsList = friends
+        }
+    }
+    
+    func getFriendRequestsWithPusher() {
+        dataManager.fetchFriendRequestsWithPusher(pusher: pusher, username: username) { requests in
+            self.requestsList = requests
+        }
+    }
+    
+    func getPendingRequestsWithPusher() {
+        dataManager.fetchPendingRequestsWithPusher(pusher: pusher, username: username) { requests in
+            self.pendingList = requests
+        }
     }
         
     func makeAlert(with error: NetworkError, for message: inout String ) {

@@ -11,6 +11,10 @@ struct FriendsList: View {
     
     @ObservedObject var profileVM = ProfileViewModel()
     
+    init() {
+        profileVM.getFriendsWithPusher()
+    }
+    
     var body: some View {
         ZStack {
             Background()

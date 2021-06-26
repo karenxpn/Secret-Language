@@ -9,21 +9,30 @@ import Foundation
 import Contacts
 import Alamofire
 import Combine
+import PusherSwift
 
 protocol ProfileServiceProtocol {
     func fetchFriendRequests( token: String ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
+    func fetchFriendRequestsWithPusher( pusher: Pusher, username: String, completion: @escaping ([UserPreviewModel]) -> () )
     func acceptFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
     func rejectFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
     
     
     func fetchFriends( token: String ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
+    func fetchFriendsWithPusher( pusher: Pusher, username: String, completion: @escaping ([UserPreviewModel]) -> () )
     func withdrawFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
     
     func fetchPendingRequests( token: String ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
+    func fetchPendingRequestsWithPusher( pusher: Pusher, username: String, completion: @escaping ([UserPreviewModel]) -> () )
     
     func fetchProfile( token: String ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
+    func fetchProfileWithPusher( pusher: Pusher, username: String, completion: @escaping ( UserModel ) -> () )
+    
+    
     func deleteProfileImage( token: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func updateProfileImage( token: String, image: Data ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    
+    // add fetch Friends, pending requests, request with pusher
 }
 
 class ProfileService {
@@ -33,6 +42,94 @@ class ProfileService {
 }
 
 extension ProfileService: ProfileServiceProtocol {
+    func fetchFriendRequestsWithPusher(pusher: Pusher, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
+        let channel = pusher.subscribe("aaa")
+        
+        channel.bind(eventName: "friendRequests", eventCallback: { (event: PusherEvent) -> Void in
+            if let stringData: String = event.data {
+                if let data = stringData.data(using: .utf8) {
+                    
+                    guard let requests = try? JSONDecoder().decode([UserPreviewModel].self, from: data) else {
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        completion(requests)
+                    }
+                    
+                } else {
+                    return
+                }
+            }
+        })
+    }
+    
+    func fetchFriendsWithPusher(pusher: Pusher, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
+        let channel = pusher.subscribe("aaa")
+        
+        channel.bind(eventName: "friends", eventCallback: { (event: PusherEvent) -> Void in
+            if let stringData: String = event.data {
+                if let data = stringData.data(using: .utf8) {
+                    
+                    guard let friends = try? JSONDecoder().decode([UserPreviewModel].self, from: data) else {
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        completion(friends)
+                    }
+                    
+                } else {
+                    return
+                }
+            }
+        })
+    }
+    
+    func fetchPendingRequestsWithPusher(pusher: Pusher, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
+        let channel = pusher.subscribe("aaa")
+        
+        channel.bind(eventName: "pendingRequests", eventCallback: { (event: PusherEvent) -> Void in
+            if let stringData: String = event.data {
+                if let data = stringData.data(using: .utf8) {
+                    
+                    guard let requests = try? JSONDecoder().decode([UserPreviewModel].self, from: data) else {
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        completion(requests)
+                    }
+                    
+                } else {
+                    return
+                }
+            }
+        })
+    }
+    
+    func fetchProfileWithPusher(pusher: Pusher, username: String, completion: @escaping (UserModel) -> ()) {
+        let channel = pusher.subscribe("aaa")
+        
+        channel.bind(eventName: "getMe", eventCallback: { (event: PusherEvent) -> Void in
+            if let stringData: String = event.data {
+                if let data = stringData.data(using: .utf8) {
+                    
+                    guard let profile = try? JSONDecoder().decode(UserModel.self, from: data) else {
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        completion(profile)
+                    }
+                    
+                } else {
+                    return
+                }
+            }
+        })
+    }
+    
     
     // pending requests
     func withdrawFriendRequest(token: String, userID: Int) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 @main
 struct Secret_LanguageApp: App {
     

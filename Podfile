@@ -10,6 +10,7 @@ target 'Secret Language' do
 	pod 'SDWebImageSwiftUI'
 	pod 'SDWebImageSVGCoder'
 	pod 'Introspect'
+	pod 'PusherSwift'
 
 
   target 'Secret LanguageTests' do

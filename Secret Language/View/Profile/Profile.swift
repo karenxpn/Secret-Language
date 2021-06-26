@@ -7,11 +7,16 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import PusherSwift
 
 struct Profile: View {
     
     @ObservedObject var profileVM = ProfileViewModel()
     @State private var showPicker: Bool = false
+    
+    init() {
+        profileVM.getProfileWithPusher()
+    }
     
     var body: some View {
         
@@ -128,7 +133,10 @@ struct Profile: View {
                                     destination: Settings(),
                                     label: {
                                         Image("settings")
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 20)
                                             .padding([.leading, .top, .bottom])
+                                        
                                     }))
             .onTapGesture {
                 UIApplication.shared.endEditing()

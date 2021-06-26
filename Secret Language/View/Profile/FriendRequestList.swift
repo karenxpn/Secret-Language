@@ -15,6 +15,8 @@ struct FriendRequestList: View {
         UITableView.appearance().separatorStyle = .none
         UITableViewCell.appearance().backgroundColor = .none
         UITableView.appearance().backgroundColor = .none
+        
+        profileVM.getFriendRequestsWithPusher()
     }
     
     var body: some View {

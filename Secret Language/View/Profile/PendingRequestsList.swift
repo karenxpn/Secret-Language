@@ -11,6 +11,10 @@ struct PendingRequestsList: View {
     
     @ObservedObject var profileVM = ProfileViewModel()
     
+    init() {
+        profileVM.getPendingRequestsWithPusher()
+    }
+    
     var body: some View {
         ZStack {
             
