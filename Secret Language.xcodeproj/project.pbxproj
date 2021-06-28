@@ -27,6 +27,7 @@
 		FF997E8A2689E6BA0057B731 /* SingleSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E892689E6BA0057B731 /* SingleSearchResult.swift */; };
 		FF997E8C2689FF250057B731 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E8B2689FF250057B731 /* SearchService.swift */; };
 		FF997E8E268A13080057B731 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E8D268A13080057B731 /* UserService.swift */; };
+		FF997E91268A60150057B731 /* VisitedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E90268A60150057B731 /* VisitedProfile.swift */; };
 		FF99A0322680BD7200F234CD /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0312680BD7200F234CD /* ProfileViewModel.swift */; };
 		FF99A0342680C5C000F234CD /* UserPreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0332680C5C000F234CD /* UserPreviewModel.swift */; };
 		FF99A0362680C61C00F234CD /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0352680C61C00F234CD /* FriendsList.swift */; };
@@ -141,6 +142,7 @@
 		FF997E892689E6BA0057B731 /* SingleSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSearchResult.swift; sourceTree = "<group>"; };
 		FF997E8B2689FF250057B731 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		FF997E8D268A13080057B731 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		FF997E90268A60150057B731 /* VisitedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedProfile.swift; sourceTree = "<group>"; };
 		FF99A0312680BD7200F234CD /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FF99A0332680C5C000F234CD /* UserPreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewModel.swift; sourceTree = "<group>"; };
 		FF99A0352680C61C00F234CD /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
@@ -274,6 +276,14 @@
 				FF4AB0FA268504A20085EA9A /* Settings.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		FF997E8F268A60050057B731 /* VisitedProfile */ = {
+			isa = PBXGroup;
+			children = (
+				FF997E90268A60150057B731 /* VisitedProfile.swift */,
+			);
+			path = VisitedProfile;
 			sourceTree = "<group>";
 		};
 		FFBEA6712664E4290033B2ED = {
@@ -461,6 +471,7 @@
 		FFCEDE00267236150073BE20 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				FF997E8F268A60050057B731 /* VisitedProfile */,
 				FF4AB0F9268504970085EA9A /* Settings */,
 				FFCEDE01267236200073BE20 /* Profile.swift */,
 				FF99A0352680C61C00F234CD /* FriendsList.swift */,
@@ -480,8 +491,8 @@
 			isa = PBXGroup;
 			children = (
 				FFCEDE04267236500073BE20 /* Search.swift */,
-				FF997E872689DCDF0057B731 /* SearchNavBar.swift */,
 				FF997E892689E6BA0057B731 /* SingleSearchResult.swift */,
+				FF997E872689DCDF0057B731 /* SearchNavBar.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -786,6 +797,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFDB15A02666571A00341E8F /* OTPTextFieldView.swift in Sources */,
+				FF997E91268A60150057B731 /* VisitedProfile.swift in Sources */,
 				FFDB158526653DC500341E8F /* GlobalResponse.swift in Sources */,
 				FF99A03C2680E98B00F234CD /* FriendRequestList.swift in Sources */,
 				FFDB157B2664F2C800341E8F /* BirthdayPicker.swift in Sources */,

@@ -13,7 +13,7 @@ class SearchViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
     @Published var search: String = ""
-    @Published var searchResults = [UserPreviewModel]()
+    @Published var searchResults = [UserPreviewModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"), UserPreviewModel(id: 2, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"), UserPreviewModel(id: 3, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"), UserPreviewModel(id: 4, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business")]
     @Published var ideal: Int = 1
     
     @Published var loading: Bool = false
@@ -38,10 +38,9 @@ class SearchViewModel: ObservableObject {
             .removeDuplicates()
             .debounce(for: 0.3, scheduler: DispatchQueue.main)
             .sink { (text) in
-                if text != "" {
+                if !text.isEmpty {
                     self.getSearchUsers(search: text)
-                }
-                else {
+                } else {
                     self.getPopularUsers()
                 }
             }.store(in: &cancellableSet)

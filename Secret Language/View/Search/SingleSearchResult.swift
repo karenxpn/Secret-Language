@@ -14,28 +14,36 @@ struct SingleSearchResult: View {
     let user: UserPreviewModel
     
     var body: some View {
-        VStack( spacing: 5) {
-            WebImage(url: URL(string: user.image))
-                .placeholder {
-                    ProgressView()
-                }.resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
+        VStack( spacing: 5 ) {
             
-            Text( user.name )
-                .foregroundColor(.white)
-                .font(.custom("times", size: 16))
-            
-            HStack( spacing: 0 ) {
-                Text( NSLocalizedString("idealFor", comment: ""))
-                    .foregroundColor(.gray)
-                    .font(.custom("Gilroy-Regular", size: 14))
-                
-                Text( user.ideal)
-                    .foregroundColor(.accentColor)
-                    .font(.custom("Gilroy-Regular", size: 14))
-            }
+            NavigationLink(
+                destination: VisitedProfile(),
+                label: {
+                    
+                    VStack( spacing: 5 ) {
+                        WebImage(url: URL(string: user.image))
+                            .placeholder {
+                                ProgressView()
+                            }.resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
+                        
+                        Text( user.name )
+                            .foregroundColor(.white)
+                            .font(.custom("times", size: 16))
+                        
+                        HStack( spacing: 0 ) {
+                            Text( NSLocalizedString("idealFor", comment: ""))
+                                .foregroundColor(.gray)
+                                .font(.custom("Gilroy-Regular", size: 14))
+                            
+                            Text( user.ideal)
+                                .foregroundColor(.accentColor)
+                                .font(.custom("Gilroy-Regular", size: 14))
+                        }
+                    }
+                })
             
             Button(action: {
                 searchVM.connectUser(userID: user.id)

@@ -63,12 +63,10 @@ struct Search: View {
                                                             .background(searchVM.ideal == ideal.id ? .black : AppColors.boxColor)
                                             )
                                     }
-                                    
                                 }
                                 Spacer()
                             }
                         }
-                        
                     }.padding()
                     
                     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
