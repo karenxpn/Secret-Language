@@ -8,7 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct SignleSearchResult: View {
+struct SingleSearchResult: View {
     
     @EnvironmentObject var searchVM: SearchViewModel
     let user: UserPreviewModel
@@ -25,16 +25,16 @@ struct SignleSearchResult: View {
             
             Text( user.name )
                 .foregroundColor(.white)
-                .font(.custom("times", size: 14))
+                .font(.custom("times", size: 16))
             
             HStack( spacing: 0 ) {
                 Text( NSLocalizedString("idealFor", comment: ""))
                     .foregroundColor(.gray)
-                    .font(.custom("Gilroy-Regular", size: 11))
+                    .font(.custom("Gilroy-Regular", size: 14))
                 
                 Text( user.ideal)
                     .foregroundColor(.accentColor)
-                    .font(.custom("Gilroy-Regular", size: 11))
+                    .font(.custom("Gilroy-Regular", size: 14))
             }
             
             Button(action: {
@@ -44,7 +44,7 @@ struct SignleSearchResult: View {
                     .foregroundColor( .accentColor )
                     .font(.custom("Avenir", size: 14))
                     .padding(.vertical, 4)
-                    .frame(width: 120)
+                    .frame(width: 140)
                     .background(RoundedRectangle(cornerRadius: 4)
                                     .strokeBorder(AppColors.accentColor, lineWidth: 1)
                                     .background(AppColors.dataFilterGendersBg)
@@ -56,9 +56,9 @@ struct SignleSearchResult: View {
     }
 }
 
-struct SignleSearchResult_Previews: PreviewProvider {
+struct SingleSearchResult_Previews: PreviewProvider {
     static var previews: some View {
-        SignleSearchResult(user: UserPreviewModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"))
+        SingleSearchResult(user: UserPreviewModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"))
             .environmentObject(SearchViewModel())
     }
 }
