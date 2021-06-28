@@ -46,16 +46,27 @@ struct Search: View {
                     
                     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
 
-                    LazyVGrid( columns: columns, content: {
-                        ForEach(searchVM.searchResults, id: \.id ) { result in
-                            SingleSearchResult(user: result)
-                                .environmentObject(searchVM)
+                    if searchVM.loading {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
                         }
-                    }).padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
-                    
+                    } else {
+                        LazyVGrid( columns: columns, content: {
+                            ForEach(searchVM.searchResults, id: \.id ) { result in
+                                SingleSearchResult(user: result)
+                                    .environmentObject(searchVM)
+                            }
+                        }).padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                    }
                 }.padding(.top, 1)
+                
             }.navigationBarTitle("")
             .navigationBarTitleView(SearchNavBar(title: "Community" ), displayMode: .inline)
+            .onTapGesture {
+                UIApplication.shared.endEditing()
+            }
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
