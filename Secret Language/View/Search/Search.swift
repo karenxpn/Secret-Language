@@ -16,7 +16,7 @@ struct Search: View {
                 Background()
                 
                 ScrollView( showsIndicators: false ) {
-                    VStack {
+                    VStack ( alignment: .leading, spacing: 20 ){
                         HStack {
                             
                             TextField(NSLocalizedString("globalSearch", comment: ""), text: $searchVM.search)
@@ -31,6 +31,17 @@ struct Search: View {
                             
                             Image("search")
                         }
+                        
+                        VStack( alignment: .leading, spacing: 10) {
+                            Text( NSLocalizedString("idealFor", comment: ""))
+                                .foregroundColor(.white)
+                                .font(.custom("times", size: 26))
+                            
+                            Text( NSLocalizedString("chooseCategory", comment: ""))
+                                .foregroundColor(.accentColor)
+                                .font(.custom("Gilroy-Regular", size: 14))
+                        }
+                        
                     }.padding()
                 }.padding(.top, 1)
             }.navigationBarTitle("")
