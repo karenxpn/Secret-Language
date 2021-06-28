@@ -38,7 +38,7 @@ struct SingleSearchResult: View {
             }
             
             Button(action: {
-                
+                searchVM.connectUser(userID: user.id)
             }, label: {
                 Text(NSLocalizedString("connect", comment: ""))
                     .foregroundColor( .accentColor )

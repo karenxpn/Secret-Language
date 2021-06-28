@@ -13,7 +13,7 @@ class SearchViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
     @Published var search: String = ""
-    @Published var searchResults = [UserPreviewModel(id: 1, name: "Adhraaa Al Azimi", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"), UserPreviewModel(id: 2, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"), UserPreviewModel(id: 3, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business")]
+    @Published var searchResults = [UserPreviewModel]()
     @Published var ideal: Int = 1
     
     @Published var loading: Bool = false
@@ -25,11 +25,14 @@ class SearchViewModel: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: SearchServiceProtocol
     var authDataManager: AuthServiceProtocol
+    var userDataManager: UserServiceProtocol
     
     init(dataManager: SearchServiceProtocol = SearchService.shared,
-         authDataManager: AuthServiceProtocol = AuthService.shared) {
+         authDataManager: AuthServiceProtocol = AuthService.shared,
+         userDataManager: UserServiceProtocol = UserService.shared) {
         self.dataManager = dataManager
         self.authDataManager = authDataManager
+        self.userDataManager = userDataManager
         
         $search
             .removeDuplicates()
@@ -77,6 +80,13 @@ class SearchViewModel: ObservableObject {
                 } else {
                     self.ideals = response.value!
                 }
+            }.store(in: &cancellableSet)
+    }
+    
+    func connectUser( userID: Int ) {
+        userDataManager.connectUser(token: token, userID: userID)
+            .sink { response in
+                print(response)
             }.store(in: &cancellableSet)
     }
 }

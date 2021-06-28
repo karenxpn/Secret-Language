@@ -26,6 +26,7 @@
 		FF997E882689DCDF0057B731 /* SearchNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E872689DCDF0057B731 /* SearchNavBar.swift */; };
 		FF997E8A2689E6BA0057B731 /* SingleSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E892689E6BA0057B731 /* SingleSearchResult.swift */; };
 		FF997E8C2689FF250057B731 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E8B2689FF250057B731 /* SearchService.swift */; };
+		FF997E8E268A13080057B731 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E8D268A13080057B731 /* UserService.swift */; };
 		FF99A0322680BD7200F234CD /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0312680BD7200F234CD /* ProfileViewModel.swift */; };
 		FF99A0342680C5C000F234CD /* UserPreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0332680C5C000F234CD /* UserPreviewModel.swift */; };
 		FF99A0362680C61C00F234CD /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0352680C61C00F234CD /* FriendsList.swift */; };
@@ -139,6 +140,7 @@
 		FF997E872689DCDF0057B731 /* SearchNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavBar.swift; sourceTree = "<group>"; };
 		FF997E892689E6BA0057B731 /* SingleSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSearchResult.swift; sourceTree = "<group>"; };
 		FF997E8B2689FF250057B731 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		FF997E8D268A13080057B731 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		FF99A0312680BD7200F234CD /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FF99A0332680C5C000F234CD /* UserPreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewModel.swift; sourceTree = "<group>"; };
 		FF99A0352680C61C00F234CD /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				FFE0E41B2678082B008FA78C /* MatchService.swift */,
 				FF99A03F2681114400F234CD /* ProfileService.swift */,
 				FF997E8B2689FF250057B731 /* SearchService.swift */,
+				FF997E8D268A13080057B731 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -832,6 +835,7 @@
 				FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */,
 				FF99A0362680C61C00F234CD /* FriendsList.swift in Sources */,
 				FF4AB0FD2685091B0085EA9A /* ProfileImagePicker.swift in Sources */,
+				FF997E8E268A13080057B731 /* UserService.swift in Sources */,
 				FFDB15A726669AA000341E8F /* ChooseGender.swift in Sources */,
 				FFE0E41E2678090D008FA78C /* MatchesViewModel.swift in Sources */,
 				FF997E8C2689FF250057B731 /* SearchService.swift in Sources */,
