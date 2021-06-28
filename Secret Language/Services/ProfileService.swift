@@ -29,8 +29,8 @@ protocol ProfileServiceProtocol {
     func fetchProfileWithPusher( channel: PusherChannel, username: String, completion: @escaping ( UserModel ) -> () )
     
     
-    func deleteProfileImage( token: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
-    func updateProfileImage( token: String, image: Data ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func deleteProfileImage( token: String ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
+    func updateProfileImage( token: String, image: Data ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
     
 }
 
@@ -272,7 +272,7 @@ extension ProfileService: ProfileServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func deleteProfileImage(token: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+    func deleteProfileImage(token: String) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/profile-image")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
@@ -280,7 +280,7 @@ extension ProfileService: ProfileServiceProtocol {
                           method: .delete,
                           headers: headers)
             .validate()
-            .publishDecodable(type: GlobalResponse.self)
+            .publishDecodable(type: UserModel.self)
             .map { response in
                 
                 response.mapError { error in
@@ -292,7 +292,7 @@ extension ProfileService: ProfileServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func updateProfileImage(token: String, image: Data ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+    func updateProfileImage(token: String, image: Data ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/profile-image")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)",
                                     "Content-type": "multipart/form-data"]
@@ -304,7 +304,7 @@ extension ProfileService: ProfileServiceProtocol {
         method: .post,
         headers: headers)
         .validate()
-        .publishDecodable(type: GlobalResponse.self)
+        .publishDecodable(type: UserModel.self)
         .map { response in
             
             response.mapError { error in

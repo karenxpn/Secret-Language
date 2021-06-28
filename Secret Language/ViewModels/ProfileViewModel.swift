@@ -105,12 +105,12 @@ class ProfileViewModel: ObservableObject {
     
     func updateProfileImage(image: Data) {
         dataManager.updateProfileImage(token: self.token, image: image)
-            .sink { (dataResponse) in
+            .sink { (response) in
                 
-                if dataResponse.error != nil {
-                    self.makeAlert(with: dataResponse.error!, for: &self.alertMessage)
+                if response.error != nil {
+                    self.makeAlert(with: response.error!, for: &self.alertMessage)
                 } else {
-                    self.getProfile()
+                    self.profile = response.value!
                 }
             }.store(in: &cancellableSet)
     }
@@ -121,7 +121,7 @@ class ProfileViewModel: ObservableObject {
                 if response.error != nil {
                     self.makeAlert(with: response.error!, for: &self.alertMessage)
                 } else {
-                    self.getProfile()
+                    self.profile = response.value!
                 }
             }.store(in: &cancellableSet)
     }
