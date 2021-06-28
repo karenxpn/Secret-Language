@@ -21,7 +21,7 @@ struct Search: View {
                             
                             TextField(NSLocalizedString("globalSearch", comment: ""), text: $searchVM.search)
                                 .font(.custom("Gilroy-Regular", size: 14))
-                                .frame(height: 45)
+                                .frame(height: 50)
                                 .padding(.horizontal)
                                 .background(RoundedRectangle(cornerRadius: 25)
                                                 .strokeBorder(Color.black, lineWidth: 2)
@@ -32,9 +32,9 @@ struct Search: View {
                             Image("search")
                         }
                     }.padding()
-                }
+                }.padding(.top, 1)
             }.navigationBarTitle("")
-            .navigationBarTitleView(SearchNavBar(title: "Community" ))
+            .navigationBarTitleView(SearchNavBar(title: "Community" ), displayMode: .inline)
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
