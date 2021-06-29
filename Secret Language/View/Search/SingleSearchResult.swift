@@ -17,7 +17,7 @@ struct SingleSearchResult: View {
         VStack( spacing: 5 ) {
             
             NavigationLink(
-                destination: VisitedProfile(),
+                destination: VisitedProfile(userID: user.id, userName: user.name),
                 label: {
                     
                     VStack( spacing: 5 ) {

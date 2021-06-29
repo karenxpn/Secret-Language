@@ -28,6 +28,7 @@
 		FF997E8C2689FF250057B731 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E8B2689FF250057B731 /* SearchService.swift */; };
 		FF997E8E268A13080057B731 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E8D268A13080057B731 /* UserService.swift */; };
 		FF997E91268A60150057B731 /* VisitedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E90268A60150057B731 /* VisitedProfile.swift */; };
+		FF997E93268B8DE80057B731 /* SignPainter.ttc in Resources */ = {isa = PBXBuildFile; fileRef = FF997E92268B8DE80057B731 /* SignPainter.ttc */; };
 		FF99A0322680BD7200F234CD /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0312680BD7200F234CD /* ProfileViewModel.swift */; };
 		FF99A0342680C5C000F234CD /* UserPreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0332680C5C000F234CD /* UserPreviewModel.swift */; };
 		FF99A0362680C61C00F234CD /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0352680C61C00F234CD /* FriendsList.swift */; };
@@ -143,6 +144,7 @@
 		FF997E8B2689FF250057B731 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		FF997E8D268A13080057B731 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		FF997E90268A60150057B731 /* VisitedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedProfile.swift; sourceTree = "<group>"; };
+		FF997E92268B8DE80057B731 /* SignPainter.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = SignPainter.ttc; path = ../../../../../../System/Library/Fonts/Supplemental/SignPainter.ttc; sourceTree = "<group>"; };
 		FF99A0312680BD7200F234CD /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FF99A0332680C5C000F234CD /* UserPreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewModel.swift; sourceTree = "<group>"; };
 		FF99A0352680C61C00F234CD /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 		FFDB156C2664EA1E00341E8F /* font */ = {
 			isa = PBXGroup;
 			children = (
+				FF997E92268B8DE80057B731 /* SignPainter.ttc */,
 				FF4AB0F7268503DC0085EA9A /* AppleMyungjo.ttf */,
 				FFE0E41926780053008FA78C /* Gilroy-Bold.ttf */,
 				FFDB156D2664EA2D00341E8F /* Times.ttc */,
@@ -660,6 +663,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFDB15B12666C18900341E8F /* Avenir.ttc in Resources */,
+				FF997E93268B8DE80057B731 /* SignPainter.ttc in Resources */,
 				FFDB156E2664EA2D00341E8F /* Times.ttc in Resources */,
 				FFDB15712664EAFB00341E8F /* Localizable.strings in Resources */,
 				FFE0E41A26780053008FA78C /* Gilroy-Bold.ttf in Resources */,

@@ -273,7 +273,7 @@ extension ProfileService: ProfileServiceProtocol {
     }
     
     func deleteProfileImage(token: String) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/profile-image")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/removeAvatar")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
@@ -293,13 +293,13 @@ extension ProfileService: ProfileServiceProtocol {
     }
     
     func updateProfileImage(token: String, image: Data ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/profile-image")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/addAvatar")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)",
                                     "Content-type": "multipart/form-data"]
         
         
         return AF.upload(multipartFormData: { (multipartFormData: MultipartFormData) in
-            multipartFormData.append(image, withName: "profile_image", fileName: "\(UUID().uuidString).jpeg" ,mimeType: "image/jpeg")
+            multipartFormData.append(image, withName: "image", fileName: "\(UUID().uuidString).jpeg" ,mimeType: "image/jpeg")
         }, to: url,
         method: .post,
         headers: headers)
