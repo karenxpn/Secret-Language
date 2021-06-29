@@ -23,6 +23,7 @@ class ProfileViewModel: ObservableObject {
     @Published var alertMessage: String = ""
     
     @Published var profile: UserModel? = nil
+    @Published var visitedProfile: MatchViewModel? = nil
     
     @Published var friendsList = [UserPreviewModel]()
     @Published var requestsList = [UserPreviewModel]()
@@ -30,10 +31,13 @@ class ProfileViewModel: ObservableObject {
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ProfileServiceProtocol
+    var matchDataManager: MatchServiceProtocol
     var channel: PusherChannel
     
-    init( dataManager: ProfileServiceProtocol = ProfileService.shared) {
+    init( dataManager: ProfileServiceProtocol = ProfileService.shared,
+          matchDataManager: MatchServiceProtocol = MatchService.shared ) {
         self.dataManager = dataManager
+        self.matchDataManager = matchDataManager
         self.channel = PusherManager.shared.channel
     }
     
@@ -136,6 +140,19 @@ class ProfileViewModel: ObservableObject {
                     self.makeAlert(with: response.error!, for: &self.alertMessage)
                 } else {
                     self.profile = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func getVisitedProfile( userID: Int ) {
+        loading = true
+        matchDataManager.fetchSingleMatch(token: token, userID: userID)
+            .sink { response in
+                self.loading = false
+                if response.error != nil {
+                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                } else {
+                    self.visitedProfile = MatchViewModel(match: response.value!)
                 }
             }.store(in: &cancellableSet)
     }

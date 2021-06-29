@@ -51,6 +51,7 @@ struct Search: View {
                                     Button {
                                         withAnimation {
                                             searchVM.ideal = ideal.id
+                                            
                                         }
                                     } label: {
                                         Text( ideal.name )

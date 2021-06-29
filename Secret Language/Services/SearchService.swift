@@ -11,7 +11,7 @@ import Combine
 
 protocol SearchServiceProtocol {
     func fetchSearchedUsers( token: String, searchText: String, idealFor: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
-    func fetchPopularUsers( token: String ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
+    func fetchPopularUsers( token: String, interestedIn: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
 }
 
 class SearchService {
@@ -22,13 +22,15 @@ class SearchService {
 
 extension SearchService: SearchServiceProtocol {
     
-    func fetchPopularUsers(token: String) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
+    func fetchPopularUsers(token: String, interestedIn: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
         
-        let url = URL(string: "\(Credentials.BASE_URL)user/popular")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/getSuggestions")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
 
         return AF.request(url,
-                          method: .get,
+                          method: .post,
+                          parameters: ["interestedIn" : interestedIn],
+                          encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
             .publishDecodable(type: [UserPreviewModel].self)
@@ -51,7 +53,7 @@ extension SearchService: SearchServiceProtocol {
         return AF.request(url,
                           method: .post,
                           parameters: [ "name" : searchText,
-                                        "ideal" : idealFor],
+                                        "id" : idealFor],
                           headers: headers)
             .validate()
             .publishDecodable(type: [UserPreviewModel].self)

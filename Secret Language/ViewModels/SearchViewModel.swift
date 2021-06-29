@@ -13,7 +13,7 @@ class SearchViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
     @Published var search: String = ""
-    @Published var searchResults = [UserPreviewModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"), UserPreviewModel(id: 2, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"), UserPreviewModel(id: 3, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"), UserPreviewModel(id: 4, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business")]
+    @Published var searchResults = [UserPreviewModel]()
     @Published var ideal: Int = 1
     
     @Published var loading: Bool = false
@@ -44,6 +44,12 @@ class SearchViewModel: ObservableObject {
                     self.getPopularUsers()
                 }
             }.store(in: &cancellableSet)
+        
+        $ideal
+            .debounce(for: 0.2, scheduler: DispatchQueue.main)
+            .sink { idealID in
+                self.getPopularUsers()
+            }.store(in: &cancellableSet)
     }
     
     func getSearchUsers(search: String) {
@@ -59,7 +65,7 @@ class SearchViewModel: ObservableObject {
     
     func getPopularUsers() {
         loading = true
-        dataManager.fetchPopularUsers(token: token)
+        dataManager.fetchPopularUsers(token: token, interestedIn: ideal)
             .sink { response in
                 self.loading = false
                 if response.error == nil {
