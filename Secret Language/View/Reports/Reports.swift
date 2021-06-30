@@ -12,6 +12,7 @@ struct Reports: View {
     @State private var fullscreen: Bool = false
     @State private var showFullscreenReportOne: Bool = false
     @State private var showFullscreenReportTwo: Bool = false
+    @State private var actionSheet: Bool = false
     
     
     var dateFormatter: DateFormatter {
@@ -118,7 +119,7 @@ struct Reports: View {
                         }
                         
                         Button {
-                            
+                            actionSheet.toggle()
                         } label: {
                             Text( NSLocalizedString("relationshipReport", comment: ""))
                                 .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50 )
@@ -132,6 +133,13 @@ struct Reports: View {
                 }.padding(.top, 2)
             }.navigationBarTitle("")
             .navigationBarTitleView(SearchNavBar(title: "Reports"), displayMode: .inline)
+            .actionSheet(isPresented: $actionSheet) {
+                ActionSheet(title: Text("Report"), message: Text("Choose the report to show"), buttons: [
+                        .default(Text("Birthday Report")) {  },
+                        .default(Text("Relationship Report")) { },
+                        .cancel()
+                    ])
+            }
         }
     }
 }
