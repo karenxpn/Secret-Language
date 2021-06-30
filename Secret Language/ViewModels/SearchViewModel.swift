@@ -46,7 +46,8 @@ class SearchViewModel: ObservableObject {
             }.store(in: &cancellableSet)
         
         $ideal
-            .debounce(for: 0.2, scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
             .sink { idealID in
                 self.getPopularUsers()
             }.store(in: &cancellableSet)
@@ -91,7 +92,11 @@ class SearchViewModel: ObservableObject {
     func connectUser( userID: Int ) {
         userDataManager.connectUser(token: token, userID: userID)
             .sink { response in
-                print(response)
+                if response.error == nil {
+                    if let indexSearched = self.searchResults.firstIndex(where: {  $0.id == userID }) {
+                        self.searchResults[indexSearched].connecting = true
+                    }
+                }
             }.store(in: &cancellableSet)
     }
 }

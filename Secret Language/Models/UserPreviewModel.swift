@@ -11,5 +11,4 @@ struct UserPreviewModel: Identifiable, Codable {
     var name: String
     var image: String
     var ideal: String
-    // var connecting: Bool
 }

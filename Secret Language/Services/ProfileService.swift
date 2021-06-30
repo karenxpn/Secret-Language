@@ -31,7 +31,6 @@ protocol ProfileServiceProtocol {
     
     func deleteProfileImage( token: String ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
     func updateProfileImage( token: String, image: Data ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
-    
 }
 
 class ProfileService {
