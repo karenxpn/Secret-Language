@@ -13,7 +13,7 @@ class SearchViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
     @Published var search: String = ""
-    @Published var searchResults = [UserPreviewModel]()
+    @Published var searchResults = [SearchUserModel]()
     @Published var ideal: Int = 1
     
     @Published var loading: Bool = false
@@ -91,12 +91,19 @@ class SearchViewModel: ObservableObject {
     
     func connectUser( userID: Int ) {
         userDataManager.connectUser(token: token, userID: userID)
-            .sink { response in
-                if response.error == nil {
-                    if let indexSearched = self.searchResults.firstIndex(where: {  $0.id == userID }) {
-                        self.searchResults[indexSearched].connecting = true
-                    }
-                }
+            .sink { _ in
             }.store(in: &cancellableSet)
+    }
+    
+    func withdrawRequest( userID: Int ) {
+        
+    }
+    
+    func acceptFriendRequest( userID: Int ) {
+        
+    }
+    
+    func rejectFriendRequest( userID: Int ) {
+        
     }
 }

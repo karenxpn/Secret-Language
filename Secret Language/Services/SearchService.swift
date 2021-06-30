@@ -10,8 +10,8 @@ import Alamofire
 import Combine
 
 protocol SearchServiceProtocol {
-    func fetchSearchedUsers( token: String, searchText: String, idealFor: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
-    func fetchPopularUsers( token: String, interestedIn: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
+    func fetchSearchedUsers( token: String, searchText: String, idealFor: Int ) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never>
+    func fetchPopularUsers( token: String, interestedIn: Int ) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never>
 }
 
 class SearchService {
@@ -22,7 +22,7 @@ class SearchService {
 
 extension SearchService: SearchServiceProtocol {
     
-    func fetchPopularUsers(token: String, interestedIn: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
+    func fetchPopularUsers(token: String, interestedIn: Int ) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never> {
         
         let url = URL(string: "\(Credentials.BASE_URL)user/getSuggestions")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
@@ -33,7 +33,7 @@ extension SearchService: SearchServiceProtocol {
                           encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
-            .publishDecodable(type: [UserPreviewModel].self)
+            .publishDecodable(type: [SearchUserModel].self)
             .map { response in
                 
                 response.mapError { error in
@@ -45,7 +45,7 @@ extension SearchService: SearchServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func fetchSearchedUsers( token: String, searchText: String, idealFor: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
+    func fetchSearchedUsers( token: String, searchText: String, idealFor: Int ) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never> {
 
         let url = URL(string: "\(Credentials.BASE_URL)user/search")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
@@ -56,7 +56,7 @@ extension SearchService: SearchServiceProtocol {
                                         "id" : idealFor],
                           headers: headers)
             .validate()
-            .publishDecodable(type: [UserPreviewModel].self)
+            .publishDecodable(type: [SearchUserModel].self)
             .map { response in
                 
                 response.mapError { error in

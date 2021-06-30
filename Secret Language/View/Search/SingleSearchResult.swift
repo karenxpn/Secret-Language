@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct SingleSearchResult: View {
     
     @EnvironmentObject var searchVM: SearchViewModel
-    let user: UserPreviewModel
+    let user: SearchUserModel
     
     var body: some View {
         VStack( spacing: 5 ) {
@@ -45,19 +45,8 @@ struct SingleSearchResult: View {
                     }
                 })
             
-            Button(action: {
-                searchVM.connectUser(userID: user.id)
-            }, label: {
-                Text(NSLocalizedString("connect", comment: ""))
-                    .foregroundColor( .accentColor )
-                    .font(.custom("Avenir", size: 14))
-                    .padding(.vertical, 4)
-                    .frame(width: 140)
-                    .background(RoundedRectangle(cornerRadius: 4)
-                                    .strokeBorder(AppColors.accentColor, lineWidth: 1)
-                                    .background(AppColors.dataFilterGendersBg)
-                )
-            })
+            SearchResultActionButtons(status: user.friendshipStatus, userID: user.id)
+                .environmentObject(searchVM)
         }.padding()
         .background(AppColors.boxColor)
         .cornerRadius(12)
@@ -66,7 +55,7 @@ struct SingleSearchResult: View {
 
 struct SingleSearchResult_Previews: PreviewProvider {
     static var previews: some View {
-        SingleSearchResult(user: UserPreviewModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"))
+        SingleSearchResult(user: SearchUserModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business", friendshipStatus: 1))
             .environmentObject(SearchViewModel())
     }
 }

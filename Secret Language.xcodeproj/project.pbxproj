@@ -29,6 +29,8 @@
 		FF997E8E268A13080057B731 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E8D268A13080057B731 /* UserService.swift */; };
 		FF997E91268A60150057B731 /* VisitedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E90268A60150057B731 /* VisitedProfile.swift */; };
 		FF997E93268B8DE80057B731 /* SignPainter.ttc in Resources */ = {isa = PBXBuildFile; fileRef = FF997E92268B8DE80057B731 /* SignPainter.ttc */; };
+		FF997E99268CDAC80057B731 /* SearchUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E98268CDAC80057B731 /* SearchUserModel.swift */; };
+		FF997E9B268CDB300057B731 /* SearchResultActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E9A268CDB300057B731 /* SearchResultActionButtons.swift */; };
 		FF99A0322680BD7200F234CD /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0312680BD7200F234CD /* ProfileViewModel.swift */; };
 		FF99A0342680C5C000F234CD /* UserPreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0332680C5C000F234CD /* UserPreviewModel.swift */; };
 		FF99A0362680C61C00F234CD /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0352680C61C00F234CD /* FriendsList.swift */; };
@@ -145,6 +147,8 @@
 		FF997E8D268A13080057B731 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		FF997E90268A60150057B731 /* VisitedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedProfile.swift; sourceTree = "<group>"; };
 		FF997E92268B8DE80057B731 /* SignPainter.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = SignPainter.ttc; path = ../../../../../../System/Library/Fonts/Supplemental/SignPainter.ttc; sourceTree = "<group>"; };
+		FF997E98268CDAC80057B731 /* SearchUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserModel.swift; sourceTree = "<group>"; };
+		FF997E9A268CDB300057B731 /* SearchResultActionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultActionButtons.swift; sourceTree = "<group>"; };
 		FF99A0312680BD7200F234CD /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FF99A0332680C5C000F234CD /* UserPreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewModel.swift; sourceTree = "<group>"; };
 		FF99A0352680C61C00F234CD /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
@@ -435,6 +439,7 @@
 				FFE0E42726794F97008FA78C /* CategoryItemModel.swift */,
 				FF42BD9A267BCE1F000DCA6D /* Location.swift */,
 				FF99A0332680C5C000F234CD /* UserPreviewModel.swift */,
+				FF997E98268CDAC80057B731 /* SearchUserModel.swift */,
 				FF99A0412681354500F234CD /* GetMatchesRequest.swift */,
 				FF4AB0F5268503530085EA9A /* UserModel.swift */,
 			);
@@ -494,6 +499,7 @@
 			children = (
 				FFCEDE04267236500073BE20 /* Search.swift */,
 				FF997E892689E6BA0057B731 /* SingleSearchResult.swift */,
+				FF997E9A268CDB300057B731 /* SearchResultActionButtons.swift */,
 				FF997E872689DCDF0057B731 /* SearchNavBar.swift */,
 			);
 			path = Search;
@@ -830,6 +836,7 @@
 				FFCEDDF1266E642C0073BE20 /* SignUpRequest.swift in Sources */,
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
+				FF997E99268CDAC80057B731 /* SearchUserModel.swift in Sources */,
 				FFCEDE02267236200073BE20 /* Profile.swift in Sources */,
 				FFDB15A926669B9400341E8F /* TopGender.swift in Sources */,
 				FFCEDE05267236500073BE20 /* Search.swift in Sources */,
@@ -867,6 +874,7 @@
 				FFE0E4122677E5DC008FA78C /* SingleMatch.swift in Sources */,
 				FFE0E42826794F97008FA78C /* CategoryItemModel.swift in Sources */,
 				FFE0E4182677FD89008FA78C /* MatchesNavBar.swift in Sources */,
+				FF997E9B268CDB300057B731 /* SearchResultActionButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
