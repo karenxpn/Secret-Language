@@ -75,3 +75,5 @@
 "lookUpRelationship" = "Look up a Relationship";
 "relationshipYouCanLook" = "You can look up the personality traits of anyone you know from their birthday.";
 "relationshipReport" = "Relationship Report";
+"birthdayReport" = "Birthday Report";
+"showReport" = "Show Report";

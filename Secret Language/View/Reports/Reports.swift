@@ -80,8 +80,7 @@ struct Reports: View {
                         
                         Text( NSLocalizedString("relationshipYouCanLook", comment: ""))
                             .foregroundColor(.white)
-                            .font(.custom("Gilroy-Regular", size: 14))
-                            .lineLimit(nil)
+                            .font(.custom("Gilroy-Regular", size: 15))
                             .multilineTextAlignment(.center)
                             .padding(.bottom)
                         
@@ -121,7 +120,7 @@ struct Reports: View {
                         Button {
                             actionSheet.toggle()
                         } label: {
-                            Text( NSLocalizedString("relationshipReport", comment: ""))
+                            Text( NSLocalizedString("showReport", comment: ""))
                                 .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50 )
                                 .foregroundColor(.black)
                                 .font(.custom("times", size: 16))
@@ -130,13 +129,18 @@ struct Reports: View {
                         }
 
                     }.padding()
+                    .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 }.padding(.top, 2)
             }.navigationBarTitle("")
             .navigationBarTitleView(SearchNavBar(title: "Reports"), displayMode: .inline)
             .actionSheet(isPresented: $actionSheet) {
                 ActionSheet(title: Text("Report"), message: Text("Choose the report to show"), buttons: [
-                        .default(Text("Birthday Report")) {  },
-                        .default(Text("Relationship Report")) { },
+                        .default(Text(NSLocalizedString("birthdayReport", comment: ""))) {
+                            
+                        },
+                        .default(Text(NSLocalizedString("relationshipReport", comment: ""))) {
+                            
+                        },
                         .cancel()
                     ])
             }
