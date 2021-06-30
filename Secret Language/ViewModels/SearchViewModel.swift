@@ -91,12 +91,7 @@ class SearchViewModel: ObservableObject {
     
     func connectUser( userID: Int ) {
         userDataManager.connectUser(token: token, userID: userID)
-            .sink { response in
-                if response.error == nil {
-                    if let indexSearched = self.searchResults.firstIndex(where: {  $0.id == userID }) {
-                        self.searchResults[indexSearched].connecting = true
-                    }
-                }
+            .sink { _ in
             }.store(in: &cancellableSet)
     }
 }
