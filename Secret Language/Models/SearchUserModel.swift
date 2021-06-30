@@ -12,5 +12,5 @@ struct SearchUserModel: Identifiable, Codable {
     var name: String
     var image: String
     var ideal: String
-    var friendshipStatus: Int
+    var friendStatus: Int
 }

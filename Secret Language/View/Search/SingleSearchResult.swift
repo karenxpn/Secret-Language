@@ -45,7 +45,7 @@ struct SingleSearchResult: View {
                     }
                 })
             
-            SearchResultActionButtons(status: user.friendshipStatus, userID: user.id)
+            SearchResultActionButtons(status: user.friendStatus, userID: user.id)
                 .environmentObject(searchVM)
         }.padding()
         .background(AppColors.boxColor)
@@ -55,7 +55,7 @@ struct SingleSearchResult: View {
 
 struct SingleSearchResult_Previews: PreviewProvider {
     static var previews: some View {
-        SingleSearchResult(user: SearchUserModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business", friendshipStatus: 1))
+        SingleSearchResult(user: SearchUserModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business", friendStatus: 1))
             .environmentObject(SearchViewModel())
     }
 }

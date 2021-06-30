@@ -26,13 +26,16 @@ class SearchViewModel: ObservableObject {
     var dataManager: SearchServiceProtocol
     var authDataManager: AuthServiceProtocol
     var userDataManager: UserServiceProtocol
+    var profileDataManager: ProfileServiceProtocol
     
     init(dataManager: SearchServiceProtocol = SearchService.shared,
          authDataManager: AuthServiceProtocol = AuthService.shared,
-         userDataManager: UserServiceProtocol = UserService.shared) {
+         userDataManager: UserServiceProtocol = UserService.shared,
+         profileDataManager: ProfileServiceProtocol = ProfileService.shared) {
         self.dataManager = dataManager
         self.authDataManager = authDataManager
         self.userDataManager = userDataManager
+        self.profileDataManager = profileDataManager
         
         $search
             .removeDuplicates()
@@ -91,19 +94,45 @@ class SearchViewModel: ObservableObject {
     
     func connectUser( userID: Int ) {
         userDataManager.connectUser(token: token, userID: userID)
-            .sink { _ in
+            .sink { response in
+                if response.error == nil {
+                    if let updateIndex = self.searchResults.firstIndex(where: { $0.id == userID }) {
+                        self.searchResults[updateIndex].friendStatus = 3
+                    }
+                }
             }.store(in: &cancellableSet)
     }
     
     func withdrawRequest( userID: Int ) {
-        
+        profileDataManager.withdrawFriendRequest(token: token, userID: userID)
+            .sink { response in
+                if response.error == nil {
+                    if let updateIndex = self.searchResults.firstIndex(where: { $0.id == userID }) {
+                        self.searchResults[updateIndex].friendStatus = 1
+                    }
+                }
+            }.store(in: &cancellableSet)
     }
     
     func acceptFriendRequest( userID: Int ) {
-        
+        profileDataManager.acceptFriendRequest(token: token, userID: userID)
+            .sink { response in
+                if response.error == nil {
+                    if let updateIndex = self.searchResults.firstIndex(where: { $0.id == userID }) {
+                        self.searchResults[updateIndex].friendStatus = 2
+                    }
+                }
+            }.store(in: &cancellableSet)
     }
     
     func rejectFriendRequest( userID: Int ) {
-        
+        profileDataManager.rejectFriendRequest(token: token, userID: userID)
+            .sink { response in
+                if response.error == nil {
+                    if let updateIndex = self.searchResults.firstIndex(where: { $0.id == userID }) {
+                        self.searchResults[updateIndex].friendStatus = 1
+                    }
+                }
+            }.store(in: &cancellableSet)
     }
 }

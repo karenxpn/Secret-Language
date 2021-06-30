@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import PusherSwift
 import Combine
 
 protocol SearchServiceProtocol {
@@ -47,13 +48,12 @@ extension SearchService: SearchServiceProtocol {
     
     func fetchSearchedUsers( token: String, searchText: String, idealFor: Int ) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never> {
 
-        let url = URL(string: "\(Credentials.BASE_URL)user/search")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/searchAllUsers")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
 
         return AF.request(url,
                           method: .post,
-                          parameters: [ "name" : searchText,
-                                        "id" : idealFor],
+                          parameters: [ "input" : searchText],
                           headers: headers)
             .validate()
             .publishDecodable(type: [SearchUserModel].self)
