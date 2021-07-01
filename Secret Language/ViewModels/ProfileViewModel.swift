@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Contacts
 import Combine
 import SwiftUI
 import PusherSwift
@@ -14,7 +13,6 @@ import PusherSwift
 class ProfileViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
-    @AppStorage( "username" ) private var username: String = ""
     
     @Published var searchText: String = ""
     
@@ -82,28 +80,19 @@ class ProfileViewModel: ObservableObject {
     
     func acceptFriendRequest( userID: Int ) {
         dataManager.acceptFriendRequest(token: token, userID: userID)
-            .sink { response in
-                if response.error == nil {
-                    self.requestsList = response.value!
-                }
+            .sink { _ in
             }.store(in: &cancellableSet)
     }
     
     func rejectFriendRequest( userID: Int ) {
         dataManager.rejectFriendRequest(token: token, userID: userID)
-            .sink { response in
-                if response.error == nil {
-                    self.requestsList = response.value!
-                }
+            .sink { _ in
             }.store(in: &cancellableSet)
     }
     
     func withdrawFriendRequest( userID: Int ) {
         dataManager.withdrawFriendRequest(token: token, userID: userID)
-            .sink { response in
-                if response.error == nil {
-                    self.pendingList = response.value!
-                }
+            .sink { _ in
             }.store(in: &cancellableSet)
     }
     
@@ -131,7 +120,6 @@ class ProfileViewModel: ObservableObject {
     }
     
     func getProfile() {
-        
         loading = true
         dataManager.fetchProfile(token: token)
             .sink { response in
@@ -158,25 +146,25 @@ class ProfileViewModel: ObservableObject {
     }
     
     func getProfileWithPusher() {
-        dataManager.fetchProfileWithPusher(channel: channel, username: username) { profile in
+        dataManager.fetchProfileWithPusher(channel: channel) { profile in
             self.profile = profile
         }
     }
     
     func getFriendsWithPusher() {
-        dataManager.fetchFriendsWithPusher(channel: channel, username: username) { friends in
+        dataManager.fetchFriendsWithPusher(channel: channel) { friends in
             self.friendsList = friends
         }
     }
     
     func getFriendRequestsWithPusher() {
-        dataManager.fetchFriendRequestsWithPusher(channel: channel, username: username) { requests in
+        dataManager.fetchFriendRequestsWithPusher(channel: channel) { requests in
             self.requestsList = requests
         }
     }
     
     func getPendingRequestsWithPusher() {
-        dataManager.fetchPendingRequestsWithPusher(channel: channel, username: username) { requests in
+        dataManager.fetchPendingRequestsWithPusher(channel: channel) { requests in
             self.pendingList = requests
         }
     }

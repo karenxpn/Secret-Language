@@ -60,6 +60,7 @@
 "myFriends" = "My Friends";
 "myPendings" = "My Pending Requests";
 "accept" = "Accept";
+"reject" = "Reject";
 "invite" = "Invite";
 "withdraw" = "Withdraw";
 "profile" = "Profile";
