@@ -12,8 +12,6 @@ struct Reports: View {
     @State private var fullscreen: Bool = false
     @State private var showFullscreenReportOne: Bool = false
     @State private var showFullscreenReportTwo: Bool = false
-    @State private var actionSheet: Bool = false
-    
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -27,7 +25,8 @@ struct Reports: View {
                 Background()
                 
                 ScrollView( showsIndicators: false ) {
-                    VStack ( spacing: 10 ){
+                    
+                    VStack ( spacing: 10 ) {
                         Image( "reports" )
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -36,53 +35,72 @@ struct Reports: View {
                         Text( "Gary Goldschneider’s" )
                             .foregroundColor(.white)
                             .font(.custom("SignPainter", size: 22))
-                        
+
                         Text( "Secret Language" )
                             .foregroundColor(.white)
                             .font(.custom("times", size: 22))
                             .padding(.bottom)
                         
-                        
-                        Text( NSLocalizedString("lookUpBirthday", comment: ""))
-                            .foregroundColor(.accentColor)
-                            .font(.custom("Gilroy-Bold", size: 18))
-                        
-                        Text( NSLocalizedString("birthdayYouCanLook", comment: ""))
-                            .foregroundColor(.white)
-                            .font(.custom("Gilroy-Regular", size: 14))
-                            .lineLimit(nil)
-                            .multilineTextAlignment(.center)
-                            .padding(.bottom)
-                        
-                        // birthday date picker
-                        
-                        VStack( alignment: .leading, spacing: 10) {
-                            Text( NSLocalizedString("birthday", comment: "") )
-                                .foregroundColor(.gray)
-                                .font(.custom("Gilroy-Regular", size: 14))
+                        VStack( spacing: 10 ) {
+                            Text( NSLocalizedString("lookUpBirthday", comment: ""))
+                                .foregroundColor(.accentColor)
+                                .font(.custom("Gilroy-Bold", size: 18))
+                                .lineLimit(1)
                             
-                            Button(action: {
-                                fullscreen.toggle()
-                            }, label: {
-                                Text( dateFormatter.string(from: reportVM.birthdayDate))
-                                    .foregroundColor(.white)
-                                    .font(.custom("times", size: 20))
-                            }).fullScreenCover(isPresented: $fullscreen) { 
-                                ReportBirthdayPicker(date: $reportVM.birthdayDate)
-                            }
-                            Divider()
-                                .padding(.bottom)
+                            Text( NSLocalizedString("birthdayYouCanLook", comment: ""))
+                                .foregroundColor(.white)
+                                .font(.custom("Gilroy-Regular", size: 14))
+                                .multilineTextAlignment(.center)
+                                .lineLimit(8)
+                        }.fixedSize(horizontal: false, vertical: true)
+                    }.padding()
+                    
+                    VStack( alignment: .leading, spacing: 10) {
+                        Text( NSLocalizedString("birthday", comment: "") )
+                            .foregroundColor(.gray)
+                            .font(.custom("Gilroy-Regular", size: 14))
+                            .lineLimit(1)
+                        
+                        Button(action: {
+                            fullscreen.toggle()
+                        }, label: {
+                            Text( dateFormatter.string(from: reportVM.birthdayDate))
+                                .foregroundColor(.white)
+                                .font(.custom("times", size: 20))
+                        }).fullScreenCover(isPresented: $fullscreen) {
+                            ReportBirthdayPicker(date: $reportVM.birthdayDate)
                         }
-                        
-                        Text( NSLocalizedString("lookUpRelationship", comment: ""))
-                            .foregroundColor(.accentColor)
-                            .font(.custom("Gilroy-Bold", size: 18))
-                        
-                        Text( NSLocalizedString("relationshipYouCanLook", comment: ""))
-                            .foregroundColor(.white)
-                            .font(.custom("Gilroy-Regular", size: 15))
-                            .multilineTextAlignment(.center)
+                        Divider()
                             .padding(.bottom)
+                        
+                        Button {
+
+                        } label: {
+                            Text( NSLocalizedString("birthdayReport", comment: ""))
+                                .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50 )
+                                .foregroundColor(.black)
+                                .font(.custom("times", size: 16))
+                                .background(.accentColor)
+                                .cornerRadius(25)
+                        }
+                    }.padding([.bottom, .leading, .trailing])
+
+                    
+                    VStack ( spacing: 10 ) {
+                        
+                        VStack( spacing: 10 ) {
+                            Text( NSLocalizedString("lookUpRelationship", comment: ""))
+                                .foregroundColor(.accentColor)
+                                .font(.custom("Gilroy-Bold", size: 18))
+                                .lineLimit(1)
+                            
+                            Text( NSLocalizedString("relationshipYouCanLook", comment: ""))
+                                .foregroundColor(.white)
+                                .font(.custom("Gilroy-Regular", size: 15))
+                                .multilineTextAlignment(.center)
+                                .padding(.bottom)
+                                .lineLimit(nil)
+                        }.fixedSize(horizontal: false, vertical: true)
                         
                         VStack( alignment: .leading, spacing: 10) {
 
@@ -118,9 +136,8 @@ struct Reports: View {
                         }
                         
                         Button {
-                            actionSheet.toggle()
                         } label: {
-                            Text( NSLocalizedString("showReport", comment: ""))
+                            Text( NSLocalizedString("relationshipReport", comment: ""))
                                 .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50 )
                                 .foregroundColor(.black)
                                 .font(.custom("times", size: 16))
@@ -130,20 +147,9 @@ struct Reports: View {
 
                     }.padding()
                     .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
-                }.padding(.top, 2)
+                }.padding(.top, 1)
             }.navigationBarTitle("")
             .navigationBarTitleView(SearchNavBar(title: "Reports"), displayMode: .inline)
-            .actionSheet(isPresented: $actionSheet) {
-                ActionSheet(title: Text("Report"), message: Text("Choose the report to show"), buttons: [
-                        .default(Text(NSLocalizedString("birthdayReport", comment: ""))) {
-                            
-                        },
-                        .default(Text(NSLocalizedString("relationshipReport", comment: ""))) {
-                            
-                        },
-                        .cancel()
-                    ])
-            }
         }
     }
 }
