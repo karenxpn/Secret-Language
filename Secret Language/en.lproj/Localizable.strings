@@ -71,4 +71,10 @@
 "globalSearch" = "Global Search";
 "chooseCategory" = "Choose category to find idial candidate";
 "connect" = "Connect";
-
+"lookUpBirthday" = "Look up a Birthday";
+"birthdayYouCanLook" = "You can look up the personality traits of anyone you know from their birthday. You will see up to 18 personality traits if you know the complete birth date and up to 12 traits if you only know the month and day of birth.";
+"lookUpRelationship" = "Look up a Relationship";
+"relationshipYouCanLook" = "You can look up the personality traits of anyone you know from their birthday.";
+"relationshipReport" = "Relationship Report";
+"birthdayReport" = "Birthday Report";
+"showReport" = "Show Report";
