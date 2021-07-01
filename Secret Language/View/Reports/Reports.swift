@@ -37,7 +37,7 @@ struct Reports: View {
                         Text( "Gary Goldschneider’s" )
                             .foregroundColor(.white)
                             .font(.custom("SignPainter", size: 22))
-
+                        
                         Text( "Secret Language" )
                             .foregroundColor(.white)
                             .font(.custom("times", size: 22))
@@ -66,9 +66,12 @@ struct Reports: View {
                         Button(action: {
                             fullscreen.toggle()
                         }, label: {
-                            Text( "\(reportVM.birthdayMonth) \(reportVM.birthday)")
-                                .foregroundColor(.white)
-                                .font(.custom("times", size: 20))
+                            HStack {
+                                Text( "\(reportVM.birthdayMonth) \(reportVM.birthday)")
+                                    .foregroundColor(.white)
+                                    .font(.custom("times", size: 20))
+                                Spacer()
+                            }
                         }).fullScreenCover(isPresented: $fullscreen) {
                             ReportBirthdayPicker(month: $reportVM.birthdayMonth, day: $reportVM.birthday)
                         }
@@ -104,35 +107,49 @@ struct Reports: View {
                         }.fixedSize(horizontal: false, vertical: true)
                         
                         VStack( alignment: .leading, spacing: 10) {
-
+                            
                             HStack {
                                 Button(action: {
                                     showFullscreenReportOne.toggle()
                                 }, label: {
-                                    Text( "\(reportVM.firstReportMonth) \(reportVM.firstReportDay)" )
-                                        .foregroundColor(.white)
-                                        .font(.custom("times", size: 20))
+                                    
+                                    VStack( alignment: .leading, spacing: 10) {
+                                        
+                                        Text( NSLocalizedString("day", comment: "") )
+                                            .foregroundColor(.gray)
+                                            .font(.custom("Gilroy-Regular", size: 10))
+                                        
+                                        Text( "\(reportVM.firstReportMonth) \(reportVM.firstReportDay)" )
+                                            .foregroundColor(.white)
+                                            .font(.custom("times", size: 20))
+                                    }.frame(width: .greedy)
+                                    
                                 }).fullScreenCover(isPresented: $showFullscreenReportOne) {
                                     ReportBirthdayPicker(month: $reportVM.firstReportMonth, day: $reportVM.firstReportDay)
                                 }
                                 
-                                Spacer()
-                                
                                 Divider()
                                     .frame(height: 40)
-                                Spacer()
                                 
                                 Button(action: {
                                     showFullscreenReportTwo.toggle()
                                 }, label: {
-                                    Text( "\(reportVM.secondReportMonth) \(reportVM.secondReportDay)")
-                                        .foregroundColor(.white)
-                                        .font(.custom("times", size: 20))
+                                    VStack( alignment: .leading, spacing: 10) {
+                                        
+                                        Text( NSLocalizedString("day", comment: "") )
+                                            .foregroundColor(.gray)
+                                            .font(.custom("Gilroy-Regular", size: 10))
+                                        Text( "\(reportVM.secondReportMonth) \(reportVM.secondReportDay)")
+                                            .foregroundColor(.white)
+                                            .font(.custom("times", size: 20))
+                                        
+                                    }.frame(width: .greedy)
+                                    
                                 }).fullScreenCover(isPresented: $showFullscreenReportTwo) {
                                     ReportBirthdayPicker(month: $reportVM.secondReportMonth, day: $reportVM.secondReportDay)
                                 }
                             }
-
+                            
                             Divider()
                                 .padding(.bottom)
                             
@@ -147,7 +164,7 @@ struct Reports: View {
                                     .cornerRadius(25)
                             }
                         }
-                    
+                        
                     }.padding()
                     .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 }.padding(.top, 1)
