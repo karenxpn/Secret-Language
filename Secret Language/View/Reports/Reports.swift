@@ -18,6 +18,14 @@ struct Reports: View {
             ZStack {
                 Background()
                 
+                NavigationLink(destination: SingleReport(), isActive: $reportVM.navigateToReport) {
+                    EmptyView()
+                }.hidden()
+                
+                NavigationLink(destination: PaymentView(), isActive: $reportVM.navigateToPayment) {
+                    EmptyView()
+                }.hidden()
+                
                 ScrollView( showsIndicators: false ) {
                     
                     VStack ( spacing: 10 ) {
@@ -68,10 +76,10 @@ struct Reports: View {
                             .padding(.bottom)
                         
                         Button {
-
+                            reportVM.checkBirthdayReport()
                         } label: {
                             Text( NSLocalizedString("birthdayReport", comment: ""))
-                                .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50 )
+                                .frame( width: .greedy, height: 50 )
                                 .foregroundColor(.black)
                                 .font(.custom("times", size: 16))
                                 .background(.accentColor)
@@ -109,8 +117,9 @@ struct Reports: View {
                                 }
                                 
                                 Spacer()
+                                
                                 Divider()
-                                    .frame(width: 40)
+                                    .frame(height: 40)
                                 Spacer()
                                 
                                 Button(action: {
@@ -126,18 +135,19 @@ struct Reports: View {
 
                             Divider()
                                 .padding(.bottom)
+                            
+                            Button {
+                                reportVM.checkRelationshipReport()
+                            } label: {
+                                Text( NSLocalizedString("relationshipReport", comment: ""))
+                                    .frame( width: .greedy, height: 50 )
+                                    .foregroundColor(.black)
+                                    .font(.custom("times", size: 16))
+                                    .background(.accentColor)
+                                    .cornerRadius(25)
+                            }
                         }
-                        
-                        Button {
-                        } label: {
-                            Text( NSLocalizedString("relationshipReport", comment: ""))
-                                .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50 )
-                                .foregroundColor(.black)
-                                .font(.custom("times", size: 16))
-                                .background(.accentColor)
-                                .cornerRadius(25)
-                        }
-
+                    
                     }.padding()
                     .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 }.padding(.top, 1)

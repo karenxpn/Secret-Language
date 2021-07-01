@@ -21,8 +21,8 @@ struct Search: View {
                             
                             TextField(NSLocalizedString("globalSearch", comment: ""), text: $searchVM.search)
                                 .font(.custom("Gilroy-Regular", size: 14))
-                                .frame(height: 50)
                                 .padding(.horizontal)
+                                .frame(height: 50)
                                 .background(RoundedRectangle(cornerRadius: 25)
                                                 .strokeBorder(Color.black, lineWidth: 2)
                                                 .background(

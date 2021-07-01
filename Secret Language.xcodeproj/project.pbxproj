@@ -29,10 +29,13 @@
 		FF997E8E268A13080057B731 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E8D268A13080057B731 /* UserService.swift */; };
 		FF997E91268A60150057B731 /* VisitedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E90268A60150057B731 /* VisitedProfile.swift */; };
 		FF997E93268B8DE80057B731 /* SignPainter.ttc in Resources */ = {isa = PBXBuildFile; fileRef = FF997E92268B8DE80057B731 /* SignPainter.ttc */; };
-		FF997E99268CDAC80057B731 /* SearchUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E98268CDAC80057B731 /* SearchUserModel.swift */; };
-		FF997E9B268CDB300057B731 /* SearchResultActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E9A268CDB300057B731 /* SearchResultActionButtons.swift */; };
 		FF997E95268C96C10057B731 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E94268C96C10057B731 /* ReportViewModel.swift */; };
 		FF997E97268C97880057B731 /* ReportBirthdayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E96268C97880057B731 /* ReportBirthdayPicker.swift */; };
+		FF997E99268CDAC80057B731 /* SearchUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E98268CDAC80057B731 /* SearchUserModel.swift */; };
+		FF997E9B268CDB300057B731 /* SearchResultActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E9A268CDB300057B731 /* SearchResultActionButtons.swift */; };
+		FF997E9D268E72D40057B731 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E9C268E72D40057B731 /* ReportService.swift */; };
+		FF997E9F268E74D60057B731 /* SingleReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E9E268E74D60057B731 /* SingleReport.swift */; };
+		FF997EA1268E754A0057B731 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997EA0268E754A0057B731 /* PaymentView.swift */; };
 		FF99A0322680BD7200F234CD /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0312680BD7200F234CD /* ProfileViewModel.swift */; };
 		FF99A0342680C5C000F234CD /* UserPreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0332680C5C000F234CD /* UserPreviewModel.swift */; };
 		FF99A0362680C61C00F234CD /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0352680C61C00F234CD /* FriendsList.swift */; };
@@ -149,10 +152,13 @@
 		FF997E8D268A13080057B731 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		FF997E90268A60150057B731 /* VisitedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedProfile.swift; sourceTree = "<group>"; };
 		FF997E92268B8DE80057B731 /* SignPainter.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = SignPainter.ttc; path = ../../../../../../System/Library/Fonts/Supplemental/SignPainter.ttc; sourceTree = "<group>"; };
-		FF997E98268CDAC80057B731 /* SearchUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserModel.swift; sourceTree = "<group>"; };
-		FF997E9A268CDB300057B731 /* SearchResultActionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultActionButtons.swift; sourceTree = "<group>"; };
 		FF997E94268C96C10057B731 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
 		FF997E96268C97880057B731 /* ReportBirthdayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportBirthdayPicker.swift; sourceTree = "<group>"; };
+		FF997E98268CDAC80057B731 /* SearchUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserModel.swift; sourceTree = "<group>"; };
+		FF997E9A268CDB300057B731 /* SearchResultActionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultActionButtons.swift; sourceTree = "<group>"; };
+		FF997E9C268E72D40057B731 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
+		FF997E9E268E74D60057B731 /* SingleReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleReport.swift; sourceTree = "<group>"; };
+		FF997EA0268E754A0057B731 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
 		FF99A0312680BD7200F234CD /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FF99A0332680C5C000F234CD /* UserPreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewModel.swift; sourceTree = "<group>"; };
 		FF99A0352680C61C00F234CD /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
@@ -427,6 +433,7 @@
 				FF99A03F2681114400F234CD /* ProfileService.swift */,
 				FF997E8B2689FF250057B731 /* SearchService.swift */,
 				FF997E8D268A13080057B731 /* UserService.swift */,
+				FF997E9C268E72D40057B731 /* ReportService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -515,6 +522,8 @@
 			children = (
 				FFCEDE072672367B0073BE20 /* Reports.swift */,
 				FF997E96268C97880057B731 /* ReportBirthdayPicker.swift */,
+				FF997E9E268E74D60057B731 /* SingleReport.swift */,
+				FF997EA0268E754A0057B731 /* PaymentView.swift */,
 			);
 			path = Reports;
 			sourceTree = "<group>";
@@ -842,6 +851,7 @@
 				FF997E862689DAB20057B731 /* SearchViewModel.swift in Sources */,
 				FFCEDDF1266E642C0073BE20 /* SignUpRequest.swift in Sources */,
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,
+				FF997E9F268E74D60057B731 /* SingleReport.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
 				FF997E99268CDAC80057B731 /* SearchUserModel.swift in Sources */,
 				FFCEDE02267236200073BE20 /* Profile.swift in Sources */,
@@ -860,9 +870,11 @@
 				FF997E8A2689E6BA0057B731 /* SingleSearchResult.swift in Sources */,
 				FFDB158B26655DD500341E8F /* CheckVerificationCode.swift in Sources */,
 				FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */,
+				FF997EA1268E754A0057B731 /* PaymentView.swift in Sources */,
 				FFCEDDFC267235D10073BE20 /* Matches.swift in Sources */,
 				FFE0E4162677F97F008FA78C /* FilterMatches.swift in Sources */,
 				FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */,
+				FF997E9D268E72D40057B731 /* ReportService.swift in Sources */,
 				FF99A0362680C61C00F234CD /* FriendsList.swift in Sources */,
 				FF4AB0FD2685091B0085EA9A /* ProfileImagePicker.swift in Sources */,
 				FF997E8E268A13080057B731 /* UserService.swift in Sources */,
