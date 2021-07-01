@@ -13,12 +13,6 @@ struct Reports: View {
     @State private var showFullscreenReportOne: Bool = false
     @State private var showFullscreenReportTwo: Bool = false
     
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        return formatter
-    }
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -64,11 +58,11 @@ struct Reports: View {
                         Button(action: {
                             fullscreen.toggle()
                         }, label: {
-                            Text( dateFormatter.string(from: reportVM.birthdayDate))
+                            Text( "\(reportVM.birthdayMonth) \(reportVM.birthday)")
                                 .foregroundColor(.white)
                                 .font(.custom("times", size: 20))
                         }).fullScreenCover(isPresented: $fullscreen) {
-                            ReportBirthdayPicker(date: $reportVM.birthdayDate)
+                            ReportBirthdayPicker(month: $reportVM.birthdayMonth, day: $reportVM.birthday)
                         }
                         Divider()
                             .padding(.bottom)
@@ -84,7 +78,6 @@ struct Reports: View {
                                 .cornerRadius(25)
                         }
                     }.padding([.bottom, .leading, .trailing])
-
                     
                     VStack ( spacing: 10 ) {
                         
@@ -108,11 +101,11 @@ struct Reports: View {
                                 Button(action: {
                                     showFullscreenReportOne.toggle()
                                 }, label: {
-                                    Text( dateFormatter.string(from: reportVM.firstReportDate))
+                                    Text( "\(reportVM.firstReportMonth) \(reportVM.firstReportDay)" )
                                         .foregroundColor(.white)
                                         .font(.custom("times", size: 20))
                                 }).fullScreenCover(isPresented: $showFullscreenReportOne) {
-                                    ReportBirthdayPicker(date: $reportVM.firstReportDate)
+                                    ReportBirthdayPicker(month: $reportVM.firstReportMonth, day: $reportVM.firstReportDay)
                                 }
                                 
                                 Spacer()
@@ -123,11 +116,11 @@ struct Reports: View {
                                 Button(action: {
                                     showFullscreenReportTwo.toggle()
                                 }, label: {
-                                    Text( dateFormatter.string(from: reportVM.secondReportDate))
+                                    Text( "\(reportVM.secondReportMonth) \(reportVM.secondReportDay)")
                                         .foregroundColor(.white)
                                         .font(.custom("times", size: 20))
                                 }).fullScreenCover(isPresented: $showFullscreenReportTwo) {
-                                    ReportBirthdayPicker(date: $reportVM.secondReportDate)
+                                    ReportBirthdayPicker(month: $reportVM.secondReportMonth, day: $reportVM.secondReportDay)
                                 }
                             }
 

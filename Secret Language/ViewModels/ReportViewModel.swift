@@ -10,13 +10,12 @@ import SwiftUI
 import Combine
 
 class ReportViewModel: ObservableObject {
-    @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
-    @Published var firstReportDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
-    @Published var secondReportDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     
-    var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        return formatter
-    }
+    @Published var birthdayMonth: String = "January"
+    @Published var firstReportMonth: String = "January"
+    @Published var secondReportMonth: String = "January"
+
+    @Published var birthday: Int = 1
+    @Published var firstReportDay: Int = 1
+    @Published var secondReportDay: Int = 2
 }
