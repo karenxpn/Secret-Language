@@ -1,0 +1,68 @@
+//
+//  MockReportService.swift
+//  Secret LanguageTests
+//
+//  Created by Karen Mirakyan on 03.07.21.
+//
+
+import Foundation
+@testable import Secret_Language
+import Alamofire
+import Combine
+
+class MockReportService: ReportServiceProtocol {
+    
+    var checkBirthdayReportStatusError: Bool = false
+    var checkRelationshipReportStatusError: Bool = false
+    var fetchBirthdayReportError: Bool = false
+    var fetchRelationshipReportError: Bool = false
+    
+    let networkError = NetworkError(initialError: AFError.explicitlyCancelled, backendError: nil)
+    let globalResponse = GlobalResponse(status: "success", message: "paid")
+    let birthdayModel = BirthdayReportModel(id: 1, title: "Birthday")
+    let relationshipModel = RelationshipReportModel(id: 1, title: "Relationship")
+    
+    func checkReportStatusForBirthday(token: String, date: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        var result: Result<GlobalResponse, NetworkError>
+        
+        if checkBirthdayReportStatusError   { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
+        else                                { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
+    }
+    
+    func checkReportStatusForRelationship(token: String, firstDate: String, secondDate: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        var result: Result<GlobalResponse, NetworkError>
+        
+        if checkRelationshipReportStatusError   { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
+        else                                    { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
+    }
+    
+    func fetchBirthdayReport(token: String, date: String) -> AnyPublisher<DataResponse<BirthdayReportModel, NetworkError>, Never> {
+        var result: Result<BirthdayReportModel, NetworkError>
+        
+        if fetchBirthdayReportError { result = Result<BirthdayReportModel, NetworkError>.failure(networkError)}
+        else                        { result = Result<BirthdayReportModel, NetworkError>.success(birthdayModel)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<BirthdayReportModel, NetworkError>, Never>( response)
+        return publisher.eraseToAnyPublisher()
+    }
+    
+    func fetchRelationshipReport(token: String, firstDate: String, secondDate: String) -> AnyPublisher<DataResponse<RelationshipReportModel, NetworkError>, Never> {
+        var result: Result<RelationshipReportModel, NetworkError>
+        
+        if fetchRelationshipReportError { result = Result<RelationshipReportModel, NetworkError>.failure(networkError)}
+        else                            { result = Result<RelationshipReportModel, NetworkError>.success(relationshipModel)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<RelationshipReportModel, NetworkError>, Never>( response )
+        return publisher.eraseToAnyPublisher()
+    }
+}

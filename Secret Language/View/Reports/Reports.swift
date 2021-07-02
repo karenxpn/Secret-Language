@@ -168,6 +168,11 @@ struct Reports: View {
                     }.padding()
                     .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 }.padding(.top, 1)
+                
+                CustomAlert(isPresented: $reportVM.showAlert, alertMessage: reportVM.alertMessage, alignment: .center)
+                    .offset(y: reportVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+                    .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
+                
             }.navigationBarTitle("")
             .navigationBarTitleView(SearchNavBar(title: "Reports"), displayMode: .inline)
         }

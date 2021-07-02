@@ -24,6 +24,9 @@ class ReportViewModel: ObservableObject {
     @Published var navigateToReport: Bool = false
     @Published var navigateToPayment: Bool = false
     
+    @Published var showAlert: Bool = false
+    @Published var alertMessage: String = ""
+    
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ReportServiceProtocol
     
@@ -35,9 +38,12 @@ class ReportViewModel: ObservableObject {
         dataManager.checkReportStatusForBirthday(token: token, date: "\(birthdayMonth) \(birthday)")
             .sink { response in
                 if response.error == nil {
-                    self.navigateToReport.toggle()
-                } else {
-                    self.navigateToPayment.toggle()
+                    if response.value!.message == "paid" {
+                        self.navigateToReport.toggle()
+                    } else {
+                        self.navigateToPayment.toggle()
+                    }                } else {
+                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
                 }
             }.store(in: &cancellableSet)
     }
@@ -46,10 +52,33 @@ class ReportViewModel: ObservableObject {
         dataManager.checkReportStatusForRelationship(token: token, firstDate: "\(firstReportMonth) \(firstReportDay)", secondDate: "\(secondReportMonth) \(secondReportDay)")
             .sink { response in
                 if response.error == nil {
-                    self.navigateToReport.toggle()
+                    if response.value!.message == "paid" {
+                        self.navigateToReport.toggle()
+                    } else {
+                        self.navigateToPayment.toggle()
+                    }
                 } else {
-                    self.navigateToPayment.toggle()
+                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
                 }
             }.store(in: &cancellableSet)
+    }
+    
+    func getBirthdayReport() {
+        dataManager.fetchBirthdayReport(token: token, date: "\(birthdayMonth) \(birthday)")
+            .sink { response in
+                // smth here
+            }.store(in: &cancellableSet)
+    }
+    
+    func getRelationshipReport() {
+        dataManager.fetchRelationshipReport(token: token, firstDate: "\(firstReportMonth) \(firstReportDay)", secondDate: "\(secondReportMonth) \(secondReportDay)")
+            .sink { response in
+                // smth here
+            }.store(in: &cancellableSet)
+    }
+    
+    func makeAlert( showAlert: inout Bool, message: inout String, error: NetworkError ) {
+        message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
+        showAlert.toggle()
     }
 }

@@ -36,6 +36,10 @@
 		FF997E9D268E72D40057B731 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E9C268E72D40057B731 /* ReportService.swift */; };
 		FF997E9F268E74D60057B731 /* SingleReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E9E268E74D60057B731 /* SingleReport.swift */; };
 		FF997EA1268E754A0057B731 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997EA0268E754A0057B731 /* PaymentView.swift */; };
+		FF997EA3268FCC720057B731 /* BirthdayReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997EA2268FCC720057B731 /* BirthdayReportModel.swift */; };
+		FF997EA5268FCCF80057B731 /* RelationshipReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997EA4268FCCF80057B731 /* RelationshipReportModel.swift */; };
+		FF997EA7268FD0900057B731 /* MockReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997EA6268FD0900057B731 /* MockReportService.swift */; };
+		FF997EA9268FD3090057B731 /* ReportsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997EA8268FD3090057B731 /* ReportsViewModelTests.swift */; };
 		FF99A0322680BD7200F234CD /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0312680BD7200F234CD /* ProfileViewModel.swift */; };
 		FF99A0342680C5C000F234CD /* UserPreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0332680C5C000F234CD /* UserPreviewModel.swift */; };
 		FF99A0362680C61C00F234CD /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0352680C61C00F234CD /* FriendsList.swift */; };
@@ -159,6 +163,10 @@
 		FF997E9C268E72D40057B731 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
 		FF997E9E268E74D60057B731 /* SingleReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleReport.swift; sourceTree = "<group>"; };
 		FF997EA0268E754A0057B731 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
+		FF997EA2268FCC720057B731 /* BirthdayReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayReportModel.swift; sourceTree = "<group>"; };
+		FF997EA4268FCCF80057B731 /* RelationshipReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReportModel.swift; sourceTree = "<group>"; };
+		FF997EA6268FD0900057B731 /* MockReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockReportService.swift; sourceTree = "<group>"; };
+		FF997EA8268FD3090057B731 /* ReportsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewModelTests.swift; sourceTree = "<group>"; };
 		FF99A0312680BD7200F234CD /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FF99A0332680C5C000F234CD /* UserPreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreviewModel.swift; sourceTree = "<group>"; };
 		FF99A0352680C61C00F234CD /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
@@ -454,6 +462,8 @@
 				FF997E98268CDAC80057B731 /* SearchUserModel.swift */,
 				FF99A0412681354500F234CD /* GetMatchesRequest.swift */,
 				FF4AB0F5268503530085EA9A /* UserModel.swift */,
+				FF997EA2268FCC720057B731 /* BirthdayReportModel.swift */,
+				FF997EA4268FCCF80057B731 /* RelationshipReportModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -547,6 +557,7 @@
 				FFDB159626658EDF00341E8F /* AuthViewModelTests.swift */,
 				FFE0E42326794ECC008FA78C /* MatchesViewModelTests.swift */,
 				FF99A0452681DB4E00F234CD /* ProfileViewModelTests.swift */,
+				FF997EA8268FD3090057B731 /* ReportsViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -557,6 +568,7 @@
 				FFDB159426658C3400341E8F /* MockAuthService.swift */,
 				FFE0E42126794DAB008FA78C /* MockMatchService.swift */,
 				FF99A0472681DB6400F234CD /* MockProfileService.swift */,
+				FF997EA6268FD0900057B731 /* MockReportService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -848,9 +860,11 @@
 				FF99A0422681354500F234CD /* GetMatchesRequest.swift in Sources */,
 				FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */,
 				FFCEDDF5267100010073BE20 /* UserFullName.swift in Sources */,
+				FF997EA3268FCC720057B731 /* BirthdayReportModel.swift in Sources */,
 				FF997E862689DAB20057B731 /* SearchViewModel.swift in Sources */,
 				FFCEDDF1266E642C0073BE20 /* SignUpRequest.swift in Sources */,
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,
+				FF997EA5268FCCF80057B731 /* RelationshipReportModel.swift in Sources */,
 				FF997E9F268E74D60057B731 /* SingleReport.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
 				FF997E99268CDAC80057B731 /* SearchUserModel.swift in Sources */,
@@ -903,6 +917,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFE0E42426794ECC008FA78C /* MatchesViewModelTests.swift in Sources */,
+				FF997EA7268FD0900057B731 /* MockReportService.swift in Sources */,
+				FF997EA9268FD3090057B731 /* ReportsViewModelTests.swift in Sources */,
 				FFBEA6902664E42A0033B2ED /* Secret_LanguageTests.swift in Sources */,
 				FF99A0482681DB6400F234CD /* MockProfileService.swift in Sources */,
 				FF99A0462681DB4E00F234CD /* ProfileViewModelTests.swift in Sources */,
