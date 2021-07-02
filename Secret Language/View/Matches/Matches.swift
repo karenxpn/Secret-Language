@@ -10,7 +10,13 @@ struct Matches: View {
     
     @State private var showFilter: Bool = false
     @ObservedObject var matchesVM = MatchesViewModel()
-    @ObservedObject var locationManager = LocationManager()
+    @StateObject var locationManager = LocationManager()
+    @State private var locationChanged: Bool = false
+
+    var location: Location {
+        return Location(lat: locationManager.lastLocation?.coordinate.latitude ?? 0,
+                        lng: locationManager.lastLocation?.coordinate.longitude ?? 0)
+    }
     
     @State var userLocation: Location?
     
@@ -46,12 +52,10 @@ struct Matches: View {
             }.edgesIgnoringSafeArea(.bottom)
             .onAppear(perform: {
                 matchesVM.getMatches()
-                
-                userLocation = Location(lat: locationManager.lastLocation?.coordinate.latitude ?? 0.0,
-                                        lng: locationManager.lastLocation?.coordinate.longitude ?? 0.0)
-
-                if userLocation != nil {
-                    matchesVM.sendLocation(location: userLocation!)
+            }).onChange(of: location, perform: { _ in
+                if !locationChanged {
+                    locationChanged = true
+                    matchesVM.sendLocation(location: location)
                 }
             })
             .navigationBarTitle( "" )
