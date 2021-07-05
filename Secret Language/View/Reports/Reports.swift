@@ -18,7 +18,11 @@ struct Reports: View {
             ZStack {
                 Background()
                 
-                NavigationLink(destination: SingleReport(), isActive: $reportVM.navigateToReport) {
+                NavigationLink(destination: BirthdayReport(), isActive: $reportVM.navigateToBirthdayReport) {
+                    EmptyView()
+                }.hidden()
+                
+                NavigationLink(destination: RelationshipReport(), isActive: $reportVM.navigateToRelationshipReport) {
                     EmptyView()
                 }.hidden()
                 
@@ -79,7 +83,7 @@ struct Reports: View {
                             .padding(.bottom)
                         
                         Button {
-                            reportVM.checkBirthdayReport()
+                            reportVM.getBirthdayReport()
                         } label: {
                             Text( NSLocalizedString("birthdayReport", comment: ""))
                                 .frame( width: .greedy, height: 50 )
@@ -154,7 +158,7 @@ struct Reports: View {
                                 .padding(.bottom)
                             
                             Button {
-                                reportVM.checkRelationshipReport()
+                                reportVM.getRelationshipReport()
                             } label: {
                                 Text( NSLocalizedString("relationshipReport", comment: ""))
                                     .frame( width: .greedy, height: 50 )

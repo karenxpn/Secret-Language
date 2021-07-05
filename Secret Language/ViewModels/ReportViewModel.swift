@@ -16,16 +16,20 @@ class ReportViewModel: ObservableObject {
     @Published var birthdayMonth: String = "January"
     @Published var firstReportMonth: String = "January"
     @Published var secondReportMonth: String = "January"
-
+    
     @Published var birthday: Int = 1
     @Published var firstReportDay: Int = 1
     @Published var secondReportDay: Int = 2
     
-    @Published var navigateToReport: Bool = false
+    @Published var navigateToBirthdayReport: Bool = false
+    @Published var navigateToRelationshipReport: Bool = false
     @Published var navigateToPayment: Bool = false
     
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    
+    @Published var relationshipReport: RelationshipReportModel? = nil
+    @Published var birthdayReport: BirthdayReportModel? = nil
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ReportServiceProtocol
@@ -34,46 +38,36 @@ class ReportViewModel: ObservableObject {
         self.dataManager = dataManager
     }
     
-    func checkBirthdayReport() {
-        dataManager.checkReportStatusForBirthday(token: token, date: "\(birthdayMonth) \(birthday)")
-            .sink { response in
-                if response.error == nil {
-                    if response.value!.message == "paid" {
-                        self.navigateToReport.toggle()
-                    } else {
-                        self.navigateToPayment.toggle()
-                    }                } else {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func checkRelationshipReport() {
-        dataManager.checkReportStatusForRelationship(token: token, firstDate: "\(firstReportMonth) \(firstReportDay)", secondDate: "\(secondReportMonth) \(secondReportDay)")
-            .sink { response in
-                if response.error == nil {
-                    if response.value!.message == "paid" {
-                        self.navigateToReport.toggle()
-                    } else {
-                        self.navigateToPayment.toggle()
-                    }
-                } else {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
-                }
-            }.store(in: &cancellableSet)
-    }
-    
     func getBirthdayReport() {
         dataManager.fetchBirthdayReport(token: token, date: "\(birthdayMonth) \(birthday)")
             .sink { response in
-                // smth here
+                
+                if response.error != nil {
+                    if response.error!.initialError.responseCode == 440 {
+                        self.navigateToPayment.toggle()
+                    } else {
+                        self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                    }
+                } else {
+                    self.birthdayReport = response.value!
+                    self.navigateToBirthdayReport.toggle()
+                }
             }.store(in: &cancellableSet)
     }
     
     func getRelationshipReport() {
         dataManager.fetchRelationshipReport(token: token, firstDate: "\(firstReportMonth) \(firstReportDay)", secondDate: "\(secondReportMonth) \(secondReportDay)")
             .sink { response in
-                // smth here
+                if response.error != nil {
+                    if response.error!.initialError.responseCode == 440 {
+                        self.navigateToPayment.toggle()
+                    } else {
+                        self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                    }
+                } else {
+                    self.relationshipReport = response.value!
+                    self.navigateToRelationshipReport.toggle()
+                }
             }.store(in: &cancellableSet)
     }
     

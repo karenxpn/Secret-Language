@@ -7,18 +7,21 @@
 
 import SwiftUI
 
-struct SingleReport: View {
+struct BirthdayReport: View {
+    @EnvironmentObject var report: ReportViewModel
+
     var body: some View {
         ZStack {
             Background()
             
-            Text( "Single report" )
+            Text( "Birthday report" )
         }
     }
 }
 
-struct SingleReport_Previews: PreviewProvider {
+struct BirthdayReport_Previews: PreviewProvider {
     static var previews: some View {
-        SingleReport()
+        BirthdayReport()
+            .environmentObject(ReportViewModel())
     }
 }

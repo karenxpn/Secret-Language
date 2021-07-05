@@ -26,6 +26,8 @@ struct MatchModel: Identifiable, Codable {
     var my_birthday_name: String
     var user_birthday: String
     var user_birthday_name: String
+    
+    var distance: String
 }
 
 struct MatchViewModel: Identifiable {
@@ -96,6 +98,10 @@ struct MatchViewModel: Identifiable {
     
     var myBirthdayWeek: String {
         self.match.my_birthday_name
+    }
+    
+    var distance: String {
+        self.match.distance
     }
     
     // Card x position

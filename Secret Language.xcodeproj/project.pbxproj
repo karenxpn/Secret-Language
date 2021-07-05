@@ -14,6 +14,7 @@
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */; };
+		FF456F8226939576008F219E /* RelationshipReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F8126939576008F219E /* RelationshipReport.swift */; };
 		FF4AB0F6268503530085EA9A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4AB0F5268503530085EA9A /* UserModel.swift */; };
 		FF4AB0F8268503DC0085EA9A /* AppleMyungjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF4AB0F7268503DC0085EA9A /* AppleMyungjo.ttf */; };
 		FF4AB0FB268504A20085EA9A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4AB0FA268504A20085EA9A /* Settings.swift */; };
@@ -34,7 +35,7 @@
 		FF997E99268CDAC80057B731 /* SearchUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E98268CDAC80057B731 /* SearchUserModel.swift */; };
 		FF997E9B268CDB300057B731 /* SearchResultActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E9A268CDB300057B731 /* SearchResultActionButtons.swift */; };
 		FF997E9D268E72D40057B731 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E9C268E72D40057B731 /* ReportService.swift */; };
-		FF997E9F268E74D60057B731 /* SingleReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E9E268E74D60057B731 /* SingleReport.swift */; };
+		FF997E9F268E74D60057B731 /* BirthdayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E9E268E74D60057B731 /* BirthdayReport.swift */; };
 		FF997EA1268E754A0057B731 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997EA0268E754A0057B731 /* PaymentView.swift */; };
 		FF997EA3268FCC720057B731 /* BirthdayReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997EA2268FCC720057B731 /* BirthdayReportModel.swift */; };
 		FF997EA5268FCCF80057B731 /* RelationshipReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997EA4268FCCF80057B731 /* RelationshipReportModel.swift */; };
@@ -141,6 +142,7 @@
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignment.swift; sourceTree = "<group>"; };
+		FF456F8126939576008F219E /* RelationshipReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReport.swift; sourceTree = "<group>"; };
 		FF4AB0F5268503530085EA9A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		FF4AB0F7268503DC0085EA9A /* AppleMyungjo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AppleMyungjo.ttf; path = ../../../../../../System/Library/Fonts/Supplemental/AppleMyungjo.ttf; sourceTree = "<group>"; };
 		FF4AB0FA268504A20085EA9A /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -161,7 +163,7 @@
 		FF997E98268CDAC80057B731 /* SearchUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserModel.swift; sourceTree = "<group>"; };
 		FF997E9A268CDB300057B731 /* SearchResultActionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultActionButtons.swift; sourceTree = "<group>"; };
 		FF997E9C268E72D40057B731 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
-		FF997E9E268E74D60057B731 /* SingleReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleReport.swift; sourceTree = "<group>"; };
+		FF997E9E268E74D60057B731 /* BirthdayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayReport.swift; sourceTree = "<group>"; };
 		FF997EA0268E754A0057B731 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
 		FF997EA2268FCC720057B731 /* BirthdayReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayReportModel.swift; sourceTree = "<group>"; };
 		FF997EA4268FCCF80057B731 /* RelationshipReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReportModel.swift; sourceTree = "<group>"; };
@@ -532,7 +534,8 @@
 			children = (
 				FFCEDE072672367B0073BE20 /* Reports.swift */,
 				FF997E96268C97880057B731 /* ReportBirthdayPicker.swift */,
-				FF997E9E268E74D60057B731 /* SingleReport.swift */,
+				FF997E9E268E74D60057B731 /* BirthdayReport.swift */,
+				FF456F8126939576008F219E /* RelationshipReport.swift */,
 				FF997EA0268E754A0057B731 /* PaymentView.swift */,
 			);
 			path = Reports;
@@ -865,7 +868,7 @@
 				FFCEDDF1266E642C0073BE20 /* SignUpRequest.swift in Sources */,
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,
 				FF997EA5268FCCF80057B731 /* RelationshipReportModel.swift in Sources */,
-				FF997E9F268E74D60057B731 /* SingleReport.swift in Sources */,
+				FF997E9F268E74D60057B731 /* BirthdayReport.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
 				FF997E99268CDAC80057B731 /* SearchUserModel.swift in Sources */,
 				FFCEDE02267236200073BE20 /* Profile.swift in Sources */,
@@ -898,6 +901,7 @@
 				FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */,
 				FFDB158726653E8900341E8F /* NetworkError.swift in Sources */,
 				FFDB158F2665607000341E8F /* AppColors.swift in Sources */,
+				FF456F8226939576008F219E /* RelationshipReport.swift in Sources */,
 				FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */,
 				FFE0E41C2678082B008FA78C /* MatchService.swift in Sources */,
 				FFCEDE082672367B0073BE20 /* Reports.swift in Sources */,
