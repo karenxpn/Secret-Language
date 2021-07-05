@@ -15,6 +15,7 @@
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */; };
 		FF456F8226939576008F219E /* RelationshipReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F8126939576008F219E /* RelationshipReport.swift */; };
+		FF456F842693BD01008F219E /* FamousModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F832693BD01008F219E /* FamousModel.swift */; };
 		FF4AB0F6268503530085EA9A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4AB0F5268503530085EA9A /* UserModel.swift */; };
 		FF4AB0F8268503DC0085EA9A /* AppleMyungjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF4AB0F7268503DC0085EA9A /* AppleMyungjo.ttf */; };
 		FF4AB0FB268504A20085EA9A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4AB0FA268504A20085EA9A /* Settings.swift */; };
@@ -143,6 +144,7 @@
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignment.swift; sourceTree = "<group>"; };
 		FF456F8126939576008F219E /* RelationshipReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReport.swift; sourceTree = "<group>"; };
+		FF456F832693BD01008F219E /* FamousModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamousModel.swift; sourceTree = "<group>"; };
 		FF4AB0F5268503530085EA9A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		FF4AB0F7268503DC0085EA9A /* AppleMyungjo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AppleMyungjo.ttf; path = ../../../../../../System/Library/Fonts/Supplemental/AppleMyungjo.ttf; sourceTree = "<group>"; };
 		FF4AB0FA268504A20085EA9A /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 				FF4AB0F5268503530085EA9A /* UserModel.swift */,
 				FF997EA2268FCC720057B731 /* BirthdayReportModel.swift */,
 				FF997EA4268FCCF80057B731 /* RelationshipReportModel.swift */,
+				FF456F832693BD01008F219E /* FamousModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -886,6 +889,7 @@
 				FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */,
 				FF997E8A2689E6BA0057B731 /* SingleSearchResult.swift in Sources */,
 				FFDB158B26655DD500341E8F /* CheckVerificationCode.swift in Sources */,
+				FF456F842693BD01008F219E /* FamousModel.swift in Sources */,
 				FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */,
 				FF997EA1268E754A0057B731 /* PaymentView.swift in Sources */,
 				FFCEDDFC267235D10073BE20 /* Matches.swift in Sources */,
