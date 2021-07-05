@@ -23,7 +23,7 @@ struct FilterMatches: View {
                     ProgressView()
                 } else {
                     
-                    ZStack( alignment: .bottomTrailing) {
+                    ZStack( alignment: .bottomTrailing ) {
                         
                         ScrollView {
                             
@@ -145,8 +145,7 @@ struct FilterMatches: View {
                     .frame(width: 18, height: 18)
                     .padding([.leading, .top, .bottom])
                 
-            }))
-            .onAppear(perform: {
+            })).onAppear(perform: {
                 matchesVM.getFilterCategoriesWithItems()
             })
         }

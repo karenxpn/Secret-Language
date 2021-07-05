@@ -26,6 +26,8 @@ struct ReportBirthdayPicker: View {
         "December" : 31
     ]
     
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    
     @Binding var month: String
     @Binding var day: Int
 
@@ -44,8 +46,8 @@ struct ReportBirthdayPicker: View {
                 
                 HStack {
                     Picker("", selection: $month) {
-                        ForEach( pickerData.sorted(by: >), id: \.key ) { key, value in
-                            Text( key ).tag(key)
+                        ForEach( months, id: \.self ) { value in
+                            Text( value ).tag(value)
                                 .foregroundColor(.accentColor)
                         }
                     }.labelsHidden()

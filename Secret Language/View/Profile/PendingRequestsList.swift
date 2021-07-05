@@ -30,7 +30,7 @@ struct PendingRequestsList: View {
                                 .environmentObject(profileVM)
                         }
                     }
-                }
+                }.padding(.top, 1)
             }
             
             CustomAlert(isPresented: $profileVM.showAlert, alertMessage: profileVM.alertMessage, alignment: .center)
