@@ -16,4 +16,5 @@ struct AppColors {
     static let tabIcon = Color(UIColor(red: 85/255, green: 97/255, blue: 110/255, alpha: 1))
     static let dataFilterGendersBg = Color( UIColor(red: 17/255, green: 34/255, blue: 51/255, alpha: 1))
     static let dataFilterCategoryItemBg = Color( UIColor(red: 17/255, green: 34/255, blue: 51/255, alpha: 1))
+    static let reportBoxesBG = Color( UIColor(red: 12/255, green: 30/255, blue: 48/255, alpha: 1))
 }

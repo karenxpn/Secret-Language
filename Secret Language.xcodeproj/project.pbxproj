@@ -11,11 +11,15 @@
 		F2120F34E5CBA18DB2B564B4 /* Pods_Secret_Language_Secret_LanguageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E861C563FDB9CB8845BA35CA /* Pods_Secret_Language_Secret_LanguageUITests.framework */; };
 		F3E6F15571FA0FDEAAF6A68F /* Pods_Secret_LanguageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4000846EB419B5B77B094E2 /* Pods_Secret_LanguageTests.framework */; };
 		FF1AD6C7268645E100B0DCC9 /* PusherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1AD6C6268645E100B0DCC9 /* PusherManager.swift */; };
+		FF3D63C12693C98B00799E72 /* WeekReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63C02693C98B00799E72 /* WeekReport.swift */; };
+		FF3D63C32693C99500799E72 /* MonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63C22693C99500799E72 /* MonthReport.swift */; };
+		FF3D63C52693C99E00799E72 /* SeasonReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63C42693C99E00799E72 /* SeasonReport.swift */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */; };
 		FF456F8226939576008F219E /* RelationshipReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F8126939576008F219E /* RelationshipReport.swift */; };
 		FF456F842693BD01008F219E /* FamousModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F832693BD01008F219E /* FamousModel.swift */; };
+		FF456F8A2693C7EC008F219E /* DayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F892693C7EC008F219E /* DayReport.swift */; };
 		FF4AB0F6268503530085EA9A /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4AB0F5268503530085EA9A /* UserModel.swift */; };
 		FF4AB0F8268503DC0085EA9A /* AppleMyungjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF4AB0F7268503DC0085EA9A /* AppleMyungjo.ttf */; };
 		FF4AB0FB268504A20085EA9A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4AB0FA268504A20085EA9A /* Settings.swift */; };
@@ -140,11 +144,15 @@
 		DF93FF6AD37B39EE5745665F /* Pods_Secret_Language.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Secret_Language.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E861C563FDB9CB8845BA35CA /* Pods_Secret_Language_Secret_LanguageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Secret_Language_Secret_LanguageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF1AD6C6268645E100B0DCC9 /* PusherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PusherManager.swift; sourceTree = "<group>"; };
+		FF3D63C02693C98B00799E72 /* WeekReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekReport.swift; sourceTree = "<group>"; };
+		FF3D63C22693C99500799E72 /* MonthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthReport.swift; sourceTree = "<group>"; };
+		FF3D63C42693C99E00799E72 /* SeasonReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonReport.swift; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignment.swift; sourceTree = "<group>"; };
 		FF456F8126939576008F219E /* RelationshipReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReport.swift; sourceTree = "<group>"; };
 		FF456F832693BD01008F219E /* FamousModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamousModel.swift; sourceTree = "<group>"; };
+		FF456F892693C7EC008F219E /* DayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayReport.swift; sourceTree = "<group>"; };
 		FF4AB0F5268503530085EA9A /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		FF4AB0F7268503DC0085EA9A /* AppleMyungjo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AppleMyungjo.ttf; path = ../../../../../../System/Library/Fonts/Supplemental/AppleMyungjo.ttf; sourceTree = "<group>"; };
 		FF4AB0FA268504A20085EA9A /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -296,6 +304,26 @@
 				C4000846EB419B5B77B094E2 /* Pods_Secret_LanguageTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF456F872693C7C5008F219E /* RelationshipReport */ = {
+			isa = PBXGroup;
+			children = (
+				FF456F8126939576008F219E /* RelationshipReport.swift */,
+			);
+			path = RelationshipReport;
+			sourceTree = "<group>";
+		};
+		FF456F882693C7DB008F219E /* BirthdayReport */ = {
+			isa = PBXGroup;
+			children = (
+				FF997E9E268E74D60057B731 /* BirthdayReport.swift */,
+				FF456F892693C7EC008F219E /* DayReport.swift */,
+				FF3D63C02693C98B00799E72 /* WeekReport.swift */,
+				FF3D63C22693C99500799E72 /* MonthReport.swift */,
+				FF3D63C42693C99E00799E72 /* SeasonReport.swift */,
+			);
+			path = BirthdayReport;
 			sourceTree = "<group>";
 		};
 		FF4AB0F9268504970085EA9A /* Settings */ = {
@@ -535,10 +563,10 @@
 		FFCEDE06267236700073BE20 /* Reports */ = {
 			isa = PBXGroup;
 			children = (
+				FF456F882693C7DB008F219E /* BirthdayReport */,
+				FF456F872693C7C5008F219E /* RelationshipReport */,
 				FFCEDE072672367B0073BE20 /* Reports.swift */,
 				FF997E96268C97880057B731 /* ReportBirthdayPicker.swift */,
-				FF997E9E268E74D60057B731 /* BirthdayReport.swift */,
-				FF456F8126939576008F219E /* RelationshipReport.swift */,
 				FF997EA0268E754A0057B731 /* PaymentView.swift */,
 			);
 			path = Reports;
@@ -843,6 +871,7 @@
 				FF997E91268A60150057B731 /* VisitedProfile.swift in Sources */,
 				FFDB158526653DC500341E8F /* GlobalResponse.swift in Sources */,
 				FF99A03C2680E98B00F234CD /* FriendRequestList.swift in Sources */,
+				FF456F8A2693C7EC008F219E /* DayReport.swift in Sources */,
 				FFDB157B2664F2C800341E8F /* BirthdayPicker.swift in Sources */,
 				FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */,
 				FFDB1581266522BE00341E8F /* SignIn.swift in Sources */,
@@ -862,17 +891,20 @@
 				FFDB15752664EDFC00341E8F /* SignUp.swift in Sources */,
 				FF99A0322680BD7200F234CD /* ProfileViewModel.swift in Sources */,
 				FFDB15AD2666C03F00341E8F /* ConnectionType.swift in Sources */,
+				FF3D63C32693C99500799E72 /* MonthReport.swift in Sources */,
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,
 				FF99A0422681354500F234CD /* GetMatchesRequest.swift in Sources */,
 				FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */,
 				FFCEDDF5267100010073BE20 /* UserFullName.swift in Sources */,
 				FF997EA3268FCC720057B731 /* BirthdayReportModel.swift in Sources */,
+				FF3D63C52693C99E00799E72 /* SeasonReport.swift in Sources */,
 				FF997E862689DAB20057B731 /* SearchViewModel.swift in Sources */,
 				FFCEDDF1266E642C0073BE20 /* SignUpRequest.swift in Sources */,
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,
 				FF997EA5268FCCF80057B731 /* RelationshipReportModel.swift in Sources */,
 				FF997E9F268E74D60057B731 /* BirthdayReport.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
+				FF3D63C12693C98B00799E72 /* WeekReport.swift in Sources */,
 				FF997E99268CDAC80057B731 /* SearchUserModel.swift in Sources */,
 				FFCEDE02267236200073BE20 /* Profile.swift in Sources */,
 				FFDB15A926669B9400341E8F /* TopGender.swift in Sources */,

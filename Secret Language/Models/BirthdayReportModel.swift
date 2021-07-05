@@ -55,7 +55,6 @@ struct WeekReportModel: Codable, Identifiable {
 struct MonthReportModel: Codable, Identifiable {
     var id: Int
     var span1: String
-    var span2: String
     var name: String
     var sign: String
     var season: String
@@ -71,7 +70,6 @@ struct SeasonReportModel: Codable, Identifiable {
     var name: String
     var description: String
     var span1: String
-    var span2: String
     var season_name: String
     var activity: String
     var report: String
