@@ -18,32 +18,17 @@ class ReportsViewModelTests: XCTestCase {
         self.viewModel = ReportViewModel(dataManager: self.service)
     }
     
-    func testCheckBirthdayReportStatusWithError() {
-        service.checkBirthdayReportStatusError = true
-        viewModel.checkBirthdayReport()
+    func testGetRelationshipReportWithError() {
+        service.fetchRelationshipReportError = true
+        viewModel.getRelationshipReport()
         
-        XCTAssertFalse(viewModel.navigateToReport)
-    }
-    
-    func testCheckBirthdayReportStatusWithSuccess() {
-        service.checkBirthdayReportStatusError = false
-        viewModel.checkBirthdayReport()
-        
-        XCTAssertTrue(viewModel.navigateToReport)
-    }
-    
-    func testCheckRelationshipReportStatucWithError() {
-        service.checkRelationshipReportStatusError = true
-        viewModel.checkRelationshipReport()
-        
-        XCTAssertFalse(viewModel.navigateToReport)
-    }
-    
-    func testCheckRelationshipReportStatusWithSuccess() {
-        service.checkRelationshipReportStatusError = false
-        viewModel.checkRelationshipReport()
-        
-        XCTAssertTrue(viewModel.navigateToReport)
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
     }
 
+    func testGetRelationshipReportWithSuccess() {
+        service.fetchRelationshipReportError = false
+        viewModel.getRelationshipReport()
+        
+        XCTAssertTrue(viewModel.navigateToRelationshipReport)
+    }
 }
