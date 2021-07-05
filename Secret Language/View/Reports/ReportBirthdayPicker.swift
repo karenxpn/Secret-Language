@@ -38,17 +38,18 @@ struct ReportBirthdayPicker: View {
             
             VStack {
                 
-                Text( NSLocalizedString("chooseBirthday", comment: ""))
+                Text( NSLocalizedString("chooseDate", comment: ""))
                     .foregroundColor(.white)
                     .font(.custom("times", size: 26))
                 
                 Spacer()
                 
-                HStack {
+                HStack( spacing: 0 ) {
                     Picker("", selection: $month) {
                         ForEach( months, id: \.self ) { value in
                             Text( value ).tag(value)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(month == value ? .accentColor : .gray)
+                                .font(.custom("times", size: 28))
                         }
                     }.labelsHidden()
                     .pickerStyle(WheelPickerStyle())
@@ -59,7 +60,8 @@ struct ReportBirthdayPicker: View {
                     Picker("", selection: $day) {
                         ForEach( 1...pickerData[month]!, id: \.self ) { day in
                             Text( "\(day)" ).tag(day)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(self.day == day ? .accentColor : .gray)
+                                .font(.custom("times", size: 28))
                         }
                     }.labelsHidden()
                     .pickerStyle(WheelPickerStyle())
@@ -68,7 +70,6 @@ struct ReportBirthdayPicker: View {
                     .clipped()
                 }
                 Spacer()
-                
                 
                 HStack {
                     Spacer()
