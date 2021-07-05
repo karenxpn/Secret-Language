@@ -22,7 +22,7 @@ struct Reports: View {
                     EmptyView()
                 }.hidden()
                 
-                NavigationLink(destination: RelationshipReport(), isActive: $reportVM.navigateToRelationshipReport) {
+                NavigationLink(destination: RelationshipReport(report: reportVM.relationshipReport), isActive: $reportVM.navigateToRelationshipReport) {
                     EmptyView()
                 }.hidden()
                 
