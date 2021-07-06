@@ -40,7 +40,7 @@ struct WeekReport: View {
                         
                         HStack {
                             
-                            VStack {
+                            VStack( alignment: .leading ) {
                                 Text( report.s1 )
                                     .foregroundColor(.black)
                                     .font(.custom("times", size: 14))
@@ -56,7 +56,7 @@ struct WeekReport: View {
                             
                             Spacer()
                             
-                            VStack {
+                            VStack( alignment: .trailing ) {
                                 Text( report.w1 )
                                     .foregroundColor(.black)
                                     .font(.custom("times", size: 14))

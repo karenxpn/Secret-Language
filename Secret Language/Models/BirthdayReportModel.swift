@@ -75,5 +75,6 @@ struct SeasonReportModel: Codable, Identifiable {
     var activity: String
     var report: String
     var faculty: String
+    var motivation: String
     var image: String
 }

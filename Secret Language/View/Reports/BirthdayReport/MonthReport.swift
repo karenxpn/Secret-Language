@@ -6,13 +6,44 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct MonthReport: View {
     
     let report: MonthReportModel
     
     var body: some View {
-        Text("MonthReport")
+        VStack {
+            VStack {
+                VStack {
+                    
+                    Text( report.span1 )
+                        .foregroundColor(.black)
+                        .font(.custom("times", size: 16))
+
+                    
+                    WebImage(url: URL(string: report.image ))
+                        .placeholder {
+                            ProgressView()
+                        }.resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: .greedy, height: 150)
+                        .padding()
+                    
+                    Text( report.name )
+                        .foregroundColor(.black)
+                        .font(.custom("times", size: 22))
+                        .fontWeight(.heavy)
+                    
+                }.padding()
+                .background(.white)
+                .padding(.bottom)
+                
+                ReportSection(title: NSLocalizedString("theirMode", comment: ""), content: report.mode)
+                ReportSection(title: NSLocalizedString("motto", comment: ""), content: report.motto)
+                ReportSection(title: NSLocalizedString("personality", comment: ""), content: report.report)
+            }
+        }
     }
 }
 
