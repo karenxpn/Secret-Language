@@ -16,7 +16,7 @@ struct RelationshipReport: View {
             Background()
             
             if report != nil {
-                ScrollView {
+                ScrollView( showsIndicators: false ) {
                     
                     VStack {
                         
@@ -146,6 +146,7 @@ struct RelationshipReport: View {
                             .padding(.horizontal)
                         
                     }.padding(.top)
+                    .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                     
                 }.padding(.top, 1)
             }

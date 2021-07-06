@@ -29,7 +29,8 @@ struct DayReport: View {
                         .foregroundColor(.black)
                         .font(.custom("times", size: 22))
                         .fontWeight(.heavy)
-                    
+                        .multilineTextAlignment(.center)
+
                     WebImage(url: URL(string: report.image ))
                         .placeholder {
                             ProgressView()

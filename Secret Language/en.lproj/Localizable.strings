@@ -94,8 +94,8 @@
 "numerology" = "Numerology";
 "archetype" = "Archetype";
 "famous" = "Famous";
-"motto" = "Their motto";
-"theirMode" = "Their mode of thought";
-"faculty" = "Faculty";
+"motto" = "Their motto: ";
+"theirMode" = "Their mode of thought: ";
+"faculty" = "Faculty: ";
 "motivation" = "Motivation";
-"description" = "Description";
+"description" = "Description: ";

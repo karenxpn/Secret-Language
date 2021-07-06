@@ -34,13 +34,15 @@ struct MonthReport: View {
                         .foregroundColor(.black)
                         .font(.custom("times", size: 22))
                         .fontWeight(.heavy)
+                        .multilineTextAlignment(.center)
+
                     
                 }.padding()
                 .background(.white)
                 .padding(.bottom)
                 
-                ReportSection(title: NSLocalizedString("theirMode", comment: ""), content: report.mode)
-                ReportSection(title: NSLocalizedString("motto", comment: ""), content: report.motto)
+                ReportSection(title: NSLocalizedString("theirMode", comment: ""), content: report.mode, orientation: 2)
+                ReportSection(title: NSLocalizedString("motto", comment: ""), content: report.motto, orientation: 2)
                 ReportSection(title: NSLocalizedString("personality", comment: ""), content: report.report)
             }
         }

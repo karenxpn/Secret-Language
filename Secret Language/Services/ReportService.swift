@@ -22,13 +22,13 @@ class ReportService {
 
 extension ReportService: ReportServiceProtocol {
     func fetchRelationshipReport(token: String, firstDate: String, secondDate: String) -> AnyPublisher<DataResponse<RelationshipReportModel, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/relationshipReport")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/showRelationshipReport")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
                           method: .post,
-                          parameters: ["first" : firstDate,
-                                       "second" : secondDate],
+                          parameters: ["birthday_1" : firstDate,
+                                       "birthday_2" : secondDate],
                           encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
@@ -44,12 +44,12 @@ extension ReportService: ReportServiceProtocol {
     }
     
     func fetchBirthdayReport(token: String, date: String) -> AnyPublisher<DataResponse<BirthdayReportModel, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/birthdayReport")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/showBirthdayReport")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
                           method: .post,
-                          parameters: ["date" : date],
+                          parameters: ["birthday" : date],
                           encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
