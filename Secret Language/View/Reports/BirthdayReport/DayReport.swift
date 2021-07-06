@@ -10,76 +10,89 @@ import SDWebImageSwiftUI
 
 struct DayReport: View {
     let report: DayReportModel
+    @State private var selection: String = "Personality"
     
     var body: some View {
+        
         VStack {
+
+            PersonalityAndFamousTab(selection: $selection)
+            
             VStack {
-                
-                Text( report.date_name )
-                    .foregroundColor(.black)
-                    .font(.custom("times", size: 16))
-                
-                Text( report.day_name )
-                    .foregroundColor(.black)
-                    .font(.custom("times", size: 22))
-                    .fontWeight(.heavy)
-                
-                WebImage(url: URL(string: report.image ))
-                    .placeholder {
-                        ProgressView()
-                    }.resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: .greedy, height: 150)
-                    .padding()
+                VStack {
+                    
+                    Text( report.date_name )
+                        .foregroundColor(.black)
+                        .font(.custom("times", size: 16))
+                    
+                    Text( report.day_name )
+                        .foregroundColor(.black)
+                        .font(.custom("times", size: 22))
+                        .fontWeight(.heavy)
+                    
+                    WebImage(url: URL(string: report.image ))
+                        .placeholder {
+                            ProgressView()
+                        }.resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: .greedy, height: 150)
+                        .padding()
+                    
+                    HStack {
+                        
+                        VStack {
+                            Text( report.s1 )
+                                .foregroundColor(.black)
+                                .font(.custom("times", size: 14))
                             
-                HStack {
-                    
-                    VStack {
-                        Text( report.s1 )
-                            .foregroundColor(.black)
-                            .font(.custom("times", size: 14))
+                            Text( report.s2 )
+                                .foregroundColor(.black)
+                                .font(.custom("times", size: 14))
+                            
+                            Text( report.s3 )
+                                .foregroundColor(.black)
+                                .font(.custom("times", size: 14))
+                        }
                         
-                        Text( report.s2 )
-                            .foregroundColor(.black)
-                            .font(.custom("times", size: 14))
+                        Spacer()
                         
-                        Text( report.s3 )
-                            .foregroundColor(.black)
-                            .font(.custom("times", size: 14))
+                        VStack {
+                            Text( report.w1 )
+                                .foregroundColor(.black)
+                                .font(.custom("times", size: 14))
+                            
+                            Text( report.w2 )
+                                .foregroundColor(.black)
+                                .font(.custom("times", size: 14))
+                            
+                            Text( report.w3 )
+                                .foregroundColor(.black)
+                                .font(.custom("times", size: 14))
+                        }
                     }
                     
-                    Spacer()
+                }.padding()
+                .background(.white)
+                .padding(.bottom)
+                
+                if selection == "Personality" {
+                    ReportSection(title: NSLocalizedString("meditation", comment: ""), content: report.meditation)
                     
-                    VStack {
-                        Text( report.w1 )
-                            .foregroundColor(.black)
-                            .font(.custom("times", size: 14))
-                        
-                        Text( report.w2 )
-                            .foregroundColor(.black)
-                            .font(.custom("times", size: 14))
-                        
-                        Text( report.w3 )
-                            .foregroundColor(.black)
-                            .font(.custom("times", size: 14))
-                    }
+                    ReportSection(title: NSLocalizedString("personality", comment: ""), content: report.report)
+                    
+                    ReportSection(title: NSLocalizedString("advice", comment: ""), content: report.advice)
+                    
+                    ReportSection(title: NSLocalizedString("health", comment: ""), content: report.health)
+                    
+                    ReportSection(title: NSLocalizedString("numerology", comment: ""), content: report.numbers)
+                    
+                    ReportSection(title: NSLocalizedString("archetype", comment: ""), content: report.archetype)
+                } else {
+                    FamousList(famousList: report.famous)
                 }
                 
-            }.padding()
-            .background(.white)
-            .padding(.bottom)
-            
-            ReportSection(title: NSLocalizedString("meditation", comment: ""), content: report.meditation)
-            
-            ReportSection(title: NSLocalizedString("personality", comment: ""), content: report.report)
-            
-            ReportSection(title: NSLocalizedString("advice", comment: ""), content: report.advice)
-            
-            ReportSection(title: NSLocalizedString("health", comment: ""), content: report.health)
-            
-            ReportSection(title: NSLocalizedString("numerology", comment: ""), content: report.numbers)
-            
-            ReportSection(title: NSLocalizedString("archetype", comment: ""), content: report.archetype)
+                Spacer()
+            }
         }
     }
 }
