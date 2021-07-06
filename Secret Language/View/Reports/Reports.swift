@@ -18,11 +18,11 @@ struct Reports: View {
             ZStack {
                 Background()
                 
-                NavigationLink(destination: BirthdayReport(report: reportVM.birthdayReport), isActive: $reportVM.navigateToBirthdayReport) {
+                NavigationLink(destination: BirthdayReport(report: $reportVM.birthdayReport), isActive: $reportVM.navigateToBirthdayReport) {
                     EmptyView()
                 }.hidden()
                 
-                NavigationLink(destination: RelationshipReport(report: reportVM.relationshipReport), isActive: $reportVM.navigateToRelationshipReport) {
+                NavigationLink(destination: RelationshipReport(report: $reportVM.relationshipReport), isActive: $reportVM.navigateToRelationshipReport) {
                     EmptyView()
                 }.hidden()
                 

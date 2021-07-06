@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct WeekReport: View {
+    
+    let report: WeekReportModel
+    
     var body: some View {
         Text("WeekReport")
     }
@@ -15,6 +18,6 @@ struct WeekReport: View {
 
 struct WeekReport_Previews: PreviewProvider {
     static var previews: some View {
-        WeekReport()
+        WeekReport(report: WeekReportModel(id: 2, date_span: "Apr. 19-24", name_long: "Week of Power", report: "Report", advice: "Try not to ....",  s1: "Tasteful", s2: "Caring", s3: "Powerful", w1: "Profligate", w2: "Self-Indulgent", w3: "Over-Protective", famous: [FamousModel(id: 1, name: "Karen Mirakyan", age: "born 83 years ago", image: "https://sln-storage.s3.us-east-2.amazonaws.com/img/famous/4.jpg")], image:  "https://sln-storage.s3.us-east-2.amazonaws.com/img/icon/day/150/png/111.png"))
     }
 }

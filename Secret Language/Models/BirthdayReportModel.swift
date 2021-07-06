@@ -32,6 +32,7 @@ struct DayReportModel: Codable, Identifiable {
     var numbers: String
     var health: String
     var advice: String
+    var archetype: String
     var famous: [FamousModel]
     var image: String
 }
