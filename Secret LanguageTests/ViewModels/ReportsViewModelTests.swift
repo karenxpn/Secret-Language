@@ -31,4 +31,18 @@ class ReportsViewModelTests: XCTestCase {
         
         XCTAssertTrue(viewModel.navigateToRelationshipReport)
     }
+    
+    func testGetBirthdayReportWithError() {
+        service.fetchBirthdayReportError = true
+        viewModel.getBirthdayReport()
+        
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+    }
+    
+    func testGetBirthdayReportWithSuccess() {
+        service.fetchBirthdayReportError = false
+        viewModel.getBirthdayReport()
+        
+        XCTAssertTrue(viewModel.navigateToBirthdayReport)
+    }
 }

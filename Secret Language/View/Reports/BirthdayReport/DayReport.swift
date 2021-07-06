@@ -15,11 +15,6 @@ struct DayReport: View {
         VStack {
             VStack {
                 
-                Text( "\(report.day)" )
-                    .foregroundColor(.black)
-                    .font(.custom("times", size: 20))
-                    .fontWeight(.heavy)
-                
                 Text( report.date_name )
                     .foregroundColor(.black)
                     .font(.custom("times", size: 16))
