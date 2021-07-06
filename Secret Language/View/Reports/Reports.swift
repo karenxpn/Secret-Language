@@ -85,7 +85,7 @@ struct Reports: View {
                         Button {
                             reportVM.getBirthdayReport()
                         } label: {
-                            Text( NSLocalizedString("birthdayReport", comment: ""))
+                            Text( NSLocalizedString("showBirthdayReport", comment: ""))
                                 .frame( width: .greedy, height: 50 )
                                 .foregroundColor(.black)
                                 .font(.custom("times", size: 16))

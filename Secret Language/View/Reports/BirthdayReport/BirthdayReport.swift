@@ -37,7 +37,7 @@ struct BirthdayReport: View {
                                                 .foregroundColor(selection == index ? .black : .white))
                             })
                         }
-                    }
+                    }.padding( .vertical, 10 )
 
                     switch selection {
                     case 0:
@@ -59,7 +59,7 @@ struct BirthdayReport: View {
             }
             
         }.navigationBarTitle( "" )
-        .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("relationshipReport", comment: "")), displayMode: .inline)
+        .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("birthdayReport", comment: "")), displayMode: .inline)
     }
 }
 

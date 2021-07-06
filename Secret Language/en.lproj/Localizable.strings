@@ -76,7 +76,7 @@
 "lookUpRelationship" = "Look up a Relationship";
 "relationshipYouCanLook" = "You can look up the personality traits of anyone you know from their birthday.";
 "showRelationshipReport" = "Show Relationship Report";
-"birthdayReport" = "Show Birthday Report";
+"showBirthdayReport" = "Show Birthday Report";
 "day" = "Day";
 "subscription" = "Subscription";
 "pay99cent" = "Pay only 99 cents to unlock each report !";
@@ -88,6 +88,7 @@
 "relationshipBetween" = "THE RELATIONSHIP BETWEEN";
 "problematic" = "Problematic for: ";
 "relationshipReport" = "Relationship Report";
+"birthdayReport" = "Birthday Report";
 "meditation" = "Meditation";
 "personality" = "Personality";
 "health" = "Health";

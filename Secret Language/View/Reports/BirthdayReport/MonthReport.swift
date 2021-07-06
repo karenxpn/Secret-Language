@@ -21,7 +21,6 @@ struct MonthReport: View {
                         .foregroundColor(.black)
                         .font(.custom("times", size: 16))
 
-                    
                     ImageHelper(image: report.image, contentMode: .fit, progressViewTintColor: .gray)
                         .frame(width: .greedy, height: 150)
                         .padding()
@@ -31,8 +30,6 @@ struct MonthReport: View {
                         .font(.custom("times", size: 22))
                         .fontWeight(.heavy)
                         .multilineTextAlignment(.center)
-
-                    
                 }.padding()
                 .background(.white)
                 .padding(.bottom)

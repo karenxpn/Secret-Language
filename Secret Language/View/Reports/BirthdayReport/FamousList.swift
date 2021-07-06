@@ -15,7 +15,7 @@ struct FamousList: View {
             ForEach( famousList, id: \.id ) { famous in
                 FamousListCell(famous: famous)
             }
-        }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+        }
     }
 }
 
