@@ -30,47 +30,13 @@ struct DayReport: View {
                         .font(.custom("times", size: 22))
                         .fontWeight(.heavy)
                         .multilineTextAlignment(.center)
-
-                    WebImage(url: URL(string: report.image ))
-                        .placeholder {
-                            ProgressView()
-                        }.resizable()
-                        .aspectRatio(contentMode: .fit)
+                    
+                    ImageHelper(image: report.image, contentMode: .fit, progressViewTintColor: .gray)
                         .frame(width: .greedy, height: 150)
                         .padding()
                     
-                    HStack {
-                        
-                        VStack( alignment: .leading) {
-                            Text( report.s1 )
-                                .foregroundColor(.black)
-                                .font(.custom("times", size: 14))
-                            
-                            Text( report.s2 )
-                                .foregroundColor(.black)
-                                .font(.custom("times", size: 14))
-                            
-                            Text( report.s3 )
-                                .foregroundColor(.black)
-                                .font(.custom("times", size: 14))
-                        }
-                        
-                        Spacer()
-                        
-                        VStack( alignment: .trailing) {
-                            Text( report.w1 )
-                                .foregroundColor(.black)
-                                .font(.custom("times", size: 14))
-                            
-                            Text( report.w2 )
-                                .foregroundColor(.black)
-                                .font(.custom("times", size: 14))
-                            
-                            Text( report.w3 )
-                                .foregroundColor(.black)
-                                .font(.custom("times", size: 14))
-                        }
-                    }
+                    SWViewHelper(s1: report.s1, s2: report.s2, s3: report.s3,
+                                 w1: report.w1, w2: report.w2, w3: report.w3)
                     
                 }.padding()
                 .background(.white)

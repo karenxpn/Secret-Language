@@ -18,6 +18,8 @@
 		FF3D63C92694910700799E72 /* FamousList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63C82694910700799E72 /* FamousList.swift */; };
 		FF3D63CB2694914400799E72 /* FamousListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63CA2694914400799E72 /* FamousListCell.swift */; };
 		FF3D63CD2694951D00799E72 /* PersonalityAndFamousTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63CC2694951D00799E72 /* PersonalityAndFamousTab.swift */; };
+		FF3D63CF269507FB00799E72 /* SWViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63CE269507FB00799E72 /* SWViewHelper.swift */; };
+		FF3D63D1269508D500799E72 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63D0269508D500799E72 /* ImageHelper.swift */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */; };
@@ -155,6 +157,8 @@
 		FF3D63C82694910700799E72 /* FamousList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamousList.swift; sourceTree = "<group>"; };
 		FF3D63CA2694914400799E72 /* FamousListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamousListCell.swift; sourceTree = "<group>"; };
 		FF3D63CC2694951D00799E72 /* PersonalityAndFamousTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalityAndFamousTab.swift; sourceTree = "<group>"; };
+		FF3D63CE269507FB00799E72 /* SWViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWViewHelper.swift; sourceTree = "<group>"; };
+		FF3D63D0269508D500799E72 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignment.swift; sourceTree = "<group>"; };
@@ -334,6 +338,7 @@
 				FF3D63C6269485EF00799E72 /* ReportSection.swift */,
 				FF3D63C82694910700799E72 /* FamousList.swift */,
 				FF3D63CA2694914400799E72 /* FamousListCell.swift */,
+				FF3D63CE269507FB00799E72 /* SWViewHelper.swift */,
 			);
 			path = BirthdayReport;
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 				FFDB15762664EE9800341E8F /* Background.swift */,
 				FFDB158C26655E7800341E8F /* CustomAlert.swift */,
 				FFCEDDF626722A050073BE20 /* CustomTabBar.swift */,
+				FF3D63D0269508D500799E72 /* ImageHelper.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -928,6 +934,7 @@
 				FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */,
 				FF4AB0F6268503530085EA9A /* UserModel.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,
+				FF3D63CF269507FB00799E72 /* SWViewHelper.swift in Sources */,
 				FFCEDDF3266FB0350073BE20 /* AuthResponse.swift in Sources */,
 				FFDB158326653D6E00341E8F /* AuthService.swift in Sources */,
 				FF3D63CD2694951D00799E72 /* PersonalityAndFamousTab.swift in Sources */,
@@ -965,6 +972,7 @@
 				FFE0E4182677FD89008FA78C /* MatchesNavBar.swift in Sources */,
 				FF997E9B268CDB300057B731 /* SearchResultActionButtons.swift in Sources */,
 				FF997E97268C97880057B731 /* ReportBirthdayPicker.swift in Sources */,
+				FF3D63D1269508D500799E72 /* ImageHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,15 +21,9 @@ struct SeasonReport: View {
                         .font(.custom("times", size: 18))
                         .fontWeight(.semibold)
 
-                    
-                    WebImage(url: URL(string: report.image ))
-                        .placeholder {
-                            ProgressView()
-                        }.resizable()
-                        .aspectRatio(contentMode: .fit)
+                    ImageHelper(image: report.image, contentMode: .fit, progressViewTintColor: .gray)
                         .frame(width: .greedy, height: 150)
                         .padding()
-                    
                     
                     Text( report.name )
                         .foregroundColor(.black)
@@ -45,8 +39,6 @@ struct SeasonReport: View {
                 
                 ReportSection(title: NSLocalizedString("faculty", comment: ""), content: report.faculty, orientation: 2)
                 
-//                ReportSection(title: NSLocalizedString("motivation", comment: ""), content: report.motivation)
-
                 ReportSection(title: NSLocalizedString("personality", comment: ""), content: report.report)
             }
         }

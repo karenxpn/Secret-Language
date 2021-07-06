@@ -22,11 +22,7 @@ struct MonthReport: View {
                         .font(.custom("times", size: 16))
 
                     
-                    WebImage(url: URL(string: report.image ))
-                        .placeholder {
-                            ProgressView()
-                        }.resizable()
-                        .aspectRatio(contentMode: .fit)
+                    ImageHelper(image: report.image, contentMode: .fit, progressViewTintColor: .gray)
                         .frame(width: .greedy, height: 150)
                         .padding()
                     

@@ -51,7 +51,6 @@ struct RelationshipReport: View {
                                     .foregroundColor(.black)
                                     .font(.custom("times", size: 16))
                             }
-
                         }
                         
                         Text( "IS CALLED" )
@@ -61,6 +60,7 @@ struct RelationshipReport: View {
                         WebImage(url: URL(string: report!.image ))
                             .placeholder {
                                 ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .gray))
                             }.resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: .greedy, height: 150)
