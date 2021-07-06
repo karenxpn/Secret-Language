@@ -23,7 +23,7 @@ struct PersonalityAndFamousTab: View {
                         .font(.custom("times", size: 16))
                         .foregroundColor(selection == "Personality" ? .accentColor : .systemGray3)
                         .padding(.top, 8)
-                        .frame(width: UIScreen.main.bounds.size.width * 0.5)
+                        .frame(width: UIScreen.main.bounds.size.width * 0.4)
 
                 }
                 
@@ -45,7 +45,7 @@ struct PersonalityAndFamousTab: View {
                         .font(.custom("times", size: 16))
                         .foregroundColor(selection == "Personality" ? .accentColor : .systemGray3)
                         .padding(.top, 8)
-                        .frame(width: UIScreen.main.bounds.size.width * 0.5)
+                        .frame(width: UIScreen.main.bounds.size.width * 0.4)
                 }
                 
                 if selection == "Famous" {

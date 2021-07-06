@@ -6,13 +6,86 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct WeekReport: View {
     
     let report: WeekReportModel
+    @State private var selection: String = "Personality"
     
     var body: some View {
-        Text("WeekReport")
+        VStack {
+            PersonalityAndFamousTab(selection: $selection)
+            
+            VStack {
+                VStack {
+                    VStack {
+                        
+                        Text( report.date_span )
+                            .foregroundColor(.black)
+                            .font(.custom("times", size: 16))
+                        
+                        Text( report.name_long )
+                            .foregroundColor(.black)
+                            .font(.custom("times", size: 22))
+                            .fontWeight(.heavy)
+                        
+                        WebImage(url: URL(string: report.image ))
+                            .placeholder {
+                                ProgressView()
+                            }.resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: .greedy, height: 150)
+                            .padding()
+                        
+                        HStack {
+                            
+                            VStack {
+                                Text( report.s1 )
+                                    .foregroundColor(.black)
+                                    .font(.custom("times", size: 14))
+                                
+                                Text( report.s2 )
+                                    .foregroundColor(.black)
+                                    .font(.custom("times", size: 14))
+                                
+                                Text( report.s3 )
+                                    .foregroundColor(.black)
+                                    .font(.custom("times", size: 14))
+                            }
+                            
+                            Spacer()
+                            
+                            VStack {
+                                Text( report.w1 )
+                                    .foregroundColor(.black)
+                                    .font(.custom("times", size: 14))
+                                
+                                Text( report.w2 )
+                                    .foregroundColor(.black)
+                                    .font(.custom("times", size: 14))
+                                
+                                Text( report.w3 )
+                                    .foregroundColor(.black)
+                                    .font(.custom("times", size: 14))
+                            }
+                        }
+                        
+                    }.padding()
+                    .background(.white)
+                    .padding(.bottom)
+                    
+                    if selection == "Personality" {
+                        
+                        ReportSection(title: NSLocalizedString("personality", comment: ""), content: report.report)
+                        
+                        ReportSection(title: NSLocalizedString("advice", comment: ""), content: report.advice)
+                    } else {
+                        FamousList(famousList: report.famous)
+                    }
+                }
+            }
+        }
     }
 }
 
