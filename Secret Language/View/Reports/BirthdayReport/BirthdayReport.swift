@@ -13,48 +13,38 @@ struct BirthdayReport: View {
     @State private var selection: Int = 0
     @Binding var report: BirthdayReportModel?
     let arrayOfReports = ["D", "W", "M", "S"]
-
+    
     var body: some View {
         ZStack {
             Background()
             
             if report != nil {
                 ScrollView( showsIndicators: false ) {
-                    HStack {
+                    
+                    // some report texts here
+                    
+                    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+                    
+                    LazyVGrid(columns: columns, alignment: .center) {
+                        NavigationLink( destination: DayReport( report: report!.day_report ), label: {
+                                                ReportGridItem(title: report!.day_report.date_name, image: report!.day_report.image, name: report!.day_report.day_name)
+                                            })
                         
-                        ForEach( 0..<arrayOfReports.count ) { index in
-                            Button(action: {
-                                withAnimation {
-                                    selection = index
-                                }
-                            }, label: {
-                                Circle()
-                                    .fill( selection == index ? .accentColor : AppColors.reportBoxesBG)
-                                    .frame(width: UIScreen.main.bounds.size.width/10, height: UIScreen.main.bounds.size.width/10)
-                                    .overlay(Text( arrayOfReports[index] )
-                                                .font(.custom("AppleMyungjo", size: 22))
-                                                .fontWeight(.heavy)
-                                                .foregroundColor(selection == index ? .black : .white))
-                            })
-                        }
-                    }.padding( .vertical, 10 )
-
-                    switch selection {
-                    case 0:
-                        DayReport(report: report!.day_report)
-                            .padding( .bottom, UIScreen.main.bounds.size.height * 0.15)
-                    case 1:
-                        WeekReport(report: report!.week_report)
-                            .padding( .bottom, UIScreen.main.bounds.size.height * 0.15)
-                    case 2:
-                        MonthReport(report: report!.month_report)
-                            .padding( .bottom, UIScreen.main.bounds.size.height * 0.15)
-                    case 3:
-                        SeasonReport(report: report!.season_report)
-                            .padding( .bottom, UIScreen.main.bounds.size.height * 0.15)
-                    default:
-                        EmptyView()
-                    }
+                        NavigationLink( destination: WeekReport(report: report!.week_report),  label: {
+                                                ReportGridItem(title: report!.week_report.date_span, image: report!.week_report.image, name: report!.week_report.name_long)
+                                            })
+                        
+                        NavigationLink( destination: MonthReport(report: report!.month_report), label: {
+                                                ReportGridItem(title: report!.month_report.span1, image: report!.month_report.image, name: report!.month_report.name)
+                                                
+                                            })
+                        
+                        NavigationLink( destination: SeasonReport(report: report!.season_report), label: {
+                                                ReportGridItem(title: report!.season_report.span1, image: report!.season_report.image, name: report!.season_report.name)
+                                            })
+                        
+                    }.padding(.horizontal, 8)
+                    
                 }.padding( .top, 1)
             }
             

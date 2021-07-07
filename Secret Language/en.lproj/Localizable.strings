@@ -100,3 +100,9 @@
 "faculty" = "Faculty: ";
 "motivation" = "Motivation";
 "description" = "Description: ";
+"readReport" = "Read Report";
+"dayReport" = "Day Report";
+"weekReport" = "Week Report";
+"monthReport" = "Month Report";
+"seasonReport" = "Season Report";
+

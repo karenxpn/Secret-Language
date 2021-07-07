@@ -186,7 +186,7 @@ struct Reports: View {
                 
             }.navigationBarTitle("")
             .navigationBarTitleView(SearchNavBar(title: "Reports"), displayMode: .inline)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

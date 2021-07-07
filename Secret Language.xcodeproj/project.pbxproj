@@ -20,6 +20,7 @@
 		FF3D63CD2694951D00799E72 /* PersonalityAndFamousTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63CC2694951D00799E72 /* PersonalityAndFamousTab.swift */; };
 		FF3D63CF269507FB00799E72 /* SWViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63CE269507FB00799E72 /* SWViewHelper.swift */; };
 		FF3D63D1269508D500799E72 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63D0269508D500799E72 /* ImageHelper.swift */; };
+		FF3D63D326965F7A00799E72 /* ReportGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63D226965F7A00799E72 /* ReportGridItem.swift */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */; };
@@ -159,6 +160,7 @@
 		FF3D63CC2694951D00799E72 /* PersonalityAndFamousTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalityAndFamousTab.swift; sourceTree = "<group>"; };
 		FF3D63CE269507FB00799E72 /* SWViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWViewHelper.swift; sourceTree = "<group>"; };
 		FF3D63D0269508D500799E72 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		FF3D63D226965F7A00799E72 /* ReportGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGridItem.swift; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignment.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				FF3D63C82694910700799E72 /* FamousList.swift */,
 				FF3D63CA2694914400799E72 /* FamousListCell.swift */,
 				FF3D63CE269507FB00799E72 /* SWViewHelper.swift */,
+				FF3D63D226965F7A00799E72 /* ReportGridItem.swift */,
 			);
 			path = BirthdayReport;
 			sourceTree = "<group>";
@@ -937,6 +940,7 @@
 				FF3D63CF269507FB00799E72 /* SWViewHelper.swift in Sources */,
 				FFCEDDF3266FB0350073BE20 /* AuthResponse.swift in Sources */,
 				FFDB158326653D6E00341E8F /* AuthService.swift in Sources */,
+				FF3D63D326965F7A00799E72 /* ReportGridItem.swift in Sources */,
 				FF3D63CD2694951D00799E72 /* PersonalityAndFamousTab.swift in Sources */,
 				FF1AD6C7268645E100B0DCC9 /* PusherManager.swift in Sources */,
 				FF99A03E2680E9A000F234CD /* FriendRequestCell.swift in Sources */,
