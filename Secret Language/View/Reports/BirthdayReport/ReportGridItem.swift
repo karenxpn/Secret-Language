@@ -19,15 +19,17 @@ struct ReportGridItem: View {
             Text( title )
                 .foregroundColor(.black)
                 .font(.custom("times", size: 16))
+                .multilineTextAlignment(.center)
             
             ImageHelper(image: image, contentMode: .fit, progressViewTintColor: .black)
                 .frame(width: UIScreen.main.bounds.size.width * 0.45, height: 100)
             
             Text( name )
                 .foregroundColor(.black)
-                .font(.custom("times", size: 18))
-                .fontWeight(.heavy)
-            
+                .font(.custom("times", size: 16))
+                .fontWeight(.semibold)
+                .multilineTextAlignment(.center)
+
         }.frame(width: UIScreen.main.bounds.size.width * 0.45)
         .padding(.vertical)
         .background(.white)
@@ -37,6 +39,6 @@ struct ReportGridItem: View {
 
 struct ReportGridItem_Previews: PreviewProvider {
     static var previews: some View {
-        ReportGridItem(title: "Jun 19-24", image: "https://sln-storage.s3.us-east-2.amazonaws.com/img/icon/day/150/png/111.png", name: "The week of magic")
+        ReportGridItem(title: "Jun 19-24", image: "https://sln-storage.s3.us-east-2.amazonaws.com/img/icon/day/150/png/111.png", name: "The day of the symbolic herald")
     }
 }

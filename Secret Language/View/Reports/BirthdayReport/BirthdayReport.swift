@@ -27,21 +27,20 @@ struct BirthdayReport: View {
                     
                     LazyVGrid(columns: columns, alignment: .center) {
                         NavigationLink( destination: DayReport( report: report!.day_report ), label: {
-                                                ReportGridItem(title: report!.day_report.date_name, image: report!.day_report.image, name: report!.day_report.day_name)
-                                            })
+                            ReportGridItem(title: report!.day_report.date_name, image: report!.day_report.image, name: report!.day_report.day_name)
+                        })
                         
                         NavigationLink( destination: WeekReport(report: report!.week_report),  label: {
-                                                ReportGridItem(title: report!.week_report.date_span, image: report!.week_report.image, name: report!.week_report.name_long)
-                                            })
+                            ReportGridItem(title: report!.week_report.date_span, image: report!.week_report.image, name: report!.week_report.name_long)
+                        })
                         
                         NavigationLink( destination: MonthReport(report: report!.month_report), label: {
-                                                ReportGridItem(title: report!.month_report.span1, image: report!.month_report.image, name: report!.month_report.name)
-                                                
-                                            })
+                            ReportGridItem(title: report!.month_report.span1, image: report!.month_report.image, name: report!.month_report.name)
+                        })
                         
                         NavigationLink( destination: SeasonReport(report: report!.season_report), label: {
-                                                ReportGridItem(title: report!.season_report.span1, image: report!.season_report.image, name: report!.season_report.name)
-                                            })
+                            ReportGridItem(title: report!.season_report.span1, image: report!.season_report.image, name: report!.season_report.name)
+                        })
                         
                     }.padding(.horizontal, 8)
                     
