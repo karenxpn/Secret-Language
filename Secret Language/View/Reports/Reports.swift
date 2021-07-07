@@ -36,16 +36,17 @@ struct Reports: View {
                         Image( "reports" )
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 140, height: 140)
+                            .frame(width: 100, height: 100)
                         
-                        Text( "Gary Goldschneider’s" )
+                        Text( "Secret Language\n of Birthdays & Relationships" )
                             .foregroundColor(.white)
                             .font(.custom("SignPainter", size: 22))
+                            .multilineTextAlignment(.center)
                         
-                        Text( "Secret Language" )
-                            .foregroundColor(.white)
+                        Text( "Find Yourself, Connect With Others." )
+                            .foregroundColor(.gray )
                             .font(.custom("times", size: 22))
-                            .padding(.bottom)
+                            .fontWeight(.bold)
                         
                         VStack( spacing: 10 ) {
                             Text( NSLocalizedString("lookUpBirthday", comment: ""))
@@ -67,32 +68,38 @@ struct Reports: View {
                             .font(.custom("Gilroy-Regular", size: 14))
                             .lineLimit(1)
                         
-                        Button(action: {
-                            fullscreen.toggle()
-                        }, label: {
-                            HStack {
+                        
+                        HStack {
+                            
+                            Button(action: {
+                                fullscreen.toggle()
+                            }, label: {
                                 Text( "\(reportVM.birthdayMonth) \(reportVM.birthday)")
                                     .foregroundColor(.white)
                                     .font(.custom("times", size: 20))
-                                Spacer()
+                                    .frame( width: .greedy, height: 50 )
+                                
+                            }).fullScreenCover(isPresented: $fullscreen) {
+                                ReportBirthdayPicker(month: $reportVM.birthdayMonth, day: $reportVM.birthday)
                             }
-                        }).fullScreenCover(isPresented: $fullscreen) {
-                            ReportBirthdayPicker(month: $reportVM.birthdayMonth, day: $reportVM.birthday)
-                        }
-                        Divider()
-                            .padding(.bottom)
+                            
+                            Button {
+                                reportVM.getBirthdayReport()
+                            } label: {
+                                Text( NSLocalizedString("showBirthdayReport", comment: ""))
+                                    .frame( width: .greedy, height: 50 )
+                                    .foregroundColor(.black)
+                                    .font(.custom("times", size: 16))
+                                    .background(.accentColor)
+                                    .cornerRadius(25)
+                            }
+                            
+                        }.background(RoundedRectangle(cornerRadius: 25)
+                                        .fill(AppColors.birthdayBoxBG))
                         
-                        Button {
-                            reportVM.getBirthdayReport()
-                        } label: {
-                            Text( NSLocalizedString("showBirthdayReport", comment: ""))
-                                .frame( width: .greedy, height: 50 )
-                                .foregroundColor(.black)
-                                .font(.custom("times", size: 16))
-                                .background(.accentColor)
-                                .cornerRadius(25)
-                        }
-                    }.padding([.bottom, .leading, .trailing])
+                        Divider()
+                        
+                    }.padding([.leading, .trailing])
                     
                     VStack ( spacing: 10 ) {
                         
