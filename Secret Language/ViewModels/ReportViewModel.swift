@@ -67,8 +67,10 @@ class ReportViewModel: ObservableObject {
                         self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
                     }
                 } else {
-                    self.relationshipReport = response.value!
-                    self.navigateToRelationshipReport.toggle()
+                    self.navigateToPayment.toggle()
+
+//                    self.relationshipReport = response.value!
+//                    self.navigateToRelationshipReport.toggle()
                 }
             }.store(in: &cancellableSet)
     }

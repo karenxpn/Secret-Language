@@ -10,7 +10,7 @@ import Combine
 import Alamofire
 
 protocol PaymentServiceProtocol {
-    func postPaymentStatus(token: String, reportDate: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func postPaymentStatus(token: String, reportDate: String, firstReportDate: String, secondReportDate: String, birthdayOrReport: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
 }
 
 class PaymentService {
@@ -20,15 +20,24 @@ class PaymentService {
 }
 
 extension PaymentService: PaymentServiceProtocol {
-    func postPaymentStatus(token: String,  reportDate: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+    func postPaymentStatus(token: String,  reportDate: String, firstReportDate: String, secondReportDate: String, birthdayOrReport: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         
-        print(reportDate)
+        
+        if birthdayOrReport {
+            print("posting relationship with parameters" )
+            print("\(firstReportDate) \(secondReportDate)")
+        } else {
+            print("posting birthday report with parameters")
+            print(reportDate)
+        }
+        
         let url = URL(string: "\(Credentials.BASE_URL)user/payment")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
                           method: .post,
-                          parameters: ["reportDate" : reportDate],
+                          parameters: birthdayOrReport ? ["birthday_1" : firstReportDate,
+                                                          "birthday_2" : secondReportDate] : ["reportDate" : reportDate],
                           encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()

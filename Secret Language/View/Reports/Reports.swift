@@ -13,6 +13,8 @@ struct Reports: View {
     @State private var showFullscreenReportOne: Bool = false
     @State private var showFullscreenReportTwo: Bool = false
     
+    @State private var birthdayOrRelationship: Bool = false // false -> birthday, true -> relationship
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -26,7 +28,10 @@ struct Reports: View {
                     EmptyView()
                 }.hidden()
                 
-                NavigationLink(destination: PaymentView( birthdayDate: "\(reportVM.birthdayMonth) \(reportVM.birthday)"), isActive: $reportVM.navigateToPayment) {
+                NavigationLink(destination: PaymentView( birthdayDate: "\(reportVM.birthdayMonth) \(reportVM.birthday)",
+                                                         firstReportDate: "\(reportVM.firstReportMonth) \(reportVM.firstReportDay)",
+                                                         secondReportDate: "\(reportVM.secondReportMonth) \(reportVM.secondReportDay)",
+                                                         birthdayOrRelationship: $birthdayOrRelationship), isActive: $reportVM.navigateToPayment) {
                     EmptyView()
                 }.hidden()
                 
@@ -84,6 +89,7 @@ struct Reports: View {
                             }
                             
                             Button {
+                                birthdayOrRelationship = false
                                 reportVM.getBirthdayReport()
                             } label: {
                                 Text( NSLocalizedString("showBirthdayReport", comment: ""))
@@ -165,6 +171,7 @@ struct Reports: View {
                                 .padding(.bottom)
                             
                             Button {
+                                birthdayOrRelationship = true
                                 reportVM.getRelationshipReport()
                             } label: {
                                 Text( NSLocalizedString("showRelationshipReport", comment: ""))

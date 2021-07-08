@@ -13,6 +13,9 @@ struct PaymentView: View {
     @StateObject private var paymentVM = StoreViewModel()
     
     let birthdayDate: String
+    let firstReportDate: String
+    let secondReportDate: String
+    @Binding var birthdayOrRelationship: Bool
 
     var body: some View {
         ZStack {
@@ -58,7 +61,7 @@ struct PaymentView: View {
                     
                     Button(action: {
                         if let product = paymentVM.product(for: "com.xpn-development.Secret-Language.report") {
-                            print(product)
+                            
                             paymentVM.purchaseProduct(product)
                         }
                     }, label: {
@@ -108,12 +111,15 @@ struct PaymentView: View {
         .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("subscription", comment: "")), displayMode: .inline)
         .onAppear {
             paymentVM.birthdayDate = birthdayDate
+            paymentVM.firstReportDate = firstReportDate
+            paymentVM.secondReportDate = secondReportDate
+            paymentVM.birthdayOrRelationship = birthdayOrRelationship
         }
     }
 }
 
 struct PaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentView(birthdayDate: "Jul 1")
+        PaymentView(birthdayDate: "Jul 1",firstReportDate: "January 2", secondReportDate: "", birthdayOrRelationship: .constant( false ))
     }
 }

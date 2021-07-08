@@ -16,6 +16,9 @@ class StoreViewModel: NSObject, ObservableObject {
     
     @ObservedObject var paymentVM = PaymentViewModel()
     @Published var birthdayDate: String = ""
+    @Published var firstReportDate: String = ""
+    @Published var secondReportDate: String = ""
+    @Published var birthdayOrRelationship: Bool = false
     
     private let allProductIdentifiers = Set(["com.xpn-development.Secret-Language.report",
                                              "com.xpn-development.Secret-Language.monthly"])
@@ -118,7 +121,15 @@ extension StoreViewModel: SKPaymentTransactionObserver {
                 break
             case .purchased, .restored:
                 completedPurchases.append(transaction.payment.productIdentifier)
-                paymentVM.birthdayDate = birthdayDate
+                
+                if birthdayOrRelationship {
+                    paymentVM.firstReportDate = firstReportDate
+                    paymentVM.secondReportDate = secondReportDate
+                    paymentVM.birthdayOrReport = true
+                } else {
+                    paymentVM.birthdayDate = birthdayDate
+                    paymentVM.birthdayOrReport = false
+                }
                 paymentVM.postPaymentResult()
                 shouldFinishTransaction = true
             case .failed:
