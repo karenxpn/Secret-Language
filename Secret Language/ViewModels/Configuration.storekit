@@ -7,24 +7,54 @@
     {
       "displayPrice" : "0.99",
       "familyShareable" : false,
-      "internalID" : "62CC7B64",
+      "internalID" : "44D952D0",
       "localizations" : [
         {
-          "description" : "Open one report",
+          "description" : "Unlock report",
           "displayName" : "Report",
           "locale" : "en_US"
         }
       ],
       "productID" : "com.xpn-development.Secret-Language.report",
       "referenceName" : "Report",
-      "type" : "NonConsumable"
+      "type" : "Consumable"
     }
   ],
   "settings" : {
 
   },
   "subscriptionGroups" : [
+    {
+      "id" : "B4F5661A",
+      "localizations" : [
 
+      ],
+      "name" : "Monthly",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : true,
+          "groupNumber" : 1,
+          "internalID" : "45F466DB",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Become VIP user, open any report and messages",
+              "displayName" : "Monthly Subscription",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.xpn-development.Secret-Language.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly Subscription",
+          "subscriptionGroupID" : "B4F5661A",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
   ],
   "version" : {
     "major" : 1,

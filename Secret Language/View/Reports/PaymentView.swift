@@ -10,7 +10,9 @@ import SwiftUI
 struct PaymentView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var paymentVM = PaymentViewModel()
+    @StateObject private var paymentVM = StoreViewModel()
+    
+    let birthdayDate: String
 
     var body: some View {
         ZStack {
@@ -56,6 +58,7 @@ struct PaymentView: View {
                     
                     Button(action: {
                         if let product = paymentVM.product(for: "com.xpn-development.Secret-Language.report") {
+                            print(product)
                             paymentVM.purchaseProduct(product)
                         }
                     }, label: {
@@ -103,11 +106,14 @@ struct PaymentView: View {
 
         }.navigationBarTitle("")
         .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("subscription", comment: "")), displayMode: .inline)
+        .onAppear {
+            paymentVM.birthdayDate = birthdayDate
+        }
     }
 }
 
 struct PaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentView()
+        PaymentView(birthdayDate: "Jul 1")
     }
 }

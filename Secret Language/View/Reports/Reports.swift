@@ -26,7 +26,7 @@ struct Reports: View {
                     EmptyView()
                 }.hidden()
                 
-                NavigationLink(destination: PaymentView(), isActive: $reportVM.navigateToPayment) {
+                NavigationLink(destination: PaymentView( birthdayDate: "\(reportVM.birthdayMonth) \(reportVM.birthday)"), isActive: $reportVM.navigateToPayment) {
                     EmptyView()
                 }.hidden()
                 
