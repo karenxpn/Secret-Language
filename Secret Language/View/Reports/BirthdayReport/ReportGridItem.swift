@@ -18,35 +18,44 @@ struct ReportGridItem: View {
     var body: some View {
         VStack( spacing: 10 ) {
             Text( title )
-                .foregroundColor(.black)
-                .font(.custom("times", size: 16))
+                .foregroundColor(.white)
+                .font(.custom("AppleMyungjo", size: 15))
                 .multilineTextAlignment(.center)
             
-            ImageHelper(image: image, contentMode: .fit, progressViewTintColor: .black)
-                .frame(width: UIScreen.main.bounds.size.width * 0.45, height: 100)
+            
+            ZStack {
+                Color.white
+                    .cornerRadius(5)
+                    .padding(.horizontal)
+                    .frame(height: 135)
+                
+                ImageHelper(image: image, contentMode: .fit, progressViewTintColor: .white)
+                    .frame(width: UIScreen.main.bounds.size.width * 0.45, height: 100)
+                    .cornerRadius(5)
+            }
+
             
             Text( name )
-                .foregroundColor(.black)
-                .font(.custom("times", size: 16))
+                .foregroundColor(.white)
+                .font(.custom("times-italic", size: 12))
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
             
             NavigationLink( destination: destination, label: {
-                Text( NSLocalizedString("readReport", comment: ""))
+                Text( NSLocalizedString("readReport", comment: "") )
                     .font(.custom("times", size: 16))
                     .foregroundColor(AppColors.accentColor)
                     .padding(.vertical, 8)
                     .padding(.horizontal, 18)
-                    .background(RoundedRectangle(cornerRadius: 8)
+                    .background(RoundedRectangle(cornerRadius: 5)
                                     .strokeBorder( AppColors.accentColor, lineWidth: 1)
-                                    .background( RoundedRectangle(cornerRadius: 8).fill(Color.black) )
                     )
             })
             
         }.frame(width: UIScreen.main.bounds.size.width * 0.45)
         .padding(.vertical)
-        .background(.white)
-        .cornerRadius(8)
+        .background(AppColors.boxColor)
+        .cornerRadius(12)
     }
 }
 

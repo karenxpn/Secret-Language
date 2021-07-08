@@ -21,27 +21,31 @@ struct BirthdayReport: View {
                     
                     // some report texts here
                     
-                    Text( "\(NSLocalizedString("theSecretLanguageNameFor", comment: "")) \(report!.date_name) \(NSLocalizedString("is", comment: "")) ")
-                        .foregroundColor(.white)
-                        .font(.custom("times", size: 18))
-                        .padding(.top)
+                    VStack {
+                        Text( "\(NSLocalizedString("theSecretLanguageNameFor", comment: "")) \(report!.date_name) \(NSLocalizedString("is", comment: "")) ")
+                            .foregroundColor(.white)
+                            .font(.custom("times", size: 18))
+                            .padding(.top)
+                            
+                        Text( report!.sln )
+                            .foregroundColor(.white)
+                            .font(.custom("times-italic", size: 18))
+                            .fontWeight(.semibold)
                         
-                    Text( report!.sln )
-                        .foregroundColor(.white)
-                        .font(.custom("times-italic", size: 18))
-                        .fontWeight(.semibold)
-                    
-                    Text( report!.sln_description )
-                        .foregroundColor(.accentColor)
-                        .font(.custom("times-italic", size: 18))
-                        .multilineTextAlignment(.center)
-                        .padding(8)
-                    
-                    Text( "\(NSLocalizedString("since1701", comment: "")) \(report!.famous_years)")
-                        .foregroundColor(.white)
-                        .font(.custom("times", size: 16))
-                        .multilineTextAlignment(.center)
-                        .padding(8)
+                        Text( report!.sln_description )
+                            .foregroundColor(.accentColor)
+                            .font(.custom("times-italic", size: 18))
+                            .multilineTextAlignment(.center)
+                            .padding(8)
+                        
+                        Text( "\(NSLocalizedString("since1701", comment: "")) \(report!.famous_years)")
+                            .foregroundColor(.white)
+                            .font(.custom("times", size: 16))
+                            .multilineTextAlignment(.center)
+                            .padding(8)
+                    }.frame(width: .greedy)
+                    .padding(.vertical)
+                    .background(AppColors.boxColor)
                     
                     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
                     
@@ -62,6 +66,7 @@ struct BirthdayReport: View {
                         
                     }.padding(.horizontal, 8)
                     .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                    .padding(.top)
                     
                 }.padding( .top, 1)
             }
