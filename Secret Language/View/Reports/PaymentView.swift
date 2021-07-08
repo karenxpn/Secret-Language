@@ -10,6 +10,7 @@ import SwiftUI
 struct PaymentView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @StateObject private var paymentVM = PaymentViewModel()
 
     var body: some View {
         ZStack {
@@ -54,7 +55,9 @@ struct PaymentView: View {
                     
                     
                     Button(action: {
-                        
+                        if let product = paymentVM.product(for: "com.xpn-development.Secret-Language.report") {
+                            paymentVM.purchaseProduct(product)
+                        }
                     }, label: {
                         Text( NSLocalizedString("unlockReport", comment: ""))
                             .foregroundColor(.black)

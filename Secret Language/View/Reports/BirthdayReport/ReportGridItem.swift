@@ -22,7 +22,6 @@ struct ReportGridItem: View {
                 .font(.custom("AppleMyungjo", size: 15))
                 .multilineTextAlignment(.center)
             
-            
             ZStack {
                 Color.white
                     .cornerRadius(5)

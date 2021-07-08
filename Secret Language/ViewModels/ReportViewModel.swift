@@ -49,8 +49,10 @@ class ReportViewModel: ObservableObject {
                         self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
                     }
                 } else {
-                    self.birthdayReport = response.value!
-                    self.navigateToBirthdayReport.toggle()
+                    self.navigateToPayment.toggle()
+
+//                    self.birthdayReport = response.value!
+//                    self.navigateToBirthdayReport.toggle()
                 }
             }.store(in: &cancellableSet)
     }

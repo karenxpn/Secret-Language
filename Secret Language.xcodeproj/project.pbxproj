@@ -23,6 +23,9 @@
 		FF3D63D326965F7A00799E72 /* ReportGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63D226965F7A00799E72 /* ReportGridItem.swift */; };
 		FF3D63D52697273F00799E72 /* PathReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63D42697273F00799E72 /* PathReport.swift */; };
 		FF3D63D72697281E00799E72 /* WayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63D62697281E00799E72 /* WayReport.swift */; };
+		FF3D63D92697902F00799E72 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3D63D82697902F00799E72 /* StoreKit.framework */; };
+		FF3D63DC269791C200799E72 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63DB269791C200799E72 /* PaymentViewModel.swift */; };
+		FF3D63DE2697926A00799E72 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = FF3D63DD2697926A00799E72 /* Configuration.storekit */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */; };
@@ -165,6 +168,10 @@
 		FF3D63D226965F7A00799E72 /* ReportGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGridItem.swift; sourceTree = "<group>"; };
 		FF3D63D42697273F00799E72 /* PathReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathReport.swift; sourceTree = "<group>"; };
 		FF3D63D62697281E00799E72 /* WayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayReport.swift; sourceTree = "<group>"; };
+		FF3D63D82697902F00799E72 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		FF3D63DA2697914300799E72 /* Secret Language.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Secret Language.entitlements"; sourceTree = "<group>"; };
+		FF3D63DB269791C200799E72 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
+		FF3D63DD2697926A00799E72 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Configuration.storekit; path = ViewModels/Configuration.storekit; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignment.swift; sourceTree = "<group>"; };
@@ -277,6 +284,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF3D63D92697902F00799E72 /* StoreKit.framework in Frameworks */,
 				FFDB15A32666576900341E8F /* SwiftUIX in Frameworks */,
 				CD8A6865369EE0AC9EA84793 /* Pods_Secret_Language.framework in Frameworks */,
 			);
@@ -317,6 +325,7 @@
 		9B70D7CE06FC8388D03319EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF3D63D82697902F00799E72 /* StoreKit.framework */,
 				DF93FF6AD37B39EE5745665F /* Pods_Secret_Language.framework */,
 				E861C563FDB9CB8845BA35CA /* Pods_Secret_Language_Secret_LanguageUITests.framework */,
 				C4000846EB419B5B77B094E2 /* Pods_Secret_LanguageTests.framework */,
@@ -394,6 +403,8 @@
 		FFBEA67C2664E4290033B2ED /* Secret Language */ = {
 			isa = PBXGroup;
 			children = (
+				FF3D63DD2697926A00799E72 /* Configuration.storekit */,
+				FF3D63DA2697914300799E72 /* Secret Language.entitlements */,
 				FFBEA6AF2664E63F0033B2ED /* Utils */,
 				FFBEA6AE2664E63A0033B2ED /* Models */,
 				FFBEA6AD2664E6340033B2ED /* Services */,
@@ -488,6 +499,7 @@
 				FF99A0312680BD7200F234CD /* ProfileViewModel.swift */,
 				FF997E852689DAB20057B731 /* SearchViewModel.swift */,
 				FF997E94268C96C10057B731 /* ReportViewModel.swift */,
+				FF3D63DB269791C200799E72 /* PaymentViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -757,6 +769,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFDB15B12666C18900341E8F /* Avenir.ttc in Resources */,
+				FF3D63DE2697926A00799E72 /* Configuration.storekit in Resources */,
 				FF997E93268B8DE80057B731 /* SignPainter.ttc in Resources */,
 				FFDB156E2664EA2D00341E8F /* Times.ttc in Resources */,
 				FFDB15712664EAFB00341E8F /* Localizable.strings in Resources */,
@@ -957,6 +970,7 @@
 				FFDB158B26655DD500341E8F /* CheckVerificationCode.swift in Sources */,
 				FF456F842693BD01008F219E /* FamousModel.swift in Sources */,
 				FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */,
+				FF3D63DC269791C200799E72 /* PaymentViewModel.swift in Sources */,
 				FF997EA1268E754A0057B731 /* PaymentView.swift in Sources */,
 				FFCEDDFC267235D10073BE20 /* Matches.swift in Sources */,
 				FFE0E4162677F97F008FA78C /* FilterMatches.swift in Sources */,
@@ -1161,6 +1175,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Secret Language/Secret Language.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Secret Language/Preview Content\"";
 				DEVELOPMENT_TEAM = 9TN7Y68V59;
@@ -1184,6 +1199,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Secret Language/Secret Language.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Secret Language/Preview Content\"";
 				DEVELOPMENT_TEAM = 9TN7Y68V59;

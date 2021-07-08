@@ -1,0 +1,33 @@
+{
+  "identifier" : "E75E2D19",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "62CC7B64",
+      "localizations" : [
+        {
+          "description" : "Open one report",
+          "displayName" : "Report",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.xpn-development.Secret-Language.report",
+      "referenceName" : "Report",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}
