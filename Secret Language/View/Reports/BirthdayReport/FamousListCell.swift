@@ -22,6 +22,11 @@ struct FamousListCell: View {
                 .frame(width: 100, height: 100)
                 .clipShape(Circle())
             
+            Text( famous.sln )
+                .foregroundColor(.white)
+                .font(.custom("times", size: 20))
+                .fontWeight(.heavy)
+            
             Text( famous.name )
                 .foregroundColor(.white)
                 .font(.custom("times", size: 20))
@@ -39,6 +44,6 @@ struct FamousListCell: View {
 
 struct FamousListCell_Previews: PreviewProvider {
     static var previews: some View {
-        FamousListCell(famous: FamousModel(id: 1, name: "Karen Mirakyan", age: "born 83 years ago", image: "https://sln-storage.s3.us-east-2.amazonaws.com/img/famous/4.jpg"))
+        FamousListCell(famous: FamousModel(id: 1, name: "Karen Mirakyan", age: "born 83 years ago", image: "https://sln-storage.s3.us-east-2.amazonaws.com/img/famous/4.jpg", sln: "translated cryptic secret"))
     }
 }

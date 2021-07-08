@@ -12,4 +12,5 @@ struct FamousModel: Codable, Identifiable {
     var name: String
     var age: String
     var image: String
+    var sln: String
 }
