@@ -21,6 +21,8 @@
 		FF3D63CF269507FB00799E72 /* SWViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63CE269507FB00799E72 /* SWViewHelper.swift */; };
 		FF3D63D1269508D500799E72 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63D0269508D500799E72 /* ImageHelper.swift */; };
 		FF3D63D326965F7A00799E72 /* ReportGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63D226965F7A00799E72 /* ReportGridItem.swift */; };
+		FF3D63D52697273F00799E72 /* PathReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63D42697273F00799E72 /* PathReport.swift */; };
+		FF3D63D72697281E00799E72 /* WayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63D62697281E00799E72 /* WayReport.swift */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */; };
@@ -161,6 +163,8 @@
 		FF3D63CE269507FB00799E72 /* SWViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWViewHelper.swift; sourceTree = "<group>"; };
 		FF3D63D0269508D500799E72 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		FF3D63D226965F7A00799E72 /* ReportGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGridItem.swift; sourceTree = "<group>"; };
+		FF3D63D42697273F00799E72 /* PathReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathReport.swift; sourceTree = "<group>"; };
+		FF3D63D62697281E00799E72 /* WayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayReport.swift; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignment.swift; sourceTree = "<group>"; };
@@ -338,6 +342,8 @@
 				FF3D63C22693C99500799E72 /* MonthReport.swift */,
 				FF3D63C42693C99E00799E72 /* SeasonReport.swift */,
 				FF3D63C6269485EF00799E72 /* ReportSection.swift */,
+				FF3D63D62697281E00799E72 /* WayReport.swift */,
+				FF3D63D42697273F00799E72 /* PathReport.swift */,
 				FF3D63C82694910700799E72 /* FamousList.swift */,
 				FF3D63CA2694914400799E72 /* FamousListCell.swift */,
 				FF3D63CE269507FB00799E72 /* SWViewHelper.swift */,
@@ -888,6 +894,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF3D63D72697281E00799E72 /* WayReport.swift in Sources */,
 				FFDB15A02666571A00341E8F /* OTPTextFieldView.swift in Sources */,
 				FF997E91268A60150057B731 /* VisitedProfile.swift in Sources */,
 				FFDB158526653DC500341E8F /* GlobalResponse.swift in Sources */,
@@ -900,6 +907,7 @@
 				FF997E95268C96C10057B731 /* ReportViewModel.swift in Sources */,
 				FFCEDDFF267235FB0073BE20 /* Chat.swift in Sources */,
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
+				FF3D63D52697273F00799E72 /* PathReport.swift in Sources */,
 				FF997E882689DCDF0057B731 /* SearchNavBar.swift in Sources */,
 				FF4AB0FF268528B60085EA9A /* EmptyList.swift in Sources */,
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,

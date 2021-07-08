@@ -9,10 +9,17 @@ import Foundation
 struct BirthdayReportModel: Codable, Identifiable {
     var id: Int
     var date_name: String
+    var sln: String
+    var sln_description: String
+    var famous_years: String
+    
     var day_report: DayReportModel
     var week_report: WeekReportModel
     var month_report: MonthReportModel
     var season_report: SeasonReportModel
+    var way_report: WayReportModel
+    var path_report: PathReportModel
+    var relationship_report: RelationshipReportModel
 }
 
 struct DayReportModel: Codable, Identifiable {
@@ -75,6 +82,39 @@ struct SeasonReportModel: Codable, Identifiable {
     var activity: String
     var report: String
     var faculty: String
-//    var motivation: String
     var image: String
+}
+
+struct WayReportModel: Codable, Identifiable {
+    var id: Int
+    var name: String
+    var image: String
+    var week_from: String
+    var week_to: String
+    var s1: String
+    var s2: String
+    var s3: String
+    var w1: String
+    var w2: String
+    var w3: String
+    var report: String
+    var suggestion: String
+    var lesson: String
+    var goal: String
+    var release: String
+    var reward: String
+    var balance: String
+    var famous: [FamousModel]
+}
+
+struct PathReportModel: Codable, Identifiable {
+    var id: Int
+    var prefix: String
+    var way_name: String
+    var name_long: String
+    var name_medium: String
+    var image: String
+    var challenge: String
+    var fulfillment: String
+    var report: String
 }

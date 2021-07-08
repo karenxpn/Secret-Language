@@ -29,15 +29,13 @@ struct ReportSection: View {
                 LabelAlignment(text: content, textAlignmentStyle: .justified, width: UIScreen.main.bounds.width - 30)
             }
         } else {
-            HStack ( spacing: 0 ) {
                 Text( NSLocalizedString(title, comment: ""))
                     .font(.custom("times", size: 18))
-                    .foregroundColor(.accentColor)
-                
+                    .foregroundColor(.accentColor) +
+                    
                 Text( content )
                     .foregroundColor(.white)
                     .font(.custom("times", size: 18))
-            }
         }
     }
 }
