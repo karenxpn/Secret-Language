@@ -14,10 +14,7 @@ protocol MatchServiceProtocol {
     func fetchCategories( token: String ) -> AnyPublisher<DataResponse<[ConnectionTypeModel], NetworkError>, Never>
     func fetchAllCategoryItems( token: String ) -> AnyPublisher<DataResponse<[CategoryItemModel], NetworkError>, Never>
     func sendLocation( token: String, location: Location) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
-    
-    func removeFromMatches( token: String, matchID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
-    
-    func sendFriendRequest( token: String, matchID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func fetchSingleMatch( token: String, userID: Int ) -> AnyPublisher<DataResponse<MatchModel, NetworkError>, Never>
 }
 
 class MatchService {
@@ -27,38 +24,17 @@ class MatchService {
 }
 
 extension MatchService: MatchServiceProtocol {
-    func sendFriendRequest(token: String, matchID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/sendFriendRequest")!
+    func fetchSingleMatch(token: String, userID: Int) -> AnyPublisher<DataResponse<MatchModel, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/getUserProfile")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
                           method: .post,
-                          parameters: ["id" : matchID],
+                          parameters: ["id" : userID],
                           encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
-            .publishDecodable(type: GlobalResponse.self)
-            .map { response in
-                response.mapError { error in
-                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
-                    return NetworkError(initialError: error, backendError: backendError)
-                }
-            }
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
-    }
-    
-    func removeFromMatches(token: String, matchID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/addSwipeLeftUser")!
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
-        
-        return AF.request(url,
-                          method: .post,
-                          parameters: ["id" : matchID],
-                          encoder: JSONParameterEncoder.default,
-                          headers: headers)
-            .validate()
-            .publishDecodable(type: GlobalResponse.self)
+            .publishDecodable(type: MatchModel.self)
             .map { response in
                 response.mapError { error in
                     let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}

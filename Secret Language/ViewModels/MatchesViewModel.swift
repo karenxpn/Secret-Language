@@ -32,9 +32,12 @@ class MatchesViewModel: ObservableObject {
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: MatchServiceProtocol
+    var userDataManager: UserServiceProtocol
     
-    init( dataManager: MatchServiceProtocol = MatchService.shared) {
+    init( dataManager: MatchServiceProtocol = MatchService.shared,
+          userDataManager: UserServiceProtocol = UserService.shared) {
         self.dataManager = dataManager
+        self.userDataManager = userDataManager
     }
     
     func getMatches() {
@@ -73,18 +76,15 @@ class MatchesViewModel: ObservableObject {
     }
     
     func removeMatch( matchID: Int ) {
-        print(matchID)
-        dataManager.removeFromMatches(token: token, matchID:  matchID)
-            .sink { response in
-                print(matchID)
-                print(response)
+        
+        userDataManager.blockUser(token: token, userID:  matchID)
+            .sink { _ in
             }.store(in: &cancellableSet)
     }
     
     func sendFriendRequest( matchID: Int ) {
-        dataManager.sendFriendRequest(token: token, matchID: matchID)
-            .sink { response in
-                print(response)
+        userDataManager.connectUser(token: token, userID: matchID)
+            .sink { _ in
             }.store(in: &cancellableSet)
     }
 }

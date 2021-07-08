@@ -61,48 +61,6 @@ class ProfileViewModelTests: XCTestCase {
         
         XCTAssertEqual(viewModel.pendingList.count, 1)
     }
-    
-    func testAcceptFriendRequestWithError() {
-        service.acceptFriendRequestError = true
-        viewModel.acceptFriendRequest(userID: 1)
-        
-        XCTAssertTrue(viewModel.requestsList.isEmpty)
-    }
-    
-    func testAcceptFriendRequestWithSuccess() {
-        service.acceptFriendRequestError = false
-        viewModel.acceptFriendRequest(userID: 1)
-        
-        XCTAssertEqual(viewModel.requestsList.count, 1)
-    }
-    
-    func testRejectFriendRequestWithError() {
-        service.rejectFriendRequestError = true
-        viewModel.rejectFriendRequest(userID: 1)
-        
-        XCTAssertTrue(viewModel.requestsList.isEmpty)
-    }
-    
-    func testRejectFriendRequestWithSuccess() {
-        service.rejectFriendRequestError = false
-        viewModel.rejectFriendRequest(userID: 1)
-        
-        XCTAssertEqual(viewModel.requestsList.count, 1)
-    }
-    
-    func testWithdrawRequestWithError() {
-        service.withdrawRequestError = true
-        viewModel.withdrawFriendRequest(userID: 1)
-        
-        XCTAssertTrue(viewModel.pendingList.isEmpty)
-    }
-    
-    func testWithdrawRequestWithSuccess() {
-        service.withdrawRequestError = false
-        viewModel.withdrawFriendRequest(userID: 1)
-        
-        XCTAssertEqual(viewModel.pendingList.count, 1)
-    }
 
     func testGetProfileWithError() {
         service.fetchProfileError = true

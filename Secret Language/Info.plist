@@ -11,6 +11,7 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>SignPainter.ttc</string>
 		<string>AppleMyungjo.ttf</string>
 		<string>Gilroy-Bold.ttf</string>
 		<string>Avenir.ttc</string>

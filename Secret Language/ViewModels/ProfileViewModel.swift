@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Contacts
 import Combine
 import SwiftUI
 import PusherSwift
@@ -14,7 +13,6 @@ import PusherSwift
 class ProfileViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
-    @AppStorage( "username" ) private var username: String = ""
     
     @Published var searchText: String = ""
     
@@ -23,6 +21,7 @@ class ProfileViewModel: ObservableObject {
     @Published var alertMessage: String = ""
     
     @Published var profile: UserModel? = nil
+    @Published var visitedProfile: MatchViewModel? = nil
     
     @Published var friendsList = [UserPreviewModel]()
     @Published var requestsList = [UserPreviewModel]()
@@ -30,10 +29,13 @@ class ProfileViewModel: ObservableObject {
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ProfileServiceProtocol
+    var matchDataManager: MatchServiceProtocol
     var channel: PusherChannel
     
-    init( dataManager: ProfileServiceProtocol = ProfileService.shared) {
+    init( dataManager: ProfileServiceProtocol = ProfileService.shared,
+          matchDataManager: MatchServiceProtocol = MatchService.shared ) {
         self.dataManager = dataManager
+        self.matchDataManager = matchDataManager
         self.channel = PusherManager.shared.channel
     }
     
@@ -78,39 +80,30 @@ class ProfileViewModel: ObservableObject {
     
     func acceptFriendRequest( userID: Int ) {
         dataManager.acceptFriendRequest(token: token, userID: userID)
-            .sink { response in
-                if response.error == nil {
-                    self.requestsList = response.value!
-                }
+            .sink { _ in
             }.store(in: &cancellableSet)
     }
     
     func rejectFriendRequest( userID: Int ) {
         dataManager.rejectFriendRequest(token: token, userID: userID)
-            .sink { response in
-                if response.error == nil {
-                    self.requestsList = response.value!
-                }
+            .sink { _ in
             }.store(in: &cancellableSet)
     }
     
     func withdrawFriendRequest( userID: Int ) {
         dataManager.withdrawFriendRequest(token: token, userID: userID)
-            .sink { response in
-                if response.error == nil {
-                    self.pendingList = response.value!
-                }
+            .sink { _ in
             }.store(in: &cancellableSet)
     }
     
     func updateProfileImage(image: Data) {
         dataManager.updateProfileImage(token: self.token, image: image)
-            .sink { (dataResponse) in
+            .sink { (response) in
                 
-                if dataResponse.error != nil {
-                    self.makeAlert(with: dataResponse.error!, for: &self.alertMessage)
+                if response.error != nil {
+                    self.makeAlert(with: response.error!, for: &self.alertMessage)
                 } else {
-                    self.getProfile()
+                    self.profile = response.value!
                 }
             }.store(in: &cancellableSet)
     }
@@ -121,13 +114,12 @@ class ProfileViewModel: ObservableObject {
                 if response.error != nil {
                     self.makeAlert(with: response.error!, for: &self.alertMessage)
                 } else {
-                    self.getProfile()
+                    self.profile = response.value!
                 }
             }.store(in: &cancellableSet)
     }
     
     func getProfile() {
-        
         loading = true
         dataManager.fetchProfile(token: token)
             .sink { response in
@@ -140,26 +132,39 @@ class ProfileViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
+    func getVisitedProfile( userID: Int ) {
+        loading = true
+        matchDataManager.fetchSingleMatch(token: token, userID: userID)
+            .sink { response in
+                self.loading = false
+                if response.error != nil {
+                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                } else {
+                    self.visitedProfile = MatchViewModel(match: response.value!)
+                }
+            }.store(in: &cancellableSet)
+    }
+    
     func getProfileWithPusher() {
-        dataManager.fetchProfileWithPusher(channel: channel, username: username) { profile in
+        dataManager.fetchProfileWithPusher(channel: channel) { profile in
             self.profile = profile
         }
     }
     
     func getFriendsWithPusher() {
-        dataManager.fetchFriendsWithPusher(channel: channel, username: username) { friends in
+        dataManager.fetchFriendsWithPusher(channel: channel) { friends in
             self.friendsList = friends
         }
     }
     
     func getFriendRequestsWithPusher() {
-        dataManager.fetchFriendRequestsWithPusher(channel: channel, username: username) { requests in
+        dataManager.fetchFriendRequestsWithPusher(channel: channel) { requests in
             self.requestsList = requests
         }
     }
     
     func getPendingRequestsWithPusher() {
-        dataManager.fetchPendingRequestsWithPusher(channel: channel, username: username) { requests in
+        dataManager.fetchPendingRequestsWithPusher(channel: channel) { requests in
             self.pendingList = requests
         }
     }

@@ -18,7 +18,6 @@ class PusherManager {
 
     private init() {
         @AppStorage( "username" ) var username: String = ""
-        print(username)
         
         let options = PusherClientOptions(
             host: .cluster(Credentials.pusher_cluster)

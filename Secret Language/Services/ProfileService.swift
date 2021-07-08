@@ -13,25 +13,24 @@ import PusherSwift
 
 protocol ProfileServiceProtocol {
     func fetchFriendRequests( token: String ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
-    func fetchFriendRequestsWithPusher( channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> () )
-    func acceptFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
-    func rejectFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
+    func fetchFriendRequestsWithPusher( channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> () )
+    func acceptFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func rejectFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     
     
     func fetchFriends( token: String ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
-    func fetchFriendsWithPusher( channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> () )
-    func withdrawFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
+    func fetchFriendsWithPusher( channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> () )
+    func withdrawFriendRequest( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     
     func fetchPendingRequests( token: String ) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never>
-    func fetchPendingRequestsWithPusher( channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> () )
+    func fetchPendingRequestsWithPusher( channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> () )
     
     func fetchProfile( token: String ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
-    func fetchProfileWithPusher( channel: PusherChannel, username: String, completion: @escaping ( UserModel ) -> () )
+    func fetchProfileWithPusher( channel: PusherChannel, completion: @escaping ( UserModel ) -> () )
     
     
-    func deleteProfileImage( token: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
-    func updateProfileImage( token: String, image: Data ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
-    
+    func deleteProfileImage( token: String ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
+    func updateProfileImage( token: String, image: Data ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
 }
 
 class ProfileService {
@@ -41,7 +40,7 @@ class ProfileService {
 }
 
 extension ProfileService: ProfileServiceProtocol {
-    func fetchFriendRequestsWithPusher(channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
+    func fetchFriendRequestsWithPusher(channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> ()) {
         
         channel.bind(eventName: "myRequests", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {
@@ -62,7 +61,7 @@ extension ProfileService: ProfileServiceProtocol {
         })
     }
     
-    func fetchFriendsWithPusher(channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
+    func fetchFriendsWithPusher(channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> ()) {
         
         channel.bind(eventName: "myFriends", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {
@@ -83,7 +82,7 @@ extension ProfileService: ProfileServiceProtocol {
         })
     }
     
-    func fetchPendingRequestsWithPusher(channel: PusherChannel, username: String, completion: @escaping ([UserPreviewModel]) -> ()) {
+    func fetchPendingRequestsWithPusher(channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> ()) {
         
         channel.bind(eventName: "pendingRequests", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {
@@ -104,7 +103,7 @@ extension ProfileService: ProfileServiceProtocol {
         })
     }
     
-    func fetchProfileWithPusher(channel: PusherChannel, username: String, completion: @escaping (UserModel) -> ()) {
+    func fetchProfileWithPusher(channel: PusherChannel, completion: @escaping (UserModel) -> ()) {
         
         channel.bind(eventName: "getMe", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {
@@ -127,7 +126,7 @@ extension ProfileService: ProfileServiceProtocol {
     
     
     // pending requests
-    func withdrawFriendRequest(token: String, userID: Int) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
+    func withdrawFriendRequest(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/withdrawFriendRequest")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
@@ -137,7 +136,7 @@ extension ProfileService: ProfileServiceProtocol {
                           encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
-            .publishDecodable(type: [UserPreviewModel].self)
+            .publishDecodable(type: GlobalResponse.self)
             .map { response in
                 response.mapError { error in
                     let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
@@ -189,7 +188,7 @@ extension ProfileService: ProfileServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func acceptFriendRequest(token: String, userID: Int) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
+    func acceptFriendRequest(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/acceptFriendRequest")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
@@ -199,7 +198,7 @@ extension ProfileService: ProfileServiceProtocol {
                           encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
-            .publishDecodable(type: [UserPreviewModel].self)
+            .publishDecodable(type: GlobalResponse.self)
             .map { response in
                 response.mapError { error in
                     let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
@@ -210,7 +209,7 @@ extension ProfileService: ProfileServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func rejectFriendRequest(token: String, userID: Int) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
+    func rejectFriendRequest(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/rejectFriendRequest")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
@@ -220,7 +219,7 @@ extension ProfileService: ProfileServiceProtocol {
                           encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
-            .publishDecodable(type: [UserPreviewModel].self)
+            .publishDecodable(type: GlobalResponse.self)
             .map { response in
                 response.mapError { error in
                     let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
@@ -272,15 +271,15 @@ extension ProfileService: ProfileServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func deleteProfileImage(token: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/profile-image")!
+    func deleteProfileImage(token: String) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/removeAvatar")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
                           method: .delete,
                           headers: headers)
             .validate()
-            .publishDecodable(type: GlobalResponse.self)
+            .publishDecodable(type: UserModel.self)
             .map { response in
                 
                 response.mapError { error in
@@ -292,19 +291,19 @@ extension ProfileService: ProfileServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func updateProfileImage(token: String, image: Data ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/profile-image")!
+    func updateProfileImage(token: String, image: Data ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/addAvatar")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)",
                                     "Content-type": "multipart/form-data"]
         
         
         return AF.upload(multipartFormData: { (multipartFormData: MultipartFormData) in
-            multipartFormData.append(image, withName: "profile_image", fileName: "\(UUID().uuidString).jpeg" ,mimeType: "image/jpeg")
+            multipartFormData.append(image, withName: "image", fileName: "\(UUID().uuidString).jpeg" ,mimeType: "image/jpeg")
         }, to: url,
         method: .post,
         headers: headers)
         .validate()
-        .publishDecodable(type: GlobalResponse.self)
+        .publishDecodable(type: UserModel.self)
         .map { response in
             
             response.mapError { error in
