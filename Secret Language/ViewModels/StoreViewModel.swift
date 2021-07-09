@@ -22,9 +22,7 @@ class StoreViewModel: NSObject, ObservableObject {
     
     private let allProductIdentifiers = Set(["com.xpn-development.Secret-Language.report",
                                              "com.xpn-development.Secret-Language.monthly"])
-    
-    private var completedPurchases = [String]()
-    
+        
     private var productsRequest: SKProductsRequest?
     private var fetchedProducts = [SKProduct]()
     private var fetchCompletionHandler: FetchCompletionHandler?
@@ -69,10 +67,7 @@ extension StoreViewModel {
     
     func purchaseProduct( _ product: SKProduct ) {
         startObservingPaymentQueue()
-        buy(product) { result in
-            print(result?.payment.description)
-        }
-        
+        buy(product) { _ in }
     }
     
     func restorePurchase() {
@@ -120,8 +115,6 @@ extension StoreViewModel: SKPaymentTransactionObserver {
             case .purchasing, .deferred:
                 break
             case .purchased, .restored:
-                completedPurchases.append(transaction.payment.productIdentifier)
-                
                 if birthdayOrRelationship {
                     paymentVM.firstReportDate = firstReportDate
                     paymentVM.secondReportDate = secondReportDate

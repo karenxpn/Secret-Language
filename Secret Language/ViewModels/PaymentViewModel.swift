@@ -24,10 +24,13 @@ class PaymentViewModel: ObservableObject {
     }
     
     func postPaymentResult() {
-        dataManager.postPaymentStatus(token: token, reportDate: birthdayDate, firstReportDate: firstReportDate, secondReportDate: secondReportDate, birthdayOrReport: birthdayOrReport)
+        dataManager.postPaymentStatus(token: token,
+                                      reportDate: birthdayDate,
+                                      firstReportDate: firstReportDate,
+                                      secondReportDate: secondReportDate,
+                                      birthdayOrReport: birthdayOrReport)
             .sink { response in
                 print(response)
             }.store(in: &cancellableSet)
-        
     }
 }
