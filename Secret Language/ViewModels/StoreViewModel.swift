@@ -10,7 +10,7 @@ import StoreKit
 import SwiftUI
 
 typealias FetchCompletionHandler = ( ([SKProduct]) -> Void )
-typealias PurchaseCompletionHandler = ( ( SKPaymentTransaction? ) -> Void )
+//typealias PurchaseCompletionHandler = ( ( SKPaymentTransaction? ) -> Void )
 
 class StoreViewModel: NSObject, ObservableObject {
     
@@ -20,13 +20,12 @@ class StoreViewModel: NSObject, ObservableObject {
     @Published var secondReportDate: String = ""
     @Published var birthdayOrRelationship: Bool = false
     
-    private let allProductIdentifiers = Set(["com.xpn-development.Secret-Language.report",
-                                             "com.xpn-development.Secret-Language.monthly"])
+    private let allProductIdentifiers = Credentials.appStoreProductIdentifiers
         
     private var productsRequest: SKProductsRequest?
     private var fetchedProducts = [SKProduct]()
     private var fetchCompletionHandler: FetchCompletionHandler?
-    private var purchaseCompletionHandler: PurchaseCompletionHandler?
+//    private var purchaseCompletionHandler: PurchaseCompletionHandler?
     
     override init() {
         super.init()
@@ -51,8 +50,8 @@ class StoreViewModel: NSObject, ObservableObject {
         productsRequest?.start()
     }
     
-    private func buy(_ product: SKProduct, completion: @escaping PurchaseCompletionHandler ) {
-        purchaseCompletionHandler = completion
+    private func buy(_ product: SKProduct /*, completion: @escaping PurchaseCompletionHandler*/ ) {
+//        purchaseCompletionHandler = completion
         
         let payment = SKPayment(product: product)
         SKPaymentQueue.default().add(payment)
@@ -67,7 +66,8 @@ extension StoreViewModel {
     
     func purchaseProduct( _ product: SKProduct ) {
         startObservingPaymentQueue()
-        buy(product) { _ in }
+        buy(product)
+            //{ _ in }
     }
     
     func restorePurchase() {
@@ -134,10 +134,10 @@ extension StoreViewModel: SKPaymentTransactionObserver {
             
             if shouldFinishTransaction {
                 SKPaymentQueue.default().finishTransaction(transaction)
-                DispatchQueue.main.async {
-                    self.purchaseCompletionHandler?( transaction )
-                    self.purchaseCompletionHandler = nil
-                }
+//                DispatchQueue.main.async {
+//                    self.purchaseCompletionHandler?( transaction )
+//                    self.purchaseCompletionHandler = nil
+//                }
             }
         }
     }
