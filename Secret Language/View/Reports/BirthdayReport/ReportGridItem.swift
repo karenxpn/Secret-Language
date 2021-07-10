@@ -28,7 +28,7 @@ struct ReportGridItem: View {
                     .padding(.horizontal)
                     .frame(height: 135)
                 
-                ImageHelper(image: image, contentMode: .fit, progressViewTintColor: .white)
+                ImageHelper(image: image, contentMode: .fit, progressViewTintColor: .black)
                     .frame(width: UIScreen.main.bounds.size.width * 0.45, height: 100)
                     .cornerRadius(5)
             }

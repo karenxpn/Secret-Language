@@ -52,6 +52,7 @@ struct Reports: View {
                             .foregroundColor(.gray )
                             .font(.custom("times", size: 22))
                             .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
                         
                         VStack( spacing: 10 ) {
                             Text( NSLocalizedString("lookUpBirthday", comment: ""))

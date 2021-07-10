@@ -18,15 +18,13 @@ struct BirthdayReport: View {
             
             if report != nil {
                 ScrollView( showsIndicators: false ) {
-                    
-                    // some report texts here
-                    
+                                        
                     VStack {
                         Text( "\(NSLocalizedString("theSecretLanguageNameFor", comment: "")) \(report!.date_name) \(NSLocalizedString("is", comment: "")) ")
                             .foregroundColor(.white)
                             .font(.custom("times", size: 18))
                             .padding(.top)
-                            
+                        
                         Text( report!.sln )
                             .foregroundColor(.white)
                             .font(.custom("times-italic", size: 18))
@@ -50,13 +48,13 @@ struct BirthdayReport: View {
                     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
                     
                     LazyVGrid(columns: columns, alignment: .center) {
-                            ReportGridItem(title: report!.day_report.date_name, image: report!.day_report.image, name: report!.day_report.day_name, destination: AnyView( DayReport( report: report!.day_report ) ))
+                        ReportGridItem(title: report!.day_report.date_name, image: report!.day_report.image, name: report!.day_report.day_name, destination: AnyView( DayReport( report: report!.day_report ) ))
                         
                         ReportGridItem(title: report!.week_report.date_span, image: report!.week_report.image, name: report!.week_report.name_long, destination: AnyView(WeekReport(report: report!.week_report)))
                         
-                            ReportGridItem(title: report!.month_report.span1, image: report!.month_report.image, name: report!.month_report.name, destination: AnyView(MonthReport(report: report!.month_report)))
+                        ReportGridItem(title: report!.month_report.span1, image: report!.month_report.image, name: report!.month_report.name, destination: AnyView(MonthReport(report: report!.month_report)))
                         
-                            ReportGridItem(title: report!.season_report.span1, image: report!.season_report.image, name: report!.season_report.name, destination: AnyView(SeasonReport(report: report!.season_report)))
+                        ReportGridItem(title: report!.season_report.span1, image: report!.season_report.image, name: report!.season_report.name, destination: AnyView(SeasonReport(report: report!.season_report)))
                         
                         ReportGridItem(title: report!.path_report.prefix, image: report!.path_report.image, name: report!.path_report.name_medium, destination: AnyView(PathReport(report: report!.path_report)))
                         
