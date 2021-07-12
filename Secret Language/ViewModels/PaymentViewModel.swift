@@ -14,7 +14,7 @@ typealias FetchCompletionHandler = ( ([SKProduct]) -> Void )
 
 class PaymentViewModel: NSObject, ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
-    @AppStorage( "shouldPurchase" ) private var shouldPurchase: Bool = true
+    @AppStorage( "shouldPurchaseReport" ) private var shouldPurchase: Bool = true
 
     @Published var birthdayDate: String = ""
     @Published var firstReportDate: String = ""

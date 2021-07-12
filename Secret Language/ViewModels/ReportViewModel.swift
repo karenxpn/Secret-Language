@@ -12,7 +12,7 @@ import Combine
 class ReportViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
-    @AppStorage( "shouldPurchase" ) private var shouldPurchase: Bool = false
+    @AppStorage( "shouldPurchaseReport" ) private var shouldPurchase: Bool = false
     
     @Published var birthdayMonth: String = "January"
     @Published var firstReportMonth: String = "January"

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PaymentOrReportDetectionView: View {
     
-    @AppStorage( "shouldPurchase" ) private var shouldPurchase: Bool = true
+    @AppStorage( "shouldPurchaseReport" ) private var shouldPurchase: Bool = true
     @EnvironmentObject var reportVM: ReportViewModel
     @Binding var birthdayOrRelationship: Bool
     
