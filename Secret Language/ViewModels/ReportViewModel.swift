@@ -12,6 +12,7 @@ import Combine
 class ReportViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
+    @AppStorage( "shouldPurchase" ) private var shouldPurchase: Bool = false
     
     @Published var birthdayMonth: String = "January"
     @Published var firstReportMonth: String = "January"
@@ -21,12 +22,11 @@ class ReportViewModel: ObservableObject {
     @Published var firstReportDay: Int = 1
     @Published var secondReportDay: Int = 2
     
-    @Published var navigateToBirthdayReport: Bool = false
-    @Published var navigateToRelationshipReport: Bool = false
-    @Published var navigateToPayment: Bool = false
-    
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    
+    ///
+    @Published var navigate: Bool = false
     
     @Published var relationshipReport: RelationshipReportModel? = nil
     @Published var birthdayReport: BirthdayReportModel? = nil
@@ -44,13 +44,15 @@ class ReportViewModel: ObservableObject {
                 
                 if response.error != nil {
                     if response.error!.initialError.responseCode == 440 {
-                        self.navigateToPayment.toggle()
+                        self.shouldPurchase = true
+                        self.navigate.toggle()
                     } else {
                         self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
                     }
                 } else {
                     self.birthdayReport = response.value!
-                    self.navigateToBirthdayReport.toggle()
+                    self.shouldPurchase = false
+                    self.navigate.toggle()
                 }
             }.store(in: &cancellableSet)
     }
@@ -60,15 +62,15 @@ class ReportViewModel: ObservableObject {
             .sink { response in
                 if response.error != nil {
                     if response.error!.initialError.responseCode == 440 {
-                        self.navigateToPayment.toggle()
+                        self.shouldPurchase = true
+                        self.navigate.toggle()
+                        
                     } else {
                         self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
                     }
                 } else {
-                    self.navigateToPayment.toggle()
-
-//                    self.relationshipReport = response.value!
-//                    self.navigateToRelationshipReport.toggle()
+                    self.shouldPurchase = true  // replace with false
+                    self.navigate.toggle()
                 }
             }.store(in: &cancellableSet)
     }

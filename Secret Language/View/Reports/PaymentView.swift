@@ -10,8 +10,12 @@ import SwiftUI
 struct PaymentView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var reportVM: ReportViewModel
-//    @StateObject private var paymentVM = PaymentViewModel()
+    @StateObject private var paymentVM = PaymentViewModel()
+    
+    let birthdayDate: String
+    let firstReportDate: String
+    let secondReportDate: String
+    @Binding var birthdayOrRelationship: Bool
 
     var body: some View {
         ZStack {
@@ -56,8 +60,9 @@ struct PaymentView: View {
                     
                     
                     Button(action: {
-                        if let product = reportVM.product(for: Credentials.reportProductIdentifier) {
-                            reportVM.purchaseProduct(product)
+                        if let product = paymentVM.product(for: Credentials.reportProductIdentifier) {
+                            
+                            paymentVM.purchaseProduct(product)
                         }
                     }, label: {
                         Text( NSLocalizedString("unlockReport", comment: ""))
@@ -104,12 +109,17 @@ struct PaymentView: View {
 
         }.navigationBarTitle("")
         .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("subscription", comment: "")), displayMode: .inline)
+        .onAppear {
+            paymentVM.birthdayDate = birthdayDate
+            paymentVM.firstReportDate = firstReportDate
+            paymentVM.secondReportDate = secondReportDate
+            paymentVM.birthdayOrRelationship = birthdayOrRelationship
+        }
     }
 }
 
 struct PaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentView()
-            .environmentObject(ReportViewModel())
+        PaymentView(birthdayDate: "Jul 1",firstReportDate: "January 2", secondReportDate: "", birthdayOrRelationship: .constant( false ))
     }
 }

@@ -8,25 +8,19 @@
 import SwiftUI
 
 struct Reports: View {
-    @StateObject var reportVM = ReportViewModel()
+    @ObservedObject var reportVM = ReportViewModel()
     @State private var fullscreen: Bool = false
     @State private var showFullscreenReportOne: Bool = false
     @State private var showFullscreenReportTwo: Bool = false
+    
+    @State private var birthdayOrRelationship: Bool = false // false -> birthday, true -> relationship
     
     var body: some View {
         NavigationView {
             ZStack {
                 Background()
                 
-                NavigationLink(destination: BirthdayReport(report: $reportVM.birthdayReport), isActive: $reportVM.navigateToBirthdayReport) {
-                    EmptyView()
-                }.hidden()
-                
-                NavigationLink(destination: RelationshipReport(report: $reportVM.relationshipReport), isActive: $reportVM.navigateToRelationshipReport) {
-                    EmptyView()
-                }.hidden()
-                
-                NavigationLink(destination: PaymentView().environmentObject(reportVM), isActive: $reportVM.navigateToPayment) {
+                NavigationLink(destination: PaymentOrReportDetectionView(birthdayOrRelationship: $birthdayOrRelationship).environmentObject(reportVM), isActive: $reportVM.navigate) {
                     EmptyView()
                 }.hidden()
                 
@@ -85,7 +79,7 @@ struct Reports: View {
                             }
                             
                             Button {
-                                reportVM.birthdayOrRelationship = false
+                                birthdayOrRelationship = false
                                 reportVM.getBirthdayReport()
                             } label: {
                                 Text( NSLocalizedString("showBirthdayReport", comment: ""))
@@ -167,7 +161,7 @@ struct Reports: View {
                                 .padding(.bottom)
                             
                             Button {
-                                reportVM.birthdayOrRelationship = true
+                                birthdayOrRelationship = true
                                 reportVM.getRelationshipReport()
                             } label: {
                                 Text( NSLocalizedString("showRelationshipReport", comment: ""))
