@@ -10,7 +10,7 @@ import SwiftUI
 struct PaymentView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var paymentVM = StoreViewModel()
+    @StateObject private var paymentVM = PaymentViewModel()
     
     let birthdayDate: String
     let firstReportDate: String
