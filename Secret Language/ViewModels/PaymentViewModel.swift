@@ -10,7 +10,7 @@ import StoreKit
 import SwiftUI
 
 typealias FetchCompletionHandler = ( ([SKProduct]) -> Void )
-//typealias PurchaseCompletionHandler = ( ( SKPaymentTransaction? ) -> Void )
+typealias PurchaseCompletionHandler = ( ( SKPaymentTransaction? ) -> Void )
 
 class PaymentViewModel: NSObject, ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
@@ -21,12 +21,15 @@ class PaymentViewModel: NSObject, ObservableObject {
     @Published var secondReportDate: String = ""
     @Published var birthdayOrRelationship: Bool = false
     
+    @Published var payButtonClicked: Bool = false
+    @Published var loadingPaymentProccess: Bool = false
+    
     private let allProductIdentifiers = Credentials.appStoreProductIdentifiers
         
     private var productsRequest: SKProductsRequest?
     private var fetchedProducts = [SKProduct]()
     private var fetchCompletionHandler: FetchCompletionHandler?
-//    private var purchaseCompletionHandler: PurchaseCompletionHandler?
+    private var purchaseCompletionHandler: PurchaseCompletionHandler?
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: PaymentServiceProtocol
@@ -53,8 +56,8 @@ class PaymentViewModel: NSObject, ObservableObject {
         productsRequest?.start()
     }
     
-    private func buy(_ product: SKProduct /*, completion: @escaping PurchaseCompletionHandler*/ ) {
-//        purchaseCompletionHandler = completion
+    private func buy(_ product: SKProduct , completion: @escaping PurchaseCompletionHandler ) {
+        purchaseCompletionHandler = completion
         
         let payment = SKPayment(product: product)
         SKPaymentQueue.default().add(payment)
@@ -68,8 +71,12 @@ extension PaymentViewModel {
     }
     
     func purchaseProduct( _ product: SKProduct ) {
+        loadingPaymentProccess = true
+        
         startObservingPaymentQueue()
-        buy(product)
+        buy(product) { _ in
+            self.loadingPaymentProccess = false
+        }
     }
     
     func restorePurchase() {
@@ -129,10 +136,10 @@ extension PaymentViewModel: SKPaymentTransactionObserver {
             
             if shouldFinishTransaction {
                 SKPaymentQueue.default().finishTransaction(transaction)
-//                DispatchQueue.main.async {
-//                    self.purchaseCompletionHandler?( transaction )
-//                    self.purchaseCompletionHandler = nil
-//                }
+                DispatchQueue.main.async {
+                    self.purchaseCompletionHandler?( transaction )
+                    self.purchaseCompletionHandler = nil
+                }
             }
         }
     }

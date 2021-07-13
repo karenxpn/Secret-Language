@@ -15,7 +15,7 @@
           "locale" : "en_US"
         }
       ],
-      "productID" : "com.xpn-development.Secret-Language.report",
+      "productID" : "com.xpn.development.Secret.Language.report",
       "referenceName" : "Report",
       "type" : "Consumable"
     }
@@ -47,7 +47,7 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "com.xpn-development.Secret-Language.monthly",
+          "productID" : "com.xpn.development.Secret.Language.monthly",
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "Monthly Subscription",
           "subscriptionGroupID" : "B4F5661A",

@@ -61,17 +61,24 @@ struct PaymentView: View {
                     
                     Button(action: {
                         if let product = paymentVM.product(for: Credentials.reportProductIdentifier) {
-                            
                             paymentVM.purchaseProduct(product)
                         }
                     }, label: {
-                        Text( NSLocalizedString("unlockReport", comment: ""))
-                            .foregroundColor(.black)
-                            .font(.custom("times", size: 16))
-                            .frame(width: .greedy, height: 50)
-                            .background(.accentColor)
-                            .cornerRadius(25)
-                    })
+                        
+                        if paymentVM.loadingPaymentProccess {
+                            ProgressView()
+                                .frame(width: .greedy, height: 50)
+                                .background(.accentColor)
+                                .cornerRadius(25)
+                        } else {
+                            Text( NSLocalizedString("unlockReport", comment: ""))
+                                .foregroundColor(.black)
+                                .font(.custom("times", size: 16))
+                                .frame(width: .greedy, height: 50)
+                                .background(.accentColor)
+                                .cornerRadius(25)
+                        }
+                    }).disabled(paymentVM.loadingPaymentProccess)
                     
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
