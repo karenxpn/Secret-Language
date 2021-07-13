@@ -10,6 +10,12 @@ import SwiftUI
 struct PaymentView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @StateObject private var paymentVM = PaymentViewModel()
+    
+    let birthdayDate: String
+    let firstReportDate: String
+    let secondReportDate: String
+    @Binding var birthdayOrRelationship: Bool
 
     var body: some View {
         ZStack {
@@ -54,15 +60,25 @@ struct PaymentView: View {
                     
                     
                     Button(action: {
-                        
+                        if let product = paymentVM.product(for: Credentials.reportProductIdentifier) {
+                            paymentVM.purchaseProduct(product)
+                        }
                     }, label: {
-                        Text( NSLocalizedString("unlockReport", comment: ""))
-                            .foregroundColor(.black)
-                            .font(.custom("times", size: 16))
-                            .frame(width: .greedy, height: 50)
-                            .background(.accentColor)
-                            .cornerRadius(25)
-                    })
+                        
+                        if paymentVM.loadingPaymentProccess {
+                            ProgressView()
+                                .frame(width: .greedy, height: 50)
+                                .background(.accentColor)
+                                .cornerRadius(25)
+                        } else {
+                            Text( NSLocalizedString("unlockReport", comment: ""))
+                                .foregroundColor(.black)
+                                .font(.custom("times", size: 16))
+                                .frame(width: .greedy, height: 50)
+                                .background(.accentColor)
+                                .cornerRadius(25)
+                        }
+                    }).disabled(paymentVM.loadingPaymentProccess)
                     
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
@@ -100,11 +116,17 @@ struct PaymentView: View {
 
         }.navigationBarTitle("")
         .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("subscription", comment: "")), displayMode: .inline)
+        .onAppear {
+            paymentVM.birthdayDate = birthdayDate
+            paymentVM.firstReportDate = firstReportDate
+            paymentVM.secondReportDate = secondReportDate
+            paymentVM.birthdayOrRelationship = birthdayOrRelationship
+        }
     }
 }
 
 struct PaymentView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentView()
+        PaymentView(birthdayDate: "Jul 1",firstReportDate: "January 2", secondReportDate: "", birthdayOrRelationship: .constant( false ))
     }
 }

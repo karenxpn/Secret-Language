@@ -13,20 +13,14 @@ struct Reports: View {
     @State private var showFullscreenReportOne: Bool = false
     @State private var showFullscreenReportTwo: Bool = false
     
+    @State private var birthdayOrRelationship: Bool = false // false -> birthday, true -> relationship
+    
     var body: some View {
         NavigationView {
             ZStack {
                 Background()
                 
-                NavigationLink(destination: BirthdayReport(report: $reportVM.birthdayReport), isActive: $reportVM.navigateToBirthdayReport) {
-                    EmptyView()
-                }.hidden()
-                
-                NavigationLink(destination: RelationshipReport(report: $reportVM.relationshipReport), isActive: $reportVM.navigateToRelationshipReport) {
-                    EmptyView()
-                }.hidden()
-                
-                NavigationLink(destination: PaymentView(), isActive: $reportVM.navigateToPayment) {
+                NavigationLink(destination: PaymentOrReportDetectionView(birthdayOrRelationship: $birthdayOrRelationship).environmentObject(reportVM), isActive: $reportVM.navigate) {
                     EmptyView()
                 }.hidden()
                 
@@ -47,6 +41,7 @@ struct Reports: View {
                             .foregroundColor(.gray )
                             .font(.custom("times", size: 22))
                             .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
                         
                         VStack( spacing: 10 ) {
                             Text( NSLocalizedString("lookUpBirthday", comment: ""))
@@ -84,6 +79,7 @@ struct Reports: View {
                             }
                             
                             Button {
+                                birthdayOrRelationship = false
                                 reportVM.getBirthdayReport()
                             } label: {
                                 Text( NSLocalizedString("showBirthdayReport", comment: ""))
@@ -165,6 +161,7 @@ struct Reports: View {
                                 .padding(.bottom)
                             
                             Button {
+                                birthdayOrRelationship = true
                                 reportVM.getRelationshipReport()
                             } label: {
                                 Text( NSLocalizedString("showRelationshipReport", comment: ""))
@@ -187,6 +184,13 @@ struct Reports: View {
             }.navigationBarTitle("")
             .navigationBarTitleView(SearchNavBar(title: "Reports"), displayMode: .inline)
         }.navigationViewStyle(StackNavigationViewStyle())
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "reloadReport"))) { _ in
+            if birthdayOrRelationship {
+                reportVM.getRelationshipReport()
+            } else {
+                reportVM.getBirthdayReport()
+            }
+        }
     }
 }
 

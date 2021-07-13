@@ -22,14 +22,13 @@ struct ReportGridItem: View {
                 .font(.custom("AppleMyungjo", size: 15))
                 .multilineTextAlignment(.center)
             
-            
             ZStack {
                 Color.white
                     .cornerRadius(5)
                     .padding(.horizontal)
                     .frame(height: 135)
                 
-                ImageHelper(image: image, contentMode: .fit, progressViewTintColor: .white)
+                ImageHelper(image: image, contentMode: .fit, progressViewTintColor: .black)
                     .frame(width: UIScreen.main.bounds.size.width * 0.45, height: 100)
                     .cornerRadius(5)
             }
