@@ -31,14 +31,14 @@ extension PaymentService: PaymentServiceProtocol {
             print(reportDate)
         }
         
-        let url = URL(string: "\(Credentials.BASE_URL)user/payment")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/addPaidReport")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
                           method: .post,
                           parameters: birthdayOrRelationship ? ["birthday_1" : firstReportDate,
                                                                 "birthday_2" : secondReportDate] :
-                                                               ["reportDate" : reportDate],
+                                                               ["birthday" : reportDate],
                           encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()

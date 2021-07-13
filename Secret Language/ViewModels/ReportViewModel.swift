@@ -43,7 +43,7 @@ class ReportViewModel: ObservableObject {
             .sink { response in
                 
                 if response.error != nil {
-                    if response.error!.initialError.responseCode == 440 {
+                    if response.error!.initialError.responseCode == Credentials.paymentErrorCode {
                         self.shouldPurchase = true
                         self.navigate = true
                     } else {
@@ -61,7 +61,7 @@ class ReportViewModel: ObservableObject {
         dataManager.fetchRelationshipReport(token: token, firstDate: "\(firstReportMonth) \(firstReportDay)", secondDate: "\(secondReportMonth) \(secondReportDay)")
             .sink { response in
                 if response.error != nil {
-                    if response.error!.initialError.responseCode == 440 {
+                    if response.error!.initialError.responseCode == Credentials.paymentErrorCode {
                         self.shouldPurchase = true
                         self.navigate = true
                     } else {

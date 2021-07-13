@@ -157,10 +157,6 @@ extension PaymentViewModel {
                 self.shouldPurchase = false
                 if response.error == nil {
                     NotificationCenter.default.post(name: Notification.Name("reloadReport"), object: nil)
-                } else {
-                    // replace this with error message
-                    NotificationCenter.default.post(name: Notification.Name("reloadReport"), object: nil)
-                    print(response)
                 }
             }.store(in: &cancellableSet)
     }
