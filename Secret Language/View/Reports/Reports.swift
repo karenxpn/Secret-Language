@@ -184,6 +184,13 @@ struct Reports: View {
             }.navigationBarTitle("")
             .navigationBarTitleView(SearchNavBar(title: "Reports"), displayMode: .inline)
         }.navigationViewStyle(StackNavigationViewStyle())
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "reloadReport"))) { _ in
+            if birthdayOrRelationship {
+                reportVM.getRelationshipReport()
+            } else {
+                reportVM.getBirthdayReport()
+            }
+        }
     }
 }
 

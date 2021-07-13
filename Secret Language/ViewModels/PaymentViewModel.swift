@@ -21,7 +21,6 @@ class PaymentViewModel: NSObject, ObservableObject {
     @Published var secondReportDate: String = ""
     @Published var birthdayOrRelationship: Bool = false
     
-    @Published var payButtonClicked: Bool = false
     @Published var loadingPaymentProccess: Bool = false
     
     private let allProductIdentifiers = Credentials.appStoreProductIdentifiers
@@ -156,7 +155,13 @@ extension PaymentViewModel {
                 
                 // if the response is okay -> toggle should purchase
                 self.shouldPurchase = false
-                print(response)
+                if response.error == nil {
+                    NotificationCenter.default.post(name: Notification.Name("reloadReport"), object: nil)
+                } else {
+                    // replace this with error message
+                    NotificationCenter.default.post(name: Notification.Name("reloadReport"), object: nil)
+                    print(response)
+                }
             }.store(in: &cancellableSet)
     }
 }

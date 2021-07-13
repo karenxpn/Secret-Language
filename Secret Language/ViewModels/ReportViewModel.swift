@@ -45,14 +45,14 @@ class ReportViewModel: ObservableObject {
                 if response.error != nil {
                     if response.error!.initialError.responseCode == 440 {
                         self.shouldPurchase = true
-                        self.navigate.toggle()
+                        self.navigate = true
                     } else {
                         self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
                     }
                 } else {
                     self.birthdayReport = response.value!
                     self.shouldPurchase = false
-                    self.navigate.toggle()
+                    self.navigate = true
                 }
             }.store(in: &cancellableSet)
     }
@@ -63,14 +63,14 @@ class ReportViewModel: ObservableObject {
                 if response.error != nil {
                     if response.error!.initialError.responseCode == 440 {
                         self.shouldPurchase = true
-                        self.navigate.toggle()
-                        
+                        self.navigate = true
                     } else {
                         self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
                     }
                 } else {
-                    self.shouldPurchase = true  // replace with false
-                    self.navigate.toggle()
+                    self.relationshipReport = response.value!
+                    self.shouldPurchase = false
+                    self.navigate = true
                 }
             }.store(in: &cancellableSet)
     }

@@ -37,7 +37,8 @@ extension PaymentService: PaymentServiceProtocol {
         return AF.request(url,
                           method: .post,
                           parameters: birthdayOrRelationship ? ["birthday_1" : firstReportDate,
-                                                                "birthday_2" : secondReportDate] : ["reportDate" : reportDate],
+                                                                "birthday_2" : secondReportDate] :
+                                                               ["reportDate" : reportDate],
                           encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
