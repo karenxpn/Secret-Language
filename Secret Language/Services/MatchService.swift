@@ -18,7 +18,7 @@ protocol MatchServiceProtocol {
 }
 
 class MatchService {
-    static let shared = MatchService()
+    static let shared: MatchServiceProtocol = MatchService()
     
     private init() { }
 }

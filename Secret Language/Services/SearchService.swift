@@ -16,7 +16,7 @@ protocol SearchServiceProtocol {
 }
 
 class SearchService {
-    static let shared = SearchService()
+    static let shared: SearchServiceProtocol = SearchService()
     
     private init() { }
 }

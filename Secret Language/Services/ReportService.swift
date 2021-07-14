@@ -15,7 +15,7 @@ protocol ReportServiceProtocol {
 }
 
 class ReportService {
-    static let shared = ReportService()
+    static let shared: ReportServiceProtocol = ReportService()
     
     private init() { }
 }

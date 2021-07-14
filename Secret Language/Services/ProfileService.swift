@@ -34,7 +34,7 @@ protocol ProfileServiceProtocol {
 }
 
 class ProfileService {
-    static let shared = ProfileService()
+    static let shared: ProfileServiceProtocol = ProfileService()
     
     private init() { }
 }

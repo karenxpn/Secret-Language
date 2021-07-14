@@ -15,7 +15,7 @@ protocol UserServiceProtocol {
 }
 
 class UserService {
-    static let shared = UserService()
+    static let shared: UserServiceProtocol = UserService()
     
     private init() { }
 }

@@ -25,7 +25,6 @@ class ReportViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
-    ///
     @Published var navigate: Bool = false
     
     @Published var relationshipReport: RelationshipReportModel? = nil

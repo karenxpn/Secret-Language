@@ -29,7 +29,7 @@ class ReportsViewModelTests: XCTestCase {
         service.fetchRelationshipReportError = false
         viewModel.getRelationshipReport()
         
-        XCTAssertTrue(viewModel.navigateToRelationshipReport)
+        XCTAssertTrue(viewModel.navigate)
     }
     
     func testGetBirthdayReportWithError() {
@@ -43,6 +43,6 @@ class ReportsViewModelTests: XCTestCase {
         service.fetchBirthdayReportError = false
         viewModel.getBirthdayReport()
         
-        XCTAssertTrue(viewModel.navigateToBirthdayReport)
+        XCTAssertTrue(viewModel.navigate)
     }
 }
