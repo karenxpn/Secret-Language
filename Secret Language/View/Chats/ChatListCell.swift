@@ -30,6 +30,7 @@ struct ChatListCell: View {
                             .foregroundColor(.white)
                             .font(.custom("times", size: 20))
                             .fontWeight(.semibold)
+                            .lineLimit(1)
                         
                         if chat.message != nil {
                             Text( chat.message!.created_at)
@@ -39,6 +40,7 @@ struct ChatListCell: View {
                             Text( chat.message!.content[0].message)
                                 .foregroundColor(.gray)
                                 .font(.custom("Gilroy-Regular", size: 15))
+                                .lineLimit(1)
                         }
                     }
                     
@@ -56,7 +58,8 @@ struct ChatListCell: View {
                 Capsule()
                     .fill(Color.gray)
                     .frame(width: .greedy, height: 0.5)
-            }.padding()
+                
+            }.padding([.top, .horizontal])
         }.background(
             NavigationLink( destination: ChatRoom(), label: {
                 EmptyView()

@@ -18,6 +18,8 @@
 		FF18DC3C269F61AF004BE946 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC3B269F61AF004BE946 /* ChatViewModel.swift */; };
 		FF18DC3E269F658D004BE946 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC3D269F658D004BE946 /* ChatRoom.swift */; };
 		FF18DC40269F669E004BE946 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC3F269F669E004BE946 /* ChatService.swift */; };
+		FF18DC42269F8DBF004BE946 /* MockChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC41269F8DBF004BE946 /* MockChatService.swift */; };
+		FF18DC44269F8EEF004BE946 /* ChatViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC43269F8EEF004BE946 /* ChatViewModelTests.swift */; };
 		FF1AD6C7268645E100B0DCC9 /* PusherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1AD6C6268645E100B0DCC9 /* PusherManager.swift */; };
 		FF3D63C12693C98B00799E72 /* WeekReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63C02693C98B00799E72 /* WeekReport.swift */; };
 		FF3D63C32693C99500799E72 /* MonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63C22693C99500799E72 /* MonthReport.swift */; };
@@ -173,6 +175,8 @@
 		FF18DC3B269F61AF004BE946 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		FF18DC3D269F658D004BE946 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		FF18DC3F269F669E004BE946 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		FF18DC41269F8DBF004BE946 /* MockChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChatService.swift; sourceTree = "<group>"; };
+		FF18DC43269F8EEF004BE946 /* ChatViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModelTests.swift; sourceTree = "<group>"; };
 		FF1AD6C6268645E100B0DCC9 /* PusherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PusherManager.swift; sourceTree = "<group>"; };
 		FF3D63C02693C98B00799E72 /* WeekReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekReport.swift; sourceTree = "<group>"; };
 		FF3D63C22693C99500799E72 /* MonthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthReport.swift; sourceTree = "<group>"; };
@@ -661,6 +665,7 @@
 				FFE0E42326794ECC008FA78C /* MatchesViewModelTests.swift */,
 				FF99A0452681DB4E00F234CD /* ProfileViewModelTests.swift */,
 				FF997EA8268FD3090057B731 /* ReportsViewModelTests.swift */,
+				FF18DC43269F8EEF004BE946 /* ChatViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -672,6 +677,7 @@
 				FFE0E42126794DAB008FA78C /* MockMatchService.swift */,
 				FF99A0472681DB6400F234CD /* MockProfileService.swift */,
 				FF997EA6268FD0900057B731 /* MockReportService.swift */,
+				FF18DC41269F8DBF004BE946 /* MockChatService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1052,9 +1058,11 @@
 				FFBEA6902664E42A0033B2ED /* Secret_LanguageTests.swift in Sources */,
 				FF99A0482681DB6400F234CD /* MockProfileService.swift in Sources */,
 				FF99A0462681DB4E00F234CD /* ProfileViewModelTests.swift in Sources */,
+				FF18DC44269F8EEF004BE946 /* ChatViewModelTests.swift in Sources */,
 				FFE0E42226794DAB008FA78C /* MockMatchService.swift in Sources */,
 				FFDB159526658C3400341E8F /* MockAuthService.swift in Sources */,
 				FFDB159726658EDF00341E8F /* AuthViewModelTests.swift in Sources */,
+				FF18DC42269F8DBF004BE946 /* MockChatService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

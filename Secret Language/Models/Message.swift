@@ -22,4 +22,6 @@ struct MessageUserModel: Identifiable, Codable {
     var id: Int
     var fullName: String
     var profile_image: String
+    var age: Int
+    var ideal_for: String
 }
