@@ -11,11 +11,14 @@ import SDWebImageSwiftUI
 struct ChatListCell: View {
     
     let chat: ChatModel
+    @State private var isActive: Bool = false
+    
     var body: some View {
-        
-        NavigationLink(
-            destination: ChatRoom(),
-            label: {
+        Button {
+            isActive.toggle()
+        } label: {
+            
+            VStack {
                 HStack {
                     ImageHelper(image: chat.image, contentMode: .fill, progressViewTintColor: .gray)
                         .frame(width: 50, height: 50)
@@ -48,8 +51,18 @@ struct ChatListCell: View {
                         .background(
                             Circle().fill(Color.accentColor)
                                 .frame(width: 25, height: 25))
-                }.padding()
-            })
+                }
+                
+                Capsule()
+                    .fill(Color.gray)
+                    .frame(width: .greedy, height: 0.5)
+            }.padding()
+        }.background(
+            NavigationLink( destination: ChatRoom(), label: {
+                EmptyView()
+            }).hidden()
+        )
+        
     }
 }
 

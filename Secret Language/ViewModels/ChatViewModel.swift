@@ -23,7 +23,7 @@ class ChatViewModel: ObservableObject {
     var channel: PusherChannel
 
     
-    @Published var chats = [ChatModel(id: 1, chatName: "Karen Mirakyan", image: "", messageCount: 4, message: ChatPreveiwMessage(type: "text", content: [ContentModel(message: "hello", type: "text")], created_at: "1d ago"), read: false), ChatModel(id: 2, chatName: "Karen Mirakyan", image: "", messageCount: 4, message: ChatPreveiwMessage(type: "text", content: [ContentModel(message: "hello", type: "text")], created_at: "1d ago"), read: false), ChatModel(id: 3, chatName: "Karen Mirakyan", image: "", messageCount: 4, message: ChatPreveiwMessage(type: "text", content: [ContentModel(message: "hello", type: "text")], created_at: "1d ago"), read: false)]
+    @Published var chats = [ChatModel(id: 1, chatName: "Karen Mirakyan", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", messageCount: 4, message: ChatPreveiwMessage(type: "text", content: [ContentModel(message: "hello", type: "text")], created_at: "1d ago"), read: false), ChatModel(id: 2, chatName: "Karen Mirakyan", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", messageCount: 4, message: ChatPreveiwMessage(type: "text", content: [ContentModel(message: "hello", type: "text")], created_at: "1d ago"), read: false), ChatModel(id: 3, chatName: "Karen Mirakyan", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", messageCount: 4, message: ChatPreveiwMessage(type: "text", content: [ContentModel(message: "hello", type: "text")], created_at: "1d ago"), read: false)]
     
     init(dataManager: ChatServiceProtocol = ChatService.shared) {
         self.dataManager = dataManager
