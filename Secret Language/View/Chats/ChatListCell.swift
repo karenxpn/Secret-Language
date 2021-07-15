@@ -61,8 +61,9 @@ struct ChatListCell: View {
                     .frame(width: .greedy, height: 0.5)
                 
             }.padding([.top, .horizontal])
-        }.background(
-            NavigationLink( destination: ChatRoom(roomID: chat.id, user: chat.user), label: {
+        }.buttonStyle(BorderlessButtonStyle())
+        .background(
+            NavigationLink( destination: ChatRoom(roomID: chat.id, user: chat.user), isActive: $isActive, label: {
                 EmptyView()
             }).hidden()
         )
