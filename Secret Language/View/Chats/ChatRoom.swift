@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct ChatRoom: View {
+    
+    let roomID: Int
+    let user: ChatUserModel
+    
     var body: some View {
-        Text("chat room")
+        ZStack {
+            Background()
+            
+        }.navigationBarTitle("")
+        .navigationBarTitleView(ChatRoomNavBar(name: user.name, age: user.age, ideal_for: user.ideal_for))
     }
 }
 
 struct ChatRoom_Previews: PreviewProvider {
     static var previews: some View {
-        ChatRoom()
+        ChatRoom(roomID: 1, user: ChatUserModel(id: 2, name: "Karen Mirakyan", ideal_for: "Business", age: 21))
     }
 }

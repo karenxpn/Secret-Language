@@ -41,6 +41,6 @@ struct ChatList: View {
 
 struct ChatList_Previews: PreviewProvider {
     static var previews: some View {
-        ChatList(chats: [ChatModel(id: 1, chatName: "Karen Mirakyan", image: "", messageCount: 4, message: ChatPreveiwMessage(type: "text", content: [ContentModel(message: "hello", type: "text")], created_at: "1d ago"), read: false)])
+        ChatList(chats: PreviewParameters.chatList)
     }
 }

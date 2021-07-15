@@ -45,14 +45,15 @@ struct ChatListCell: View {
                     }
                     
                     Spacer()
-                    
-                    Text( "\(chat.messageCount)" )
-                        .foregroundColor(.black)
-                        .font(.custom("times", size: 17))
-                        .padding()
-                        .background(
-                            Circle().fill(Color.accentColor)
-                                .frame(width: 25, height: 25))
+                    if !chat.read {
+                        Text( "\(chat.messageCount)" )
+                            .foregroundColor(.black)
+                            .font(.custom("times", size: 17))
+                            .padding()
+                            .background(
+                                Circle().fill(Color.accentColor)
+                                    .frame(width: 25, height: 25))
+                    }
                 }
                 
                 Capsule()
@@ -61,7 +62,7 @@ struct ChatListCell: View {
                 
             }.padding([.top, .horizontal])
         }.background(
-            NavigationLink( destination: ChatRoom(), label: {
+            NavigationLink( destination: ChatRoom(roomID: chat.id, user: chat.user), label: {
                 EmptyView()
             }).hidden()
         )
@@ -71,6 +72,6 @@ struct ChatListCell: View {
 
 struct ChatListCell_Previews: PreviewProvider {
     static var previews: some View {
-        ChatListCell(chat: ChatModel(id: 1, chatName: "Karen Mirakyan", image: "", messageCount: 2, message: ChatPreveiwMessage(type: "text", content: [ContentModel(message: "hello", type: "text")], created_at: "1d ago"), read: false))
+        ChatListCell(chat: PreviewParameters.chatList[0])
     }
 }
