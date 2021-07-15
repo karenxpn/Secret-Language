@@ -12,7 +12,6 @@
 		F3E6F15571FA0FDEAAF6A68F /* Pods_Secret_LanguageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4000846EB419B5B77B094E2 /* Pods_Secret_LanguageTests.framework */; };
 		FF18DC32269CF4BF004BE946 /* PaymentOrReportDetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC31269CF4BF004BE946 /* PaymentOrReportDetectionView.swift */; };
 		FF18DC34269F4D11004BE946 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC33269F4D11004BE946 /* ChatModel.swift */; };
-		FF18DC36269F4D55004BE946 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC35269F4D55004BE946 /* Message.swift */; };
 		FF18DC38269F6082004BE946 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC37269F6082004BE946 /* ChatList.swift */; };
 		FF18DC3A269F61A7004BE946 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC39269F61A7004BE946 /* ChatListCell.swift */; };
 		FF18DC3C269F61AF004BE946 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC3B269F61AF004BE946 /* ChatViewModel.swift */; };
@@ -170,7 +169,6 @@
 		E861C563FDB9CB8845BA35CA /* Pods_Secret_Language_Secret_LanguageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Secret_Language_Secret_LanguageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF18DC31269CF4BF004BE946 /* PaymentOrReportDetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrReportDetectionView.swift; sourceTree = "<group>"; };
 		FF18DC33269F4D11004BE946 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
-		FF18DC35269F4D55004BE946 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		FF18DC37269F6082004BE946 /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		FF18DC39269F61A7004BE946 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		FF18DC3B269F61AF004BE946 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
@@ -566,7 +564,6 @@
 				FF997EA4268FCCF80057B731 /* RelationshipReportModel.swift */,
 				FF456F832693BD01008F219E /* FamousModel.swift */,
 				FF18DC33269F4D11004BE946 /* ChatModel.swift */,
-				FF18DC35269F4D55004BE946 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -950,7 +947,6 @@
 				FFDB15A02666571A00341E8F /* OTPTextFieldView.swift in Sources */,
 				FF997E91268A60150057B731 /* VisitedProfile.swift in Sources */,
 				FF18DC32269CF4BF004BE946 /* PaymentOrReportDetectionView.swift in Sources */,
-				FF18DC36269F4D55004BE946 /* Message.swift in Sources */,
 				FFDB158526653DC500341E8F /* GlobalResponse.swift in Sources */,
 				FF99A03C2680E98B00F234CD /* FriendRequestList.swift in Sources */,
 				FF456F8A2693C7EC008F219E /* DayReport.swift in Sources */,

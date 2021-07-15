@@ -17,7 +17,7 @@ struct ChatRoom: View {
             Background()
             
         }.navigationBarTitle("")
-        .navigationBarTitleView(ChatRoomNavBar(name: user.name, age: user.age, ideal_for: user.ideal_for))
+        .navigationBarTitleView(ChatRoomNavBar(user: user))
     }
 }
 

@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct ChatRoomNavBar: View {
-    let name: String
-    let age: Int
-    let ideal_for: String
+    let user: ChatUserModel
     
     var body: some View {
         VStack {
-            Text( "\(name), \(age)" )
+            Text( "\(user.name), \(user.age)" )
                 .foregroundColor(.white)
                 .font(.custom("times", size: 16))
                 .fontWeight(.semibold)
@@ -24,7 +22,7 @@ struct ChatRoomNavBar: View {
                     .foregroundColor(.gray)
                     .font(.custom("Avenir", size: 10))
                 
-                Text(ideal_for)
+                Text(user.ideal_for)
                     .foregroundColor(.accentColor)
                     .font(.custom("Avenir", size: 10))
             }
@@ -34,6 +32,6 @@ struct ChatRoomNavBar: View {
 
 struct ChatRoomNavBar_Previews: PreviewProvider {
     static var previews: some View {
-        ChatRoomNavBar(name: "Karen Mirakyan", age: 21, ideal_for: "Family, Friendship, Romance, Love.")
+        ChatRoomNavBar(user: ChatUserModel(id: 2, name: "Karen Mirakyan", ideal_for: "Business", age: 21))
     }
 }
