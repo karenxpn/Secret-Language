@@ -32,16 +32,14 @@ struct ChatListCell: View {
                             .fontWeight(.semibold)
                             .lineLimit(1)
                         
-                        if chat.message != nil {
-                            Text( chat.message!.created_at)
-                                .foregroundColor(.gray)
-                                .font(.custom("Gilroy-Regular", size: 12))
-                            
-                            Text( chat.message!.content[0].message)
-                                .foregroundColor(.gray)
-                                .font(.custom("Gilroy-Regular", size: 15))
-                                .lineLimit(1)
-                        }
+                        Text( chat.message.created_at)
+                            .foregroundColor(.gray)
+                            .font(.custom("Gilroy-Regular", size: 12))
+                        
+                        Text( chat.message.content[0].message)
+                            .foregroundColor(.gray)
+                            .font(.custom("Gilroy-Regular", size: 15))
+                            .lineLimit(1)
                     }
                     
                     Spacer()

@@ -12,12 +12,30 @@ struct ChatRoom: View {
     let roomID: Int
     let user: ChatUserModel
     
+    @ObservedObject var roomVM = MessageRoomViewModel()
+    
     var body: some View {
         ZStack {
             Background()
             
+            MessagesList(roomID: roomID)
+                .environmentObject(roomVM)
+            
+            VStack {
+                Spacer()
+                
+                MessageBar().environmentObject(roomVM)
+            }
+
         }.navigationBarTitle("")
         .navigationBarTitleView(ChatRoomNavBar(user: user))
+        .onAppear {
+            NotificationCenter.default.post(name: Notification.Name("hideTabBar"), object: nil)
+        }.onDisappear {
+            NotificationCenter.default.post(name: Notification.Name("showTabBar"), object: nil)
+        }.onTapGesture {
+            UIApplication.shared.endEditing()
+        }
     }
 }
 

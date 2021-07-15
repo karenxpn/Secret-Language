@@ -10,7 +10,7 @@ struct ChatModel: Identifiable, Codable {
     var id: Int
     var chatName: String
     var image: String
-    var message: ChatPreveiwMessage?
+    var message: ChatPreveiwMessage
     var user: ChatUserModel
     var messageCount: Int
     var read: Bool
