@@ -30,6 +30,18 @@ struct ChatRoom: View {
         .navigationBarTitleView(ChatRoomNavBar(user: user))
         .onAppear {
             NotificationCenter.default.post(name: Notification.Name("hideTabBar"), object: nil)
+            
+            // check if the roomID is 0 -> create new room
+            // else get messages
+            
+            if roomID == 0 {
+                
+            } else {
+                roomVM.roomID = roomID
+                if roomVM.messages.isEmpty {
+                    roomVM.getChatRoomMessages( lastMessageID: 0)
+                }
+            }
         }.onDisappear {
             NotificationCenter.default.post(name: Notification.Name("showTabBar"), object: nil)
         }.onTapGesture {

@@ -13,6 +13,7 @@ import PusherSwift
 protocol ChatServiceProtocol {
     func fetchChatList( token: String ) -> AnyPublisher<DataResponse<[ChatModel], NetworkError>, Never>
     func fetchChatListWithPusher( channel: PusherChannel, completion: @escaping ( [ChatModel] ) -> () )
+    func fetchRoomMessages(token: String, roomID: Int, lastMessageID: Int) -> AnyPublisher<DataResponse<[Message], NetworkError>, Never>
 }
 
 class ChatService {
@@ -59,5 +60,24 @@ extension ChatService: ChatServiceProtocol {
                 }
             }
         })
+    }
+    
+    func fetchRoomMessages(token: String, roomID: Int, lastMessageID: Int) -> AnyPublisher<DataResponse<[Message], NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)chats/\(roomID)/messages/\(lastMessageID)")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        return AF.request(url,
+                          method: .get,
+                          headers: headers)
+            .validate()
+            .publishDecodable(type: [Message].self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 }
