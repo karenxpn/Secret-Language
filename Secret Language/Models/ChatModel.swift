@@ -12,7 +12,7 @@ struct ChatModel: Identifiable, Codable {
     var image: String
     var message: ChatPreveiwMessage
     var user: ChatUserModel
-    var messageCount: Int
+    var unreadMessagesCount: String
     var read: Bool
 }
 
@@ -30,6 +30,7 @@ struct ContentModel: Codable, Hashable {
 struct ChatUserModel: Codable, Identifiable {
     var id: Int
     var name: String
+    var image: String
     var ideal_for: String
     var age: Int
 }

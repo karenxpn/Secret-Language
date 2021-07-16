@@ -33,18 +33,18 @@ struct ChatListCell: View {
                             .lineLimit(1)
                         
                         Text( chat.message.created_at)
-                            .foregroundColor(.gray)
+                            .foregroundColor(AppColors.messagePreviewTimeColor)
                             .font(.custom("Gilroy-Regular", size: 12))
                         
                         Text( chat.message.content[0].message)
-                            .foregroundColor(.gray)
+                            .foregroundColor(AppColors.messagePreviewColor)
                             .font(.custom("Gilroy-Regular", size: 15))
                             .lineLimit(1)
                     }
                     
                     Spacer()
                     if !chat.read {
-                        Text( "\(chat.messageCount)" )
+                        Text( chat.unreadMessagesCount )
                             .foregroundColor(.black)
                             .font(.custom("times", size: 17))
                             .padding()

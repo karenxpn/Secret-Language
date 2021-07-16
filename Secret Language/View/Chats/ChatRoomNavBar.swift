@@ -32,6 +32,6 @@ struct ChatRoomNavBar: View {
 
 struct ChatRoomNavBar_Previews: PreviewProvider {
     static var previews: some View {
-        ChatRoomNavBar(user: ChatUserModel(id: 2, name: "Karen Mirakyan", ideal_for: "Business", age: 21))
+        ChatRoomNavBar(user: ChatUserModel(id: 2, name: "Karen Mirakyan", image: "", ideal_for: "Business", age: 21))
     }
 }

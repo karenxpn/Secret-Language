@@ -23,7 +23,6 @@ struct ChatRoom: View {
             
             VStack {
                 Spacer()
-                
                 MessageBar().environmentObject(roomVM)
             }
 
@@ -41,6 +40,6 @@ struct ChatRoom: View {
 
 struct ChatRoom_Previews: PreviewProvider {
     static var previews: some View {
-        ChatRoom(roomID: 1, user: ChatUserModel(id: 2, name: "Karen Mirakyan", ideal_for: "Business", age: 21))
+        ChatRoom(roomID: 1, user: ChatUserModel(id: 2, name: "Karen Mirakyan", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal_for: "Business", age: 21))
     }
 }

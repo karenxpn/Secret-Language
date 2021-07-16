@@ -24,11 +24,12 @@ struct MessageBar: View {
             })
             
             HStack {
-                TextField(NSLocalizedString("typeMessage", comment: ""), text: $roomVM.messageText)
+                TextField(NSLocalizedString("typeMessage", comment: ""),
+                          text: $roomVM.messageText,
+                          isEditing: $roomVM.writingMessage)
                     .foregroundColor(.gray)
                     .font(.custom("Gilroy_Regular", size: 15))
-                    .frame(height: 40)
-                
+                    .padding(.vertical)
                 Button {
                     
                 } label: {
