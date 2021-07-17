@@ -44,7 +44,7 @@ struct ChatListCell: View {
                     
                     Spacer()
                     if !chat.read {
-                        Text( chat.unreadMessagesCount )
+                        Text( chat.unread_messages_count )
                             .foregroundColor(.black)
                             .font(.custom("times", size: 17))
                             .padding()

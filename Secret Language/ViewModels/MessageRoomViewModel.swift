@@ -12,6 +12,8 @@ import PusherSwift
 
 class MessageRoomViewModel: ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
+    @AppStorage( "userID" ) private var userID: Int = 0
+
     
     @Published var messageText: String = ""
     @Published var writingMessage: Bool = false

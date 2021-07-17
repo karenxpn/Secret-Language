@@ -13,6 +13,7 @@ class AuthViewModel: ObservableObject {
     
     @AppStorage("token") private var token: String = ""
     @AppStorage("username") private var username: String = ""
+    @AppStorage( "userID" ) private var userID: Int = 0
     @AppStorage( "initialToken" ) private var initialToken: String = ""
     
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
@@ -124,6 +125,7 @@ class AuthViewModel: ObservableObject {
                 } else {
                     self.token = response.value!.token
                     self.username = response.value!.username
+                    self.userID = response.value!.userID
                 }
             }.store(in: &cancellableSet)
     }
@@ -151,7 +153,8 @@ class AuthViewModel: ObservableObject {
                     self.signInVerificationCode = ""
                 } else {
                     self.token = response.value!.token
-                    self.username = response.value!.username                
+                    self.username = response.value!.username
+                    self.userID = response.value!.userID
                 }
             }.store(in: &cancellableSet)
     }

@@ -9,4 +9,5 @@ import Foundation
 struct AuthResponse: Codable {
     var token: String
     var username: String
+    var userID: Int
 }

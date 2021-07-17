@@ -12,11 +12,12 @@ struct ChatModel: Identifiable, Codable {
     var image: String
     var message: ChatPreveiwMessage
     var user: ChatUserModel
-    var unreadMessagesCount: String
+    var unread_messages_count: String
     var read: Bool
 }
 
-struct ChatPreveiwMessage: Codable {
+struct ChatPreveiwMessage: Codable, Identifiable {
+    var id: Int
     var type: String
     var content: [ContentModel]
     var created_at: String
