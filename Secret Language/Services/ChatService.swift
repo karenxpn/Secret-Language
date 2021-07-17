@@ -14,6 +14,8 @@ protocol ChatServiceProtocol {
     func fetchChatList( token: String ) -> AnyPublisher<DataResponse<[ChatModel], NetworkError>, Never>
     func fetchChatListWithPusher( channel: PusherChannel, completion: @escaping ( [ChatModel] ) -> () )
     func fetchRoomMessages(token: String, roomID: Int, lastMessageID: Int) -> AnyPublisher<DataResponse<[Message], NetworkError>, Never>
+    func fetchMessagesListWithPusher( channel: PusherChannel, roomID: Int, completion: @escaping ( Message ) -> () )
+    
 }
 
 class ChatService {
@@ -23,6 +25,26 @@ class ChatService {
 }
 
 extension ChatService: ChatServiceProtocol {
+    func fetchMessagesListWithPusher(channel: PusherChannel, roomID: Int, completion: @escaping (Message) -> ()) {
+        channel.bind(eventName: "chatMessages\(roomID)", eventCallback: { (event: PusherEvent) -> Void in
+            if let stringData: String = event.data {
+                if let data = stringData.data(using: .utf8) {
+                    
+                    guard let message = try? JSONDecoder().decode(Message.self, from: data) else {
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        completion(message)
+                    }
+                    
+                } else {
+                    return
+                }
+            }
+        })
+    }
+    
     func fetchChatList(token: String) -> AnyPublisher<DataResponse<[ChatModel], NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)chats")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]

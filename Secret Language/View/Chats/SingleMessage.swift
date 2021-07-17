@@ -36,7 +36,7 @@ struct SingleMessage: View {
                     .font(.custom("Gilroy-Regular", size: 16))
                 
                 Spacer()
-            }
+            }.padding(.horizontal)
 
 
         } else {
@@ -60,7 +60,7 @@ struct SingleMessage: View {
                         .clipShape(Circle())
                         .padding(.top, 6)
                 }
-            }
+            }.padding(.horizontal)
         }
     }
 }

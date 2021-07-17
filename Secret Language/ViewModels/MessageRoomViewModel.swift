@@ -23,6 +23,8 @@ class MessageRoomViewModel: ObservableObject {
     @Published var lastMessageID: Int = 0
     @Published var roomID: Int = 0
     
+    @Published var openActionSheet: Bool = false
+    
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ChatServiceProtocol
     var channel: PusherChannel
@@ -49,12 +51,12 @@ class MessageRoomViewModel: ObservableObject {
     }
     
     func getChatRoomMessagesWithPusher() {
-        
+        dataManager.fetchMessagesListWithPusher(channel: channel, roomID: roomID) { message in
+            self.messages.insert(message, at: 0)
+        }
     }
     
     func sendTypingStatus() {
         
     }
-    
-    
 }
