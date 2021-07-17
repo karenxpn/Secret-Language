@@ -98,6 +98,6 @@ struct SingleMessageContent: View {
 }
 struct SingleMessageContent_Previews: PreviewProvider {
     static var previews: some View {
-        SingleMessageContent(message: Message(id: 1, content: [ContentModel(message: "Hello, how are you?", type: "text")], sender: ChatUserModel(id: 20, name: "Karen Mirakyan", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal_for: "Business", age: 21), created_at: "1m ago", read: false), me: false)
+        SingleMessageContent(message: Message(id: 1, content: [ContentModel(message: "Hello, how are you?", type: "text")], user: MessageUserModel(id: 20, name: "Karen Mirakyan", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png"), created_at: "1m ago", read: false), me: false)
     }
 }

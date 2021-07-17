@@ -13,7 +13,13 @@ struct Message: Identifiable, Codable, Equatable {
     
     var id: Int
     var content: [ContentModel]
-    var sender: ChatUserModel
+    var user: MessageUserModel
     var created_at: String
     var read: Bool
+}
+
+struct MessageUserModel: Identifiable, Codable {
+    var id: Int
+    var name: String
+    var image: String
 }

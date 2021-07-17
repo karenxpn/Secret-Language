@@ -125,7 +125,7 @@ class AuthViewModel: ObservableObject {
                 } else {
                     self.token = response.value!.token
                     self.username = response.value!.username
-                    self.userID = response.value!.userID
+                    self.userID = response.value!.id
                 }
             }.store(in: &cancellableSet)
     }
@@ -154,7 +154,7 @@ class AuthViewModel: ObservableObject {
                 } else {
                     self.token = response.value!.token
                     self.username = response.value!.username
-                    self.userID = response.value!.userID
+                    self.userID = response.value!.id
                 }
             }.store(in: &cancellableSet)
     }

@@ -15,14 +15,13 @@ struct ChatRoom: View {
     @ObservedObject var roomVM = MessageRoomViewModel()
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             Background()
-            
-            MessagesList(roomID: roomID)
-                .environmentObject(roomVM)
-            
-            VStack {
-                Spacer()
+
+            VStack(spacing: 0) {
+                MessagesList(roomID: roomID)
+                    .environmentObject(roomVM)
+                
                 MessageBar().environmentObject(roomVM)
             }
 

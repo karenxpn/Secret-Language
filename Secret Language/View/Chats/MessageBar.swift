@@ -29,7 +29,7 @@ struct MessageBar: View {
                           isEditing: $roomVM.writingMessage)
                     .foregroundColor(.gray)
                     .font(.custom("Gilroy_Regular", size: 15))
-                    .padding(.vertical)
+
                 Button {
                     
                 } label: {
@@ -43,6 +43,7 @@ struct MessageBar: View {
                     .fill(AppColors.messageBarBG)
             )
         }.padding(.trailing)
+        .padding(.top, 8)
     }
 }
 

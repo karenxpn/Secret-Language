@@ -43,7 +43,7 @@ struct ChatListCell: View {
                     }
                     
                     Spacer()
-                    if !chat.read {
+                    if !chat.read && chat.unread_messages_count != "0" {
                         Text( chat.unread_messages_count )
                             .foregroundColor(.black)
                             .font(.custom("times", size: 17))

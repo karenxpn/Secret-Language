@@ -15,14 +15,14 @@ struct SingleMessage: View {
     
     var body: some View {
         
-        if 20 != message.sender.id {
+        if userID != message.user.id {
             // this means that the sender is me
             HStack( alignment: .bottom) {
                 
                 
                 HStack( alignment: .top) {
                                         
-                    ImageHelper(image: message.sender.image, contentMode: .fill, progressViewTintColor: .gray)
+                    ImageHelper(image: message.user.image, contentMode: .fill, progressViewTintColor: .gray)
                         .frame(width: 25, height: 25)
                         .clipShape(Circle())
                         .padding(.top, 6)
@@ -55,7 +55,7 @@ struct SingleMessage: View {
                     SingleMessageContent(message: message, me: true)
                         .environmentObject(roomVM)
 
-                    ImageHelper(image: message.sender.image, contentMode: .fill, progressViewTintColor: .gray)
+                    ImageHelper(image: message.user.image, contentMode: .fill, progressViewTintColor: .gray)
                         .frame(width: 25, height: 25)
                         .clipShape(Circle())
                         .padding(.top, 6)
@@ -67,7 +67,7 @@ struct SingleMessage: View {
 
 struct SingleMessage_Previews: PreviewProvider {
     static var previews: some View {
-        SingleMessage( message: Message(id: 1, content: [ContentModel(message: "Hello, how are you? \ncan we meet today in the evening? ", type: "text")], sender: ChatUserModel(id: 18, name: "Karen Mirakyan", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal_for: "Business", age: 21), created_at: "1m ago", read: false))
+        SingleMessage( message: Message(id: 1, content: [ContentModel(message: "Hello, how are you? \ncan we meet today in the evening? ", type: "text")], user: MessageUserModel(id: 18, name: "Karen Mirakyan", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png"), created_at: "1m ago", read: false))
             .environmentObject(MessageRoomViewModel())
     }
 }

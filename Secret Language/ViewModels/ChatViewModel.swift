@@ -22,7 +22,6 @@ class ChatViewModel: ObservableObject {
     var dataManager: ChatServiceProtocol
     var channel: PusherChannel
 
-    
     @Published var chats = PreviewParameters.chatList
     
     init(dataManager: ChatServiceProtocol = ChatService.shared) {

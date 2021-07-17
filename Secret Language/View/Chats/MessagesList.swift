@@ -16,12 +16,12 @@ struct MessagesList: View {
         ScrollView(showsIndicators: false) {
             ScrollViewReader { scrollView in
                 
-                LazyVStack(spacing: 0) {
+                LazyVStack(spacing: 15) {
                     
                     ForEach(roomVM.messages, id: \.id) { message in
                         SingleMessage(message: message)
                             .environmentObject(roomVM)
-                            .padding(.bottom, roomVM.messages[0].id == message.id ? UIScreen.main.bounds.size.height * 0.11 : 0)
+                            .padding(.bottom, roomVM.messages[0].id == message.id ? UIScreen.main.bounds.size.height * 0.05 : 0)
                             .rotationEffect(.radians(3.14))
                             .onAppear {
                                 if message.id == roomVM.messages[roomVM.messages.count-1].id {
@@ -36,7 +36,7 @@ struct MessagesList: View {
                             .padding()
                     }
                     
-                }.padding(.top, 20)
+                }.padding([.bottom], 20)
                 .onChange(of: roomVM.writingMessage) { (_) in
                     if roomVM.writingMessage {
                         roomVM.sendTypingStatus()
