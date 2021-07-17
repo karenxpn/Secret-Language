@@ -1,0 +1,103 @@
+//
+//  SingleMessageContent.swift
+//  Secret Language
+//
+//  Created by Karen Mirakyan on 17.07.21.
+//
+
+import SwiftUI
+import AVKit
+
+struct SingleMessageContent: View {
+    @EnvironmentObject var roomVM: MessageRoomViewModel
+    
+    let message: Message
+    let me: Bool
+    
+    var body: some View {
+        if message.content.count == 1 {
+            if message.content[0].type == "text" {
+                Text(message.content[0].message)
+                    .foregroundColor( me ? .white : .black)
+                    .foregroundColor(.white)
+                    .font(.custom("Gilroy-Regular", size: 16))
+                    .padding()
+                    .background(me ? AppColors.sentMessageBoxBG : .accentColor)
+                    .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading] : [.topLeading, .topTrailing, .bottomTrailing], 20)
+//                    .onLongPressGesture {
+//                        roomVM.actionItem = message
+//                    }
+            } else if message.content[0].type == "image" {
+                RoomImageMessagesHelper(image: message.content[0].message)
+                    .frame(width: UIScreen.main.bounds.size.width * 0.5)
+                    .cornerRadius(8)
+                    .padding()
+//                    .onTapGesture {
+//                        roomVM.imageMessage = message
+//                        roomVM.activeSheet = .media
+//                        roomVM.openSheet.toggle()
+//                    }.onLongPressGesture {
+//                        roomVM.actionItem = message
+//                    }
+            } else if message.content[0].type == "video" {
+//                let player = AVPlayer(url:  URL(string: message.content[0].message)!)
+//
+//                VideoPlayer(player: player)
+//                    .frame(width: UIScreen.main.bounds.size.width * 0.5, height: 200)
+//                    .scaledToFit()
+//                    .cornerRadius(8)
+//                    .padding()
+//                    .onAppear {
+//                        player.play()
+//                    }.onDisappear {
+//                        player.pause()
+//                    }
+//                    .onTapGesture {
+//                        roomVM.imageMessage = message
+//                        roomVM.activeSheet = .media
+//                        roomVM.openSheet.toggle()
+//                    }.onLongPressGesture {
+//                        roomVM.actionItem = message
+//                    }
+            } else if message.content[0].type == "audio" {
+//                SingleMessageAudio(message: message, me: me)
+//                    .environmentObject(roomVM)
+            }
+        } else {
+            let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+            
+            LazyVGrid(columns: columns, spacing: 8) {
+                
+                ForEach(message.content, id: \.self ) { content in
+                    if content.type == "image" {
+                        RoomImageMessagesHelper(image: content.message)
+                            .frame(width: UIScreen.main.bounds.size.width * 0.28, height: 150)
+                            .cornerRadius(8)
+                        
+                    }
+//                    else if content.type == "video" {
+//                        let player = AVPlayer(url:  URL(string: content.message)!)
+//                        
+//                        VideoPlayer(player: player)
+//                            .frame(width: UIScreen.main.bounds.size.width * 0.28, height: 150)
+//                            .scaledToFit()
+//                            .cornerRadius(8)
+//                    }
+                }
+                
+            }.padding()
+//            .onTapGesture {
+//                roomVM.imageMessage = message
+//                roomVM.activeSheet = .media
+//                roomVM.openSheet.toggle()
+//            }.onLongPressGesture {
+//                roomVM.actionItem = message
+//            }
+        }
+    }
+}
+struct SingleMessageContent_Previews: PreviewProvider {
+    static var previews: some View {
+        SingleMessageContent(message: Message(id: 1, content: [ContentModel(message: "Hello, how are you?", type: "text")], sender: ChatUserModel(id: 20, name: "Karen Mirakyan", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal_for: "Business", age: 21), created_at: "1m ago", read: false), me: false)
+    }
+}

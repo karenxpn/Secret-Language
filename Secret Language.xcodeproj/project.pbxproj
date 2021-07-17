@@ -57,6 +57,8 @@
 		FF8AA6DB26A09E31000C6B41 /* MessagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6DA26A09E31000C6B41 /* MessagesList.swift */; };
 		FF8AA6DD26A09E87000C6B41 /* SingleMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6DC26A09E87000C6B41 /* SingleMessage.swift */; };
 		FF8AA6DF26A09EB2000C6B41 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6DE26A09EB2000C6B41 /* Message.swift */; };
+		FF8AA6E126A31DB9000C6B41 /* SingleMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6E026A31DB9000C6B41 /* SingleMessageContent.swift */; };
+		FF8AA6E326A31ED1000C6B41 /* RoomImageMessagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6E226A31ED1000C6B41 /* RoomImageMessagesHelper.swift */; };
 		FF997E862689DAB20057B731 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E852689DAB20057B731 /* SearchViewModel.swift */; };
 		FF997E882689DCDF0057B731 /* SearchNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E872689DCDF0057B731 /* SearchNavBar.swift */; };
 		FF997E8A2689E6BA0057B731 /* SingleSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E892689E6BA0057B731 /* SingleSearchResult.swift */; };
@@ -220,6 +222,8 @@
 		FF8AA6DA26A09E31000C6B41 /* MessagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesList.swift; sourceTree = "<group>"; };
 		FF8AA6DC26A09E87000C6B41 /* SingleMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMessage.swift; sourceTree = "<group>"; };
 		FF8AA6DE26A09EB2000C6B41 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		FF8AA6E026A31DB9000C6B41 /* SingleMessageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMessageContent.swift; sourceTree = "<group>"; };
+		FF8AA6E226A31ED1000C6B41 /* RoomImageMessagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomImageMessagesHelper.swift; sourceTree = "<group>"; };
 		FF997E852689DAB20057B731 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		FF997E872689DCDF0057B731 /* SearchNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavBar.swift; sourceTree = "<group>"; };
 		FF997E892689E6BA0057B731 /* SingleSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSearchResult.swift; sourceTree = "<group>"; };
@@ -587,6 +591,7 @@
 				FFDB158E2665607000341E8F /* AppColors.swift */,
 				FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */,
 				FF3D63E3269924DC00799E72 /* PreviewParameters.swift */,
+				FF8AA6E226A31ED1000C6B41 /* RoomImageMessagesHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -612,6 +617,7 @@
 				FF8AA6D626A098BD000C6B41 /* MessageBar.swift */,
 				FF8AA6DA26A09E31000C6B41 /* MessagesList.swift */,
 				FF8AA6DC26A09E87000C6B41 /* SingleMessage.swift */,
+				FF8AA6E026A31DB9000C6B41 /* SingleMessageContent.swift */,
 				FF18DC45269FAA96004BE946 /* ChatRoomNavBar.swift */,
 			);
 			path = Chats;
@@ -1033,6 +1039,7 @@
 				FF18DC3A269F61A7004BE946 /* ChatListCell.swift in Sources */,
 				FF456F842693BD01008F219E /* FamousModel.swift in Sources */,
 				FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */,
+				FF8AA6E126A31DB9000C6B41 /* SingleMessageContent.swift in Sources */,
 				FF3D63DC269791C200799E72 /* PaymentViewModel.swift in Sources */,
 				FF997EA1268E754A0057B731 /* PaymentView.swift in Sources */,
 				FFCEDDFC267235D10073BE20 /* Matches.swift in Sources */,
@@ -1041,6 +1048,7 @@
 				FF997E9D268E72D40057B731 /* ReportService.swift in Sources */,
 				FF99A0362680C61C00F234CD /* FriendsList.swift in Sources */,
 				FF4AB0FD2685091B0085EA9A /* ProfileImagePicker.swift in Sources */,
+				FF8AA6E326A31ED1000C6B41 /* RoomImageMessagesHelper.swift in Sources */,
 				FF997E8E268A13080057B731 /* UserService.swift in Sources */,
 				FFDB15A726669AA000341E8F /* ChooseGender.swift in Sources */,
 				FFE0E41E2678090D008FA78C /* MatchesViewModel.swift in Sources */,

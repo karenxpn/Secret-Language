@@ -21,4 +21,5 @@ struct AppColors {
     static let messageBarBG = Color( UIColor(red: 12/255, green: 30/255, blue: 48/255, alpha: 1))
     static let messagePreviewTimeColor = Color(UIColor(red: 121/255, green: 121/255, blue: 121/255, alpha: 1))
     static let messagePreviewColor = Color( UIColor(red: 151/255, green: 151/255, blue: 151/255, alpha: 1))
+    static let sentMessageBoxBG = Color(UIColor(red: 28/255, green: 52/255, blue: 74/255, alpha: 1))
 }
