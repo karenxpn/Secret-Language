@@ -24,10 +24,10 @@ struct SingleMessageContent: View {
                     .padding()
                     .background(me ? AppColors.sentMessageBoxBG : .accentColor)
                     .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading] : [.topLeading, .topTrailing, .bottomTrailing], 20)
+                    .onTapGesture {}
                     .onLongPressGesture {
                         roomVM.action = .message
                         roomVM.actionItem = message
-                        roomVM.openActionSheet.toggle()
                     }
             } else if message.content[0].type == "image" {
                 ImageHelper(image: message.content[0].message, contentMode: .fill, progressViewTintColor: .white)
@@ -45,7 +45,6 @@ struct SingleMessageContent: View {
                     .onLongPressGesture {
                         roomVM.action = .message
                         roomVM.actionItem = message
-                        roomVM.openActionSheet.toggle()
                     }
             } else if message.content[0].type == "video" {
                 let player = AVPlayer(url:  URL(string: message.content[0].message)!)
@@ -71,7 +70,6 @@ struct SingleMessageContent: View {
                     .onLongPressGesture {
                         roomVM.action = .message
                         roomVM.actionItem = message
-                        roomVM.openActionSheet.toggle()
                     }
             } else if message.content[0].type == "audio" {
                 //                SingleMessageAudio(message: message, me: me)

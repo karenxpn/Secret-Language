@@ -30,7 +30,6 @@ class MessageRoomViewModel: ObservableObject {
     @Published var roomID: Int = 0
     
     //ActionSheet
-    @Published var openActionSheet: Bool = false
     @Published var action: SheetAction? = .none
     @Published var actionItem: Message? = nil
     @Published var imageMessage: Message? = nil
