@@ -67,7 +67,7 @@ struct SingleMessage: View {
 
 struct SingleMessage_Previews: PreviewProvider {
     static var previews: some View {
-        SingleMessage( message: Message(id: 1, content: [ContentModel(message: "Hello, how are you? \ncan we meet today in the evening? ", type: "text")], user: MessageUserModel(id: 18, name: "Karen Mirakyan", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png"), created_at: "1m ago", read: false))
+        SingleMessage( message: Message(id: 1, content: [ContentModel(message: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", type: "image")], user: MessageUserModel(id: 20, name: "Karen Mirakyan", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png"), created_at: "1m ago", read: false))
             .environmentObject(MessageRoomViewModel())
     }
 }

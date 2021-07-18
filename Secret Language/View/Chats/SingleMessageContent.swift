@@ -28,10 +28,13 @@ struct SingleMessageContent: View {
 //                        roomVM.actionItem = message
 //                    }
             } else if message.content[0].type == "image" {
-                RoomImageMessagesHelper(image: message.content[0].message)
-                    .frame(width: UIScreen.main.bounds.size.width * 0.5)
+                ImageHelper(image: message.content[0].message, contentMode: .fill, progressViewTintColor: .white)
+                    .frame( width: UIScreen.main.bounds.size.width * 0.6, height: UIScreen.main.bounds.size.height * 0.5)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                     .cornerRadius(8)
                     .padding()
+                    .background(me ? AppColors.sentMessageBoxBG : .accentColor)
+                    .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading] : [.topLeading, .topTrailing, .bottomTrailing], 20)
 //                    .onTapGesture {
 //                        roomVM.imageMessage = message
 //                        roomVM.activeSheet = .media
@@ -40,18 +43,21 @@ struct SingleMessageContent: View {
 //                        roomVM.actionItem = message
 //                    }
             } else if message.content[0].type == "video" {
-//                let player = AVPlayer(url:  URL(string: message.content[0].message)!)
-//
-//                VideoPlayer(player: player)
-//                    .frame(width: UIScreen.main.bounds.size.width * 0.5, height: 200)
-//                    .scaledToFit()
-//                    .cornerRadius(8)
-//                    .padding()
-//                    .onAppear {
-//                        player.play()
-//                    }.onDisappear {
-//                        player.pause()
-//                    }
+                let player = AVPlayer(url:  URL(string: message.content[0].message)!)
+
+                VideoPlayer(player: player)
+                    .frame( width: UIScreen.main.bounds.size.width * 0.6, height: UIScreen.main.bounds.size.height * 0.5)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .scaledToFit()
+                    .cornerRadius(8)
+                    .padding()
+                    .background(me ? AppColors.sentMessageBoxBG : .accentColor)
+                    .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading] : [.topLeading, .topTrailing, .bottomTrailing], 20)
+                    .onAppear {
+                        player.play()
+                    }.onDisappear {
+                        player.pause()
+                    }
 //                    .onTapGesture {
 //                        roomVM.imageMessage = message
 //                        roomVM.activeSheet = .media
@@ -98,6 +104,6 @@ struct SingleMessageContent: View {
 }
 struct SingleMessageContent_Previews: PreviewProvider {
     static var previews: some View {
-        SingleMessageContent(message: Message(id: 1, content: [ContentModel(message: "Hello, how are you?", type: "text")], user: MessageUserModel(id: 20, name: "Karen Mirakyan", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png"), created_at: "1m ago", read: false), me: false)
+        SingleMessageContent(message: Message(id: 1, content: [ContentModel(message: "https://www.youtube.com/watch?v=zWh3CShX_do", type: "video")], user: MessageUserModel(id: 20, name: "Karen Mirakyan", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png"), created_at: "1m ago", read: false), me: false).environmentObject(MessageRoomViewModel())
     }
 }
