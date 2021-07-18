@@ -15,7 +15,8 @@ struct MessageBar: View {
         HStack {
             
             Button(action: {
-                roomVM.openActionSheet.toggle()
+                roomVM.action = .media
+//                roomVM.openActionSheet.toggle()
             }, label: {
                 Image( systemName: "plus.circle")
                     .foregroundColor(.accentColor)

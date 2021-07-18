@@ -10,6 +10,12 @@ import SwiftUI
 import Combine
 import PusherSwift
 
+enum SheetAction: Identifiable {
+    var id: Self { self }
+    case message
+    case media
+}
+
 class MessageRoomViewModel: ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "userID" ) private var userID: Int = 0
@@ -23,7 +29,11 @@ class MessageRoomViewModel: ObservableObject {
     @Published var lastMessageID: Int = 0
     @Published var roomID: Int = 0
     
+    //ActionSheet
     @Published var openActionSheet: Bool = false
+    @Published var action: SheetAction? = .none
+    @Published var actionItem: Message? = nil
+    @Published var imageMessage: Message? = nil
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ChatServiceProtocol

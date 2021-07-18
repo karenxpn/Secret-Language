@@ -24,9 +24,11 @@ struct SingleMessageContent: View {
                     .padding()
                     .background(me ? AppColors.sentMessageBoxBG : .accentColor)
                     .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading] : [.topLeading, .topTrailing, .bottomTrailing], 20)
-//                    .onLongPressGesture {
-//                        roomVM.actionItem = message
-//                    }
+                    .onLongPressGesture {
+                        roomVM.action = .message
+                        roomVM.actionItem = message
+                        roomVM.openActionSheet.toggle()
+                    }
             } else if message.content[0].type == "image" {
                 ImageHelper(image: message.content[0].message, contentMode: .fill, progressViewTintColor: .white)
                     .frame( width: UIScreen.main.bounds.size.width * 0.6, height: UIScreen.main.bounds.size.height * 0.5)
@@ -35,16 +37,19 @@ struct SingleMessageContent: View {
                     .padding()
                     .background(me ? AppColors.sentMessageBoxBG : .accentColor)
                     .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading] : [.topLeading, .topTrailing, .bottomTrailing], 20)
-//                    .onTapGesture {
-//                        roomVM.imageMessage = message
-//                        roomVM.activeSheet = .media
-//                        roomVM.openSheet.toggle()
-//                    }.onLongPressGesture {
-//                        roomVM.actionItem = message
-//                    }
+                    //                    .onTapGesture {
+                    //                        roomVM.imageMessage = message
+                    //                        roomVM.activeSheet = .media
+                    //                        roomVM.openSheet.toggle()
+                    //                    }
+                    .onLongPressGesture {
+                        roomVM.action = .message
+                        roomVM.actionItem = message
+                        roomVM.openActionSheet.toggle()
+                    }
             } else if message.content[0].type == "video" {
                 let player = AVPlayer(url:  URL(string: message.content[0].message)!)
-
+                
                 VideoPlayer(player: player)
                     .frame( width: UIScreen.main.bounds.size.width * 0.6, height: UIScreen.main.bounds.size.height * 0.5)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
@@ -58,48 +63,52 @@ struct SingleMessageContent: View {
                     }.onDisappear {
                         player.pause()
                     }
-//                    .onTapGesture {
-//                        roomVM.imageMessage = message
-//                        roomVM.activeSheet = .media
-//                        roomVM.openSheet.toggle()
-//                    }.onLongPressGesture {
-//                        roomVM.actionItem = message
-//                    }
-            } else if message.content[0].type == "audio" {
-//                SingleMessageAudio(message: message, me: me)
-//                    .environmentObject(roomVM)
-            }
-        } else {
-            let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
-            
-            LazyVGrid(columns: columns, spacing: 8) {
-                
-                ForEach(message.content, id: \.self ) { content in
-                    if content.type == "image" {
-                        RoomImageMessagesHelper(image: content.message)
-                            .frame(width: UIScreen.main.bounds.size.width * 0.28, height: 150)
-                            .cornerRadius(8)
-                        
+                    //                    .onTapGesture {
+                    //                        roomVM.imageMessage = message
+                    //                        roomVM.activeSheet = .media
+                    //                        roomVM.openSheet.toggle()
+                    //                    }
+                    .onLongPressGesture {
+                        roomVM.action = .message
+                        roomVM.actionItem = message
+                        roomVM.openActionSheet.toggle()
                     }
-//                    else if content.type == "video" {
-//                        let player = AVPlayer(url:  URL(string: content.message)!)
-//                        
-//                        VideoPlayer(player: player)
-//                            .frame(width: UIScreen.main.bounds.size.width * 0.28, height: 150)
-//                            .scaledToFit()
-//                            .cornerRadius(8)
-//                    }
-                }
-                
-            }.padding()
-//            .onTapGesture {
-//                roomVM.imageMessage = message
-//                roomVM.activeSheet = .media
-//                roomVM.openSheet.toggle()
-//            }.onLongPressGesture {
-//                roomVM.actionItem = message
-//            }
+            } else if message.content[0].type == "audio" {
+                //                SingleMessageAudio(message: message, me: me)
+                //                    .environmentObject(roomVM)
+            }
         }
+        //        else {
+        //            let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+        //
+        //            LazyVGrid(columns: columns, spacing: 8) {
+        //
+        //                ForEach(message.content, id: \.self ) { content in
+        //                    if content.type == "image" {
+        //                        RoomImageMessagesHelper(image: content.message)
+        //                            .frame(width: UIScreen.main.bounds.size.width * 0.28, height: 150)
+        //                            .cornerRadius(8)
+        //
+        //                    }
+        //                    else if content.type == "video" {
+        //                        let player = AVPlayer(url:  URL(string: content.message)!)
+        //
+        //                        VideoPlayer(player: player)
+        //                            .frame(width: UIScreen.main.bounds.size.width * 0.28, height: 150)
+        //                            .scaledToFit()
+        //                            .cornerRadius(8)
+        //                    }
+        //                }
+        //
+        //            }.padding()
+        //            .onTapGesture {
+        //                roomVM.imageMessage = message
+        //                roomVM.activeSheet = .media
+        //                roomVM.openSheet.toggle()
+        //            }.onLongPressGesture {
+        //                roomVM.actionItem = message
+        //            }
+        //        }
     }
 }
 struct SingleMessageContent_Previews: PreviewProvider {

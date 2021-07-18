@@ -45,12 +45,22 @@ struct ChatRoom: View {
             NotificationCenter.default.post(name: Notification.Name("showTabBar"), object: nil)
         }.onTapGesture {
             UIApplication.shared.endEditing()
-        }.actionSheet(isPresented: $roomVM.openActionSheet) {
-            ActionSheet(title: Text( NSLocalizedString("selectSource", comment: "") ), message: nil, buttons: [.default(Text( "Gallery" ), action: {
-                // open gallery
-            }), .default(Text( "Camera" ), action: {
-                // // open camera
-            }), .cancel()])
+        }.actionSheet(item: $roomVM.action) { value in
+            
+            if value == .message {
+                return ActionSheet(title: Text( NSLocalizedString("selectSource", comment: "") ), message: nil, buttons: [.default(Text( "Copy" ), action: {
+                    UIPasteboard.general.string = roomVM.actionItem?.content[0].message
+                }), .default(Text( "Delete" ), action: {
+                    print("delete item \(roomVM.actionItem?.id)")
+                }), .cancel()])
+            } else {
+                return ActionSheet(title: Text( NSLocalizedString("selectSource", comment: "") ), message: nil, buttons: [.default(Text( "Gallery" ), action: {
+                    
+                    // open gallery
+                }), .default(Text( "Camera" ), action: {
+                    // // open camera
+                }), .cancel()])
+            }
         }
     }
 }
