@@ -76,7 +76,10 @@ class MessageRoomViewModel: ObservableObject {
     }
     
     func sendTypingStatus() {
-        
+        dataManager.sendTypingStatus(token: token, roomID: roomID, typing: writingMessage)
+            .sink { response in
+                // check the response and add typing view to the chat room
+            }.store(in: &cancellableSet)
     }
     
     func sendMessage(message: SendingMessageModel) {
