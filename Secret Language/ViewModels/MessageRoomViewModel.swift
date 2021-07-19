@@ -85,9 +85,6 @@ class MessageRoomViewModel: ObservableObject {
     func getTypingStatus() {
         dataManager.getTypingStatus(channel: channel, token: token, roomID: roomID) { typing in
             self.senderIsTyping = typing
-            self.lastMessageID = -1
-            
-            print(typing)
         }
     }
     

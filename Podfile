@@ -9,6 +9,7 @@ target 'Secret Language' do
 	pod 'Alamofire', '~> 5.2'
 	pod 'SDWebImageSwiftUI'
 	pod 'SDWebImageSVGCoder'
+	pod 'ActivityIndicatorView'
 	pod 'Introspect'
 	pod 'PusherSwift'
 

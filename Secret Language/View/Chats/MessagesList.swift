@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import ActivityIndicatorView
 
 struct MessagesList: View {
     
     @EnvironmentObject var roomVM: MessageRoomViewModel
     let roomID: Int
+    let username: String
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -20,8 +22,15 @@ struct MessagesList: View {
                     
                     if roomVM.senderIsTyping {
                         // show typing status
-                        ProgressView()
-                            .id(-1)
+                        VStack {
+                            Text( "\(username) is typing..." )
+                                .foregroundColor(.white)
+                                .font(.custom("times", size: 15))
+
+                            ActivityIndicatorView(isVisible: $roomVM.senderIsTyping, type: .scalingDots)
+                                .foregroundColor(.white)
+                                .frame(width: 50, height: 20)
+                        }.rotationEffect(.radians(3.14))
                     }
                     
                     ForEach(roomVM.messages, id: \.id) { message in

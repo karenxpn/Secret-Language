@@ -29,11 +29,10 @@ class ChatService {
 
 extension ChatService: ChatServiceProtocol {
     func getTypingStatus(channel: PusherChannel, token: String, roomID: Int, completion: @escaping (Bool) -> ()) {
-        channel.bind(eventName: "chatMessages\(roomID)", eventCallback: { (event: PusherEvent) -> Void in
+        channel.bind(eventName: "chatTyping", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {
                 if let data = stringData.data(using: .utf8) {
                     
-                    print(data)
                     guard let typing = try? JSONDecoder().decode(TypingResponse.self, from: data) else {
                         return
                     }

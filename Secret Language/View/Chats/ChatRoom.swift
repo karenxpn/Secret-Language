@@ -28,7 +28,7 @@ struct ChatRoom: View {
             Background()
 
             VStack(spacing: 0) {
-                MessagesList(roomID: roomID)
+                MessagesList(roomID: roomID, username: user.name)
                     .environmentObject(roomVM)
                 
                 MessageBar().environmentObject(roomVM)
