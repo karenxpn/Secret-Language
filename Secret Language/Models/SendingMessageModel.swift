@@ -8,5 +8,5 @@
 import Foundation
 struct SendingMessageModel: Codable {
     var type: String
-    var message: String
+    var content: String
 }

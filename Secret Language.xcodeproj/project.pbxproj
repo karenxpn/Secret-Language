@@ -100,6 +100,7 @@
 		FFBEA69B2664E42A0033B2ED /* Secret_LanguageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA69A2664E42A0033B2ED /* Secret_LanguageUITests.swift */; };
 		FFBEA6A92664E4D00033B2ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6A82664E4D00033B2ED /* LaunchScreen.storyboard */; };
 		FFBEA6B12664E72D0033B2ED /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6B02664E72D0033B2ED /* .gitignore */; };
+		FFCAA21426A61409002054DC /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCAA21326A61409002054DC /* CameraView.swift */; };
 		FFCEDDEF266E491F0073BE20 /* AuthNavTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDDEE266E491F0073BE20 /* AuthNavTitle.swift */; };
 		FFCEDDF1266E642C0073BE20 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDDF0266E642C0073BE20 /* SignUpRequest.swift */; };
 		FFCEDDF3266FB0350073BE20 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFCEDDF2266FB0350073BE20 /* AuthResponse.swift */; };
@@ -130,7 +131,7 @@
 		FFDB159526658C3400341E8F /* MockAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB159426658C3400341E8F /* MockAuthService.swift */; };
 		FFDB159726658EDF00341E8F /* AuthViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB159626658EDF00341E8F /* AuthViewModelTests.swift */; };
 		FFDB15A02666571A00341E8F /* OTPTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB159F2666571A00341E8F /* OTPTextFieldView.swift */; };
-		FFDB15A32666576900341E8F /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = FFDB15A22666576900341E8F /* SwiftPackageProductDependency */; };
+		FFDB15A32666576900341E8F /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = FFDB15A22666576900341E8F /* SwiftUIX */; };
 		FFDB15A726669AA000341E8F /* ChooseGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15A626669AA000341E8F /* ChooseGender.swift */; };
 		FFDB15A926669B9400341E8F /* TopGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15A826669B9400341E8F /* TopGender.swift */; };
 		FFDB15AB26669F7C00341E8F /* MoreGenders.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDB15AA26669F7C00341E8F /* MoreGenders.swift */; };
@@ -273,6 +274,7 @@
 		FFBEA69C2664E42A0033B2ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFBEA6A82664E4D00033B2ED /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFBEA6B02664E72D0033B2ED /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FFCAA21326A61409002054DC /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		FFCEDDEE266E491F0073BE20 /* AuthNavTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNavTitle.swift; sourceTree = "<group>"; };
 		FFCEDDF0266E642C0073BE20 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
 		FFCEDDF2266FB0350073BE20 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
@@ -327,7 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF3D63D92697902F00799E72 /* StoreKit.framework in Frameworks */,
-				FFDB15A32666576900341E8F /* BuildFile in Frameworks */,
+				FFDB15A32666576900341E8F /* SwiftUIX in Frameworks */,
 				B3967179856FBBF97DC71F71 /* Pods_Secret_Language.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,6 +627,7 @@
 				FF8AA6E026A31DB9000C6B41 /* SingleMessageContent.swift */,
 				FF18DC45269FAA96004BE946 /* ChatRoomNavBar.swift */,
 				FF3727EF26A5074500B20925 /* Gallery.swift */,
+				FFCAA21326A61409002054DC /* CameraView.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -736,7 +739,7 @@
 			);
 			name = "Secret Language";
 			packageProductDependencies = (
-				FFDB15A22666576900341E8F /* SwiftPackageProductDependency */,
+				FFDB15A22666576900341E8F /* SwiftUIX */,
 			);
 			productName = "Secret Language";
 			productReference = FFBEA67A2664E4290033B2ED /* Secret Language.app */;
@@ -813,7 +816,7 @@
 			);
 			mainGroup = FFBEA6712664E4290033B2ED;
 			packageReferences = (
-				FFDB15A12666576900341E8F /* RemoteSwiftPackageReference */,
+				FFDB15A12666576900341E8F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = FFBEA67B2664E4290033B2ED /* Products */;
 			projectDirPath = "";
@@ -985,6 +988,7 @@
 				FFDB158D26655E7800341E8F /* CustomAlert.swift in Sources */,
 				FF997E95268C96C10057B731 /* ReportViewModel.swift in Sources */,
 				FFCEDDFF267235FB0073BE20 /* Chat.swift in Sources */,
+				FFCAA21426A61409002054DC /* CameraView.swift in Sources */,
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
 				FF3727F026A5074500B20925 /* Gallery.swift in Sources */,
 				FF3D63D52697273F00799E72 /* PathReport.swift in Sources */,
@@ -1431,7 +1435,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FFDB15A12666576900341E8F /* RemoteSwiftPackageReference */ = {
+		FFDB15A12666576900341E8F /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
 			requirement = {
@@ -1442,9 +1446,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FFDB15A22666576900341E8F /* SwiftPackageProductDependency */ = {
+		FFDB15A22666576900341E8F /* SwiftUIX */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FFDB15A12666576900341E8F /* RemoteSwiftPackageReference */;
+			package = FFDB15A12666576900341E8F /* XCRemoteSwiftPackageReference "SwiftUIX" */;
 			productName = SwiftUIX;
 		};
 /* End XCSwiftPackageProductDependency section */

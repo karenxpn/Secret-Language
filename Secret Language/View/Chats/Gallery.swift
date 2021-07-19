@@ -32,10 +32,10 @@ struct Gallery: UIViewControllerRepresentable {
     }
     
     class Coordinator: NSObject, PHPickerViewControllerDelegate {
-        var partent: Gallery
+        var parent: Gallery
         
         init( parent: Gallery) {
-            self.partent = parent
+            self.parent = parent
         }
         
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
@@ -74,7 +74,7 @@ struct Gallery: UIViewControllerRepresentable {
                     if let uiimage = img as? UIImage {
                         if let imageData = uiimage.fixOrientation()!.jpegData(compressionQuality: 0.5) {
                             DispatchQueue.main.async {
-                                self.partent.roomVM.sendMessage(message: SendingMessageModel(type: "image", message: imageData.base64EncodedString()))
+                                self.parent.roomVM.sendMessage(message: SendingMessageModel(type: "image", content: imageData.base64EncodedString()))
                             }
                         }
                     }
@@ -92,7 +92,7 @@ struct Gallery: UIViewControllerRepresentable {
                 
                 if let data = try? Data(contentsOf: URL(fileURLWithPath: url.path)) {
                     DispatchQueue.main.async {
-                        self.partent.roomVM.sendMessage(message: SendingMessageModel(type: "video", message: data.base64EncodedString()))
+                        self.parent.roomVM.sendMessage(message: SendingMessageModel(type: "video", content: data.base64EncodedString()))
                     }
                 }
             }

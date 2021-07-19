@@ -6,6 +6,8 @@
 	<string>Alow your location to get your matches in more accurate way</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>Allow access to your library to share media!</string>
+    <key>NSCameraUsageDescription</key>
+    <string>This app needs camera permission to take images</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

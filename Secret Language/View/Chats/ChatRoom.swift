@@ -60,7 +60,8 @@ struct ChatRoom: View {
                 Gallery()
                     .environmentObject(roomVM)
             } else if roomVM.activeSheet == .camera {
-                EmptyView()
+                CameraView()
+                    .environmentObject(roomVM)
             }else {
                EmptyView()
             }

@@ -70,7 +70,7 @@ extension ChatService: ChatServiceProtocol {
     }
     
     func sendMessage(token: String, roomID: Int, message: SendingMessageModel) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)sendMessage\(roomID)")!
+        let url = URL(string: "\(Credentials.BASE_URL)sendMessage/\(roomID)")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
