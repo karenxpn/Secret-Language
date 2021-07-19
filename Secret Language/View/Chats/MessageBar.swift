@@ -32,10 +32,10 @@ struct MessageBar: View {
                     .font(.custom("Gilroy_Regular", size: 15))
 
                 Button {
-                    
+                    roomVM.sendMessage(message: SendingMessageModel(type: "text", message: roomVM.messageText))
                 } label: {
                     Image("send")
-                }
+                }.disabled(roomVM.messageText.isEmpty)
                 
             }.padding()
             .frame(width: .greedy, height: 50)

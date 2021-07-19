@@ -16,6 +16,13 @@ enum SheetAction: Identifiable {
     case media
 }
 
+enum ActiveGallerySheet {
+   case gallery, media
+   var id: Int {
+      hashValue
+   }
+}
+
 class MessageRoomViewModel: ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "userID" ) private var userID: Int = 0
@@ -34,6 +41,9 @@ class MessageRoomViewModel: ObservableObject {
     @Published var actionItem: Message? = nil
     @Published var imageMessage: Message? = nil
     
+    @Published var activeSheet: ActiveGallerySheet? = .none
+    @Published var openSheet: Bool = false
+        
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ChatServiceProtocol
     var channel: PusherChannel
@@ -67,5 +77,14 @@ class MessageRoomViewModel: ObservableObject {
     
     func sendTypingStatus() {
         
+    }
+    
+    func sendMessage(message: SendingMessageModel) {
+        dataManager.sendMessage(token: token, roomID: roomID, message: message)
+            .sink { response in
+                if response.error == nil {
+                    self.messageText = ""
+                }
+            }.store(in: &cancellableSet)
     }
 }

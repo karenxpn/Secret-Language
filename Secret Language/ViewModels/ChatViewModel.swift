@@ -21,7 +21,7 @@ class ChatViewModel: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ChatServiceProtocol
     var channel: PusherChannel
-
+    
     @Published var chats = PreviewParameters.chatList
     
     init(dataManager: ChatServiceProtocol = ChatService.shared) {

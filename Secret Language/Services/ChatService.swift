@@ -16,6 +16,8 @@ protocol ChatServiceProtocol {
     func fetchRoomMessages(token: String, roomID: Int, lastMessageID: Int) -> AnyPublisher<DataResponse<[Message], NetworkError>, Never>
     func fetchMessagesListWithPusher( channel: PusherChannel, roomID: Int, completion: @escaping ( Message ) -> () )
     
+    func sendMessage( token: String, roomID: Int, message: SendingMessageModel) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    
 }
 
 class ChatService {
@@ -25,6 +27,28 @@ class ChatService {
 }
 
 extension ChatService: ChatServiceProtocol {
+    func sendMessage(token: String, roomID: Int, message: SendingMessageModel) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)sendMessage")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        return AF.request(url,
+                          method: .post,
+                          parameters: message,
+                          encoder: JSONParameterEncoder.default,
+                          headers: headers)
+            .validate()
+            .publishDecodable(type: GlobalResponse.self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+        
+    }
+    
     func fetchMessagesListWithPusher(channel: PusherChannel, roomID: Int, completion: @escaping (Message) -> ()) {
         channel.bind(eventName: "chatMessages\(roomID)", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {

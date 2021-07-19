@@ -4,6 +4,8 @@
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Alow your location to get your matches in more accurate way</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Allow access to your library to share media!</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
