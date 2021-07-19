@@ -13,16 +13,7 @@ struct ChatRoom: View {
     let user: ChatUserModel
     
     @ObservedObject var roomVM = MessageRoomViewModel()
-    
-    init(roomID: Int, user: ChatUserModel) {
-        
-        self.roomID = roomID
-        self.user = user
-                
-        roomVM.getChatRoomMessagesWithPusher()
-        roomVM.getTypingStatus()
-    }
-    
+
     var body: some View {
         ZStack(alignment: .bottom) {
             Background()
@@ -46,6 +37,9 @@ struct ChatRoom: View {
                 
             } else {
                 roomVM.roomID = roomID
+                roomVM.getChatRoomMessagesWithPusher()
+                roomVM.getTypingStatus()
+                
                 if roomVM.messages.isEmpty {
                     roomVM.getChatRoomMessages( lastMessageID: 0)
                 }

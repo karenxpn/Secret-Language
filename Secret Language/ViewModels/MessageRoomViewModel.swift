@@ -83,7 +83,7 @@ class MessageRoomViewModel: ObservableObject {
     }
     
     func getTypingStatus() {
-        dataManager.getTypingStatus(channel: channel, token: token, roomID: roomID) { typing in
+        dataManager.getTypingStatus(channel: channel, roomID: roomID) { typing in
             withAnimation {
                 self.senderIsTyping = typing
             }

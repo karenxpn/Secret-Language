@@ -18,7 +18,7 @@ protocol ChatServiceProtocol {
     
     func sendMessage( token: String, roomID: Int, message: SendingMessageModel) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func sendTypingStatus( token: String, roomID: Int, typing: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
-    func getTypingStatus( channel: PusherChannel, token: String, roomID: Int, completion: @escaping ( Bool ) -> () )
+    func getTypingStatus( channel: PusherChannel, roomID: Int, completion: @escaping ( Bool ) -> () )
 }
 
 class ChatService {
@@ -28,8 +28,8 @@ class ChatService {
 }
 
 extension ChatService: ChatServiceProtocol {
-    func getTypingStatus(channel: PusherChannel, token: String, roomID: Int, completion: @escaping (Bool) -> ()) {
-        channel.bind(eventName: "chatTyping", eventCallback: { (event: PusherEvent) -> Void in
+    func getTypingStatus(channel: PusherChannel, roomID: Int, completion: @escaping (Bool) -> ()) {
+        channel.bind(eventName: "typing\(roomID)", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {
                 if let data = stringData.data(using: .utf8) {
                     
@@ -49,7 +49,7 @@ extension ChatService: ChatServiceProtocol {
     }
     
     func sendTypingStatus(token: String, roomID: Int, typing: Bool) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)sendTyping\(roomID)")!
+        let url = URL(string: "\(Credentials.BASE_URL)chats/sendTyping/\(roomID)")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
@@ -70,7 +70,7 @@ extension ChatService: ChatServiceProtocol {
     }
     
     func sendMessage(token: String, roomID: Int, message: SendingMessageModel) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)sendMessage/\(roomID)")!
+        let url = URL(string: "\(Credentials.BASE_URL)chats/sendMessage/\(roomID)")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
