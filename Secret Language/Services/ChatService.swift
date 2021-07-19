@@ -14,7 +14,7 @@ protocol ChatServiceProtocol {
     func fetchChatList( token: String ) -> AnyPublisher<DataResponse<[ChatModel], NetworkError>, Never>
     func fetchChatListWithPusher( channel: PusherChannel, completion: @escaping ( [ChatModel] ) -> () )
     func fetchRoomMessages(token: String, roomID: Int, lastMessageID: Int) -> AnyPublisher<DataResponse<[Message], NetworkError>, Never>
-    func fetchMessagesListWithPusher( channel: PusherChannel, roomID: Int, completion: @escaping ( Message ) -> () )
+    func fetchMessageWithPusher( channel: PusherChannel, roomID: Int, completion: @escaping ( Message ) -> () )
     
     func sendMessage( token: String, roomID: Int, message: SendingMessageModel) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func sendTypingStatus( token: String, roomID: Int, typing: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
@@ -90,8 +90,8 @@ extension ChatService: ChatServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func fetchMessagesListWithPusher(channel: PusherChannel, roomID: Int, completion: @escaping (Message) -> ()) {
-        channel.bind(eventName: "chatMessages\(roomID)", eventCallback: { (event: PusherEvent) -> Void in
+    func fetchMessageWithPusher(channel: PusherChannel, roomID: Int, completion: @escaping (Message) -> ()) {
+        channel.bind(eventName: "chatMessage\(roomID)", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {
                 if let data = stringData.data(using: .utf8) {
                     

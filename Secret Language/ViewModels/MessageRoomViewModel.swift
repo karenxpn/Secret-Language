@@ -72,7 +72,7 @@ class MessageRoomViewModel: ObservableObject {
     }
     
     func getChatRoomMessagesWithPusher() {
-        dataManager.fetchMessagesListWithPusher(channel: channel, roomID: roomID) { message in
+        dataManager.fetchMessageWithPusher(channel: channel, roomID: roomID) { message in
             self.messages.insert(message, at: 0)
         }
     }
