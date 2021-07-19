@@ -18,6 +18,12 @@ struct MessagesList: View {
                 
                 LazyVStack(spacing: 15) {
                     
+                    if roomVM.senderIsTyping {
+                        // show typing status
+                        ProgressView()
+                            .id(-1)
+                    }
+                    
                     ForEach(roomVM.messages, id: \.id) { message in
                         SingleMessage(message: message)
                             .environmentObject(roomVM)

@@ -14,6 +14,15 @@ struct ChatRoom: View {
     
     @ObservedObject var roomVM = MessageRoomViewModel()
     
+    init(roomID: Int, user: ChatUserModel) {
+        
+        self.roomID = roomID
+        self.user = user
+                
+        roomVM.getChatRoomMessagesWithPusher()
+        roomVM.getTypingStatus()
+    }
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             Background()
@@ -60,8 +69,8 @@ struct ChatRoom: View {
                 return ActionSheet(title: Text( NSLocalizedString("actions", comment: "") ), message: nil, buttons: [.default(Text( "Copy" ), action: {
                     UIPasteboard.general.string = roomVM.actionItem?.content[0].message
                 }), .destructive(Text( "Delete" ), action: {
-                    // delete item here
-//                    print("delete item \(roomVM.actionItem?.id)")
+//                  delete item here
+//                  print("delete item \(roomVM.actionItem?.id)")
                 }), .cancel()])
             } else {
                 return ActionSheet(title: Text( NSLocalizedString("selectSource", comment: "") ), message: nil, buttons: [.default(Text( "Gallery" ), action: {

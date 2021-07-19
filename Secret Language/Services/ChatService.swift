@@ -18,7 +18,7 @@ protocol ChatServiceProtocol {
     
     func sendMessage( token: String, roomID: Int, message: SendingMessageModel) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func sendTypingStatus( token: String, roomID: Int, typing: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
-    
+    func getTypingStatus( channel: PusherChannel, token: String, roomID: Int, completion: @escaping ( Bool ) -> () )
 }
 
 class ChatService {
@@ -28,6 +28,27 @@ class ChatService {
 }
 
 extension ChatService: ChatServiceProtocol {
+    func getTypingStatus(channel: PusherChannel, token: String, roomID: Int, completion: @escaping (Bool) -> ()) {
+        channel.bind(eventName: "chatMessages\(roomID)", eventCallback: { (event: PusherEvent) -> Void in
+            if let stringData: String = event.data {
+                if let data = stringData.data(using: .utf8) {
+                    
+                    print(data)
+                    guard let typing = try? JSONDecoder().decode(TypingResponse.self, from: data) else {
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        completion(typing.typing)
+                    }
+                    
+                } else {
+                    return
+                }
+            }
+        })
+    }
+    
     func sendTypingStatus(token: String, roomID: Int, typing: Bool) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)sendTyping\(roomID)")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]

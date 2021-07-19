@@ -43,6 +43,8 @@ class MessageRoomViewModel: ObservableObject {
     
     @Published var activeSheet: ActiveGallerySheet? = .none
     @Published var openSheet: Bool = false
+    
+    @Published var senderIsTyping: Bool = false
         
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ChatServiceProtocol
@@ -77,9 +79,16 @@ class MessageRoomViewModel: ObservableObject {
     
     func sendTypingStatus() {
         dataManager.sendTypingStatus(token: token, roomID: roomID, typing: writingMessage)
-            .sink { response in
-                // check the response and add typing view to the chat room
-            }.store(in: &cancellableSet)
+            .sink { _ in }.store(in: &cancellableSet)
+    }
+    
+    func getTypingStatus() {
+        dataManager.getTypingStatus(channel: channel, token: token, roomID: roomID) { typing in
+            self.senderIsTyping = typing
+            self.lastMessageID = -1
+            
+            print(typing)
+        }
     }
     
     func sendMessage(message: SendingMessageModel) {

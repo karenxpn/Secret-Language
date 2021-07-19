@@ -23,6 +23,7 @@
 		FF1AD6C7268645E100B0DCC9 /* PusherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1AD6C6268645E100B0DCC9 /* PusherManager.swift */; };
 		FF3727EE26A5051C00B20925 /* SendingMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3727ED26A5051C00B20925 /* SendingMessageModel.swift */; };
 		FF3727F026A5074500B20925 /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3727EF26A5074500B20925 /* Gallery.swift */; };
+		FF3727F226A5DA2400B20925 /* TypingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3727F126A5DA2400B20925 /* TypingResponse.swift */; };
 		FF3D63C12693C98B00799E72 /* WeekReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63C02693C98B00799E72 /* WeekReport.swift */; };
 		FF3D63C32693C99500799E72 /* MonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63C22693C99500799E72 /* MonthReport.swift */; };
 		FF3D63C52693C99E00799E72 /* SeasonReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63C42693C99E00799E72 /* SeasonReport.swift */; };
@@ -188,6 +189,7 @@
 		FF1AD6C6268645E100B0DCC9 /* PusherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PusherManager.swift; sourceTree = "<group>"; };
 		FF3727ED26A5051C00B20925 /* SendingMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingMessageModel.swift; sourceTree = "<group>"; };
 		FF3727EF26A5074500B20925 /* Gallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
+		FF3727F126A5DA2400B20925 /* TypingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingResponse.swift; sourceTree = "<group>"; };
 		FF3D63C02693C98B00799E72 /* WeekReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekReport.swift; sourceTree = "<group>"; };
 		FF3D63C22693C99500799E72 /* MonthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthReport.swift; sourceTree = "<group>"; };
 		FF3D63C42693C99E00799E72 /* SeasonReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonReport.swift; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 				FF18DC33269F4D11004BE946 /* ChatModel.swift */,
 				FF8AA6DE26A09EB2000C6B41 /* Message.swift */,
 				FF3727ED26A5051C00B20925 /* SendingMessageModel.swift */,
+				FF3727F126A5DA2400B20925 /* TypingResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -989,6 +992,7 @@
 				FF4AB0FF268528B60085EA9A /* EmptyList.swift in Sources */,
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,
 				FFE0E4142677E6F6008FA78C /* MatchModel.swift in Sources */,
+				FF3727F226A5DA2400B20925 /* TypingResponse.swift in Sources */,
 				FF99A0342680C5C000F234CD /* UserPreviewModel.swift in Sources */,
 				FF99A0402681114400F234CD /* ProfileService.swift in Sources */,
 				FFDB15AB26669F7C00341E8F /* MoreGenders.swift in Sources */,
