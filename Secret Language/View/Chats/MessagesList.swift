@@ -23,20 +23,20 @@ struct MessagesList: View {
                     if roomVM.senderIsTyping {
                         // show typing status
                         VStack {
-                            Text( "\(username) is typing..." )
+                            Text( "\(username) is typing" )
                                 .foregroundColor(.white)
                                 .font(.custom("times", size: 15))
 
                             ActivityIndicatorView(isVisible: $roomVM.senderIsTyping, type: .scalingDots)
-                                .foregroundColor(.white)
-                                .frame(width: 50, height: 20)
+                                .foregroundColor(.accentColor)
+                                .frame(width: 40, height: 15)
                         }.rotationEffect(.radians(3.14))
                     }
                     
                     ForEach(roomVM.messages, id: \.id) { message in
                         SingleMessage(message: message)
                             .environmentObject(roomVM)
-                            .padding(.bottom, roomVM.messages[0].id == message.id ? UIScreen.main.bounds.size.height * 0.05 : 0)
+//                            .padding(.bottom, ( roomVM.messages[0].id == message.id && !roomVM.senderIsTyping) ? UIScreen.main.bounds.size.height * 0.05 : 0)
                             .rotationEffect(.radians(3.14))
                             .onAppear {
                                 if message.id == roomVM.messages[roomVM.messages.count-1].id {
@@ -67,9 +67,10 @@ struct MessagesList: View {
         .padding(.top, 1)
     }
 }
-//
-//struct MessagesList_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MessagesList()
-//    }
-//}
+
+struct MessagesList_Previews: PreviewProvider {
+    static var previews: some View {
+        MessagesList(roomID: 1, username: "Karen Mirakyan")
+            .environmentObject(MessageRoomViewModel())
+    }
+}

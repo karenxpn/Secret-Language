@@ -59,7 +59,9 @@ struct ChatRoom: View {
             if roomVM.activeSheet == .gallery {
                 Gallery()
                     .environmentObject(roomVM)
-            } else {
+            } else if roomVM.activeSheet == .camera {
+                EmptyView()
+            }else {
                EmptyView()
             }
 
@@ -80,6 +82,8 @@ struct ChatRoom: View {
                     roomVM.openSheet.toggle()
                 }), .default(Text( "Camera" ), action: {
                     // // open camera
+                    roomVM.activeSheet = .camera
+                    roomVM.openSheet.toggle()
                 }), .cancel()])
             }
         }

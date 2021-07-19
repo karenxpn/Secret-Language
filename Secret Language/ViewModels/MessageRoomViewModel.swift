@@ -17,7 +17,7 @@ enum SheetAction: Identifiable {
 }
 
 enum ActiveGallerySheet {
-   case gallery, media
+   case gallery, camera, media
    var id: Int {
       hashValue
    }
@@ -84,7 +84,9 @@ class MessageRoomViewModel: ObservableObject {
     
     func getTypingStatus() {
         dataManager.getTypingStatus(channel: channel, token: token, roomID: roomID) { typing in
-            self.senderIsTyping = typing
+            withAnimation {
+                self.senderIsTyping = typing
+            }
         }
     }
     

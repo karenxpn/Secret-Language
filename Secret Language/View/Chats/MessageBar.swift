@@ -16,7 +16,6 @@ struct MessageBar: View {
             
             Button(action: {
                 roomVM.action = .media
-//                roomVM.openActionSheet.toggle()
             }, label: {
                 Image( systemName: "plus.circle")
                     .foregroundColor(.accentColor)

@@ -21,6 +21,7 @@ struct SingleMessageContent: View {
                     .foregroundColor( me ? .white : .black)
                     .foregroundColor(.white)
                     .font(.custom("Gilroy-Regular", size: 16))
+                    .lineLimit(nil)
                     .padding()
                     .background(me ? AppColors.sentMessageBoxBG : .accentColor)
                     .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading] : [.topLeading, .topTrailing, .bottomTrailing], 20)
@@ -76,37 +77,6 @@ struct SingleMessageContent: View {
                 //                    .environmentObject(roomVM)
             }
         }
-        //        else {
-        //            let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
-        //
-        //            LazyVGrid(columns: columns, spacing: 8) {
-        //
-        //                ForEach(message.content, id: \.self ) { content in
-        //                    if content.type == "image" {
-        //                        RoomImageMessagesHelper(image: content.message)
-        //                            .frame(width: UIScreen.main.bounds.size.width * 0.28, height: 150)
-        //                            .cornerRadius(8)
-        //
-        //                    }
-        //                    else if content.type == "video" {
-        //                        let player = AVPlayer(url:  URL(string: content.message)!)
-        //
-        //                        VideoPlayer(player: player)
-        //                            .frame(width: UIScreen.main.bounds.size.width * 0.28, height: 150)
-        //                            .scaledToFit()
-        //                            .cornerRadius(8)
-        //                    }
-        //                }
-        //
-        //            }.padding()
-        //            .onTapGesture {
-        //                roomVM.imageMessage = message
-        //                roomVM.activeSheet = .media
-        //                roomVM.openSheet.toggle()
-        //            }.onLongPressGesture {
-        //                roomVM.actionItem = message
-        //            }
-        //        }
     }
 }
 struct SingleMessageContent_Previews: PreviewProvider {
