@@ -38,7 +38,6 @@ struct SingleMessage: View {
                 Spacer()
             }.padding(.horizontal)
 
-
         } else {
             
             HStack( alignment: .bottom) {

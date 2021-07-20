@@ -94,7 +94,8 @@ struct MonthlySubscriptionView: View {
                 }
 
             }.padding(.top, 1)
-        }
+        }.navigationBarTitle("")
+        .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("subscription", comment: "")), displayMode: .inline)
     }
 }
 

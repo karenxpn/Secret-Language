@@ -24,7 +24,8 @@ struct SingleMessageContent: View {
                     .lineLimit(nil)
                     .padding()
                     .background(me ? AppColors.sentMessageBoxBG : .accentColor)
-                    .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading] : [.topLeading, .topTrailing, .bottomTrailing], 20)
+                    .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading]
+                                      : [.topLeading, .topTrailing, .bottomTrailing], 20)
                     .onTapGesture {}
                     .onLongPressGesture {
                         roomVM.action = .message
@@ -37,7 +38,8 @@ struct SingleMessageContent: View {
                     .cornerRadius(8)
                     .padding()
                     .background(me ? AppColors.sentMessageBoxBG : .accentColor)
-                    .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading] : [.topLeading, .topTrailing, .bottomTrailing], 20)
+                    .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading]
+                                      : [.topLeading, .topTrailing, .bottomTrailing], 20)
                     //                    .onTapGesture {
                     //                        roomVM.imageMessage = message
                     //                        roomVM.activeSheet = .media
@@ -57,7 +59,8 @@ struct SingleMessageContent: View {
                     .cornerRadius(8)
                     .padding()
                     .background(me ? AppColors.sentMessageBoxBG : .accentColor)
-                    .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading] : [.topLeading, .topTrailing, .bottomTrailing], 20)
+                    .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading]
+                                      : [.topLeading, .topTrailing, .bottomTrailing], 20)
                     .onAppear {
                         player.play()
                     }.onDisappear {
