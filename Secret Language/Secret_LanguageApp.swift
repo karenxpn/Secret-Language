@@ -9,6 +9,7 @@ import SwiftUI
 @main
 struct Secret_LanguageApp: App {
     
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @AppStorage( "token" ) private var token = ""
     
     init() {
