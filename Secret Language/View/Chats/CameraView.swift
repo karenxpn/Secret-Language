@@ -41,7 +41,9 @@ struct CameraView: UIViewControllerRepresentable {
             if let uiImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
                 if let imageData = uiImage.jpegData(compressionQuality: 0.9) {
                     DispatchQueue.main.async {
-                        self.parent.roomVM.sendMessage(message: SendingMessageModel(type: "image", content: imageData.base64EncodedString()))
+                        self.parent.roomVM.sendMessage(message:
+                                                        SendingMessageModel(type: "image",
+                                                                            content: imageData.base64EncodedString()))
                         
                         picker.dismiss()
                     }

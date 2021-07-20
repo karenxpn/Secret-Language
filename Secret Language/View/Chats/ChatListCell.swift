@@ -21,7 +21,7 @@ struct ChatListCell: View {
             VStack {
                 HStack {
                     ImageHelper(image: chat.image, contentMode: .fill, progressViewTintColor: .gray)
-                        .frame(width: 50, height: 50)
+                        .frame(width: 55, height: 55)
                         .clipShape(Circle())
                         .padding(.trailing)
                     
