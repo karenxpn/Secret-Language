@@ -10,6 +10,7 @@ import PusherSwift
 
 struct ContentView: View {
     
+    @StateObject var notificationsVM = NotificationsViewModel()
     @State private var currentTab: Int = 0
     
     var body: some View {
@@ -37,9 +38,12 @@ struct ContentView: View {
             }
         
             CustomTabBar( currentTab: $currentTab )
-//                .offset(y: -10)
             
         }.edgesIgnoringSafeArea(.bottom)
+        .onAppear {
+            notificationsVM.requestPermission()
+        }
+        
     }
 }
 
