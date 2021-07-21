@@ -36,10 +36,22 @@ struct ChatListCell: View {
                             .foregroundColor(AppColors.messagePreviewTimeColor)
                             .font(.custom("Gilroy-Regular", size: 12))
                         
-                        Text( chat.message.content[0].message)
-                            .foregroundColor(AppColors.messagePreviewColor)
-                            .font(.custom("Gilroy-Regular", size: 15))
-                            .lineLimit(1)
+                        if chat.message.content[0].type == "image" {
+                            Text( "Photo")
+                                .foregroundColor(AppColors.messagePreviewColor)
+                                .font(.custom("Gilroy-Regular", size: 15))
+                                .lineLimit(1)
+                        } else if chat.message.content[0].type == "video" {
+                            Text("Video")
+                                .foregroundColor(AppColors.messagePreviewColor)
+                                .font(.custom("Gilroy-Regular", size: 15))
+                                .lineLimit(1)
+                        } else {
+                            Text( chat.message.content[0].message)
+                                .foregroundColor(AppColors.messagePreviewColor)
+                                .font(.custom("Gilroy-Regular", size: 15))
+                                .lineLimit(1)
+                        }
                     }
                     
                     Spacer()

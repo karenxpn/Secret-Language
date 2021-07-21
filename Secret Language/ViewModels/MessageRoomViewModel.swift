@@ -35,6 +35,8 @@ class MessageRoomViewModel: ObservableObject {
     @Published var lastMessageID: Int = 0
     @Published var roomID: Int = 0
     
+    @Published var sendingMessage: Bool = false
+    
     //ActionSheet
     @Published var action: SheetAction? = .none
     @Published var actionItem: Message? = nil
@@ -92,8 +94,15 @@ class MessageRoomViewModel: ObservableObject {
     }
     
     func sendMessage(message: SendingMessageModel) {
+        withAnimation {
+            sendingMessage = true
+        }
         dataManager.sendMessage(token: token, roomID: roomID, message: message)
             .sink { response in
+                withAnimation {
+                    self.sendingMessage = false
+                }
+                
                 if response.error == nil {
                     self.messageText = ""
                 }

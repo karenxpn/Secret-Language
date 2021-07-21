@@ -33,13 +33,16 @@ struct SingleMessageContent: View {
                     }
             } else if message.content[0].type == "image" {
                 ImageHelper(image: message.content[0].message, contentMode: .fill, progressViewTintColor: .white)
-                    .frame( width: UIScreen.main.bounds.size.width * 0.6, height: UIScreen.main.bounds.size.height * 0.5)
+                    .scaledToFill()
+                    .frame( width: UIScreen.main.bounds.size.width * 0.6,
+                            height: UIScreen.main.bounds.size.height * 0.5)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .cornerRadius(8)
                     .padding()
                     .background(me ? AppColors.sentMessageBoxBG : .accentColor)
                     .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading]
                                       : [.topLeading, .topTrailing, .bottomTrailing], 20)
+                    .onTapGesture { }
                     //                    .onTapGesture {
                     //                        roomVM.imageMessage = message
                     //                        roomVM.activeSheet = .media
@@ -53,7 +56,8 @@ struct SingleMessageContent: View {
                 let player = AVPlayer(url:  URL(string: message.content[0].message)!)
                 
                 VideoPlayer(player: player)
-                    .frame( width: UIScreen.main.bounds.size.width * 0.6, height: UIScreen.main.bounds.size.height * 0.5)
+                    .frame( width: UIScreen.main.bounds.size.width * 0.6,
+                            height: UIScreen.main.bounds.size.height * 0.5)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .scaledToFit()
                     .cornerRadius(8)
@@ -66,6 +70,8 @@ struct SingleMessageContent: View {
                     }.onDisappear {
                         player.pause()
                     }
+                    .onTapGesture { }
+
                     //                    .onTapGesture {
                     //                        roomVM.imageMessage = message
                     //                        roomVM.activeSheet = .media

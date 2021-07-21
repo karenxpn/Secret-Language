@@ -22,6 +22,14 @@ struct ChatRoom: View {
                 MessagesList(roomID: roomID, username: user.name)
                     .environmentObject(roomVM)
                 
+                
+                if roomVM.sendingMessage {
+                    Text( NSLocalizedString("sendingMessage", comment: ""))
+                        .foregroundColor(.accentColor)
+                        .font(.custom("Avenir", size: 10))
+                        .padding(.top)
+                }
+                
                 MessageBar().environmentObject(roomVM)
             }
 

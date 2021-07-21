@@ -13,7 +13,6 @@ import PusherSwift
 class ChatViewModel: ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     
-    
     @Published var loading: Bool = false
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
@@ -22,7 +21,7 @@ class ChatViewModel: ObservableObject {
     var dataManager: ChatServiceProtocol
     var channel: PusherChannel
     
-    @Published var chats = PreviewParameters.chatList
+    @Published var chats = [ChatModel]()
     
     init(dataManager: ChatServiceProtocol = ChatService.shared) {
         self.dataManager = dataManager
