@@ -10,7 +10,10 @@ import SDWebImageSwiftUI
 
 struct VisitedProfile: View {
     
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var profileVM = ProfileViewModel()
+    @State private var actionSheet: Bool = false
+    
     let userID: Int
     let userName: String
     
@@ -144,8 +147,23 @@ struct VisitedProfile: View {
             
         }.navigationBarTitle("")
         .navigationBarTitleView(SearchNavBar(title: userName))
+        .navigationBarItems(trailing: Button(action: {
+            actionSheet.toggle()
+        }, label: {
+            Image("moreIcon")
+        }))
         .onAppear {
             profileVM.getVisitedProfile(userID: userID)
+        }.actionSheet(isPresented: $actionSheet) {
+            ActionSheet(title: Text( NSLocalizedString("action", comment: "")), message: nil, buttons: [.default(Text( NSLocalizedString("reportUser", comment: "")), action: {
+                profileVM.reportVisitedProfile(userID: userID)
+            }), .destructive(Text( NSLocalizedString("blockUser", comment: "")), action: {
+                profileVM.blockVisitedProfile(userID: userID)
+            }), .cancel()])
+        }.alert(isPresented: $profileVM.reportedOrBlockedAlert) {
+            Alert(title: Text( "Done" ), message: Text(profileVM.reportedOrBlockedAlertMessage), dismissButton: .default(Text( "OK" ), action: {
+                presentationMode.wrappedValue.dismiss()
+            }))
         }
     }
 }

@@ -23,6 +23,9 @@ class ProfileViewModel: ObservableObject {
     @Published var profile: UserModel? = nil
     @Published var visitedProfile: MatchViewModel? = nil
     
+    @Published var reportedOrBlockedAlert: Bool = false
+    @Published var reportedOrBlockedAlertMessage: String = ""
+    
     @Published var friendsList = [UserPreviewModel]()
     @Published var requestsList = [UserPreviewModel]()
     @Published var pendingList = [UserPreviewModel]()
@@ -141,6 +144,26 @@ class ProfileViewModel: ObservableObject {
                     self.makeAlert(with: response.error!, for: &self.alertMessage)
                 } else {
                     self.visitedProfile = MatchViewModel(match: response.value!)
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func reportVisitedProfile( userID: Int ) {
+        dataManager.reportUser(token: token, userID: userID)
+            .sink { response in
+                if response.error == nil {
+                    self.reportedOrBlockedAlertMessage = "User is reported"
+                    self.reportedOrBlockedAlert.toggle()
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func blockVisitedProfile( userID: Int ) {
+        dataManager.blockUser(token: token, userID: userID)
+            .sink { response in
+                if response.error == nil {
+                    self.reportedOrBlockedAlertMessage = "User is blocked"
+                    self.reportedOrBlockedAlert.toggle()
                 }
             }.store(in: &cancellableSet)
     }
