@@ -465,6 +465,7 @@
 				FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */,
 				FFBEA67F2664E4290033B2ED /* ContentView.swift */,
 				FF1AD6C6268645E100B0DCC9 /* PusherManager.swift */,
+				FF10811526A76A7C00387ED9 /* AppDelegate.swift */,
 				FFBEA6812664E42A0033B2ED /* Assets.xcassets */,
 				FFBEA6862664E42A0033B2ED /* Info.plist */,
 				FFBEA6832664E42A0033B2ED /* Preview Content */,
@@ -472,7 +473,6 @@
 				FFDB156C2664EA1E00341E8F /* font */,
 				FFDB15732664EAFB00341E8F /* Localizable.strings */,
 				FFDB158826653F5600341E8F /* Credentials.swift */,
-				FF10811526A76A7C00387ED9 /* AppDelegate.swift */,
 			);
 			path = "Secret Language";
 			sourceTree = "<group>";

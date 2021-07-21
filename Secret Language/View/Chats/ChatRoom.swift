@@ -12,7 +12,7 @@ struct ChatRoom: View {
     let roomID: Int
     let user: ChatUserModel
     
-    @ObservedObject var roomVM = MessageRoomViewModel()
+    @StateObject var roomVM = MessageRoomViewModel()
 
     var body: some View {
         ZStack(alignment: .bottom) {

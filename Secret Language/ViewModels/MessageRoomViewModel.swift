@@ -26,7 +26,6 @@ enum ActiveGallerySheet {
 class MessageRoomViewModel: ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "userID" ) private var userID: Int = 0
-
     
     @Published var messageText: String = ""
     @Published var writingMessage: Bool = false
@@ -73,7 +72,9 @@ class MessageRoomViewModel: ObservableObject {
     
     func getChatRoomMessagesWithPusher() {
         dataManager.fetchMessageWithPusher(channel: channel, roomID: roomID) { message in
-            self.messages.insert(message, at: 0)
+            withAnimation {
+                self.messages.insert(message, at: 0)
+            }
         }
     }
     
