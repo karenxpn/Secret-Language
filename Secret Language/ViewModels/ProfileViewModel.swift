@@ -152,8 +152,9 @@ class ProfileViewModel: ObservableObject {
         dataManager.reportUser(token: token, userID: userID)
             .sink { response in
                 if response.error == nil {
-                    self.reportedOrBlockedAlertMessage = "User is reported"
-                    self.reportedOrBlockedAlert.toggle()
+                    self.makeReportAlert(response: response.value!,
+                                         alert: &self.reportedOrBlockedAlert,
+                                         message: &self.reportedOrBlockedAlertMessage)
                 }
             }.store(in: &cancellableSet)
     }
@@ -162,8 +163,9 @@ class ProfileViewModel: ObservableObject {
         dataManager.blockUser(token: token, userID: userID)
             .sink { response in
                 if response.error == nil {
-                    self.reportedOrBlockedAlertMessage = "User is blocked"
-                    self.reportedOrBlockedAlert.toggle()
+                    self.makeReportAlert(response: response.value!,
+                                         alert: &self.reportedOrBlockedAlert,
+                                         message: &self.reportedOrBlockedAlertMessage)
                 }
             }.store(in: &cancellableSet)
     }
@@ -172,8 +174,9 @@ class ProfileViewModel: ObservableObject {
         dataManager.flagUser(token: token, userID: userID)
             .sink { response in
                 if response.error == nil {
-                    self.reportedOrBlockedAlertMessage = "User is flagged as inappropriate"
-                    self.reportedOrBlockedAlert.toggle()
+                    self.makeReportAlert(response: response.value!,
+                                         alert: &self.reportedOrBlockedAlert,
+                                         message: &self.reportedOrBlockedAlertMessage)
                 }
             }.store(in: &cancellableSet)
     }
@@ -206,5 +209,9 @@ class ProfileViewModel: ObservableObject {
         message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
         self.showAlert.toggle()
     }
-
+    
+    func makeReportAlert( response: GlobalResponse, alert: inout Bool, message: inout String ) {
+        message = response.message
+        alert.toggle()
+    }
 }
