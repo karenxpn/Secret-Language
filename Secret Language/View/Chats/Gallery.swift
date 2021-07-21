@@ -72,7 +72,7 @@ struct Gallery: UIViewControllerRepresentable {
             if itemProvider.canLoadObject(ofClass: UIImage.self) {
                 itemProvider.loadObject(ofClass: UIImage.self) { (img, error) in
                     if let uiimage = img as? UIImage {
-                        if let imageData = uiimage.fixOrientation()!.jpegData(compressionQuality: 0.5) {
+                        if let imageData = uiimage.fixOrientation()!.jpegData(compressionQuality: 0.4) {
                             DispatchQueue.main.async {
                                 self.parent.roomVM.sendMessage(message: SendingMessageModel(type: "image", content: imageData.base64EncodedString()))
                             }

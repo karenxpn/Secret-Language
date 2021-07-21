@@ -14,6 +14,7 @@
 		FF10811226A7699200387ED9 /* NotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10811126A7699200387ED9 /* NotificationsViewModel.swift */; };
 		FF10811426A769F200387ED9 /* DeviceTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10811326A769F200387ED9 /* DeviceTokenManager.swift */; };
 		FF10811626A76A7C00387ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10811526A76A7C00387ED9 /* AppDelegate.swift */; };
+		FF10811826A8DAF500387ED9 /* MessageImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10811726A8DAF500387ED9 /* MessageImageHelper.swift */; };
 		FF18DC32269CF4BF004BE946 /* PaymentOrReportDetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC31269CF4BF004BE946 /* PaymentOrReportDetectionView.swift */; };
 		FF18DC34269F4D11004BE946 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC33269F4D11004BE946 /* ChatModel.swift */; };
 		FF18DC38269F6082004BE946 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC37269F6082004BE946 /* ChatList.swift */; };
@@ -185,6 +186,7 @@
 		FF10811126A7699200387ED9 /* NotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewModel.swift; sourceTree = "<group>"; };
 		FF10811326A769F200387ED9 /* DeviceTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenManager.swift; sourceTree = "<group>"; };
 		FF10811526A76A7C00387ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FF10811726A8DAF500387ED9 /* MessageImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageHelper.swift; sourceTree = "<group>"; };
 		FF18DC31269CF4BF004BE946 /* PaymentOrReportDetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrReportDetectionView.swift; sourceTree = "<group>"; };
 		FF18DC33269F4D11004BE946 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		FF18DC37269F6082004BE946 /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
@@ -640,6 +642,7 @@
 				FF3727EF26A5074500B20925 /* Gallery.swift */,
 				FFCAA21326A61409002054DC /* CameraView.swift */,
 				FF10810F26A70C6500387ED9 /* MonthlySubscriptionView.swift */,
+				FF10811726A8DAF500387ED9 /* MessageImageHelper.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -1009,6 +1012,7 @@
 				FF4AB0FF268528B60085EA9A /* EmptyList.swift in Sources */,
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,
 				FFE0E4142677E6F6008FA78C /* MatchModel.swift in Sources */,
+				FF10811826A8DAF500387ED9 /* MessageImageHelper.swift in Sources */,
 				FF3727F226A5DA2400B20925 /* TypingResponse.swift in Sources */,
 				FF99A0342680C5C000F234CD /* UserPreviewModel.swift in Sources */,
 				FF99A0402681114400F234CD /* ProfileService.swift in Sources */,
