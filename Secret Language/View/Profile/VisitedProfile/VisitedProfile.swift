@@ -155,11 +155,20 @@ struct VisitedProfile: View {
         .onAppear {
             profileVM.getVisitedProfile(userID: userID)
         }.actionSheet(isPresented: $actionSheet) {
-            ActionSheet(title: Text( NSLocalizedString("action", comment: "")), message: nil, buttons: [.default(Text( NSLocalizedString("reportUser", comment: "")), action: {
-                profileVM.reportVisitedProfile(userID: userID)
-            }), .destructive(Text( NSLocalizedString("blockUser", comment: "")), action: {
-                profileVM.blockVisitedProfile(userID: userID)
-            }), .cancel()])
+            ActionSheet(title: Text( NSLocalizedString("action", comment: "")), message: nil,
+                        buttons: [ .default(Text( NSLocalizedString("reportUser", comment: ""))
+                                                .foregroundColor(.white), action: {
+                                                    profileVM.reportVisitedProfile(userID: userID)
+                                                }),
+                                   .default(Text( NSLocalizedString("flag", comment: ""))
+                                                .foregroundColor(.white), action: {
+                                                    profileVM.flagVisitedProfile(userID: userID)
+                                                }),
+                                   .destructive(Text( NSLocalizedString("blockUser", comment: ""))
+                                                    .foregroundColor(.white), action: {
+                                                        profileVM.blockVisitedProfile(userID: userID)
+                                                    }),
+                                   .cancel()])
         }.alert(isPresented: $profileVM.reportedOrBlockedAlert) {
             Alert(title: Text( "Done" ), message: Text(profileVM.reportedOrBlockedAlertMessage), dismissButton: .default(Text( "OK" ), action: {
                 presentationMode.wrappedValue.dismiss()

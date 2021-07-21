@@ -168,6 +168,16 @@ class ProfileViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
+    func flagVisitedProfile( userID: Int ) {
+        dataManager.flagUser(token: token, userID: userID)
+            .sink { response in
+                if response.error == nil {
+                    self.reportedOrBlockedAlertMessage = "User is flagged as inappropriate"
+                    self.reportedOrBlockedAlert.toggle()
+                }
+            }.store(in: &cancellableSet)
+    }
+    
     func getProfileWithPusher() {
         dataManager.fetchProfileWithPusher(channel: channel) { profile in
             self.profile = profile
