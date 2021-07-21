@@ -31,6 +31,10 @@ protocol ProfileServiceProtocol {
     
     func deleteProfileImage( token: String ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
     func updateProfileImage( token: String, image: Data ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
+    
+    func reportUser( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func blockUser( token: String, userID: Int ) ->  AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func flagUser( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
 }
 
 class ProfileService {
@@ -40,6 +44,70 @@ class ProfileService {
 }
 
 extension ProfileService: ProfileServiceProtocol {
+    func flagUser(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/flag")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        return AF.request(url,
+                          method: .post,
+                          parameters: ["id" : userID],
+                          encoder: JSONParameterEncoder.default,
+                          headers: headers)
+            .validate()
+            .publishDecodable(type: GlobalResponse.self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func reportUser(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/report")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        return AF.request(url,
+                          method: .post,
+                          parameters: ["id" : userID],
+                          encoder: JSONParameterEncoder.default,
+                          headers: headers)
+            .validate()
+            .publishDecodable(type: GlobalResponse.self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+        
+    }
+    
+    func blockUser(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/block")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        return AF.request(url,
+                          method: .post,
+                          parameters: ["id" : userID],
+                          encoder: JSONParameterEncoder.default,
+                          headers: headers)
+            .validate()
+            .publishDecodable(type: GlobalResponse.self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func fetchFriendRequestsWithPusher(channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> ()) {
         
         channel.bind(eventName: "myRequests", eventCallback: { (event: PusherEvent) -> Void in
@@ -314,5 +382,7 @@ extension ProfileService: ProfileServiceProtocol {
         .receive(on: DispatchQueue.main)
         .eraseToAnyPublisher()
     }
+    
+    
     
 }

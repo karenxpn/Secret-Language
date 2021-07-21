@@ -23,6 +23,9 @@ class ProfileViewModel: ObservableObject {
     @Published var profile: UserModel? = nil
     @Published var visitedProfile: MatchViewModel? = nil
     
+    @Published var reportedOrBlockedAlert: Bool = false
+    @Published var reportedOrBlockedAlertMessage: String = ""
+    
     @Published var friendsList = [UserPreviewModel]()
     @Published var requestsList = [UserPreviewModel]()
     @Published var pendingList = [UserPreviewModel]()
@@ -145,6 +148,39 @@ class ProfileViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
+    func reportVisitedProfile( userID: Int ) {
+        dataManager.reportUser(token: token, userID: userID)
+            .sink { response in
+                if response.error == nil {
+                    self.makeReportAlert(response: response.value!,
+                                         alert: &self.reportedOrBlockedAlert,
+                                         message: &self.reportedOrBlockedAlertMessage)
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func blockVisitedProfile( userID: Int ) {
+        dataManager.blockUser(token: token, userID: userID)
+            .sink { response in
+                if response.error == nil {
+                    self.makeReportAlert(response: response.value!,
+                                         alert: &self.reportedOrBlockedAlert,
+                                         message: &self.reportedOrBlockedAlertMessage)
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func flagVisitedProfile( userID: Int ) {
+        dataManager.flagUser(token: token, userID: userID)
+            .sink { response in
+                if response.error == nil {
+                    self.makeReportAlert(response: response.value!,
+                                         alert: &self.reportedOrBlockedAlert,
+                                         message: &self.reportedOrBlockedAlertMessage)
+                }
+            }.store(in: &cancellableSet)
+    }
+    
     func getProfileWithPusher() {
         dataManager.fetchProfileWithPusher(channel: channel) { profile in
             self.profile = profile
@@ -173,5 +209,9 @@ class ProfileViewModel: ObservableObject {
         message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
         self.showAlert.toggle()
     }
-
+    
+    func makeReportAlert( response: GlobalResponse, alert: inout Bool, message: inout String ) {
+        message = response.message
+        alert.toggle()
+    }
 }
