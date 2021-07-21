@@ -129,15 +129,25 @@ struct Profile: View {
             }.edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle("")
             .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("profile", comment: "")), displayMode: .inline)
-            .navigationBarItems(trailing: NavigationLink(
-                                    destination: Settings(),
-                                    label: {
-                                        Image("settings")
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 20, height: 20)
-                                            .padding([.leading, .top, .bottom])
-                                        
-                                    }))
+            .navigationBarItems(trailing:  HStack {
+                
+                Button(action: {
+                    // to smth here
+                    profileVM.shareProfile(userID: profileVM.profile!.id)
+                }, label: {
+                    Image( "shareIcon" )
+                        .frame( width: 40, height: 40)
+                })
+                
+                NavigationLink(
+                    destination: Settings(),
+                    label: {
+                        Image("settings")
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20, height: 20)
+                            .padding([.leading, .top, .bottom])
+                    })
+            })
             .onTapGesture {
                 UIApplication.shared.endEditing()
             }.onAppear {

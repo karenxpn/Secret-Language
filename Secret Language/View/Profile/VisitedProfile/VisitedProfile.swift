@@ -147,11 +147,23 @@ struct VisitedProfile: View {
             
         }.navigationBarTitle("")
         .navigationBarTitleView(SearchNavBar(title: userName))
-        .navigationBarItems(trailing: Button(action: {
-            actionSheet.toggle()
-        }, label: {
-            Image("moreIcon")
-        }))
+        .navigationBarItems(trailing: HStack( spacing: 10 ) {
+            
+            Button(action: {
+                // to smth here
+                profileVM.shareProfile(userID: userID)
+            }, label: {
+                Image( "shareIcon" )
+                    .frame( width: 40, height: 40)
+            })
+            
+            Button(action: {
+                actionSheet.toggle()
+            }, label: {
+                Image("moreIcon")
+                    .frame( width: 40, height: 40)
+            })
+        })
         .onAppear {
             profileVM.getVisitedProfile(userID: userID)
         }.actionSheet(isPresented: $actionSheet) {

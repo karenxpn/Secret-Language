@@ -181,6 +181,13 @@ class ProfileViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
+    func shareProfile( userID: Int ) {
+        let url = URL(string: "https://secretlanguage.network/profile/share?id=\(userID)")!
+        let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+    }
+    
     func getProfileWithPusher() {
         dataManager.fetchProfileWithPusher(channel: channel) { profile in
             self.profile = profile
