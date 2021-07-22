@@ -124,7 +124,7 @@ struct RelationshipReport: View {
         .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("relationshipBetween", comment: "")), displayMode: .inline)
         .navigationBarItems(trailing:
                                 Button(action: {
-                                    self.shareReport(id: report!.id)
+                                    self.shareReport(id: report!.shareId)
                                 }, label: {
                                     Image( "shareIcon" )
                                         .frame( width: 40, height: 40)

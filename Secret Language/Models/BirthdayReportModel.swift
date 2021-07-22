@@ -8,11 +8,12 @@
 import Foundation
 struct BirthdayReportModel: Codable, Identifiable {
     var id: Int
+    var shareId: Int
     var date_name: String
     var sln: String
     var sln_description: String
     var famous_years: String
-    
+
     var day_report: DayReportModel
     var week_report: WeekReportModel
     var month_report: MonthReportModel
