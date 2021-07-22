@@ -28,6 +28,19 @@ extension String {
     }
 }
 
+extension String {
+    func extractDigits() -> Int {
+        var tmp = ""
+        let arr = Array( self )
+        for i in arr {
+            if i.isNumber {
+                tmp += String( i )
+            }
+        }
+        return Int( String( tmp ) )!
+    }
+}
+
 func convertStringToDictionary(text: String) -> [String:AnyObject]? {
     if let data = text.data(using: .utf8) {
         do {

@@ -8,7 +8,9 @@
 import SwiftUI
 import PusherSwift
 
-enum SharedURL {
+enum SharedURL: Identifiable {
+    var id: Self { self }
+
     case profile
     case birthday
     case relationship
@@ -19,7 +21,7 @@ struct ContentView: View {
     @StateObject var notificationsVM = NotificationsViewModel()
     @State private var currentTab: Int = 0
     @State private var shared: SharedURL? = .none
-    @State private var openSharedSheet: Bool = false
+    @State private var sharedID = 0
     
     var body: some View {
         ZStack( alignment: .bottom) {
@@ -50,27 +52,33 @@ struct ContentView: View {
         }.edgesIgnoringSafeArea(.bottom)
         .onAppear {
             notificationsVM.requestPermission()
+        }.fullScreenCover(item: $shared) { value in
+            if value == .profile {
+                SharedProfile( userID: sharedID )
+            } else if value == .birthday {
+                SharedBirthdayReport( reportID: sharedID )
+            } else {
+                SharedRelationshipReport( reportID: sharedID )
+            }
         }.onOpenURL(perform: { (url) in
             
-            print(url)
+            let URL = url.absoluteString
             
-            if let urlComponents = URLComponents(string: url.absoluteString), let _ = urlComponents.host, let queryItems = urlComponents.queryItems {
-
-                print( queryItems[0])
-                let name = queryItems[0].name
-                let value = queryItems[0].value
-                
-                if name == "profile" {
-                    self.shared = .profile
-                    self.openSharedSheet.toggle()
-                }
+            if URL.contains("profile") {
+                shared = .profile
+            } else if URL.contains("birthday") {
+                shared = .birthday
+            } else if URL.contains("relationship") {
+                shared = .relationship
             }
+            
+            sharedID = URL.extractDigits()
         })
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
