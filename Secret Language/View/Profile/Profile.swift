@@ -132,7 +132,6 @@ struct Profile: View {
             .navigationBarItems(trailing:  HStack {
                 
                 Button(action: {
-                    // to smth here
                     profileVM.shareProfile(userID: profileVM.profile!.id)
                 }, label: {
                     Image( "shareIcon" )

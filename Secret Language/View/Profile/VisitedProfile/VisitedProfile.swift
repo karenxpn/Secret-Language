@@ -150,7 +150,6 @@ struct VisitedProfile: View {
         .navigationBarItems(trailing: HStack( spacing: 10 ) {
             
             Button(action: {
-                // to smth here
                 profileVM.shareProfile(userID: userID)
             }, label: {
                 Image( "shareIcon" )
@@ -161,7 +160,7 @@ struct VisitedProfile: View {
                 actionSheet.toggle()
             }, label: {
                 Image("moreIcon")
-                    .frame( width: 40, height: 40)
+                    .frame( width: 35, height: 35)
             })
         })
         .onAppear {
