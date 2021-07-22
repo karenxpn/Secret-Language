@@ -124,7 +124,7 @@ struct RelationshipReport: View {
         .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("relationshipBetween", comment: "")), displayMode: .inline)
         .navigationBarItems(trailing:
                                 Button(action: {
-                                    self.shareReport(id: report?.id)
+                                    self.shareReport(id: report!.id)
                                 }, label: {
                                     Image( "shareIcon" )
                                         .frame( width: 40, height: 40)
@@ -132,8 +132,8 @@ struct RelationshipReport: View {
         )
     }
     
-    func shareReport( id: Int? ) {
-        let url = URL(string: "https://secretlanguage.network/relationship/share?id=\(id ?? 0)")!
+    func shareReport( id: Int ) {
+        let url = URL(string: "https://secretlanguage.network/relationship/share?id=\(id)")!
         let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)

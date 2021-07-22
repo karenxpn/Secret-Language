@@ -12,6 +12,10 @@ import Combine
 protocol ReportServiceProtocol {
     func fetchBirthdayReport( token: String, date: String ) -> AnyPublisher<DataResponse<BirthdayReportModel, NetworkError>, Never>
     func fetchRelationshipReport( token: String, firstDate: String, secondDate: String ) -> AnyPublisher<DataResponse<RelationshipReportModel, NetworkError>, Never>
+    
+    func fetchSharedBirthdayReport( reportID: Int ) -> AnyPublisher<DataResponse<BirthdayReportModel, NetworkError>, Never>
+    
+    func fetchSharedRelationshipReport( reportID: Int ) -> AnyPublisher<DataResponse<RelationshipReportModel, NetworkError>, Never>
 }
 
 class ReportService {
@@ -21,6 +25,41 @@ class ReportService {
 }
 
 extension ReportService: ReportServiceProtocol {
+    func fetchSharedBirthdayReport(reportID: Int) -> AnyPublisher<DataResponse<BirthdayReportModel, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/birthdayReport/\(reportID)")!
+        
+        return AF.request(url,
+                          method: .get)
+            .validate()
+            .publishDecodable(type: BirthdayReportModel.self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+
+    }
+    
+    func fetchSharedRelationshipReport(reportID: Int) -> AnyPublisher<DataResponse<RelationshipReportModel, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/relationshipReport/\(reportID)")!
+        
+        return AF.request(url,
+                          method: .get)
+            .validate()
+            .publishDecodable(type: RelationshipReportModel.self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func fetchRelationshipReport(token: String, firstDate: String, secondDate: String) -> AnyPublisher<DataResponse<RelationshipReportModel, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/showRelationshipReport")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]

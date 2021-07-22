@@ -73,7 +73,7 @@ struct BirthdayReport: View {
         .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("birthdayReport", comment: "")), displayMode: .inline)
         .navigationBarItems(trailing:
                                 Button(action: {
-                                    self.shareReport(id: report?.id)
+                                    self.shareReport(id: report!.id)
                                 }, label: {
                                     Image( "shareIcon" )
                                         .frame( width: 40, height: 40)
@@ -81,8 +81,8 @@ struct BirthdayReport: View {
         )
     }
     
-    func shareReport( id: Int? ) {
-        let url = URL(string: "https://secretlanguage.network/birthday/share?id=\(id ?? 0)")!
+    func shareReport( id: Int ) {
+        let url = URL(string: "https://secretlanguage.network/birthday/share?id=\(id)")!
         let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)

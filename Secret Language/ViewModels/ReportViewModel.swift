@@ -30,6 +30,8 @@ class ReportViewModel: ObservableObject {
     @Published var relationshipReport: RelationshipReportModel? = nil
     @Published var birthdayReport: BirthdayReportModel? = nil
     
+    @Published var loading: Bool = false
+    
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ReportServiceProtocol
     
@@ -70,6 +72,33 @@ class ReportViewModel: ObservableObject {
                     self.relationshipReport = response.value!
                     self.shouldPurchase = false
                     self.navigate = true
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    
+    func getSharedBirthdayReport( reportID: Int ) {
+        loading = true
+        dataManager.fetchSharedBirthdayReport(reportID: reportID)
+            .sink { response in
+                self.loading = false
+                if response.error != nil {
+                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                } else {
+                    self.birthdayReport = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func getSharedRelationshipReport( reportID: Int ) {
+        loading = true
+        dataManager.fetchSharedRelationshipReport(reportID: reportID)
+            .sink { response in
+                self.loading = false
+                if response.error != nil {
+                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                } else {
+                    self.relationshipReport = response.value!
                 }
             }.store(in: &cancellableSet)
     }
