@@ -82,7 +82,7 @@ struct BirthdayReport: View {
     }
     
     func shareReport( id: Int ) {
-        let url = URL(string: "https://secretlanguage.network/birthday/share?id=\(id)")!
+        let url = URL(string: "https://secretlanguage.network/v1/birthday/share?id=\(id)")!
         let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)

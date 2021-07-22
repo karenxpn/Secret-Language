@@ -8,20 +8,16 @@
 import SwiftUI
 import PusherSwift
 
-enum SharedURL: Identifiable {
-    var id: Self { self }
-
-    case profile
-    case birthday
-    case relationship
+struct SharedURL: Identifiable {
+    var id: Int
+    var type: String
 }
 
 struct ContentView: View {
     
     @StateObject var notificationsVM = NotificationsViewModel()
     @State private var currentTab: Int = 0
-    @State private var shared: SharedURL? = .none
-    @State private var sharedID = 0
+    @State private var shared: SharedURL?
     
     var body: some View {
         ZStack( alignment: .bottom) {
@@ -53,26 +49,26 @@ struct ContentView: View {
         .onAppear {
             notificationsVM.requestPermission()
         }.fullScreenCover(item: $shared) { value in
-            if value == .profile {
-                SharedProfile( userID: sharedID )
-            } else if value == .birthday {
-                SharedBirthdayReport( reportID: sharedID )
+            
+            if value.type == "profile" {
+                SharedProfile( userID: value.id )
+            } else if value.type == "birthday" {
+                SharedBirthdayReport( reportID: value.id )
             } else {
-                SharedRelationshipReport( reportID: sharedID )
+                SharedRelationshipReport( reportID: value.id )
             }
         }.onOpenURL(perform: { (url) in
             
             let URL = url.absoluteString
+            let sharedID = URL.extractDigits()
             
             if URL.contains("profile") {
-                shared = .profile
+                shared = SharedURL(id: sharedID, type: "profile" )
             } else if URL.contains("birthday") {
-                shared = .birthday
+                shared = SharedURL(id: sharedID, type: "birthday" )
             } else if URL.contains("relationship") {
-                shared = .relationship
+                shared = SharedURL(id: sharedID, type: "relationship" )
             }
-            
-            sharedID = URL.extractDigits()
         })
     }
 }

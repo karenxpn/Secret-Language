@@ -26,7 +26,7 @@ class ReportService {
 
 extension ReportService: ReportServiceProtocol {
     func fetchSharedBirthdayReport(reportID: Int) -> AnyPublisher<DataResponse<BirthdayReportModel, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/birthdayReport/\(reportID)")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/getBirthdayReport/\(reportID)")!
         
         return AF.request(url,
                           method: .get)
@@ -44,7 +44,7 @@ extension ReportService: ReportServiceProtocol {
     }
     
     func fetchSharedRelationshipReport(reportID: Int) -> AnyPublisher<DataResponse<RelationshipReportModel, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/relationshipReport/\(reportID)")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/getRelationshipReport/\(reportID)")!
         
         return AF.request(url,
                           method: .get)

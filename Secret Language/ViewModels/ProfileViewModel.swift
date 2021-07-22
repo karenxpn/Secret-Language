@@ -197,7 +197,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     func shareProfile( userID: Int ) {
-        let url = URL(string: "https://secretlanguage.network/profile/share?id=\(userID)")!
+        let url = URL(string: "https://secretlanguage.network/v1/profile/share?id=\(userID)")!
         let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)

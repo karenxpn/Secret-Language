@@ -133,7 +133,7 @@ struct RelationshipReport: View {
     }
     
     func shareReport( id: Int ) {
-        let url = URL(string: "https://secretlanguage.network/relationship/share?id=\(id)")!
+        let url = URL(string: "https://secretlanguage.network/v1/relationship/share?id=\(id)")!
         let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
