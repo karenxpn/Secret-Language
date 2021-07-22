@@ -15,6 +15,9 @@
 		FF10811426A769F200387ED9 /* DeviceTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10811326A769F200387ED9 /* DeviceTokenManager.swift */; };
 		FF10811626A76A7C00387ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10811526A76A7C00387ED9 /* AppDelegate.swift */; };
 		FF10811826A8DAF500387ED9 /* MessageImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10811726A8DAF500387ED9 /* MessageImageHelper.swift */; };
+		FF10811B26A9B9BE00387ED9 /* SharedProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10811A26A9B9BE00387ED9 /* SharedProfile.swift */; };
+		FF10811D26A9B9F300387ED9 /* SharedBirthdayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10811C26A9B9F300387ED9 /* SharedBirthdayReport.swift */; };
+		FF10811F26A9B9FE00387ED9 /* SharedRelationshipReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF10811E26A9B9FE00387ED9 /* SharedRelationshipReport.swift */; };
 		FF18DC32269CF4BF004BE946 /* PaymentOrReportDetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC31269CF4BF004BE946 /* PaymentOrReportDetectionView.swift */; };
 		FF18DC34269F4D11004BE946 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC33269F4D11004BE946 /* ChatModel.swift */; };
 		FF18DC38269F6082004BE946 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF18DC37269F6082004BE946 /* ChatList.swift */; };
@@ -187,6 +190,9 @@
 		FF10811326A769F200387ED9 /* DeviceTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenManager.swift; sourceTree = "<group>"; };
 		FF10811526A76A7C00387ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF10811726A8DAF500387ED9 /* MessageImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageHelper.swift; sourceTree = "<group>"; };
+		FF10811A26A9B9BE00387ED9 /* SharedProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedProfile.swift; sourceTree = "<group>"; };
+		FF10811C26A9B9F300387ED9 /* SharedBirthdayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedBirthdayReport.swift; sourceTree = "<group>"; };
+		FF10811E26A9B9FE00387ED9 /* SharedRelationshipReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedRelationshipReport.swift; sourceTree = "<group>"; };
 		FF18DC31269CF4BF004BE946 /* PaymentOrReportDetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOrReportDetectionView.swift; sourceTree = "<group>"; };
 		FF18DC33269F4D11004BE946 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		FF18DC37269F6082004BE946 /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
@@ -387,6 +393,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FF10811926A9B9AD00387ED9 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				FF10811A26A9B9BE00387ED9 /* SharedProfile.swift */,
+				FF10811C26A9B9F300387ED9 /* SharedBirthdayReport.swift */,
+				FF10811E26A9B9FE00387ED9 /* SharedRelationshipReport.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		FF456F872693C7C5008F219E /* RelationshipReport */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,6 +547,7 @@
 		FFBEA6AB2664E6230033B2ED /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FF10811926A9B9AD00387ED9 /* Shared */,
 				FFCEDE06267236700073BE20 /* Reports */,
 				FFCEDE03267236440073BE20 /* Search */,
 				FFCEDE00267236150073BE20 /* Profile */,
@@ -989,10 +1006,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF3D63D72697281E00799E72 /* WayReport.swift in Sources */,
+				FF10811D26A9B9F300387ED9 /* SharedBirthdayReport.swift in Sources */,
 				FFDB15A02666571A00341E8F /* OTPTextFieldView.swift in Sources */,
 				FF997E91268A60150057B731 /* VisitedProfile.swift in Sources */,
 				FF18DC32269CF4BF004BE946 /* PaymentOrReportDetectionView.swift in Sources */,
 				FF10811626A76A7C00387ED9 /* AppDelegate.swift in Sources */,
+				FF10811F26A9B9FE00387ED9 /* SharedRelationshipReport.swift in Sources */,
 				FFDB158526653DC500341E8F /* GlobalResponse.swift in Sources */,
 				FF99A03C2680E98B00F234CD /* FriendRequestList.swift in Sources */,
 				FF456F8A2693C7EC008F219E /* DayReport.swift in Sources */,
@@ -1044,6 +1063,7 @@
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
 				FF3D63C12693C98B00799E72 /* WeekReport.swift in Sources */,
 				FF18DC38269F6082004BE946 /* ChatList.swift in Sources */,
+				FF10811B26A9B9BE00387ED9 /* SharedProfile.swift in Sources */,
 				FF997E99268CDAC80057B731 /* SearchUserModel.swift in Sources */,
 				FFCEDE02267236200073BE20 /* Profile.swift in Sources */,
 				FFDB15A926669B9400341E8F /* TopGender.swift in Sources */,

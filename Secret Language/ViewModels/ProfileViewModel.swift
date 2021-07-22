@@ -26,6 +26,8 @@ class ProfileViewModel: ObservableObject {
     @Published var reportedOrBlockedAlert: Bool = false
     @Published var reportedOrBlockedAlertMessage: String = ""
     
+    @Published var sharedProfile: MatchViewModel? = nil
+    
     @Published var friendsList = [UserPreviewModel]()
     @Published var requestsList = [UserPreviewModel]()
     @Published var pendingList = [UserPreviewModel]()
@@ -177,6 +179,19 @@ class ProfileViewModel: ObservableObject {
                     self.makeReportAlert(response: response.value!,
                                          alert: &self.reportedOrBlockedAlert,
                                          message: &self.reportedOrBlockedAlertMessage)
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func getSharedProfile(userID: Int) {
+        loading = true
+        dataManager.fetchSharedProfile(userID: userID)
+            .sink { response in
+                self.loading = false
+                if response.error != nil {
+                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                } else {
+                    self.sharedProfile = MatchViewModel(match: response.value!)
                 }
             }.store(in: &cancellableSet)
     }

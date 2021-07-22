@@ -35,6 +35,9 @@ protocol ProfileServiceProtocol {
     func reportUser( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func blockUser( token: String, userID: Int ) ->  AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func flagUser( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    
+    func fetchSharedProfile( userID: Int ) -> AnyPublisher<DataResponse<MatchModel, NetworkError>, Never>
+
 }
 
 class ProfileService {
@@ -44,6 +47,24 @@ class ProfileService {
 }
 
 extension ProfileService: ProfileServiceProtocol {
+    func fetchSharedProfile(userID: Int) -> AnyPublisher<DataResponse<MatchModel, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/sharedUser/\(userID)")!
+        
+        return AF.request(url,
+                          method: .get)
+            .validate()
+            .publishDecodable(type: MatchModel.self)
+            .map { response in
+                
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func flagUser(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/flag")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]

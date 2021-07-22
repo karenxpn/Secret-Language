@@ -8,10 +8,18 @@
 import SwiftUI
 import PusherSwift
 
+enum SharedURL {
+    case profile
+    case birthday
+    case relationship
+}
+
 struct ContentView: View {
     
     @StateObject var notificationsVM = NotificationsViewModel()
     @State private var currentTab: Int = 0
+    @State private var shared: SharedURL? = .none
+    @State private var openSharedSheet: Bool = false
     
     var body: some View {
         ZStack( alignment: .bottom) {
@@ -42,8 +50,22 @@ struct ContentView: View {
         }.edgesIgnoringSafeArea(.bottom)
         .onAppear {
             notificationsVM.requestPermission()
-        }
-        
+        }.onOpenURL(perform: { (url) in
+            
+            print(url)
+            
+            if let urlComponents = URLComponents(string: url.absoluteString), let _ = urlComponents.host, let queryItems = urlComponents.queryItems {
+
+                print( queryItems[0])
+                let name = queryItems[0].name
+                let value = queryItems[0].value
+                
+                if name == "profile" {
+                    self.shared = .profile
+                    self.openSharedSheet.toggle()
+                }
+            }
+        })
     }
 }
 
