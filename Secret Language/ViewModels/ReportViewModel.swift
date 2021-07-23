@@ -42,7 +42,6 @@ class ReportViewModel: ObservableObject {
     func getBirthdayReport() {
         dataManager.fetchBirthdayReport(token: token, date: "\(birthdayMonth) \(birthday)")
             .sink { response in
-                
                 if response.error != nil {
                     if response.error!.initialError.responseCode == Credentials.paymentErrorCode {
                         self.shouldPurchase = true
