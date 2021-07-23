@@ -17,6 +17,7 @@ protocol ChatServiceProtocol {
     func fetchMessageWithPusher( channel: PusherChannel, roomID: Int, completion: @escaping ( Message ) -> () )
     
     func sendMessage( token: String, roomID: Int, message: SendingMessageModel) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func sendGreetingMessage( token: String, userID: Int, message: SendingMessageModel) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func sendTypingStatus( token: String, roomID: Int, typing: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func getTypingStatus( channel: PusherChannel, roomID: Int, completion: @escaping ( Bool ) -> () )
 }
@@ -28,6 +29,27 @@ class ChatService {
 }
 
 extension ChatService: ChatServiceProtocol {
+    func sendGreetingMessage(token: String, userID: Int, message: SendingMessageModel) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)chats/sendGreetingMessage/\(userID)")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        return AF.request(url,
+                          method: .post,
+                          parameters: message,
+                          encoder: JSONParameterEncoder.default,
+                          headers: headers)
+            .validate()
+            .publishDecodable(type: GlobalResponse.self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func getTypingStatus(channel: PusherChannel, roomID: Int, completion: @escaping (Bool) -> ()) {
         channel.bind(eventName: "typing\(roomID)", eventCallback: { (event: PusherEvent) -> Void in
             if let stringData: String = event.data {

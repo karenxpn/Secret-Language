@@ -35,12 +35,15 @@ class ProfileViewModel: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ProfileServiceProtocol
     var matchDataManager: MatchServiceProtocol
+    var chatDataManager: ChatServiceProtocol
     var channel: PusherChannel
     
     init( dataManager: ProfileServiceProtocol = ProfileService.shared,
-          matchDataManager: MatchServiceProtocol = MatchService.shared ) {
+          matchDataManager: MatchServiceProtocol = MatchService.shared,
+          chatDataManager: ChatServiceProtocol = ChatService.shared ) {
         self.dataManager = dataManager
         self.matchDataManager = matchDataManager
+        self.chatDataManager = chatDataManager
         self.channel = PusherManager.shared.channel
     }
     
@@ -81,6 +84,19 @@ class ProfileViewModel: ObservableObject {
                     self.pendingList = response.value!
                 }
             }.store(in: &cancellableSet)
+    }
+    
+    func sendGreetingMessage(userID: Int) {
+        chatDataManager.sendGreetingMessage(token: token, userID: userID, message: SendingMessageModel(type: "text", content: "👋🏻")).sink { response in
+            
+            if response.error != nil {
+                self.makeAlert(with: response.error!, for: &self.alertMessage)
+            } else {
+                self.alertMessage = response.value!.message
+                self.showAlert.toggle()
+            }
+            
+        }.store(in: &cancellableSet)
     }
     
     func acceptFriendRequest( userID: Int ) {
