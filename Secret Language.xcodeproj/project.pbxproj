@@ -63,6 +63,7 @@
 		FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */; };
 		FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40D2667BBA200BD3838 /* GenderModel.swift */; };
 		FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */; };
+		FF6AF6E526AAD7AD007A902F /* SharedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF6E426AAD7AD007A902F /* SharedProfileModel.swift */; };
 		FF8AA6D726A098BD000C6B41 /* MessageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6D626A098BD000C6B41 /* MessageBar.swift */; };
 		FF8AA6D926A098EC000C6B41 /* MessageRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6D826A098EC000C6B41 /* MessageRoomViewModel.swift */; };
 		FF8AA6DB26A09E31000C6B41 /* MessagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6DA26A09E31000C6B41 /* MessagesList.swift */; };
@@ -239,6 +240,7 @@
 		FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTypeModel.swift; sourceTree = "<group>"; };
 		FF58C40D2667BBA200BD3838 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 		FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCheckVerificationCode.swift; sourceTree = "<group>"; };
+		FF6AF6E426AAD7AD007A902F /* SharedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedProfileModel.swift; sourceTree = "<group>"; };
 		FF8AA6D626A098BD000C6B41 /* MessageBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBar.swift; sourceTree = "<group>"; };
 		FF8AA6D826A098EC000C6B41 /* MessageRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRoomViewModel.swift; sourceTree = "<group>"; };
 		FF8AA6DA26A09E31000C6B41 /* MessagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesList.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 				FF8AA6DE26A09EB2000C6B41 /* Message.swift */,
 				FF3727ED26A5051C00B20925 /* SendingMessageModel.swift */,
 				FF3727F126A5DA2400B20925 /* TypingResponse.swift */,
+				FF6AF6E426AAD7AD007A902F /* SharedProfileModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1043,6 +1046,7 @@
 				FF99A0322680BD7200F234CD /* ProfileViewModel.swift in Sources */,
 				FFDB15AD2666C03F00341E8F /* ConnectionType.swift in Sources */,
 				FF3D63C32693C99500799E72 /* MonthReport.swift in Sources */,
+				FF6AF6E526AAD7AD007A902F /* SharedProfileModel.swift in Sources */,
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,
 				FF99A0422681354500F234CD /* GetMatchesRequest.swift in Sources */,
 				FF3D63C7269485EF00799E72 /* ReportSection.swift in Sources */,

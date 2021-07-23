@@ -26,9 +26,7 @@ extension String {
         }
         return result
     }
-}
-
-extension String {
+    
     func extractDigits() -> Int {
         var tmp = ""
         let arr = Array( self )

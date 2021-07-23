@@ -26,7 +26,7 @@ class ProfileViewModel: ObservableObject {
     @Published var reportedOrBlockedAlert: Bool = false
     @Published var reportedOrBlockedAlertMessage: String = ""
     
-    @Published var sharedProfile: MatchViewModel? = nil
+    @Published var sharedProfile: SharedProfileModel? = nil
     
     @Published var friendsList = [UserPreviewModel]()
     @Published var requestsList = [UserPreviewModel]()
@@ -191,7 +191,7 @@ class ProfileViewModel: ObservableObject {
                 if response.error != nil {
                     self.makeAlert(with: response.error!, for: &self.alertMessage)
                 } else {
-                    self.sharedProfile = MatchViewModel(match: response.value!)
+                    self.sharedProfile = response.value!
                 }
             }.store(in: &cancellableSet)
     }

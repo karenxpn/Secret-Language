@@ -136,7 +136,7 @@ struct Profile: View {
                 }, label: {
                     Image( "shareIcon" )
                         .frame( width: 40, height: 40)
-                })
+                }).disabled( profileVM.profile?.id == nil)
                 
                 NavigationLink(
                     destination: Settings(),

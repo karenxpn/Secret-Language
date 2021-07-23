@@ -36,7 +36,7 @@ protocol ProfileServiceProtocol {
     func blockUser( token: String, userID: Int ) ->  AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func flagUser( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     
-    func fetchSharedProfile( userID: Int ) -> AnyPublisher<DataResponse<MatchModel, NetworkError>, Never>
+    func fetchSharedProfile( userID: Int ) -> AnyPublisher<DataResponse<SharedProfileModel, NetworkError>, Never>
 
 }
 
@@ -47,13 +47,13 @@ class ProfileService {
 }
 
 extension ProfileService: ProfileServiceProtocol {
-    func fetchSharedProfile(userID: Int) -> AnyPublisher<DataResponse<MatchModel, NetworkError>, Never> {
+    func fetchSharedProfile(userID: Int) -> AnyPublisher<DataResponse<SharedProfileModel, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/sharedUser/\(userID)")!
         
         return AF.request(url,
                           method: .get)
             .validate()
-            .publishDecodable(type: MatchModel.self)
+            .publishDecodable(type: SharedProfileModel.self)
             .map { response in
                 
                 response.mapError { error in

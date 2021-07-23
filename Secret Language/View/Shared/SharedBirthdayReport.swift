@@ -97,17 +97,16 @@ struct SharedBirthdayReport: View {
                 
             }.navigationBarTitle( "" )
             .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("birthdayReport", comment: "")), displayMode: .inline)
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                                        presentationMode.wrappedValue.dismiss()
-                                    }, label: {
-                                        Image("close")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 18, height: 18)
-                                            .padding([.leading, .top, .bottom])
-                                        
-                                    })
+            .navigationBarItems(trailing: Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }, label: {
+                Image("close")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 16, height: 16)
+                    .padding([.leading, .top, .bottom])
+                
+            })
             ).onAppear {
                 reportVM.getSharedBirthdayReport(reportID: reportID)
             }

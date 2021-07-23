@@ -42,54 +42,24 @@ struct SharedProfile: View {
                             .foregroundColor(.white)
                             .font(.custom("times", size: 20))
                         
-                        HStack( spacing: 0) {
-                            Text( NSLocalizedString("idealFor", comment: ""))
-                                .foregroundColor(.gray)
-                                .font(.custom("avenir", size: 14))
-                            
-                            Text(profileVM.sharedProfile!.ideal)
-                                .foregroundColor(.accentColor)
-                                .font(.custom("avenir", size: 14))
-                        }
-                        
                         Text( "..." )
                             .foregroundColor(.white)
                             .font(.title2)
                             .padding(.bottom, 8)
                         
-                        HStack {
-                            VStack( alignment: .leading) {
-                                Text( profileVM.sharedProfile!.myBirthday )
-                                    .font(.custom("times", size: 16))
-                                    .foregroundColor(.white)
-                                
-                                HStack( spacing: 0) {
-                                    Text( NSLocalizedString("weekOf", comment: ""))
-                                        .foregroundColor(.gray)
-                                        .font(.custom("Avenir", size: 12))
-                                    
-                                    Text( profileVM.sharedProfile!.myBirthdayWeek )
-                                        .foregroundColor(.accentColor)
-                                        .font(.custom("Avenir", size: 12))
-                                }
-                            }
+                        VStack( alignment: .leading) {
+                            Text( profileVM.sharedProfile!.user_birthday )
+                                .font(.custom("times", size: 16))
+                                .foregroundColor(.white)
                             
-                            Spacer()
-                            
-                            VStack( alignment: .trailing) {
-                                Text( profileVM.sharedProfile!.partnerBirthday )
-                                    .font(.custom("times", size: 16))
-                                    .foregroundColor(.white)
+                            HStack( spacing: 0) {
+                                Text( NSLocalizedString("weekOf", comment: ""))
+                                    .foregroundColor(.gray)
+                                    .font(.custom("Avenir", size: 12))
                                 
-                                HStack( spacing: 0) {
-                                    Text( NSLocalizedString("weekOf", comment: ""))
-                                        .foregroundColor(.gray)
-                                        .font(.custom("Avenir", size: 12))
-                                    
-                                    Text( profileVM.sharedProfile!.partnerBirthdayWeek )
-                                        .foregroundColor(.accentColor)
-                                        .font(.custom("Avenir", size: 12))
-                                }
+                                Text( profileVM.sharedProfile!.user_birthday_name )
+                                    .foregroundColor(.accentColor)
+                                    .font(.custom("Avenir", size: 12))
                             }
                         }.padding(.horizontal)
                         
@@ -99,7 +69,7 @@ struct SharedProfile: View {
                             .frame(width: 150, height: 150)
                         
                         VStack {
-                            Text( profileVM.sharedProfile!.title )
+                            Text( profileVM.sharedProfile!.sln )
                                 .foregroundColor(.white)
                                 .font(.custom("times", size: 24))
                                 .fontWeight(.bold)
@@ -148,20 +118,17 @@ struct SharedProfile: View {
             }.navigationBarTitle("Shared Profile", displayMode: .inline)
             .onAppear {
                 profileVM.getSharedProfile(userID: userID)
-            }.navigationBarItems(trailing:
-                                    Button(action: {
-                                        presentationMode.wrappedValue.dismiss()
-                                    }, label: {
-                                        Image("close")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 18, height: 18)
-                                            .padding([.leading, .top, .bottom])
-                                        
-                                    })
-            )
+            }.navigationBarItems(trailing: Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }, label: {
+                Image("close")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 16, height: 16)
+                    .padding([.leading, .top, .bottom])
+                
+            }))
         }
-
     }
 }
 

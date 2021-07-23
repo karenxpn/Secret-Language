@@ -130,22 +130,19 @@ struct SharedRelationshipReport: View {
                 }
             }.navigationBarTitle("")
             .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("relationshipBetween", comment: "")), displayMode: .inline)
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                                        presentationMode.wrappedValue.dismiss()
-                                    }, label: {
-                                        Image("close")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 18, height: 18)
-                                            .padding([.leading, .top, .bottom])
-                                        
-                                    })
-            ).onAppear {
+            .navigationBarItems(trailing: Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }, label: {
+                Image("close")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 16, height: 16)
+                    .padding([.leading, .top, .bottom])
+            })).onAppear {
                 reportVM.getSharedRelationshipReport(reportID: reportID)
             }
         }
-
+        
     }
 }
 
