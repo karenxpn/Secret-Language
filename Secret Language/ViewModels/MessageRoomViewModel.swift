@@ -94,9 +94,13 @@ class MessageRoomViewModel: ObservableObject {
     }
     
     func sendMessage(message: SendingMessageModel) {
-        withAnimation {
-            sendingMessage = true
+        
+        if message.type != "text" {
+            withAnimation {
+                sendingMessage = true
+            }
         }
+        
         dataManager.sendMessage(token: token, roomID: roomID, message: message)
             .sink { response in
                 withAnimation {
