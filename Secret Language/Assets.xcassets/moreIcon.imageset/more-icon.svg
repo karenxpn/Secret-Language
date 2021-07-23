@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="38px" height="38px" viewBox="0 0 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>more-icon</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="report-birthday" transform="translate(-321.000000, -64.000000)">
+            <g id="more-icon" transform="translate(321.000000, 64.000000)">
+                <g id="Group-Copy-5" fill="#FFFFFF" opacity="0.1">
+                    <rect id="Rectangle" x="0" y="0" width="38" height="38" rx="8"></rect>
+                </g>
+                <path d="M19,17 C19.8836556,17 20.6,17.7163444 20.6,18.6 C20.6,19.4836556 19.8836556,20.2 19,20.2 C18.1163444,20.2 17.4,19.4836556 17.4,18.6 C17.4,17.7163444 18.1163444,17 19,17 Z M25.4,17 C26.2836556,17 27,17.7163444 27,18.6 C27,19.4836556 26.2836556,20.2 25.4,20.2 C24.5163444,20.2 23.8,19.4836556 23.8,18.6 C23.8,17.7163444 24.5163444,17 25.4,17 Z M12.6,17 C13.4836556,17 14.2,17.7163444 14.2,18.6 C14.2,19.4836556 13.4836556,20.2 12.6,20.2 C11.7163444,20.2 11,19.4836556 11,18.6 C11,17.7163444 11.7163444,17 12.6,17 Z" id="Shape" fill="#AE9463" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

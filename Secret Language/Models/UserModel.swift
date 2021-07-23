@@ -7,6 +7,7 @@
 
 import Foundation
 struct UserModel: Codable {
+    var id: Int
     var image: String
     var name: String
     var age: Int

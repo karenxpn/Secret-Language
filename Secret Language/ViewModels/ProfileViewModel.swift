@@ -26,6 +26,8 @@ class ProfileViewModel: ObservableObject {
     @Published var reportedOrBlockedAlert: Bool = false
     @Published var reportedOrBlockedAlertMessage: String = ""
     
+    @Published var sharedProfile: SharedProfileModel? = nil
+    
     @Published var friendsList = [UserPreviewModel]()
     @Published var requestsList = [UserPreviewModel]()
     @Published var pendingList = [UserPreviewModel]()
@@ -179,6 +181,26 @@ class ProfileViewModel: ObservableObject {
                                          message: &self.reportedOrBlockedAlertMessage)
                 }
             }.store(in: &cancellableSet)
+    }
+    
+    func getSharedProfile(userID: Int) {
+        loading = true
+        dataManager.fetchSharedProfile(userID: userID)
+            .sink { response in
+                self.loading = false
+                if response.error != nil {
+                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                } else {
+                    self.sharedProfile = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func shareProfile( userID: Int ) {
+        let url = URL(string: "https://secretlanguage.network/v1/profile/share?id=\(userID)")!
+        let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
     }
     
     func getProfileWithPusher() {

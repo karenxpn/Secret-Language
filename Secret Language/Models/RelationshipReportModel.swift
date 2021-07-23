@@ -8,6 +8,7 @@
 import Foundation
 struct RelationshipReportModel: Codable, Identifiable {
     var id: Int
+    var shareId: Int
     var birthday_1: String
     var birthday_1_name: String
     var birthday_2: String
