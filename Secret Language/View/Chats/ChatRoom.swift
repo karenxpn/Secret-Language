@@ -24,7 +24,7 @@ struct ChatRoom: View {
                 
                 
                 if roomVM.sendingMessage {
-                    Text( NSLocalizedString("sendingMessage", comment: ""))
+                    Text( NSLocalizedString("sendingMedia", comment: ""))
                         .foregroundColor(.accentColor)
                         .font(.custom("Avenir", size: 10))
                         .padding(.top)
