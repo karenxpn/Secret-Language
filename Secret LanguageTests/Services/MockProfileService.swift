@@ -12,21 +12,62 @@ import PusherSwift
 @testable import Secret_Language
 
 class MockProfileService: ProfileServiceProtocol {
-    func fetchFriendRequestsWithPusher(channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> ()) {
+    
+    var reportUserError: Bool = false
+    var blockUserError: Bool = false
+    var flagUserError: Bool = false
+    var fetchSharedProfileError: Bool = false
+    
+    let sharedProfile = SharedProfileModel(id: 1, name: "karen mirakyan", age: 21, image: "", user_birthday: "", user_birthday_name: "", sln: "", sln_description: "", report: "", advice: "", famous_years: "", distance: "")
+    
+    func reportUser(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        var result: Result<GlobalResponse, NetworkError>
         
+        if reportUserError { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
+        else               { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
     }
     
-    func fetchPendingRequestsWithPusher(channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> ()) {
+    func blockUser(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        var result: Result<GlobalResponse, NetworkError>
         
+        if blockUserError { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
+        else               { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
     }
     
-    func fetchProfileWithPusher(channel: PusherChannel, completion: @escaping (UserModel) -> ()) {
+    func flagUser(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        var result: Result<GlobalResponse, NetworkError>
         
+        if flagUserError { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
+        else               { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
     }
     
-    func fetchFriendsWithPusher(channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> ()) {
+    func fetchSharedProfile(userID: Int) -> AnyPublisher<DataResponse<SharedProfileModel, NetworkError>, Never> {
+        var result: Result<SharedProfileModel, NetworkError>
         
+        if fetchSharedProfileError  { result = Result<SharedProfileModel, NetworkError>.failure(networkError)}
+        else                        { result = Result<SharedProfileModel, NetworkError>.success(sharedProfile)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<SharedProfileModel, NetworkError>, Never>( response )
+        return publisher.eraseToAnyPublisher()
     }
+    
+    func fetchFriendRequestsWithPusher(channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> ()) { }
+    func fetchPendingRequestsWithPusher(channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> ()) { }
+    func fetchProfileWithPusher(channel: PusherChannel, completion: @escaping (UserModel) -> ()) { }
+    func fetchFriendsWithPusher(channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> ()) { }
     
     func acceptFriendRequest(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         var result: Result<GlobalResponse, NetworkError>
@@ -97,7 +138,7 @@ class MockProfileService: ProfileServiceProtocol {
     let networkError = NetworkError(initialError: AFError.explicitlyCancelled, backendError: nil)
     let users = [UserPreviewModel(id: 1, name: "John Smith", image: "", ideal: "Business")]
     let globalResponse = GlobalResponse(status: "success", message: "success" )
-    let profile = UserModel(image: "", name: "Karen Mirakyan", age: 21, friends: 3, pending: 3, requests: 3)
+    let profile = UserModel(id: 1, image: "", name: "Karen Mirakyan", age: 21, friends: 3, pending: 3, requests: 3)
     
     // friends
     var fetchFriendRequestsError: Bool = false

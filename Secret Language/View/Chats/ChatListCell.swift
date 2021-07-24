@@ -32,25 +32,27 @@ struct ChatListCell: View {
                             .fontWeight(.semibold)
                             .lineLimit(1)
                         
-                        Text( chat.message.created_at)
-                            .foregroundColor(AppColors.messagePreviewTimeColor)
-                            .font(.custom("Gilroy-Regular", size: 12))
-                        
-                        if chat.message.content[0].type == "image" {
-                            Text( "Photo")
-                                .foregroundColor(AppColors.messagePreviewColor)
-                                .font(.custom("Gilroy-Regular", size: 15))
-                                .lineLimit(1)
-                        } else if chat.message.content[0].type == "video" {
-                            Text("Video")
-                                .foregroundColor(AppColors.messagePreviewColor)
-                                .font(.custom("Gilroy-Regular", size: 15))
-                                .lineLimit(1)
-                        } else {
-                            Text( chat.message.content[0].message)
-                                .foregroundColor(AppColors.messagePreviewColor)
-                                .font(.custom("Gilroy-Regular", size: 15))
-                                .lineLimit(1)
+                        if chat.message != nil {
+                            Text( chat.message!.created_at)
+                                .foregroundColor(AppColors.messagePreviewTimeColor)
+                                .font(.custom("Gilroy-Regular", size: 12))
+                            
+                            if chat.message!.content[0].type == "image" {
+                                Text( "Photo")
+                                    .foregroundColor(AppColors.messagePreviewColor)
+                                    .font(.custom("Gilroy-Regular", size: 15))
+                                    .lineLimit(1)
+                            } else if chat.message!.content[0].type == "video" {
+                                Text("Video")
+                                    .foregroundColor(AppColors.messagePreviewColor)
+                                    .font(.custom("Gilroy-Regular", size: 15))
+                                    .lineLimit(1)
+                            } else {
+                                Text( chat.message!.content[0].message)
+                                    .foregroundColor(AppColors.messagePreviewColor)
+                                    .font(.custom("Gilroy-Regular", size: 15))
+                                    .lineLimit(1)
+                            }
                         }
                     }
                     

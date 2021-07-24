@@ -11,8 +11,32 @@ import Alamofire
 import Combine
 
 class MockReportService: ReportServiceProtocol {
+    func fetchSharedBirthdayReport(reportID: Int) -> AnyPublisher<DataResponse<BirthdayReportModel, NetworkError>, Never> {
+        var result: Result<BirthdayReportModel, NetworkError>
+        
+        if fetchSharedBirthdayReportError   { result = Result<BirthdayReportModel, NetworkError>.failure(networkError)}
+        else                                { result = Result<BirthdayReportModel, NetworkError>.success(birthdayModel)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<BirthdayReportModel, NetworkError>, Never>( response)
+        return publisher.eraseToAnyPublisher()
+    }
+    
+    func fetchSharedRelationshipReport(reportID: Int) -> AnyPublisher<DataResponse<RelationshipReportModel, NetworkError>, Never> {
+        var result: Result<RelationshipReportModel, NetworkError>
+        
+        if fetchSharedRelationshipReportError   { result = Result<RelationshipReportModel, NetworkError>.failure(networkError)}
+        else                                    { result = Result<RelationshipReportModel, NetworkError>.success(relationshipModel)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<RelationshipReportModel, NetworkError>, Never>( response )
+        return publisher.eraseToAnyPublisher()
+    }
+    
     var fetchBirthdayReportError: Bool = false
     var fetchRelationshipReportError: Bool = false
+    var fetchSharedBirthdayReportError: Bool = false
+    var fetchSharedRelationshipReportError: Bool = false
     
     let networkError = NetworkError(initialError: AFError.explicitlyCancelled, backendError: nil)
     let globalResponse = GlobalResponse(status: "success", message: "paid")

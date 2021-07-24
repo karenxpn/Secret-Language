@@ -16,7 +16,7 @@ class MockAuthService: AuthServiceProtocol {
     let networkError = NetworkError(initialError: AFError.explicitlyCancelled, backendError: nil)
     let genders = [GenderModel(id: 1, gender_name: "Male"), GenderModel(id: 2, gender_name: "Female")]
     let connectionTypes = [ConnectionTypeModel(id: 1, name: "Business", description: "desctiption")]
-    let tokenResponse = AuthResponse(token: "", username: "username")
+    let tokenResponse = AuthResponse(id: 20, token: "", username: "username")
     
     var fetchConnectionTypesError: Bool = false
     var fetchAllGendersError: Bool = false
