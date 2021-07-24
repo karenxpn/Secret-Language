@@ -64,6 +64,7 @@
 		FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40D2667BBA200BD3838 /* GenderModel.swift */; };
 		FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */; };
 		FF6AF6E526AAD7AD007A902F /* SharedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF6E426AAD7AD007A902F /* SharedProfileModel.swift */; };
+		FF6AF6E726ABA974007A902F /* RoomViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF6E626ABA974007A902F /* RoomViewModelTests.swift */; };
 		FF8AA6D726A098BD000C6B41 /* MessageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6D626A098BD000C6B41 /* MessageBar.swift */; };
 		FF8AA6D926A098EC000C6B41 /* MessageRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6D826A098EC000C6B41 /* MessageRoomViewModel.swift */; };
 		FF8AA6DB26A09E31000C6B41 /* MessagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6DA26A09E31000C6B41 /* MessagesList.swift */; };
@@ -241,6 +242,7 @@
 		FF58C40D2667BBA200BD3838 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 		FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCheckVerificationCode.swift; sourceTree = "<group>"; };
 		FF6AF6E426AAD7AD007A902F /* SharedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedProfileModel.swift; sourceTree = "<group>"; };
+		FF6AF6E626ABA974007A902F /* RoomViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModelTests.swift; sourceTree = "<group>"; };
 		FF8AA6D626A098BD000C6B41 /* MessageBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBar.swift; sourceTree = "<group>"; };
 		FF8AA6D826A098EC000C6B41 /* MessageRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRoomViewModel.swift; sourceTree = "<group>"; };
 		FF8AA6DA26A09E31000C6B41 /* MessagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesList.swift; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 				FF99A0452681DB4E00F234CD /* ProfileViewModelTests.swift */,
 				FF997EA8268FD3090057B731 /* ReportsViewModelTests.swift */,
 				FF18DC43269F8EEF004BE946 /* ChatViewModelTests.swift */,
+				FF6AF6E626ABA974007A902F /* RoomViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1139,6 +1142,7 @@
 				FFE0E42426794ECC008FA78C /* MatchesViewModelTests.swift in Sources */,
 				FF997EA7268FD0900057B731 /* MockReportService.swift in Sources */,
 				FF997EA9268FD3090057B731 /* ReportsViewModelTests.swift in Sources */,
+				FF6AF6E726ABA974007A902F /* RoomViewModelTests.swift in Sources */,
 				FFBEA6902664E42A0033B2ED /* Secret_LanguageTests.swift in Sources */,
 				FF99A0482681DB6400F234CD /* MockProfileService.swift in Sources */,
 				FF99A0462681DB4E00F234CD /* ProfileViewModelTests.swift in Sources */,
