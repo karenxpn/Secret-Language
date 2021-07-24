@@ -29,7 +29,7 @@ class ReportsViewModelTests: XCTestCase {
         service.fetchRelationshipReportError = false
         viewModel.getRelationshipReport()
         
-        XCTAssertTrue(viewModel.navigateToRelationshipReport)
+        XCTAssertTrue(viewModel.navigate)
     }
     
     func testGetBirthdayReportWithError() {
@@ -43,6 +43,34 @@ class ReportsViewModelTests: XCTestCase {
         service.fetchBirthdayReportError = false
         viewModel.getBirthdayReport()
         
-        XCTAssertTrue(viewModel.navigateToBirthdayReport)
+        XCTAssertTrue(viewModel.navigate)
+    }
+    
+    func testGetSharedBirthdayReportWithError() {
+        service.fetchSharedBirthdayReportError = true
+        viewModel.getSharedBirthdayReport(reportID: 1)
+        
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+    }
+    
+    func testGetSharedBirthdayReportWithSuccess() {
+        service.fetchSharedBirthdayReportError = false
+        viewModel.getSharedBirthdayReport(reportID: 1)
+        
+        XCTAssertTrue(viewModel.alertMessage.isEmpty)
+    }
+    
+    func testGetSharedRelationshipReportWithError() {
+        service.fetchSharedRelationshipReportError = true
+        viewModel.getSharedRelationshipReport(reportID: 1)
+        
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+    }
+    
+    func testGetSharedRelationshipReportWithSuccess() {
+        service.fetchSharedRelationshipReportError = false
+        viewModel.getSharedRelationshipReport(reportID: 1)
+        
+        XCTAssertTrue(viewModel.alertMessage.isEmpty)
     }
 }

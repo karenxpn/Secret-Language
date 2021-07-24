@@ -9,6 +9,7 @@ import SwiftUI
 @main
 struct Secret_LanguageApp: App {
     
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @AppStorage( "token" ) private var token = ""
     
     init() {
@@ -18,6 +19,8 @@ struct Secret_LanguageApp: App {
         newAppearance.backgroundColor = .none
         newAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white, .font: UIFont( name: "Gilroy-Regular", size: 20)!]
         UINavigationBar.appearance().standardAppearance = newAppearance
+        
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor(.white)
     }
     
     var body: some Scene {

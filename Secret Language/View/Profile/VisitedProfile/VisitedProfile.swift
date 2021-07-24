@@ -10,7 +10,10 @@ import SDWebImageSwiftUI
 
 struct VisitedProfile: View {
     
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var profileVM = ProfileViewModel()
+    @State private var actionSheet: Bool = false
+    
     let userID: Int
     let userName: String
     
@@ -144,8 +147,43 @@ struct VisitedProfile: View {
             
         }.navigationBarTitle("")
         .navigationBarTitleView(SearchNavBar(title: userName))
+        .navigationBarItems(trailing: HStack( spacing: 10 ) {
+            
+            Button(action: {
+                profileVM.shareProfile(userID: userID)
+            }, label: {
+                Image( "shareIcon" )
+                    .frame( width: 40, height: 40)
+            })
+            
+            Button(action: {
+                actionSheet.toggle()
+            }, label: {
+                Image("moreIcon")
+                    .frame( width: 35, height: 35)
+            })
+        })
         .onAppear {
             profileVM.getVisitedProfile(userID: userID)
+        }.actionSheet(isPresented: $actionSheet) {
+            ActionSheet(title: Text( NSLocalizedString("action", comment: "")), message: nil,
+                        buttons: [ .default(Text( NSLocalizedString("reportUser", comment: ""))
+                                                .foregroundColor(.white), action: {
+                                                    profileVM.reportVisitedProfile(userID: userID)
+                                                }),
+                                   .default(Text( NSLocalizedString("flag", comment: ""))
+                                                .foregroundColor(.white), action: {
+                                                    profileVM.flagVisitedProfile(userID: userID)
+                                                }),
+                                   .destructive(Text( NSLocalizedString("blockUser", comment: ""))
+                                                    .foregroundColor(.white), action: {
+                                                        profileVM.blockVisitedProfile(userID: userID)
+                                                    }),
+                                   .cancel()])
+        }.alert(isPresented: $profileVM.reportedOrBlockedAlert) {
+            Alert(title: Text( "Done" ), message: Text(profileVM.reportedOrBlockedAlertMessage), dismissButton: .default(Text( "OK" ), action: {
+                presentationMode.wrappedValue.dismiss()
+            }))
         }
     }
 }

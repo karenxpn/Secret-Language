@@ -7,6 +7,7 @@
 
 import Foundation
 struct AuthResponse: Codable {
+    var id: Int
     var token: String
     var username: String
 }

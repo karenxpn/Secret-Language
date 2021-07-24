@@ -44,7 +44,7 @@ struct FriendListCell: View {
             Spacer()
             
             Button(action: {
-                
+                profileVM.sendGreetingMessage(userID: friend.id)
             }, label: {
                 Text("👋🏻")
                     .font(.title)

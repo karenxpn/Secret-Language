@@ -27,7 +27,7 @@ protocol AuthServiceProtocol {
 }
 
 class AuthService {
-    static let shared = AuthService()
+    static let shared: AuthServiceProtocol = AuthService()
     
     private init() { }
 }

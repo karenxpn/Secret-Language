@@ -117,3 +117,17 @@
 "fulfillment" = "Fulfillment: ";
 "theSecretLanguageNameFor" = "The Secret Language Name For";
 "is" = "is";
+"messaging" = "Messaging";
+"yourMessages" = "Your messages";
+"toStartCommunication" = "In order to start communication, click on the user you need";
+"typeMessage" = "Type a message…";
+"selectSource" = "Select Source";
+"actions" = "Actions";
+"seeHowYouAreMatched" = "See Who You’re Matched With & Connect !";
+"getPremium" = "Get Your Premium Features: $9.99 A Month\nUnlimited Messaging +\nPlus All The Standart Features: Free\nUnlimited Brirthday Reports\nUnlimited Relationship Reports\nUnlimited Matchmaking Reports";
+"subscribe" = "Subscribe";
+"restore" = "Restore";
+"reportUser" = "Report User";
+"blockUser" = "Block User";
+"flag" = "Flag as Inappropriate";
+"sendingMessage" = "Sending Message...";

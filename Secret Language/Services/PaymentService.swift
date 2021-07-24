@@ -14,7 +14,7 @@ protocol PaymentServiceProtocol {
 }
 
 class PaymentService {
-    static let shared = PaymentService()
+    static let shared: PaymentServiceProtocol = PaymentService()
     
     private init() { }
 }
