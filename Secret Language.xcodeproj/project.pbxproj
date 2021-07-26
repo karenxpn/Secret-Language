@@ -104,6 +104,8 @@
 		FF99A0502683684400F234CD /* PendingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A04F2683684400F234CD /* PendingListCell.swift */; };
 		FFAD920226AF6299007984ED /* SettingsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920126AF6299007984ED /* SettingsListCell.swift */; };
 		FFAD920426AF6418007984ED /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920326AF6418007984ED /* SettingsViewModel.swift */; };
+		FFAD920626AF6E8F007984ED /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920526AF6E8F007984ED /* SettingsService.swift */; };
+		FFAD920826AF6EF2007984ED /* SettingsFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920726AF6EF2007984ED /* SettingsFields.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -284,6 +286,8 @@
 		FF99A04F2683684400F234CD /* PendingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingListCell.swift; sourceTree = "<group>"; };
 		FFAD920126AF6299007984ED /* SettingsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListCell.swift; sourceTree = "<group>"; };
 		FFAD920326AF6418007984ED /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		FFAD920526AF6E8F007984ED /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		FFAD920726AF6EF2007984ED /* SettingsFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFields.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -601,6 +605,7 @@
 				FF3D63E12697AD1800799E72 /* PaymentService.swift */,
 				FF18DC3F269F669E004BE946 /* ChatService.swift */,
 				FF10811326A769F200387ED9 /* DeviceTokenManager.swift */,
+				FFAD920526AF6E8F007984ED /* SettingsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -629,6 +634,7 @@
 				FF3727ED26A5051C00B20925 /* SendingMessageModel.swift */,
 				FF3727F126A5DA2400B20925 /* TypingResponse.swift */,
 				FF6AF6E426AAD7AD007A902F /* SharedProfileModel.swift */,
+				FFAD920726AF6EF2007984ED /* SettingsFields.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1062,6 +1068,7 @@
 				FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */,
 				FFCEDDF5267100010073BE20 /* UserFullName.swift in Sources */,
 				FF997EA3268FCC720057B731 /* BirthdayReportModel.swift in Sources */,
+				FFAD920826AF6EF2007984ED /* SettingsFields.swift in Sources */,
 				FF3D63C52693C99E00799E72 /* SeasonReport.swift in Sources */,
 				FF997E862689DAB20057B731 /* SearchViewModel.swift in Sources */,
 				FF10811026A70C6500387ED9 /* MonthlySubscriptionView.swift in Sources */,
@@ -1083,6 +1090,7 @@
 				FFDB15A926669B9400341E8F /* TopGender.swift in Sources */,
 				FFCEDE05267236500073BE20 /* Search.swift in Sources */,
 				FF8AA6DB26A09E31000C6B41 /* MessagesList.swift in Sources */,
+				FFAD920626AF6E8F007984ED /* SettingsService.swift in Sources */,
 				FF4AB0FB268504A20085EA9A /* Settings.swift in Sources */,
 				FF99A0382680C65300F234CD /* FriendsNavBar.swift in Sources */,
 				FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */,
