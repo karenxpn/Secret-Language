@@ -102,6 +102,8 @@
 		FF99A0482681DB6400F234CD /* MockProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0472681DB6400F234CD /* MockProfileService.swift */; };
 		FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A04D268367C500F234CD /* PendingRequestsList.swift */; };
 		FF99A0502683684400F234CD /* PendingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A04F2683684400F234CD /* PendingListCell.swift */; };
+		FFAD920226AF6299007984ED /* SettingsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920126AF6299007984ED /* SettingsListCell.swift */; };
+		FFAD920426AF6418007984ED /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920326AF6418007984ED /* SettingsViewModel.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -280,6 +282,8 @@
 		FF99A0472681DB6400F234CD /* MockProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProfileService.swift; sourceTree = "<group>"; };
 		FF99A04D268367C500F234CD /* PendingRequestsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestsList.swift; sourceTree = "<group>"; };
 		FF99A04F2683684400F234CD /* PendingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingListCell.swift; sourceTree = "<group>"; };
+		FFAD920126AF6299007984ED /* SettingsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListCell.swift; sourceTree = "<group>"; };
+		FFAD920326AF6418007984ED /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -439,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				FF4AB0FA268504A20085EA9A /* Settings.swift */,
+				FFAD920126AF6299007984ED /* SettingsListCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -579,6 +584,7 @@
 				FF18DC3B269F61AF004BE946 /* ChatViewModel.swift */,
 				FF8AA6D826A098EC000C6B41 /* MessageRoomViewModel.swift */,
 				FF10811126A7699200387ED9 /* NotificationsViewModel.swift */,
+				FFAD920326AF6418007984ED /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1064,6 +1070,7 @@
 				FF3727EE26A5051C00B20925 /* SendingMessageModel.swift in Sources */,
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,
 				FF18DC40269F669E004BE946 /* ChatService.swift in Sources */,
+				FFAD920426AF6418007984ED /* SettingsViewModel.swift in Sources */,
 				FF3D63E22697AD1800799E72 /* PaymentService.swift in Sources */,
 				FF997EA5268FCCF80057B731 /* RelationshipReportModel.swift in Sources */,
 				FF997E9F268E74D60057B731 /* BirthdayReport.swift in Sources */,
@@ -1093,6 +1100,7 @@
 				FF10811426A769F200387ED9 /* DeviceTokenManager.swift in Sources */,
 				FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */,
 				FF997E8A2689E6BA0057B731 /* SingleSearchResult.swift in Sources */,
+				FFAD920226AF6299007984ED /* SettingsListCell.swift in Sources */,
 				FF18DC3E269F658D004BE946 /* ChatRoom.swift in Sources */,
 				FFDB158B26655DD500341E8F /* CheckVerificationCode.swift in Sources */,
 				FF18DC3A269F61A7004BE946 /* ChatListCell.swift in Sources */,
