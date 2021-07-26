@@ -57,7 +57,6 @@ struct MonthlySubscriptionView: View {
                 
                 VStack( spacing: 15 ) {
                     Button(action: {
-                        paymentVM.restorePurchase()
                     }, label: {
                         Text( NSLocalizedString("subscribe", comment: ""))
                             .foregroundColor(.black)
@@ -69,7 +68,7 @@ struct MonthlySubscriptionView: View {
                     })
                     
                     Button(action: {
-
+                        paymentVM.restorePurchase()
                     }, label: {
                         Text( NSLocalizedString("restore", comment: ""))
                             .foregroundColor(.accentColor)
