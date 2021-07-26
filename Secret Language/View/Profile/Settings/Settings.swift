@@ -43,6 +43,11 @@ struct Settings: View {
                     }
                 }.padding(.top, 1)
             }
+            
+            CustomAlert(isPresented: $settingsVM.showAlert, alertMessage: settingsVM.alertMessage, alignment: .center)
+                .offset(y: settingsVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+                .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
+            
 
         }.navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("settings", comment: "")))

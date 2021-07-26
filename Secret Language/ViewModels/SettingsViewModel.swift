@@ -18,8 +18,12 @@ class SettingsViewModel: ObservableObject {
     @Published var birthday: String = "26 Jul, 1999"
     
     @Published var loading: Bool = false
+    
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    
+    @Published var showUpdateAlert: Bool = false
+    @Published var updateAlertMessage: String = ""
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: SettingsServiceProtocol
@@ -49,8 +53,30 @@ class SettingsViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
+    func updateFields() {
+        let parameters = SettingsFields(gender: gender, age: birthday, location: location, fullName: fullName)
+        
+        dataManager.updateFields(token: token, parameters: parameters)
+            .sink { response in
+                if response.error != nil {
+                    self.makeAlert(with: response.error!,
+                                   showAlert: &self.showUpdateAlert,
+                                   alertMessage: &self.updateAlertMessage)
+                } else {
+                    self.makeSuccessAlert(with: response.value!,
+                                          showAlert: &self.showUpdateAlert,
+                                          alertMessage: &self.updateAlertMessage)
+                }
+            }.store(in: &cancellableSet)
+    }
+    
     func makeAlert( with error: NetworkError, showAlert: inout Bool, alertMessage: inout String ) {
         alertMessage = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
+        showAlert.toggle()
+    }
+    
+    func makeSuccessAlert( with response: GlobalResponse, showAlert: inout Bool, alertMessage: inout String ) {
+        alertMessage = response.message
         showAlert.toggle()
     }
     
