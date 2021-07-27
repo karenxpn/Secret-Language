@@ -37,7 +37,6 @@ struct SettingsGenderPicker: View {
                                     .background(self.gender.id == gender.id ? .accentColor : AppColors.boxColor)
                                     .cornerRadius(15)
                             })
-                            
                         }
                         
                         HStack {

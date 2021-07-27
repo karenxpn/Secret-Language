@@ -1,14 +1,14 @@
 //
-//  SettingsFields.swift
+//  SettingsFieldsUpdateModel.swift
 //  Secret Language
 //
 //  Created by Karen Mirakyan on 27.07.21.
 //
 
 import Foundation
-struct SettingsFields: Codable {
-    var gender: GenderModel
+struct SettingsFieldsUpdateModel: Codable {
     var date_name: String
-    var country_name: String
     var name: String
+    var gender: Int
+    var country_name: String
 }

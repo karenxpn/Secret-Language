@@ -11,7 +11,7 @@ import Combine
 
 protocol SettingsServiceProtocol {
     func fetchSettingsFields( token: String ) -> AnyPublisher<DataResponse<SettingsFields, NetworkError>, Never>
-    func updateFields( token: String, parameters: SettingsFields ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func updateFields( token: String, parameters: SettingsFieldsUpdateModel ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
 }
 
 class SettingsService {
@@ -21,8 +21,8 @@ class SettingsService {
 }
 
 extension SettingsService: SettingsServiceProtocol {
-    func updateFields(token: String, parameters: SettingsFields) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)updateProfile")!
+    func updateFields(token: String, parameters: SettingsFieldsUpdateModel) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/updateProfile")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
@@ -43,7 +43,7 @@ extension SettingsService: SettingsServiceProtocol {
     }
     
     func fetchSettingsFields(token: String) -> AnyPublisher<DataResponse<SettingsFields, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)settings")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/settings")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,

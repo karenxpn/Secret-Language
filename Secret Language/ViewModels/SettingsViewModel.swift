@@ -11,11 +11,10 @@ import SwiftUI
 
 class SettingsViewModel: ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
-    
     @Published var gender: GenderModel = GenderModel(id: 1, gender_name: "Male")
     @Published var fullName: String = "Karen Mirakyan"
     @Published var location: String = "Yerevan, Armenia"
-    @Published var birthday: String = "26 Jul,1999"
+    @Published var birthday: String = "Jul 26, 1999"
     
     @Published var loading: Bool = false
     
@@ -40,7 +39,7 @@ class SettingsViewModel: ObservableObject {
     
     var stringToDateFormatter: Date {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM,yyyy"
+        dateFormatter.dateFormat = "MMM dd, yyyy"
         return dateFormatter.date(from: self.birthday)!
     }
     
@@ -70,9 +69,9 @@ class SettingsViewModel: ObservableObject {
                     let settings = response.value!
                     
                     self.gender = settings.gender
-                    self.fullName = settings.fullName
-                    self.location = settings.location
-                    self.birthday = settings.birthday
+                    self.fullName = settings.name
+                    self.location = settings.country_name
+                    self.birthday = settings.date_name
                     
                     self.birthdayDate = self.stringToDateFormatter
                 }
@@ -91,7 +90,7 @@ class SettingsViewModel: ObservableObject {
     }
     
     func updateFields(updatedFrom: String) {
-        let parameters = SettingsFields(gender: gender, birthday: dateFormatter.string(from: self.birthdayDate), location: location, fullName: fullName)
+        let parameters = SettingsFieldsUpdateModel(date_name: dateFormatter.string(from: self.birthdayDate), name: fullName, gender: gender.id, country_name: location)
         
         dataManager.updateFields(token: token, parameters: parameters)
             .sink { response in
