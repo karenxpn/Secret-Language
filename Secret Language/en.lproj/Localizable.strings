@@ -131,3 +131,7 @@
 "blockUser" = "Block User";
 "flag" = "Flag as Inappropriate";
 "sendingMedia" = "Sending Media...";
+"gender" = "Gender";
+"age" = "Age";
+"location" = "Location";
+"fullName" = "Full Name";

@@ -102,6 +102,14 @@
 		FF99A0482681DB6400F234CD /* MockProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A0472681DB6400F234CD /* MockProfileService.swift */; };
 		FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A04D268367C500F234CD /* PendingRequestsList.swift */; };
 		FF99A0502683684400F234CD /* PendingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A04F2683684400F234CD /* PendingListCell.swift */; };
+		FFAD920226AF6299007984ED /* SettingsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920126AF6299007984ED /* SettingsListCell.swift */; };
+		FFAD920426AF6418007984ED /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920326AF6418007984ED /* SettingsViewModel.swift */; };
+		FFAD920626AF6E8F007984ED /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920526AF6E8F007984ED /* SettingsService.swift */; };
+		FFAD920826AF6EF2007984ED /* SettingsFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920726AF6EF2007984ED /* SettingsFields.swift */; };
+		FFAD920A26B02D89007984ED /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920926B02D89007984ED /* TextFieldAlert.swift */; };
+		FFAD920C26B04859007984ED /* SettingsBirthdayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */; };
+		FFAD920E26B0533D007984ED /* SettingsGenderPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920D26B0533D007984ED /* SettingsGenderPicker.swift */; };
+		FFAD921026B07F90007984ED /* SettingsFieldsUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920F26B07F90007984ED /* SettingsFieldsUpdateModel.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -280,6 +288,14 @@
 		FF99A0472681DB6400F234CD /* MockProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProfileService.swift; sourceTree = "<group>"; };
 		FF99A04D268367C500F234CD /* PendingRequestsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestsList.swift; sourceTree = "<group>"; };
 		FF99A04F2683684400F234CD /* PendingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingListCell.swift; sourceTree = "<group>"; };
+		FFAD920126AF6299007984ED /* SettingsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListCell.swift; sourceTree = "<group>"; };
+		FFAD920326AF6418007984ED /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		FFAD920526AF6E8F007984ED /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		FFAD920726AF6EF2007984ED /* SettingsFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFields.swift; sourceTree = "<group>"; };
+		FFAD920926B02D89007984ED /* TextFieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
+		FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBirthdayPicker.swift; sourceTree = "<group>"; };
+		FFAD920D26B0533D007984ED /* SettingsGenderPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGenderPicker.swift; sourceTree = "<group>"; };
+		FFAD920F26B07F90007984ED /* SettingsFieldsUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFieldsUpdateModel.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -439,6 +455,10 @@
 			isa = PBXGroup;
 			children = (
 				FF4AB0FA268504A20085EA9A /* Settings.swift */,
+				FFAD920126AF6299007984ED /* SettingsListCell.swift */,
+				FFAD920926B02D89007984ED /* TextFieldAlert.swift */,
+				FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */,
+				FFAD920D26B0533D007984ED /* SettingsGenderPicker.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -579,6 +599,7 @@
 				FF18DC3B269F61AF004BE946 /* ChatViewModel.swift */,
 				FF8AA6D826A098EC000C6B41 /* MessageRoomViewModel.swift */,
 				FF10811126A7699200387ED9 /* NotificationsViewModel.swift */,
+				FFAD920326AF6418007984ED /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -595,6 +616,7 @@
 				FF3D63E12697AD1800799E72 /* PaymentService.swift */,
 				FF18DC3F269F669E004BE946 /* ChatService.swift */,
 				FF10811326A769F200387ED9 /* DeviceTokenManager.swift */,
+				FFAD920526AF6E8F007984ED /* SettingsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -623,6 +645,8 @@
 				FF3727ED26A5051C00B20925 /* SendingMessageModel.swift */,
 				FF3727F126A5DA2400B20925 /* TypingResponse.swift */,
 				FF6AF6E426AAD7AD007A902F /* SharedProfileModel.swift */,
+				FFAD920726AF6EF2007984ED /* SettingsFields.swift */,
+				FFAD920F26B07F90007984ED /* SettingsFieldsUpdateModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1028,6 +1052,7 @@
 				FF8AA6D926A098EC000C6B41 /* MessageRoomViewModel.swift in Sources */,
 				FFDB158D26655E7800341E8F /* CustomAlert.swift in Sources */,
 				FF997E95268C96C10057B731 /* ReportViewModel.swift in Sources */,
+				FFAD921026B07F90007984ED /* SettingsFieldsUpdateModel.swift in Sources */,
 				FFCEDDFF267235FB0073BE20 /* Chat.swift in Sources */,
 				FFCAA21426A61409002054DC /* CameraView.swift in Sources */,
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
@@ -1051,11 +1076,13 @@
 				FF3D63C32693C99500799E72 /* MonthReport.swift in Sources */,
 				FF6AF6E526AAD7AD007A902F /* SharedProfileModel.swift in Sources */,
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,
+				FFAD920C26B04859007984ED /* SettingsBirthdayPicker.swift in Sources */,
 				FF99A0422681354500F234CD /* GetMatchesRequest.swift in Sources */,
 				FF3D63C7269485EF00799E72 /* ReportSection.swift in Sources */,
 				FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */,
 				FFCEDDF5267100010073BE20 /* UserFullName.swift in Sources */,
 				FF997EA3268FCC720057B731 /* BirthdayReportModel.swift in Sources */,
+				FFAD920826AF6EF2007984ED /* SettingsFields.swift in Sources */,
 				FF3D63C52693C99E00799E72 /* SeasonReport.swift in Sources */,
 				FF997E862689DAB20057B731 /* SearchViewModel.swift in Sources */,
 				FF10811026A70C6500387ED9 /* MonthlySubscriptionView.swift in Sources */,
@@ -1064,6 +1091,7 @@
 				FF3727EE26A5051C00B20925 /* SendingMessageModel.swift in Sources */,
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,
 				FF18DC40269F669E004BE946 /* ChatService.swift in Sources */,
+				FFAD920426AF6418007984ED /* SettingsViewModel.swift in Sources */,
 				FF3D63E22697AD1800799E72 /* PaymentService.swift in Sources */,
 				FF997EA5268FCCF80057B731 /* RelationshipReportModel.swift in Sources */,
 				FF997E9F268E74D60057B731 /* BirthdayReport.swift in Sources */,
@@ -1076,6 +1104,7 @@
 				FFDB15A926669B9400341E8F /* TopGender.swift in Sources */,
 				FFCEDE05267236500073BE20 /* Search.swift in Sources */,
 				FF8AA6DB26A09E31000C6B41 /* MessagesList.swift in Sources */,
+				FFAD920626AF6E8F007984ED /* SettingsService.swift in Sources */,
 				FF4AB0FB268504A20085EA9A /* Settings.swift in Sources */,
 				FF99A0382680C65300F234CD /* FriendsNavBar.swift in Sources */,
 				FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */,
@@ -1093,6 +1122,7 @@
 				FF10811426A769F200387ED9 /* DeviceTokenManager.swift in Sources */,
 				FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */,
 				FF997E8A2689E6BA0057B731 /* SingleSearchResult.swift in Sources */,
+				FFAD920226AF6299007984ED /* SettingsListCell.swift in Sources */,
 				FF18DC3E269F658D004BE946 /* ChatRoom.swift in Sources */,
 				FFDB158B26655DD500341E8F /* CheckVerificationCode.swift in Sources */,
 				FF18DC3A269F61A7004BE946 /* ChatListCell.swift in Sources */,
@@ -1113,6 +1143,7 @@
 				FFE0E41E2678090D008FA78C /* MatchesViewModel.swift in Sources */,
 				FF997E8C2689FF250057B731 /* SearchService.swift in Sources */,
 				FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */,
+				FFAD920A26B02D89007984ED /* TextFieldAlert.swift in Sources */,
 				FFDB158726653E8900341E8F /* NetworkError.swift in Sources */,
 				FFDB158F2665607000341E8F /* AppColors.swift in Sources */,
 				FF456F8226939576008F219E /* RelationshipReport.swift in Sources */,
@@ -1126,6 +1157,7 @@
 				FF18DC46269FAA96004BE946 /* ChatRoomNavBar.swift in Sources */,
 				FF99A0502683684400F234CD /* PendingListCell.swift in Sources */,
 				FFE0E4122677E5DC008FA78C /* SingleMatch.swift in Sources */,
+				FFAD920E26B0533D007984ED /* SettingsGenderPicker.swift in Sources */,
 				FFE0E42826794F97008FA78C /* CategoryItemModel.swift in Sources */,
 				FFE0E4182677FD89008FA78C /* MatchesNavBar.swift in Sources */,
 				FF3D63E4269924DC00799E72 /* PreviewParameters.swift in Sources */,

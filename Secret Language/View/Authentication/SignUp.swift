@@ -129,8 +129,7 @@ struct SignUp: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarTitle(Text( "" ))
         .fullScreenCover(isPresented: $fullscreen, content: {
-            BirthdayPicker()
-                .environmentObject(authVM)
+            BirthdayPicker(birthdayDate: $authVM.birthdayDate)
         }).onTapGesture {
             UIApplication.shared.endEditing()
         }
