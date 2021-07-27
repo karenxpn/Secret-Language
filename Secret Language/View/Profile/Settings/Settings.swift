@@ -26,17 +26,15 @@ struct Settings: View {
                         
                         SettingsListCell(destination: AnyView(Text( "Location" )), title: NSLocalizedString("location", comment: ""), content: settingsVM.location, navigationEnabled: false)
                         
-                        SettingsListCell(destination: AnyView(Text( "Age" )), title: NSLocalizedString("age", comment: ""), content: settingsVM.birthday, navigationEnabled: true)
-                        
-                        // add sign out button
-                        
+                        SettingsListCell(destination: AnyView(BirthdayPicker(birthdayDate: $settingsVM.birthdayDate)), title: NSLocalizedString("age", comment: ""), content: settingsVM.dateFormatter.string(from: settingsVM.birthdayDate), navigationEnabled: true)
+                                                
                         Button {
                             
                         } label: {
                             Text( "Log Out" )
                                 .foregroundColor(.black)
                                 .font(.custom("Avenir", size: 18))
-                                .frame(width: UIScreen.main.bounds.size.width * 0.8, height: 50)
+                                .frame(width: UIScreen.main.bounds.size.width * 0.9, height: 50)
                                 .background(.accentColor)
                                 .cornerRadius(25)
                         }
@@ -48,11 +46,10 @@ struct Settings: View {
                 .offset(y: settingsVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
-
         }.navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("settings", comment: "")))
         .onAppear {
-            settingsVM.getSettingsFields()
+            settingsVM.getSettingsFields()            
         }
     }
 }

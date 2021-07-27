@@ -15,7 +15,7 @@ class SettingsViewModel: ObservableObject {
     @Published var gender: String = "Male"
     @Published var fullName: String = "Karen Mirakyan"
     @Published var location: String = "Yerevan, Armenia"
-    @Published var birthday: String = "26 Jul, 1999"
+    @Published var birthday: String = "26 Jul,1999"
     
     @Published var loading: Bool = false
     
@@ -24,6 +24,20 @@ class SettingsViewModel: ObservableObject {
     
     @Published var showUpdateAlert: Bool = false
     @Published var updateAlertMessage: String = ""
+    
+    @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
+    
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }
+    
+    var stringToDateFormatter: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM,yyyy"
+        return dateFormatter.date(from: self.birthday)!
+    }
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: SettingsServiceProtocol
@@ -49,12 +63,14 @@ class SettingsViewModel: ObservableObject {
                     self.fullName = settings.fullName
                     self.location = settings.location
                     self.birthday = settings.age
+                    
+                    self.birthdayDate = self.stringToDateFormatter
                 }
             }.store(in: &cancellableSet)
     }
     
     func updateFields() {
-        let parameters = SettingsFields(gender: gender, age: birthday, location: location, fullName: fullName)
+        let parameters = SettingsFields(gender: gender, age: dateFormatter.string(from: self.birthdayDate), location: location, fullName: fullName)
         
         dataManager.updateFields(token: token, parameters: parameters)
             .sink { response in

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BirthdayPicker: View {
     
-    @EnvironmentObject var authVM: AuthViewModel
+    @Binding var birthdayDate: Date
     @Environment(\.presentationMode) var presentationMode
     
     let dateMinLimit = Calendar.current.date(byAdding: .year, value: -17, to: Date()) ?? Date()
@@ -27,7 +27,7 @@ struct BirthdayPicker: View {
                     .font(.custom("times", size: 26))
                 
                 Spacer()
-                DatePicker("", selection: $authVM.birthdayDate, in: dateMaxLimit...dateMinLimit ,displayedComponents: .date)
+                DatePicker("", selection: $birthdayDate, in: dateMaxLimit...dateMinLimit ,displayedComponents: .date)
                     .datePickerStyle(WheelDatePickerStyle())
                     .labelsHidden()
                     .colorMultiply(.accentColor)
@@ -57,7 +57,7 @@ struct BirthdayPicker: View {
 
 struct BirthdayPicker_Previews: PreviewProvider {
     static var previews: some View {
-        BirthdayPicker()
+        BirthdayPicker(birthdayDate: .constant(Date()))
             .environmentObject(AuthViewModel())
     }
 }
