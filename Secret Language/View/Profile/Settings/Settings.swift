@@ -93,7 +93,7 @@ struct Settings: View {
         }.navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("settings", comment: "")))
         .alert(isPresented: $showForm, TextFieldAlert(title: "Full Name", message: "") { (text) in
-            if text != nil {
+            if text != nil && ( text?.count ?? 0 ) >= 3 && ( text?.count ?? 0 ) < 20{
                 settingsVM.fullName = text!
                 settingsVM.updateFields(updatedFrom: "")
             }
