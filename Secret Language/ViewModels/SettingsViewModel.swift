@@ -22,10 +22,13 @@ class SettingsViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
-    @Published var showUpdateAlert: Bool = false
+    @Published var updateAlert: Bool = false
     @Published var updateAlertMessage: String = ""
     
     @Published var allGenders = [GenderModel]()
+    @Published var loadingGenders: Bool = false
+    @Published var navigateToGenders: Bool = false
+    @Published var navigateToBirthdayPicker: Bool = false
     
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     
@@ -49,6 +52,8 @@ class SettingsViewModel: ObservableObject {
           authDataManager: AuthServiceProtocol = AuthService.shared) {
         self.dataManager = dataManager
         self.authDataManager = authDataManager
+        
+        getSettingsFields()
     }
     
     func getSettingsFields() {
@@ -75,28 +80,34 @@ class SettingsViewModel: ObservableObject {
     }
     
     func getAllGenders() {
+        loadingGenders = true
         authDataManager.fetchAllGenders()
             .sink { response in
+                self.loadingGenders = false
                 if response.error == nil {
                     self.allGenders = response.value!
                 }
             }.store(in: &cancellableSet)
     }
     
-    func updateFields() {
+    func updateFields(updatedFrom: String) {
         let parameters = SettingsFields(gender: gender, birthday: dateFormatter.string(from: self.birthdayDate), location: location, fullName: fullName)
         
         dataManager.updateFields(token: token, parameters: parameters)
             .sink { response in
-                if response.error != nil {
-                    self.makeAlert(with: response.error!,
-                                   showAlert: &self.showUpdateAlert,
-                                   alertMessage: &self.updateAlertMessage)
+                
+                if response.error == nil {
+                    if updatedFrom == "gender" {
+                        self.navigateToGenders.toggle()
+                    } else if updatedFrom == "birthday" {
+                        self.navigateToBirthdayPicker.toggle()
+                    }
+                    
+                    self.getSettingsFields()
                 } else {
-                    self.makeSuccessAlert(with: response.value!,
-                                          showAlert: &self.showUpdateAlert,
-                                          alertMessage: &self.updateAlertMessage)
+                    self.makeAlert(with: response.error!, showAlert: &self.updateAlert, alertMessage: &self.updateAlertMessage)
                 }
+                
             }.store(in: &cancellableSet)
     }
     

@@ -41,6 +41,7 @@ struct SettingsBirthdayPicker: View {
                     
                     Button(action: {
                         selectedBirthdayDate = birthdayDate
+                        settingsVM.updateFields(updatedFrom: "birthday")
                     }, label: {
                         Image("proceed")
                             .resizable()
@@ -52,10 +53,10 @@ struct SettingsBirthdayPicker: View {
             }.padding()
             .padding(.top, 50)
             
-            CustomAlert(isPresented: $settingsVM.showUpdateAlert, alertMessage: settingsVM.updateAlertMessage, alignment: .center)
-                .offset(y: settingsVM.showUpdateAlert ? 0 : UIScreen.main.bounds.size.height)
+            CustomAlert(isPresented: $settingsVM.updateAlert, alertMessage: settingsVM.updateAlertMessage, alignment: .center)
+                .offset(y: settingsVM.updateAlert ? 0 : UIScreen.main.bounds.size.height)
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
-            
+        
         }.navigationBarItems(trailing: Button(action: {
             presentationMode.wrappedValue.dismiss()
         }, label: {

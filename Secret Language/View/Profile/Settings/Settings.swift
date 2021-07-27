@@ -12,7 +12,6 @@ struct Settings: View {
     @ObservedObject var settingsVM = SettingsViewModel()
     @State private var showForm: Bool = false
     
-    
     var body: some View {
         ZStack {
             Background()
@@ -22,8 +21,28 @@ struct Settings: View {
             } else {
                 ScrollView {
                     LazyVStack {
-                        SettingsListCell(destination: AnyView(SettingsGenderPicker(gender: settingsVM.gender).environmentObject(settingsVM)), title: NSLocalizedString("gender", comment: ""), content: settingsVM.gender.gender_name, navigationEnabled: true)
                         
+                        NavigationLink(destination: EmptyView()) {
+                            EmptyView()
+                        }
+                        
+                        NavigationLink(destination: SettingsGenderPicker(gender: settingsVM.gender).environmentObject(settingsVM), isActive: $settingsVM.navigateToGenders) {
+                            EmptyView()
+                        }.hidden()
+                        
+                        NavigationLink(destination: EmptyView()) {
+                            EmptyView()
+                        }
+                        NavigationLink(destination: SettingsBirthdayPicker(birthdayDate: settingsVM.birthdayDate, selectedBirthdayDate: $settingsVM.birthdayDate).environmentObject(settingsVM), isActive: $settingsVM.navigateToBirthdayPicker) {
+                            EmptyView()
+                        }.hidden()
+                        
+                        Button {
+                            settingsVM.navigateToGenders.toggle()
+                        } label: {
+                            SettingsListCell(title: NSLocalizedString("gender", comment: ""), content: settingsVM.gender.gender_name)
+                        }
+
                         Button {
                             showForm.toggle()
                         } label: {
@@ -45,9 +64,13 @@ struct Settings: View {
                             }.padding()
                         }
                         
-                        SettingsListCell(destination: AnyView(Text( "Location" )), title: NSLocalizedString("location", comment: ""), content: settingsVM.location, navigationEnabled: false)
+                        SettingsListCell( title: NSLocalizedString("location", comment: ""), content: settingsVM.location)
                         
-                        SettingsListCell(destination: AnyView(SettingsBirthdayPicker(birthdayDate: settingsVM.birthdayDate, selectedBirthdayDate: $settingsVM.birthdayDate).environmentObject(settingsVM)), title: NSLocalizedString("age", comment: ""), content: settingsVM.dateFormatter.string(from: settingsVM.birthdayDate), navigationEnabled: true)
+                        Button {
+                            settingsVM.navigateToBirthdayPicker.toggle()
+                        } label: {
+                            SettingsListCell( title: NSLocalizedString("age", comment: ""), content: settingsVM.dateFormatter.string(from: settingsVM.birthdayDate))
+                        }
                                                 
                         Button {
                             
@@ -69,12 +92,10 @@ struct Settings: View {
             
         }.navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("settings", comment: "")))
-        .onAppear {
-            settingsVM.getSettingsFields()            
-        }.alert(isPresented: $showForm, TextFieldAlert(title: "Full Name", message: "") { (text) in
+        .alert(isPresented: $showForm, TextFieldAlert(title: "Full Name", message: "") { (text) in
             if text != nil {
                 settingsVM.fullName = text!
-                settingsVM.updateFields()
+                settingsVM.updateFields(updatedFrom: "")
             }
         })
     }
