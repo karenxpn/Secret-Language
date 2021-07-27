@@ -7,8 +7,8 @@
 
 import Foundation
 struct SettingsFields: Codable {
-    var gender: String
-    var age: String
+    var gender: GenderModel
+    var birthday: String
     var location: String
     var fullName: String
 }

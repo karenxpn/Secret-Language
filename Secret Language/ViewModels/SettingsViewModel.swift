@@ -12,7 +12,7 @@ import SwiftUI
 class SettingsViewModel: ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     
-    @Published var gender: String = "Male"
+    @Published var gender: GenderModel = GenderModel(id: 1, gender_name: "Male")
     @Published var fullName: String = "Karen Mirakyan"
     @Published var location: String = "Yerevan, Armenia"
     @Published var birthday: String = "26 Jul,1999"
@@ -24,6 +24,8 @@ class SettingsViewModel: ObservableObject {
     
     @Published var showUpdateAlert: Bool = false
     @Published var updateAlertMessage: String = ""
+    
+    @Published var allGenders = [GenderModel]()
     
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     
@@ -41,9 +43,12 @@ class SettingsViewModel: ObservableObject {
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: SettingsServiceProtocol
+    var authDataManager: AuthServiceProtocol
     
-    init( dataManager: SettingsServiceProtocol = SettingsService.shared) {
+    init( dataManager: SettingsServiceProtocol = SettingsService.shared,
+          authDataManager: AuthServiceProtocol = AuthService.shared) {
         self.dataManager = dataManager
+        self.authDataManager = authDataManager
     }
     
     func getSettingsFields() {
@@ -62,15 +67,24 @@ class SettingsViewModel: ObservableObject {
                     self.gender = settings.gender
                     self.fullName = settings.fullName
                     self.location = settings.location
-                    self.birthday = settings.age
+                    self.birthday = settings.birthday
                     
                     self.birthdayDate = self.stringToDateFormatter
                 }
             }.store(in: &cancellableSet)
     }
     
+    func getAllGenders() {
+        authDataManager.fetchAllGenders()
+            .sink { response in
+                if response.error == nil {
+                    self.allGenders = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
     func updateFields() {
-        let parameters = SettingsFields(gender: gender, age: dateFormatter.string(from: self.birthdayDate), location: location, fullName: fullName)
+        let parameters = SettingsFields(gender: gender, birthday: dateFormatter.string(from: self.birthdayDate), location: location, fullName: fullName)
         
         dataManager.updateFields(token: token, parameters: parameters)
             .sink { response in

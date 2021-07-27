@@ -22,7 +22,7 @@ struct Settings: View {
             } else {
                 ScrollView {
                     LazyVStack {
-                        SettingsListCell(destination: AnyView(Text( "Gender" )), title: NSLocalizedString("gender", comment: ""), content: settingsVM.gender, navigationEnabled: true)
+                        SettingsListCell(destination: AnyView(SettingsGenderPicker(gender: settingsVM.gender).environmentObject(settingsVM)), title: NSLocalizedString("gender", comment: ""), content: settingsVM.gender.gender_name, navigationEnabled: true)
                         
                         Button {
                             showForm.toggle()

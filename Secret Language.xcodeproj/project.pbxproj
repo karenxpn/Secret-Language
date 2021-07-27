@@ -108,6 +108,7 @@
 		FFAD920826AF6EF2007984ED /* SettingsFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920726AF6EF2007984ED /* SettingsFields.swift */; };
 		FFAD920A26B02D89007984ED /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920926B02D89007984ED /* TextFieldAlert.swift */; };
 		FFAD920C26B04859007984ED /* SettingsBirthdayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */; };
+		FFAD920E26B0533D007984ED /* SettingsGenderPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920D26B0533D007984ED /* SettingsGenderPicker.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -292,6 +293,7 @@
 		FFAD920726AF6EF2007984ED /* SettingsFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFields.swift; sourceTree = "<group>"; };
 		FFAD920926B02D89007984ED /* TextFieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
 		FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBirthdayPicker.swift; sourceTree = "<group>"; };
+		FFAD920D26B0533D007984ED /* SettingsGenderPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGenderPicker.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				FFAD920126AF6299007984ED /* SettingsListCell.swift */,
 				FFAD920926B02D89007984ED /* TextFieldAlert.swift */,
 				FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */,
+				FFAD920D26B0533D007984ED /* SettingsGenderPicker.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1150,6 +1153,7 @@
 				FF18DC46269FAA96004BE946 /* ChatRoomNavBar.swift in Sources */,
 				FF99A0502683684400F234CD /* PendingListCell.swift in Sources */,
 				FFE0E4122677E5DC008FA78C /* SingleMatch.swift in Sources */,
+				FFAD920E26B0533D007984ED /* SettingsGenderPicker.swift in Sources */,
 				FFE0E42826794F97008FA78C /* CategoryItemModel.swift in Sources */,
 				FFE0E4182677FD89008FA78C /* MatchesNavBar.swift in Sources */,
 				FF3D63E4269924DC00799E72 /* PreviewParameters.swift in Sources */,
