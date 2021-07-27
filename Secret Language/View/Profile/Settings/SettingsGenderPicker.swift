@@ -21,7 +21,7 @@ struct SettingsGenderPicker: View {
             if settingsVM.loadingGenders {
                 ProgressView()
             } else {
-                ScrollView {
+                ScrollView( showsIndicators: false ) {
                     LazyVStack {
                         
                         ForEach( settingsVM.allGenders, id: \.id ) { gender in
@@ -52,7 +52,8 @@ struct SettingsGenderPicker: View {
                                     .frame(width: 50, height: 50)
                             })
                         }
-                    }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                    }.padding()
+                    .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 }.padding(.top, 1)
             }
 

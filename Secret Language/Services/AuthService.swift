@@ -35,7 +35,7 @@ class AuthService {
 
 extension AuthService: AuthServiceProtocol {
     func logout(token: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)auth/logout")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/logout")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,

@@ -83,7 +83,6 @@ struct Settings: View {
                                     EmptyView()
                                 }.hidden()
                             }
-
                         )
                                                 
                         Button {
