@@ -107,6 +107,7 @@
 		FFAD920626AF6E8F007984ED /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920526AF6E8F007984ED /* SettingsService.swift */; };
 		FFAD920826AF6EF2007984ED /* SettingsFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920726AF6EF2007984ED /* SettingsFields.swift */; };
 		FFAD920A26B02D89007984ED /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920926B02D89007984ED /* TextFieldAlert.swift */; };
+		FFAD920C26B04859007984ED /* SettingsBirthdayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -290,6 +291,7 @@
 		FFAD920526AF6E8F007984ED /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		FFAD920726AF6EF2007984ED /* SettingsFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFields.swift; sourceTree = "<group>"; };
 		FFAD920926B02D89007984ED /* TextFieldAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
+		FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBirthdayPicker.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 				FF4AB0FA268504A20085EA9A /* Settings.swift */,
 				FFAD920126AF6299007984ED /* SettingsListCell.swift */,
 				FFAD920926B02D89007984ED /* TextFieldAlert.swift */,
+				FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1066,6 +1069,7 @@
 				FF3D63C32693C99500799E72 /* MonthReport.swift in Sources */,
 				FF6AF6E526AAD7AD007A902F /* SharedProfileModel.swift in Sources */,
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,
+				FFAD920C26B04859007984ED /* SettingsBirthdayPicker.swift in Sources */,
 				FF99A0422681354500F234CD /* GetMatchesRequest.swift in Sources */,
 				FF3D63C7269485EF00799E72 /* ReportSection.swift in Sources */,
 				FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */,

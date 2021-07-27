@@ -47,7 +47,7 @@ struct Settings: View {
                         
                         SettingsListCell(destination: AnyView(Text( "Location" )), title: NSLocalizedString("location", comment: ""), content: settingsVM.location, navigationEnabled: false)
                         
-                        SettingsListCell(destination: AnyView(BirthdayPicker(birthdayDate: $settingsVM.birthdayDate)), title: NSLocalizedString("age", comment: ""), content: settingsVM.dateFormatter.string(from: settingsVM.birthdayDate), navigationEnabled: true)
+                        SettingsListCell(destination: AnyView(SettingsBirthdayPicker(birthdayDate: settingsVM.birthdayDate, selectedBirthdayDate: $settingsVM.birthdayDate).environmentObject(settingsVM)), title: NSLocalizedString("age", comment: ""), content: settingsVM.dateFormatter.string(from: settingsVM.birthdayDate), navigationEnabled: true)
                                                 
                         Button {
                             
