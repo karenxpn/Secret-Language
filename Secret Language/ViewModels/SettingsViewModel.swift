@@ -10,7 +10,10 @@ import Combine
 import SwiftUI
 
 class SettingsViewModel: ObservableObject {
-    @AppStorage( "token" ) private var token: String = ""
+    @AppStorage("token") private var token: String = ""
+    @AppStorage("username") private var username: String = ""
+    @AppStorage( "userID" ) private var userID: Int = 0
+    
     @Published var gender: GenderModel = GenderModel(id: 1, gender_name: "Male")
     @Published var fullName: String = "Karen Mirakyan"
     @Published var location: String = "Yerevan, Armenia"
@@ -107,6 +110,21 @@ class SettingsViewModel: ObservableObject {
                     self.makeAlert(with: response.error!, showAlert: &self.updateAlert, alertMessage: &self.updateAlertMessage)
                 }
                 
+            }.store(in: &cancellableSet)
+    }
+    
+    func logout() {
+        authDataManager.logout(token: token)
+            .sink { response in
+                if response.error != nil {
+                    self.makeAlert(with: response.error!,
+                                   showAlert: &self.showAlert,
+                                   alertMessage: &self.alertMessage)
+                } else {
+                    self.token = ""
+                    self.username = ""
+                    self.userID = 0
+                }
             }.store(in: &cancellableSet)
     }
     

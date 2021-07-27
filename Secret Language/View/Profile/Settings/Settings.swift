@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Settings: View {
-    
     @ObservedObject var settingsVM = SettingsViewModel()
     @State private var showForm: Bool = false
     
@@ -21,27 +20,24 @@ struct Settings: View {
             } else {
                 ScrollView {
                     LazyVStack {
-                        
-                        NavigationLink(destination: EmptyView()) {
-                            EmptyView()
-                        }
-                        
-                        NavigationLink(destination: SettingsGenderPicker(gender: settingsVM.gender).environmentObject(settingsVM), isActive: $settingsVM.navigateToGenders) {
-                            EmptyView()
-                        }.hidden()
-                        
-                        NavigationLink(destination: EmptyView()) {
-                            EmptyView()
-                        }
-                        NavigationLink(destination: SettingsBirthdayPicker(birthdayDate: settingsVM.birthdayDate, selectedBirthdayDate: $settingsVM.birthdayDate).environmentObject(settingsVM), isActive: $settingsVM.navigateToBirthdayPicker) {
-                            EmptyView()
-                        }.hidden()
-                        
+
                         Button {
                             settingsVM.navigateToGenders.toggle()
                         } label: {
                             SettingsListCell(title: NSLocalizedString("gender", comment: ""), content: settingsVM.gender.gender_name)
-                        }
+                        }.background(
+                            
+                            ZStack {
+                                NavigationLink(destination: EmptyView()) {
+                                    EmptyView()
+                                }
+                                
+                                NavigationLink(destination: SettingsGenderPicker(gender: settingsVM.gender).environmentObject(settingsVM), isActive: $settingsVM.navigateToGenders) {
+                                    EmptyView()
+                                }.hidden()
+                            }
+
+                        )
 
                         Button {
                             showForm.toggle()
@@ -70,10 +66,23 @@ struct Settings: View {
                             settingsVM.navigateToBirthdayPicker.toggle()
                         } label: {
                             SettingsListCell( title: NSLocalizedString("age", comment: ""), content: settingsVM.dateFormatter.string(from: settingsVM.birthdayDate))
-                        }
+                        }.background(
+                            
+                            ZStack {
+                                
+                                NavigationLink(destination: EmptyView()) {
+                                    EmptyView()
+                                }
+                                
+                                NavigationLink(destination: SettingsBirthdayPicker(birthdayDate: settingsVM.birthdayDate, selectedBirthdayDate: $settingsVM.birthdayDate).environmentObject(settingsVM), isActive: $settingsVM.navigateToBirthdayPicker) {
+                                    EmptyView()
+                                }.hidden()
+                            }
+
+                        )
                                                 
                         Button {
-                            
+                            settingsVM.logout()
                         } label: {
                             Text( "Log Out" )
                                 .foregroundColor(.black)
@@ -93,7 +102,7 @@ struct Settings: View {
         }.navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("settings", comment: "")))
         .alert(isPresented: $showForm, TextFieldAlert(title: "Full Name", message: "") { (text) in
-            if text != nil && ( text?.count ?? 0 ) >= 3 && ( text?.count ?? 0 ) < 20{
+            if text != nil && ( text?.count ?? 0 ) >= 3 && ( text?.count ?? 0 ) < 20 {
                 settingsVM.fullName = text!
                 settingsVM.updateFields(updatedFrom: "")
             }

@@ -47,10 +47,6 @@ class TextFieldAlertViewController: UIViewController {
         let vc = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
         // add a textField and create a subscription to update the `text` binding
         vc.addTextField {
-            // TODO: 需要补充这些参数
-            // $0.placeholder = alert.placeholder
-            // $0.keyboardType = alert.keyboardType
-            // $0.text = alert.defaultValue ?? ""
             $0.text = self.alert.defaultText
         }
         if let cancel = alert.cancel {
@@ -59,6 +55,7 @@ class TextFieldAlertViewController: UIViewController {
                 self.isPresented = false
             })
         }
+        
         let textField = vc.textFields?.first
         vc.addAction(UIAlertAction(title: alert.accept, style: .default) { _ in
             self.isPresented = false
@@ -73,9 +70,9 @@ struct TextFieldAlert {
     let title: String
     let message: String?
     var defaultText: String = ""
-    public var accept: String = "Done" // The left-most button label
-    public var cancel: String? = "Cancel" // The optional cancel (right-most) button label
-    public var action: (String?) -> Void // Triggers when either of the two buttons closes the dialog
+    public var accept: String = "Done"
+    public var cancel: String? = "Cancel"
+    public var action: (String?) -> Void
     
 }
 
