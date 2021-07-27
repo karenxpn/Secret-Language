@@ -32,11 +32,12 @@ struct Settings: View {
                                     EmptyView()
                                 }
                                 
-                                NavigationLink(destination: SettingsGenderPicker(gender: settingsVM.gender).environmentObject(settingsVM), isActive: $settingsVM.navigateToGenders) {
+                                NavigationLink(destination: SettingsGenderPicker(gender: settingsVM.gender)
+                                                .environmentObject(settingsVM),
+                                               isActive: $settingsVM.navigateToGenders) {
                                     EmptyView()
                                 }.hidden()
                             }
-
                         )
 
                         Button {
@@ -65,7 +66,8 @@ struct Settings: View {
                         Button {
                             settingsVM.navigateToBirthdayPicker.toggle()
                         } label: {
-                            SettingsListCell( title: NSLocalizedString("age", comment: ""), content: settingsVM.dateFormatter.string(from: settingsVM.birthdayDate))
+                            SettingsListCell( title: NSLocalizedString("age", comment: ""),
+                                              content: settingsVM.dateFormatter.string(from: settingsVM.birthdayDate))
                         }.background(
                             
                             ZStack {
@@ -74,7 +76,10 @@ struct Settings: View {
                                     EmptyView()
                                 }
                                 
-                                NavigationLink(destination: SettingsBirthdayPicker(birthdayDate: settingsVM.birthdayDate, selectedBirthdayDate: $settingsVM.birthdayDate).environmentObject(settingsVM), isActive: $settingsVM.navigateToBirthdayPicker) {
+                                NavigationLink(destination: SettingsBirthdayPicker(birthdayDate: settingsVM.birthdayDate,
+                                                                                   selectedBirthdayDate: $settingsVM.birthdayDate)
+                                                .environmentObject(settingsVM),
+                                               isActive: $settingsVM.navigateToBirthdayPicker) {
                                     EmptyView()
                                 }.hidden()
                             }
@@ -101,7 +106,7 @@ struct Settings: View {
             
         }.navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("settings", comment: "")))
-        .alert(isPresented: $showForm, TextFieldAlert(title: "Full Name", message: "") { (text) in
+        .alert(isPresented: $showForm, TextFieldAlert(title: NSLocalizedString("fullName", comment: ""), message: "") { (text) in
             if text != nil && ( text?.count ?? 0 ) >= 3 && ( text?.count ?? 0 ) < 20 {
                 settingsVM.fullName = text!
                 settingsVM.updateFields(updatedFrom: "")
