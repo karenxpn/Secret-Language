@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Chat: View {
+    @AppStorage( "shouldSubscribe" ) private var shouldSubscribe: Bool = true
     @ObservedObject var chatVM = ChatViewModel()
     
     init() {
@@ -26,7 +27,11 @@ struct Chat: View {
                 if chatVM.loading {
                     ProgressView()
                 } else {
-                    ChatList(chats: chatVM.chats )
+                    if shouldSubscribe {
+                        MonthlySubscriptionView()
+                    } else {
+                        ChatList(chats: chatVM.chats )
+                    }
                 }
                 CustomAlert(isPresented: $chatVM.showAlert, alertMessage: chatVM.alertMessage, alignment: .center)
                     .offset(y: chatVM.showAlert ? 0 : UIScreen.main.bounds.size.height)

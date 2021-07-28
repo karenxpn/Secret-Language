@@ -22,15 +22,6 @@ class PaymentService {
 extension PaymentService: PaymentServiceProtocol {
     func postPaymentStatus(token: String,  reportDate: String, firstReportDate: String, secondReportDate: String, birthdayOrRelationship: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         
-        
-        if birthdayOrRelationship {
-            print("posting relationship with parameters" )
-            print("\(firstReportDate) \(secondReportDate)")
-        } else {
-            print("posting birthday report with parameters")
-            print(reportDate)
-        }
-        
         let url = URL(string: "\(Credentials.BASE_URL)user/addPaidReport")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         

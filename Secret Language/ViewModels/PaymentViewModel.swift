@@ -15,6 +15,7 @@ typealias PurchaseCompletionHandler = ( ( SKPaymentTransaction? ) -> Void )
 class PaymentViewModel: NSObject, ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "shouldPurchaseReport" ) private var shouldPurchase: Bool = true
+    @AppStorage( "shouldSubscribe" ) private var shouldSubscribe: Bool = true
 
     @Published var birthdayDate: String = ""
     @Published var firstReportDate: String = ""
