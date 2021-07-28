@@ -15,7 +15,7 @@ struct MonthlySubscriptionView: View {
         ZStack {
             Background()
             
-            ScrollView {
+            ScrollView( showsIndicators: false ) {
                 
                 ZStack {
                     Image("monthlySubscriptionTopIcon")
@@ -93,7 +93,7 @@ struct MonthlySubscriptionView: View {
                     Link(NSLocalizedString("madeByDoejo", comment: ""), destination: URL(string: "https://doejo.com")!)
                         .foregroundColor(.blue)
                         .font(.custom("Gilroy-Regular", size: 10))
-                }
+                }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
 
             }.padding(.top, 1)
         }.navigationBarTitle("")

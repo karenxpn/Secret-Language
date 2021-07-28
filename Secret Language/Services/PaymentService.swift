@@ -24,7 +24,7 @@ class PaymentService {
 extension PaymentService: PaymentServiceProtocol {
     func postReceiptDataToServer(token: String, receipt: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         
-        let url = URL(string: "\(Credentials.BASE_URL)user/verifyReceipt")!
+        let url = URL(string: "\(Credentials.BASE_URL)payment/verifyReceipt")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,

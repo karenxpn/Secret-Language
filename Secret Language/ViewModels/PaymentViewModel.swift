@@ -161,8 +161,8 @@ extension PaymentViewModel {
             .sink { response in
                 
                 // if the response is okay -> toggle should purchase
-                self.shouldPurchase = false
                 if response.error == nil {
+                    self.shouldPurchase = false
                     NotificationCenter.default.post(name: Notification.Name("reloadReport"), object: nil)
                 }
             }.store(in: &cancellableSet)
@@ -172,10 +172,9 @@ extension PaymentViewModel {
         dataManager.fetchReceiptData { receipt in
             self.dataManager.postReceiptDataToServer(token: self.token, receipt: receipt)
                 .sink { response in
-                    if response.error != nil {
-                        // error occurred
-                    } else {
-                        // trigger action
+                    if response.error == nil {
+                        self.shouldSubscribe = false
+                        NotificationCenter.default.post(name: Notification.Name("reloadChats"), object: nil)
                     }
                 }.store(in: &self.cancellableSet)
         }

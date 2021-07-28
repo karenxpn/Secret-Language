@@ -40,6 +40,9 @@ struct Chat: View {
             }.navigationBarTitle("")
             .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("messaging", comment: "")), displayMode: .inline)
         }.navigationViewStyle(StackNavigationViewStyle())
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "reloadChats"))) { _ in
+            chatVM.getChats()
+        }
     }
 }
 
