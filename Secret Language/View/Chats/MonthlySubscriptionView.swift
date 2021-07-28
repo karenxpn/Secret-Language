@@ -57,6 +57,9 @@ struct MonthlySubscriptionView: View {
                 
                 VStack( spacing: 15 ) {
                     Button(action: {
+                        if let product = paymentVM.product(for: Credentials.monthProductIdentifier) {
+                            paymentVM.purchaseProduct(product)
+                        }
                     }, label: {
                         Text( NSLocalizedString("subscribe", comment: ""))
                             .foregroundColor(.black)
@@ -95,6 +98,9 @@ struct MonthlySubscriptionView: View {
             }.padding(.top, 1)
         }.navigationBarTitle("")
         .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("subscription", comment: "")), displayMode: .inline)
+        .onAppear {
+            paymentVM.paymentType = "monthly"
+        }
     }
 }
 

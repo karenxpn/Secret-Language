@@ -17,6 +17,8 @@ class PaymentViewModel: NSObject, ObservableObject {
     @AppStorage( "shouldPurchaseReport" ) private var shouldPurchase: Bool = true
     @AppStorage( "shouldSubscribe" ) private var shouldSubscribe: Bool = true
 
+    @Published var paymentType: String = "report"
+    
     @Published var birthdayDate: String = ""
     @Published var firstReportDate: String = ""
     @Published var secondReportDate: String = ""
@@ -124,7 +126,11 @@ extension PaymentViewModel: SKPaymentTransactionObserver {
             case .purchasing, .deferred:
                 break
             case .purchased, .restored:
-                self.postPaymentResult()
+                if self.paymentType == "report" {
+                    self.postPaymentResult()
+                } else {
+                    self.postReceiptToServer()
+                }
                 // can send transaction identifier, transaction state, transaction date etc
                 shouldFinishTransaction = true
             case .failed:
@@ -160,5 +166,11 @@ extension PaymentViewModel {
                     NotificationCenter.default.post(name: Notification.Name("reloadReport"), object: nil)
                 }
             }.store(in: &cancellableSet)
+    }
+    
+    func postReceiptToServer() {
+        dataManager.fetchReceiptData { receipt in
+            // so smth with receipt
+        }
     }
 }

@@ -11,6 +11,7 @@ import Alamofire
 
 protocol PaymentServiceProtocol {
     func postPaymentStatus(token: String, reportDate: String, firstReportDate: String, secondReportDate: String, birthdayOrRelationship: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func fetchReceiptData(completion: @escaping (String) -> ())
 }
 
 class PaymentService {
@@ -20,6 +21,25 @@ class PaymentService {
 }
 
 extension PaymentService: PaymentServiceProtocol {
+    func fetchReceiptData(completion: @escaping (String) -> ()) {
+        if let appStoreReceiptURL = Bundle.main.appStoreReceiptURL,
+            FileManager.default.fileExists(atPath: appStoreReceiptURL.path) {
+
+            do {
+                let receiptData = try Data(contentsOf: appStoreReceiptURL, options: .alwaysMapped)
+                print(receiptData)
+
+                let receiptString = receiptData.base64EncodedString(options: [])
+
+                // Read receiptData
+                DispatchQueue.main.async {
+                    completion( receiptString )
+                }
+            }
+            catch { print("Couldn't read receipt data with error: " + error.localizedDescription) }
+        }
+    }
+    
     func postPaymentStatus(token: String,  reportDate: String, firstReportDate: String, secondReportDate: String, birthdayOrRelationship: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         
         let url = URL(string: "\(Credentials.BASE_URL)user/addPaidReport")!
