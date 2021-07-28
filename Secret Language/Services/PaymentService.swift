@@ -50,8 +50,6 @@ extension PaymentService: PaymentServiceProtocol {
 
             do {
                 let receiptData = try Data(contentsOf: appStoreReceiptURL, options: .alwaysMapped)
-                print(receiptData)
-
                 let receiptString = receiptData.base64EncodedString(options: [])
 
                 // Read receiptData
