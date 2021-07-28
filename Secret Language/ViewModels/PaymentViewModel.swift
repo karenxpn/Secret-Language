@@ -90,14 +90,8 @@ extension PaymentViewModel {
 extension PaymentViewModel: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         let loadedProducts = response.products
-        let invalidProducs = response.invalidProductIdentifiers
         
         guard !loadedProducts.isEmpty else {
-            print("Could not load products")
-            
-            if !invalidProducs.isEmpty {
-                print("Invalid products found: \(invalidProducs)")
-            }
             
             productsRequest = nil
             return

@@ -61,18 +61,26 @@ struct MonthlySubscriptionView: View {
                             paymentVM.purchaseProduct(product)
                         }
                     }, label: {
-                        Text( NSLocalizedString("subscribe", comment: ""))
-                            .foregroundColor(.black)
-                            .font(.custom("times", size: 16))
-                            .fontWeight(.semibold)
-                            .frame(width: .greedy, height: 50)
-                            .background(.accentColor)
-                            .cornerRadius(25)
+                        if paymentVM.loadingPaymentProccess {
+                            ProgressView()
+                                .frame(width: .greedy, height: 50)
+                                .background(.accentColor)
+                                .cornerRadius(25)
+                        }  else {
+                            Text( NSLocalizedString("subscribe", comment: ""))
+                                .foregroundColor(.black)
+                                .font(.custom("times", size: 16))
+                                .fontWeight(.semibold)
+                                .frame(width: .greedy, height: 50)
+                                .background(.accentColor)
+                                .cornerRadius(25)
+                        }
                     })
                     
                     Button(action: {
                         paymentVM.restorePurchase()
                     }, label: {
+                        
                         Text( NSLocalizedString("restore", comment: ""))
                             .foregroundColor(.accentColor)
                             .font(.custom("times", size: 16))
@@ -94,7 +102,7 @@ struct MonthlySubscriptionView: View {
                         .foregroundColor(.blue)
                         .font(.custom("Gilroy-Regular", size: 10))
                 }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
-
+                
             }.padding(.top, 1)
         }.navigationBarTitle("")
         .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("subscription", comment: "")), displayMode: .inline)
