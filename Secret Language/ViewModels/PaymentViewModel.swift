@@ -170,7 +170,14 @@ extension PaymentViewModel {
     
     func postReceiptToServer() {
         dataManager.fetchReceiptData { receipt in
-            // so smth with receipt
+            self.dataManager.postReceiptDataToServer(token: self.token, receipt: receipt)
+                .sink { response in
+                    if response.error != nil {
+                        // error occurred
+                    } else {
+                        // trigger action
+                    }
+                }.store(in: &self.cancellableSet)
         }
     }
 }
