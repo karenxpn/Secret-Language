@@ -34,13 +34,12 @@ struct MonthlySubscriptionView: View {
                                 .font(.custom("times", size: 35))
                                 .fontWeight(.heavy)
                             
-                            
                             Text( NSLocalizedString("month", comment: ""))
                                 .foregroundColor(.accentColor)
                                 .font(.custom("Avenir", size: 21))
                         }
                     }
-                }
+                }.padding(.top)
                 
                 VStack( spacing: 30) {
                     Text( NSLocalizedString("seeHowYouAreMatched", comment: "") )

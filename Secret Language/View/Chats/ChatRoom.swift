@@ -13,10 +13,19 @@ struct ChatRoom: View {
     let user: ChatUserModel
     
     @StateObject var roomVM = MessageRoomViewModel()
+    @State private var navigateToUser: Bool = false
 
     var body: some View {
         ZStack(alignment: .bottom) {
             Background()
+            
+            NavigationLink(destination: EmptyView()) {
+                EmptyView()
+            }
+            
+            NavigationLink(destination: VisitedProfile(userID: user.id, userName: user.name), isActive: $navigateToUser) {
+                EmptyView()
+            }.hidden()
 
             VStack(spacing: 0) {
                 MessagesList(roomID: roomID, username: user.name)
@@ -34,7 +43,7 @@ struct ChatRoom: View {
             }
 
         }.navigationBarTitle("")
-        .navigationBarTitleView(ChatRoomNavBar(user: user))
+        .navigationBarTitleView(ChatRoomNavBar(navigate: $navigateToUser, user: user))
         .onAppear {
             NotificationCenter.default.post(name: Notification.Name("hideTabBar"), object: nil)
             
