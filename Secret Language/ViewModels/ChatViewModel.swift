@@ -12,6 +12,7 @@ import PusherSwift
 
 class ChatViewModel: ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
+    @AppStorage( "shouldSubscribe" ) private var shouldSubscribe: Bool = false
     
     @Published var loading: Bool = false
     @Published var showAlert: Bool = false
@@ -36,8 +37,13 @@ class ChatViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(with: response.error!, for: &self.alertMessage, showAlert: &self.showAlert)
+                    if response.error!.initialError.responseCode == Credentials.paymentErrorCode {
+                        self.shouldSubscribe = true
+                    } else {
+                        self.makeAlert(with: response.error!, for: &self.alertMessage, showAlert: &self.showAlert)
+                    }
                 } else {
+                    self.shouldSubscribe = false
                     self.chats = response.value!
                 }
             }.store(in: &cancellableSet)

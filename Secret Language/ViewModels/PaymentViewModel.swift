@@ -15,7 +15,10 @@ typealias PurchaseCompletionHandler = ( ( SKPaymentTransaction? ) -> Void )
 class PaymentViewModel: NSObject, ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "shouldPurchaseReport" ) private var shouldPurchase: Bool = true
+    @AppStorage( "shouldSubscribe" ) private var shouldSubscribe: Bool = true
 
+    @Published var paymentType: String = "report"
+    
     @Published var birthdayDate: String = ""
     @Published var firstReportDate: String = ""
     @Published var secondReportDate: String = ""
@@ -87,14 +90,8 @@ extension PaymentViewModel {
 extension PaymentViewModel: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         let loadedProducts = response.products
-        let invalidProducs = response.invalidProductIdentifiers
         
         guard !loadedProducts.isEmpty else {
-            print("Could not load products")
-            
-            if !invalidProducs.isEmpty {
-                print("Invalid products found: \(invalidProducs)")
-            }
             
             productsRequest = nil
             return
@@ -123,7 +120,11 @@ extension PaymentViewModel: SKPaymentTransactionObserver {
             case .purchasing, .deferred:
                 break
             case .purchased, .restored:
-                self.postPaymentResult()
+                if self.paymentType == "report" {
+                    self.postPaymentResult()
+                } else {
+                    self.postReceiptToServer()
+                }
                 // can send transaction identifier, transaction state, transaction date etc
                 shouldFinishTransaction = true
             case .failed:
@@ -154,10 +155,22 @@ extension PaymentViewModel {
             .sink { response in
                 
                 // if the response is okay -> toggle should purchase
-                self.shouldPurchase = false
                 if response.error == nil {
+                    self.shouldPurchase = false
                     NotificationCenter.default.post(name: Notification.Name("reloadReport"), object: nil)
                 }
             }.store(in: &cancellableSet)
+    }
+    
+    func postReceiptToServer() {
+        dataManager.fetchReceiptData { receipt in
+            self.dataManager.postReceiptDataToServer(token: self.token, receipt: receipt)
+                .sink { response in
+                    if response.error == nil {
+                        self.shouldSubscribe = false
+                        NotificationCenter.default.post(name: Notification.Name("reloadChats"), object: nil)
+                    }
+                }.store(in: &self.cancellableSet)
+        }
     }
 }
