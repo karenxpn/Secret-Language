@@ -121,9 +121,9 @@ extension PaymentViewModel: SKPaymentTransactionObserver {
                 break
             case .purchased, .restored:
                 if self.paymentType == "report" {
-                    self.postPaymentResult()
+                    self.savePurchaseDetails()
                 } else {
-                    self.postReceiptToServer()
+                    self.saveSubscriptionPaymentDetails()
                 }
                 // can send transaction identifier, transaction state, transaction date etc
                 shouldFinishTransaction = true
@@ -146,23 +146,25 @@ extension PaymentViewModel: SKPaymentTransactionObserver {
 }
 
 extension PaymentViewModel {
-    func postPaymentResult() {
-        dataManager.postPaymentStatus(token: token,
-                                      reportDate: birthdayDate,
-                                      firstReportDate: firstReportDate,
-                                      secondReportDate: secondReportDate,
-                                      birthdayOrRelationship: birthdayOrRelationship)
-            .sink { response in
-                
-                // if the response is okay -> toggle should purchase
-                if response.error == nil {
-                    self.shouldPurchase = false
-                    NotificationCenter.default.post(name: Notification.Name("reloadReport"), object: nil)
-                }
-            }.store(in: &cancellableSet)
+    func savePurchaseDetails() {
+        
+        dataManager.fetchReceiptData { receipt in
+            self.dataManager.postPaymentStatus(token: self.token,
+                                          receipt: receipt,
+                                          reportDate: self.birthdayDate,
+                                          firstReportDate: self.firstReportDate,
+                                          secondReportDate: self.secondReportDate,
+                                          birthdayOrRelationship: self.birthdayOrRelationship)
+                .sink { response in
+                    if response.error == nil {
+                        self.shouldPurchase = false
+                        NotificationCenter.default.post(name: Notification.Name("reloadReport"), object: nil)
+                    }
+                }.store(in: &self.cancellableSet)
+        }
     }
     
-    func postReceiptToServer() {
+    func saveSubscriptionPaymentDetails() {
         dataManager.fetchReceiptData { receipt in
             self.dataManager.postReceiptDataToServer(token: self.token, receipt: receipt)
                 .sink { response in
