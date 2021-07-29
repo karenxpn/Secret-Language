@@ -16,7 +16,6 @@ struct SingleMessage: View {
     var body: some View {
         
         if userID != message.user.id {
-            // this means that the sender is me
             HStack( alignment: .bottom) {
                 
                 

@@ -10,7 +10,7 @@ import Combine
 import Alamofire
 
 protocol PaymentServiceProtocol {
-    func postPaymentStatus(token: String, reportDate: String, firstReportDate: String, secondReportDate: String, birthdayOrRelationship: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func postPaymentStatus(token: String, receipt: String, reportDate: String, firstReportDate: String, secondReportDate: String, birthdayOrRelationship: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func fetchReceiptData(completion: @escaping (String) -> ())
     func postReceiptDataToServer( token: String, receipt: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
 }
@@ -61,7 +61,7 @@ extension PaymentService: PaymentServiceProtocol {
         }
     }
     
-    func postPaymentStatus(token: String,  reportDate: String, firstReportDate: String, secondReportDate: String, birthdayOrRelationship: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+    func postPaymentStatus(token: String, receipt: String, reportDate: String, firstReportDate: String, secondReportDate: String, birthdayOrRelationship: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         
         let url = URL(string: "\(Credentials.BASE_URL)user/addPaidReport")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
@@ -69,8 +69,10 @@ extension PaymentService: PaymentServiceProtocol {
         return AF.request(url,
                           method: .post,
                           parameters: birthdayOrRelationship ? ["birthday_1" : firstReportDate,
-                                                                "birthday_2" : secondReportDate] :
-                                                               ["birthday" : reportDate],
+                                                                "birthday_2" : secondReportDate,
+                                                                "receipt" : receipt] :
+                                                               ["birthday" : reportDate,
+                                                                "receipt" : receipt],
                           encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
