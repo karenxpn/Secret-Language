@@ -75,9 +75,6 @@ struct ChatRoom: View {
             if value == .message {
                 return ActionSheet(title: Text( NSLocalizedString("actions", comment: "") ), message: nil, buttons: [.default(Text( "Copy" ), action: {
                     UIPasteboard.general.string = roomVM.actionItem?.content[0].message
-                }), .destructive(Text( "Delete" ), action: {
-                    //                  delete item here
-                    //                  print("delete item \(roomVM.actionItem?.id)")
                 }), .cancel()])
             } else {
                 return ActionSheet(title: Text( NSLocalizedString("selectSource", comment: "") ), message: nil, buttons: [.default(Text( "Gallery" ), action: {
