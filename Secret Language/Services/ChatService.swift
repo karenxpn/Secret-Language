@@ -13,6 +13,7 @@ import PusherSwift
 protocol ChatServiceProtocol {
     func fetchChatList( token: String ) -> AnyPublisher<DataResponse<[ChatModel], NetworkError>, Never>
     func fetchChatListWithPusher( channel: PusherChannel, completion: @escaping ( [ChatModel] ) -> () )
+    func deleteChat( token: String, roomID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func fetchRoomMessages(token: String, roomID: Int, lastMessageID: Int) -> AnyPublisher<DataResponse<[Message], NetworkError>, Never>
     func fetchMessageWithPusher( channel: PusherChannel, roomID: Int, completion: @escaping ( Message ) -> () )
     
@@ -29,6 +30,25 @@ class ChatService {
 }
 
 extension ChatService: ChatServiceProtocol {
+    func deleteChat(token: String, roomID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)chats/\(roomID)")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        return AF.request(url,
+                          method: .delete,
+                          headers: headers)
+            .validate()
+            .publishDecodable(type: GlobalResponse.self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func sendGreetingMessage(token: String, userID: Int, message: SendingMessageModel) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)chats/sendGreetingMessage/\(userID)")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]

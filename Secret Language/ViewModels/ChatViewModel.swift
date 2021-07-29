@@ -49,6 +49,12 @@ class ChatViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
+    func deleteChat(index: Int) {
+        dataManager.deleteChat(token: token, roomID: chats[index].id)
+            .sink { _ in
+            }.store(in: &cancellableSet)
+    }
+    
     func getChatsWithPusher() {
         dataManager.fetchChatListWithPusher(channel: channel) { chats in
             self.chats = chats

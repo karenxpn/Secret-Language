@@ -30,7 +30,8 @@ struct Chat: View {
                     if shouldSubscribe {
                         MonthlySubscriptionView()
                     } else {
-                        ChatList(chats: chatVM.chats )
+                        ChatList()
+                            .environmentObject(chatVM)
                     }
                 }
                 CustomAlert(isPresented: $chatVM.showAlert, alertMessage: chatVM.alertMessage, alignment: .center)

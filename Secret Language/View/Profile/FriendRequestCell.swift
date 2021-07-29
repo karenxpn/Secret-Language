@@ -12,10 +12,10 @@ struct FriendRequestCell: View {
     
     @EnvironmentObject var profileVM: ProfileViewModel
     let request: UserPreviewModel
+    
     var body: some View {
         
         Button {
-            
         } label: {
             HStack( spacing: 20) {
                 WebImage(url: URL(string: request.image))
@@ -56,10 +56,14 @@ struct FriendRequestCell: View {
                         .background(RoundedRectangle(cornerRadius: 4)
                                         .strokeBorder(AppColors.accentColor, lineWidth: 1.5)
                                         .background(AppColors.dataFilterGendersBg)
-                    )
+                        )
                 })
             }.padding()
-        }
+        }.background(
+            NavigationLink(destination: VisitedProfile(userID: request.id, userName: request.name)) {
+                EmptyView()
+            }.hidden()
+        )
     }
 }
 

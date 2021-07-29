@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ChatList: View {
     
-    let chats: [ChatModel]
-    
+    @EnvironmentObject var chatVM: ChatViewModel
     
     var body: some View {
         List {
@@ -29,18 +28,25 @@ struct ChatList: View {
             .listRowInsets(EdgeInsets())
             .background(AppColors.blueColor)
 
-            ForEach(chats, id: \.id ) { chat in
+            ForEach(chatVM.chats, id: \.id ) { chat in
                 ChatListCell(chat: chat)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     .listRowInsets(EdgeInsets())
                     .background(AppColors.blueColor)
-            }
+            }.onDelete(perform: delete)
         }.padding(.top, 1)
+    }
+    
+    func delete(at offsets: IndexSet) {
+        if let removeIndex = offsets.first {
+            chatVM.deleteChat(index: removeIndex)
+            chatVM.chats.remove(at: removeIndex)
+        }
     }
 }
 
 struct ChatList_Previews: PreviewProvider {
     static var previews: some View {
-        ChatList(chats: PreviewParameters.chatList)
+        ChatList()
     }
 }
