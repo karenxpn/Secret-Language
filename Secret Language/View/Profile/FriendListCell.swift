@@ -15,41 +15,43 @@ struct FriendListCell: View {
     
     var body: some View {
         
-        HStack( spacing: 20) {
-            WebImage(url: URL(string: friend.image))
-                .placeholder {
-                    ProgressView()
-                }.resizable()
-                .scaledToFill()
-                .frame(width: 55, height: 55)
-                .clipShape(Circle())
-            
-            VStack( alignment: .leading) {
-                Text( friend.name )
-                    .foregroundColor(.white)
-                    .font(.custom("times", size: 18))
+        NavigationLink(destination: VisitedProfile(userID: friend.id, userName: friend.name)) {
+            HStack( spacing: 20) {
+                WebImage(url: URL(string: friend.image))
+                    .placeholder {
+                        ProgressView()
+                    }.resizable()
+                    .scaledToFill()
+                    .frame(width: 55, height: 55)
+                    .clipShape(Circle())
                 
-                HStack( spacing: 0) {
-                    Text( "\(NSLocalizedString("idealFor", comment: ""))")
-                        .foregroundColor(.gray)
-                        .font(.custom("Gilroy-Regular", size: 15))
+                VStack( alignment: .leading) {
+                    Text( friend.name )
+                        .foregroundColor(.white)
+                        .font(.custom("times", size: 18))
                     
-                    Text( friend.ideal)
-                        .foregroundColor(.accentColor)
-                        .font(.custom("Gilroy-Regular", size: 15))
-                        .lineLimit(1)
+                    HStack( spacing: 0) {
+                        Text( "\(NSLocalizedString("idealFor", comment: ""))")
+                            .foregroundColor(.gray)
+                            .font(.custom("Gilroy-Regular", size: 15))
+                        
+                        Text( friend.ideal)
+                            .foregroundColor(.accentColor)
+                            .font(.custom("Gilroy-Regular", size: 15))
+                            .lineLimit(1)
+                    }
                 }
-            }
-            
-            Spacer()
-            
-            Button(action: {
-                profileVM.sendGreetingMessage(userID: friend.id)
-            }, label: {
-                Text("👋🏻")
-                    .font(.title)
-            })
-        }.padding()
+                
+                Spacer()
+                
+                Button(action: {
+                    profileVM.sendGreetingMessage(userID: friend.id)
+                }, label: {
+                    Text("👋🏻")
+                        .font(.title)
+                })
+            }.padding()
+        }
     }
 }
 
