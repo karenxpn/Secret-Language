@@ -13,6 +13,7 @@ protocol PaymentServiceProtocol {
     func postPaymentStatus(token: String, receipt: String, reportDate: String, firstReportDate: String, secondReportDate: String, birthdayOrRelationship: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func fetchReceiptData(completion: @escaping (String) -> ())
     func postReceiptDataToServer( token: String, receipt: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
+    func verifyUserSubscriptionStatus( token: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
 }
 
 class PaymentService {
@@ -22,6 +23,25 @@ class PaymentService {
 }
 
 extension PaymentService: PaymentServiceProtocol {
+    func verifyUserSubscriptionStatus(token: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)payment/verifyUserSubscriptionStatus")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+
+        return AF.request(url,
+                          method: .get,
+                          headers: headers)
+            .validate()
+            .publishDecodable(type: GlobalResponse.self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func postReceiptDataToServer(token: String, receipt: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         
         let url = URL(string: "\(Credentials.BASE_URL)payment/verifyReceipt")!
@@ -63,7 +83,7 @@ extension PaymentService: PaymentServiceProtocol {
     
     func postPaymentStatus(token: String, receipt: String, reportDate: String, firstReportDate: String, secondReportDate: String, birthdayOrRelationship: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         
-        let url = URL(string: "\(Credentials.BASE_URL)user/addPaidReport")!
+        let url = URL(string: "\(Credentials.BASE_URL)payment/addPaidReport")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,

@@ -21,10 +21,6 @@ struct Secret_LanguageApp: App {
         UINavigationBar.appearance().standardAppearance = newAppearance
         
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor(.white)
-        
-        if token != "" {
-            // perform api request for payment verification
-        }
     }
     
     var body: some Scene {
