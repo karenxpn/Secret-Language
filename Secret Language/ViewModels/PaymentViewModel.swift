@@ -175,4 +175,10 @@ extension PaymentViewModel {
                 }.store(in: &self.cancellableSet)
         }
     }
+    
+    func checkSubscriptionStatus() {
+        dataManager.verifyUserSubscriptionStatus(token: token)
+            .sink { _ in
+            }.store(in: &cancellableSet)
+    }
 }

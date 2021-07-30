@@ -16,6 +16,8 @@ struct SharedURL: Identifiable {
 struct ContentView: View {
     
     @StateObject var notificationsVM = NotificationsViewModel()
+    @StateObject private var paymentVM = PaymentViewModel()
+
     @State private var currentTab: Int = 0
     @State private var shared: SharedURL?
     
@@ -48,6 +50,7 @@ struct ContentView: View {
         }.edgesIgnoringSafeArea(.bottom)
         .onAppear {
             notificationsVM.requestPermission()
+            paymentVM.checkSubscriptionStatus()
         }.fullScreenCover(item: $shared) { value in
             
             if value.type == "profile" {

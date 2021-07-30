@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MonthlySubscriptionView: View {
-    @ObservedObject var paymentVM = PaymentViewModel()
+    @StateObject var paymentVM = PaymentViewModel()
     
     var body: some View {
         

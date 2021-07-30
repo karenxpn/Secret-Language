@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import PusherSwift
 
 struct Profile: View {
     
@@ -99,19 +98,18 @@ struct Profile: View {
                                 
                                 Spacer()
                                 
-                                NavigationLink( destination: FriendRequestList(),
-                                                label: {
-                                                    VStack {
-                                                        Text( "\(profileVM.profile!.requests)" )
-                                                            .foregroundColor(.white)
-                                                            .font(.custom("Avenir", size: 20))
-                                                            .fontWeight(.bold)
-                                                        
-                                                        Text( NSLocalizedString("requests", comment: ""))
-                                                            .foregroundColor(.white)
-                                                            .font(.custom("Gilroy-Regular", size: 14))
-                                                    }
-                                                })
+                                NavigationLink( destination: FriendRequestList(), label: {
+                                    VStack {
+                                        Text( "\(profileVM.profile!.requests)" )
+                                            .foregroundColor(.white)
+                                            .font(.custom("Avenir", size: 20))
+                                            .fontWeight(.bold)
+                                        
+                                        Text( NSLocalizedString("requests", comment: ""))
+                                            .foregroundColor(.white)
+                                            .font(.custom("Gilroy-Regular", size: 14))
+                                    }
+                                })
                                 Spacer()
                             }
                         }.padding()
