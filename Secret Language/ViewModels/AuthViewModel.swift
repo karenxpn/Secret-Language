@@ -11,6 +11,7 @@ import SwiftUI
 
 class AuthViewModel: ObservableObject {
     
+    @AppStorage( "newRelease" ) private var newRelease: Bool = true
     @AppStorage("token") private var token: String = ""
     @AppStorage("username") private var username: String = ""
     @AppStorage( "userID" ) private var userID: Int = 0
@@ -123,6 +124,7 @@ class AuthViewModel: ObservableObject {
                     self.signUpAlertMessage = self.createErrorMessage(error: response.error!)
                     self.showSignUpAlert.toggle()
                 } else {
+                    self.newRelease = false
                     self.token = response.value!.token
                     self.username = response.value!.username
                     self.userID = response.value!.id
@@ -152,6 +154,7 @@ class AuthViewModel: ObservableObject {
                     
                     self.signInVerificationCode = ""
                 } else {
+                    self.newRelease = false
                     self.token = response.value!.token
                     self.username = response.value!.username
                     self.userID = response.value!.id

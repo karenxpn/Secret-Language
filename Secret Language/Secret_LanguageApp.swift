@@ -10,6 +10,7 @@ import SwiftUI
 struct Secret_LanguageApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @AppStorage( "newRelease" ) private var newRelease: Bool = true
     @AppStorage( "token" ) private var token = ""
     
     init() {
@@ -21,6 +22,10 @@ struct Secret_LanguageApp: App {
         UINavigationBar.appearance().standardAppearance = newAppearance
         
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor(.white)
+        
+        if newRelease {
+            self.token = ""
+        }
     }
     
     var body: some Scene {
