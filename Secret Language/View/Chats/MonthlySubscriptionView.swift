@@ -74,7 +74,7 @@ struct MonthlySubscriptionView: View {
                                 .background(.accentColor)
                                 .cornerRadius(25)
                         }
-                    })
+                    }).disabled(paymentVM.loadingPaymentProccess)
                     
                     Button(action: {
                         paymentVM.restorePurchase()
