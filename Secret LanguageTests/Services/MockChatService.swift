@@ -12,6 +12,20 @@ import PusherSwift
 @testable import Secret_Language
 
 class MockChatService: ChatServiceProtocol {
+    
+    var deleteChatError: Bool = false
+    
+    func deleteChat(token: String, roomID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        var result: Result<GlobalResponse, NetworkError>
+        
+        if deleteChatError  { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
+        else                { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
+    }
+    
     func fetchRoomMessages(token: String, roomID: Int, lastMessageID: Int) -> AnyPublisher<DataResponse<[Message], NetworkError>, Never> {
         var result: Result<[Message], NetworkError>
         

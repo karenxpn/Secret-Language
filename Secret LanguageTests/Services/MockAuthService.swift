@@ -11,6 +11,14 @@ import Combine
 @testable import Secret_Language
 
 class MockAuthService: AuthServiceProtocol {
+    func logout(token: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let result = Result<GlobalResponse, NetworkError>.success(globalResponse)
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
+    }
+    
     
     let globalResponse = GlobalResponse(status: "success", message: "Success")
     let networkError = NetworkError(initialError: AFError.explicitlyCancelled, backendError: nil)

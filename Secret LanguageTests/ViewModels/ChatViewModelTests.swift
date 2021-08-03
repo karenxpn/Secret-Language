@@ -31,4 +31,18 @@ class ChatViewModelTests: XCTestCase {
         
         XCTAssertTrue(viewModel.alertMessage.isEmpty)
     }
+    
+    func testDeleteChatWithError() {
+        service.deleteChatError = true
+        viewModel.deleteChat(index: 0)
+        
+        XCTAssertFalse(viewModel.chats.isEmpty)
+    }
+    
+    func testDeleteChatWithSuccess() {
+        service.deleteChatError = false
+        viewModel.deleteChat(index: 0)
+        
+        XCTAssertEqual(viewModel.chats.count, 1)
+    }
 }
