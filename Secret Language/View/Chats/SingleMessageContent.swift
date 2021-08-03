@@ -25,7 +25,7 @@ struct SingleMessageContent: View {
                     .padding()
                     .background(me ? AppColors.sentMessageBoxBG : .accentColor)
                     .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading]
-                                      : [.topLeading, .topTrailing, .bottomTrailing], 20)
+                                    : [.topLeading, .topTrailing, .bottomTrailing], 20)
                     .onTapGesture {}
                     .onLongPressGesture {
                         roomVM.action = .message
@@ -40,13 +40,12 @@ struct SingleMessageContent: View {
                     .padding()
                     .background(me ? AppColors.sentMessageBoxBG : .accentColor)
                     .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading]
-                                      : [.topLeading, .topTrailing, .bottomTrailing], 20)
-                    .onTapGesture { }
-                    //                    .onTapGesture {
-                    //                        roomVM.imageMessage = message
-                    //                        roomVM.activeSheet = .media
-                    //                        roomVM.openSheet.toggle()
-                    //                    }
+                                    : [.topLeading, .topTrailing, .bottomTrailing], 20)
+                    .onTapGesture {
+                        roomVM.imageMessage = message
+                        roomVM.activeSheet = .media
+                        roomVM.openSheet.toggle()
+                    }
                     .onLongPressGesture {
                         roomVM.action = .message
                         roomVM.actionItem = message
@@ -63,19 +62,17 @@ struct SingleMessageContent: View {
                     .padding()
                     .background(me ? AppColors.sentMessageBoxBG : .accentColor)
                     .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading]
-                                      : [.topLeading, .topTrailing, .bottomTrailing], 20)
+                                    : [.topLeading, .topTrailing, .bottomTrailing], 20)
                     .onAppear {
                         player.play()
                     }.onDisappear {
                         player.pause()
                     }
-                    .onTapGesture { }
-
-                    //                    .onTapGesture {
-                    //                        roomVM.imageMessage = message
-                    //                        roomVM.activeSheet = .media
-                    //                        roomVM.openSheet.toggle()
-                    //                    }
+                    .onTapGesture {
+                        roomVM.imageMessage = message
+                        roomVM.activeSheet = .media
+                        roomVM.openSheet.toggle()
+                    }
                     .onLongPressGesture {
                         roomVM.action = .message
                         roomVM.actionItem = message

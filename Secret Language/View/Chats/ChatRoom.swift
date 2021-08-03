@@ -67,7 +67,8 @@ struct ChatRoom: View {
                 CameraView()
                     .environmentObject(roomVM)
             } else {
-                EmptyView()
+                MessageMedia(media: roomVM.imageMessage?.content ?? [])
+                    .environmentObject(roomVM)
             }
             
         }.actionSheet(item: $roomVM.action) { value in
