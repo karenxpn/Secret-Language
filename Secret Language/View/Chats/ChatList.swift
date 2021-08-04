@@ -34,6 +34,13 @@ struct ChatList: View {
                     .listRowInsets(EdgeInsets())
                     .background(AppColors.blueColor)
             }.onDelete(perform: delete)
+            
+            if chatVM.chats.count > 4 {
+                Spacer().padding(.bottom, UIScreen.main.bounds.size.height * 0.2)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                    .listRowInsets(EdgeInsets())
+                    .background(AppColors.blueColor)
+            }
         }.padding(.top, 1)
     }
     
