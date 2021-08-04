@@ -50,6 +50,7 @@ class MatchesViewModel: ObservableObject {
                     self.showAlert.toggle()
                 } else {
                     self.matches = response.value!.map{ MatchViewModel(match: $0 )}
+                        .sorted(by: { $0.distance < $1.distance })
                 }
             }.store(in: &cancellableSet)
     }

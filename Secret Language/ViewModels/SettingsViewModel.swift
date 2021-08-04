@@ -16,8 +16,8 @@ class SettingsViewModel: ObservableObject {
     @AppStorage( "initialToken" ) private var initialToken: String = ""
     
     @Published var gender: GenderModel = GenderModel(id: 1, gender_name: "Male")
-    @Published var fullName: String = "Karen Mirakyan"
-    @Published var location: String = "Yerevan, Armenia"
+    @Published var fullName: String = ""
+    @Published var location: String = ""
     @Published var birthday: String = "Jul 26, 1999"
     
     @Published var loading: Bool = false
@@ -139,5 +139,4 @@ class SettingsViewModel: ObservableObject {
         alertMessage = response.message
         showAlert.toggle()
     }
-    
 }
