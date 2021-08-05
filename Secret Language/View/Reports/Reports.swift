@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Reports: View {
-    @ObservedObject var reportVM = ReportViewModel()
+    @StateObject var reportVM = ReportViewModel()
     @State private var fullscreen: Bool = false
     @State private var showFullscreenReportOne: Bool = false
     @State private var showFullscreenReportTwo: Bool = false

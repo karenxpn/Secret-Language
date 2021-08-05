@@ -76,7 +76,16 @@ extension PaymentViewModel {
         loadingPaymentProccess = true
         
         startObservingPaymentQueue()
-        buy(product) { _ in
+        buy(product) { transaction in
+            if let tr = transaction {
+                if tr.transactionState == .purchased || tr.transactionState == .restored {
+                    if self.paymentType == "report" {
+                        self.savePurchaseDetails()
+                    } else {
+                        self.saveSubscriptionPaymentDetails()
+                    }
+                }
+            }
             self.loadingPaymentProccess = false
         }
     }
@@ -113,19 +122,12 @@ extension PaymentViewModel: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
         for transaction in transactions {
-            
             var shouldFinishTransaction: Bool = false
             
             switch transaction.transactionState {
             case .purchasing, .deferred:
                 break
             case .purchased, .restored:
-                if self.paymentType == "report" {
-                    self.savePurchaseDetails()
-                } else {
-                    self.saveSubscriptionPaymentDetails()
-                }
-                // can send transaction identifier, transaction state, transaction date etc
                 shouldFinishTransaction = true
             case .failed:
                 shouldFinishTransaction = true
@@ -156,8 +158,9 @@ extension PaymentViewModel {
                                           secondReportDate: self.secondReportDate,
                                           birthdayOrRelationship: self.birthdayOrRelationship)
                 .sink { response in
+                    print(response)
+                    self.shouldPurchase = false
                     if response.error == nil {
-                        self.shouldPurchase = false
                         NotificationCenter.default.post(name: Notification.Name("reloadReport"), object: nil)
                     }
                 }.store(in: &self.cancellableSet)
