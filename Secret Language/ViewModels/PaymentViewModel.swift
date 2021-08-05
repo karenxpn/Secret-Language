@@ -158,7 +158,6 @@ extension PaymentViewModel {
                                           secondReportDate: self.secondReportDate,
                                           birthdayOrRelationship: self.birthdayOrRelationship)
                 .sink { response in
-                    print(response)
                     self.shouldPurchase = false
                     if response.error == nil {
                         NotificationCenter.default.post(name: Notification.Name("reloadReport"), object: nil)

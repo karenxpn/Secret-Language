@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
+
 @main
 struct Secret_LanguageApp: App {
     
@@ -22,6 +24,9 @@ struct Secret_LanguageApp: App {
         UINavigationBar.appearance().standardAppearance = newAppearance
         
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor(.white)
+        
+        SDImageCache.shared.clearMemory()
+        SDImageCache.shared.clearDisk()
         
         if newRelease {
             self.token = ""
