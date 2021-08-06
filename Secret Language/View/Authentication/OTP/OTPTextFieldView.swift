@@ -29,11 +29,11 @@ struct OTPTextFieldView: View {
             ForEach(0..<maxDigits) { index in
                 ZStack {
                     RoundedRectangle(cornerRadius: 5)
-                        .fill(AppColors.boxColor)
+                        .fill(AppColors.accentColor)
                         .frame(width: 45, height: 45)
                     
                     Text(self.getDigits(at: index))
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .font(.custom("Gilroy-Regular", size: 30))
                 }
             }
