@@ -36,12 +36,11 @@ struct SingleSearchResult: View {
                         HStack( spacing: 0 ) {
                             Text( NSLocalizedString("idealFor", comment: ""))
                                 .foregroundColor(.gray)
-                                .font(.custom("Gilroy-Regular", size: 14))
+                                .font(.custom("Gilroy-Regular", size: 12))
                             
                             Text( user.ideal)
                                 .foregroundColor(.accentColor)
-                                .font(.custom("Gilroy-Regular", size: 14))
-                                .lineLimit(1)
+                                .font(.custom("Gilroy-Regular", size: 12))
                         }
                     }
                 })
