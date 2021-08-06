@@ -41,6 +41,7 @@ struct SingleSearchResult: View {
                             Text( user.ideal)
                                 .foregroundColor(.accentColor)
                                 .font(.custom("Gilroy-Regular", size: 14))
+                                .lineLimit(1)
                         }
                     }
                 })
