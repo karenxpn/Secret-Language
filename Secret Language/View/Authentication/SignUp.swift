@@ -66,10 +66,11 @@ struct SignUp: View {
                         .foregroundColor(.gray)
                         .font(.custom("Gilroy-Regular", size: 10))
                     
-                    TextField(NSLocalizedString("phoneNumber", comment: ""), text: $authVM.signUpPhoneNumber)
+                    TextField(NSLocalizedString("+1...", comment: ""), text: $authVM.signUpPhoneNumber)
                         .font(.custom("times", size: 20))
                         .foregroundColor(.white)
                         .keyboardType(.phonePad)
+                        .textContentType(.telephoneNumber)
                     
                     Divider()
                 }

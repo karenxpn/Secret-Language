@@ -34,7 +34,6 @@ struct BirthdayPicker: View {
 
                 Spacer()
                 
-                
                 HStack {
                     Spacer()
                     
@@ -51,7 +50,6 @@ struct BirthdayPicker: View {
             }.padding()
             .padding(.top, 50)
         }
-        
     }
 }
 

@@ -45,10 +45,12 @@ struct SignIn: View {
                         .foregroundColor(.gray)
                         .font(.custom("Gilroy-Regular", size: 10))
                     
-                    TextField(NSLocalizedString("phoneNumber", comment: ""), text: $authVM.signInPhoneNumber)
-                    .font(.custom("times", size: 20))
-                    .foregroundColor(.white)
-                    .keyboardType(.phonePad)
+                    TextField(NSLocalizedString("+1...", comment: ""), text: $authVM.signInPhoneNumber)
+                        .font(.custom("times", size: 20))
+                        .foregroundColor(.white)
+                        .keyboardType(.phonePad)
+                        .textContentType(.telephoneNumber)
+                    
                     
                     Divider()
                 }

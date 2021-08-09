@@ -18,7 +18,7 @@ class AuthViewModel: ObservableObject {
     @AppStorage( "initialToken" ) private var initialToken: String = ""
     
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
-    @Published var signUpPhoneNumber: String = "+"
+    @Published var signUpPhoneNumber: String = ""
     @Published var singUpVerificationCode: String = ""
     @Published var signUpFullName: String = ""
     @Published var signUpGender: Int? = nil
@@ -26,7 +26,7 @@ class AuthViewModel: ObservableObject {
     @Published var genderFilter: String = ""
     @Published var moreGenders = [GenderModel]()
     
-    @Published var signInPhoneNumber: String = "+"
+    @Published var signInPhoneNumber: String = ""
     @Published var signInVerificationCode: String = ""
     
     @Published var navigateToSignInVerificationCode: Bool = false
