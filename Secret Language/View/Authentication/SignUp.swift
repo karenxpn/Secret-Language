@@ -109,6 +109,7 @@ struct SignUp: View {
                     
                     Spacer()
                     
+                    
                     NavigationLink(destination: EmptyView()) {
                         EmptyView()
                     }
@@ -128,6 +129,60 @@ struct SignUp: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 50, height: 50)
                     }).disabled(!authVM.isSendVerificationCodeClickable)
+                }
+                
+                HStack {
+                    Spacer()
+                    VStack(spacing: 5) {
+                        Text( NSLocalizedString("rightsReserved", comment: ""))
+                            .foregroundColor(.white)
+                            .font(.custom("Gilroy-Regular", size: 10))
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(5)
+                        
+                        HStack {
+                            Link(NSLocalizedString("madeByDoejo", comment: ""), destination: URL(string: "https://doejo.com")!)
+                                .foregroundColor(.blue)
+                                .font(.custom("Gilroy-Regular", size: 10))
+                            
+                            Link(NSLocalizedString("privacy", comment: ""), destination: URL(string: "https://www.privacypolicies.com/live/8fafa61f-59d3-4bcf-8921-cf04d36f8f98")!)
+                                .foregroundColor(.blue)
+                                .font(.custom("Gilroy-Regular", size: 10))
+                        }
+                        
+                        HStack {
+                            
+                            Button {
+                                authVM.agreement.toggle()
+                            } label: {
+                                ZStack {
+                                    Rectangle()
+                                        .fill(authVM.agreement ? Color.green : Color.white)
+                                        .frame(width: 16, height: 16, alignment: .center)
+                                        .cornerRadius(5)
+                                    
+                                    if authVM.agreement {
+                                        Image(systemName: "checkmark")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 10, height: 10, alignment: .center)
+                                            .foregroundColor(.white)
+                                    }
+                                }
+
+                            }
+                            
+                            Link(NSLocalizedString("terms", comment: ""), destination: URL(string: "https://www.privacypolicies.com/live/8fafa61f-59d3-4bcf-8921-cf04d36f8f98")!)
+                                .foregroundColor(.blue)
+                                .font(.custom("Gilroy-Regular", size: 14))
+                            
+                            Text( "( Required )" )
+                                .foregroundColor(.red)
+                                .font(.custom("Gilroy-Regular", size: 10))
+
+                        }
+                    }
+                    Spacer()
                 }
                 
             }.padding()
