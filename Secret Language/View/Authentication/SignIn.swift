@@ -13,9 +13,11 @@ struct SignIn: View {
     
     @State private var hideNavBar: Bool = true
     @State private var hideBackButton: Bool = false
+    @State private var openCountryCodeList: Bool = false
+    
     
     var body: some View {
-        ZStack {
+        ZStack( alignment: .leading) {
             Background()
             
             VStack( alignment: .leading, spacing: 20) {
@@ -45,18 +47,26 @@ struct SignIn: View {
                         .foregroundColor(.gray)
                         .font(.custom("Gilroy-Regular", size: 10))
                     
-                    TextField(NSLocalizedString("+1...", comment: ""), text: $authVM.signInPhoneNumber)
-                        .font(.custom("times", size: 20))
-                        .foregroundColor(.white)
-                        .keyboardType(.phonePad)
-                        .textContentType(.telephoneNumber)
-                    
-                    
+                    HStack {
+                        Button {
+                            openCountryCodeList.toggle()
+                        } label: {
+                            Text( Credentials.countryCodeList[authVM.signInCountryCode]! )
+                                .font(.custom("times", size: 20))
+                                .foregroundColor(.white)
+                        }
+                        
+                        TextField(NSLocalizedString("phoneNumber", comment: ""), text: $authVM.signInPhoneNumber)
+                            .font(.custom("times", size: 20))
+                            .foregroundColor(.white)
+                            .keyboardType(.phonePad)
+                            .textContentType(.telephoneNumber)
+                    }
                     Divider()
                 }
                 
                 Spacer()
-                                
+                
                 HStack {
                     
                     VStack( alignment: .leading) {
@@ -124,7 +134,7 @@ struct SignIn: View {
             CustomAlert(isPresented: $authVM.showAlert, alertMessage: authVM.sendVerificationCodeAlertMessage, alignment: .bottom)
                 .offset(y: authVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
-            
+
         }.onAppear(perform: {
             hideNavBar = true
             hideBackButton = true
@@ -134,6 +144,8 @@ struct SignIn: View {
         .navigationBarBackButtonHidden(hideBackButton)
         .onTapGesture {
             UIApplication.shared.endEditing()
+        }.sheet(isPresented: $openCountryCodeList) {
+            CountryCodeSelection(isPresented: $openCountryCodeList, country: $authVM.signInCountryCode)
         }
     }
 }

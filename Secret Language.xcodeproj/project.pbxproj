@@ -65,6 +65,7 @@
 		FF5DCC2B26B9B24D004D644E /* MessageMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5DCC2A26B9B24D004D644E /* MessageMedia.swift */; };
 		FF6AF6E526AAD7AD007A902F /* SharedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF6E426AAD7AD007A902F /* SharedProfileModel.swift */; };
 		FF6AF6E726ABA974007A902F /* RoomViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF6E626ABA974007A902F /* RoomViewModelTests.swift */; };
+		FF8051DE26C45C3500B96F69 /* CountryCodeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8051DD26C45C3500B96F69 /* CountryCodeSelection.swift */; };
 		FF8AA6D726A098BD000C6B41 /* MessageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6D626A098BD000C6B41 /* MessageBar.swift */; };
 		FF8AA6D926A098EC000C6B41 /* MessageRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6D826A098EC000C6B41 /* MessageRoomViewModel.swift */; };
 		FF8AA6DB26A09E31000C6B41 /* MessagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6DA26A09E31000C6B41 /* MessagesList.swift */; };
@@ -251,6 +252,7 @@
 		FF5DCC2A26B9B24D004D644E /* MessageMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMedia.swift; sourceTree = "<group>"; };
 		FF6AF6E426AAD7AD007A902F /* SharedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedProfileModel.swift; sourceTree = "<group>"; };
 		FF6AF6E626ABA974007A902F /* RoomViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModelTests.swift; sourceTree = "<group>"; };
+		FF8051DD26C45C3500B96F69 /* CountryCodeSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelection.swift; sourceTree = "<group>"; };
 		FF8AA6D626A098BD000C6B41 /* MessageBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBar.swift; sourceTree = "<group>"; };
 		FF8AA6D826A098EC000C6B41 /* MessageRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRoomViewModel.swift; sourceTree = "<group>"; };
 		FF8AA6DA26A09E31000C6B41 /* MessagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesList.swift; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 				FFDB15AC2666C03F00341E8F /* ConnectionType.swift */,
 				FFDB15AE2666C0E100341E8F /* SingleConnectionType.swift */,
 				FFCEDDEE266E491F0073BE20 /* AuthNavTitle.swift */,
+				FF8051DD26C45C3500B96F69 /* CountryCodeSelection.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -1090,6 +1093,7 @@
 				FF3727EE26A5051C00B20925 /* SendingMessageModel.swift in Sources */,
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,
 				FF18DC40269F669E004BE946 /* ChatService.swift in Sources */,
+				FF8051DE26C45C3500B96F69 /* CountryCodeSelection.swift in Sources */,
 				FFAD920426AF6418007984ED /* SettingsViewModel.swift in Sources */,
 				FF3D63E22697AD1800799E72 /* PaymentService.swift in Sources */,
 				FF997EA5268FCCF80057B731 /* RelationshipReportModel.swift in Sources */,

@@ -11,6 +11,7 @@ struct SignUp: View {
     @StateObject var authVM = AuthViewModel()
     @State private var fullscreen: Bool = false
     @State private var login: Bool = false
+    @State private var openCountryCodeList: Bool = false
     
     
     var dateFormatter: DateFormatter {
@@ -66,11 +67,21 @@ struct SignUp: View {
                         .foregroundColor(.gray)
                         .font(.custom("Gilroy-Regular", size: 10))
                     
-                    TextField(NSLocalizedString("+1...", comment: ""), text: $authVM.signUpPhoneNumber)
-                        .font(.custom("times", size: 20))
-                        .foregroundColor(.white)
-                        .keyboardType(.phonePad)
-                        .textContentType(.telephoneNumber)
+                    HStack {
+                        Button {
+                            openCountryCodeList.toggle()
+                        } label: {
+                            Text( Credentials.countryCodeList[authVM.signUpCountryCode]! )
+                                .font(.custom("times", size: 20))
+                                .foregroundColor(.white)
+                        }
+                        
+                        TextField(NSLocalizedString("phoneNumber", comment: ""), text: $authVM.signUpPhoneNumber)
+                            .font(.custom("times", size: 20))
+                            .foregroundColor(.white)
+                            .keyboardType(.phonePad)
+                            .textContentType(.telephoneNumber)
+                    }
                     
                     Divider()
                 }
@@ -133,6 +144,8 @@ struct SignUp: View {
             BirthdayPicker(birthdayDate: $authVM.birthdayDate)
         }).onTapGesture {
             UIApplication.shared.endEditing()
+        }.sheet(isPresented: $openCountryCodeList) {
+            CountryCodeSelection(isPresented: $openCountryCodeList, country: $authVM.signUpCountryCode)
         }
     }
 }

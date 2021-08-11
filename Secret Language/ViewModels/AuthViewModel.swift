@@ -18,6 +18,7 @@ class AuthViewModel: ObservableObject {
     @AppStorage( "initialToken" ) private var initialToken: String = ""
     
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
+    @Published var signUpCountryCode: String = "United States"
     @Published var signUpPhoneNumber: String = ""
     @Published var singUpVerificationCode: String = ""
     @Published var signUpFullName: String = ""
@@ -26,6 +27,7 @@ class AuthViewModel: ObservableObject {
     @Published var genderFilter: String = ""
     @Published var moreGenders = [GenderModel]()
     
+    @Published var signInCountryCode: String = "United States"
     @Published var signInPhoneNumber: String = ""
     @Published var signInVerificationCode: String = ""
     
@@ -85,7 +87,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func sendVerificationCode() {
-        dataManager.sendVerificationCode(phoneNumber: signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate))
+        dataManager.sendVerificationCode(phoneNumber: Credentials.countryCodeList[signUpCountryCode]! + signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate))
             .sink { response in
                 if response.error != nil {
                     self.sendVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
@@ -97,13 +99,13 @@ class AuthViewModel: ObservableObject {
     }
     
     func resendSignUpVerificationCode() {
-        dataManager.resendVerificationCode(phoneNumber: signUpPhoneNumber)
+        dataManager.resendVerificationCode(phoneNumber: Credentials.countryCodeList[signUpCountryCode]! + signUpPhoneNumber)
             .sink { _ in
             }.store(in: &cancellableSet)
     }
     
     func checkVerificationCode() {
-        dataManager.checkVerificationCode(phoneNumber: signUpPhoneNumber, code: singUpVerificationCode)
+        dataManager.checkVerificationCode(phoneNumber: Credentials.countryCodeList[signUpCountryCode]! + signUpPhoneNumber, code: singUpVerificationCode)
             .sink { response in
                 if response.error != nil {
                     self.checkVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
@@ -134,7 +136,7 @@ class AuthViewModel: ObservableObject {
     
     func sendSignInVerificationCode() {
         
-        dataManager.sendSignInVerificationCode(phoneNumber: signInPhoneNumber)
+        dataManager.sendSignInVerificationCode(phoneNumber: Credentials.countryCodeList[signInCountryCode]! + signInPhoneNumber)
             .sink { response in
                 if response.error != nil {
                     self.sendVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
@@ -146,7 +148,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func checkSignInVerificationCode() {
-        dataManager.checkSignInVerificationCode(phoneNumber: signInPhoneNumber, code: signInVerificationCode)
+        dataManager.checkSignInVerificationCode(phoneNumber: Credentials.countryCodeList[signInCountryCode]! + signInPhoneNumber, code: signInVerificationCode)
             .sink { response in
                 if response.error != nil {
                     self.checkVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
@@ -163,7 +165,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func resendSignInVerificationCode() {
-        dataManager.resendVerificationCode(phoneNumber: signInPhoneNumber)
+        dataManager.resendVerificationCode(phoneNumber: Credentials.countryCodeList[signInCountryCode]! + signInPhoneNumber)
             .sink { _ in
             }.store(in: &cancellableSet)
     }
