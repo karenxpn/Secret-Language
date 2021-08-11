@@ -93,10 +93,11 @@ struct VisitedProfile: View {
                         }
                     }.padding(.horizontal)
                     
-                    Image("phoneNumberimg")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 150, height: 150)
+                    ImageHelper(image: profileVM.visitedProfile!.illustration, contentMode: .fit, progressViewTintColor: .black)
+                        .frame(width: 130, height: 130)
+                        .padding()
+                        .background(.white)
+                        .clipShape(Circle())
                     
                     VStack {
                         Text( profileVM.visitedProfile!.title )

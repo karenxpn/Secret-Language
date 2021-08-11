@@ -16,7 +16,7 @@ class PaymentViewModel: NSObject, ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "shouldPurchaseReport" ) private var shouldPurchase: Bool = true
     @AppStorage( "shouldSubscribe" ) private var shouldSubscribe: Bool = true
-
+    
     @Published var paymentType: String = "report"
     
     @Published var birthdayDate: String = ""
@@ -27,7 +27,7 @@ class PaymentViewModel: NSObject, ObservableObject {
     @Published var loadingPaymentProccess: Bool = false
     
     private let allProductIdentifiers = Credentials.appStoreProductIdentifiers
-        
+    
     private var productsRequest: SKProductsRequest?
     private var fetchedProducts = [SKProduct]()
     private var fetchCompletionHandler: FetchCompletionHandler?
@@ -91,6 +91,7 @@ extension PaymentViewModel {
     }
     
     func restorePurchase() {
+        SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
 }
@@ -152,11 +153,11 @@ extension PaymentViewModel {
         
         dataManager.fetchReceiptData { receipt in
             self.dataManager.postPaymentStatus(token: self.token,
-                                          receipt: receipt,
-                                          reportDate: self.birthdayDate,
-                                          firstReportDate: self.firstReportDate,
-                                          secondReportDate: self.secondReportDate,
-                                          birthdayOrRelationship: self.birthdayOrRelationship)
+                                               receipt: receipt,
+                                               reportDate: self.birthdayDate,
+                                               firstReportDate: self.firstReportDate,
+                                               secondReportDate: self.secondReportDate,
+                                               birthdayOrRelationship: self.birthdayOrRelationship)
                 .sink { response in
                     self.shouldPurchase = false
                     if response.error == nil {
