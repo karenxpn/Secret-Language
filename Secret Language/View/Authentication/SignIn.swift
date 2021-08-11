@@ -56,7 +56,7 @@ struct SignIn: View {
                 }
                 
                 Spacer()
-                
+                                
                 HStack {
                     
                     VStack( alignment: .leading) {
@@ -91,6 +91,33 @@ struct SignIn: View {
                             .frame(width: 50, height: 50)
                     }).disabled(!authVM.isSignInProceedClickable)
                 }
+                
+                HStack {
+                    Spacer()
+                    VStack(spacing: 5) {
+                        Text( NSLocalizedString("rightsReserved", comment: ""))
+                            .foregroundColor(.white)
+                            .font(.custom("Gilroy-Regular", size: 10))
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(5)
+                        
+                        Link(NSLocalizedString("madeByDoejo", comment: ""), destination: URL(string: "https://doejo.com")!)
+                            .foregroundColor(.blue)
+                            .font(.custom("Gilroy-Regular", size: 10))
+                        
+                        HStack {
+                            Link(NSLocalizedString("terms", comment: ""), destination: URL(string: "https://www.privacypolicies.com/live/8fafa61f-59d3-4bcf-8921-cf04d36f8f98")!)
+                                .foregroundColor(.blue)
+                                .font(.custom("Gilroy-Regular", size: 10))
+                            
+                            Link(NSLocalizedString("privacy", comment: ""), destination: URL(string: "https://www.privacypolicies.com/live/8fafa61f-59d3-4bcf-8921-cf04d36f8f98")!)
+                                .foregroundColor(.blue)
+                                .font(.custom("Gilroy-Regular", size: 10))
+                        }
+                    }
+                    Spacer()
+                }
+                
             }.padding()
             .padding(.top, 30)
             
