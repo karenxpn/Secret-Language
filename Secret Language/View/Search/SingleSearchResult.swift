@@ -30,6 +30,7 @@ struct SingleSearchResult: View {
                             .clipShape(Circle())
                         
                         Text( user.name )
+                            .lineLimit(1)
                             .foregroundColor(.white)
                             .font(.custom("times", size: 16))
                         
@@ -41,6 +42,7 @@ struct SingleSearchResult: View {
                             Text( user.ideal)
                                 .foregroundColor(.accentColor)
                                 .font(.custom("Gilroy-Regular", size: 12))
+                                .lineLimit(1)
                         }
                     }
                 })
