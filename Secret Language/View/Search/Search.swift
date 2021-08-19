@@ -96,10 +96,9 @@ struct Search: View {
             .navigationBarTitleView(SearchNavBar(title: "Community" ), displayMode: .inline)
             .onAppear(perform: {
                 searchVM.getIdealCategories()
-            })
-            .onTapGesture {
+            }).gesture(DragGesture().onChanged({ _ in
                 UIApplication.shared.endEditing()
-            }
+            }))
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
