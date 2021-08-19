@@ -12,7 +12,7 @@ struct SignUp: View {
     @State private var fullscreen: Bool = false
     @State private var login: Bool = false
     @State private var openCountryCodeList: Bool = false
-    @State private var termsOfUseScale: CGFloat = 1
+    @State private var animate: Bool = false
     
     
     var dateFormatter: DateFormatter {
@@ -127,7 +127,17 @@ struct SignUp: View {
                         if authVM.agreement {
                             authVM.sendVerificationCode()
                         } else {
-                            termsOfUseScale = 1.3
+                            withAnimation(.easeInOut(duration: 0.7)
+                                            .repeatCount(1, autoreverses: true)) {
+                                animate.toggle()
+                            }
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                                withAnimation(.easeInOut(duration: 0.7)
+                                                .repeatCount(1, autoreverses: true)) {
+                                    animate.toggle()
+                                }
+                            }
                         }
                     }, label: {
                         Image("proceed")
@@ -185,9 +195,7 @@ struct SignUp: View {
                                 .foregroundColor(.red)
                                 .font(.custom("Gilroy-Regular", size: 10))
                             
-                        }.scaleEffect(termsOfUseScale)
-                        .animation(Animation.easeInOut(duration: 0.5)
-                                    .repeatCount(1, autoreverses: true))
+                        }.scaleEffect(animate ? 1.4 : 1)
                     }
                     Spacer()
                 }
