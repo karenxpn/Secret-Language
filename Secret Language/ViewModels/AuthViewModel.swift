@@ -72,7 +72,7 @@ class AuthViewModel: ObservableObject {
     init( dataManager: AuthServiceProtocol = AuthService.shared) {
         self.dataManager = dataManager
         
-        isSignUpPublishersValid
+        isSignUpPhoneNumberValidPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.isSendVerificationCodeClickable, on: self)
             .store(in: &cancellableSet)
@@ -200,19 +200,6 @@ class AuthViewModel: ObservableObject {
         $signUpPhoneNumber
             .map { !$0.isEmpty }
             .eraseToAnyPublisher()
-    }
-    
-    private var isSignUpAgreementValidPublisher: AnyPublisher<Bool, Never> {
-        $agreement
-            .map { $0 == true }
-            .eraseToAnyPublisher()
-    }
-    
-    private var isSignUpPublishersValid: AnyPublisher<Bool, Never> {
-        Publishers.CombineLatest(isSignUpPhoneNumberValidPublisher, isSignUpAgreementValidPublisher)
-            .map { number, agreement in
-                return number && agreement
-            }.eraseToAnyPublisher()
     }
     
     private var isVerificationCodeValidPublisher: AnyPublisher<Bool, Never> {

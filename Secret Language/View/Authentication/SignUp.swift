@@ -12,6 +12,7 @@ struct SignUp: View {
     @State private var fullscreen: Bool = false
     @State private var login: Bool = false
     @State private var openCountryCodeList: Bool = false
+    @State private var termsOfUseScale: CGFloat = 1
     
     
     var dateFormatter: DateFormatter {
@@ -122,7 +123,12 @@ struct SignUp: View {
                     
                     Button(action: {
                         UIApplication.shared.endEditing()
-                        authVM.sendVerificationCode()
+                        
+                        if authVM.agreement {
+                            authVM.sendVerificationCode()
+                        } else {
+                            termsOfUseScale = 1.3
+                        }
                     }, label: {
                         Image("proceed")
                             .resizable()
@@ -178,7 +184,10 @@ struct SignUp: View {
                             Text( "( Required )" )
                                 .foregroundColor(.red)
                                 .font(.custom("Gilroy-Regular", size: 10))
-                        }
+                            
+                        }.scaleEffect(termsOfUseScale)
+                        .animation(Animation.easeInOut(duration: 0.5)
+                                    .repeatCount(1, autoreverses: true))
                     }
                     Spacer()
                 }
