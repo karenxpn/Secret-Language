@@ -127,14 +127,12 @@ struct SignUp: View {
                         if authVM.agreement {
                             authVM.sendVerificationCode()
                         } else {
-                            withAnimation(.easeInOut(duration: 0.7)
-                                            .repeatCount(1, autoreverses: true)) {
+                            withAnimation(.easeInOut(duration: 0.7)) {
                                 animate.toggle()
                             }
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                                withAnimation(.easeInOut(duration: 0.7)
-                                                .repeatCount(1, autoreverses: true)) {
+                                withAnimation(.easeInOut(duration: 0.7)) {
                                     animate.toggle()
                                 }
                             }
