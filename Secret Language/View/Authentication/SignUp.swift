@@ -169,7 +169,6 @@ struct SignUp: View {
                                             .foregroundColor(.white)
                                     }
                                 }
-
                             }
                             
                             Link(NSLocalizedString("terms", comment: ""), destination: URL(string: "https://www.privacypolicies.com/live/8fafa61f-59d3-4bcf-8921-cf04d36f8f98")!)
@@ -179,7 +178,6 @@ struct SignUp: View {
                             Text( "( Required )" )
                                 .foregroundColor(.red)
                                 .font(.custom("Gilroy-Regular", size: 10))
-
                         }
                     }
                     Spacer()

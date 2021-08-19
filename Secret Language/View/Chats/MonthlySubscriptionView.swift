@@ -29,7 +29,7 @@ struct MonthlySubscriptionView: View {
                             .frame(width: 121, height: 121)
                         
                         VStack {
-                            Text( "$7.99" )
+                            Text( "$9.99" )
                                 .foregroundColor(.white)
                                 .font(.custom("times", size: 35))
                                 .fontWeight(.heavy)

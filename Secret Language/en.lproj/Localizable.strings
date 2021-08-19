@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   Secret Language
 
@@ -27,7 +27,7 @@
 "verificationCode" = "Verification Code";
 "enterFullName" = "Enter Full Name";
 "pleaseEnterFullName" = "Please enter Your full name, so that people can find you with ease!";
-"fullNameMayHelp" = "Your full name may help you and your frinds get in touch with each other.";
+"fullNameMayHelp" = "Your full name may help you and your friends get in touch with each other.";
 "verificationCodeSent" = "We have sent you a code confirming your number";
 "verify" = "Verify";
 "resendCode" = "Resend Code";
@@ -51,7 +51,7 @@
 "weekOf" = "Week of: ";
 "congratsOnLookingThroughEveryone" = "Congrats! You have gone through everyone in your filter settings. Feel free to invite people to Secret Language.";
 "advice" = "ADVICE";
-"since1701" = "Since 1701, this very rare name has only been given the poeple born on this day in these years:";
+"since1701" = "Since 1701, this very rare name has only been given the people born on this day in these years:";
 "all" = "All";
 "friends" = "Friends";
 "pending" = "Pending";
@@ -124,7 +124,7 @@
 "selectSource" = "Select Source";
 "actions" = "Actions";
 "seeHowYouAreMatched" = "See Who You’re Matched With & Connect !";
-"getPremium" = "Get Your Premium Features: $7.99 A Month\nUnlimited Messaging +\nPlus All The Standart Features: Free\nUnlimited Brirthday Reports\nUnlimited Relationship Reports\nUnlimited Matchmaking Reports";
+"getPremium" = "Get Your Premium Features: $9.99 A Month\nUnlimited Messaging +\nPlus All The Standart Features: Free\nUnlimited Brirthday Reports\nUnlimited Relationship Reports\nUnlimited Matchmaking Reports";
 "subscribe" = "Subscribe";
 "restore" = "Restore";
 "reportUser" = "Report User";
