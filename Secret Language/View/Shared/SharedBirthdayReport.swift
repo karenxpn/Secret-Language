@@ -89,9 +89,12 @@ struct SharedBirthdayReport: View {
                                            destination: AnyView(RelationshipReport(report: .constant(reportVM.birthdayReport!.relationship_report))))
                             
                         }.padding(.horizontal, 8)
-                        .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                         .padding(.top)
                         
+                        AllRightsReservedMadeByDoejo()
+                            .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+
+
                     }.padding( .top, 1)
                 }
                 

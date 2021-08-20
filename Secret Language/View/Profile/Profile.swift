@@ -117,6 +117,9 @@ struct Profile: View {
                         
                         EmptyList()
                         
+                        AllRightsReservedMadeByDoejo()
+                            .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                        
                     }.padding(.top, 1)
                 }
                 

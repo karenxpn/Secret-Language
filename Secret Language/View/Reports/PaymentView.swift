@@ -98,17 +98,8 @@ struct PaymentView: View {
                     
                     Spacer()
                     
-                    VStack(spacing: 5) {
-                        Text( NSLocalizedString("rightsReserved", comment: ""))
-                            .foregroundColor(.white)
-                            .font(.custom("Gilroy-Regular", size: 10))
-                            .multilineTextAlignment(.center)
-                            .lineSpacing(5)
-                        
-                        Link(NSLocalizedString("madeByDoejo", comment: ""), destination: URL(string: "https://doejo.com")!)
-                            .foregroundColor(.blue)
-                            .font(.custom("Gilroy-Regular", size: 10))
-                    }
+                    AllRightsReservedMadeByDoejo()
+                        .fixedSize(horizontal: false, vertical: true)
                                         
                 }.padding()
                 .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)

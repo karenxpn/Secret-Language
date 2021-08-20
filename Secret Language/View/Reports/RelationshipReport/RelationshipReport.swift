@@ -116,7 +116,10 @@ struct RelationshipReport: View {
                             .padding(.horizontal)
                         
                     }.padding(.top)
-                    .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                    .padding(.bottom)
+                    
+                    AllRightsReservedMadeByDoejo()
+                        .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                     
                 }.padding(.top, 1)
             }

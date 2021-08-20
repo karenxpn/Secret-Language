@@ -84,8 +84,12 @@ struct Search: View {
                                 SingleSearchResult(user: result)
                                     .environmentObject(searchVM)
                             }
-                        }).padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                        })
                     }
+                    
+                    AllRightsReservedMadeByDoejo()
+                        .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+
                 }.padding(.top, 1)
                 
                 CustomAlert(isPresented: $searchVM.showAlert, alertMessage: searchVM.alertMessage, alignment: .center)

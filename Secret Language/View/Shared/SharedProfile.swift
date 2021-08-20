@@ -105,6 +105,9 @@ struct SharedProfile: View {
                                 .padding(8)
                         }
                         
+                        AllRightsReservedMadeByDoejo()
+
+                        
                         Divider()
                             .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                         

@@ -173,8 +173,13 @@ struct Reports: View {
                             }
                         }
                         
+                        AllRightsReservedMadeByDoejo()
+                            .fixedSize(horizontal: false, vertical: true)
+
                     }.padding()
                     .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                    
+
                 }.padding(.top, 1)
                 
                 CustomAlert(isPresented: $reportVM.showAlert, alertMessage: reportVM.alertMessage, alignment: .center)

@@ -132,7 +132,9 @@ struct SingleMatch: View {
                         .padding(8)
                 }
                 
-                Divider()
+                AllRightsReservedMadeByDoejo()
+
+                Spacer()
                     .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 
             }.padding(.top, 1)

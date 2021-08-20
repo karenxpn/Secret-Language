@@ -123,6 +123,8 @@ struct SharedRelationshipReport: View {
                                 .multilineTextAlignment(.center)
                                 .padding(.horizontal)
                             
+                            AllRightsReservedMadeByDoejo()
+
                         }.padding(.top)
                         .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                         

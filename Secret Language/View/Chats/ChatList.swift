@@ -35,6 +35,13 @@ struct ChatList: View {
                     .background(AppColors.blueColor)
             }.onDelete(perform: delete)
             
+            AllRightsReservedMadeByDoejo()
+                .padding(.top)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                .listRowInsets(EdgeInsets())
+                .background(AppColors.blueColor)
+
+            
             if chatVM.chats.count > 4 {
                 Spacer().padding(.bottom, UIScreen.main.bounds.size.height * 0.2)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
