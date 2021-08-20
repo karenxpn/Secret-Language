@@ -102,13 +102,15 @@ struct SignIn: View {
                     }).disabled(!authVM.isSignInProceedClickable)
                 }
                 
+                AllRightsReservedMadeByDoejo()
+
             }.padding()
             .padding(.top, 30)
             
             CustomAlert(isPresented: $authVM.showAlert, alertMessage: authVM.sendVerificationCodeAlertMessage, alignment: .bottom)
                 .offset(y: authVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
-
+            
         }.onAppear(perform: {
             hideNavBar = true
             hideBackButton = true
