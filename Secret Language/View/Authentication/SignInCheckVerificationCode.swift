@@ -58,7 +58,7 @@ struct SignInCheckVerificationCode: View {
                         }).disabled(!authVM.isCheckVerificationCodeClickable)
                         
                         if timeRemaining != 0 {
-                            Text( "\(timeRemaining / 60):\(timeRemaining % 60) Remaining")
+                            Text( "\(timeRemaining / 60):\(timeRemaining % 60) Remaining to:")
                                 .font(.custom("Gilroy-Regular", size: 16))
                                 .onReceive(timer) { _ in
                                     if timeRemaining > 0 {
