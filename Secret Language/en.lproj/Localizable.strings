@@ -39,7 +39,7 @@
 "neutral" = "I'm a Neutral";
 "moreGenders" = "I want to see more Genders";
 "search" = "Search";
-"lookingConnections" = "What kind of connectionare you looking for?";
+"lookingConnections" = "What kind of connectionare you are looking for?";
 "chooseModel" = "Choose a mode depending on what you’re looking for. You can switch this at any time.";
 "lookingFor" = "Looking For";
 "idealFor" = "Ideal for: ";
@@ -69,7 +69,7 @@
 "changeProfileImage" = "Change Profile Image";
 "emptyList" = "No posts were found, you can share reports with your friends and they will automatically appear here. 😊";
 "globalSearch" = "Global Search";
-"chooseCategory" = "Choose category to find idial candidate";
+"chooseCategory" = "Choose category to find ideal candidate";
 "connect" = "Connect";
 "lookUpBirthday" = "Look up a Birthday";
 "birthdayYouCanLook" = "You can look up the personality traits of anyone you know from their birthday. You will see up to 18 personality traits if you know the complete birth date and up to 12 traits if you only know the month and day of birth.";
@@ -137,3 +137,4 @@
 "fullName" = "Full Name";
 "terms" = "Terms of Use";
 "privacy" = "Privacy Policy";
+"countryCodes" = "Country Codes";

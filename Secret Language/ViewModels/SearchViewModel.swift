@@ -12,6 +12,7 @@ import Combine
 class SearchViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
+    @AppStorage( "interestedInCategory" ) private var interestedInCategory: Int = 0
     @Published var search: String = ""
     @Published var searchResults = [SearchUserModel]()
     @Published var ideal: Int = 1
@@ -32,10 +33,12 @@ class SearchViewModel: ObservableObject {
          authDataManager: AuthServiceProtocol = AuthService.shared,
          userDataManager: UserServiceProtocol = UserService.shared,
          profileDataManager: ProfileServiceProtocol = ProfileService.shared) {
+        
         self.dataManager = dataManager
         self.authDataManager = authDataManager
         self.userDataManager = userDataManager
         self.profileDataManager = profileDataManager
+        self.ideal =  self.interestedInCategory == 0 ? 1 : self.interestedInCategory
         
         $search
             .removeDuplicates()

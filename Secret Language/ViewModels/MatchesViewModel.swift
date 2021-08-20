@@ -12,6 +12,7 @@ import SwiftUI
 class MatchesViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
+    @AppStorage( "interestedInCategory" ) private var interestedInCategory: Int = 0
     @Published var matches = [MatchViewModel]()
     
     @Published var loadingMatches: Bool = false
@@ -38,6 +39,7 @@ class MatchesViewModel: ObservableObject {
           userDataManager: UserServiceProtocol = UserService.shared) {
         self.dataManager = dataManager
         self.userDataManager = userDataManager
+        self.dataFilterCategory = self.interestedInCategory
     }
     
     func getMatches() {

@@ -16,6 +16,7 @@ class AuthViewModel: ObservableObject {
     @AppStorage("username") private var username: String = ""
     @AppStorage( "userID" ) private var userID: Int = 0
     @AppStorage( "initialToken" ) private var initialToken: String = ""
+    @AppStorage( "interestedInCategory" ) private var interestedInCategory: Int = 0
     
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     @Published var signUpCountryCode: String = "United States"
@@ -132,6 +133,7 @@ class AuthViewModel: ObservableObject {
                     self.token = response.value!.token
                     self.username = response.value!.username
                     self.userID = response.value!.id
+                    self.interestedInCategory = self.connectionType ?? 0
                 }
             }.store(in: &cancellableSet)
     }

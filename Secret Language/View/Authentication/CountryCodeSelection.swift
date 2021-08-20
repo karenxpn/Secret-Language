@@ -34,12 +34,17 @@ struct CountryCodeSelection: View {
                                     Text( Credentials.countryCodeList[key]!)
                                             .font(.custom("times", size: 20))
                                             .foregroundColor(.white)
-                                }.padding()
+                                    
+                                    Spacer()
+                                }.padding(.horizontal)
+                                .padding( .vertical, 8)
                             }
+                            
+                            Divider()
                         }
                     }
                 }.padding( .top, 1 )
-            }.navigationBarTitle( "", displayMode: .inline)
+            }.navigationBarTitle( Text( NSLocalizedString("countryCodes", comment: "" ) ), displayMode: .inline)
             .navigationBarItems(trailing: Button {
                 self.isPresented.toggle()
             } label: {
