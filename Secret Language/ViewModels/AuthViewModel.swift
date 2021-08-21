@@ -15,7 +15,6 @@ class AuthViewModel: ObservableObject {
     @AppStorage("token") private var token: String = ""
     @AppStorage("username") private var username: String = ""
     @AppStorage( "userID" ) private var userID: Int = 0
-    @AppStorage( "initialToken" ) private var initialToken: String = ""
     @AppStorage( "interestedInCategory" ) private var interestedInCategory: Int = 0
     
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
@@ -96,6 +95,7 @@ class AuthViewModel: ObservableObject {
                     self.sendVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
                     self.showAlert.toggle()
                 } else {
+                    self.token = response.value!.token
                     self.navigateToCheckVerificationCode.toggle()
                 }
             }.store(in: &cancellableSet)
@@ -108,7 +108,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func checkVerificationCode() {
-        dataManager.checkVerificationCode(phoneNumber: Credentials.countryCodeList[signUpCountryCode]! + signUpPhoneNumber, code: singUpVerificationCode)
+        dataManager.checkVerificationCode(token: token, phoneNumber: Credentials.countryCodeList[signUpCountryCode]! + signUpPhoneNumber, code: singUpVerificationCode)
             .sink { response in
                 if response.error != nil {
                     self.checkVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
@@ -116,14 +116,13 @@ class AuthViewModel: ObservableObject {
                     
                     self.singUpVerificationCode = ""
                 } else {
-                    self.initialToken = response.value!.token
                     self.navigateToFullNamePage.toggle()
                 }
             }.store(in: &cancellableSet)
     }
     
     func signUp() {
-        dataManager.signUp(token: initialToken, fullName: signUpFullName, gender: signUpGender ?? 0, connectionType: connectionType ?? 0)
+        dataManager.signUp(token: token, fullName: signUpFullName, gender: signUpGender ?? 0, connectionType: connectionType ?? 0)
             .sink { response in
                 if response.error != nil {
                     self.signUpAlertMessage = self.createErrorMessage(error: response.error!)

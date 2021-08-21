@@ -24,7 +24,7 @@ extension SettingsService: SettingsServiceProtocol {
     func updateFields(token: String, parameters: SettingsFieldsUpdateModel) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/updateProfile")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
-        
+                
         return AF.request(url,
                           method: .patch,
                           parameters: parameters,

@@ -13,7 +13,6 @@ class SettingsViewModel: ObservableObject {
     @AppStorage("token") private var token: String = ""
     @AppStorage("username") private var username: String = ""
     @AppStorage( "userID" ) private var userID: Int = 0
-    @AppStorage( "initialToken" ) private var initialToken: String = ""
     
     @Published var gender: GenderModel = GenderModel(id: 1, gender_name: "Male")
     @Published var fullName: String = ""
@@ -93,7 +92,7 @@ class SettingsViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
-    func updateFields(updatedFrom: String) {
+    func updateFields(updatedFrom: String) {        
         let parameters = SettingsFieldsUpdateModel(date_name: dateFormatter.string(from: self.birthdayDate), name: fullName, gender: gender.id, country_name: location)
         
         dataManager.updateFields(token: token, parameters: parameters)
@@ -124,7 +123,6 @@ class SettingsViewModel: ObservableObject {
                 } else {
                     self.token = ""
                     self.username = ""
-                    self.initialToken = ""
                     self.userID = 0
                 }
             }.store(in: &cancellableSet)

@@ -10,8 +10,8 @@ import Combine
 import Alamofire
 
 protocol AuthServiceProtocol {
-    func sendVerificationCode( phoneNumber: String, birthday: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
-    func checkVerificationCode( phoneNumber: String, code: String ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never>
+    func sendVerificationCode( phoneNumber: String, birthday: String ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never>
+    func checkVerificationCode( token: String, phoneNumber: String, code: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func signUp( token: String, fullName: String, gender: Int, connectionType: Int ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never>
 
     func fetchConnectionTypes() -> AnyPublisher<DataResponse<[ConnectionTypeModel], NetworkError>, Never>
@@ -147,7 +147,7 @@ extension AuthService: AuthServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func sendVerificationCode(phoneNumber: String, birthday: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+    func sendVerificationCode(phoneNumber: String, birthday: String) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)auth/sign-up")!
         
         return AF.request(url,
@@ -156,7 +156,7 @@ extension AuthService: AuthServiceProtocol {
                                        "birthday": birthday ],
                           encoder: JSONParameterEncoder.default)
             .validate()
-            .publishDecodable(type: GlobalResponse.self)
+            .publishDecodable(type: AuthResponse.self)
             .map { response in
                 response.mapError { error in
                     let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
@@ -167,16 +167,18 @@ extension AuthService: AuthServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func checkVerificationCode(phoneNumber: String, code: String) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
+    func checkVerificationCode(token: String, phoneNumber: String, code: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)auth/sign-up/check-code")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
                           method: .post,
                           parameters: ["phoneNumber": phoneNumber,
                                        "otp": code],
-                          encoder: JSONParameterEncoder.default)
+                          encoder: JSONParameterEncoder.default,
+                          headers: headers)
             .validate()
-            .publishDecodable(type: AuthResponse.self)
+            .publishDecodable(type: GlobalResponse.self)
             .map { response in
                 response.mapError { error in
                     let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}

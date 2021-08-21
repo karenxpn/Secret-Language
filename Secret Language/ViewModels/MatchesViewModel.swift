@@ -44,7 +44,6 @@ class MatchesViewModel: ObservableObject {
     }
     
     func getMatches() {
-        print(matchPage)
         if matchPage == 1 {
             loadingMatches = true
         }
@@ -57,7 +56,6 @@ class MatchesViewModel: ObservableObject {
                     self.showAlert.toggle()
                 } else {
                     self.matches = response.value!.map{ MatchViewModel(match: $0 )}
-                    print( self.matches.first?.id )
                 }
             }.store(in: &cancellableSet)
     }
