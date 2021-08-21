@@ -133,7 +133,7 @@ class AuthViewModel: ObservableObject {
                     self.token = response.value!.token
                     self.username = response.value!.username
                     self.userID = response.value!.id
-                    self.interestedInCategory = self.connectionType ?? 0
+                    self.interestedInCategory = response.value!.interestedIn
                 }
             }.store(in: &cancellableSet)
     }
@@ -164,6 +164,7 @@ class AuthViewModel: ObservableObject {
                     self.token = response.value!.token
                     self.username = response.value!.username
                     self.userID = response.value!.id
+                    self.interestedInCategory = response.value!.interestedIn
                 }
             }.store(in: &cancellableSet)
     }

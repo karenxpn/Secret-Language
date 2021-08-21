@@ -10,4 +10,5 @@ struct AuthResponse: Codable {
     var id: Int
     var token: String
     var username: String
+    var interestedIn: Int
 }

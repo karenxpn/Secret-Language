@@ -14,6 +14,7 @@ struct ChatRoomNavBar: View {
     var body: some View {
         
         Button {
+            UIApplication.shared.endEditing()
             navigate.toggle()
         } label: {
             VStack {

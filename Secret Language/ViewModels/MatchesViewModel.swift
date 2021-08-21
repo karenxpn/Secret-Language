@@ -44,7 +44,7 @@ class MatchesViewModel: ObservableObject {
     }
     
     func getMatches() {
-        
+        print(matchPage)
         if matchPage == 1 {
             loadingMatches = true
         }
@@ -56,7 +56,8 @@ class MatchesViewModel: ObservableObject {
                     self.alertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message
                     self.showAlert.toggle()
                 } else {
-                    self.matches.insert(contentsOf: response.value!.map{ MatchViewModel(match: $0 )}, at: 0)
+                    self.matches = response.value!.map{ MatchViewModel(match: $0 )}
+                    print( self.matches.first?.id )
                 }
             }.store(in: &cancellableSet)
     }
