@@ -14,4 +14,5 @@ struct UserModel: Codable {
     var friends: Int
     var pending: Int
     var requests: Int
+    var birthday_report: BirthdayReportModel
 }

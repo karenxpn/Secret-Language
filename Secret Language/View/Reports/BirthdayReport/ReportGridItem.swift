@@ -29,7 +29,7 @@ struct ReportGridItem: View {
                     .frame(height: 135)
                 
                 ImageHelper(image: image, contentMode: .fit, progressViewTintColor: .black)
-                    .frame(width: UIScreen.main.bounds.size.width * 0.45, height: 100)
+                    .frame(width: UIScreen.main.bounds.size.width * 0.35, height: 100)
                     .cornerRadius(5)
             }
 

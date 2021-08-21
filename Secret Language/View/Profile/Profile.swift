@@ -115,10 +115,7 @@ struct Profile: View {
                         }.padding()
                         .padding(.top, 20)
                         
-                        EmptyList()
-                        
-                        AllRightsReservedMadeByDoejo()
-                            .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                        BirthdayReportInnerView(report: profileVM.profile!.birthday_report)
                         
                     }.padding(.top, 1)
                 }
