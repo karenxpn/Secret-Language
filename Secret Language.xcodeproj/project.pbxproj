@@ -1349,7 +1349,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 401EF34C041AD97935E0B728 /* Pods-Secret Language.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-4";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Secret Language/Secret Language.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -1375,7 +1375,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 82D8B771B4B288C22C6F6EDB /* Pods-Secret Language.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-4";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Secret Language/Secret Language.entitlements";
 				CODE_SIGN_STYLE = Automatic;

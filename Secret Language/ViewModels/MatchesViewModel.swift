@@ -18,6 +18,7 @@ class MatchesViewModel: ObservableObject {
     @Published var loadingMatches: Bool = false
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    @Published var matchPage: Int = 1
     
     @Published var loadingFilter: Bool = false
     
@@ -43,16 +44,19 @@ class MatchesViewModel: ObservableObject {
     }
     
     func getMatches() {
-        loadingMatches = true
-        dataManager.fetchMatches(token: token, params: GetMatchesRequest(gender: dataFilterGender, interestedIn: dataFilterCategory, idealFor: selectedCategories))
+        
+        if matchPage == 1 {
+            loadingMatches = true
+        }
+        
+        dataManager.fetchMatches(token: token, page: matchPage, params: GetMatchesRequest(gender: dataFilterGender, interestedIn: dataFilterCategory, idealFor: selectedCategories))
             .sink { response in
                 self.loadingMatches = false
                 if response.error != nil {
                     self.alertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message
                     self.showAlert.toggle()
                 } else {
-                    self.matches = response.value!.map{ MatchViewModel(match: $0 )}
-                        .sorted(by: { $0.distance < $1.distance })
+                    self.matches.insert(contentsOf: response.value!.map{ MatchViewModel(match: $0 )}, at: 0)
                 }
             }.store(in: &cancellableSet)
     }

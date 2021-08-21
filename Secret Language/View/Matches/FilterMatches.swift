@@ -123,6 +123,7 @@ struct FilterMatches: View {
                         
                         Button(action: {
                             // perform api request and close the view
+                            matchesVM.matchPage = 1
                             matchesVM.getMatches()
                             presentationMode.wrappedValue.dismiss()
                         }, label: {
