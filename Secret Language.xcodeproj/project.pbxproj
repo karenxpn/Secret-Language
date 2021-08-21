@@ -66,6 +66,7 @@
 		FF6AF6E526AAD7AD007A902F /* SharedProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF6E426AAD7AD007A902F /* SharedProfileModel.swift */; };
 		FF6AF6E726ABA974007A902F /* RoomViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6AF6E626ABA974007A902F /* RoomViewModelTests.swift */; };
 		FF79FAC826D154C400525661 /* BirthdayReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF79FAC726D154C400525661 /* BirthdayReportInnerView.swift */; };
+		FF79FACA26D17D0400525661 /* RelationshipReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF79FAC926D17D0400525661 /* RelationshipReportInnerView.swift */; };
 		FF8051DE26C45C3500B96F69 /* CountryCodeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8051DD26C45C3500B96F69 /* CountryCodeSelection.swift */; };
 		FF8AA6D726A098BD000C6B41 /* MessageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6D626A098BD000C6B41 /* MessageBar.swift */; };
 		FF8AA6D926A098EC000C6B41 /* MessageRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6D826A098EC000C6B41 /* MessageRoomViewModel.swift */; };
@@ -255,6 +256,7 @@
 		FF6AF6E426AAD7AD007A902F /* SharedProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedProfileModel.swift; sourceTree = "<group>"; };
 		FF6AF6E626ABA974007A902F /* RoomViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModelTests.swift; sourceTree = "<group>"; };
 		FF79FAC726D154C400525661 /* BirthdayReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayReportInnerView.swift; sourceTree = "<group>"; };
+		FF79FAC926D17D0400525661 /* RelationshipReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReportInnerView.swift; sourceTree = "<group>"; };
 		FF8051DD26C45C3500B96F69 /* CountryCodeSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeSelection.swift; sourceTree = "<group>"; };
 		FF8AA6D626A098BD000C6B41 /* MessageBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBar.swift; sourceTree = "<group>"; };
 		FF8AA6D826A098EC000C6B41 /* MessageRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRoomViewModel.swift; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				FF456F8126939576008F219E /* RelationshipReport.swift */,
+				FF79FAC926D17D0400525661 /* RelationshipReportInnerView.swift */,
 			);
 			path = RelationshipReport;
 			sourceTree = "<group>";
@@ -1140,6 +1143,7 @@
 				FF456F842693BD01008F219E /* FamousModel.swift in Sources */,
 				FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */,
 				FF8AA6E126A31DB9000C6B41 /* SingleMessageContent.swift in Sources */,
+				FF79FACA26D17D0400525661 /* RelationshipReportInnerView.swift in Sources */,
 				FF3D63DC269791C200799E72 /* PaymentViewModel.swift in Sources */,
 				FF997EA1268E754A0057B731 /* PaymentView.swift in Sources */,
 				FF5DCC2B26B9B24D004D644E /* MessageMedia.swift in Sources */,
