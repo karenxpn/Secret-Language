@@ -17,7 +17,6 @@ struct NotificationAlertModel: Codable {
 
 struct AlertModel: Codable {
     var action: String
-    var badge: Int
 }
 
 class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, ObservableObject {
@@ -68,6 +67,7 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
         let info = response.notification.request.content.userInfo
         if let first = info.first {
             let firstInfo = first.value
+            print(firstInfo)
             
             let jsonData = try? JSONSerialization.data (withJSONObject: firstInfo, options: [])
             if let data = jsonData {
@@ -87,26 +87,5 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
         }
         
         completionHandler()
-    }
-}
-
-
-extension NotificationsViewModel: UIApplicationDelegate {
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        
-        debugPrint("Received: \(userInfo)")
-        debugPrint("State: \(application.applicationState.rawValue)")
-        
-        let state = application.applicationState
-        switch state {
-        case .background:
-            debugPrint("background")
-            // update badge count here
-            application.applicationIconBadgeNumber = application.applicationIconBadgeNumber + 1
-        default:
-            break
-        }
-        
-        completionHandler(UIBackgroundFetchResult.newData)
     }
 }

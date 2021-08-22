@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     @ObservedObject var notificationsVM = NotificationsViewModel()
     
@@ -19,5 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         notificationsVM.deviceToken = token
         notificationsVM.sendDeviceToken()
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        completionHandler( .newData )
+        
+        let state = application.applicationState
+        switch state {
+        case .background:
+            application.applicationIconBadgeNumber = application.applicationIconBadgeNumber + 1
+        default:
+            break
+        }
     }
 }
