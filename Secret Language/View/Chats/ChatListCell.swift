@@ -13,6 +13,13 @@ struct ChatListCell: View {
     let chat: ChatModel
     @State private var isActive: Bool = false
     
+    var messageCreatedAt: some View {
+        Text( chat.message!.created_at)
+            .foregroundColor(AppColors.messagePreviewTimeColor)
+            .font(.custom("Gilroy-Regular", size: 12))
+            .lineLimit(1)
+    }
+    
     var body: some View {
         Button {
             isActive.toggle()
@@ -32,26 +39,52 @@ struct ChatListCell: View {
                             .fontWeight(.semibold)
                             .lineLimit(1)
                         
-                        if chat.message != nil {
-                            Text( chat.message!.created_at)
-                                .foregroundColor(AppColors.messagePreviewTimeColor)
+                        HStack( spacing: 0 ) {
+                            Text( NSLocalizedString("idealFor", comment: ""))
+                                .foregroundColor(.gray)
                                 .font(.custom("Gilroy-Regular", size: 12))
                             
+                            Text( chat.user.ideal_for)
+                                .foregroundColor(.accentColor)
+                                .font(.custom("Gilroy-Regular", size: 12))
+                                .lineLimit(1)
+                        }
+                        
+                        
+                        
+                        if chat.message != nil {
+                            
                             if chat.message!.content[0].type == "image" {
-                                Text( "Photo")
-                                    .foregroundColor(AppColors.messagePreviewColor)
-                                    .font(.custom("Gilroy-Regular", size: 15))
-                                    .lineLimit(1)
+                                
+                                HStack {
+                                    Text( "Photo")
+                                        .foregroundColor(AppColors.messagePreviewColor)
+                                        .font(.custom("Gilroy-Regular", size: 15))
+                                        .lineLimit(1)
+                                    
+                                    messageCreatedAt
+                                }
+                                
                             } else if chat.message!.content[0].type == "video" {
-                                Text("Video")
-                                    .foregroundColor(AppColors.messagePreviewColor)
-                                    .font(.custom("Gilroy-Regular", size: 15))
-                                    .lineLimit(1)
+                                
+                                HStack {
+                                    Text("Video")
+                                        .foregroundColor(AppColors.messagePreviewColor)
+                                        .font(.custom("Gilroy-Regular", size: 15))
+                                        .lineLimit(1)
+                                    
+                                    messageCreatedAt
+                                }
+
                             } else {
-                                Text( chat.message!.content[0].message)
-                                    .foregroundColor(AppColors.messagePreviewColor)
-                                    .font(.custom("Gilroy-Regular", size: 15))
-                                    .lineLimit(1)
+                                HStack {
+                                    Text( chat.message!.content[0].message)
+                                        .foregroundColor(AppColors.messagePreviewColor)
+                                        .font(.custom("Gilroy-Regular", size: 15))
+                                        .lineLimit(1)
+                                    
+                                    messageCreatedAt
+                                }
                             }
                         }
                     }
@@ -79,7 +112,6 @@ struct ChatListCell: View {
                 EmptyView()
             }).hidden()
         )
-        
     }
 }
 
