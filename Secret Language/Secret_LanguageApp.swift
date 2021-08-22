@@ -12,6 +12,8 @@ import SDWebImageSwiftUI
 struct Secret_LanguageApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @Environment(\.scenePhase) var scenePhase
+    
     @AppStorage( "newRelease" ) private var newRelease: Bool = true
     @AppStorage( "token" ) private var token = ""
     
@@ -39,6 +41,18 @@ struct Secret_LanguageApp: App {
                 ContentView()
             } else {
                 Introduction()
+            }
+        }.onChange(of: scenePhase) { newScenePhase in
+            switch newScenePhase {
+            case .active:
+                print("App is active")
+            case .inactive:
+                print("App is inactive")
+            case .background:
+                print("App is in background")
+                
+            @unknown default:
+                print("Oh - interesting: I received an unexpected new value.")
             }
         }
     }
