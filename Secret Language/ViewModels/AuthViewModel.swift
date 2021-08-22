@@ -12,6 +12,7 @@ import SwiftUI
 class AuthViewModel: ObservableObject {
     
     @AppStorage( "newRelease" ) private var newRelease: Bool = true
+    @AppStorage( "initialToken" ) private var initialToken: String = ""
     @AppStorage("token") private var token: String = ""
     @AppStorage("username") private var username: String = ""
     @AppStorage( "userID" ) private var userID: Int = 0
@@ -95,7 +96,7 @@ class AuthViewModel: ObservableObject {
                     self.sendVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
                     self.showAlert.toggle()
                 } else {
-                    self.token = response.value!.token
+                    self.initialToken = response.value!.token
                     self.navigateToCheckVerificationCode.toggle()
                 }
             }.store(in: &cancellableSet)
@@ -108,7 +109,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func checkVerificationCode() {
-        dataManager.checkVerificationCode(token: token, phoneNumber: Credentials.countryCodeList[signUpCountryCode]! + signUpPhoneNumber, code: singUpVerificationCode)
+        dataManager.checkVerificationCode(token: initialToken, phoneNumber: Credentials.countryCodeList[signUpCountryCode]! + signUpPhoneNumber, code: singUpVerificationCode)
             .sink { response in
                 if response.error != nil {
                     self.checkVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
@@ -122,7 +123,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func signUp() {
-        dataManager.signUp(token: token, fullName: signUpFullName, gender: signUpGender ?? 0, connectionType: connectionType ?? 0)
+        dataManager.signUp(token: initialToken, fullName: signUpFullName, gender: signUpGender ?? 0, connectionType: connectionType ?? 0)
             .sink { response in
                 if response.error != nil {
                     self.signUpAlertMessage = self.createErrorMessage(error: response.error!)
@@ -133,6 +134,7 @@ class AuthViewModel: ObservableObject {
                     self.username = response.value!.username
                     self.userID = response.value!.id
                     self.interestedInCategory = response.value!.interestedIn
+                    self.initialToken = ""
                 }
             }.store(in: &cancellableSet)
     }

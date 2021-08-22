@@ -17,6 +17,7 @@ struct NotificationAlertModel: Codable {
 
 struct AlertModel: Codable {
     var action: String
+    var badge: Int
 }
 
 class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, ObservableObject {
@@ -46,12 +47,11 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
         UNUserNotificationCenter.current().delegate = self
         
         UNUserNotificationCenter.current()
-            .requestAuthorization(options: [.badge,.alert, .sound]) { (granted, error) in
+            .requestAuthorization(options: [.badge, .alert, .sound]) { (granted, error) in
                 if let error = error {
                     print(error)
                 } else if granted {
                     DispatchQueue.main.async {
-                        //                        UIApplication.shared.applicationIconBadgeNumber = self.badge
                         UIApplication.shared.registerForRemoteNotifications()
                     }
                 }
@@ -59,19 +59,13 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
     }
     // foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        if let badge = notification.request.content.badge {
-            UIApplication.shared.applicationIconBadgeNumber = Int(truncating: badge)
-        }
-
-        completionHandler([.banner, .sound, .badge])
+        completionHandler([.badge, .list, .sound])
     }
     
     // background // this is called when user taps on the notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         let info = response.notification.request.content.userInfo
-        
         if let first = info.first {
             let firstInfo = first.value
             
@@ -81,7 +75,6 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
                     return
                 }
                 
-                print("action = \(notification.alert.action)")
                 switch notification.alert.action {
                 case "open.chats" :
                     self.changeToTab = 3
@@ -93,7 +86,27 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
             }
         }
         
-        UIApplication.shared.applicationIconBadgeNumber = 0
         completionHandler()
+    }
+}
+
+
+extension NotificationsViewModel: UIApplicationDelegate {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        debugPrint("Received: \(userInfo)")
+        debugPrint("State: \(application.applicationState.rawValue)")
+        
+        let state = application.applicationState
+        switch state {
+        case .background:
+            debugPrint("background")
+            // update badge count here
+            application.applicationIconBadgeNumber = application.applicationIconBadgeNumber + 1
+        default:
+            break
+        }
+        
+        completionHandler(UIBackgroundFetchResult.newData)
     }
 }
