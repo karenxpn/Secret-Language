@@ -14,7 +14,8 @@ import UserNotifications
 class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
-    @AppStorage( "badge" ) private var badge: Int = 0
+//    @AppStorage( "badge" ) private var badge: Int = 0
+    @Published var changeToTab: Int = -1
     @Published var deviceToken: String = ""
     
     private var cancellableSet: Set<AnyCancellable> = []
@@ -42,7 +43,7 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
                     print(error)
                 } else if granted {
                     DispatchQueue.main.async {
-                        UIApplication.shared.applicationIconBadgeNumber = self.badge
+//                        UIApplication.shared.applicationIconBadgeNumber = self.badge
                         UIApplication.shared.registerForRemoteNotifications()
                     }
                 }
@@ -53,9 +54,16 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
         completionHandler([.banner, .sound])
     }
     
-    // background
+    // background // this is called when user taps on the notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        badge += 1
+        
+        print("resonse = \(response)")
+        print("action identifier = \(response.actionIdentifier)")
+        print("request content = \(response.notification.request.content)")
+        print("user info = \(response.notification.request.content.userInfo)")
+        
+        UIApplication.shared.applicationIconBadgeNumber = 0
+
         completionHandler()
     }
 }

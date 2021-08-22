@@ -15,7 +15,7 @@ struct SharedURL: Identifiable {
 
 struct ContentView: View {
     
-    @AppStorage( "badge" ) private var badge: Int = 0
+//    @AppStorage( "badge" ) private var badge: Int = 0
     @StateObject var notificationsVM = NotificationsViewModel()
     @StateObject private var paymentVM = PaymentViewModel()
 
@@ -52,7 +52,9 @@ struct ContentView: View {
         .onAppear {
             notificationsVM.requestPermission()
             paymentVM.checkSubscriptionStatus()
-            badge = 0
+//            badge = 0
+            UIApplication.shared.applicationIconBadgeNumber = 0
+
         }.fullScreenCover(item: $shared) { value in
             
             if value.type == "profile" {
@@ -74,7 +76,12 @@ struct ContentView: View {
             } else if URL.contains("relationship") {
                 shared = SharedURL(id: sharedID, type: "relationship" )
             }
-        })
+        }).onChange(of: notificationsVM.changeToTab) { value in
+            print( value )
+            if value != -1 {
+                
+            }
+        }
     }
 }
 

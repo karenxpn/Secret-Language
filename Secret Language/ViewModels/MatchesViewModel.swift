@@ -44,14 +44,13 @@ class MatchesViewModel: ObservableObject {
     }
     
     func getMatches() {
-        if matchPage == 1 {
-            loadingMatches = true
-        }
+        loadingMatches = true
         
         dataManager.fetchMatches(token: token, page: matchPage, params: GetMatchesRequest(gender: dataFilterGender, interestedIn: dataFilterCategory, idealFor: selectedCategories))
             .sink { response in
                 self.loadingMatches = false
                 if response.error != nil {
+                    self.matches.removeAll(keepingCapacity: false)
                     self.alertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message
                     self.showAlert.toggle()
                 } else {
