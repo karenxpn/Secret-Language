@@ -13,6 +13,7 @@ struct Secret_LanguageApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @AppStorage( "newRelease" ) private var newRelease: Bool = true
+    @AppStorage( "badge" ) private var badge: Int = 0
     @AppStorage( "token" ) private var token = ""
     
     init() {
@@ -28,6 +29,7 @@ struct Secret_LanguageApp: App {
         SDImageCache.shared.clearMemory()
         SDImageCache.shared.clearDisk()
         
+        self.badge = 0
         if newRelease {
             self.token = ""
         }

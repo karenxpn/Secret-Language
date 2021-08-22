@@ -14,6 +14,7 @@ import UserNotifications
 class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
+    @AppStorage( "badge" ) private var badge: Int = 0
     @Published var deviceToken: String = ""
     
     private var cancellableSet: Set<AnyCancellable> = []
@@ -36,11 +37,12 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
         UNUserNotificationCenter.current().delegate = self
         
         UNUserNotificationCenter.current()
-            .requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            .requestAuthorization(options: [.badge,.alert, .sound]) { (granted, error) in
                 if let error = error {
                     print(error)
                 } else if granted {
                     DispatchQueue.main.async {
+                        UIApplication.shared.applicationIconBadgeNumber = self.badge
                         UIApplication.shared.registerForRemoteNotifications()
                     }
                 }
@@ -53,6 +55,7 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
     
     // background
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        badge += 1
         completionHandler()
     }
 }
