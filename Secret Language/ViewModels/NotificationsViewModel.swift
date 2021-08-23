@@ -76,9 +76,9 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
                 }
                 
                 switch notification.alert.action {
-                case "open.chats" :
+                case Credentials.notificationsOpenChatAction :
                     self.changeToTab = 3
-                case "open.profile":
+                case Credentials.notificationsOpenProfileAction:
                     self.changeToTab = 4
                 default:
                     break

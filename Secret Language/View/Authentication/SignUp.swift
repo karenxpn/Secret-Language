@@ -159,7 +159,7 @@ struct SignUp: View {
                                 .foregroundColor(.blue)
                                 .font(.custom("Gilroy-Regular", size: 10))
                             
-                            Link(NSLocalizedString("privacy", comment: ""), destination: URL(string: "https://www.privacypolicies.com/live/8fafa61f-59d3-4bcf-8921-cf04d36f8f98")!)
+                            Link(NSLocalizedString("privacy", comment: ""), destination: URL(string: Credentials.privacy_policy)!)
                                 .foregroundColor(.blue)
                                 .font(.custom("Gilroy-Regular", size: 10))
                         }
@@ -185,7 +185,7 @@ struct SignUp: View {
                                 }
                             }
                             
-                            Link(NSLocalizedString("terms", comment: ""), destination: URL(string: "https://www.privacypolicies.com/live/8fafa61f-59d3-4bcf-8921-cf04d36f8f98")!)
+                            Link(NSLocalizedString("terms", comment: ""), destination: URL(string: Credentials.terms_of_use)!)
                                 .foregroundColor(.blue)
                                 .font(.custom("Gilroy-Regular", size: 14))
                             
