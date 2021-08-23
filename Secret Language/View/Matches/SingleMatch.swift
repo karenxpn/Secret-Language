@@ -130,7 +130,7 @@ struct SingleMatch: View {
                         .font(.custom("times", size: 16))
                         .multilineTextAlignment(.center)
                         .padding(8)
-                }
+                }.fixedSize(horizontal: false, vertical: true)
                 
                 AllRightsReservedMadeByDoejo()
 
