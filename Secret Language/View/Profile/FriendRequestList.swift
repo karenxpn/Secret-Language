@@ -37,6 +37,12 @@ struct FriendRequestList: View {
                         }
                     }).listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
+                    
+                    Spacer()
+                        .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets())
+                    
                 }.padding(.top, 1)
             }
             
