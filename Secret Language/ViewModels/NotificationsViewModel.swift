@@ -80,6 +80,10 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
                     self.changeToTab = 3
                 case Credentials.notificationsOpenProfileAction:
                     self.changeToTab = 4
+                case Credentials.norificationsOpenAppStore:
+                    if let url = URL(string: Credentials.app_store_link) {
+                        UIApplication.shared.open(url)
+                    }
                 default:
                     break
                 }
