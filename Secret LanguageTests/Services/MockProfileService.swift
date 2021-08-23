@@ -138,7 +138,7 @@ class MockProfileService: ProfileServiceProtocol {
     let networkError = NetworkError(initialError: AFError.explicitlyCancelled, backendError: nil)
     let users = [UserPreviewModel(id: 1, name: "John Smith", image: "", ideal: "Business")]
     let globalResponse = GlobalResponse(status: "success", message: "success" )
-    let profile = UserModel(id: 1, image: "", name: "Karen Mirakyan", age: 21, friends: 3, pending: 3, requests: 3)
+    let profile = UserModel(id: 1, image: "", name: "Karen Mirakyan", age: 21, friends: 3, pending: 3, requests: 3, birthday_report: PreviewParameters.birthdayReport)
     
     // friends
     var fetchFriendRequestsError: Bool = false

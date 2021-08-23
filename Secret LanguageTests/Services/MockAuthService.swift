@@ -11,6 +11,7 @@ import Combine
 @testable import Secret_Language
 
 class MockAuthService: AuthServiceProtocol {
+    
     func logout(token: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let result = Result<GlobalResponse, NetworkError>.success(globalResponse)
         let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
@@ -24,7 +25,7 @@ class MockAuthService: AuthServiceProtocol {
     let networkError = NetworkError(initialError: AFError.explicitlyCancelled, backendError: nil)
     let genders = [GenderModel(id: 1, gender_name: "Male"), GenderModel(id: 2, gender_name: "Female")]
     let connectionTypes = [ConnectionTypeModel(id: 1, name: "Business", description: "desctiption")]
-    let tokenResponse = AuthResponse(id: 20, token: "", username: "username")
+    let tokenResponse = AuthResponse(id: 20, token: "", username: "username", interestedIn: 1)
     
     var fetchConnectionTypesError: Bool = false
     var fetchAllGendersError: Bool = false
@@ -98,25 +99,25 @@ class MockAuthService: AuthServiceProtocol {
         return publisher.eraseToAnyPublisher()
     }
     
-    func sendVerificationCode(phoneNumber: String, birthday: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        var result: Result<GlobalResponse, NetworkError>
-        
-        if sendVerificationError    { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
-        else                        { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
-        
-        let dataResponse = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
-        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(dataResponse)
-        return publisher.eraseToAnyPublisher()
-    }
-    
-    func checkVerificationCode(phoneNumber: String, code: String) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
+    func sendVerificationCode(phoneNumber: String, birthday: String) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
         var result: Result<AuthResponse, NetworkError>
         
-        if checkVerificationError   { result = Result<AuthResponse, NetworkError>.failure(networkError)}
+        if sendVerificationError    { result = Result<AuthResponse, NetworkError>.failure(networkError)}
         else                        { result = Result<AuthResponse, NetworkError>.success(tokenResponse)}
         
         let dataResponse = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
         let publisher = CurrentValueSubject<DataResponse<AuthResponse, NetworkError>, Never>(dataResponse)
+        return publisher.eraseToAnyPublisher()
+    }
+    
+    func checkVerificationCode(token: String, phoneNumber: String, code: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        var result: Result<GlobalResponse, NetworkError>
+        
+        if checkVerificationError   { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
+        else                        { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
+        
+        let dataResponse = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(dataResponse)
         return publisher.eraseToAnyPublisher()
     }
 }
