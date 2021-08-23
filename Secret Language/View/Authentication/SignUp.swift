@@ -88,60 +88,36 @@ struct SignUp: View {
                 }
                 
                 HStack {
-                    Spacer()
-                    VStack(spacing: 5) {
-                        
-                        HStack {
+                    
+                    Button {
+                        authVM.agreement.toggle()
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .fill(authVM.agreement ? Color.green : Color.white)
+                                .frame(width: 16, height: 16, alignment: .center)
+                                .cornerRadius(5)
                             
-                            Button {
-                                authVM.agreement.toggle()
-                            } label: {
-                                ZStack {
-                                    Rectangle()
-                                        .fill(authVM.agreement ? Color.green : Color.white)
-                                        .frame(width: 16, height: 16, alignment: .center)
-                                        .cornerRadius(5)
-                                    
-                                    if authVM.agreement {
-                                        Image(systemName: "checkmark")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 10, height: 10, alignment: .center)
-                                            .foregroundColor(.white)
-                                    }
-                                }
+                            if authVM.agreement {
+                                Image(systemName: "checkmark")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 10, height: 10, alignment: .center)
+                                    .foregroundColor(.white)
                             }
-                            
-                            Link(NSLocalizedString("terms", comment: ""), destination: URL(string: Credentials.terms_of_use)!)
-                                .foregroundColor(.blue)
-                                .font(.custom("Gilroy-Regular", size: 14))
-                            
-                            Text( "( Required )" )
-                                .foregroundColor(.red)
-                                .font(.custom("Gilroy-Regular", size: 10))
-                            
-                        }.scaleEffect(animate ? 1.4 : 1)
-                        
-                        
-                        Text( NSLocalizedString("rightsReserved", comment: ""))
-                            .foregroundColor(.white)
-                            .font(.custom("Gilroy-Regular", size: 10))
-                            .multilineTextAlignment(.center)
-                            .lineSpacing(5)
-                        
-                        HStack {
-                            Link(NSLocalizedString("madeByDoejo", comment: ""), destination: URL(string: "https://doejo.com")!)
-                                .foregroundColor(.blue)
-                                .font(.custom("Gilroy-Regular", size: 10))
-                            
-                            Link(NSLocalizedString("privacy", comment: ""), destination: URL(string: Credentials.privacy_policy)!)
-                                .foregroundColor(.blue)
-                                .font(.custom("Gilroy-Regular", size: 10))
                         }
-                        
                     }
-                    Spacer()
-                }
+                    
+                    Link(NSLocalizedString("terms", comment: ""), destination: URL(string: Credentials.terms_of_use)!)
+                        .foregroundColor(.blue)
+                        .font(.custom("Gilroy-Regular", size: 14))
+                    
+                    Text( "*Required" )
+                        .foregroundColor(.red)
+                        .font(.custom("Gilroy-Regular", size: 14))
+                    
+                }.scaleEffect(animate ? 1.4 : 1)
+                
                 
                 Spacer()
                 
@@ -201,7 +177,29 @@ struct SignUp: View {
                     }).disabled(!authVM.isSendVerificationCodeClickable)
                 }
                 
-               
+                HStack {
+                    Spacer()
+                    VStack(spacing: 5) {
+                        
+                        Text( NSLocalizedString("rightsReserved", comment: ""))
+                            .foregroundColor(.white)
+                            .font(.custom("Gilroy-Regular", size: 10))
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(5)
+                        
+                        HStack {
+                            Link(NSLocalizedString("madeByDoejo", comment: ""), destination: URL(string: "https://doejo.com")!)
+                                .foregroundColor(.blue)
+                                .font(.custom("Gilroy-Regular", size: 10))
+                            
+                            Link(NSLocalizedString("privacy", comment: ""), destination: URL(string: Credentials.privacy_policy)!)
+                                .foregroundColor(.blue)
+                                .font(.custom("Gilroy-Regular", size: 10))
+                        }
+                        
+                    }
+                    Spacer()
+                }
                 
             }.padding()
             .padding(.top, 30)
