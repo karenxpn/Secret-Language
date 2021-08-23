@@ -27,8 +27,8 @@ struct Secret_LanguageApp: App {
         
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor(.white)
         
-        SDImageCache.shared.clearMemory()
-        SDImageCache.shared.clearDisk()
+//        SDImageCache.shared.clearMemory()
+//        SDImageCache.shared.clearDisk()
         
         if newRelease {
             self.token = ""
