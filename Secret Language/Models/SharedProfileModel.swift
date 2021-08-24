@@ -21,4 +21,5 @@ struct SharedProfileModel: Identifiable, Codable {
     var advice: String    
     var famous_years: String
     var distance: String
+    var instagram: String
 }

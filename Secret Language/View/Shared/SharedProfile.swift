@@ -26,17 +26,33 @@ struct SharedProfile: View {
                 } else if profileVM.sharedProfile != nil {
                     ScrollView( showsIndicators: false ) {
                         
-                        WebImage(url: URL(string: profileVM.sharedProfile!.image))
-                            .placeholder(content: {
-                                ProgressView()
-                            })
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.size.width - 24,
-                                   height: UIScreen.main.bounds.size.height * 0.7)
-                            .clipped()
-                            .cornerRadius(15)
-                            .padding(.vertical)
+                        ZStack( alignment: .bottomTrailing) {
+                            WebImage(url: URL(string: profileVM.sharedProfile!.image))
+                                .placeholder(content: {
+                                    ProgressView()
+                                })
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: UIScreen.main.bounds.size.width - 24,
+                                       height: UIScreen.main.bounds.size.height * 0.7)
+                                .clipped()
+                                .cornerRadius(15)
+                                .padding(.vertical)
+                            
+                            if !profileVM.sharedProfile!.instagram.isEmpty {
+                                Button(action: {
+                                    profileVM.openInstagram(username: profileVM.sharedProfile!.instagram)
+                                }, label: {
+                                    Image( "instagram" )
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame( width: 35, height: 35 )
+                                        .padding()
+                                        .offset( y: -10)
+                                })
+                            }
+                        }
+
                         
                         Text( "\(profileVM.sharedProfile!.name), \(profileVM.sharedProfile!.age)" )
                             .foregroundColor(.white)

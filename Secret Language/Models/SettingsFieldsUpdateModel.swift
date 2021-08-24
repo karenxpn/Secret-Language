@@ -11,4 +11,5 @@ struct SettingsFieldsUpdateModel: Codable {
     var name: String
     var gender: Int
     var country_name: String
+    var instagram: String
 }

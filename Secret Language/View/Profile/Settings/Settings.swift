@@ -84,6 +84,15 @@ struct Settings: View {
                                 }.hidden()
                             }
                         )
+                        
+                        VStack( spacing: 0) {
+                            TextField("username", text: $settingsVM.instagramUsername, isEditing: .constant(false)) {
+                                settingsVM.updateFields(updatedFrom: "")
+                            }.foregroundColor(.white)
+                            .font(.custom("times", size: 20))
+                            
+                            Divider()
+                        }.padding()
                                                 
                         Button {
                             settingsVM.logout()
