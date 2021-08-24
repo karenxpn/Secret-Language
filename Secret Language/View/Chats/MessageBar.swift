@@ -34,7 +34,7 @@ struct MessageBar: View {
                     roomVM.sendMessage(message: SendingMessageModel(type: "text", content: roomVM.messageText))
                 } label: {
                     Image("send")
-                }.disabled(roomVM.messageText.isEmpty)
+                }.disabled(roomVM.messageText.isEmpty || roomVM.sendingTextMessage)
                 
             }.padding()
             .frame(width: .greedy, height: 50)
