@@ -17,6 +17,7 @@ class AuthViewModel: ObservableObject {
     @AppStorage("username") private var username: String = ""
     @AppStorage( "userID" ) private var userID: Int = 0
     @AppStorage( "interestedInCategory" ) private var interestedInCategory: Int = 0
+    @AppStorage( "genderPreference" ) private var locallyStoredGenderPreference: Int = 0
     
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     @Published var signUpCountryCode: String = "United States"
@@ -57,6 +58,8 @@ class AuthViewModel: ObservableObject {
     
     @Published var loadingGenders: Bool = false
     @Published var connectionType: Int? = nil
+    
+    @Published var genderPreference: Int = 0
     
     @Published var loadingConnectionTypes: Bool = false
     @Published var connectionTypes = [ConnectionTypeModel]()
@@ -123,7 +126,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func signUp() {
-        dataManager.signUp(token: initialToken, fullName: signUpFullName, gender: signUpGender ?? 0, connectionType: connectionType ?? 0)
+        dataManager.signUp(token: initialToken, fullName: signUpFullName, gender: signUpGender ?? 0, connectionType: connectionType ?? 0, genderPreference: genderPreference)
             .sink { response in
                 if response.error != nil {
                     self.signUpAlertMessage = self.createErrorMessage(error: response.error!)
@@ -134,6 +137,7 @@ class AuthViewModel: ObservableObject {
                     self.username = response.value!.username
                     self.userID = response.value!.id
                     self.interestedInCategory = response.value!.interestedIn
+                    self.locallyStoredGenderPreference = response.value!.genderPreference
                     self.initialToken = ""
                 }
             }.store(in: &cancellableSet)
@@ -166,6 +170,8 @@ class AuthViewModel: ObservableObject {
                     self.username = response.value!.username
                     self.userID = response.value!.id
                     self.interestedInCategory = response.value!.interestedIn
+                    self.locallyStoredGenderPreference = response.value!.genderPreference
+
                 }
             }.store(in: &cancellableSet)
     }

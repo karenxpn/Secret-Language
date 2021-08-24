@@ -114,6 +114,7 @@
 		FFAD920C26B04859007984ED /* SettingsBirthdayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */; };
 		FFAD920E26B0533D007984ED /* SettingsGenderPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920D26B0533D007984ED /* SettingsGenderPicker.swift */; };
 		FFAD921026B07F90007984ED /* SettingsFieldsUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920F26B07F90007984ED /* SettingsFieldsUpdateModel.swift */; };
+		FFB1CC2526D5841C00FC1AE2 /* GenderPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1CC2426D5841C00FC1AE2 /* GenderPreference.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -304,6 +305,7 @@
 		FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBirthdayPicker.swift; sourceTree = "<group>"; };
 		FFAD920D26B0533D007984ED /* SettingsGenderPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGenderPicker.swift; sourceTree = "<group>"; };
 		FFAD920F26B07F90007984ED /* SettingsFieldsUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFieldsUpdateModel.swift; sourceTree = "<group>"; };
+		FFB1CC2426D5841C00FC1AE2 /* GenderPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPreference.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -572,6 +574,7 @@
 				FFDB15AA26669F7C00341E8F /* MoreGenders.swift */,
 				FFDB15AC2666C03F00341E8F /* ConnectionType.swift */,
 				FFDB15AE2666C0E100341E8F /* SingleConnectionType.swift */,
+				FFB1CC2426D5841C00FC1AE2 /* GenderPreference.swift */,
 				FFCEDDEE266E491F0073BE20 /* AuthNavTitle.swift */,
 				FF8051DD26C45C3500B96F69 /* CountryCodeSelection.swift */,
 			);
@@ -1158,6 +1161,7 @@
 				FFDB15A726669AA000341E8F /* ChooseGender.swift in Sources */,
 				FFE0E41E2678090D008FA78C /* MatchesViewModel.swift in Sources */,
 				FF997E8C2689FF250057B731 /* SearchService.swift in Sources */,
+				FFB1CC2526D5841C00FC1AE2 /* GenderPreference.swift in Sources */,
 				FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */,
 				FFAD920A26B02D89007984ED /* TextFieldAlert.swift in Sources */,
 				FFDB158726653E8900341E8F /* NetworkError.swift in Sources */,

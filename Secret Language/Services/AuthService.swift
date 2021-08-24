@@ -12,7 +12,7 @@ import Alamofire
 protocol AuthServiceProtocol {
     func sendVerificationCode( phoneNumber: String, birthday: String ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never>
     func checkVerificationCode( token: String, phoneNumber: String, code: String ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
-    func signUp( token: String, fullName: String, gender: Int, connectionType: Int ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never>
+    func signUp( token: String, fullName: String, gender: Int, connectionType: Int, genderPreference: Int ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never>
 
     func fetchConnectionTypes() -> AnyPublisher<DataResponse<[ConnectionTypeModel], NetworkError>, Never>
     func fetchAllGenders() -> AnyPublisher<DataResponse<[GenderModel], NetworkError>, Never>
@@ -189,9 +189,9 @@ extension AuthService: AuthServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func signUp(token: String, fullName: String, gender: Int, connectionType: Int ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
+    func signUp(token: String, fullName: String, gender: Int, connectionType: Int, genderPreference: Int ) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
         
-        let model = SignUpRequest( name: fullName, gender: gender, interested_in: connectionType)
+        let model = SignUpRequest( name: fullName, gender: gender, interested_in: connectionType, gender_preference: genderPreference)
         let url = URL(string: "\(Credentials.BASE_URL)auth/sign-up/confirm")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
 

@@ -10,4 +10,5 @@ struct SignUpRequest: Codable {
     var name: String
     var gender: Int
     var interested_in : Int
+    var gender_preference: Int
 }

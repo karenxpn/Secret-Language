@@ -13,6 +13,8 @@ class MatchesViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "interestedInCategory" ) private var interestedInCategory: Int = 0
+    @AppStorage( "genderPreference" ) private var genderPreference: Int = 0
+
     @Published var matches = [MatchViewModel]()
     
     @Published var loadingMatches: Bool = false
@@ -41,6 +43,7 @@ class MatchesViewModel: ObservableObject {
         self.dataManager = dataManager
         self.userDataManager = userDataManager
         self.dataFilterCategory = self.interestedInCategory
+        self.dataFilterGender = self.genderPreference
     }
     
     func getMatches() {
