@@ -13,12 +13,17 @@ class SettingsViewModel: ObservableObject {
     @AppStorage("token") private var token: String = ""
     @AppStorage("username") private var username: String = ""
     @AppStorage( "userID" ) private var userID: Int = 0
+    @AppStorage( "genderPreference" ) private var locallyStoredGenderPreference: Int = 0
+
     
     @Published var gender: GenderModel = GenderModel(id: 1, gender_name: "Male")
     @Published var fullName: String = ""
     @Published var location: String = ""
     @Published var birthday: String = "Jul 26, 1999"
     @Published var instagramUsername: String = ""
+    @Published var genderPreference: Int = 0
+    
+    @Published var genderPreferenceText: String = ""
     
     @Published var loading: Bool = false
     
@@ -32,6 +37,7 @@ class SettingsViewModel: ObservableObject {
     @Published var loadingGenders: Bool = false
     @Published var navigateToGenders: Bool = false
     @Published var navigateToBirthdayPicker: Bool = false
+    @Published var navigateToGenderPreferencePicker: Bool = false
     
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     
@@ -77,6 +83,19 @@ class SettingsViewModel: ObservableObject {
                     self.location = settings.country_name
                     self.birthday = settings.date_name
                     self.instagramUsername = settings.instagram
+                    self.genderPreference = settings.gender_preference
+                    self.locallyStoredGenderPreference = settings.gender_preference
+                    
+                    switch settings.gender_preference {
+                    case 0:
+                        self.genderPreferenceText = "Everyone"
+                    case 1:
+                        self.genderPreferenceText = "Male"
+                    case 2:
+                        self.genderPreferenceText = "Female"
+                    default:
+                        break
+                    }
                     
                     self.birthdayDate = self.stringToDateFormatter
                 }
@@ -95,7 +114,7 @@ class SettingsViewModel: ObservableObject {
     }
     
     func updateFields(updatedFrom: String) {        
-        let parameters = SettingsFieldsUpdateModel(date_name: dateFormatter.string(from: self.birthdayDate), name: fullName, gender: gender.id, country_name: location, instagram: instagramUsername)
+        let parameters = SettingsFieldsUpdateModel(date_name: dateFormatter.string(from: self.birthdayDate), name: fullName, gender: gender.id, country_name: location, instagram: instagramUsername, gender_preference: genderPreference)
         
         dataManager.updateFields(token: token, parameters: parameters)
             .sink { response in
@@ -105,6 +124,8 @@ class SettingsViewModel: ObservableObject {
                         self.navigateToGenders.toggle()
                     } else if updatedFrom == "birthday" {
                         self.navigateToBirthdayPicker.toggle()
+                    } else if updatedFrom == "preferences" {
+                        self.navigateToGenderPreferencePicker.toggle()
                     }
                     
                     self.getSettingsFields()

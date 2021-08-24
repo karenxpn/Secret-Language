@@ -56,7 +56,6 @@ struct MatchesIntroduction: View {
                         .clipShape(Circle())
                     
                     Spacer()
-                    
 
                     VStack {
                         Image( "swipeRightIntroduction" )
@@ -66,7 +65,6 @@ struct MatchesIntroduction: View {
                             .foregroundColor(.white)
                             .rotationEffect(.degrees(30))
 
-                        
                         Text( NSLocalizedString("swipeRightIntro", comment: ""))
                             .font(.custom("Gilroy-Regular", size: 14))
                             .fontWeight(.heavy)

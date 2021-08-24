@@ -116,6 +116,7 @@
 		FFAD921026B07F90007984ED /* SettingsFieldsUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920F26B07F90007984ED /* SettingsFieldsUpdateModel.swift */; };
 		FFB1CC2526D5841C00FC1AE2 /* GenderPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1CC2426D5841C00FC1AE2 /* GenderPreference.swift */; };
 		FFB1CC2726D58D9A00FC1AE2 /* MatchesIntroduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1CC2626D58D9A00FC1AE2 /* MatchesIntroduction.swift */; };
+		FFB1CC2926D5943500FC1AE2 /* SettingsGenderPreferencePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1CC2826D5943500FC1AE2 /* SettingsGenderPreferencePicker.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -308,6 +309,7 @@
 		FFAD920F26B07F90007984ED /* SettingsFieldsUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFieldsUpdateModel.swift; sourceTree = "<group>"; };
 		FFB1CC2426D5841C00FC1AE2 /* GenderPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderPreference.swift; sourceTree = "<group>"; };
 		FFB1CC2626D58D9A00FC1AE2 /* MatchesIntroduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesIntroduction.swift; sourceTree = "<group>"; };
+		FFB1CC2826D5943500FC1AE2 /* SettingsGenderPreferencePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGenderPreferencePicker.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				FFAD920926B02D89007984ED /* TextFieldAlert.swift */,
 				FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */,
 				FFAD920D26B0533D007984ED /* SettingsGenderPicker.swift */,
+				FFB1CC2826D5943500FC1AE2 /* SettingsGenderPreferencePicker.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1161,6 +1164,7 @@
 				FF997E9D268E72D40057B731 /* ReportService.swift in Sources */,
 				FF99A0362680C61C00F234CD /* FriendsList.swift in Sources */,
 				FF4AB0FD2685091B0085EA9A /* ProfileImagePicker.swift in Sources */,
+				FFB1CC2926D5943500FC1AE2 /* SettingsGenderPreferencePicker.swift in Sources */,
 				FF997E8E268A13080057B731 /* UserService.swift in Sources */,
 				FFDB15A726669AA000341E8F /* ChooseGender.swift in Sources */,
 				FFE0E41E2678090D008FA78C /* MatchesViewModel.swift in Sources */,

@@ -46,6 +46,25 @@ struct Settings: View {
                             }
                         )
                         
+                        Button(action: {
+                            settingsVM.navigateToGenderPreferencePicker.toggle()
+                        }, label: {
+                            SettingsListCell(title: NSLocalizedString("genderPreference", comment: ""), content: settingsVM.genderPreferenceText)
+                        }).background(
+                            
+                            ZStack {
+                                
+                                NavigationLink(destination: EmptyView()) {
+                                    EmptyView()
+                                }
+                                
+                                NavigationLink(destination: SettingsGenderPreferencePicker(preference: settingsVM.genderPreference).environmentObject(settingsVM),
+                                               isActive: $settingsVM.navigateToGenderPreferencePicker) {
+                                    EmptyView()
+                                }.hidden()
+                            }
+                        )
+                        
                         Button {
                             formType = .name
                             showForm.toggle()

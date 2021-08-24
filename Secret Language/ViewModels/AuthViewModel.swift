@@ -137,7 +137,7 @@ class AuthViewModel: ObservableObject {
                     self.username = response.value!.username
                     self.userID = response.value!.id
                     self.interestedInCategory = response.value!.interestedIn
-                    self.locallyStoredGenderPreference = response.value!.genderPreference
+                    self.locallyStoredGenderPreference = response.value!.gender_preference
                     self.initialToken = ""
                 }
             }.store(in: &cancellableSet)
@@ -170,7 +170,7 @@ class AuthViewModel: ObservableObject {
                     self.username = response.value!.username
                     self.userID = response.value!.id
                     self.interestedInCategory = response.value!.interestedIn
-                    self.locallyStoredGenderPreference = response.value!.genderPreference
+                    self.locallyStoredGenderPreference = response.value!.gender_preference
 
                 }
             }.store(in: &cancellableSet)

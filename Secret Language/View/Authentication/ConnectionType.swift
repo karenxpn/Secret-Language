@@ -38,14 +38,12 @@ struct ConnectionType: View {
                     HStack {
                         Spacer()
                         
-                        NavigationLink(
-                            destination: GenderPreference().environmentObject(authVM),
-                            label: {
-                                Image("proceed")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 50, height: 50)
-                            }).disabled(authVM.connectionType == nil)
+                        NavigationLink( destination: GenderPreference().environmentObject(authVM), label: {
+                            Image("proceed")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 50, height: 50)
+                        }).disabled(authVM.connectionType == nil)
                     }
                     
                 }.padding()

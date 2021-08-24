@@ -139,7 +139,8 @@
 "privacy" = "Privacy Policy";
 "countryCodes" = "Country Codes";
 "instagramUsername" = "Instagram Username";
-"genderPreference" = "What is your gender preference?";
+"whatIsGenderPreference" = "What is your gender preference?";
 "interestedIn" = "Interested In";
 "swipeLeftIntro" = "If you are not interested, swipe Left";
 "swipeRightIntro" = "If you are interested, swipe Right";
+"genderPreference" = "Gender Preference";

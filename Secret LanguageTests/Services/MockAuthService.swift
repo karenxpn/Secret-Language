@@ -12,6 +12,7 @@ import Combine
 
 class MockAuthService: AuthServiceProtocol {
     
+    
     func logout(token: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let result = Result<GlobalResponse, NetworkError>.success(globalResponse)
         let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
@@ -25,7 +26,7 @@ class MockAuthService: AuthServiceProtocol {
     let networkError = NetworkError(initialError: AFError.explicitlyCancelled, backendError: nil)
     let genders = [GenderModel(id: 1, gender_name: "Male"), GenderModel(id: 2, gender_name: "Female")]
     let connectionTypes = [ConnectionTypeModel(id: 1, name: "Business", description: "desctiption")]
-    let tokenResponse = AuthResponse(id: 20, token: "", username: "username", interestedIn: 1)
+    let tokenResponse = AuthResponse(id: 20, token: "", username: "username", interestedIn: 1, gender_preference: 0)
     
     var fetchConnectionTypesError: Bool = false
     var fetchAllGendersError: Bool = false
@@ -44,7 +45,7 @@ class MockAuthService: AuthServiceProtocol {
         return publisher.eraseToAnyPublisher()
     }
     
-    func signUp(token: String, fullName: String, gender: Int, connectionType: Int) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
+    func signUp(token: String, fullName: String, gender: Int, connectionType: Int, genderPreference: Int) -> AnyPublisher<DataResponse<AuthResponse, NetworkError>, Never> {
         var result: Result<AuthResponse, NetworkError>
         
         if signupError  { result = Result<AuthResponse, NetworkError>.failure(networkError)}
