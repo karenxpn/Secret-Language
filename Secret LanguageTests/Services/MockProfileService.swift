@@ -18,7 +18,7 @@ class MockProfileService: ProfileServiceProtocol {
     var flagUserError: Bool = false
     var fetchSharedProfileError: Bool = false
     
-    let sharedProfile = SharedProfileModel(id: 1, name: "karen mirakyan", age: 21, image: "", user_birthday: "", user_birthday_name: "", sln: "", sln_description: "", report: "", advice: "", famous_years: "", distance: "")
+    let sharedProfile = SharedProfileModel(id: 1, name: "karen mirakyan", age: 21, image: "", user_birthday: "", user_birthday_name: "", sln: "", sln_description: "", report: "", advice: "", famous_years: "", distance: "", instagram: "karenmirakyan")
     
     func reportUser(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         var result: Result<GlobalResponse, NetworkError>

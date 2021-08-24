@@ -7,9 +7,15 @@
 
 import SwiftUI
 
+enum FormType {
+    case name
+    case instagram
+}
+
 struct Settings: View {
     @ObservedObject var settingsVM = SettingsViewModel()
     @State private var showForm: Bool = false
+    @State private var formType: FormType? = .none
     
     var body: some View {
         ZStack {
@@ -20,7 +26,7 @@ struct Settings: View {
             } else {
                 ScrollView {
                     LazyVStack {
-
+                        
                         Button {
                             settingsVM.navigateToGenders.toggle()
                         } label: {
@@ -39,8 +45,9 @@ struct Settings: View {
                                 }.hidden()
                             }
                         )
-
+                        
                         Button {
+                            formType = .name
                             showForm.toggle()
                         } label: {
                             HStack {
@@ -84,7 +91,29 @@ struct Settings: View {
                                 }.hidden()
                             }
                         )
-                                                
+                        
+                        Button {
+                            formType = .instagram
+                            showForm.toggle()
+                        } label: {
+                            HStack {
+                                VStack( alignment: .leading, spacing: 5) {
+                                    Text( NSLocalizedString("instagramUsername", comment: "") )
+                                        .foregroundColor(.gray)
+                                        .font(.custom("Gilroy-Regular", size: 10))
+                                    
+                                    TextField("username", text: $settingsVM.instagramUsername)
+                                        .foregroundColor(.white)
+                                        .font(.custom("times", size: 20))
+                                    
+                                    Divider()
+                                }
+                                
+                                Image( "rightArrow" )
+                            }.padding()
+                        }
+                        
+                        
                         Button {
                             settingsVM.logout()
                         } label: {
@@ -105,12 +134,20 @@ struct Settings: View {
             
         }.navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("settings", comment: "")))
-        .alert(isPresented: $showForm, TextFieldAlert(title: NSLocalizedString("fullName", comment: ""), message: "") { (text) in
-            if text != nil && ( text?.count ?? 0 ) >= 3 && ( text?.count ?? 0 ) < 20 {
-                settingsVM.fullName = text!
-                settingsVM.updateFields(updatedFrom: "")
-            }
-        })
+        .alert(isPresented: $showForm, self.formType == .name ?
+                TextFieldAlert(title: NSLocalizedString("fullName", comment: ""), message: "") { (text) in
+                    if text != nil && ( text?.count ?? 0 ) >= 3 && ( text?.count ?? 0 ) < 20 {
+                        settingsVM.fullName = text!
+                        settingsVM.updateFields(updatedFrom: "")
+                    }
+               } :
+                TextFieldAlert(title: NSLocalizedString("instagramUsername", comment: ""), message: "") { (text) in
+                    if text != nil {
+                        settingsVM.instagramUsername = text!
+                        settingsVM.updateFields(updatedFrom: "")
+                        UIApplication.shared.endEditing()
+                    }
+               })
     }
 }
 

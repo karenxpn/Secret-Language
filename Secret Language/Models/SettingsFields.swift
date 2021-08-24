@@ -11,4 +11,5 @@ struct SettingsFields: Codable {
     var date_name: String
     var country_name: String
     var name: String
+    var instagram: String
 }

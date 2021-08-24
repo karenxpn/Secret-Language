@@ -18,6 +18,7 @@ class SettingsViewModel: ObservableObject {
     @Published var fullName: String = ""
     @Published var location: String = ""
     @Published var birthday: String = "Jul 26, 1999"
+    @Published var instagramUsername: String = ""
     
     @Published var loading: Bool = false
     
@@ -75,6 +76,7 @@ class SettingsViewModel: ObservableObject {
                     self.fullName = settings.name
                     self.location = settings.country_name
                     self.birthday = settings.date_name
+                    self.instagramUsername = settings.instagram
                     
                     self.birthdayDate = self.stringToDateFormatter
                 }
@@ -93,7 +95,7 @@ class SettingsViewModel: ObservableObject {
     }
     
     func updateFields(updatedFrom: String) {        
-        let parameters = SettingsFieldsUpdateModel(date_name: dateFormatter.string(from: self.birthdayDate), name: fullName, gender: gender.id, country_name: location)
+        let parameters = SettingsFieldsUpdateModel(date_name: dateFormatter.string(from: self.birthdayDate), name: fullName, gender: gender.id, country_name: location, instagram: instagramUsername)
         
         dataManager.updateFields(token: token, parameters: parameters)
             .sink { response in

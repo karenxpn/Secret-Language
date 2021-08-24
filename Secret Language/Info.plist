@@ -46,6 +46,10 @@
 	<string>Alow your location to get your matches in more accurate way</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow access to your library to share media!</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>instagram</string>
+    </array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SignPainter.ttc</string>

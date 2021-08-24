@@ -219,6 +219,19 @@ class ProfileViewModel: ObservableObject {
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
     }
     
+    func openInstagram( username: String ) {
+        
+        let appURL = URL(string: "instagram://user?username=\(username)")!
+        let application = UIApplication.shared
+        
+        if application.canOpenURL(appURL) {
+            application.open(appURL)
+        } else {
+            let webURL = URL(string: "https://instagram.com/\(username)")!
+            application.open(webURL)
+        }
+    }
+    
     func getProfileWithPusher() {
         dataManager.fetchProfileWithPusher(channel: channel) { profile in
             self.profile = profile
