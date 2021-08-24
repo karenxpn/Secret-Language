@@ -26,17 +26,32 @@ struct VisitedProfile: View {
             } else if profileVM.visitedProfile != nil {
                 ScrollView( showsIndicators: false ) {
                     
-                    WebImage(url: URL(string: profileVM.visitedProfile!.image))
-                        .placeholder(content: {
-                            ProgressView()
-                        })
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: UIScreen.main.bounds.size.width - 24,
-                               height: UIScreen.main.bounds.size.height * 0.7)
-                        .clipped()
-                        .cornerRadius(15)
-                        .padding(.vertical)
+                    ZStack( alignment: .bottomTrailing ) {
+                        WebImage(url: URL(string: profileVM.visitedProfile!.image))
+                            .placeholder(content: {
+                                ProgressView()
+                            })
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: UIScreen.main.bounds.size.width - 24,
+                                   height: UIScreen.main.bounds.size.height * 0.7)
+                            .clipped()
+                            .cornerRadius(15)
+                            .padding(.vertical)
+                        
+                        if !profileVM.visitedProfile!.instagram.isEmpty {
+                            Button(action: {
+                                profileVM.openInstagram(username: profileVM.visitedProfile!.instagram)
+                            }, label: {
+                                Image( "instagram" )
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame( width: 35, height: 35 )
+                                    .padding()
+                                    .offset( y: -10)
+                            })
+                        }
+                    }
                     
                     Text( "\(profileVM.visitedProfile!.name), \(profileVM.visitedProfile!.age)" )
                         .foregroundColor(.white)
