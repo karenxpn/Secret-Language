@@ -12,6 +12,7 @@ struct Matches: View {
     @ObservedObject var matchesVM = MatchesViewModel()
     @StateObject var locationManager = LocationManager()
     @State private var locationChanged: Bool = false
+    @AppStorage( "showMatchIntroduction" ) private var showMatchIntroduction = true
 
     var location: Location {
         return Location(lat: locationManager.lastLocation?.coordinate.latitude ?? 0,
@@ -50,6 +51,10 @@ struct Matches: View {
                 CustomAlert(isPresented: $matchesVM.showAlert, alertMessage: matchesVM.alertMessage, alignment: .center)
                     .offset(y: matchesVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                     .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
+                
+                if showMatchIntroduction {
+                    MatchesIntroduction()
+                }
                 
             }.edgesIgnoringSafeArea(.bottom)
             .onAppear(perform: {
