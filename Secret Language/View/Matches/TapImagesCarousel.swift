@@ -52,7 +52,7 @@ struct TapImagesCarousel: View {
                         }
                     }
                 }
-            }
+            }.frame(height: UIScreen.main.bounds.size.height * 0.7)
             
             HStack {
                 ForEach( 0..<images.count, id: \.self ) { index in
@@ -60,7 +60,7 @@ struct TapImagesCarousel: View {
                         .fill( index == currentImageIndex ? AppColors.accentColor : Color.gray)
                         .frame(width: 30, height: 5)
                 }
-            }.offset(y: 20)
+            }.padding(.top, 20)
         }
     }
 }
