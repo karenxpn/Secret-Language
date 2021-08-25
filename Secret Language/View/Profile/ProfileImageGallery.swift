@@ -24,7 +24,7 @@ struct ProfileImageGallery: View {
                 ScrollView( showsIndicators: false ) {
                     
                     ImageHelper(image: profileVM.profileImages!.avatar.image, contentMode: .fill, progressViewTintColor: .white)
-                        .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height * 0.4)
+                        .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height * 0.5)
                         .clipped()
                     
                     Text( NSLocalizedString("myPhotos", comment: ""))
