@@ -28,6 +28,11 @@ struct SingleMatch: View {
                     .clipped()
                     .cornerRadius(15)
                     .padding(.vertical)
+                    .overlay( Color.black.opacity( match.x != 0 ? 0.4 : 0)
+                                .frame(width: UIScreen.main.bounds.size.width - 24,
+                                       height: UIScreen.main.bounds.size.height * 0.7)
+                                .clipped()
+                                .cornerRadius(15))
                 
                 Text( "\(match.name), \(match.age)" )
                     .foregroundColor(.white)
@@ -146,15 +151,19 @@ struct SingleMatch: View {
                 .aspectRatio(contentMode: .fill)
                 .frame( width: 50, height: 50)
                 .padding()
-                .opacity(Double(match.x/10 * -1 - 1))
+                .opacity(match.x < -50 ? 1 : 0)
+                .brightness(-0.2)
+                .offset(y: 10)
             
             Image( "rightSwipeIcon" )
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame( width: 50, height: 50)
                 .padding()
-                .opacity(Double(match.x/10 - 1))
-            
+                .brightness(-0.2)
+                .opacity(match.x > 50 ? 10 : 0)
+                .offset(y: 10)
+
         }).background(Background())
         .cornerRadius(15)
         .offset(x: match.x)
