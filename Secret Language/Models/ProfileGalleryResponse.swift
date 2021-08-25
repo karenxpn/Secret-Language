@@ -7,6 +7,7 @@
 
 import Foundation
 struct ProfileGalleryResponse: Codable {
+    var avatar: ProfileGalleryItem
     var images: [ProfileGalleryItem]
 }
 

@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ProfileImageGallery: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var profileVM: ProfileViewModel
+    @State private var openSheet: Bool = false
     
     var body: some View {
         ZStack {
@@ -18,13 +20,34 @@ struct ProfileImageGallery: View {
             
             if profileVM.loadingImages {
                 ProgressView()
-            } else {
+            } else if profileVM.profileImages != nil {
                 ScrollView {
+                    
+                    WebImage(url: URL(string: profileVM.profileImages!.avatar.image))
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height * 0.4)
+                    
+                    Text( "My Photos" )
+                        .foregroundColor( .white )
+                        .font(.custom("Gilroy-Regular", size: 15))
+                        .fontWeight(.bold)
+                    
                     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
-
+                    
                     LazyVGrid(columns: columns, content: {
-                        ForEach( 0..<profileVM.profileImages.count) { index in
-                            ProfileImageGallerySingleItem(item: profileVM.profileImages[index])
+                        
+                        Button {
+                            openSheet.toggle()
+                        } label: {
+                            Image("addImage")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: UIScreen.main.bounds.size.width * 0.35, height: UIScreen.main.bounds.size.height * 0.25)
+                        }
+                        
+                        ForEach( 0..<profileVM.profileImages!.images.count) { index in
+                            ProfileImageGallerySingleItem(item: profileVM.profileImages!.images[index])
                                 .environmentObject(profileVM)
                         }
                     }).padding(.bottom)
@@ -42,16 +65,16 @@ struct ProfileImageGallery: View {
                         })
                     }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                     
-                }.padding(.top, 1)
+                }.edgesIgnoringSafeArea([.top, .bottom])
             }
-            
-            CustomAlert(isPresented: $profileVM.showProfileImagesAlert, alertMessage: profileVM.profileImagesAlertMessage, alignment: .center)
-                .offset(y: profileVM.showProfileImagesAlert ? 0 : UIScreen.main.bounds.size.height)
-                .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
-            
         }.onAppear {
             profileVM.getProfileImages()
-        }
+        }.navigationBarTitle("")
+        .navigationBarTitleView(FriendsNavBar(title: ""), displayMode: .inline)
+        .sheet(isPresented: $openSheet, content: {
+            ProfileImagePicker()
+                .environmentObject(profileVM)
+        })
     }
 }
 

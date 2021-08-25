@@ -33,7 +33,7 @@ class ProfileViewModel: ObservableObject {
     @Published var pendingList = [UserPreviewModel]()
     
     @Published var loadingImages: Bool = false
-    @Published var profileImages = [ProfileGalleryItem]()
+    @Published var profileImages: ProfileGalleryResponse? = nil
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ProfileServiceProtocol
@@ -162,7 +162,7 @@ class ProfileViewModel: ObservableObject {
             .sink { response in
                 self.loadingImages = false
                 if response.error == nil {
-                    self.profileImages = response.value!.images
+                    self.profileImages = response.value!
                 }
             }.store(in: &cancellableSet)
     }
@@ -173,7 +173,7 @@ class ProfileViewModel: ObservableObject {
             .sink { response in
                 self.loadingImages = false
                 if response.error == nil {
-                    self.profileImages = response.value!.images
+                    self.profileImages = response.value!
                 }
             }.store(in: &cancellableSet)
     }
@@ -184,7 +184,7 @@ class ProfileViewModel: ObservableObject {
             .sink { response in
                 self.loadingImages = false
                 if response.error == nil {
-                    self.profileImages = response.value!.images
+                    self.profileImages = response.value!
                 }
             }.store(in: &cancellableSet)
     }
@@ -195,7 +195,7 @@ class ProfileViewModel: ObservableObject {
             .sink { response in
                 self.loadingImages = false
                 if response.error == nil {
-                    self.profileImages = response.value!.images
+                    self.profileImages = response.value!
                 }
             }.store(in: &cancellableSet)
     }
