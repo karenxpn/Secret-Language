@@ -11,11 +11,7 @@ import SDWebImageSwiftUI
 struct Profile: View {
     
     @ObservedObject var profileVM = ProfileViewModel()
-    @State private var showPicker: Bool = false
-    
-    init() {
-        profileVM.getProfileWithPusher()
-    }
+    @State private var navigateToGallery: Bool = false
     
     var body: some View {
         
@@ -31,7 +27,10 @@ struct Profile: View {
                     ScrollView( showsIndicators: false ) {
                         
                         VStack( spacing: 20) {
-                            NavigationLink(destination: ProfileImageGallery().environmentObject(profileVM)) {
+                            
+                            Button {
+                                navigateToGallery.toggle()
+                            } label: {
                                 ZStack( alignment: .bottomTrailing) {
                                     WebImage(url: URL(string: profileVM.profile!.image))
                                         .placeholder(content: {
@@ -44,7 +43,13 @@ struct Profile: View {
                                     
                                     Image("camera")
                                 }
-                            }
+                            }.background(
+                                NavigationLink(destination: ProfileImageGallery(isPresented: $navigateToGallery),
+                                               isActive: $navigateToGallery) {
+                                    EmptyView()
+                                }.hidden()
+                            )
+
                             
                             
                             Text( "\(profileVM.profile!.name), \(profileVM.profile!.age)")
@@ -137,9 +142,7 @@ struct Profile: View {
                 UIApplication.shared.endEditing()
             }.onAppear {
                 profileVM.getProfile()
-            }.sheet(isPresented: $showPicker) {
-                ProfileImagePicker()
-                    .environmentObject( profileVM )
+                profileVM.getProfileWithPusher()
             }
         }.navigationViewStyle(StackNavigationViewStyle())
     }

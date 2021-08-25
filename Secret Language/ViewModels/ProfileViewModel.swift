@@ -163,6 +163,8 @@ class ProfileViewModel: ObservableObject {
                 self.loadingImages = false
                 if response.error == nil {
                     self.profileImages = response.value!
+                } else {
+                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 }
             }.store(in: &cancellableSet)
     }
@@ -174,6 +176,8 @@ class ProfileViewModel: ObservableObject {
                 self.loadingImages = false
                 if response.error == nil {
                     self.profileImages = response.value!
+                } else {
+                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 }
             }.store(in: &cancellableSet)
     }
@@ -185,6 +189,8 @@ class ProfileViewModel: ObservableObject {
                 self.loadingImages = false
                 if response.error == nil {
                     self.profileImages = response.value!
+                } else {
+                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 }
             }.store(in: &cancellableSet)
     }
@@ -196,6 +202,8 @@ class ProfileViewModel: ObservableObject {
                 self.loadingImages = false
                 if response.error == nil {
                     self.profileImages = response.value!
+                } else {
+                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 }
             }.store(in: &cancellableSet)
     }

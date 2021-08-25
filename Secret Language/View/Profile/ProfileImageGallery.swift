@@ -10,8 +10,8 @@ import SDWebImageSwiftUI
 
 struct ProfileImageGallery: View {
     
-    @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var profileVM: ProfileViewModel
+    @ObservedObject var profileVM = ProfileViewModel()
+    @Binding var isPresented: Bool
     @State private var openSheet: Bool = false
     
     var body: some View {
@@ -21,29 +21,33 @@ struct ProfileImageGallery: View {
             if profileVM.loadingImages {
                 ProgressView()
             } else if profileVM.profileImages != nil {
-                ScrollView {
+                ScrollView( showsIndicators: false ) {
                     
-                    WebImage(url: URL(string: profileVM.profileImages!.avatar.image))
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
+                    ImageHelper(image: profileVM.profileImages!.avatar.image, contentMode: .fill, progressViewTintColor: .white)
                         .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height * 0.4)
+                        .clipped()
                     
-                    Text( "My Photos" )
+                    Text( NSLocalizedString("myPhotos", comment: ""))
                         .foregroundColor( .white )
                         .font(.custom("Gilroy-Regular", size: 15))
                         .fontWeight(.bold)
+                        .padding()
                     
                     let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
                     
-                    LazyVGrid(columns: columns, content: {
+                    LazyVGrid(columns: columns, spacing: 20, content: {
                         
                         Button {
                             openSheet.toggle()
                         } label: {
-                            Image("addImage")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: UIScreen.main.bounds.size.width * 0.35, height: UIScreen.main.bounds.size.height * 0.25)
+                            
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(AppColors.reportBoxesBG)
+                                    .frame(width: UIScreen.main.bounds.size.width * 0.35, height: UIScreen.main.bounds.size.height * 0.25)
+                                
+                                Image("plus")
+                            }
                         }
                         
                         ForEach( 0..<profileVM.profileImages!.images.count) { index in
@@ -56,7 +60,7 @@ struct ProfileImageGallery: View {
                         Spacer()
                         
                         Button(action: {
-                            presentationMode.wrappedValue.dismiss()
+                            isPresented.toggle()
                         }, label: {
                             Image("proceed")
                                 .resizable()
@@ -67,6 +71,11 @@ struct ProfileImageGallery: View {
                     
                 }.edgesIgnoringSafeArea([.top, .bottom])
             }
+            
+            CustomAlert(isPresented: $profileVM.showAlert, alertMessage: profileVM.alertMessage, alignment: .center)
+                .offset(y: profileVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+                .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
+            
         }.onAppear {
             profileVM.getProfileImages()
         }.navigationBarTitle("")
@@ -80,6 +89,6 @@ struct ProfileImageGallery: View {
 
 struct ProfileImageGallery_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileImageGallery()
+        ProfileImageGallery(isPresented: .constant(false))
     }
 }

@@ -28,18 +28,11 @@ struct ProfileImageGallerySingleItem: View {
                 Text( NSLocalizedString("makeProfileImage", comment: ""))
             }
             
-        } label: {
-//            ZStack {
-//                RoundedRectangle(cornerRadius: 15)
-//                    .stroke(AppColors.accentColor, lineWidth: 2)
-//                    .frame(width: UIScreen.main.bounds.size.width * 0.35, height: UIScreen.main.bounds.size.height * 0.25)
-//
-                WebImage(url: URL(string: item.image)!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.size.width * 0.35, height: UIScreen.main.bounds.size.height * 0.25)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
-//            }
+        } label: {            
+            ImageHelper(image: item.image, contentMode: .fill, progressViewTintColor: .white)
+                .frame(width: UIScreen.main.bounds.size.width * 0.35, height: UIScreen.main.bounds.size.height * 0.25)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+                    
         }
     }
 }
