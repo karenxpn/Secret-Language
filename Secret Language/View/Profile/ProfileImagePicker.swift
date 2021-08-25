@@ -47,7 +47,7 @@ struct ProfileImagePicker: UIViewControllerRepresentable {
                         if let uiImage = image as? UIImage {
                             if let imageData = uiImage.fixOrientation()!.jpegData(compressionQuality: 0.8) {
                                 // update profile image here
-                                self.partent.profileVM.updateProfileImage(image: imageData)
+                                self.partent.profileVM.addProfileImage(image: imageData)
                                 DispatchQueue.main.async {
                                     picker.dismiss()
                                 }

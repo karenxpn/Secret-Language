@@ -29,14 +29,20 @@ protocol ProfileServiceProtocol {
     func fetchProfileWithPusher( channel: PusherChannel, completion: @escaping ( UserModel ) -> () )
     
     
-    func deleteProfileImage( token: String ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
-    func updateProfileImage( token: String, image: Data ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
+//    func deleteProfileImage( token: String ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
+//    func updateProfileImage( token: String, image: Data ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
     
     func reportUser( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func blockUser( token: String, userID: Int ) ->  AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func flagUser( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     
     func fetchSharedProfile( userID: Int ) -> AnyPublisher<DataResponse<SharedProfileModel, NetworkError>, Never>
+    
+    
+    func fetchProfileImageGallery( token: String ) -> AnyPublisher<DataResponse< ProfileGalleryResponse, NetworkError>, Never>
+    func addProfileImageToGallery( token: String, image: Data ) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never>
+    func deleteProfileImageFromGallery( token: String, imageID: Int ) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never>
+    func makeProfileImage( token: String, imageID: Int ) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never>
 
 }
 
@@ -47,6 +53,95 @@ class ProfileService {
 }
 
 extension ProfileService: ProfileServiceProtocol {
+    func makeProfileImage(token: String, imageID: Int) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/makeProfileImage")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        return AF.request(url,
+                          method: .post,
+                          parameters: ["id" : imageID],
+                          encoder: JSONParameterEncoder.default,
+                          headers: headers)
+            .validate()
+            .publishDecodable(type: ProfileGalleryResponse.self)
+            .map { response in
+                
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func addProfileImageToGallery(token: String, image: Data) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/addProfileImage")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)",
+                                    "Content-type": "multipart/form-data"]
+        
+        
+        return AF.upload(multipartFormData: { (multipartFormData: MultipartFormData) in
+            multipartFormData.append(image, withName: "image", fileName: "\(UUID().uuidString).jpeg" ,mimeType: "image/jpeg")
+        }, to: url,
+        method: .post,
+        headers: headers)
+        .validate()
+        .publishDecodable(type: ProfileGalleryResponse.self)
+        .map { response in
+            
+            response.mapError { error in
+                let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                return NetworkError(initialError: error, backendError: backendError)
+            }
+        }
+        .receive(on: DispatchQueue.main)
+        .eraseToAnyPublisher()
+    }
+    
+    func deleteProfileImageFromGallery(token: String, imageID: Int) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/removeProfileImage")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        return AF.request(url,
+                          method: .post,
+                          parameters: ["id" : imageID],
+                          encoder: JSONParameterEncoder.default,
+                          headers: headers)
+            .validate()
+            .publishDecodable(type: ProfileGalleryResponse.self)
+            .map { response in
+                
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchProfileImageGallery(token: String) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/profileImages")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+
+        
+        return AF.request(url,
+                          method: .get,
+                          headers: headers)
+            .validate()
+            .publishDecodable(type: ProfileGalleryResponse.self)
+            .map { response in
+                
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     func fetchSharedProfile(userID: Int) -> AnyPublisher<DataResponse<SharedProfileModel, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/sharedUser/\(userID)")!
         
@@ -360,50 +455,47 @@ extension ProfileService: ProfileServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func deleteProfileImage(token: String) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/removeAvatar")!
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
-        
-        return AF.request(url,
-                          method: .delete,
-                          headers: headers)
-            .validate()
-            .publishDecodable(type: UserModel.self)
-            .map { response in
-                
-                response.mapError { error in
-                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
-                    return NetworkError(initialError: error, backendError: backendError)
-                }
-            }
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
-    }
-    
-    func updateProfileImage(token: String, image: Data ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/addAvatar")!
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)",
-                                    "Content-type": "multipart/form-data"]
-        
-        
-        return AF.upload(multipartFormData: { (multipartFormData: MultipartFormData) in
-            multipartFormData.append(image, withName: "image", fileName: "\(UUID().uuidString).jpeg" ,mimeType: "image/jpeg")
-        }, to: url,
-        method: .post,
-        headers: headers)
-        .validate()
-        .publishDecodable(type: UserModel.self)
-        .map { response in
-            
-            response.mapError { error in
-                let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
-                return NetworkError(initialError: error, backendError: backendError)
-            }
-        }
-        .receive(on: DispatchQueue.main)
-        .eraseToAnyPublisher()
-    }
-    
-    
-    
+//    func deleteProfileImage(token: String) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
+//        let url = URL(string: "\(Credentials.BASE_URL)user/removeAvatar")!
+//        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+//
+//        return AF.request(url,
+//                          method: .delete,
+//                          headers: headers)
+//            .validate()
+//            .publishDecodable(type: UserModel.self)
+//            .map { response in
+//
+//                response.mapError { error in
+//                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+//                    return NetworkError(initialError: error, backendError: backendError)
+//                }
+//            }
+//            .receive(on: DispatchQueue.main)
+//            .eraseToAnyPublisher()
+//    }
+//
+//    func updateProfileImage(token: String, image: Data ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
+//        let url = URL(string: "\(Credentials.BASE_URL)user/addAvatar")!
+//        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)",
+//                                    "Content-type": "multipart/form-data"]
+//
+//
+//        return AF.upload(multipartFormData: { (multipartFormData: MultipartFormData) in
+//            multipartFormData.append(image, withName: "image", fileName: "\(UUID().uuidString).jpeg" ,mimeType: "image/jpeg")
+//        }, to: url,
+//        method: .post,
+//        headers: headers)
+//        .validate()
+//        .publishDecodable(type: UserModel.self)
+//        .map { response in
+//
+//            response.mapError { error in
+//                let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+//                return NetworkError(initialError: error, backendError: backendError)
+//            }
+//        }
+//        .receive(on: DispatchQueue.main)
+//        .eraseToAnyPublisher()
+//    }
 }

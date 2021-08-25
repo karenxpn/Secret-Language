@@ -31,20 +31,7 @@ struct Profile: View {
                     ScrollView( showsIndicators: false ) {
                         
                         VStack( spacing: 20) {
-                            
-                            Menu {
-                                Button(action: {
-                                    showPicker.toggle()
-                                }, label: {
-                                    Text( NSLocalizedString("changeProfileImage", comment: "") )
-                                })
-                                
-                                Button {
-                                    profileVM.deleteProfileImage()
-                                } label: {
-                                    Text( NSLocalizedString("removeProfileImage", comment: "") )
-                                }
-                            } label: {
+                            NavigationLink(destination: ProfileImageGallery().environmentObject(profileVM)) {
                                 ZStack( alignment: .bottomTrailing) {
                                     WebImage(url: URL(string: profileVM.profile!.image))
                                         .placeholder(content: {
@@ -58,6 +45,7 @@ struct Profile: View {
                                     Image("camera")
                                 }
                             }
+                            
                             
                             Text( "\(profileVM.profile!.name), \(profileVM.profile!.age)")
                                 .foregroundColor(.white)

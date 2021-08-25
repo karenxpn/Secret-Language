@@ -58,7 +58,6 @@
 		FF4AB0F8268503DC0085EA9A /* AppleMyungjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF4AB0F7268503DC0085EA9A /* AppleMyungjo.ttf */; };
 		FF4AB0FB268504A20085EA9A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4AB0FA268504A20085EA9A /* Settings.swift */; };
 		FF4AB0FD2685091B0085EA9A /* ProfileImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4AB0FC2685091B0085EA9A /* ProfileImagePicker.swift */; };
-		FF4AB0FF268528B60085EA9A /* EmptyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4AB0FE268528B60085EA9A /* EmptyList.swift */; };
 		FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */; };
 		FF58C40E2667BBA200BD3838 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40D2667BBA200BD3838 /* GenderModel.swift */; };
 		FF58C41026682F4900BD3838 /* SignInCheckVerificationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */; };
@@ -75,8 +74,9 @@
 		FF8AA6DF26A09EB2000C6B41 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6DE26A09EB2000C6B41 /* Message.swift */; };
 		FF8AA6E126A31DB9000C6B41 /* SingleMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6E026A31DB9000C6B41 /* SingleMessageContent.swift */; };
 		FF8AD97C26D66C3C00EC1DB8 /* TapImagesCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AD97B26D66C3C00EC1DB8 /* TapImagesCarousel.swift */; };
-		FF8AD97E26D6CA4700EC1DB8 /* SettingsProfileImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AD97D26D6CA4700EC1DB8 /* SettingsProfileImages.swift */; };
-		FF8AD98026D6CA6100EC1DB8 /* SettingsProfileSingleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AD97F26D6CA6100EC1DB8 /* SettingsProfileSingleImage.swift */; };
+		FF8AD98226D6D4F600EC1DB8 /* ProfileImageGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AD98126D6D4F600EC1DB8 /* ProfileImageGallery.swift */; };
+		FF8AD98426D6D5D000EC1DB8 /* ProfileImageGallerySingleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AD98326D6D5D000EC1DB8 /* ProfileImageGallerySingleItem.swift */; };
+		FF8AD98626D6D6C500EC1DB8 /* ProfileGalleryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AD98526D6D6C500EC1DB8 /* ProfileGalleryResponse.swift */; };
 		FF997E862689DAB20057B731 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E852689DAB20057B731 /* SearchViewModel.swift */; };
 		FF997E882689DCDF0057B731 /* SearchNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E872689DCDF0057B731 /* SearchNavBar.swift */; };
 		FF997E8A2689E6BA0057B731 /* SingleSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E892689E6BA0057B731 /* SingleSearchResult.swift */; };
@@ -254,7 +254,6 @@
 		FF4AB0F7268503DC0085EA9A /* AppleMyungjo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AppleMyungjo.ttf; path = ../../../../../../System/Library/Fonts/Supplemental/AppleMyungjo.ttf; sourceTree = "<group>"; };
 		FF4AB0FA268504A20085EA9A /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		FF4AB0FC2685091B0085EA9A /* ProfileImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePicker.swift; sourceTree = "<group>"; };
-		FF4AB0FE268528B60085EA9A /* EmptyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyList.swift; sourceTree = "<group>"; };
 		FF58C40B2667B9C300BD3838 /* ConnectionTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTypeModel.swift; sourceTree = "<group>"; };
 		FF58C40D2667BBA200BD3838 /* GenderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
 		FF58C40F26682F4900BD3838 /* SignInCheckVerificationCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCheckVerificationCode.swift; sourceTree = "<group>"; };
@@ -271,8 +270,9 @@
 		FF8AA6DE26A09EB2000C6B41 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		FF8AA6E026A31DB9000C6B41 /* SingleMessageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMessageContent.swift; sourceTree = "<group>"; };
 		FF8AD97B26D66C3C00EC1DB8 /* TapImagesCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapImagesCarousel.swift; sourceTree = "<group>"; };
-		FF8AD97D26D6CA4700EC1DB8 /* SettingsProfileImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProfileImages.swift; sourceTree = "<group>"; };
-		FF8AD97F26D6CA6100EC1DB8 /* SettingsProfileSingleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProfileSingleImage.swift; sourceTree = "<group>"; };
+		FF8AD98126D6D4F600EC1DB8 /* ProfileImageGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageGallery.swift; sourceTree = "<group>"; };
+		FF8AD98326D6D5D000EC1DB8 /* ProfileImageGallerySingleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageGallerySingleItem.swift; sourceTree = "<group>"; };
+		FF8AD98526D6D6C500EC1DB8 /* ProfileGalleryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGalleryResponse.swift; sourceTree = "<group>"; };
 		FF997E852689DAB20057B731 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		FF997E872689DCDF0057B731 /* SearchNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavBar.swift; sourceTree = "<group>"; };
 		FF997E892689E6BA0057B731 /* SingleSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSearchResult.swift; sourceTree = "<group>"; };
@@ -482,8 +482,6 @@
 				FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */,
 				FFAD920D26B0533D007984ED /* SettingsGenderPicker.swift */,
 				FFB1CC2826D5943500FC1AE2 /* SettingsGenderPreferencePicker.swift */,
-				FF8AD97D26D6CA4700EC1DB8 /* SettingsProfileImages.swift */,
-				FF8AD97F26D6CA6100EC1DB8 /* SettingsProfileSingleImage.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -674,6 +672,7 @@
 				FF6AF6E426AAD7AD007A902F /* SharedProfileModel.swift */,
 				FFAD920726AF6EF2007984ED /* SettingsFields.swift */,
 				FFAD920F26B07F90007984ED /* SettingsFieldsUpdateModel.swift */,
+				FF8AD98526D6D6C500EC1DB8 /* ProfileGalleryResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -737,7 +736,8 @@
 				FF99A03D2680E9A000F234CD /* FriendRequestCell.swift */,
 				FF99A0372680C65300F234CD /* FriendsNavBar.swift */,
 				FF4AB0FC2685091B0085EA9A /* ProfileImagePicker.swift */,
-				FF4AB0FE268528B60085EA9A /* EmptyList.swift */,
+				FF8AD98126D6D4F600EC1DB8 /* ProfileImageGallery.swift */,
+				FF8AD98326D6D5D000EC1DB8 /* ProfileImageGallerySingleItem.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1071,6 +1071,7 @@
 				FF18DC32269CF4BF004BE946 /* PaymentOrReportDetectionView.swift in Sources */,
 				FF10811626A76A7C00387ED9 /* AppDelegate.swift in Sources */,
 				FF10811F26A9B9FE00387ED9 /* SharedRelationshipReport.swift in Sources */,
+				FF8AD98426D6D5D000EC1DB8 /* ProfileImageGallerySingleItem.swift in Sources */,
 				FF79FAC826D154C400525661 /* BirthdayReportInnerView.swift in Sources */,
 				FFDB158526653DC500341E8F /* GlobalResponse.swift in Sources */,
 				FF99A03C2680E98B00F234CD /* FriendRequestList.swift in Sources */,
@@ -1086,15 +1087,14 @@
 				FFCEDDFF267235FB0073BE20 /* Chat.swift in Sources */,
 				FFCAA21426A61409002054DC /* CameraView.swift in Sources */,
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
-				FF8AD97E26D6CA4700EC1DB8 /* SettingsProfileImages.swift in Sources */,
 				FF3727F026A5074500B20925 /* Gallery.swift in Sources */,
 				FF3D63D52697273F00799E72 /* PathReport.swift in Sources */,
 				FF997E882689DCDF0057B731 /* SearchNavBar.swift in Sources */,
-				FF4AB0FF268528B60085EA9A /* EmptyList.swift in Sources */,
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,
 				FFB1CC2726D58D9A00FC1AE2 /* MatchesIntroduction.swift in Sources */,
 				FFE0E4142677E6F6008FA78C /* MatchModel.swift in Sources */,
 				FF10811826A8DAF500387ED9 /* MessageImageHelper.swift in Sources */,
+				FF8AD98226D6D4F600EC1DB8 /* ProfileImageGallery.swift in Sources */,
 				FF3727F226A5DA2400B20925 /* TypingResponse.swift in Sources */,
 				FF99A0342680C5C000F234CD /* UserPreviewModel.swift in Sources */,
 				FF99A0402681114400F234CD /* ProfileService.swift in Sources */,
@@ -1135,12 +1135,12 @@
 				FF997E99268CDAC80057B731 /* SearchUserModel.swift in Sources */,
 				FFCEDE02267236200073BE20 /* Profile.swift in Sources */,
 				FFDB15A926669B9400341E8F /* TopGender.swift in Sources */,
+				FF8AD98626D6D6C500EC1DB8 /* ProfileGalleryResponse.swift in Sources */,
 				FFCEDE05267236500073BE20 /* Search.swift in Sources */,
 				FF8AA6DB26A09E31000C6B41 /* MessagesList.swift in Sources */,
 				FFAD920626AF6E8F007984ED /* SettingsService.swift in Sources */,
 				FF4AB0FB268504A20085EA9A /* Settings.swift in Sources */,
 				FF99A0382680C65300F234CD /* FriendsNavBar.swift in Sources */,
-				FF8AD98026D6CA6100EC1DB8 /* SettingsProfileSingleImage.swift in Sources */,
 				FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */,
 				FF4AB0F6268503530085EA9A /* UserModel.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,

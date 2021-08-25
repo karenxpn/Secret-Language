@@ -32,6 +32,9 @@ class ProfileViewModel: ObservableObject {
     @Published var requestsList = [UserPreviewModel]()
     @Published var pendingList = [UserPreviewModel]()
     
+    @Published var loadingImages: Bool = false
+    @Published var profileImages = [ProfileGalleryItem]()
+    
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ProfileServiceProtocol
     var matchDataManager: MatchServiceProtocol
@@ -53,7 +56,7 @@ class ProfileViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
                     self.friendsList = response.value!
                 }
@@ -66,7 +69,7 @@ class ProfileViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
                     self.requestsList = response.value!
                 }
@@ -79,7 +82,7 @@ class ProfileViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
                     self.pendingList = response.value!
                 }
@@ -90,7 +93,7 @@ class ProfileViewModel: ObservableObject {
         chatDataManager.sendGreetingMessage(token: token, userID: userID, message: SendingMessageModel(type: "text", content: "👋🏻")).sink { response in
             
             if response.error != nil {
-                self.makeAlert(with: response.error!, for: &self.alertMessage)
+                self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
             } else {
                 self.alertMessage = response.value!.message
                 self.showAlert.toggle()
@@ -117,28 +120,28 @@ class ProfileViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
-    func updateProfileImage(image: Data) {
-        dataManager.updateProfileImage(token: self.token, image: image)
-            .sink { (response) in
-                
-                if response.error != nil {
-                    self.makeAlert(with: response.error!, for: &self.alertMessage)
-                } else {
-                    self.profile = response.value!
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func deleteProfileImage() {
-        dataManager.deleteProfileImage(token: token)
-            .sink { response in
-                if response.error != nil {
-                    self.makeAlert(with: response.error!, for: &self.alertMessage)
-                } else {
-                    self.profile = response.value!
-                }
-            }.store(in: &cancellableSet)
-    }
+//    func updateProfileImage(image: Data) {
+//        dataManager.updateProfileImage(token: self.token, image: image)
+//            .sink { (response) in
+//                
+//                if response.error != nil {
+//                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+//                } else {
+//                    self.profile = response.value!
+//                }
+//            }.store(in: &cancellableSet)
+//    }
+//    
+//    func deleteProfileImage() {
+//        dataManager.deleteProfileImage(token: token)
+//            .sink { response in
+//                if response.error != nil {
+//                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+//                } else {
+//                    self.profile = response.value!
+//                }
+//            }.store(in: &cancellableSet)
+//    }
     
     func getProfile() {
         loading = true
@@ -146,9 +149,53 @@ class ProfileViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
                     self.profile = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func getProfileImages() {
+        loadingImages = true
+        dataManager.fetchProfileImageGallery(token: token)
+            .sink { response in
+                self.loadingImages = false
+                if response.error == nil {
+                    self.profileImages = response.value!.images
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func addProfileImage(image: Data) {
+        loadingImages = true
+        dataManager.addProfileImageToGallery(token: token, image: image)
+            .sink { response in
+                self.loadingImages = false
+                if response.error == nil {
+                    self.profileImages = response.value!.images
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func removeProfileImage(id: Int) {
+        loadingImages = true
+        dataManager.deleteProfileImageFromGallery(token: token, imageID: id)
+            .sink { response in
+                self.loadingImages = false
+                if response.error == nil {
+                    self.profileImages = response.value!.images
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func makeProfileImage( id: Int ) {
+        loadingImages = true
+        dataManager.makeProfileImage(token: token, imageID: id)
+            .sink { response in
+                self.loadingImages = false
+                if response.error == nil {
+                    self.profileImages = response.value!.images
                 }
             }.store(in: &cancellableSet)
     }
@@ -159,7 +206,7 @@ class ProfileViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
                     self.visitedProfile = MatchViewModel(match: response.value!)
                 }
@@ -205,7 +252,7 @@ class ProfileViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(with: response.error!, for: &self.alertMessage)
+                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
                     self.sharedProfile = response.value!
                 }
@@ -256,9 +303,9 @@ class ProfileViewModel: ObservableObject {
         }
     }
         
-    func makeAlert(with error: NetworkError, for message: inout String ) {
+    func makeAlert(with error: NetworkError, message: inout String, alert: inout Bool ) {
         message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
-        self.showAlert.toggle()
+        alert.toggle()
     }
     
     func makeReportAlert( response: GlobalResponse, alert: inout Bool, message: inout String ) {

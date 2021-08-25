@@ -38,13 +38,7 @@ class SettingsViewModel: ObservableObject {
     @Published var navigateToGenders: Bool = false
     @Published var navigateToBirthdayPicker: Bool = false
     @Published var navigateToGenderPreferencePicker: Bool = false
-    
-    @Published var navigateToImagesPicker: Bool = false
-    @Published var loadingImages: Bool = false
-    @Published var profileImages = [String]()
-    
-    @Published var updatableProfileImage: String = ""
-    
+        
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     
     var dateFormatter: DateFormatter {
@@ -91,7 +85,6 @@ class SettingsViewModel: ObservableObject {
                     self.instagramUsername = settings.instagram
                     self.genderPreference = settings.gender_preference
                     self.locallyStoredGenderPreference = settings.gender_preference
-                    self.profileImages = settings.images
                     
                     switch settings.gender_preference {
                     case 0:
@@ -121,7 +114,7 @@ class SettingsViewModel: ObservableObject {
     }
     
     func updateFields(updatedFrom: String) {        
-        let parameters = SettingsFieldsUpdateModel(date_name: dateFormatter.string(from: self.birthdayDate), name: fullName, gender: gender.id, country_name: location, instagram: instagramUsername, gender_preference: genderPreference, image: updatableProfileImage)
+        let parameters = SettingsFieldsUpdateModel(date_name: dateFormatter.string(from: self.birthdayDate), name: fullName, gender: gender.id, country_name: location, instagram: instagramUsername, gender_preference: genderPreference)
         
         dataManager.updateFields(token: token, parameters: parameters)
             .sink { response in
@@ -133,8 +126,6 @@ class SettingsViewModel: ObservableObject {
                         self.navigateToBirthdayPicker.toggle()
                     } else if updatedFrom == "preferences" {
                         self.navigateToGenderPreferencePicker.toggle()
-                    } else if updatedFrom == "images" {
-                        self.navigateToImagesPicker.toggle()
                     }
                     
                     self.getSettingsFields()
