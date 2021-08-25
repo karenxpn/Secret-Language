@@ -16,7 +16,7 @@ struct TapImagesCarousel: View {
     
     var body: some View {
         
-        ZStack {
+        ZStack( alignment: .top) {
             WebImage(url: URL(string: images[currentImageIndex]))
                 .placeholder(content: {
                     ProgressView()
@@ -36,23 +36,32 @@ struct TapImagesCarousel: View {
             
             GetTapLocation { point in
                 
-                if (UIScreen.main.bounds.size.width * 0.7...UIScreen.main.bounds.size.width * 0.9).contains(point.x) {
-                    if currentImageIndex < images.count-1 {
-                        
-                        withAnimation {
-                            currentImageIndex += 1
+                if point.y <= UIScreen.main.bounds.size.height * 0.7 {
+                    if (UIScreen.main.bounds.size.width * 0.7...UIScreen.main.bounds.size.width).contains(point.x){
+                        if currentImageIndex < images.count-1 {
+                            
+                            withAnimation {
+                                currentImageIndex += 1
+                            }
                         }
-                    }
-                } else if  (0...100).contains(point.x) {
-                    if currentImageIndex > 0 {
-                        withAnimation {
-                            currentImageIndex -= 1
+                    } else if  (0...100).contains(point.x) {
+                        if currentImageIndex > 0 {
+                            withAnimation {
+                                currentImageIndex -= 1
+                            }
                         }
                     }
                 }
             }
+            
+            HStack {
+                ForEach( 0..<images.count, id: \.self ) { index in
+                    Capsule()
+                        .fill( index == currentImageIndex ? AppColors.accentColor : Color.gray)
+                        .frame(width: 30, height: 5)
+                }
+            }.offset(y: 20)
         }
-
     }
 }
 
