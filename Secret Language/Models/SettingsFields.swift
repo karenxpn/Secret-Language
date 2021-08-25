@@ -13,4 +13,5 @@ struct SettingsFields: Codable {
     var name: String
     var instagram: String
     var gender_preference: Int
+    var images: [String]
 }

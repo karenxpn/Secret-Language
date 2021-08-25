@@ -75,6 +75,8 @@
 		FF8AA6DF26A09EB2000C6B41 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6DE26A09EB2000C6B41 /* Message.swift */; };
 		FF8AA6E126A31DB9000C6B41 /* SingleMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6E026A31DB9000C6B41 /* SingleMessageContent.swift */; };
 		FF8AD97C26D66C3C00EC1DB8 /* TapImagesCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AD97B26D66C3C00EC1DB8 /* TapImagesCarousel.swift */; };
+		FF8AD97E26D6CA4700EC1DB8 /* SettingsProfileImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AD97D26D6CA4700EC1DB8 /* SettingsProfileImages.swift */; };
+		FF8AD98026D6CA6100EC1DB8 /* SettingsProfileSingleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AD97F26D6CA6100EC1DB8 /* SettingsProfileSingleImage.swift */; };
 		FF997E862689DAB20057B731 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E852689DAB20057B731 /* SearchViewModel.swift */; };
 		FF997E882689DCDF0057B731 /* SearchNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E872689DCDF0057B731 /* SearchNavBar.swift */; };
 		FF997E8A2689E6BA0057B731 /* SingleSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E892689E6BA0057B731 /* SingleSearchResult.swift */; };
@@ -269,6 +271,8 @@
 		FF8AA6DE26A09EB2000C6B41 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		FF8AA6E026A31DB9000C6B41 /* SingleMessageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMessageContent.swift; sourceTree = "<group>"; };
 		FF8AD97B26D66C3C00EC1DB8 /* TapImagesCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapImagesCarousel.swift; sourceTree = "<group>"; };
+		FF8AD97D26D6CA4700EC1DB8 /* SettingsProfileImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProfileImages.swift; sourceTree = "<group>"; };
+		FF8AD97F26D6CA6100EC1DB8 /* SettingsProfileSingleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProfileSingleImage.swift; sourceTree = "<group>"; };
 		FF997E852689DAB20057B731 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		FF997E872689DCDF0057B731 /* SearchNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavBar.swift; sourceTree = "<group>"; };
 		FF997E892689E6BA0057B731 /* SingleSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSearchResult.swift; sourceTree = "<group>"; };
@@ -478,6 +482,8 @@
 				FFAD920B26B04859007984ED /* SettingsBirthdayPicker.swift */,
 				FFAD920D26B0533D007984ED /* SettingsGenderPicker.swift */,
 				FFB1CC2826D5943500FC1AE2 /* SettingsGenderPreferencePicker.swift */,
+				FF8AD97D26D6CA4700EC1DB8 /* SettingsProfileImages.swift */,
+				FF8AD97F26D6CA6100EC1DB8 /* SettingsProfileSingleImage.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1080,6 +1086,7 @@
 				FFCEDDFF267235FB0073BE20 /* Chat.swift in Sources */,
 				FFCAA21426A61409002054DC /* CameraView.swift in Sources */,
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
+				FF8AD97E26D6CA4700EC1DB8 /* SettingsProfileImages.swift in Sources */,
 				FF3727F026A5074500B20925 /* Gallery.swift in Sources */,
 				FF3D63D52697273F00799E72 /* PathReport.swift in Sources */,
 				FF997E882689DCDF0057B731 /* SearchNavBar.swift in Sources */,
@@ -1133,6 +1140,7 @@
 				FFAD920626AF6E8F007984ED /* SettingsService.swift in Sources */,
 				FF4AB0FB268504A20085EA9A /* Settings.swift in Sources */,
 				FF99A0382680C65300F234CD /* FriendsNavBar.swift in Sources */,
+				FF8AD98026D6CA6100EC1DB8 /* SettingsProfileSingleImage.swift in Sources */,
 				FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */,
 				FF4AB0F6268503530085EA9A /* UserModel.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,

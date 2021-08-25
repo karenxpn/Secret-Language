@@ -134,6 +134,29 @@ struct Settings: View {
                         
                         
                         Button {
+                            settingsVM.navigateToImagesPicker.toggle()
+                        } label: {
+                            SettingsListCell( title: NSLocalizedString("profileImages", comment: ""),
+                                              content: "")
+                        }.background(
+                            
+                            ZStack {
+                                
+                                NavigationLink(destination: EmptyView()) {
+                                    EmptyView()
+                                }
+                                
+                                NavigationLink(destination: SettingsProfileImages()
+                                                .environmentObject(settingsVM),
+                                               isActive: $settingsVM.navigateToImagesPicker) {
+                                    EmptyView()
+                                }.hidden()
+                            }
+                        )
+                        
+                        
+                        
+                        Button {
                             settingsVM.logout()
                         } label: {
                             Text( "Log Out" )
