@@ -10,7 +10,7 @@ struct SharedProfileModel: Identifiable, Codable {
     var id: Int
     var name: String
     var age: Int
-    var image: String
+    var images: [String]
     var user_birthday: String
     var user_birthday_name: String
 

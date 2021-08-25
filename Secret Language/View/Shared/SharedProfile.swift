@@ -27,17 +27,8 @@ struct SharedProfile: View {
                     ScrollView( showsIndicators: false ) {
                         
                         ZStack( alignment: .bottomTrailing) {
-                            WebImage(url: URL(string: profileVM.sharedProfile!.image))
-                                .placeholder(content: {
-                                    ProgressView()
-                                })
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: UIScreen.main.bounds.size.width - 24,
-                                       height: UIScreen.main.bounds.size.height * 0.7)
-                                .clipped()
-                                .cornerRadius(15)
-                                .padding(.vertical)
+                            TapImagesCarousel(images: profileVM.sharedProfile!.images, x: .constant( 0 ))
+
                             
                             if !profileVM.sharedProfile!.instagram.isEmpty {
                                 Button(action: {
