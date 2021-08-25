@@ -21,7 +21,7 @@ struct MatchModel: Identifiable, Codable {
     var advice: String
     var ideal_for: String
     
-    var image: String
+    var images: [String]
     var famous_years: String
     var my_birthday: String
     var my_birthday_name: String
@@ -55,8 +55,8 @@ struct MatchViewModel: Identifiable {
         self.match.age
     }
     
-    var image: String {
-        self.match.image
+    var images: [String] {
+        self.match.images
     }
     
     var illustration: String {

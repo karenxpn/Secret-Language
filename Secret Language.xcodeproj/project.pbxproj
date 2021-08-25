@@ -74,6 +74,7 @@
 		FF8AA6DD26A09E87000C6B41 /* SingleMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6DC26A09E87000C6B41 /* SingleMessage.swift */; };
 		FF8AA6DF26A09EB2000C6B41 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6DE26A09EB2000C6B41 /* Message.swift */; };
 		FF8AA6E126A31DB9000C6B41 /* SingleMessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AA6E026A31DB9000C6B41 /* SingleMessageContent.swift */; };
+		FF8AD97C26D66C3C00EC1DB8 /* TapImagesCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8AD97B26D66C3C00EC1DB8 /* TapImagesCarousel.swift */; };
 		FF997E862689DAB20057B731 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E852689DAB20057B731 /* SearchViewModel.swift */; };
 		FF997E882689DCDF0057B731 /* SearchNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E872689DCDF0057B731 /* SearchNavBar.swift */; };
 		FF997E8A2689E6BA0057B731 /* SingleSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF997E892689E6BA0057B731 /* SingleSearchResult.swift */; };
@@ -267,6 +268,7 @@
 		FF8AA6DC26A09E87000C6B41 /* SingleMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMessage.swift; sourceTree = "<group>"; };
 		FF8AA6DE26A09EB2000C6B41 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		FF8AA6E026A31DB9000C6B41 /* SingleMessageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMessageContent.swift; sourceTree = "<group>"; };
+		FF8AD97B26D66C3C00EC1DB8 /* TapImagesCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapImagesCarousel.swift; sourceTree = "<group>"; };
 		FF997E852689DAB20057B731 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		FF997E872689DCDF0057B731 /* SearchNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavBar.swift; sourceTree = "<group>"; };
 		FF997E892689E6BA0057B731 /* SingleSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSearchResult.swift; sourceTree = "<group>"; };
@@ -689,6 +691,7 @@
 				FFE0E4152677F97F008FA78C /* FilterMatches.swift */,
 				FFE0E4172677FD89008FA78C /* MatchesNavBar.swift */,
 				FFB1CC2626D58D9A00FC1AE2 /* MatchesIntroduction.swift */,
+				FF8AD97B26D66C3C00EC1DB8 /* TapImagesCarousel.swift */,
 			);
 			path = Matches;
 			sourceTree = "<group>";
@@ -1180,6 +1183,7 @@
 				FFCEDE082672367B0073BE20 /* Reports.swift in Sources */,
 				FF8AA6DF26A09EB2000C6B41 /* Message.swift in Sources */,
 				FF99A03A2680C6CE00F234CD /* FriendListCell.swift in Sources */,
+				FF8AD97C26D66C3C00EC1DB8 /* TapImagesCarousel.swift in Sources */,
 				FFDB15772664EE9800341E8F /* Background.swift in Sources */,
 				FF3D63CB2694914400799E72 /* FamousListCell.swift in Sources */,
 				FF18DC46269FAA96004BE946 /* ChatRoomNavBar.swift in Sources */,
