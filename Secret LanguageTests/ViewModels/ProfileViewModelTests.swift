@@ -78,30 +78,59 @@ class ProfileViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.profile != nil)
     }
     
-    func testUpdateProfileImageWithError() {
-        service.updateProfileImageError = true
-        viewModel.updateProfileImage(image: Data(count: 0))
+    func testAddProfileImageWithError() {
+        service.addImageToGalleryError = true
+        viewModel.addProfileImage(image: Data(count: 0))
         
         XCTAssertFalse(viewModel.alertMessage.isEmpty)
     }
     
-    func testUpdateProfileImageWithSuccess() {
-        service.updateProfileImageError = false
-        viewModel.updateProfileImage(image: Data(count: 0))
+    func testAddProfileImageWithSuccess() {
+        service.addImageToGalleryError = false
+        viewModel.addProfileImage(image: Data(count: 0))
         
         XCTAssertTrue(viewModel.alertMessage.isEmpty)
     }
     
-    func testDeleteProfileImageWithError() {
-        service.deleteProfileImageError = true
-        viewModel.deleteProfileImage()
+    func testRemoveProfileImageWithError() {
+        service.removeImageFromGalleryError = true
+        viewModel.removeProfileImage(id: 1)
         
         XCTAssertFalse(viewModel.alertMessage.isEmpty)
     }
     
-    func testDeleteProfileImageWithSuccess() {
-        service.deleteProfileImageError = false
-        viewModel.deleteProfileImage()
+    func testRemoveProfileImageWithSuccess() {
+        service.removeImageFromGalleryError = false
+        viewModel.removeProfileImage(id: 1)
+        
+        XCTAssertTrue(viewModel.alertMessage.isEmpty)
+    }
+    
+    func testMakeImageAsAvatarWithError() {
+        service.makeImageAvatarError = true
+        viewModel.makeProfileImage(id: 1)
+        
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+    }
+    
+    func testMakeImageAsAvatarWithSuccess() {
+        service.makeImageAvatarError = false
+        viewModel.makeProfileImage(id: 1)
+        
+        XCTAssertTrue(viewModel.alertMessage.isEmpty)
+    }
+    
+    func testGetProfileImageWithError() {
+        service.fetchProfileImageGalleryError = true
+        viewModel.getProfileImages()
+        
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+        XCTAssertTrue(viewModel.profileImages == nil )
+    }
+    
+    func testGetProfileImagesWithSuccess() {
+        service.fetchProfileImageGalleryError = false
+        viewModel.getProfileImages()
         
         XCTAssertTrue(viewModel.alertMessage.isEmpty)
     }
