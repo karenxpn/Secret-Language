@@ -44,7 +44,7 @@ class ChatViewModel: ObservableObject {
                     }
                 } else {
                     self.shouldSubscribe = false
-                    self.chats = response.value!
+                    self.chats.append(contentsOf: response.value!) 
                 }
             }.store(in: &cancellableSet)
     }

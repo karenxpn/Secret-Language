@@ -24,12 +24,17 @@ struct Chat: View {
             ZStack {
                 Background()
                 
-                if shouldSubscribe {
-                    MonthlySubscriptionView()
+                if chatVM.loading && chatVM.chats.isEmpty {
+                    ProgressView()
                 } else {
-                    ChatList()
-                        .environmentObject(chatVM)
+                    if shouldSubscribe {
+                        MonthlySubscriptionView()
+                    } else {
+                        ChatList()
+                            .environmentObject(chatVM)
+                    }
                 }
+
                 CustomAlert(isPresented: $chatVM.showAlert, alertMessage: chatVM.alertMessage, alignment: .center)
                     .offset(y: chatVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                     .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
