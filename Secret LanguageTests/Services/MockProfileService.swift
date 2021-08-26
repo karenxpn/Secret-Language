@@ -12,13 +12,57 @@ import PusherSwift
 @testable import Secret_Language
 
 class MockProfileService: ProfileServiceProtocol {
+    func fetchProfileImageGallery(token: String) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never> {
+        var result: Result<ProfileGalleryResponse, NetworkError>
+        
+        if fetchProfileImageGalleryError    { result = Result<ProfileGalleryResponse, NetworkError>.failure(networkError) }
+        else                                { result = Result<ProfileGalleryResponse, NetworkError>.success(profileGalleryResponse)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<ProfileGalleryResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
+    }
+    
+    func addProfileImageToGallery(token: String, image: Data) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never> {
+        var result: Result<ProfileGalleryResponse, NetworkError>
+        
+        if addImageToGalleryError    { result = Result<ProfileGalleryResponse, NetworkError>.failure(networkError) }
+        else                         { result = Result<ProfileGalleryResponse, NetworkError>.success(profileGalleryResponse)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<ProfileGalleryResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
+    }
+    
+    func deleteProfileImageFromGallery(token: String, imageID: Int) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never> {
+        var result: Result<ProfileGalleryResponse, NetworkError>
+        
+        if removeImageFromGalleryError      { result = Result<ProfileGalleryResponse, NetworkError>.failure(networkError) }
+        else                                { result = Result<ProfileGalleryResponse, NetworkError>.success(profileGalleryResponse)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<ProfileGalleryResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
+    }
+    
+    func makeProfileImage(token: String, imageID: Int) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never> {
+        var result: Result<ProfileGalleryResponse, NetworkError>
+        
+        if makeImageAvatarError    { result = Result<ProfileGalleryResponse, NetworkError>.failure(networkError) }
+        else                       { result = Result<ProfileGalleryResponse, NetworkError>.success(profileGalleryResponse)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<ProfileGalleryResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
+    }
     
     var reportUserError: Bool = false
     var blockUserError: Bool = false
     var flagUserError: Bool = false
     var fetchSharedProfileError: Bool = false
     
-    let sharedProfile = SharedProfileModel(id: 1, name: "karen mirakyan", age: 21, image: "", user_birthday: "", user_birthday_name: "", sln: "", sln_description: "", report: "", advice: "", famous_years: "", distance: "", instagram: "karenmirakyan")
+    let sharedProfile = SharedProfileModel(id: 1, name: "karen mirakyan", age: 21, images: [""], user_birthday: "", user_birthday_name: "", sln: "", sln_description: "", report: "", advice: "", famous_years: "", distance: "", instagram: "karenmirakyan")
+    let profileGalleryResponse = ProfileGalleryResponse(avatar: ProfileGalleryItem(id: 1, image: ""), images: [ProfileGalleryItem(id: 2, image: "")])
     
     func reportUser(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         var result: Result<GlobalResponse, NetworkError>
@@ -102,28 +146,6 @@ class MockProfileService: ProfileServiceProtocol {
         return publisher.eraseToAnyPublisher()
     }
     
-    func deleteProfileImage(token: String) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
-        var result: Result<UserModel, NetworkError>
-        
-        if deleteProfileImageError  { result = Result<UserModel, NetworkError>.failure(networkError)}
-        else                        { result = Result<UserModel, NetworkError>.success(profile)}
-        
-        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
-        let publisher = CurrentValueSubject<DataResponse<UserModel, NetworkError>, Never>(response)
-        return publisher.eraseToAnyPublisher()
-    }
-    
-    func updateProfileImage(token: String, image: Data) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
-        var result: Result<UserModel, NetworkError>
-
-        if updateProfileImageError  { result = Result<UserModel, NetworkError>.failure(networkError)}
-        else                        { result = Result<UserModel, NetworkError>.success(profile)}
-        
-        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
-        let publisher = CurrentValueSubject<DataResponse<UserModel, NetworkError>, Never>(response)
-        return publisher.eraseToAnyPublisher()
-    }
-    
     func fetchProfile(token: String) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never> {
         var result: Result<UserModel, NetworkError>
         
@@ -150,8 +172,10 @@ class MockProfileService: ProfileServiceProtocol {
     
     // profile
     var fetchProfileError: Bool = false
-    var deleteProfileImageError: Bool = false
-    var updateProfileImageError: Bool = false
+    var fetchProfileImageGalleryError: Bool = false
+    var addImageToGalleryError: Bool = false
+    var removeImageFromGalleryError: Bool = false
+    var makeImageAvatarError: Bool = false
     
     func fetchPendingRequests(token: String) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
         var result: Result<[UserPreviewModel], NetworkError>

@@ -17,22 +17,7 @@ struct SingleMatch: View {
         ZStack ( alignment: .top, content: {
             ScrollView( showsIndicators: false ) {
                 
-                WebImage(url: URL(string: match.image))
-                    .placeholder(content: {
-                        ProgressView()
-                    })
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.size.width - 24,
-                           height: UIScreen.main.bounds.size.height * 0.7)
-                    .clipped()
-                    .cornerRadius(15)
-                    .padding(.vertical)
-                    .overlay( Color.black.opacity( match.x != 0 ? 0.4 : 0)
-                                .frame(width: UIScreen.main.bounds.size.width - 24,
-                                       height: UIScreen.main.bounds.size.height * 0.7)
-                                .clipped()
-                                .cornerRadius(15))
+                TapImagesCarousel(images: match.images, x: $match.x)
                 
                 Text( "\(match.name), \(match.age)" )
                     .foregroundColor(.white)

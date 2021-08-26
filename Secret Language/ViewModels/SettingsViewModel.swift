@@ -38,7 +38,7 @@ class SettingsViewModel: ObservableObject {
     @Published var navigateToGenders: Bool = false
     @Published var navigateToBirthdayPicker: Bool = false
     @Published var navigateToGenderPreferencePicker: Bool = false
-    
+        
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     
     var dateFormatter: DateFormatter {

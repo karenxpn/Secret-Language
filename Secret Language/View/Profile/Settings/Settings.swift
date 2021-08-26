@@ -24,7 +24,7 @@ struct Settings: View {
             if settingsVM.loading {
                 ProgressView()
             } else {
-                ScrollView {
+                ScrollView( showsIndicators: false ) {
                     LazyVStack {
                         
                         Button {
@@ -132,7 +132,6 @@ struct Settings: View {
                             }.padding()
                         }
                         
-                        
                         Button {
                             settingsVM.logout()
                         } label: {
@@ -142,7 +141,10 @@ struct Settings: View {
                                 .frame(width: UIScreen.main.bounds.size.width * 0.9, height: 50)
                                 .background(.accentColor)
                                 .cornerRadius(25)
-                        }
+                        }.padding(.bottom)
+                        
+                        AllRightsReservedMadeByDoejo()
+                            .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                     }
                 }.padding(.top, 1)
             }

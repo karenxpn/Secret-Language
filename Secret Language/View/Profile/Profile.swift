@@ -11,11 +11,7 @@ import SDWebImageSwiftUI
 struct Profile: View {
     
     @ObservedObject var profileVM = ProfileViewModel()
-    @State private var showPicker: Bool = false
-    
-    init() {
-        profileVM.getProfileWithPusher()
-    }
+    @State private var navigateToGallery: Bool = false
     
     var body: some View {
         
@@ -32,18 +28,8 @@ struct Profile: View {
                         
                         VStack( spacing: 20) {
                             
-                            Menu {
-                                Button(action: {
-                                    showPicker.toggle()
-                                }, label: {
-                                    Text( NSLocalizedString("changeProfileImage", comment: "") )
-                                })
-                                
-                                Button {
-                                    profileVM.deleteProfileImage()
-                                } label: {
-                                    Text( NSLocalizedString("removeProfileImage", comment: "") )
-                                }
+                            Button {
+                                navigateToGallery.toggle()
                             } label: {
                                 ZStack( alignment: .bottomTrailing) {
                                     WebImage(url: URL(string: profileVM.profile!.image))
@@ -57,7 +43,14 @@ struct Profile: View {
                                     
                                     Image("camera")
                                 }
-                            }
+                            }.background(
+                                NavigationLink(destination: ProfileImageGallery(isPresented: $navigateToGallery),
+                                               isActive: $navigateToGallery) {
+                                    EmptyView()
+                                }.hidden()
+                            )
+
+                            
                             
                             Text( "\(profileVM.profile!.name), \(profileVM.profile!.age)")
                                 .foregroundColor(.white)
@@ -149,9 +142,7 @@ struct Profile: View {
                 UIApplication.shared.endEditing()
             }.onAppear {
                 profileVM.getProfile()
-            }.sheet(isPresented: $showPicker) {
-                ProfileImagePicker()
-                    .environmentObject( profileVM )
+                profileVM.getProfileWithPusher()
             }
         }.navigationViewStyle(StackNavigationViewStyle())
     }
