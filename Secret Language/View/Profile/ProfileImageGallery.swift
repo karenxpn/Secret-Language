@@ -44,7 +44,7 @@ struct ProfileImageGallery: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15)
                                     .fill(AppColors.reportBoxesBG)
-                                    .frame(width: UIScreen.main.bounds.size.width * 0.35, height: UIScreen.main.bounds.size.height * 0.25)
+                                    .frame(width: UIScreen.main.bounds.size.width * 0.45, height: UIScreen.main.bounds.size.height * 0.3)
                                 
                                 Image("plus")
                             }

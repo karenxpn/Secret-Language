@@ -27,8 +27,7 @@ struct SharedProfile: View {
                     ScrollView( showsIndicators: false ) {
                         
                         ZStack( alignment: .bottomTrailing) {
-                            TapImagesCarousel(images: profileVM.sharedProfile!.images, x: .constant( 0 ))
-
+                            TapImagesCarousel(images: profileVM.sharedProfile!.images.map{ $0.image }, x: .constant( 0 ))
                             
                             if !profileVM.sharedProfile!.instagram.isEmpty {
                                 Button(action: {
