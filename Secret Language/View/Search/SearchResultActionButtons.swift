@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchResultActionButtons: View {
     
     @EnvironmentObject var searchVM: SearchViewModel
+    @State private var helloSent: Bool = false
     let status: Int
     let userID: Int
     
@@ -31,7 +32,20 @@ struct SearchResultActionButtons: View {
                     )
                 })
             case 2:     // users are friends, no action needed
-                EmptyView()
+                Button(action: {
+                    searchVM.sendGreetingMessage(userID: userID)
+                    helloSent = true
+                }, label: {
+                    Text(helloSent ? "Greeting Sent" : "Say Hello")
+                        .foregroundColor( .accentColor )
+                        .font(.custom("Avenir", size: 14))
+                        .padding(.vertical, 4)
+                        .frame(width: 140)
+                        .background(RoundedRectangle(cornerRadius: 4)
+                                        .strokeBorder(AppColors.accentColor, lineWidth: 1)
+                                        .background(AppColors.dataFilterGendersBg)
+                    )
+                })
             case 3:     // friend request is send, user can withdraw the request
                 Button(action: {
                     searchVM.withdrawRequest(userID: userID)

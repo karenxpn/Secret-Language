@@ -28,16 +28,19 @@ class SearchViewModel: ObservableObject {
     var authDataManager: AuthServiceProtocol
     var userDataManager: UserServiceProtocol
     var profileDataManager: ProfileServiceProtocol
+    var chatDataManager: ChatServiceProtocol
     
     init(dataManager: SearchServiceProtocol = SearchService.shared,
          authDataManager: AuthServiceProtocol = AuthService.shared,
          userDataManager: UserServiceProtocol = UserService.shared,
-         profileDataManager: ProfileServiceProtocol = ProfileService.shared) {
+         profileDataManager: ProfileServiceProtocol = ProfileService.shared,
+         chatDataManager: ChatServiceProtocol = ChatService.shared) {
         
         self.dataManager = dataManager
         self.authDataManager = authDataManager
         self.userDataManager = userDataManager
         self.profileDataManager = profileDataManager
+        self.chatDataManager = chatDataManager
         self.ideal =  self.interestedInCategory == 0 ? 1 : self.interestedInCategory
         
         $search
@@ -136,6 +139,12 @@ class SearchViewModel: ObservableObject {
                         self.searchResults[updateIndex].friendStatus = 1
                     }
                 }
+            }.store(in: &cancellableSet)
+    }
+    
+    func sendGreetingMessage( userID: Int ) {
+        chatDataManager.sendGreetingMessage(token: token, userID: userID, message: SendingMessageModel(type: "text", content: "👋🏻"))
+            .sink { _ in
             }.store(in: &cancellableSet)
     }
 }
