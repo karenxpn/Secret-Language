@@ -11,7 +11,7 @@ import Alamofire
 import PusherSwift
 
 protocol ChatServiceProtocol {
-    func fetchChatList( token: String ) -> AnyPublisher<DataResponse<[ChatModel], NetworkError>, Never>
+    func fetchChatList( token: String, page: Int ) -> AnyPublisher<DataResponse<[ChatModel], NetworkError>, Never>
     func fetchChatListWithPusher( channel: PusherChannel, completion: @escaping ( [ChatModel] ) -> () )
     func deleteChat( token: String, roomID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func fetchRoomMessages(token: String, roomID: Int, lastMessageID: Int) -> AnyPublisher<DataResponse<[Message], NetworkError>, Never>
@@ -152,8 +152,8 @@ extension ChatService: ChatServiceProtocol {
         })
     }
     
-    func fetchChatList(token: String) -> AnyPublisher<DataResponse<[ChatModel], NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)chats")!
+    func fetchChatList(token: String, page: Int) -> AnyPublisher<DataResponse<[ChatModel], NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)chats/\(page)")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,

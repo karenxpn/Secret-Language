@@ -18,6 +18,8 @@ class ChatViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
+    @Published var page: Int = 1
+    
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ChatServiceProtocol
     var channel: PusherChannel
@@ -27,13 +29,11 @@ class ChatViewModel: ObservableObject {
     init(dataManager: ChatServiceProtocol = ChatService.shared) {
         self.dataManager = dataManager
         self.channel = PusherManager.shared.channel
-        
-        getChats()
     }
     
     func getChats() {
         loading = true
-        dataManager.fetchChatList(token: token)
+        dataManager.fetchChatList(token: token, page: page)
             .sink { response in
                 self.loading = false
                 if response.error != nil {

@@ -33,7 +33,23 @@ struct ChatList: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     .listRowInsets(EdgeInsets())
                     .background(AppColors.blueColor)
+                    .onAppear {
+                        if chat.id == chatVM.chats[chatVM.chats.count-1].id {
+                            chatVM.page += 1
+                            chatVM.getChats()
+                        }
+                    }
             }.onDelete(perform: delete)
+            
+            if chatVM.loading {
+                HStack {
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                .listRowInsets(EdgeInsets())
+                .background(AppColors.blueColor)
+            }
             
             AllRightsReservedMadeByDoejo()
                 .padding(.top)

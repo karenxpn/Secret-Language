@@ -24,15 +24,11 @@ struct Chat: View {
             ZStack {
                 Background()
                 
-                if chatVM.loading {
-                    ProgressView()
+                if shouldSubscribe {
+                    MonthlySubscriptionView()
                 } else {
-                    if shouldSubscribe {
-                        MonthlySubscriptionView()
-                    } else {
-                        ChatList()
-                            .environmentObject(chatVM)
-                    }
+                    ChatList()
+                        .environmentObject(chatVM)
                 }
                 CustomAlert(isPresented: $chatVM.showAlert, alertMessage: chatVM.alertMessage, alignment: .center)
                     .offset(y: chatVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
@@ -40,6 +36,9 @@ struct Chat: View {
                 
             }.navigationBarTitle("")
             .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("messaging", comment: "")), displayMode: .inline)
+            .onAppear {
+                chatVM.getChats()
+            }
         }.navigationViewStyle(StackNavigationViewStyle())
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "reloadChats"))) { _ in
             chatVM.getChats()
