@@ -15,7 +15,7 @@ struct FriendsList: View {
         ZStack {
             Background()
             
-            if profileVM.loading {
+            if profileVM.loading && profileVM.friendsList.isEmpty {
                 ProgressView()
             } else {
                 ScrollView {
@@ -29,6 +29,14 @@ struct FriendsList: View {
                                         profileVM.getFriends()
                                     }
                                 }
+                        }
+                        
+                        if profileVM.loading {
+                            HStack {
+                                Spacer()
+                                ProgressView()
+                                Spacer()
+                            }
                         }
                     }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 }.padding(.top, 1)

@@ -16,7 +16,7 @@ struct PendingRequestsList: View {
             
             Background()
             
-            if profileVM.loading {
+            if profileVM.loading && profileVM.pendingList.isEmpty {
                 ProgressView()
             } else {
                 ScrollView {
@@ -31,6 +31,15 @@ struct PendingRequestsList: View {
                                     }
                                 }
                         }
+                        
+                        if profileVM.loading {
+                            HStack {
+                                Spacer()
+                                ProgressView()
+                                Spacer()
+                            }
+                        }
+                        
                     }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 }.padding(.top, 1)
             }

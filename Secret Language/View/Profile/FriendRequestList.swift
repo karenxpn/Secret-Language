@@ -21,11 +21,11 @@ struct FriendRequestList: View {
         ZStack {
             Background()
             
-            if profileVM.loading {
+            if profileVM.loading && profileVM.requestsList.isEmpty {
                 ProgressView()
             } else {
                 List {
-                    ForEach(0..<profileVM.requestsList.count, id: \.self ) { index in
+                    ForEach(0..<profileVM.requestsList.count) { index in
                         FriendRequestCell(request: profileVM.requestsList[index])
                             .environmentObject(profileVM)
                             .onAppear {
@@ -41,6 +41,15 @@ struct FriendRequestList: View {
                         }
                     }).listRowBackground(Color.clear)
                     .listRowInsets(EdgeInsets())
+                    
+                    if profileVM.loading {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }.listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets())
+                    }
                     
                     Spacer()
                         .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
