@@ -151,7 +151,9 @@ extension PaymentViewModel: SKPaymentTransactionObserver {
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         print("restored")
-        print(queue)
+        print("Transactions count = \(queue.transactions.count)" )
+        print("Transactions = \(queue.transactions)")
+        print("Queue = \(queue)")
     }
 }
 

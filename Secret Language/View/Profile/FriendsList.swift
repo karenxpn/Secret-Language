@@ -11,10 +11,6 @@ struct FriendsList: View {
     
     @ObservedObject var profileVM = ProfileViewModel()
     
-    init() {
-        profileVM.getFriendsWithPusher()
-    }
-    
     var body: some View {
         ZStack {
             Background()
@@ -27,6 +23,12 @@ struct FriendsList: View {
                         ForEach(profileVM.friendsList, id: \.id ) { friend in
                             FriendListCell(friend: friend)
                                 .environmentObject(profileVM)
+                                .onAppear {
+                                    if friend.id == profileVM.friendsList[profileVM.friendsList.count-1].id {
+                                        profileVM.page += 1
+                                        profileVM.getFriends()
+                                    }
+                                }
                         }
                     }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 }.padding(.top, 1)

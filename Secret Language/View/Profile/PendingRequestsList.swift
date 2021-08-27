@@ -11,10 +11,6 @@ struct PendingRequestsList: View {
     
     @ObservedObject var profileVM = ProfileViewModel()
     
-    init() {
-        profileVM.getPendingRequestsWithPusher()
-    }
-    
     var body: some View {
         ZStack {
             
@@ -28,6 +24,12 @@ struct PendingRequestsList: View {
                         ForEach(profileVM.pendingList, id: \.id ) { request in
                             PendingListCell(pendingRequest: request)
                                 .environmentObject(profileVM)
+                                .onAppear {
+                                    if request.id == profileVM.pendingList[profileVM.pendingList.count-1].id {
+                                        profileVM.page += 1
+                                        profileVM.getPendingRequests()
+                                    }
+                                }
                         }
                     }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 }.padding(.top, 1)

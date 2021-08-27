@@ -15,8 +15,6 @@ struct FriendRequestList: View {
         UITableView.appearance().separatorStyle = .none
         UITableViewCell.appearance().backgroundColor = .none
         UITableView.appearance().backgroundColor = .none
-        
-        profileVM.getFriendRequestsWithPusher()
     }
     
     var body: some View {
@@ -30,6 +28,12 @@ struct FriendRequestList: View {
                     ForEach(0..<profileVM.requestsList.count, id: \.self ) { index in
                         FriendRequestCell(request: profileVM.requestsList[index])
                             .environmentObject(profileVM)
+                            .onAppear {
+                                if index == profileVM.requestsList.count-1 {
+                                    profileVM.page += 1
+                                    profileVM.getFriendRequests()
+                                }
+                            }
                     }.onDelete(perform: { indexSet in
                         if let removeIndex = indexSet.first {
                             profileVM.rejectFriendRequest(userID: profileVM.requestsList[removeIndex].id)
