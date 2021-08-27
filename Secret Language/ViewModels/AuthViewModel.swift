@@ -67,6 +67,8 @@ class AuthViewModel: ObservableObject {
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
+        formatter.locale = Locale(identifier: "us")
+        formatter.setLocalizedDateFormatFromTemplate("MMMM dd, yyyy")
         return formatter
     }
     

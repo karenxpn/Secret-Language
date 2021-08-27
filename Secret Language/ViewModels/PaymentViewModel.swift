@@ -130,8 +130,10 @@ extension PaymentViewModel: SKPaymentTransactionObserver {
                 break
             case .purchased, .restored:
                 shouldFinishTransaction = true
+                break
             case .failed:
                 shouldFinishTransaction = true
+                break
                 
             @unknown default:
                 break
@@ -145,6 +147,11 @@ extension PaymentViewModel: SKPaymentTransactionObserver {
                 }
             }
         }
+    }
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        print("restored")
+        print(queue)
     }
 }
 

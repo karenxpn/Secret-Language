@@ -14,10 +14,11 @@ struct SignUp: View {
     @State private var openCountryCodeList: Bool = false
     @State private var animate: Bool = false
     
-    
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
+        formatter.locale = Locale(identifier: "us")
+        formatter.setLocalizedDateFormatFromTemplate("MMMM dd, yyyy")
         return formatter
     }
     
@@ -58,7 +59,10 @@ struct SignUp: View {
                         Text( dateFormatter.string(from: authVM.birthdayDate))
                             .foregroundColor(.white)
                             .font(.custom("times", size: 20))
+                    }).fullScreenCover(isPresented: $fullscreen, content: {
+                        BirthdayPicker(birthdayDate: $authVM.birthdayDate)
                     })
+                    
                     Divider()
                         .padding(.bottom)
                 }
@@ -196,7 +200,6 @@ struct SignUp: View {
                                 .foregroundColor(.blue)
                                 .font(.custom("Gilroy-Regular", size: 10))
                         }
-                        
                     }
                     Spacer()
                 }
@@ -211,13 +214,11 @@ struct SignUp: View {
         }.navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         .navigationBarTitle(Text( "" ))
-        .fullScreenCover(isPresented: $fullscreen, content: {
-            BirthdayPicker(birthdayDate: $authVM.birthdayDate)
-        }).onTapGesture {
-            UIApplication.shared.endEditing()
-        }.sheet(isPresented: $openCountryCodeList) {
+        .sheet(isPresented: $openCountryCodeList) {
             CountryCodeSelection(isPresented: $openCountryCodeList, country: $authVM.signUpCountryCode)
-        }
+        }.gesture(DragGesture().onChanged({ _ in
+            UIApplication.shared.endEditing()
+        }))
     }
 }
 

@@ -12,6 +12,7 @@ struct Profile: View {
     
     @ObservedObject var profileVM = ProfileViewModel()
     @State private var navigateToGallery: Bool = false
+    @State private var navigateToSettings: Bool = false
     
     var body: some View {
         
@@ -129,16 +130,20 @@ struct Profile: View {
                         .frame( width: 40, height: 40)
                 }).disabled( profileVM.profile?.id == nil)
                 
-                NavigationLink(
-                    destination: Settings(),
-                    label: {
-                        Image("settings")
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20)
-                            .padding([.leading, .top, .bottom])
-                    })
-            })
-            .onTapGesture {
+                
+                Button {
+                    navigateToSettings.toggle()
+                } label: {
+                    Image("settings")
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 20, height: 20)
+                        .padding([.leading, .top, .bottom])
+                }.background(
+                    NavigationLink( destination: Settings(), isActive: $navigateToSettings, label: {
+                            EmptyView()
+                    }).hidden()
+                )
+            }).onTapGesture {
                 UIApplication.shared.endEditing()
             }.onAppear {
                 profileVM.getProfile()

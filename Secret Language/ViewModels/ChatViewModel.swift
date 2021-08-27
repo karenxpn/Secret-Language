@@ -57,6 +57,7 @@ class ChatViewModel: ObservableObject {
     
     func getChatsWithPusher() {
         dataManager.fetchChatListWithPusher(channel: channel) { chats in
+//            self.page = 1
             self.chats = chats
         }
     }

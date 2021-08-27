@@ -44,6 +44,8 @@ class SettingsViewModel: ObservableObject {
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
+        formatter.locale = Locale(identifier: "us")
+        formatter.setLocalizedDateFormatFromTemplate("MMMM dd, yyyy")
         return formatter
     }
     
@@ -61,8 +63,6 @@ class SettingsViewModel: ObservableObject {
           authDataManager: AuthServiceProtocol = AuthService.shared) {
         self.dataManager = dataManager
         self.authDataManager = authDataManager
-        
-        getSettingsFields()
     }
     
     func getSettingsFields() {
@@ -116,6 +116,7 @@ class SettingsViewModel: ObservableObject {
     func updateFields(updatedFrom: String) {        
         let parameters = SettingsFieldsUpdateModel(date_name: dateFormatter.string(from: self.birthdayDate), name: fullName, gender: gender.id, country_name: location, instagram: instagramUsername, gender_preference: genderPreference)
         
+        print( dateFormatter.string(from: self.birthdayDate))
         dataManager.updateFields(token: token, parameters: parameters)
             .sink { response in
                 

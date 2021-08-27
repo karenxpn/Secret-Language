@@ -31,6 +31,7 @@ struct BirthdayPicker: View {
                     .datePickerStyle(WheelDatePickerStyle())
                     .labelsHidden()
                     .colorMultiply(.accentColor)
+                    .environment(\.locale, Locale.init(identifier: "en_US"))
 
                 Spacer()
                 

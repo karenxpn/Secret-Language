@@ -155,6 +155,9 @@ struct Settings: View {
             
         }.navigationBarTitle("")
         .navigationBarTitleView(FriendsNavBar(title: NSLocalizedString("settings", comment: "")))
+        .onAppear(perform: {
+            settingsVM.getSettingsFields()
+        })
         .alert(isPresented: $showForm, self.formType == .name ?
                 TextFieldAlert(title: NSLocalizedString("fullName", comment: ""), message: "") { (text) in
                     if text != nil && ( text?.count ?? 0 ) >= 3 && ( text?.count ?? 0 ) < 20 {
