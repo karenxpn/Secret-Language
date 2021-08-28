@@ -35,6 +35,8 @@ class ProfileViewModel: ObservableObject {
     @Published var loadingImages: Bool = false
     @Published var profileImages: ProfileGalleryResponse? = nil
     
+    @Published var page: Int = 1
+    
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ProfileServiceProtocol
     var matchDataManager: MatchServiceProtocol
@@ -52,39 +54,39 @@ class ProfileViewModel: ObservableObject {
     
     func getFriends() {
         loading = true
-        dataManager.fetchFriends(token: token)
+        dataManager.fetchFriends(token: token, page: page)
             .sink { response in
                 self.loading = false
                 if response.error != nil {
                     self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
-                    self.friendsList = response.value!
+                    self.friendsList.append(contentsOf: response.value!)
                 }
             }.store(in: &cancellableSet)
     }
     
     func getFriendRequests() {
         loading = true
-        dataManager.fetchFriendRequests(token: token)
+        dataManager.fetchFriendRequests(token: token, page: page)
             .sink { response in
                 self.loading = false
                 if response.error != nil {
                     self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
-                    self.requestsList = response.value!
+                    self.requestsList.append(contentsOf: response.value!)
                 }
             }.store(in: &cancellableSet)
     }
     
     func getPendingRequests() {
         loading = true
-        dataManager.fetchPendingRequests(token: token)
+        dataManager.fetchPendingRequests(token: token, page: page)
             .sink { response in
                 self.loading = false
                 if response.error != nil {
                     self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
-                    self.pendingList = response.value!
+                    self.pendingList.append(contentsOf: response.value!)
                 }
             }.store(in: &cancellableSet)
     }
@@ -102,46 +104,48 @@ class ProfileViewModel: ObservableObject {
         }.store(in: &cancellableSet)
     }
     
+    // requests flow
     func acceptFriendRequest( userID: Int ) {
         dataManager.acceptFriendRequest(token: token, userID: userID)
-            .sink { _ in
+            .sink { response in
+                
+                if response.error != nil {
+                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
+                } else {
+                    if let index = self.requestsList.firstIndex(where: { $0.id == userID }) {
+                        self.requestsList.remove(at: index)
+                    }
+                }
             }.store(in: &cancellableSet)
     }
     
     func rejectFriendRequest( userID: Int ) {
         dataManager.rejectFriendRequest(token: token, userID: userID)
-            .sink { _ in
+            .sink { response in
+                
+                if response.error != nil {
+                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
+                } else {
+                    if let index = self.requestsList.firstIndex(where: { $0.id == userID }) {
+                        self.requestsList.remove(at: index)
+                    }
+                }
             }.store(in: &cancellableSet)
     }
     
     func withdrawFriendRequest( userID: Int ) {
         dataManager.withdrawFriendRequest(token: token, userID: userID)
-            .sink { _ in
+            .sink { response in
+                
+                if response.error != nil {
+                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
+                } else {
+                    if let index = self.pendingList.firstIndex(where: { $0.id == userID }) {
+                        self.pendingList.remove(at: index)
+                    }
+                }                
             }.store(in: &cancellableSet)
     }
-    
-//    func updateProfileImage(image: Data) {
-//        dataManager.updateProfileImage(token: self.token, image: image)
-//            .sink { (response) in
-//                
-//                if response.error != nil {
-//                    self.makeAlert(with: response.error!, for: &self.alertMessage)
-//                } else {
-//                    self.profile = response.value!
-//                }
-//            }.store(in: &cancellableSet)
-//    }
-//    
-//    func deleteProfileImage() {
-//        dataManager.deleteProfileImage(token: token)
-//            .sink { response in
-//                if response.error != nil {
-//                    self.makeAlert(with: response.error!, for: &self.alertMessage)
-//                } else {
-//                    self.profile = response.value!
-//                }
-//            }.store(in: &cancellableSet)
-//    }
     
     func getProfile() {
         loading = true
@@ -290,24 +294,6 @@ class ProfileViewModel: ObservableObject {
     func getProfileWithPusher() {
         dataManager.fetchProfileWithPusher(channel: channel) { profile in
             self.profile = profile
-        }
-    }
-    
-    func getFriendsWithPusher() {
-        dataManager.fetchFriendsWithPusher(channel: channel) { friends in
-            self.friendsList = friends
-        }
-    }
-    
-    func getFriendRequestsWithPusher() {
-        dataManager.fetchFriendRequestsWithPusher(channel: channel) { requests in
-            self.requestsList = requests
-        }
-    }
-    
-    func getPendingRequestsWithPusher() {
-        dataManager.fetchPendingRequestsWithPusher(channel: channel) { requests in
-            self.pendingList = requests
         }
     }
         

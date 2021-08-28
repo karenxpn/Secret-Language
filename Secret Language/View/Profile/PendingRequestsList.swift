@@ -11,16 +11,12 @@ struct PendingRequestsList: View {
     
     @ObservedObject var profileVM = ProfileViewModel()
     
-    init() {
-        profileVM.getPendingRequestsWithPusher()
-    }
-    
     var body: some View {
         ZStack {
             
             Background()
             
-            if profileVM.loading {
+            if profileVM.loading && profileVM.pendingList.isEmpty {
                 ProgressView()
             } else {
                 ScrollView {
@@ -28,7 +24,22 @@ struct PendingRequestsList: View {
                         ForEach(profileVM.pendingList, id: \.id ) { request in
                             PendingListCell(pendingRequest: request)
                                 .environmentObject(profileVM)
+                                .onAppear {
+                                    if request.id == profileVM.pendingList[profileVM.pendingList.count-1].id {
+                                        profileVM.page += 1
+                                        profileVM.getPendingRequests()
+                                    }
+                                }
                         }
+                        
+                        if profileVM.loading {
+                            HStack {
+                                Spacer()
+                                ProgressView()
+                                Spacer()
+                            }
+                        }
+                        
                     }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 }.padding(.top, 1)
             }

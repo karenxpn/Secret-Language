@@ -25,6 +25,7 @@ class PaymentViewModel: NSObject, ObservableObject {
     @Published var birthdayOrRelationship: Bool = false
     
     @Published var loadingPaymentProccess: Bool = false
+    @Published var loadingRestoreProccess: Bool = false
     
     private let allProductIdentifiers = Credentials.appStoreProductIdentifiers
     
@@ -91,7 +92,7 @@ extension PaymentViewModel {
     }
     
     func restorePurchase() {
-        SKPaymentQueue.default().add(self)
+        self.loadingRestoreProccess = true
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
 }
@@ -150,8 +151,11 @@ extension PaymentViewModel: SKPaymentTransactionObserver {
     }
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        print("restored")
-        print(queue)
+        self.loadingRestoreProccess = false
+        self.saveSubscriptionPaymentDetails()
+//        for transaction in queue.transactions {
+//            print("\(transaction.payment.productIdentifier) \(transaction.transactionDate)")
+//        }
     }
 }
 
