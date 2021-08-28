@@ -53,6 +53,7 @@ struct MonthlySubscriptionView: View {
                         .font(.custom("Avenir", size: 16))
                         .multilineTextAlignment(.center)
                 }.padding()
+                .fixedSize(horizontal: false, vertical: true)
                 
                 VStack( spacing: 15 ) {
                     Button(action: {
@@ -80,14 +81,21 @@ struct MonthlySubscriptionView: View {
                         paymentVM.restorePurchase()
                     }, label: {
                         
-                        Text( NSLocalizedString("restore", comment: ""))
-                            .foregroundColor(.accentColor)
-                            .font(.custom("times", size: 16))
-                            .fontWeight(.semibold)
-                            .frame(width: .greedy, height: 50)
-                            .background(RoundedRectangle(cornerRadius: 25.0).strokeBorder(AppColors.accentColor, lineWidth: 2))
-                            .cornerRadius(25)
-                    })
+                        if paymentVM.loadingRestoreProccess {
+                            ProgressView()
+                                .frame(width: .greedy, height: 50)
+                                .background(.accentColor)
+                                .cornerRadius(25)
+                        }  else {
+                            Text( NSLocalizedString("restore", comment: ""))
+                                .foregroundColor(.accentColor)
+                                .font(.custom("times", size: 16))
+                                .fontWeight(.semibold)
+                                .frame(width: .greedy, height: 50)
+                                .background(RoundedRectangle(cornerRadius: 25.0).strokeBorder(AppColors.accentColor, lineWidth: 2))
+                                .cornerRadius(25)
+                        }
+                    }).disabled(paymentVM.loadingRestoreProccess)
                 }.padding()
                 
                 VStack(spacing: 5) {

@@ -12,10 +12,6 @@ struct Chat: View {
     @ObservedObject var chatVM = ChatViewModel()
     
     init() {
-        UITableView.appearance().separatorStyle = .none
-        UITableViewCell.appearance().backgroundColor = .none
-        UITableView.appearance().backgroundColor = .none
-        
         chatVM.getChatsWithPusher()
     }
     
