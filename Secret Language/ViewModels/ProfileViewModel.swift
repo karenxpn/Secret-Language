@@ -293,7 +293,9 @@ class ProfileViewModel: ObservableObject {
     
     func getProfileWithPusher() {
         dataManager.fetchProfileWithPusher(channel: channel) { profile in
-            self.profile = profile
+            self.profile?.requests = profile.requests
+            self.profile?.pending = profile.pending
+            self.profile?.friends = profile.friends
         }
     }
         

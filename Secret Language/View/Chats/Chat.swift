@@ -9,11 +9,7 @@ import SwiftUI
 
 struct Chat: View {
     @AppStorage( "shouldSubscribe" ) private var shouldSubscribe: Bool = true
-    @ObservedObject var chatVM = ChatViewModel()
-    
-    init() {
-        chatVM.getChatsWithPusher()
-    }
+    @StateObject var chatVM = ChatViewModel()
     
     var body: some View {
         NavigationView {
@@ -25,7 +21,7 @@ struct Chat: View {
                 } else {
                     if shouldSubscribe {
                         MonthlySubscriptionView()
-                    } else {
+                    } else if !chatVM.chats.isEmpty{
                         ChatList()
                             .environmentObject(chatVM)
                     }
@@ -39,6 +35,7 @@ struct Chat: View {
             .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("messaging", comment: "")), displayMode: .inline)
             .onAppear {
                 chatVM.getChats()
+                chatVM.getChatsWithPusher()
             }
         }.navigationViewStyle(StackNavigationViewStyle())
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "reloadChats"))) { _ in

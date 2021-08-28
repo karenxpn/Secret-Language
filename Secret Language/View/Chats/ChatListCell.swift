@@ -75,7 +75,7 @@ struct ChatListCell: View {
                                     
                                     messageCreatedAt
                                 }
-
+                                
                             } else {
                                 HStack {
                                     Text( chat.message!.content[0].message)

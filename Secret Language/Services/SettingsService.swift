@@ -59,5 +59,5 @@ extension SettingsService: SettingsServiceProtocol {
             }
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
-    }    
+    }
 }

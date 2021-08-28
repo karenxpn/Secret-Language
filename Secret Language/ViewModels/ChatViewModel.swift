@@ -35,6 +35,7 @@ class ChatViewModel: ObservableObject {
         loading = true
         dataManager.fetchChatList(token: token, page: page)
             .sink { response in
+                
                 self.loading = false
                 if response.error != nil {
                     if response.error!.initialError.responseCode == Credentials.paymentErrorCode {
@@ -44,7 +45,12 @@ class ChatViewModel: ObservableObject {
                     }
                 } else {
                     self.shouldSubscribe = false
-                    self.chats.append(contentsOf: response.value!)
+                    self.page += 1
+                    for chat in response.value! {
+                        if !self.chats.contains(where: { $0.id == chat.id }) {
+                            self.chats.append(chat)
+                        }
+                    }
                 }
             }.store(in: &cancellableSet)
     }
@@ -57,7 +63,7 @@ class ChatViewModel: ObservableObject {
     
     func getChatsWithPusher() {
         dataManager.fetchChatListWithPusher(channel: channel) { chats in
-//            self.page = 1
+            self.page = 2
             self.chats = chats
         }
     }

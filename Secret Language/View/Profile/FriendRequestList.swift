@@ -25,7 +25,7 @@ struct FriendRequestList: View {
                 ProgressView()
             } else {
                 List {
-                    ForEach(0..<profileVM.requestsList.count) { index in
+                    ForEach(0..<profileVM.requestsList.count, id: \.self) { index in
                         FriendRequestCell(request: profileVM.requestsList[index])
                             .environmentObject(profileVM)
                             .onAppear {
