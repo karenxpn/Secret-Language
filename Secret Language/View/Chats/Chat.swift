@@ -40,7 +40,9 @@ struct Chat: View {
         }.navigationViewStyle(StackNavigationViewStyle())
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "reloadChats"))) { _ in
             chatVM.getChats()
-        }
+        }        .gesture(DragGesture().onChanged({ _ in
+            UIApplication.shared.endEditing()
+        }))
     }
 }
 

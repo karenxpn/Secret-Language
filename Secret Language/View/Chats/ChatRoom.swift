@@ -56,8 +56,6 @@ struct ChatRoom: View {
             }
         }.onDisappear {
             NotificationCenter.default.post(name: Notification.Name("showTabBar"), object: nil)
-        }.onTapGesture {
-            UIApplication.shared.endEditing()
         }.fullScreenCover(isPresented: $roomVM.openSheet) {
             
             if roomVM.activeSheet == .gallery {
