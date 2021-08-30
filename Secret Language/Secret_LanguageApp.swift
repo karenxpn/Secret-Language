@@ -13,7 +13,7 @@ struct Secret_LanguageApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) private var phase
-
+    
     @AppStorage( "newRelease" ) private var newRelease: Bool = true
     @AppStorage( "token" ) private var token = ""
     
