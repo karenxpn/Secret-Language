@@ -34,7 +34,7 @@ struct MonthlySubscriptionView: View {
                                 .font(.custom("times", size: 35))
                                 .fontWeight(.heavy)
                             
-                            Text( NSLocalizedString("month", comment: ""))
+                            Text( NSLocalizedString("monthly", comment: ""))
                                 .foregroundColor(.accentColor)
                                 .font(.custom("Avenir", size: 21))
                         }
