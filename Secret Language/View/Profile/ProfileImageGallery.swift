@@ -37,16 +37,18 @@ struct ProfileImageGallery: View {
                     
                     LazyVGrid(columns: columns, spacing: 20, content: {
                         
-                        Button {
-                            openSheet.toggle()
-                        } label: {
-                            
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 15)
-                                    .fill(AppColors.reportBoxesBG)
-                                    .frame(width: UIScreen.main.bounds.size.width * 0.45, height: UIScreen.main.bounds.size.height * 0.3)
+                        if profileVM.profileImages!.canAdd {
+                            Button {
+                                openSheet.toggle()
+                            } label: {
                                 
-                                Image("plus")
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .fill(AppColors.reportBoxesBG)
+                                        .frame(width: UIScreen.main.bounds.size.width * 0.45, height: UIScreen.main.bounds.size.height * 0.3)
+                                    
+                                    Image("plus")
+                                }
                             }
                         }
                         
