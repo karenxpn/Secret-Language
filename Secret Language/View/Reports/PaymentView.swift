@@ -10,7 +10,7 @@ import SwiftUI
 struct PaymentView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var paymentVM = PaymentViewModel()
+    @StateObject private var paymentVM = PaymentViewModel.shared
     
     let birthdayDate: String
     let firstReportDate: String
@@ -60,9 +60,8 @@ struct PaymentView: View {
                     
                     
                     Button(action: {
-                        if let product = paymentVM.product(for: Credentials.reportProductIdentifier) {
-                            paymentVM.purchaseProduct(product)
-                        }
+                        paymentVM.loadingPaymentProccess = true
+                        paymentVM.purchaseMyProduct(index: 0)
                     }, label: {
                         
                         if paymentVM.loadingPaymentProccess {
@@ -112,6 +111,13 @@ struct PaymentView: View {
             paymentVM.firstReportDate = firstReportDate
             paymentVM.secondReportDate = secondReportDate
             paymentVM.birthdayOrRelationship = birthdayOrRelationship
+            
+            paymentVM.purchaseStatusBlock = { type in
+                paymentVM.loadingPaymentProccess = false
+                if type == .purchased {
+                    paymentVM.savePurchaseDetails()
+                }
+            }
         }
     }
 }

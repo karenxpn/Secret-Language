@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MonthlySubscriptionView: View {
-    @StateObject var paymentVM = PaymentViewModel()
+    @StateObject var paymentVM = PaymentViewModel.shared
     
     var body: some View {
         
@@ -57,9 +57,8 @@ struct MonthlySubscriptionView: View {
                 
                 VStack( spacing: 15 ) {
                     Button(action: {
-                        if let product = paymentVM.product(for: Credentials.monthProductIdentifier) {
-                            paymentVM.purchaseProduct(product)
-                        }
+                        paymentVM.loadingPaymentProccess = true
+                        paymentVM.purchaseMyProduct(index: 1)
                     }, label: {
                         if paymentVM.loadingPaymentProccess {
                             ProgressView()
@@ -78,6 +77,7 @@ struct MonthlySubscriptionView: View {
                     }).disabled(paymentVM.loadingPaymentProccess)
                     
                     Button(action: {
+                        paymentVM.loadingRestoreProccess = true
                         paymentVM.restorePurchase()
                     }, label: {
                         
@@ -115,6 +115,16 @@ struct MonthlySubscriptionView: View {
         .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("subscription", comment: "")), displayMode: .inline)
         .onAppear {
             paymentVM.paymentType = "monthly"
+            paymentVM.purchaseStatusBlock = {(type) in
+                print(type.message())
+                paymentVM.loadingPaymentProccess = false
+                paymentVM.loadingRestoreProccess = false
+
+                if type == .purchased || type == .restored {
+                    
+                    paymentVM.saveSubscriptionPaymentDetails()
+                }
+            }
         }
     }
 }
