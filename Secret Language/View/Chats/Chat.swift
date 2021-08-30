@@ -11,6 +11,12 @@ struct Chat: View {
     @AppStorage( "shouldSubscribe" ) private var shouldSubscribe: Bool = true
     @StateObject var chatVM = ChatViewModel()
     
+    init() {
+        UITableView.appearance().separatorStyle = .none
+        UITableViewCell.appearance().backgroundColor = .none
+        UITableView.appearance().backgroundColor = .none
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -21,7 +27,7 @@ struct Chat: View {
                 } else {
                     if shouldSubscribe {
                         MonthlySubscriptionView()
-                    } else if !chatVM.chats.isEmpty{
+                    } else if !chatVM.chats.isEmpty {
                         ChatList()
                             .environmentObject(chatVM)
                     }
