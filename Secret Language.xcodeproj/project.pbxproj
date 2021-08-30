@@ -1394,7 +1394,7 @@
 				DEVELOPMENT_TEAM = 9TN7Y68V59;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Secret Language/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1420,7 +1420,7 @@
 				DEVELOPMENT_TEAM = 9TN7Y68V59;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Secret Language/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
