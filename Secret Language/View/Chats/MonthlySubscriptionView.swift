@@ -116,7 +116,6 @@ struct MonthlySubscriptionView: View {
         .onAppear {
             paymentVM.paymentType = "monthly"
             paymentVM.purchaseStatusBlock = {(type) in
-                print(type.message())
                 paymentVM.loadingPaymentProccess = false
                 paymentVM.loadingRestoreProccess = false
 

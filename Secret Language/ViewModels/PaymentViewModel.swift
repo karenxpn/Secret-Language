@@ -68,9 +68,6 @@ class PaymentViewModel: NSObject, ObservableObject {
             let payment = SKPayment(product: product)
             SKPaymentQueue.default().add(self)
             SKPaymentQueue.default().add(payment)
-            
-            print("PRODUCT TO PURCHASE: \(product.productIdentifier)")
-            //            productID = product.productIdentifier
         } else {
             purchaseStatusBlock?(.disabled)
         }
@@ -101,14 +98,6 @@ extension PaymentViewModel: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         if (response.products.count > 0) {
             fetchedProducts = response.products
-            for product in fetchedProducts{
-                let numberFormatter = NumberFormatter()
-                numberFormatter.formatterBehavior = .behavior10_4
-                numberFormatter.numberStyle = .currency
-                numberFormatter.locale = product.priceLocale
-                let price1Str = numberFormatter.string(from: product.price)
-                print(product.localizedDescription + "\nfor just \(price1Str!)")
-            }
         }
     }
 }
@@ -119,17 +108,14 @@ extension PaymentViewModel: SKPaymentTransactionObserver {
             if let trans = transaction as? SKPaymentTransaction {
                 switch trans.transactionState {
                 case .purchased:
-                    print("purchased")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     purchaseStatusBlock?(.purchased)
                     break
                     
                 case .failed:
-                    print("failed")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     break
                 case .restored:
-                    print("restored")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     break
                     

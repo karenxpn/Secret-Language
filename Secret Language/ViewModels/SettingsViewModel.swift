@@ -116,7 +116,6 @@ class SettingsViewModel: ObservableObject {
     func updateFields(updatedFrom: String) {        
         let parameters = SettingsFieldsUpdateModel(date_name: dateFormatter.string(from: self.birthdayDate), name: fullName, gender: gender.id, country_name: location, instagram: instagramUsername, gender_preference: genderPreference)
         
-        print( dateFormatter.string(from: self.birthdayDate))
         dataManager.updateFields(token: token, parameters: parameters)
             .sink { response in
                 

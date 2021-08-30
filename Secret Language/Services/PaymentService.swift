@@ -82,7 +82,6 @@ extension PaymentService: PaymentServiceProtocol {
     }
     
     func postPaymentStatus(token: String, receipt: String, reportDate: String, firstReportDate: String, secondReportDate: String, birthdayOrRelationship: Bool ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
-        print("called")
         let url = URL(string: "\(Credentials.BASE_URL)payment/addPaidReport")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
