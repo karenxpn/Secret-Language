@@ -98,17 +98,9 @@ struct MonthlySubscriptionView: View {
                     }).disabled(paymentVM.loadingRestoreProccess)
                 }.padding()
                 
-                VStack(spacing: 5) {
-                    Text( NSLocalizedString("rightsReserved", comment: ""))
-                        .foregroundColor(.white)
-                        .font(.custom("Gilroy-Regular", size: 10))
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(5)
-                    
-                    Link(NSLocalizedString("madeByDoejo", comment: ""), destination: URL(string: "https://doejo.com")!)
-                        .foregroundColor(.blue)
-                        .font(.custom("Gilroy-Regular", size: 10))
-                }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                AllRightsReservedMadeByDoejo()
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 
             }.padding(.top, 1)
         }.navigationBarTitle("")
@@ -120,7 +112,6 @@ struct MonthlySubscriptionView: View {
                 paymentVM.loadingRestoreProccess = false
 
                 if type == .purchased || type == .restored {
-                    
                     paymentVM.saveSubscriptionPaymentDetails()
                 }
             }
