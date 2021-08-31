@@ -7,6 +7,7 @@
 
 import Foundation
 struct ProfileGalleryResponse: Codable {
+    var canAdd: Bool
     var avatar: ProfileGalleryItem
     var images: [ProfileGalleryItem]
 }

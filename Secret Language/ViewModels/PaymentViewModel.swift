@@ -9,10 +9,30 @@ import Combine
 import StoreKit
 import SwiftUI
 
-typealias FetchCompletionHandler = ( ([SKProduct]) -> Void )
-typealias PurchaseCompletionHandler = ( ( SKPaymentTransaction? ) -> Void )
-
+enum IAPHandlerAlertType{
+    case disabled
+    case restored
+    case purchased
+    
+    func message() -> String{
+        switch self {
+        case .disabled: return "Purchases are disabled in your device!"
+        case .restored: return "You've successfully restored your purchase!"
+        case .purchased: return "You've successfully bought this purchase!"
+        }
+    }
+}
 class PaymentViewModel: NSObject, ObservableObject {
+    
+    static let shared = PaymentViewModel()
+    
+    private let allProductIdentifiers = Credentials.appStoreProductIdentifiers
+    fileprivate var productsRequest = SKProductsRequest()
+    fileprivate var fetchedProducts = [SKProduct]()
+    
+    var purchaseStatusBlock: ((IAPHandlerAlertType) -> Void)?
+    
+    
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "shouldPurchaseReport" ) private var shouldPurchase: Bool = true
     @AppStorage( "shouldSubscribe" ) private var shouldSubscribe: Bool = true
@@ -27,13 +47,6 @@ class PaymentViewModel: NSObject, ObservableObject {
     @Published var loadingPaymentProccess: Bool = false
     @Published var loadingRestoreProccess: Bool = false
     
-    private let allProductIdentifiers = Credentials.appStoreProductIdentifiers
-    
-    private var productsRequest: SKProductsRequest?
-    private var fetchedProducts = [SKProduct]()
-    private var fetchCompletionHandler: FetchCompletionHandler?
-    private var purchaseCompletionHandler: PurchaseCompletionHandler?
-    
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: PaymentServiceProtocol
     
@@ -41,29 +54,30 @@ class PaymentViewModel: NSObject, ObservableObject {
         self.dataManager = dataManager
         super.init()
         
-        startObservingPaymentQueue()
-        fetchProducts { _ in }
+        self.fetchAvailableProducts()
     }
     
-    private func startObservingPaymentQueue() {
-        SKPaymentQueue.default().add(self)
-    }
     
-    private func fetchProducts(_ completion: @escaping FetchCompletionHandler ) {
-        guard self.productsRequest == nil else { return }
+    func canMakePurchases() -> Bool {  return SKPaymentQueue.canMakePayments()  }
+    
+    func purchaseMyProduct(index: Int){
+        if fetchedProducts.count == 0 { return }
         
-        fetchCompletionHandler = completion
+        if self.canMakePurchases() {
+            let product = fetchedProducts[index]
+            let payment = SKPayment(product: product)
+            SKPaymentQueue.default().add(self)
+            SKPaymentQueue.default().add(payment)
+        } else {
+            purchaseStatusBlock?(.disabled)
+        }
+    }
+    
+    func fetchAvailableProducts(){
         
         productsRequest = SKProductsRequest(productIdentifiers: allProductIdentifiers)
-        productsRequest?.delegate = self
-        productsRequest?.start()
-    }
-    
-    private func buy(_ product: SKProduct , completion: @escaping PurchaseCompletionHandler ) {
-        purchaseCompletionHandler = completion
-        
-        let payment = SKPayment(product: product)
-        SKPaymentQueue.default().add(payment)
+        productsRequest.delegate = self
+        productsRequest.start()
     }
 }
 
@@ -73,26 +87,8 @@ extension PaymentViewModel {
         return fetchedProducts.first(where: { $0.productIdentifier == identifier } )
     }
     
-    func purchaseProduct( _ product: SKProduct ) {
-        loadingPaymentProccess = true
-        
-        startObservingPaymentQueue()
-        buy(product) { transaction in
-            if let tr = transaction {
-                if tr.transactionState == .purchased || tr.transactionState == .restored {
-                    if self.paymentType == "report" {
-                        self.savePurchaseDetails()
-                    } else {
-                        self.saveSubscriptionPaymentDetails()
-                    }
-                }
-            }
-            self.loadingPaymentProccess = false
-        }
-    }
-    
     func restorePurchase() {
-        self.loadingRestoreProccess = true
+        SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
 }
@@ -100,62 +96,35 @@ extension PaymentViewModel {
 
 extension PaymentViewModel: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        let loadedProducts = response.products
-        
-        guard !loadedProducts.isEmpty else {
-            
-            productsRequest = nil
-            return
-        }
-        
-        // Cache the fetched products
-        fetchedProducts = loadedProducts
-        
-        // notify anyone waiting on the product load
-        DispatchQueue.main.async {
-            self.fetchCompletionHandler?( loadedProducts )
-            self.fetchCompletionHandler = nil
-            self.productsRequest = nil
+        if (response.products.count > 0) {
+            fetchedProducts = response.products
         }
     }
 }
 
 extension PaymentViewModel: SKPaymentTransactionObserver {
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        
-        for transaction in transactions {
-            var shouldFinishTransaction: Bool = false
-            
-            switch transaction.transactionState {
-            case .purchasing, .deferred:
-                break
-            case .purchased, .restored:
-                shouldFinishTransaction = true
-                break
-            case .failed:
-                shouldFinishTransaction = true
-                break
-                
-            @unknown default:
-                break
-            }
-            
-            if shouldFinishTransaction {
-                SKPaymentQueue.default().finishTransaction(transaction)
-                DispatchQueue.main.async {
-                    self.purchaseCompletionHandler?( transaction )
-                    self.purchaseCompletionHandler = nil
-                }
-            }
-        }
+        for transaction:AnyObject in transactions {
+            if let trans = transaction as? SKPaymentTransaction {
+                switch trans.transactionState {
+                case .purchased:
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    purchaseStatusBlock?(.purchased)
+                    break
+                    
+                case .failed:
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    break
+                case .restored:
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    break
+                    
+                default: break
+                }}}
     }
     
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        self.loadingRestoreProccess = false
-        self.saveSubscriptionPaymentDetails()
-//        for transaction in queue.transactions {
-//            print("\(transaction.payment.productIdentifier) \(transaction.transactionDate)")
-//        }
+        purchaseStatusBlock?(.restored)
     }
 }
 

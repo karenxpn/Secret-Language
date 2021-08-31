@@ -45,11 +45,8 @@ class ChatViewModel: ObservableObject {
                     }
                 } else {
                     self.shouldSubscribe = false
-                    for chat in response.value! {
-                        if !self.chats.contains(where: { $0.id == chat.id }) {
-                            self.chats.append(chat)
-                        }
-                    }
+                    self.page += 1
+                    self.chats.append(contentsOf: response.value!)
                 }
             }.store(in: &cancellableSet)
     }
@@ -62,7 +59,7 @@ class ChatViewModel: ObservableObject {
     
     func getChatsWithPusher() {
         dataManager.fetchChatListWithPusher(channel: channel) { chats in
-            self.page = 1
+            self.page = 2
             self.chats = chats
         }
     }

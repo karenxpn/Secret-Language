@@ -67,7 +67,6 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
         let info = response.notification.request.content.userInfo
         if let first = info.first {
             let firstInfo = first.value
-            print(firstInfo)
             
             let jsonData = try? JSONSerialization.data (withJSONObject: firstInfo, options: [])
             if let data = jsonData {

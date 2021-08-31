@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MonthlySubscriptionView: View {
-    @StateObject var paymentVM = PaymentViewModel()
+    @StateObject var paymentVM = PaymentViewModel.shared
     
     var body: some View {
         
@@ -34,7 +34,7 @@ struct MonthlySubscriptionView: View {
                                 .font(.custom("times", size: 35))
                                 .fontWeight(.heavy)
                             
-                            Text( NSLocalizedString("month", comment: ""))
+                            Text( NSLocalizedString("monthly", comment: ""))
                                 .foregroundColor(.accentColor)
                                 .font(.custom("Avenir", size: 21))
                         }
@@ -57,9 +57,8 @@ struct MonthlySubscriptionView: View {
                 
                 VStack( spacing: 15 ) {
                     Button(action: {
-                        if let product = paymentVM.product(for: Credentials.monthProductIdentifier) {
-                            paymentVM.purchaseProduct(product)
-                        }
+                        paymentVM.loadingPaymentProccess = true
+                        paymentVM.purchaseMyProduct(index: 1)
                     }, label: {
                         if paymentVM.loadingPaymentProccess {
                             ProgressView()
@@ -78,6 +77,7 @@ struct MonthlySubscriptionView: View {
                     }).disabled(paymentVM.loadingPaymentProccess)
                     
                     Button(action: {
+                        paymentVM.loadingRestoreProccess = true
                         paymentVM.restorePurchase()
                     }, label: {
                         
@@ -98,23 +98,23 @@ struct MonthlySubscriptionView: View {
                     }).disabled(paymentVM.loadingRestoreProccess)
                 }.padding()
                 
-                VStack(spacing: 5) {
-                    Text( NSLocalizedString("rightsReserved", comment: ""))
-                        .foregroundColor(.white)
-                        .font(.custom("Gilroy-Regular", size: 10))
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(5)
-                    
-                    Link(NSLocalizedString("madeByDoejo", comment: ""), destination: URL(string: "https://doejo.com")!)
-                        .foregroundColor(.blue)
-                        .font(.custom("Gilroy-Regular", size: 10))
-                }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                AllRightsReservedMadeByDoejo()
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 
             }.padding(.top, 1)
         }.navigationBarTitle("")
         .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("subscription", comment: "")), displayMode: .inline)
         .onAppear {
             paymentVM.paymentType = "monthly"
+            paymentVM.purchaseStatusBlock = {(type) in
+                paymentVM.loadingPaymentProccess = false
+                paymentVM.loadingRestoreProccess = false
+
+                if type == .purchased || type == .restored {
+                    paymentVM.saveSubscriptionPaymentDetails()
+                }
+            }
         }
     }
 }

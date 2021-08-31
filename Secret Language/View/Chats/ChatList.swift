@@ -32,6 +32,11 @@ struct ChatList: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                     .listRowInsets(EdgeInsets())
                     .background(AppColors.blueColor)
+                    .onAppear(perform: {
+                        if chat.id == chatVM.chats[chatVM.chats.count-1].id && !chatVM.loading{
+                            chatVM.getChats()
+                        }
+                    })
             }
             
             if chatVM.loading {
@@ -50,11 +55,6 @@ struct ChatList: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                 .listRowInsets(EdgeInsets())
                 .background(AppColors.blueColor)
-                .onAppear(perform: {
-                    chatVM.page += 1
-                    chatVM.getChats()
-                })
-            
             
             if chatVM.chats.count > 4 {
                 Spacer().padding(.bottom, UIScreen.main.bounds.size.height * 0.2)
