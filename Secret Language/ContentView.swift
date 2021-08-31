@@ -73,7 +73,6 @@ struct ContentView: View {
                 shared = SharedURL(id: sharedID, type: "relationship" )
             }
         }).onChange(of: notificationsVM.changeToTab) { value in
-            print( value )
             if value != -1 {
                 self.currentTab = value
             }
