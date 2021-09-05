@@ -15,8 +15,7 @@ struct SearchFilter: View {
         NavigationView {
             ZStack {
                 
-                AppColors.dataFilterTopBg
-                    .edgesIgnoringSafeArea(.all)
+                Background()
                 
                 ZStack( alignment: .bottomTrailing ) {
                     
@@ -39,7 +38,7 @@ struct SearchFilter: View {
                                             .padding(.horizontal, 18)
                                             .background(RoundedRectangle(cornerRadius: 4)
                                                             .strokeBorder(searchVM.dataFilterGender == gender.id ? AppColors.accentColor : Color.clear, lineWidth: 1.5)
-                                                            .background(searchVM.dataFilterGender == gender.id ? .black : AppColors.dataFilterGendersBg)
+                                                            .background(searchVM.dataFilterGender == gender.id ? .black : AppColors.boxColor)
                                             )
                                     }
                                     Spacer()
@@ -51,31 +50,25 @@ struct SearchFilter: View {
                                 .foregroundColor(.gray)
                                 .padding(.vertical)
                             
-                            HStack {
+                            VStack {
                                 ForEach( searchVM.dataFilterCategories, id: \.id ) { category in
                                     
-                                    Spacer()
-                                    
-                                    VStack( spacing: 4) {
-                                        
-                                        Button {
-                                            withAnimation {
-                                                searchVM.dataFilterCategory = category.id
-                                            }
-                                        } label: {
+                                    Button {
+                                        searchVM.dataFilterCategory = category.id
+                                    } label: {
+                                        VStack {
                                             Text( category.name )
+                                                .foregroundColor(searchVM.dataFilterCategory == category.id ? .black : .white)
                                                 .font(.custom("times", size: 16))
-                                                .foregroundColor(searchVM.dataFilterCategory == category.id ? .accentColor : .systemGray3)
-                                                .padding(.top, 8)
-                                        }
-                                        
-                                        if searchVM.dataFilterCategory == category.id {
-                                            Capsule()
-                                                .fill(AppColors.accentColor)
-                                                .frame(width: UIScreen.main.bounds.size.width / 5, height: 2)
-                                        }
+                                            
+                                            Text( category.description )
+                                                .foregroundColor(Color(UIColor(red: 55/255, green: 66/255, blue: 77/255, alpha: 1)))
+                                                .font(.custom("Avenir", size: 10))
+                                        }.frame(minWidth: 0, maxWidth: .infinity)
+                                        .padding()
+                                        .background(searchVM.dataFilterCategory == category.id ? .accentColor : AppColors.boxColor)
+                                        .cornerRadius(15)
                                     }
-                                    Spacer()
                                 }
                             }
                         }.padding()
