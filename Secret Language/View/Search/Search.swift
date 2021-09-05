@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Search: View {
     @ObservedObject var searchVM = SearchViewModel()
+    @State private var showFilter: Bool = false
     
     var body: some View {
         NavigationView {
@@ -100,7 +101,19 @@ struct Search: View {
             .navigationBarTitleView(SearchNavBar(title: "Community" ), displayMode: .inline)
             .onAppear(perform: {
                 searchVM.getIdealCategories()
+            }).navigationBarItems(trailing: Button(action: {
+                showFilter.toggle()
+            }, label: {
+                Image( "filterIcon" )
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20, height: 20)
+                    .padding([.leading, .top, .bottom])
+            }))
+            .fullScreenCover(isPresented: $showFilter, content: {
+                SearchFilter()
+                    .environmentObject(searchVM)
             })
+            
         }.navigationViewStyle(StackNavigationViewStyle())
         .gesture(DragGesture().onChanged({ _ in
             UIApplication.shared.endEditing()

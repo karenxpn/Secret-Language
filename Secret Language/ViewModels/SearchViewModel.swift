@@ -13,6 +13,8 @@ class SearchViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "interestedInCategory" ) private var interestedInCategory: Int = 0
+    @AppStorage( "genderPreference" ) private var genderPreference: Int = 0
+
     @Published var search: String = ""
     @Published var searchResults = [SearchUserModel]()
     @Published var ideal: Int = 1
@@ -22,6 +24,16 @@ class SearchViewModel: ObservableObject {
     @Published var alertMessage: String = ""
     
     @Published var ideals = [ConnectionTypeModel]()
+    
+    @Published var dataFilterGender: Int = 0
+    @Published var dataFilterGenders = [GenderModel(id: 1, gender_name: "Male"),
+                                        GenderModel(id: 2, gender_name: "Female"),
+                                        GenderModel(id: 0, gender_name: "Everyone")]
+    
+    @Published var dataFilterCategories = [ConnectionTypeModel]()
+    @Published var dataFilterCategory: Int = 0
+
+
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: SearchServiceProtocol
@@ -41,7 +53,9 @@ class SearchViewModel: ObservableObject {
         self.userDataManager = userDataManager
         self.profileDataManager = profileDataManager
         self.chatDataManager = chatDataManager
-        self.ideal =  self.interestedInCategory == 0 ? 1 : self.interestedInCategory
+        self.ideal = self.interestedInCategory == 0 ? 1 : self.interestedInCategory
+        self.dataFilterGender = self.genderPreference
+        self.dataFilterCategory = self.interestedInCategory
         
         $search
             .removeDuplicates()
@@ -64,7 +78,7 @@ class SearchViewModel: ObservableObject {
     
     func getSearchUsers(search: String) {
         loading = true
-        dataManager.fetchSearchedUsers(token: token, searchText: search, idealFor: ideal)
+        dataManager.fetchSearchedUsers(token: token, searchText: search, idealFor: dataFilterCategory, gender: dataFilterGender)
             .sink { response in
                 self.loading = false
                 if response.error == nil {
@@ -94,6 +108,7 @@ class SearchViewModel: ObservableObject {
                     self.showAlert.toggle()
                 } else {
                     self.ideals = response.value!
+                    self.dataFilterCategories = response.value!
                 }
             }.store(in: &cancellableSet)
     }
@@ -146,5 +161,10 @@ class SearchViewModel: ObservableObject {
         chatDataManager.sendGreetingMessage(token: token, userID: userID, message: SendingMessageModel(type: "text", content: "👋🏻"))
             .sink { _ in
             }.store(in: &cancellableSet)
+    }
+    
+    func reinitializeFilterFields() {
+        self.dataFilterGender = self.genderPreference
+        self.dataFilterCategory = self.interestedInCategory
     }
 }
