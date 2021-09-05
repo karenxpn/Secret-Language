@@ -11,7 +11,7 @@ import PusherSwift
 import Combine
 
 protocol SearchServiceProtocol {
-    func fetchSearchedUsers( token: String, searchText: String, idealFor: Int ) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never>
+    func fetchSearchedUsers( token: String, searchText: String, idealFor: Int, gender: Int ) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never>
     func fetchPopularUsers( token: String, interestedIn: Int ) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never>
 }
 
@@ -46,14 +46,16 @@ extension SearchService: SearchServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func fetchSearchedUsers( token: String, searchText: String, idealFor: Int ) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never> {
+    func fetchSearchedUsers( token: String, searchText: String, idealFor: Int, gender: Int) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never> {
 
         let url = URL(string: "\(Credentials.BASE_URL)user/searchAllUsers")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
 
         return AF.request(url,
                           method: .post,
-                          parameters: [ "input" : searchText],
+                          parameters: [ "input" : searchText,
+                                        "interestedIn" : idealFor,
+                                        "gender" : gender],
                           headers: headers)
             .validate()
             .publishDecodable(type: [SearchUserModel].self)
