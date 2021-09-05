@@ -69,7 +69,7 @@ struct UserFullName: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 50, height: 50)
-                    }).disabled(authVM.signUpFullName.count < 3 && authVM.signUpFullName.count >= 20)
+                    }).disabled(authVM.signUpFullName.count < 3 || authVM.signUpFullName.count >= 20)
                 }
                 
             }.padding()
