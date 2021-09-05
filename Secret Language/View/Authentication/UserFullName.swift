@@ -44,7 +44,7 @@ struct UserFullName: View {
                         .foregroundColor(.gray)
                         .font(.custom("Gilroy-Regular", size: 10))
                     
-                    TextField(NSLocalizedString("John Smith", comment: ""), text: $authVM.signUpFullName)
+                    TextField(NSLocalizedString("John Smith(min 3 characters)", comment: ""), text: $authVM.signUpFullName)
                         .font(.custom("times", size: 20))
                         .foregroundColor(.white)
                         .textContentType(.name)
