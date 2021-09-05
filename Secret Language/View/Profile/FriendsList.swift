@@ -24,7 +24,7 @@ struct FriendsList: View {
                             FriendListCell(friend: friend)
                                 .environmentObject(profileVM)
                                 .onAppear {
-                                    if friend.id == profileVM.friendsList[profileVM.friendsList.count-1].id {
+                                    if friend.id == profileVM.friendsList[profileVM.friendsList.count-1].id && !profileVM.loading {
                                         profileVM.page += 1
                                         profileVM.getFriends()
                                     }

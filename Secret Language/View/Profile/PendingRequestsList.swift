@@ -25,7 +25,7 @@ struct PendingRequestsList: View {
                             PendingListCell(pendingRequest: request)
                                 .environmentObject(profileVM)
                                 .onAppear {
-                                    if request.id == profileVM.pendingList[profileVM.pendingList.count-1].id {
+                                    if request.id == profileVM.pendingList[profileVM.pendingList.count-1].id && !profileVM.loading {
                                         profileVM.page += 1
                                         profileVM.getPendingRequests()
                                     }

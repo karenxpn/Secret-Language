@@ -29,7 +29,7 @@ struct FriendRequestList: View {
                         FriendRequestCell(request: profileVM.requestsList[index])
                             .environmentObject(profileVM)
                             .onAppear {
-                                if index == profileVM.requestsList.count-1 {
+                                if index == profileVM.requestsList.count-1 && !profileVM.loading {
                                     profileVM.page += 1
                                     profileVM.getFriendRequests()
                                 }
