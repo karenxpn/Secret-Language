@@ -83,7 +83,6 @@ class SearchViewModel: ObservableObject {
                 self.loading = false
                 if response.error == nil {
                     self.searchResults = response.value!
-                    print(response.value!)
                 }
             }.store(in: &cancellableSet)
     }
@@ -162,10 +161,5 @@ class SearchViewModel: ObservableObject {
         chatDataManager.sendGreetingMessage(token: token, userID: userID, message: SendingMessageModel(type: "text", content: "👋🏻"))
             .sink { _ in
             }.store(in: &cancellableSet)
-    }
-    
-    func reinitializeFilterFields() {
-        self.dataFilterGender = self.genderPreference
-        self.dataFilterCategory = self.interestedInCategory
     }
 }

@@ -11,6 +11,9 @@ struct SearchFilter: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var searchVM: SearchViewModel
     
+    @State private var chosenGender: Int = 0
+    @State private var chosenCategory: Int = 0
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -28,17 +31,17 @@ struct SearchFilter: View {
                                     Spacer()
                                     Button {
                                         withAnimation {
-                                            searchVM.dataFilterGender = gender.id
+                                            chosenGender = gender.id
                                         }
                                     } label: {
                                         Text( gender.gender_name )
                                             .font(.custom("times", size: 16))
-                                            .foregroundColor(searchVM.dataFilterGender == gender.id ? .accentColor : .systemGray3)
+                                            .foregroundColor(chosenGender == gender.id ? .accentColor : .systemGray3)
                                             .padding(.vertical, 8)
                                             .padding(.horizontal, 18)
                                             .background(RoundedRectangle(cornerRadius: 4)
-                                                            .strokeBorder(searchVM.dataFilterGender == gender.id ? AppColors.accentColor : Color.clear, lineWidth: 1.5)
-                                                            .background(searchVM.dataFilterGender == gender.id ? .black : AppColors.boxColor)
+                                                            .strokeBorder(chosenGender == gender.id ? AppColors.accentColor : Color.clear, lineWidth: 1.5)
+                                                            .background(chosenGender == gender.id ? .black : AppColors.boxColor)
                                             )
                                     }
                                     Spacer()
@@ -54,11 +57,11 @@ struct SearchFilter: View {
                                 ForEach( searchVM.dataFilterCategories, id: \.id ) { category in
                                     
                                     Button {
-                                        searchVM.dataFilterCategory = category.id
+                                        chosenCategory = category.id
                                     } label: {
                                         VStack {
                                             Text( category.name )
-                                                .foregroundColor(searchVM.dataFilterCategory == category.id ? .black : .white)
+                                                .foregroundColor(chosenCategory == category.id ? .black : .white)
                                                 .font(.custom("times", size: 16))
                                             
                                             Text( category.description )
@@ -66,7 +69,7 @@ struct SearchFilter: View {
                                                 .font(.custom("Avenir", size: 10))
                                         }.frame(minWidth: 0, maxWidth: .infinity)
                                         .padding()
-                                        .background(searchVM.dataFilterCategory == category.id ? .accentColor : AppColors.boxColor)
+                                        .background(chosenCategory == category.id ? .accentColor : AppColors.boxColor)
                                         .cornerRadius(15)
                                     }
                                 }
@@ -77,6 +80,8 @@ struct SearchFilter: View {
                     
                     Button(action: {
                         // perform api request and close the view
+                        searchVM.dataFilterGender = chosenGender
+                        searchVM.dataFilterCategory = chosenCategory
                         searchVM.getSearchUsers(search: searchVM.search)
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
@@ -89,7 +94,6 @@ struct SearchFilter: View {
             }.navigationBarTitle("")
             .navigationBarTitleView(MatchesNavBar(title: NSLocalizedString("searchFilter", comment: "")), displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
-                searchVM.reinitializeFilterFields()
                 presentationMode.wrappedValue.dismiss()
             }, label: {
                 Image("close")
@@ -97,7 +101,10 @@ struct SearchFilter: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 18, height: 18)
                     .padding([.leading, .top, .bottom])
-            }))
+            })).onAppear {
+                chosenGender = searchVM.dataFilterGender
+                chosenCategory = searchVM.dataFilterCategory
+            }
         }
     }
 }
