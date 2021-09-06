@@ -50,6 +50,10 @@ extension SearchService: SearchServiceProtocol {
 
         let url = URL(string: "\(Credentials.BASE_URL)user/searchAllUsers")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        print("idealFor = \(idealFor)")
+        print("gender = \(gender)")
+        print("input = \(searchText)")
 
         return AF.request(url,
                           method: .post,
