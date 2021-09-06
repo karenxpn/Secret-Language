@@ -54,12 +54,12 @@ extension SearchService: SearchServiceProtocol {
         print("idealFor = \(idealFor)")
         print("gender = \(gender)")
         print("input = \(searchText)")
+        let parameters = SearchRequestModel(input: searchText, gender: gender, interestedIn: idealFor)
 
         return AF.request(url,
                           method: .post,
-                          parameters: [ "input" : searchText,
-                                        "interestedIn" : idealFor,
-                                        "gender" : gender],
+                          parameters: parameters,
+                          encoder: JSONParameterEncoder.default,
                           headers: headers)
             .validate()
             .publishDecodable(type: [SearchUserModel].self)

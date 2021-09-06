@@ -110,6 +110,7 @@
 		FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A04D268367C500F234CD /* PendingRequestsList.swift */; };
 		FF99A0502683684400F234CD /* PendingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF99A04F2683684400F234CD /* PendingListCell.swift */; };
 		FFA62CF026E55494008A14F9 /* SearchFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA62CEF26E55494008A14F9 /* SearchFilter.swift */; };
+		FFA62CF226E677EF008A14F9 /* SearchRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA62CF126E677EF008A14F9 /* SearchRequestModel.swift */; };
 		FFAD61F026D00FF8004EEF36 /* AllRightsReservedMadeByDoejo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD61EF26D00FF8004EEF36 /* AllRightsReservedMadeByDoejo.swift */; };
 		FFAD920226AF6299007984ED /* SettingsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920126AF6299007984ED /* SettingsListCell.swift */; };
 		FFAD920426AF6418007984ED /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAD920326AF6418007984ED /* SettingsViewModel.swift */; };
@@ -308,6 +309,7 @@
 		FF99A04D268367C500F234CD /* PendingRequestsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestsList.swift; sourceTree = "<group>"; };
 		FF99A04F2683684400F234CD /* PendingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingListCell.swift; sourceTree = "<group>"; };
 		FFA62CEF26E55494008A14F9 /* SearchFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilter.swift; sourceTree = "<group>"; };
+		FFA62CF126E677EF008A14F9 /* SearchRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequestModel.swift; sourceTree = "<group>"; };
 		FFAD61EF26D00FF8004EEF36 /* AllRightsReservedMadeByDoejo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRightsReservedMadeByDoejo.swift; sourceTree = "<group>"; };
 		FFAD920126AF6299007984ED /* SettingsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListCell.swift; sourceTree = "<group>"; };
 		FFAD920326AF6418007984ED /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -678,6 +680,7 @@
 				FFAD920726AF6EF2007984ED /* SettingsFields.swift */,
 				FFAD920F26B07F90007984ED /* SettingsFieldsUpdateModel.swift */,
 				FF8AD98526D6D6C500EC1DB8 /* ProfileGalleryResponse.swift */,
+				FFA62CF126E677EF008A14F9 /* SearchRequestModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1209,6 +1212,7 @@
 				FFE0E42826794F97008FA78C /* CategoryItemModel.swift in Sources */,
 				FFE0E4182677FD89008FA78C /* MatchesNavBar.swift in Sources */,
 				FF3D63E4269924DC00799E72 /* PreviewParameters.swift in Sources */,
+				FFA62CF226E677EF008A14F9 /* SearchRequestModel.swift in Sources */,
 				FF997E9B268CDB300057B731 /* SearchResultActionButtons.swift in Sources */,
 				FF997E97268C97880057B731 /* ReportBirthdayPicker.swift in Sources */,
 				FF3D63D1269508D500799E72 /* ImageHelper.swift in Sources */,
