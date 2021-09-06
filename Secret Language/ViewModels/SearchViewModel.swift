@@ -81,7 +81,6 @@ class SearchViewModel: ObservableObject {
         dataManager.fetchSearchedUsers(token: token, searchText: search, idealFor: dataFilterCategory, gender: dataFilterGender)
             .sink { response in
                 self.loading = false
-                print(response)
                 if response.error == nil {
                     self.searchResults = response.value!
                     print(response.value!)
