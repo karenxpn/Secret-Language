@@ -20,11 +20,12 @@ class PusherManager {
         @AppStorage( "username" ) var username: String = ""
         
         let options = PusherClientOptions(
+            autoReconnect: true,
             host: .cluster(Credentials.pusher_cluster)
         )
         
         self.pusher = Pusher(key: Credentials.pusher_key, options: options)
-        self.channel = pusher.subscribe(username)
         pusher.connect()
+        self.channel = pusher.subscribe(username)
     }
 }

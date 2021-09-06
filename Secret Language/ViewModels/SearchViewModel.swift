@@ -108,7 +108,7 @@ class SearchViewModel: ObservableObject {
                     self.showAlert.toggle()
                 } else {
                     self.ideals = response.value!
-                    self.dataFilterCategories = response.value!
+                    self.dataFilterCategories =  [ConnectionTypeModel(id: 0, name: "Everyone", description: "")] + response.value!
                 }
             }.store(in: &cancellableSet)
     }

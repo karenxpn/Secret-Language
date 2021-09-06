@@ -48,6 +48,7 @@ struct ChatRoom: View {
             NotificationCenter.default.post(name: Notification.Name("hideTabBar"), object: nil)
             
             roomVM.roomID = roomID
+            roomVM.removePusherHandlers()
             roomVM.getChatRoomMessagesWithPusher()
             roomVM.getTypingStatus()
             

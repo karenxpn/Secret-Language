@@ -39,16 +39,11 @@ struct TapImagesCarousel: View {
                 if point.y <= UIScreen.main.bounds.size.height * 0.7 {
                     if (UIScreen.main.bounds.size.width * 0.7...UIScreen.main.bounds.size.width).contains(point.x){
                         if currentImageIndex < images.count-1 {
-                            
-                            withAnimation {
-                                currentImageIndex += 1
-                            }
+                            currentImageIndex += 1
                         }
                     } else if  (0...100).contains(point.x) {
                         if currentImageIndex > 0 {
-                            withAnimation {
                                 currentImageIndex -= 1
-                            }
                         }
                     }
                 }
