@@ -57,12 +57,15 @@ class SettingsViewModel: ObservableObject {
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: SettingsServiceProtocol
+    var profileDataManager: ProfileServiceProtocol
     var authDataManager: AuthServiceProtocol
     
     init( dataManager: SettingsServiceProtocol = SettingsService.shared,
-          authDataManager: AuthServiceProtocol = AuthService.shared) {
+          authDataManager: AuthServiceProtocol = AuthService.shared,
+          profileDataManager: ProfileServiceProtocol = ProfileService.shared) {
         self.dataManager = dataManager
         self.authDataManager = authDataManager
+        self.profileDataManager = profileDataManager
     }
     
     func getSettingsFields() {
@@ -138,6 +141,21 @@ class SettingsViewModel: ObservableObject {
     
     func logout() {
         authDataManager.logout(token: token)
+            .sink { response in
+                if response.error != nil {
+                    self.makeAlert(with: response.error!,
+                                   showAlert: &self.showAlert,
+                                   alertMessage: &self.alertMessage)
+                } else {
+                    self.token = ""
+                    self.username = ""
+                    self.userID = 0
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func deactivateAccount() {
+        profileDataManager.deactivateAccount(token: token)
             .sink { response in
                 if response.error != nil {
                     self.makeAlert(with: response.error!,

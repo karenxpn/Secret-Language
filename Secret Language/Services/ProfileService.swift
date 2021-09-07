@@ -36,6 +36,8 @@ protocol ProfileServiceProtocol {
     func addProfileImageToGallery( token: String, image: Data ) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never>
     func deleteProfileImageFromGallery( token: String, imageID: Int ) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never>
     func makeProfileImage( token: String, imageID: Int ) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never>
+    
+    func deactivateAccount(token: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
 
 }
 
@@ -373,6 +375,26 @@ extension ProfileService: ProfileServiceProtocol {
                           headers: headers)
             .validate()
             .publishDecodable(type: ProfileGalleryResponse.self)
+            .map { response in
+                
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func deactivateAccount(token: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/deleteMe")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        return AF.request(url,
+                          method: .delete,
+                          headers: headers)
+            .validate()
+            .publishDecodable(type: GlobalResponse.self)
             .map { response in
                 
                 response.mapError { error in

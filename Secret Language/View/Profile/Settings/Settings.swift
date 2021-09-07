@@ -16,6 +16,7 @@ struct Settings: View {
     @ObservedObject var settingsVM = SettingsViewModel()
     @State private var showForm: Bool = false
     @State private var formType: FormType? = .none
+    @State private var showDeactivateAlert: Bool = false
     
     var body: some View {
         ZStack {
@@ -143,6 +144,17 @@ struct Settings: View {
                                 .cornerRadius(25)
                         }.padding(.bottom)
                         
+                        Button {
+                            showDeactivateAlert.toggle()
+                        } label: {
+                            Text( "Deactivate account" )
+                                .foregroundColor(.red)
+                                .font(.custom("Avenir", size: 18))
+                                .frame(width: UIScreen.main.bounds.size.width * 0.9, height: 50)
+                                .background(RoundedRectangle(cornerRadius: 25).stroke(Color.red, lineWidth: 2))
+                                .cornerRadius(25)
+                        }.padding(.bottom)
+                        
                         AllRightsReservedMadeByDoejo()
                             .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                     }
@@ -172,6 +184,11 @@ struct Settings: View {
                         UIApplication.shared.endEditing()
                     }
                })
+        .alert(isPresented: $showDeactivateAlert, content: {
+            Alert(title: Text( NSLocalizedString("accountDeactivation", comment: "") ), message: Text( NSLocalizedString("areYouSureToDeactivate", comment: "") ), primaryButton: .destructive(Text( "Deactivate" ), action: {
+                settingsVM.deactivateAccount()
+            }), secondaryButton: .default(Text( "Cancel" )))
+        })
     }
 }
 
