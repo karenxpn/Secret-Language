@@ -27,10 +27,6 @@ struct Reports: View {
                 ScrollView( showsIndicators: false ) {
                     
                     VStack ( spacing: 10 ) {
-                        Image( "reports" )
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 100, height: 100)
                         
                         Text( "Secret Language\n of Birthdays & Relationships" )
                             .foregroundColor(.white)

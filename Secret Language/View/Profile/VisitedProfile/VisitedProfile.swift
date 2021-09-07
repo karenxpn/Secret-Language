@@ -56,7 +56,12 @@ struct VisitedProfile: View {
                         Text(profileVM.visitedProfile!.ideal)
                             .foregroundColor(.accentColor)
                             .font(.custom("avenir", size: 14))
+                        
                     }
+                    
+                    Text("\(profileVM.visitedProfile!.registrationDate)")
+                        .foregroundColor(.white)
+                        .font(.custom("avenir", size: 14))
                     
                     Text( "..." )
                         .foregroundColor(.white)
