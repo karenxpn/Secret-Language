@@ -66,6 +66,26 @@ struct Settings: View {
                             }
                         )
                         
+                        
+                        Button(action: {
+                            settingsVM.navigateToInterests.toggle()
+                        }, label: {
+                            SettingsListCell(title: NSLocalizedString("interestedIn", comment: ""), content: settingsVM.interestedInText)
+                        }).background(
+                            
+                            ZStack {
+                                
+                                NavigationLink(destination: EmptyView()) {
+                                    EmptyView()
+                                }
+                                
+                                NavigationLink(destination: SettingsInterests().environmentObject(settingsVM),
+                                               isActive: $settingsVM.navigateToInterests) {
+                                    EmptyView()
+                                }.hidden()
+                            }
+                        )
+                        
                         Button {
                             formType = .name
                             showForm.toggle()

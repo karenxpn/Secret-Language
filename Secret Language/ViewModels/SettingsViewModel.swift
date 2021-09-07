@@ -14,6 +14,7 @@ class SettingsViewModel: ObservableObject {
     @AppStorage("username") private var username: String = ""
     @AppStorage( "userID" ) private var userID: Int = 0
     @AppStorage( "genderPreference" ) private var locallyStoredGenderPreference: Int = 0
+    @AppStorage( "interestedInCategory" ) private var locallyStoredInterestedIn: Int = 0
 
     
     @Published var gender: GenderModel = GenderModel(id: 1, gender_name: "Male")
@@ -22,6 +23,7 @@ class SettingsViewModel: ObservableObject {
     @Published var birthday: String = "Jul 26, 1999"
     @Published var instagramUsername: String = ""
     @Published var genderPreference: Int = 0
+    @Published var interestedIn: Int = 0
     
     @Published var genderPreferenceText: String = ""
     
@@ -35,9 +37,15 @@ class SettingsViewModel: ObservableObject {
     
     @Published var allGenders = [GenderModel]()
     @Published var loadingGenders: Bool = false
+    
+    @Published var allInterests = [ConnectionTypeModel]()
+    @Published var loadingInterests: Bool = false
+    @Published var interestedInText: String = ""
+    
     @Published var navigateToGenders: Bool = false
     @Published var navigateToBirthdayPicker: Bool = false
     @Published var navigateToGenderPreferencePicker: Bool = false
+    @Published var navigateToInterests: Bool = false
         
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     
@@ -59,13 +67,16 @@ class SettingsViewModel: ObservableObject {
     var dataManager: SettingsServiceProtocol
     var profileDataManager: ProfileServiceProtocol
     var authDataManager: AuthServiceProtocol
+    var matchDataManager: MatchServiceProtocol
     
     init( dataManager: SettingsServiceProtocol = SettingsService.shared,
           authDataManager: AuthServiceProtocol = AuthService.shared,
-          profileDataManager: ProfileServiceProtocol = ProfileService.shared) {
+          profileDataManager: ProfileServiceProtocol = ProfileService.shared,
+          matchDataManager: MatchServiceProtocol = MatchService.shared) {
         self.dataManager = dataManager
         self.authDataManager = authDataManager
         self.profileDataManager = profileDataManager
+        self.matchDataManager = matchDataManager
     }
     
     func getSettingsFields() {
@@ -87,7 +98,11 @@ class SettingsViewModel: ObservableObject {
                     self.birthday = settings.date_name
                     self.instagramUsername = settings.instagram
                     self.genderPreference = settings.gender_preference
+                    self.interestedIn = settings.interested_in.id
+
                     self.locallyStoredGenderPreference = settings.gender_preference
+                    self.locallyStoredInterestedIn = settings.interested_in.id
+                    self.interestedInText = settings.interested_in.name
                     
                     switch settings.gender_preference {
                     case 0:
@@ -116,8 +131,19 @@ class SettingsViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
+    func getAllInterests() {
+        loadingInterests = true
+        matchDataManager.fetchCategories(token: token)
+            .sink { response in
+                self.loadingInterests = false
+                if response.error == nil {
+                    self.allInterests = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
     func updateFields(updatedFrom: String) {        
-        let parameters = SettingsFieldsUpdateModel(date_name: dateFormatter.string(from: self.birthdayDate), name: fullName, gender: gender.id, country_name: location, instagram: instagramUsername, gender_preference: genderPreference)
+        let parameters = SettingsFieldsUpdateModel(date_name: dateFormatter.string(from: self.birthdayDate), name: fullName, gender: gender.id, country_name: location, instagram: instagramUsername, gender_preference: genderPreference, interested_in: interestedIn)
         
         dataManager.updateFields(token: token, parameters: parameters)
             .sink { response in
@@ -129,6 +155,8 @@ class SettingsViewModel: ObservableObject {
                         self.navigateToBirthdayPicker.toggle()
                     } else if updatedFrom == "preferences" {
                         self.navigateToGenderPreferencePicker.toggle()
+                    } else if updatedFrom == "interestedIn" {
+                        self.navigateToInterests.toggle()
                     }
                     
                     self.getSettingsFields()
