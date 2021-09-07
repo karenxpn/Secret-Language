@@ -122,7 +122,7 @@ struct Settings: View {
                                         .foregroundColor(.gray)
                                         .font(.custom("Gilroy-Regular", size: 10))
                                     
-                                    TextField("username", text: $settingsVM.instagramUsername)
+                                    Text( settingsVM.instagramUsername )
                                         .foregroundColor(.white)
                                         .font(.custom("times", size: 20))
                                     
@@ -181,7 +181,6 @@ struct Settings: View {
                     if text != nil {
                         settingsVM.instagramUsername = text!
                         settingsVM.updateFields(updatedFrom: "")
-                        UIApplication.shared.endEditing()
                     }
                })
         .alert(isPresented: $showDeactivateAlert, content: {

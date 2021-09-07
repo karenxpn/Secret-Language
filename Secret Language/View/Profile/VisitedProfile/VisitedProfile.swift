@@ -59,9 +59,9 @@ struct VisitedProfile: View {
                         
                     }
                     
-                    Text("\(profileVM.visitedProfile!.registrationDate)")
+                    Text( profileVM.visitedProfile!.distance )
+                        .font(.custom("times", size: 16))
                         .foregroundColor(.white)
-                        .font(.custom("avenir", size: 14))
                     
                     Text( "..." )
                         .foregroundColor(.white)
@@ -145,8 +145,12 @@ struct VisitedProfile: View {
                             .font(.custom("times", size: 16))
                             .multilineTextAlignment(.center)
                             .padding(8)
+                        
+                    Text("\(profileVM.visitedProfile!.registrationDate)")
+                        .foregroundColor(.white)
+                        .font(.custom("avenir", size: 14))
+                        .padding()
                     }
-                    
                     
                     AllRightsReservedMadeByDoejo()
 
