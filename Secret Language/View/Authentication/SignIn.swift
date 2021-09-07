@@ -51,9 +51,21 @@ struct SignIn: View {
                         Button {
                             openCountryCodeList.toggle()
                         } label: {
-                            Text( Credentials.countryCodeList[authVM.signInCountryCode]! )
-                                .font(.custom("times", size: 20))
-                                .foregroundColor(.white)
+                            
+                            HStack {
+                                Text( Credentials.countryCodeList[authVM.signInCountryCode]! )
+                                    .font(.custom("times", size: 20))
+                                    .foregroundColor(.white)
+                                
+                                Image("openCountryListArrow")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .rotationEffect(.degrees(270))
+                                    .frame(width: 10, height: 10)
+                                    .foregroundColor(.white)
+                                
+                            }.padding(.horizontal, 6)
+                            .padding(.vertical, 3).overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 2))
                         }
                         
                         TextField(NSLocalizedString("phoneNumber", comment: ""), text: $authVM.signInPhoneNumber)
@@ -103,7 +115,7 @@ struct SignIn: View {
                 }
                 
                 AllRightsReservedMadeByDoejo()
-
+                
             }.padding()
             .padding(.top, 30)
             
