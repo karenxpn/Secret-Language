@@ -77,7 +77,7 @@ struct MatchViewModel: Identifiable {
     }
     
     var report: String {
-        self.match.report.replacingOccurrences(of: "\\n", with: "\n")
+        self.match.report.replacingOccurrences(of: "\\n", with: "\n\t")
             .replacingOccurrences(of: "\\r", with: "\r")
     }
     

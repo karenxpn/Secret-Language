@@ -51,7 +51,6 @@
 		FF3D63E4269924DC00799E72 /* PreviewParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63E3269924DC00799E72 /* PreviewParameters.swift */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
-		FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */; };
 		FF456F8226939576008F219E /* RelationshipReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F8126939576008F219E /* RelationshipReport.swift */; };
 		FF456F842693BD01008F219E /* FamousModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F832693BD01008F219E /* FamousModel.swift */; };
 		FF456F8A2693C7EC008F219E /* DayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F892693C7EC008F219E /* DayReport.swift */; };
@@ -251,7 +250,6 @@
 		FF3D63E3269924DC00799E72 /* PreviewParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewParameters.swift; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlignment.swift; sourceTree = "<group>"; };
 		FF456F8126939576008F219E /* RelationshipReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReport.swift; sourceTree = "<group>"; };
 		FF456F832693BD01008F219E /* FamousModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamousModel.swift; sourceTree = "<group>"; };
 		FF456F892693C7EC008F219E /* DayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayReport.swift; sourceTree = "<group>"; };
@@ -693,7 +691,6 @@
 			children = (
 				FFDB157E26650A0E00341E8F /* Extensions.swift */,
 				FFDB158E2665607000341E8F /* AppColors.swift */,
-				FF42BD9C267BD082000DCA6D /* LabelAlignment.swift */,
 				FF3D63E3269924DC00799E72 /* PreviewParameters.swift */,
 			);
 			path = Utils;
@@ -1170,7 +1167,6 @@
 				FF18DC34269F4D11004BE946 /* ChatModel.swift in Sources */,
 				FF99A03E2680E9A000F234CD /* FriendRequestCell.swift in Sources */,
 				FF10811426A769F200387ED9 /* DeviceTokenManager.swift in Sources */,
-				FF42BD9D267BD082000DCA6D /* LabelAlignment.swift in Sources */,
 				FF997E8A2689E6BA0057B731 /* SingleSearchResult.swift in Sources */,
 				FFAD920226AF6299007984ED /* SettingsListCell.swift in Sources */,
 				FF18DC3E269F658D004BE946 /* ChatRoom.swift in Sources */,
@@ -1401,7 +1397,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Secret Language/Secret Language.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Secret Language/Preview Content\"";
 				DEVELOPMENT_TEAM = 9TN7Y68V59;
 				ENABLE_PREVIEWS = YES;
@@ -1427,7 +1423,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Secret Language/Secret Language.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Secret Language/Preview Content\"";
 				DEVELOPMENT_TEAM = 9TN7Y68V59;
 				ENABLE_PREVIEWS = YES;

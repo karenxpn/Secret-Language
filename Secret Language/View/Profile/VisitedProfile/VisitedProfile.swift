@@ -133,8 +133,10 @@ struct VisitedProfile: View {
                             .font(.custom("times", size: 18))
                             .foregroundColor(.accentColor)
                         
-                        LabelAlignment(text: profileVM.visitedProfile!.report, textAlignmentStyle: .justified, width: UIScreen.main.bounds.width - 30)
-                        
+                        Text( profileVM.visitedProfile!.report )
+                            .foregroundColor(.white)
+                            .font(.custom("times", size: 16))
+                            .padding(.horizontal, 10)
                         
                         Text( NSLocalizedString("advice", comment: ""))
                             .font(.custom("times", size: 18))
@@ -146,14 +148,15 @@ struct VisitedProfile: View {
                             .multilineTextAlignment(.center)
                             .padding(8)
                         
-                    Text("\(profileVM.visitedProfile!.registrationDate)")
-                        .foregroundColor(.white)
-                        .font(.custom("avenir", size: 14))
-                        .padding()
-                    }
+                        Text("\(profileVM.visitedProfile!.registrationDate)")
+                            .foregroundColor(.white)
+                            .font(.custom("avenir", size: 14))
+                            .padding()
+                    }.fixedSize(horizontal: false, vertical: true)
                     
                     AllRightsReservedMadeByDoejo()
-
+                        .fixedSize(horizontal: false, vertical: true)
+                    
                     Divider()
                         .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                     

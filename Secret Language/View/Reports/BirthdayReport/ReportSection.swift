@@ -26,16 +26,23 @@ struct ReportSection: View {
                     .font(.custom("times", size: 18))
                     .foregroundColor(.accentColor)
                 
-                LabelAlignment(text: content, textAlignmentStyle: .justified, width: UIScreen.main.bounds.width - 30)
-            }
+                Text( content )
+                    .foregroundColor(.white)
+                    .font(.custom("times", size: 16))
+                    .padding(.horizontal, 10)
+            }.padding(.horizontal, 10)
+            .fixedSize(horizontal: false, vertical: true)
         } else {
+            HStack {
                 Text( NSLocalizedString(title, comment: ""))
                     .font(.custom("times", size: 18))
                     .foregroundColor(.accentColor) +
                     
-                Text( content )
+                    Text( content )
                     .foregroundColor(.white)
                     .font(.custom("times", size: 18))
+            }.padding(.horizontal, 10)
+
         }
     }
 }

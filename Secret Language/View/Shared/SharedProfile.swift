@@ -97,8 +97,10 @@ struct SharedProfile: View {
                                 .font(.custom("times", size: 18))
                                 .foregroundColor(.accentColor)
                             
-                            LabelAlignment(text: profileVM.sharedProfile!.report, textAlignmentStyle: .justified, width: UIScreen.main.bounds.width - 30)
-                            
+                            Text( profileVM.sharedProfile!.report )
+                                .foregroundColor(.white)
+                                .font(.custom("times", size: 16))
+                                .padding(.horizontal, 10)                            
                             
                             Text( NSLocalizedString("advice", comment: ""))
                                 .font(.custom("times", size: 18))
@@ -109,10 +111,10 @@ struct SharedProfile: View {
                                 .font(.custom("times", size: 16))
                                 .multilineTextAlignment(.center)
                                 .padding(8)
-                        }
+                        }.fixedSize(horizontal: false, vertical: true)
                         
                         AllRightsReservedMadeByDoejo()
-
+                            .fixedSize(horizontal: false, vertical: true)
                         
                         Divider()
                             .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)

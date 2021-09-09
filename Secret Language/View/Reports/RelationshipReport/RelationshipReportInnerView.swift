@@ -96,8 +96,12 @@ struct RelationshipReportInnerView: View {
             Text( NSLocalizedString("relationshipPersonality", comment: ""))
                 .font(.custom("times", size: 18))
                 .foregroundColor(.accentColor)
+                .padding(.horizontal, 10)
             
-            LabelAlignment(text: report.report, textAlignmentStyle: .justified, width: UIScreen.main.bounds.width - 30)
+            Text( report.report )
+                .foregroundColor(.white)
+                .font(.custom("times", size: 16))
+                .padding(.horizontal, 10)
             
             Text( NSLocalizedString("advice", comment: ""))
                 .font(.custom("times", size: 18))
