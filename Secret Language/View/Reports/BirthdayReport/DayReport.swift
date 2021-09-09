@@ -21,7 +21,7 @@ struct DayReport: View {
 
                 PersonalityAndFamousTab(selection: $selection)
                 
-                VStack {
+                VStack( alignment: .leading) {
                     VStack {
                         
                         Text( report.date_name )

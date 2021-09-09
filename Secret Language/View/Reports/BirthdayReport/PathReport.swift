@@ -17,7 +17,7 @@ struct PathReport: View {
             
             ScrollView( showsIndicators: false ) {
                 
-                VStack( spacing: 10 ) {
+                VStack( alignment: .leading, spacing: 10 ) {
                     VStack( spacing: 10 ) {
                         
                         Text( report.name_long )

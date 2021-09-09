@@ -22,14 +22,21 @@ struct ReportSection: View {
         
         if orientation == 1 {
             VStack ( spacing: 10 ) {
-                Text( NSLocalizedString(title, comment: ""))
-                    .font(.custom("times", size: 18))
-                    .foregroundColor(.accentColor)
+                
+                HStack {
+                    Spacer()
+                    
+                    Text( NSLocalizedString(title, comment: ""))
+                        .font(.custom("times", size: 18))
+                        .foregroundColor(.accentColor)
+                    
+                    Spacer()
+                }
                 
                 Text( content )
                     .foregroundColor(.white)
                     .font(.custom("times", size: 16))
-                    .padding(.horizontal, 10)
+                
             }.padding(.horizontal, 10)
             .fixedSize(horizontal: false, vertical: true)
         } else {

@@ -20,7 +20,7 @@ struct WayReport: View {
                 
                 PersonalityAndFamousTab(selection: $selection)
                 
-                VStack( spacing: 10 ) {
+                VStack( alignment: .leading, spacing: 10) {
                     VStack( spacing: 10 ) {
                         
                         Text( NSLocalizedString("theirLifeJourneyRuns", comment: "") )

@@ -21,7 +21,7 @@ struct WeekReport: View {
             ScrollView( showsIndicators: false ) {
                 PersonalityAndFamousTab(selection: $selection)
                 
-                VStack {
+                VStack( alignment: .leading) {
                     VStack {
                         VStack {
                             

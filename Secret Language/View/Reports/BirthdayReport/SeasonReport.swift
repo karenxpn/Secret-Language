@@ -17,7 +17,7 @@ struct SeasonReport: View {
             Background()
             
             ScrollView( showsIndicators: false ) {
-                VStack {
+                VStack( alignment: .leading) {
                     VStack {
                         
                         Text( report.span1 )
