@@ -15,6 +15,8 @@ struct ChatRoom: View {
     @StateObject var roomVM = MessageRoomViewModel()
     @State private var navigateToUser: Bool = false
     
+    @State private var appeared: Bool = false
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             Background()
@@ -46,7 +48,7 @@ struct ChatRoom: View {
         .navigationBarTitleView(ChatRoomNavBar(navigate: $navigateToUser, user: user))
         .onAppear {
             NotificationCenter.default.post(name: Notification.Name("hideTabBar"), object: nil)
-            
+            self.appeared = true
             roomVM.roomID = roomID
             roomVM.removePusherHandlers()
             roomVM.getChatRoomMessagesWithPusher()
@@ -56,6 +58,7 @@ struct ChatRoom: View {
                 roomVM.getChatRoomMessages( lastMessageID: 0)
             }
         }.onDisappear {
+            self.appeared = false
             NotificationCenter.default.post(name: Notification.Name("showTabBar"), object: nil)
         }.fullScreenCover(isPresented: $roomVM.openSheet) {
             
@@ -87,6 +90,10 @@ struct ChatRoom: View {
                     roomVM.activeSheet = .camera
                     roomVM.openSheet.toggle()
                 }), .cancel()])
+            }
+        }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            if appeared {
+                roomVM.getChatRoomMessages( lastMessageID: 0)
             }
         }
     }

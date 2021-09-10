@@ -36,12 +36,10 @@ struct MessagesList: View {
                     ForEach(roomVM.messages, id: \.id) { message in
                         SingleMessage(message: message)
                             .environmentObject(roomVM)
-//                            .padding(.bottom, ( roomVM.messages[0].id == message.id && !roomVM.senderIsTyping) ? UIScreen.main.bounds.size.height * 0.05 : 0)
                             .rotationEffect(.radians(3.14))
                             .onAppear {
-                                if message.id == roomVM.messages[roomVM.messages.count-1].id {
+                                if message.id == roomVM.messages.last?.id {
                                     roomVM.getChatRoomMessages(lastMessageID: message.id)
-                                    // Load new page of messages
                                 }
                             }
                     }

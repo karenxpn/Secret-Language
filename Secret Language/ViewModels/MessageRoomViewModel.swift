@@ -58,6 +58,11 @@ class MessageRoomViewModel: ObservableObject {
     }
     
     func getChatRoomMessages( lastMessageID: Int ) {
+        
+        if lastMessageID == 0 {
+            self.messages.removeAll(keepingCapacity: false)
+        }
+        
         loadingMessages = true
         dataManager.fetchRoomMessages(token: token, roomID: roomID, lastMessageID: lastMessageID)
             .sink { response in
