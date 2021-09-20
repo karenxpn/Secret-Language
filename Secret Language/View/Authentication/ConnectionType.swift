@@ -25,7 +25,7 @@ struct ConnectionType: View {
                         .padding(.bottom)
                     
                     Text( NSLocalizedString("chooseModel", comment: ""))
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(AppColors.accentColor)
                         .font(.custom("Gilroy-Regular", size: 14))
                     
                     ForEach( authVM.connectionTypes, id: \.id ) { connection in

@@ -45,7 +45,7 @@ struct ChatListCell: View {
                                 .font(.custom("Gilroy-Regular", size: 12))
                             
                             Text( chat.user.ideal_for)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(AppColors.accentColor)
                                 .font(.custom("Gilroy-Regular", size: 12))
                                 .lineLimit(1)
                         }
@@ -96,7 +96,7 @@ struct ChatListCell: View {
                             .font(.custom("times", size: 17))
                             .padding()
                             .background(
-                                Circle().fill(Color.accentColor)
+                                Circle().fill(AppColors.accentColor)
                                     .frame(width: 25, height: 25))
                     }
                 }

@@ -54,7 +54,7 @@ struct VisitedProfile: View {
                             .font(.custom("avenir", size: 14))
                         
                         Text(profileVM.visitedProfile!.ideal)
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(AppColors.accentColor)
                             .font(.custom("avenir", size: 14))
                         
                     }
@@ -80,7 +80,7 @@ struct VisitedProfile: View {
                                     .font(.custom("Avenir", size: 12))
                                 
                                 Text( profileVM.visitedProfile!.myBirthdayWeek )
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(AppColors.accentColor)
                                     .font(.custom("Avenir", size: 12))
                             }
                         }
@@ -98,7 +98,7 @@ struct VisitedProfile: View {
                                     .font(.custom("Avenir", size: 12))
                                 
                                 Text( profileVM.visitedProfile!.partnerBirthdayWeek )
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(AppColors.accentColor)
                                     .font(.custom("Avenir", size: 12))
                             }
                         }
@@ -118,7 +118,7 @@ struct VisitedProfile: View {
                             .padding(8)
                         
                         Text( profileVM.visitedProfile!.sln_description)
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(AppColors.accentColor)
                             .font(.custom("times-italic", size: 18))
                             .multilineTextAlignment(.center)
                             .padding(8)
@@ -131,8 +131,8 @@ struct VisitedProfile: View {
                         
                         Text( NSLocalizedString("relationshipPersonality", comment: ""))
                             .font(.custom("times", size: 18))
-                            .foregroundColor(.accentColor)
-                        
+                            .foregroundColor(AppColors.accentColor)
+
                         Text( profileVM.visitedProfile!.report )
                             .foregroundColor(.white)
                             .font(.custom("times", size: 16))
@@ -140,8 +140,8 @@ struct VisitedProfile: View {
                         
                         Text( NSLocalizedString("advice", comment: ""))
                             .font(.custom("times", size: 18))
-                            .foregroundColor(.accentColor)
-                        
+                            .foregroundColor(AppColors.accentColor)
+
                         Text( profileVM.visitedProfile!.advice )
                             .foregroundColor(.white)
                             .font(.custom("times", size: 16))

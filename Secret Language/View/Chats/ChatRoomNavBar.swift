@@ -29,7 +29,7 @@ struct ChatRoomNavBar: View {
                         .font(.custom("Avenir", size: 10))
                     
                     Text(user.ideal_for)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(AppColors.accentColor)
                         .font(.custom("Avenir", size: 10))
                 }
             }

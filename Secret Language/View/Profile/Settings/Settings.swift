@@ -160,7 +160,7 @@ struct Settings: View {
                                 .foregroundColor(.black)
                                 .font(.custom("Avenir", size: 18))
                                 .frame(width: UIScreen.main.bounds.size.width * 0.9, height: 50)
-                                .background(.accentColor)
+                                .background(AppColors.accentColor)
                                 .cornerRadius(25)
                         }.padding(.bottom)
                         

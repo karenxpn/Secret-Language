@@ -23,7 +23,7 @@ struct SingleMessageContent: View {
                     .font(.custom("Gilroy-Regular", size: 16))
                     .lineLimit(nil)
                     .padding()
-                    .background(me ? AppColors.sentMessageBoxBG : .accentColor)
+                    .background(me ? AppColors.sentMessageBoxBG : AppColors.accentColor)
                     .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading]
                                     : [.topLeading, .topTrailing, .bottomTrailing], 20)
                     .onTapGesture {}
@@ -38,7 +38,7 @@ struct SingleMessageContent: View {
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .cornerRadius(8)
                     .padding()
-                    .background(me ? AppColors.sentMessageBoxBG : .accentColor)
+                    .background(me ? AppColors.sentMessageBoxBG : AppColors.accentColor)
                     .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading]
                                     : [.topLeading, .topTrailing, .bottomTrailing], 20)
                     .onTapGesture {
@@ -60,7 +60,7 @@ struct SingleMessageContent: View {
                     .scaledToFit()
                     .cornerRadius(8)
                     .padding()
-                    .background(me ? AppColors.sentMessageBoxBG : .accentColor)
+                    .background(me ? AppColors.sentMessageBoxBG : AppColors.accentColor)
                     .cornerRadius( me ? [.topLeading, .topTrailing, .bottomLeading]
                                     : [.topLeading, .topTrailing, .bottomTrailing], 20)
                     .onAppear {

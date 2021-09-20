@@ -64,7 +64,7 @@ struct SharedProfile: View {
                                     .font(.custom("Avenir", size: 12))
                                 
                                 Text( profileVM.sharedProfile!.user_birthday_name )
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(AppColors.accentColor)
                                     .font(.custom("Avenir", size: 12))
                             }
                         }.padding(.horizontal)
@@ -82,7 +82,7 @@ struct SharedProfile: View {
                                 .padding(8)
                             
                             Text( profileVM.sharedProfile!.sln_description)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(AppColors.accentColor)
                                 .font(.custom("times-italic", size: 18))
                                 .multilineTextAlignment(.center)
                                 .padding(8)
@@ -95,8 +95,8 @@ struct SharedProfile: View {
                             
                             Text( NSLocalizedString("relationshipPersonality", comment: ""))
                                 .font(.custom("times", size: 18))
-                                .foregroundColor(.accentColor)
-                            
+                                .foregroundColor(AppColors.accentColor)
+
                             Text( profileVM.sharedProfile!.report )
                                 .foregroundColor(.white)
                                 .font(.custom("times", size: 16))
@@ -104,8 +104,8 @@ struct SharedProfile: View {
                             
                             Text( NSLocalizedString("advice", comment: ""))
                                 .font(.custom("times", size: 18))
-                                .foregroundColor(.accentColor)
-                            
+                                .foregroundColor(AppColors.accentColor)
+
                             Text( profileVM.sharedProfile!.advice )
                                 .foregroundColor(.white)
                                 .font(.custom("times", size: 16))

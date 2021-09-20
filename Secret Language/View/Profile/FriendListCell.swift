@@ -36,7 +36,7 @@ struct FriendListCell: View {
                             .font(.custom("Gilroy-Regular", size: 15))
                         
                         Text( friend.ideal)
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(AppColors.accentColor)
                             .font(.custom("Gilroy-Regular", size: 15))
                             .lineLimit(1)
                     }

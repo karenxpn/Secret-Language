@@ -37,7 +37,7 @@ struct FriendRequestCell: View {
                             .font(.custom("Gilroy-Regular", size: 15))
                         
                         Text( request.ideal)
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(AppColors.accentColor)
                             .font(.custom("Gilroy-Regular", size: 15))
                             .lineLimit(1)
                     }
@@ -49,7 +49,7 @@ struct FriendRequestCell: View {
                     profileVM.acceptFriendRequest(userID: request.id)
                 }, label: {
                     Text(NSLocalizedString("accept", comment: ""))
-                        .foregroundColor( .accentColor )
+                        .foregroundColor( AppColors.accentColor )
                         .font(.custom("Gilroy-Regular", size: 14))
                         .padding(.vertical, 8)
                         .padding(.horizontal, 18)

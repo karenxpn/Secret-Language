@@ -48,7 +48,7 @@ struct ReportBirthdayPicker: View {
                     Picker("", selection: $month) {
                         ForEach( months, id: \.self ) { value in
                             Text( value ).tag(value)
-                                .foregroundColor(month == value ? .accentColor : .gray)
+                                .foregroundColor(month == value ? AppColors.accentColor : .gray)
                                 .font(.custom("times", size: 28))
                         }
                     }.labelsHidden()
@@ -60,7 +60,7 @@ struct ReportBirthdayPicker: View {
                     Picker("", selection: $day) {
                         ForEach( 1...pickerData[month]!, id: \.self ) { day in
                             Text( "\(day)" ).tag(day)
-                                .foregroundColor(self.day == day ? .accentColor : .gray)
+                                .foregroundColor(self.day == day ? AppColors.accentColor : .gray)
                                 .font(.custom("times", size: 28))
                         }
                     }.labelsHidden()

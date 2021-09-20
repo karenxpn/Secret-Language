@@ -74,7 +74,7 @@ struct RelationshipReportInnerView: View {
                     .font(.custom("avenir", size: 14))
                 
                 Text(report.ideal_for)
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(AppColors.accentColor)
                     .font(.custom("avenir", size: 14))
             }
             
@@ -84,7 +84,7 @@ struct RelationshipReportInnerView: View {
                     .font(.custom("avenir", size: 14))
                 
                 Text(report.problematic_for)
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(AppColors.accentColor)
                     .font(.custom("avenir", size: 14))
             }
             
@@ -95,7 +95,7 @@ struct RelationshipReportInnerView: View {
             
             Text( NSLocalizedString("relationshipPersonality", comment: ""))
                 .font(.custom("times", size: 18))
-                .foregroundColor(.accentColor)
+                .foregroundColor(AppColors.accentColor)
                 .padding(.horizontal, 10)
             
             Text( report.report )
@@ -105,8 +105,8 @@ struct RelationshipReportInnerView: View {
             
             Text( NSLocalizedString("advice", comment: ""))
                 .font(.custom("times", size: 18))
-                .foregroundColor(.accentColor)
-            
+                .foregroundColor(AppColors.accentColor)
+
             Text( report.advice )
                 .foregroundColor(.white)
                 .font(.custom("times", size: 16))

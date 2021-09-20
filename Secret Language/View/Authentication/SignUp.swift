@@ -34,7 +34,7 @@ struct SignUp: View {
                     .padding(.bottom)
                 
                 Text( NSLocalizedString("birthdayToStart", comment: ""))
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(AppColors.accentColor)
                     .font(.custom("Gilroy-Regular", size: 14))
                 
                 HStack {
@@ -90,7 +90,7 @@ struct SignUp: View {
                                     .foregroundColor(.white)
 
                             }.padding(.horizontal, 6)
-                            .padding(.vertical, 3).overlay(RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 2))
+                                .padding(.vertical, 3).overlay(RoundedRectangle(cornerRadius: 10).stroke(AppColors.accentColor, lineWidth: 2))
                         }
                         
                         TextField(NSLocalizedString("phoneNumber", comment: ""), text: $authVM.signUpPhoneNumber)
@@ -150,8 +150,8 @@ struct SignUp: View {
                         NavigationLink( destination: SignIn(), label: {
                             Text( NSLocalizedString("signin", comment: "") )
                                 .font(.custom("Gilroy-Regular", size: 14))
-                                .foregroundColor(.accentColor)
-                                .underline(true, color: .accentColor)
+                                .foregroundColor(AppColors.accentColor)
+                                .underline(true, color: AppColors.accentColor)
                                 .padding(.top, 8)
                         })
                     }

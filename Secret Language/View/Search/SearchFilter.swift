@@ -36,7 +36,7 @@ struct SearchFilter: View {
                                     } label: {
                                         Text( gender.gender_name )
                                             .font(.custom("times", size: 16))
-                                            .foregroundColor(chosenGender == gender.id ? .accentColor : .systemGray3)
+                                            .foregroundColor(chosenGender == gender.id ? AppColors.accentColor : .systemGray3)
                                             .padding(.vertical, 8)
                                             .padding(.horizontal, 18)
                                             .background(RoundedRectangle(cornerRadius: 4)
@@ -69,7 +69,7 @@ struct SearchFilter: View {
                                                 .font(.custom("Avenir", size: 10))
                                         }.frame(minWidth: 0, maxWidth: .infinity)
                                         .padding()
-                                        .background(chosenCategory == category.id ? .accentColor : AppColors.boxColor)
+                                        .background(chosenCategory == category.id ? AppColors.accentColor : AppColors.boxColor)
                                         .cornerRadius(15)
                                     }
                                 }

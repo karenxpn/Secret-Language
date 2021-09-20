@@ -23,7 +23,7 @@ struct CheckVerificationCode: View {
                     .font(.custom("times", size: 26))
                 
                 Text( NSLocalizedString("verificationCodeSent", comment: ""))
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(AppColors.accentColor)
                     .font(.custom("times", size: 15))
                 
                 Spacer()

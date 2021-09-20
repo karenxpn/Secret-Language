@@ -21,7 +21,7 @@ struct ChooseGender: View {
                     .padding(.bottom)
                 
                 Text( NSLocalizedString("helpUs", comment: ""))
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(AppColors.accentColor)
                     .font(.custom("Gilroy-Regular", size: 14))
                                 
                 TopGender(gender: GenderModel(id: 1, gender_name: NSLocalizedString("male", comment: "")) )

@@ -29,7 +29,7 @@ struct SingleMatch: View {
                         .font(.custom("avenir", size: 14))
                     
                     Text(match.ideal)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(AppColors.accentColor)
                         .font(.custom("avenir", size: 14))
                 }
                 
@@ -55,7 +55,7 @@ struct SingleMatch: View {
                                 .font(.custom("Avenir", size: 12))
                             
                             Text( match.myBirthdayWeek )
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(AppColors.accentColor)
                                 .font(.custom("Avenir", size: 12))
                         }
                     }
@@ -73,7 +73,7 @@ struct SingleMatch: View {
                                 .font(.custom("Avenir", size: 12))
                             
                             Text( match.partnerBirthdayWeek )
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(AppColors.accentColor)
                                 .font(.custom("Avenir", size: 12))
                         }
                     }
@@ -93,7 +93,7 @@ struct SingleMatch: View {
                         .padding(8)
                     
                     Text( match.sln_description)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(AppColors.accentColor)
                         .font(.custom("times-italic", size: 18))
                         .multilineTextAlignment(.center)
                         .padding(8)
@@ -106,8 +106,8 @@ struct SingleMatch: View {
                     
                     Text( NSLocalizedString("relationshipPersonality", comment: ""))
                         .font(.custom("times", size: 18))
-                        .foregroundColor(.accentColor)
-                    
+                        .foregroundColor(AppColors.accentColor)
+
                     Text( match.report )
                         .foregroundColor(.white)
                         .font(.custom("times", size: 16))
@@ -116,8 +116,8 @@ struct SingleMatch: View {
                     
                     Text( NSLocalizedString("advice", comment: ""))
                         .font(.custom("times", size: 18))
-                        .foregroundColor(.accentColor)
-                    
+                        .foregroundColor(AppColors.accentColor)
+
                     Text( match.advice )
                         .foregroundColor(.white)
                         .font(.custom("times", size: 16))

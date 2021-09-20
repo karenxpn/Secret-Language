@@ -35,7 +35,7 @@ struct MonthlySubscriptionView: View {
                                 .fontWeight(.heavy)
                             
                             Text( NSLocalizedString("monthly", comment: ""))
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(AppColors.accentColor)
                                 .font(.custom("Avenir", size: 21))
                         }
                     }
@@ -49,7 +49,7 @@ struct MonthlySubscriptionView: View {
                         .multilineTextAlignment(.center)
                     
                     Text( NSLocalizedString("getPremium", comment: ""))
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(AppColors.accentColor)
                         .font(.custom("Avenir", size: 16))
                         .multilineTextAlignment(.center)
                 }.padding()
@@ -63,7 +63,7 @@ struct MonthlySubscriptionView: View {
                         if paymentVM.loadingPaymentProccess {
                             ProgressView()
                                 .frame(width: .greedy, height: 50)
-                                .background(.accentColor)
+                                .background(AppColors.accentColor)
                                 .cornerRadius(25)
                         }  else {
                             Text( NSLocalizedString("subscribe", comment: ""))
@@ -71,7 +71,7 @@ struct MonthlySubscriptionView: View {
                                 .font(.custom("times", size: 16))
                                 .fontWeight(.semibold)
                                 .frame(width: .greedy, height: 50)
-                                .background(.accentColor)
+                                .background(AppColors.accentColor)
                                 .cornerRadius(25)
                         }
                     }).disabled(paymentVM.loadingPaymentProccess)
@@ -88,7 +88,7 @@ struct MonthlySubscriptionView: View {
                                 .cornerRadius(25)
                         }  else {
                             Text( NSLocalizedString("restore", comment: ""))
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(AppColors.accentColor)
                                 .font(.custom("times", size: 16))
                                 .fontWeight(.semibold)
                                 .frame(width: .greedy, height: 50)
