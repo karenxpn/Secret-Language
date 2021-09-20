@@ -50,8 +50,6 @@ struct ChatListCell: View {
                                 .lineLimit(1)
                         }
                         
-                        
-                        
                         if chat.message != nil {
                             
                             if chat.message!.content[0].type == "image" {
@@ -105,7 +103,7 @@ struct ChatListCell: View {
                     .fill(Color.gray)
                     .frame(width: .greedy, height: 0.5)
                 
-            }.padding([.top, .horizontal])
+            }.padding([.top])
         }.buttonStyle(BorderlessButtonStyle())
         .background(
             NavigationLink( destination: ChatRoom(roomID: chat.id, user: chat.user), isActive: $isActive, label: {
