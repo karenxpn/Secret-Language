@@ -12,10 +12,12 @@ struct FriendRequestCell: View {
     
     @EnvironmentObject var profileVM: ProfileViewModel
     let request: UserPreviewModel
+    @State private var active: Bool = false
     
     var body: some View {
         
         Button {
+            active.toggle()
         } label: {
             HStack( spacing: 20) {
                 WebImage(url: URL(string: request.image))
@@ -58,9 +60,9 @@ struct FriendRequestCell: View {
                                         .background(AppColors.dataFilterGendersBg)
                         )
                 })
-            }.padding()
+            }.padding(.bottom)
         }.background(
-            NavigationLink(destination: VisitedProfile(userID: request.id, userName: request.name)) {
+            NavigationLink(destination: VisitedProfile(userID: request.id, userName: request.name), isActive: $active) {
                 EmptyView()
             }.hidden()
         )
