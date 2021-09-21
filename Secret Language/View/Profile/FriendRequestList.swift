@@ -57,6 +57,7 @@ struct FriendRequestList: View {
                         .listRowInsets(EdgeInsets())
                     
                 }.padding(.top, 1)
+                    .listStyle(PlainListStyle())
             }
             
             CustomAlert(isPresented: $profileVM.showAlert, alertMessage: profileVM.alertMessage, alignment: .center)
