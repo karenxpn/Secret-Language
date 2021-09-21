@@ -17,7 +17,7 @@ struct ContentView: View {
     
     @StateObject var notificationsVM = NotificationsViewModel()
     @StateObject private var paymentVM = PaymentViewModel()
-
+    
     @State private var currentTab: Int = 0
     @State private var shared: SharedURL?
     
@@ -44,7 +44,7 @@ struct ContentView: View {
                         .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 }
             }
-        
+            
             CustomTabBar( currentTab: $currentTab )
             
         }.edgesIgnoringSafeArea(.bottom)
@@ -76,10 +76,34 @@ struct ContentView: View {
             if value != -1 {
                 self.currentTab = value
             }
+        }.onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "notificationFetched"))) { value in
+            
+            let jsonData = try? JSONSerialization.data (withJSONObject: value, options: [])
+            if let data = jsonData {
+                guard let notification = try? JSONDecoder().decode(NotificationAlertModel.self, from: data) else {
+                    return
+                }
+                
+                switch notification.alert.action {
+                case Credentials.notificationsOpenChatAction :
+                    currentTab = 3
+                case Credentials.notificationsOpenProfileAction:
+                    currentTab = 4
+                case Credentials.norificationsOpenAppStore:
+                    if let url = URL(string: Credentials.app_store_link) {
+                        UIApplication.shared.open(url)
+                    }
+                default:
+                    break
+                }
+            }
         }
     }
 }
 
+//struct AlertModel: Codable {
+//    var action: String
+//}
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
