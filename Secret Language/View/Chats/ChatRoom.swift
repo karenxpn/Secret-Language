@@ -51,6 +51,7 @@ struct ChatRoom: View {
             self.appeared = true
             roomVM.roomID = roomID
             roomVM.removePusherHandlers()
+            roomVM.removeChatListPusherHandlers()
             roomVM.getChatRoomMessagesWithPusher()
             roomVM.getTypingStatus()
             
