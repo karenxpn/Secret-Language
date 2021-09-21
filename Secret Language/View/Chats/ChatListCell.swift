@@ -22,188 +22,95 @@ struct ChatListCell: View {
     
     var body: some View {
         
-        if #available(iOS 15.0, *) {
+        Button {
+            isActive.toggle()
+        } label: {
             
-            Button {
-                isActive.toggle()
-            } label: {
-                
-                VStack {
-                    HStack {
-                        ImageHelper(image: chat.image, contentMode: .fill, progressViewTintColor: .gray)
-                            .frame(width: 55, height: 55)
-                            .clipShape(Circle())
-                            .padding(.trailing)
+            VStack {
+                HStack {
+                    ImageHelper(image: chat.image, contentMode: .fill, progressViewTintColor: .gray)
+                        .frame(width: 55, height: 55)
+                        .clipShape(Circle())
+                        .padding(.trailing)
+                    
+                    VStack( alignment: .leading, spacing: 5) {
+                        Text( chat.chatName )
+                            .foregroundColor(.white)
+                            .font(.custom("times", size: 20))
+                            .fontWeight(.semibold)
+                            .lineLimit(1)
                         
-                        VStack( alignment: .leading, spacing: 5) {
-                            Text( chat.chatName )
-                                .foregroundColor(.white)
-                                .font(.custom("times", size: 20))
-                                .fontWeight(.semibold)
+                        HStack( spacing: 0 ) {
+                            Text( NSLocalizedString("idealFor", comment: ""))
+                                .foregroundColor(.gray)
+                                .font(.custom("Gilroy-Regular", size: 12))
+                            
+                            Text( chat.user.ideal_for)
+                                .foregroundColor(AppColors.accentColor)
+                                .font(.custom("Gilroy-Regular", size: 12))
                                 .lineLimit(1)
+                        }
+                        
+                        if chat.message != nil {
                             
-                            HStack( spacing: 0 ) {
-                                Text( NSLocalizedString("idealFor", comment: ""))
-                                    .foregroundColor(.gray)
-                                    .font(.custom("Gilroy-Regular", size: 12))
+                            if chat.message!.content[0].type == "image" {
                                 
-                                Text( chat.user.ideal_for)
-                                    .foregroundColor(AppColors.accentColor)
-                                    .font(.custom("Gilroy-Regular", size: 12))
-                                    .lineLimit(1)
-                            }
-                            
-                            if chat.message != nil {
+                                HStack {
+                                    Text( "Photo")
+                                        .foregroundColor(AppColors.messagePreviewColor)
+                                        .font(.custom("Gilroy-Regular", size: 15))
+                                        .lineLimit(1)
+                                    
+                                    messageCreatedAt
+                                }
                                 
-                                if chat.message!.content[0].type == "image" {
+                            } else if chat.message!.content[0].type == "video" {
+                                
+                                HStack {
+                                    Text("Video")
+                                        .foregroundColor(AppColors.messagePreviewColor)
+                                        .font(.custom("Gilroy-Regular", size: 15))
+                                        .lineLimit(1)
                                     
-                                    HStack {
-                                        Text( "Photo")
-                                            .foregroundColor(AppColors.messagePreviewColor)
-                                            .font(.custom("Gilroy-Regular", size: 15))
-                                            .lineLimit(1)
-                                        
-                                        messageCreatedAt
-                                    }
+                                    messageCreatedAt
+                                }
+                                
+                            } else {
+                                HStack {
+                                    Text( chat.message!.content[0].message)
+                                        .foregroundColor(AppColors.messagePreviewColor)
+                                        .font(.custom("Gilroy-Regular", size: 15))
+                                        .lineLimit(1)
                                     
-                                } else if chat.message!.content[0].type == "video" {
-                                    
-                                    HStack {
-                                        Text("Video")
-                                            .foregroundColor(AppColors.messagePreviewColor)
-                                            .font(.custom("Gilroy-Regular", size: 15))
-                                            .lineLimit(1)
-                                        
-                                        messageCreatedAt
-                                    }
-                                    
-                                } else {
-                                    HStack {
-                                        Text( chat.message!.content[0].message)
-                                            .foregroundColor(AppColors.messagePreviewColor)
-                                            .font(.custom("Gilroy-Regular", size: 15))
-                                            .lineLimit(1)
-                                        
-                                        messageCreatedAt
-                                    }
+                                    messageCreatedAt
                                 }
                             }
                         }
-                        
-                        Spacer()
-                        if !chat.read {
-                            Text( chat.unread_messages_count )
-                                .foregroundColor(.black)
-                                .font(.custom("times", size: 17))
-                                .padding()
-                                .background(
-                                    Circle().fill(AppColors.accentColor)
-                                        .frame(width: 25, height: 25))
-                        }
                     }
                     
-                    Capsule()
-                        .fill(Color.gray)
-                        .frame(width: .greedy, height: 0.5)
-                    
-                }.padding([.top])
-            }.buttonStyle(BorderlessButtonStyle())
-                .background(
-                    NavigationLink( destination: ChatRoom(roomID: chat.id, user: chat.user), isActive: $isActive, label: {
-                        EmptyView()
-                    }).hidden()
-                )
-        } else {
-            Button {
-                isActive.toggle()
-            } label: {
+                    Spacer()
+                    if !chat.read {
+                        Text( chat.unread_messages_count )
+                            .foregroundColor(.black)
+                            .font(.custom("times", size: 17))
+                            .padding()
+                            .background(
+                                Circle().fill(AppColors.accentColor)
+                                    .frame(width: 25, height: 25))
+                    }
+                }
                 
-                VStack {
-                    HStack {
-                        ImageHelper(image: chat.image, contentMode: .fill, progressViewTintColor: .gray)
-                            .frame(width: 55, height: 55)
-                            .clipShape(Circle())
-                            .padding(.trailing)
-                        
-                        VStack( alignment: .leading, spacing: 5) {
-                            Text( chat.chatName )
-                                .foregroundColor(.white)
-                                .font(.custom("times", size: 20))
-                                .fontWeight(.semibold)
-                                .lineLimit(1)
-                            
-                            HStack( spacing: 0 ) {
-                                Text( NSLocalizedString("idealFor", comment: ""))
-                                    .foregroundColor(.gray)
-                                    .font(.custom("Gilroy-Regular", size: 12))
-                                
-                                Text( chat.user.ideal_for)
-                                    .foregroundColor(AppColors.accentColor)
-                                    .font(.custom("Gilroy-Regular", size: 12))
-                                    .lineLimit(1)
-                            }
-                            
-                            if chat.message != nil {
-                                
-                                if chat.message!.content[0].type == "image" {
-                                    
-                                    HStack {
-                                        Text( "Photo")
-                                            .foregroundColor(AppColors.messagePreviewColor)
-                                            .font(.custom("Gilroy-Regular", size: 15))
-                                            .lineLimit(1)
-                                        
-                                        messageCreatedAt
-                                    }
-                                    
-                                } else if chat.message!.content[0].type == "video" {
-                                    
-                                    HStack {
-                                        Text("Video")
-                                            .foregroundColor(AppColors.messagePreviewColor)
-                                            .font(.custom("Gilroy-Regular", size: 15))
-                                            .lineLimit(1)
-                                        
-                                        messageCreatedAt
-                                    }
-                                    
-                                } else {
-                                    HStack {
-                                        Text( chat.message!.content[0].message)
-                                            .foregroundColor(AppColors.messagePreviewColor)
-                                            .font(.custom("Gilroy-Regular", size: 15))
-                                            .lineLimit(1)
-                                        
-                                        messageCreatedAt
-                                    }
-                                }
-                            }
-                        }
-                        
-                        Spacer()
-                        if !chat.read {
-                            Text( chat.unread_messages_count )
-                                .foregroundColor(.black)
-                                .font(.custom("times", size: 17))
-                                .padding()
-                                .background(
-                                    Circle().fill(AppColors.accentColor)
-                                        .frame(width: 25, height: 25))
-                        }
-                    }
-                    
-                    Capsule()
-                        .fill(Color.gray)
-                        .frame(width: .greedy, height: 0.5)
-                    
-                }.padding([.top, .horizontal])
-            }.buttonStyle(BorderlessButtonStyle())
-                .background(
-                    NavigationLink( destination: ChatRoom(roomID: chat.id, user: chat.user), isActive: $isActive, label: {
-                        EmptyView()
-                    }).hidden()
-                )
-        }
+                Capsule()
+                    .fill(Color.gray)
+                    .frame(width: .greedy, height: 0.5)
+                
+            }.padding([.top, .horizontal])
+        }.buttonStyle(BorderlessButtonStyle())
+            .background(
+                NavigationLink( destination: ChatRoom(roomID: chat.id, user: chat.user), isActive: $isActive, label: {
+                    EmptyView()
+                }).hidden()
+            )
     }
 }
 
