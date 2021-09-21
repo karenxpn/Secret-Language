@@ -35,19 +35,19 @@ struct Introduction: View {
                         
                         Spacer()
                         Text( NSLocalizedString("introRomance", comment: "") )
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(AppColors.accentColor)
                             .font(.custom("times", size: 14))
                         
                         Spacer()
                         
                         Text( NSLocalizedString("introFriendship", comment: "") )
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(AppColors.accentColor)
                             .font(.custom("times", size: 14))
                         
                         Spacer()
                         
                         Text( NSLocalizedString("introBusiness", comment: "") )
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(AppColors.accentColor)
                             .font(.custom("times", size: 14))
                         Spacer()
                     }
@@ -58,7 +58,7 @@ struct Introduction: View {
                             .font(.custom("times", size: 16))
                             .frame(width: UIScreen.main.bounds.size.width * 0.7)
                             .padding()
-                            .background(Color.accentColor)
+                            .background(AppColors.accentColor)
                             .cornerRadius(25)
                             .padding()
                     })

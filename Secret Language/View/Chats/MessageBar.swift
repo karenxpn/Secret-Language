@@ -18,7 +18,7 @@ struct MessageBar: View {
                 roomVM.action = .media
             }, label: {
                 Image( systemName: "plus.circle")
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(AppColors.accentColor)
                     .font(.title)
                     .padding([.vertical, .leading])
             })

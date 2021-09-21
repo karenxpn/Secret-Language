@@ -45,7 +45,7 @@ struct PaymentView: View {
                                 
                                 
                                 Text( NSLocalizedString("report", comment: ""))
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(AppColors.accentColor)
                                     .font(.custom("Avenir", size: 21))
                             }
                         }
@@ -67,14 +67,14 @@ struct PaymentView: View {
                         if paymentVM.loadingPaymentProccess {
                             ProgressView()
                                 .frame(width: .greedy, height: 50)
-                                .background(.accentColor)
+                                .background(AppColors.accentColor)
                                 .cornerRadius(25)
                         } else {
                             Text( NSLocalizedString("unlockReport", comment: ""))
                                 .foregroundColor(.black)
                                 .font(.custom("times", size: 16))
                                 .frame(width: .greedy, height: 50)
-                                .background(.accentColor)
+                                .background(AppColors.accentColor)
                                 .cornerRadius(25)
                         }
                     }).disabled(paymentVM.loadingPaymentProccess)

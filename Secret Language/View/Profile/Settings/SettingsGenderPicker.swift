@@ -34,7 +34,7 @@ struct SettingsGenderPicker: View {
                                     .foregroundColor(self.gender.id == gender.id ? .black : .white)
                                     .frame(minWidth: 0, maxWidth: .infinity)
                                     .padding()
-                                    .background(self.gender.id == gender.id ? .accentColor : AppColors.boxColor)
+                                    .background(self.gender.id == gender.id ? AppColors.accentColor : AppColors.boxColor)
                                     .cornerRadius(15)
                             })
                         }

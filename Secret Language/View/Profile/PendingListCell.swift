@@ -36,7 +36,7 @@ struct PendingListCell: View {
                             .font(.custom("Gilroy-Regular", size: 15))
                         
                         Text( pendingRequest.ideal)
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(AppColors.accentColor)
                             .font(.custom("Gilroy-Regular", size: 15))
                             .lineLimit(1)
                     }
@@ -48,7 +48,7 @@ struct PendingListCell: View {
                     profileVM.withdrawFriendRequest(userID: pendingRequest.id)
                 }, label: {
                     Text(NSLocalizedString("withdraw", comment: ""))
-                        .foregroundColor( .accentColor )
+                        .foregroundColor(AppColors.accentColor)
                         .font(.custom("Gilroy-Regular", size: 14))
                         .padding(.vertical, 8)
                         .padding(.horizontal, 18)

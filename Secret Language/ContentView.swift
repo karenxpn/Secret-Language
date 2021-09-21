@@ -17,7 +17,7 @@ struct ContentView: View {
     
     @StateObject var notificationsVM = NotificationsViewModel()
     @StateObject private var paymentVM = PaymentViewModel()
-
+    
     @State private var currentTab: Int = 0
     @State private var shared: SharedURL?
     
@@ -44,7 +44,7 @@ struct ContentView: View {
                         .frame( minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 }
             }
-        
+            
             CustomTabBar( currentTab: $currentTab )
             
         }.edgesIgnoringSafeArea(.bottom)
@@ -79,7 +79,6 @@ struct ContentView: View {
         }
     }
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

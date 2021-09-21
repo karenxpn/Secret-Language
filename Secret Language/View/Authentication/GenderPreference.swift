@@ -25,7 +25,7 @@ struct GenderPreference: View {
                     .padding(.bottom)
                 
                 Text( NSLocalizedString("chooseModel", comment: ""))
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(AppColors.accentColor)
                     .font(.custom("Gilroy-Regular", size: 14))
                 
                 ForEach( genders, id: \.id ) { gender in
@@ -39,7 +39,7 @@ struct GenderPreference: View {
                             
                         }.frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
-                        .background(authVM.genderPreference == gender.id ? .accentColor : AppColors.boxColor)
+                        .background(authVM.genderPreference == gender.id ? AppColors.accentColor : AppColors.boxColor)
                         .cornerRadius(15)
                     })
                 }

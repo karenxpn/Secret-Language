@@ -22,7 +22,7 @@ struct SearchResultActionButtons: View {
                     searchVM.connectUser(userID: userID)
                 }, label: {
                     Text(NSLocalizedString("connect", comment: ""))
-                        .foregroundColor( .accentColor )
+                        .foregroundColor(AppColors.accentColor)
                         .font(.custom("Avenir", size: 14))
                         .padding(.vertical, 4)
                         .frame(width: 140)
@@ -37,7 +37,7 @@ struct SearchResultActionButtons: View {
                     helloSent = true
                 }, label: {
                     Text(helloSent ? "Greeting Sent" : "Say Hello")
-                        .foregroundColor( .accentColor )
+                        .foregroundColor(AppColors.accentColor)
                         .font(.custom("Avenir", size: 14))
                         .padding(.vertical, 4)
                         .frame(width: 140)
@@ -51,7 +51,7 @@ struct SearchResultActionButtons: View {
                     searchVM.withdrawRequest(userID: userID)
                 }, label: {
                     Text(NSLocalizedString("withdraw", comment: ""))
-                        .foregroundColor( .accentColor )
+                        .foregroundColor(AppColors.accentColor)
                         .font(.custom("Avenir", size: 14))
                         .padding(.vertical, 4)
                         .frame(width: 140)
@@ -80,7 +80,7 @@ struct SearchResultActionButtons: View {
                         searchVM.rejectFriendRequest(userID: userID)
                     }, label: {
                         Text(NSLocalizedString("reject", comment: ""))
-                            .foregroundColor( .accentColor )
+                            .foregroundColor( AppColors.accentColor )
                             .font(.custom("Avenir", size: 14))
                             .padding(.vertical, 4)
                             .frame(width: 140)

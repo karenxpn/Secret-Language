@@ -39,7 +39,7 @@ struct FilterMatches: View {
                                         } label: {
                                             Text( gender.gender_name )
                                                 .font(.custom("times", size: 16))
-                                                .foregroundColor(matchesVM.dataFilterGender == gender.id ? .accentColor : .systemGray3)
+                                                .foregroundColor(matchesVM.dataFilterGender == gender.id ? AppColors.accentColor : .systemGray3)
                                                 .padding(.vertical, 8)
                                                 .padding(.horizontal, 18)
                                                 .background(RoundedRectangle(cornerRadius: 4)
@@ -70,7 +70,7 @@ struct FilterMatches: View {
                                             } label: {
                                                 Text( category.name )
                                                     .font(.custom("times", size: 16))
-                                                    .foregroundColor(matchesVM.dataFilterCategory == category.id ? .accentColor : .systemGray3)
+                                                    .foregroundColor(matchesVM.dataFilterCategory == category.id ? AppColors.accentColor : .systemGray3)
                                                     .padding(.top, 8)
                                             }
                                             
@@ -109,6 +109,7 @@ struct FilterMatches: View {
                                             .font(.custom("Gilroy-Regular", size: 14))
                                             .padding(.vertical, 6)
                                             .padding(.horizontal, 10)
+                                            .foregroundColor(AppColors.accentColor)
                                             .background(RoundedRectangle(cornerRadius: 4)
                                                             .strokeBorder(matchesVM.selectedCategories.contains(item.name) ? AppColors.accentColor : Color.clear, lineWidth: 1.5)
                                                             .background(matchesVM.selectedCategories.contains(item.name) ? .black : AppColors.dataFilterCategoryItemBg)

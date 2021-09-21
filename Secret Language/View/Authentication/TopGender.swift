@@ -22,7 +22,7 @@ struct TopGender: View {
                 .foregroundColor(authVM.signUpGender == gender.id ? .black : .white)
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding()
-                .background(authVM.signUpGender == gender.id ? .accentColor : AppColors.boxColor)
+                .background(authVM.signUpGender == gender.id ? AppColors.accentColor : AppColors.boxColor)
                 .cornerRadius(15)
         })
     }

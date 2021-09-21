@@ -32,8 +32,6 @@ class SearchViewModel: ObservableObject {
     
     @Published var dataFilterCategories = [ConnectionTypeModel]()
     @Published var dataFilterCategory: Int = 0
-
-
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: SearchServiceProtocol
@@ -54,8 +52,6 @@ class SearchViewModel: ObservableObject {
         self.profileDataManager = profileDataManager
         self.chatDataManager = chatDataManager
         self.ideal = self.interestedInCategory == 0 ? 1 : self.interestedInCategory
-        self.dataFilterGender = self.genderPreference
-        self.dataFilterCategory = self.interestedInCategory
         
         $search
             .removeDuplicates()

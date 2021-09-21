@@ -27,7 +27,7 @@ struct SingleConnectionType: View {
                     .font(.custom("Avenir", size: 10))
             }.frame(minWidth: 0, maxWidth: .infinity)
             .padding()
-            .background(authVM.connectionType == connection.id ? .accentColor : AppColors.boxColor)
+            .background(authVM.connectionType == connection.id ? AppColors.accentColor : AppColors.boxColor)
             .cornerRadius(15)
         })
     }

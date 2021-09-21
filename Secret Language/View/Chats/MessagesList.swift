@@ -28,7 +28,7 @@ struct MessagesList: View {
                                 .font(.custom("times", size: 15))
 
                             ActivityIndicatorView(isVisible: $roomVM.senderIsTyping, type: .scalingDots)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(AppColors.accentColor)
                                 .frame(width: 40, height: 15)
                         }.rotationEffect(.radians(3.14))
                     }

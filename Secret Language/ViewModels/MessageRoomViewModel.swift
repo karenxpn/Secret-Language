@@ -90,6 +90,10 @@ class MessageRoomViewModel: ObservableObject {
         channel.unbindAll(forEventName: "chatMessage\(roomID)")
     }
     
+    func removeChatListPusherHandlers() {
+        channel.unbindAll(forEventName: "chats")
+    }
+    
     func sendTypingStatus() {
         dataManager.sendTypingStatus(token: token, roomID: roomID, typing: writingMessage)
             .sink { _ in }.store(in: &cancellableSet)

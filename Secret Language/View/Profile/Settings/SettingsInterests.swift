@@ -36,7 +36,7 @@ struct SettingsInterests: View {
                                         .font(.custom("Avenir", size: 10))
                                 }.frame(minWidth: 0, maxWidth: .infinity)
                                 .padding()
-                                .background(selectedInterest == interest.id ? .accentColor : AppColors.boxColor)
+                                .background(selectedInterest == interest.id ? AppColors.accentColor : AppColors.boxColor)
                                 .cornerRadius(15)
                             })
                         }

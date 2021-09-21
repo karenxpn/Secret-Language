@@ -15,7 +15,7 @@ struct AllRightsReservedMadeByDoejo: View {
             VStack( spacing: 5) {
                 
                 if #available(iOS 15.0, *) {
-                    Text( NSLocalizedString("rightsReservedNew", comment: ""))
+                    Text("(c) 1994-2021, [Gary Goldshneider](https://en.wikipedia.org/wiki/Gary_Goldschneider), Thomas Rezek, Joost Elffers\n All Rights Reserved Worldwide")
                         .foregroundColor(.white)
                         .font(.custom("Gilroy-Regular", size: 10))
                         .multilineTextAlignment(.center)

@@ -40,7 +40,7 @@ struct SingleSearchResult: View {
                                 .font(.custom("Gilroy-Regular", size: 12))
                             
                             Text( user.ideal)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(AppColors.accentColor)
                                 .font(.custom("Gilroy-Regular", size: 12))
                                 .lineLimit(1)
                         }

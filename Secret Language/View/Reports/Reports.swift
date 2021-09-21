@@ -41,7 +41,7 @@ struct Reports: View {
                         
                         VStack( spacing: 10 ) {
                             Text( NSLocalizedString("lookUpBirthday", comment: ""))
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(AppColors.accentColor)
                                 .font(.custom("Gilroy-Bold", size: 18))
                                 .lineLimit(1)
                             
@@ -82,7 +82,7 @@ struct Reports: View {
                                     .frame( width: .greedy, height: 50 )
                                     .foregroundColor(.black)
                                     .font(.custom("times", size: 16))
-                                    .background(.accentColor)
+                                    .background(AppColors.accentColor)
                                     .cornerRadius(25)
                             }
                             
@@ -97,7 +97,7 @@ struct Reports: View {
                         
                         VStack( spacing: 10 ) {
                             Text( NSLocalizedString("lookUpRelationship", comment: ""))
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(AppColors.accentColor)
                                 .font(.custom("Gilroy-Bold", size: 18))
                                 .lineLimit(1)
                             
@@ -164,7 +164,7 @@ struct Reports: View {
                                     .frame( width: .greedy, height: 50 )
                                     .foregroundColor(.black)
                                     .font(.custom("times", size: 16))
-                                    .background(.accentColor)
+                                    .background(AppColors.accentColor)
                                     .cornerRadius(25)
                             }
                         }

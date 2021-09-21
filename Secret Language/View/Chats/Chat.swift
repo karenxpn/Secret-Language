@@ -40,6 +40,8 @@ struct Chat: View {
             }.navigationBarTitle("")
             .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("messaging", comment: "")), displayMode: .inline)
             .onAppear {
+                chatVM.page = 1
+                chatVM.chats.removeAll(keepingCapacity: false)
                 chatVM.getChats()
                 chatVM.getChatsWithPusher()
             }

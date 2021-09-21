@@ -28,8 +28,8 @@ struct ReportSection: View {
                     
                     Text( NSLocalizedString(title, comment: ""))
                         .font(.custom("times", size: 18))
-                        .foregroundColor(.accentColor)
-                    
+                        .foregroundColor(AppColors.accentColor)
+
                     Spacer()
                 }
                 
@@ -43,7 +43,7 @@ struct ReportSection: View {
             HStack {
                 Text( NSLocalizedString(title, comment: ""))
                     .font(.custom("times", size: 18))
-                    .foregroundColor(.accentColor) +
+                    .foregroundColor(AppColors.accentColor) +
                     
                     Text( content )
                     .foregroundColor(.white)

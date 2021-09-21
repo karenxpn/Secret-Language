@@ -39,7 +39,7 @@ struct Search: View {
                                 .font(.custom("times", size: 26))
                             
                             Text( NSLocalizedString("chooseCategory", comment: ""))
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(AppColors.accentColor)
                                 .font(.custom("Gilroy-Regular", size: 14))
                         }
                         
@@ -57,7 +57,7 @@ struct Search: View {
                                     } label: {
                                         Text( ideal.name )
                                             .font(.custom("times", size: 16))
-                                            .foregroundColor(searchVM.ideal == ideal.id ? .accentColor : .gray)
+                                            .foregroundColor(searchVM.ideal == ideal.id ? AppColors.accentColor : .gray)
                                             .padding(.vertical, 8)
                                             .padding(.horizontal, 18)
                                             .background(RoundedRectangle(cornerRadius: 4)

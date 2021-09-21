@@ -31,7 +31,7 @@ struct SettingsBirthdayPicker: View {
                 DatePicker("", selection: $birthdayDate, in: dateMaxLimit...dateMinLimit ,displayedComponents: .date)
                     .datePickerStyle(WheelDatePickerStyle())
                     .labelsHidden()
-                    .colorMultiply(.accentColor)
+                    .colorMultiply(AppColors.accentColor)
                     .environment(\.locale, Locale.init(identifier: "us"))
 
                 Spacer()

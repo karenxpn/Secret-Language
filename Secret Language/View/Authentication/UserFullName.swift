@@ -23,7 +23,7 @@ struct UserFullName: View {
                     .padding(.bottom)
                 
                 Text( NSLocalizedString("fullNameMayHelp", comment: ""))
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(AppColors.accentColor)
                     .font(.custom("Gilroy-Regular", size: 14))
                 
                 HStack {

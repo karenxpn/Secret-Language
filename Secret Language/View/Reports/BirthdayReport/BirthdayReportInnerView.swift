@@ -25,7 +25,7 @@ struct BirthdayReportInnerView: View {
                     .fontWeight(.semibold)
                 
                 Text( report.sln_description )
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(AppColors.accentColor)
                     .font(.custom("times-italic", size: 18))
                     .multilineTextAlignment(.center)
                     .padding(8)

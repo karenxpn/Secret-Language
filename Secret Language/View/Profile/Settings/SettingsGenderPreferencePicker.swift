@@ -28,7 +28,7 @@ struct SettingsGenderPreferencePicker: View {
                     .padding(.bottom)
                 
                 Text( NSLocalizedString("chooseModel", comment: ""))
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(AppColors.accentColor)
                     .font(.custom("Gilroy-Regular", size: 14))
                 
                 ForEach( genders, id: \.id ) { gender in
@@ -42,7 +42,7 @@ struct SettingsGenderPreferencePicker: View {
                             
                         }.frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
-                        .background(preference == gender.id ? .accentColor : AppColors.boxColor)
+                        .background(preference == gender.id ? AppColors.accentColor : AppColors.boxColor)
                         .cornerRadius(15)
                     })
                 }
