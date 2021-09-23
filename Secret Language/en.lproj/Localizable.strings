@@ -151,3 +151,5 @@
 "memberSince" = "Member Singe";
 "accountDeactivation" = "Account Deactivation";
 "areYouSureToDeactivate" = "Are you sure you want to deactivate your account. In case you do, all your data will be deleted";
+"showYear" = "Show Year";
+"hideYear" = "Hide Year";

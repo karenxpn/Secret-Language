@@ -22,6 +22,10 @@ class ReportViewModel: ObservableObject {
     @Published var firstReportDay: Int = 1
     @Published var secondReportDay: Int = 2
     
+    @Published var birthdayYear: Int? = nil
+    @Published var firstReportYear: Int? = nil
+    @Published var secondReportYear: Int? = nil
+    
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     

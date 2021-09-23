@@ -71,7 +71,7 @@ struct Reports: View {
                                     .frame( width: .greedy, height: 50 )
                                 
                             }).fullScreenCover(isPresented: $fullscreen) {
-                                ReportBirthdayPicker(month: $reportVM.birthdayMonth, day: $reportVM.birthday)
+                                ReportBirthdayPicker(month: $reportVM.birthdayMonth, day: $reportVM.birthday, year: $reportVM.birthdayYear)
                             }
                             
                             Button {
@@ -128,7 +128,7 @@ struct Reports: View {
                                     }.frame(width: .greedy)
                                     
                                 }).fullScreenCover(isPresented: $showFullscreenReportOne) {
-                                    ReportBirthdayPicker(month: $reportVM.firstReportMonth, day: $reportVM.firstReportDay)
+                                    ReportBirthdayPicker(month: $reportVM.firstReportMonth, day: $reportVM.firstReportDay, year: $reportVM.firstReportYear)
                                 }
                                 
                                 Divider()
@@ -149,7 +149,7 @@ struct Reports: View {
                                     }.frame(width: .greedy)
                                     
                                 }).fullScreenCover(isPresented: $showFullscreenReportTwo) {
-                                    ReportBirthdayPicker(month: $reportVM.secondReportMonth, day: $reportVM.secondReportDay)
+                                    ReportBirthdayPicker(month: $reportVM.secondReportMonth, day: $reportVM.secondReportDay, year: $reportVM.secondReportYear)
                                 }
                             }
                             
