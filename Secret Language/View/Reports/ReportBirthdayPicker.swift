@@ -59,7 +59,6 @@ struct ReportBirthdayPicker: View {
                         .foregroundColor(AppColors.accentColor)
                         .font(.custom("Avenir", size: 20))
                 }
-
                 
                 
                 Spacer()
@@ -109,12 +108,8 @@ struct ReportBirthdayPicker: View {
                     Spacer()
                     
                     Button(action: {
-                        if showYear {
-                           year = localYear
-                        }
+                        year = showYear ? localYear : nil
                         presentationMode.wrappedValue.dismiss()
-                        
-                        print("\(month) \(day)\(year != nil ? ", \(year!)" : "")")
                     }, label: {
                         Image("proceed")
                             .resizable()

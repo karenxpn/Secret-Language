@@ -65,7 +65,8 @@ struct Reports: View {
                             Button(action: {
                                 fullscreen.toggle()
                             }, label: {
-                                Text( "\(reportVM.birthdayMonth) \(reportVM.birthday)")
+                                
+                                Text( "\(reportVM.birthdayMonth) \(reportVM.birthday)\(reportVM.birthdayYear != nil ? ", \(reportVM.birthdayYear!)" : "")")
                                     .foregroundColor(.white)
                                     .font(.custom("times", size: 20))
                                     .frame( width: .greedy, height: 50 )
@@ -122,7 +123,7 @@ struct Reports: View {
                                             .foregroundColor(.gray)
                                             .font(.custom("Gilroy-Regular", size: 10))
                                         
-                                        Text( "\(reportVM.firstReportMonth) \(reportVM.firstReportDay)" )
+                                        Text( "\(reportVM.firstReportMonth) \(reportVM.firstReportDay)\(reportVM.firstReportYear != nil ? ", \(reportVM.firstReportYear!)" : "")" )
                                             .foregroundColor(.white)
                                             .font(.custom("times", size: 20))
                                     }.frame(width: .greedy)
@@ -142,7 +143,7 @@ struct Reports: View {
                                         Text( NSLocalizedString("day", comment: "") )
                                             .foregroundColor(.gray)
                                             .font(.custom("Gilroy-Regular", size: 10))
-                                        Text( "\(reportVM.secondReportMonth) \(reportVM.secondReportDay)")
+                                        Text( "\(reportVM.secondReportMonth) \(reportVM.secondReportDay)\(reportVM.secondReportYear != nil ? ", \(reportVM.secondReportYear!)" : "")")
                                             .foregroundColor(.white)
                                             .font(.custom("times", size: 20))
                                         
