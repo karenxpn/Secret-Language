@@ -66,7 +66,9 @@ struct Reports: View {
                                 fullscreen.toggle()
                             }, label: {
                                 
-                                Text( "\(reportVM.birthdayMonth) \(reportVM.birthday)\(reportVM.birthdayYear != nil ? ", \(reportVM.birthdayYear!)" : "")")
+                                Text( reportVM.returnDate(month: reportVM.birthdayMonth,
+                                                          day: reportVM.birthday,
+                                                          year: reportVM.birthdayYear))
                                     .foregroundColor(.white)
                                     .font(.custom("times", size: 20))
                                     .frame( width: .greedy, height: 50 )
@@ -123,7 +125,10 @@ struct Reports: View {
                                             .foregroundColor(.gray)
                                             .font(.custom("Gilroy-Regular", size: 10))
                                         
-                                        Text( "\(reportVM.firstReportMonth) \(reportVM.firstReportDay)\(reportVM.firstReportYear != nil ? ", \(reportVM.firstReportYear!)" : "")" )
+                                        
+                                        Text( reportVM.returnDate(month: reportVM.firstReportMonth,
+                                                                  day: reportVM.firstReportDay,
+                                                                  year: reportVM.firstReportYear) )
                                             .foregroundColor(.white)
                                             .font(.custom("times", size: 20))
                                     }.frame(width: .greedy)
@@ -143,7 +148,9 @@ struct Reports: View {
                                         Text( NSLocalizedString("day", comment: "") )
                                             .foregroundColor(.gray)
                                             .font(.custom("Gilroy-Regular", size: 10))
-                                        Text( "\(reportVM.secondReportMonth) \(reportVM.secondReportDay)\(reportVM.secondReportYear != nil ? ", \(reportVM.secondReportYear!)" : "")")
+                                        Text(reportVM.returnDate(month: reportVM.secondReportMonth,
+                                                                 day: reportVM.secondReportDay,
+                                                                 year: reportVM.secondReportYear))
                                             .foregroundColor(.white)
                                             .font(.custom("times", size: 20))
                                         

@@ -44,7 +44,7 @@ class ReportViewModel: ObservableObject {
     }
     
     func getBirthdayReport() {
-        dataManager.fetchBirthdayReport(token: token, date: "\(birthdayMonth) \(birthday)")
+        dataManager.fetchBirthdayReport(token: token, date: returnDate(month: birthdayMonth, day: birthday, year: birthdayYear))
             .sink { response in
                 if response.error != nil {
                     if response.error!.initialError.responseCode == Credentials.paymentErrorCode {
@@ -62,7 +62,9 @@ class ReportViewModel: ObservableObject {
     }
     
     func getRelationshipReport() {
-        dataManager.fetchRelationshipReport(token: token, firstDate: "\(firstReportMonth) \(firstReportDay)", secondDate: "\(secondReportMonth) \(secondReportDay)")
+        dataManager.fetchRelationshipReport(token: token,
+                                            firstDate: returnDate(month: firstReportMonth, day: firstReportDay, year: firstReportYear),
+                                            secondDate: returnDate(month: secondReportMonth, day: secondReportDay, year: secondReportYear))
             .sink { response in
                 if response.error != nil {
                     if response.error!.initialError.responseCode == Credentials.paymentErrorCode {
@@ -109,5 +111,9 @@ class ReportViewModel: ObservableObject {
     func makeAlert( showAlert: inout Bool, message: inout String, error: NetworkError ) {
         message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
         showAlert.toggle()
+    }
+    
+    func returnDate(month: String, day: Int, year: Int?) -> String {
+        return "\(month) \(day)\(year != nil ? ", \(year!)" : "")"
     }
 }
