@@ -83,7 +83,7 @@ extension ReportService: ReportServiceProtocol {
     }
     
     func fetchBirthdayReport(token: String, date: String) -> AnyPublisher<DataResponse<BirthdayReportModel, NetworkError>, Never> {
-        let url = URL(string: "\(Credentials.BASE_URL)user/showBirthdayReport")!
+        let url = URL(string: "\(Credentials.BASE_URL)user/showBirthdayReportWithYear")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
         
         return AF.request(url,
