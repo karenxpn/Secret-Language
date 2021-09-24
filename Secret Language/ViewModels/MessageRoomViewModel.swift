@@ -81,7 +81,10 @@ class MessageRoomViewModel: ObservableObject {
     func getChatRoomMessagesWithPusher() {
         dataManager.fetchMessageWithPusher(channel: channel, roomID: roomID) { message in
             withAnimation {
-                self.messages.insert(message, at: 0)
+                // this check is to avoid duplicated connection issues etc.
+                if !self.messages.contains(message) {
+                    self.messages.insert(message, at: 0)
+                }
             }
         }
     }

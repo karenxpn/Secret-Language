@@ -65,13 +65,16 @@ struct Reports: View {
                             Button(action: {
                                 fullscreen.toggle()
                             }, label: {
-                                Text( "\(reportVM.birthdayMonth) \(reportVM.birthday)")
+                                
+                                Text( reportVM.returnDate(month: reportVM.birthdayMonth,
+                                                          day: reportVM.birthday,
+                                                          year: reportVM.birthdayYear))
                                     .foregroundColor(.white)
                                     .font(.custom("times", size: 20))
                                     .frame( width: .greedy, height: 50 )
                                 
                             }).fullScreenCover(isPresented: $fullscreen) {
-                                ReportBirthdayPicker(month: $reportVM.birthdayMonth, day: $reportVM.birthday)
+                                ReportBirthdayPicker(month: $reportVM.birthdayMonth, day: $reportVM.birthday, year: $reportVM.birthdayYear)
                             }
                             
                             Button {
@@ -122,13 +125,16 @@ struct Reports: View {
                                             .foregroundColor(.gray)
                                             .font(.custom("Gilroy-Regular", size: 10))
                                         
-                                        Text( "\(reportVM.firstReportMonth) \(reportVM.firstReportDay)" )
+                                        
+                                        Text( reportVM.returnDate(month: reportVM.firstReportMonth,
+                                                                  day: reportVM.firstReportDay,
+                                                                  year: reportVM.firstReportYear) )
                                             .foregroundColor(.white)
                                             .font(.custom("times", size: 20))
                                     }.frame(width: .greedy)
                                     
                                 }).fullScreenCover(isPresented: $showFullscreenReportOne) {
-                                    ReportBirthdayPicker(month: $reportVM.firstReportMonth, day: $reportVM.firstReportDay)
+                                    ReportBirthdayPicker(month: $reportVM.firstReportMonth, day: $reportVM.firstReportDay, year: $reportVM.firstReportYear)
                                 }
                                 
                                 Divider()
@@ -142,14 +148,16 @@ struct Reports: View {
                                         Text( NSLocalizedString("day", comment: "") )
                                             .foregroundColor(.gray)
                                             .font(.custom("Gilroy-Regular", size: 10))
-                                        Text( "\(reportVM.secondReportMonth) \(reportVM.secondReportDay)")
+                                        Text(reportVM.returnDate(month: reportVM.secondReportMonth,
+                                                                 day: reportVM.secondReportDay,
+                                                                 year: reportVM.secondReportYear))
                                             .foregroundColor(.white)
                                             .font(.custom("times", size: 20))
                                         
                                     }.frame(width: .greedy)
                                     
                                 }).fullScreenCover(isPresented: $showFullscreenReportTwo) {
-                                    ReportBirthdayPicker(month: $reportVM.secondReportMonth, day: $reportVM.secondReportDay)
+                                    ReportBirthdayPicker(month: $reportVM.secondReportMonth, day: $reportVM.secondReportDay, year: $reportVM.secondReportYear)
                                 }
                             }
                             

@@ -12,6 +12,17 @@ import PusherSwift
 @testable import Secret_Language
 
 class MockProfileService: ProfileServiceProtocol {
+    
+    func deactivateAccount(token: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        
+        let result = Result<GlobalResponse, NetworkError>.success(globalResponse)
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
+    }
+    
+    
     func fetchProfileImageGallery(token: String) -> AnyPublisher<DataResponse<ProfileGalleryResponse, NetworkError>, Never> {
         var result: Result<ProfileGalleryResponse, NetworkError>
         
@@ -61,8 +72,8 @@ class MockProfileService: ProfileServiceProtocol {
     var flagUserError: Bool = false
     var fetchSharedProfileError: Bool = false
     
-    let sharedProfile = SharedProfileModel(id: 1, name: "karen mirakyan", age: 21, images: [""], user_birthday: "", user_birthday_name: "", sln: "", sln_description: "", report: "", advice: "", famous_years: "", distance: "", instagram: "karenmirakyan")
-    let profileGalleryResponse = ProfileGalleryResponse(avatar: ProfileGalleryItem(id: 1, image: ""), images: [ProfileGalleryItem(id: 2, image: "")])
+    let sharedProfile = SharedProfileModel(id: 1, name: "karen mirakyan", age: 21, images: [ProfileGalleryItem(id: 1, image: "")], user_birthday: "", user_birthday_name: "", sln: "", sln_description: "", report: "", advice: "", famous_years: "", distance: "", instagram: "karenmirakyan")
+    let profileGalleryResponse = ProfileGalleryResponse(canAdd: true, avatar: ProfileGalleryItem(id: 1, image: ""), images: [ProfileGalleryItem(id: 2, image: "")])
     
     func reportUser(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         var result: Result<GlobalResponse, NetworkError>
@@ -110,7 +121,7 @@ class MockProfileService: ProfileServiceProtocol {
     
     func fetchFriendRequestsWithPusher(channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> ()) { }
     func fetchPendingRequestsWithPusher(channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> ()) { }
-    func fetchProfileWithPusher(channel: PusherChannel, completion: @escaping (UserModel) -> ()) { }
+    func fetchProfileWithPusher(channel: PusherChannel, completion: @escaping (RequestsModel) -> ()) { }
     func fetchFriendsWithPusher(channel: PusherChannel, completion: @escaping ([UserPreviewModel]) -> ()) { }
     
     func acceptFriendRequest(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
@@ -177,7 +188,7 @@ class MockProfileService: ProfileServiceProtocol {
     var removeImageFromGalleryError: Bool = false
     var makeImageAvatarError: Bool = false
     
-    func fetchPendingRequests(token: String) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
+    func fetchPendingRequests(token: String, page: Int) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
         var result: Result<[UserPreviewModel], NetworkError>
         
         if fetchPendingRequestsError    { result = Result<[UserPreviewModel], NetworkError>.failure(networkError)}
@@ -188,7 +199,7 @@ class MockProfileService: ProfileServiceProtocol {
         return publisher.eraseToAnyPublisher()
     }
     
-    func fetchFriendRequests(token: String) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
+    func fetchFriendRequests(token: String, page: Int) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
         var result: Result<[UserPreviewModel], NetworkError>
         
         if fetchFriendRequestsError { result = Result<[UserPreviewModel], NetworkError>.failure(networkError)}
@@ -199,7 +210,7 @@ class MockProfileService: ProfileServiceProtocol {
         return publisher.eraseToAnyPublisher()
     }
     
-    func fetchFriends(token: String) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
+    func fetchFriends(token: String, page: Int) -> AnyPublisher<DataResponse<[UserPreviewModel], NetworkError>, Never> {
         var result: Result<[UserPreviewModel], NetworkError>
         
         if fetchFriendsError { result = Result<[UserPreviewModel], NetworkError>.failure(networkError)}

@@ -18,8 +18,8 @@ struct BirthdayReportModel: Codable, Identifiable {
     var week_report: WeekReportModel
     var month_report: MonthReportModel
     var season_report: SeasonReportModel
-    var way_report: WayReportModel
-    var path_report: PathReportModel
+    var way_report: WayReportModel?
+    var path_report: PathReportModel?
     var relationship_report: RelationshipReportModel
 }
 
