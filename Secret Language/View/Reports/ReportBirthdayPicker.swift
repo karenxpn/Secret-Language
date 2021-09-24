@@ -52,7 +52,7 @@ struct ReportBirthdayPicker: View {
                     if !showYear {
                         localYear = 1
                     } else {
-                        localYear = 1700
+                        localYear = 2000
                     }
                 } label: {
                     Text( showYear ? "Hide Year" : "Show Year")
