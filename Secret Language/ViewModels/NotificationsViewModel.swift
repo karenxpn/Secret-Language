@@ -22,8 +22,6 @@ struct AlertModel: Codable {
 class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
-    //    @AppStorage( "badge" ) private var badge: Int = 0
-    @Published var changeToTab: Int = -1
     @Published var deviceToken: String = ""
     
     private var cancellableSet: Set<AnyCancellable> = []
