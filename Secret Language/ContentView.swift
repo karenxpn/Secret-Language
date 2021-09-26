@@ -72,11 +72,22 @@ struct ContentView: View {
             } else if URL.contains("relationship") {
                 shared = SharedURL(id: sharedID, type: "relationship" )
             }
-        }).onChange(of: notificationsVM.changeToTab) { value in
-            if value != -1 {
-                self.currentTab = value
-            }
-        }
+        }).onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "notificationFetched"))) { action in
+            
+            if let decodedAction = action.object as? [String : String], let val = decodedAction["action"] {
+                switch val {
+                case Credentials.notificationsOpenChatAction:
+                    currentTab = 3
+                case Credentials.notificationsOpenProfileAction:
+                    currentTab = 4
+                case Credentials.norificationsOpenAppStore:
+                    if let url = URL(string: Credentials.app_store_link) {
+                        UIApplication.shared.open(url)
+                    }
+                default:
+                    break
+                }
+        })
     }
 }
 struct ContentView_Previews: PreviewProvider {
