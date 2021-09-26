@@ -49,7 +49,7 @@ struct ContentView: View {
             
         }.edgesIgnoringSafeArea(.bottom)
         .onAppear {
-//            notificationsVM.requestPermission()
+            notificationsVM.requestPermission()
             paymentVM.checkSubscriptionStatus()
         }.fullScreenCover(item: $shared) { value in
             
@@ -73,7 +73,6 @@ struct ContentView: View {
                 shared = SharedURL(id: sharedID, type: "relationship" )
             }
         }).onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "notificationFetched"))) { action in
-            
             
             if let decodedAction = action.object as? [String : String], let val = decodedAction["action"] {
                 switch val {
