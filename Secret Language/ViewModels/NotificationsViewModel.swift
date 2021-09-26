@@ -11,9 +11,19 @@ import Combine
 import SwiftUI
 import UserNotifications
 
+struct NotificationAlertModel: Codable {
+    var alert: AlertModel
+}
+
+struct AlertModel: Codable {
+    var action: String
+}
+
 class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
+    //    @AppStorage( "badge" ) private var badge: Int = 0
+    @Published var changeToTab: Int = -1
     @Published var deviceToken: String = ""
     
     private var cancellableSet: Set<AnyCancellable> = []
@@ -45,5 +55,40 @@ class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, Observ
                     }
                 }
             }
+    }
+    // foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.badge, .list, .sound])
+    }
+    
+    // background // this is called when user taps on the notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        let info = response.notification.request.content.userInfo
+        if let first = info.first {
+            let firstInfo = first.value
+            
+            let jsonData = try? JSONSerialization.data (withJSONObject: firstInfo, options: [])
+            if let data = jsonData {
+                guard let notification = try? JSONDecoder().decode(NotificationAlertModel.self, from: data) else {
+                    return
+                }
+                
+                switch notification.alert.action {
+                case Credentials.notificationsOpenChatAction :
+                    self.changeToTab = 3
+                case Credentials.notificationsOpenProfileAction:
+                    self.changeToTab = 4
+                case Credentials.norificationsOpenAppStore:
+                    if let url = URL(string: Credentials.app_store_link) {
+                        UIApplication.shared.open(url)
+                    }
+                default:
+                    break
+                }
+            }
+        }
+        
+        completionHandler()
     }
 }

@@ -18,7 +18,7 @@ struct ContentView: View {
     @StateObject var notificationsVM = NotificationsViewModel()
     @StateObject private var paymentVM = PaymentViewModel()
     
-    @State private var currentTab: Int = 2
+    @State private var currentTab: Int = 0
     @State private var shared: SharedURL?
     
     var body: some View {
@@ -49,7 +49,7 @@ struct ContentView: View {
             
         }.edgesIgnoringSafeArea(.bottom)
         .onAppear {
-//            notificationsVM.requestPermission()
+            notificationsVM.requestPermission()
             paymentVM.checkSubscriptionStatus()
         }.fullScreenCover(item: $shared) { value in
             
@@ -72,22 +72,9 @@ struct ContentView: View {
             } else if URL.contains("relationship") {
                 shared = SharedURL(id: sharedID, type: "relationship" )
             }
-        }).onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "notificationFetched"))) { action in
-            
-            
-            if let decodedAction = action.object as? [String : String], let val = decodedAction["action"] {
-                switch val {
-                case Credentials.notificationsOpenChatAction:
-                    currentTab = 3
-                case Credentials.notificationsOpenProfileAction:
-                    currentTab = 4
-                case Credentials.norificationsOpenAppStore:
-                    if let url = URL(string: Credentials.app_store_link) {
-                        UIApplication.shared.open(url)
-                    }
-                default:
-                    break
-                }
+        }).onChange(of: notificationsVM.changeToTab) { value in
+            if value != -1 {
+                self.currentTab = value
             }
         }
     }
