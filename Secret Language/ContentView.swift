@@ -18,7 +18,7 @@ struct ContentView: View {
     @StateObject var notificationsVM = NotificationsViewModel()
     @StateObject private var paymentVM = PaymentViewModel()
     
-    @State private var currentTab: Int = 2
+    @State private var currentTab: Int = 0
     @State private var shared: SharedURL?
     
     var body: some View {
@@ -87,8 +87,7 @@ struct ContentView: View {
                 default:
                     break
                 }
-            }
-        }
+        })
     }
 }
 struct ContentView_Previews: PreviewProvider {
