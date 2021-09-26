@@ -30,6 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         default:
             break
         }
+        
+        if let dict = userInfo.first?.value as? [String : Any] {
+            if let alert = dict["alert"] as? [String : Any] {
+                if let action = alert["action"] as? String {
+                    NotificationCenter.default.post(name: Notification.Name("notificationFetched"), object: ["action" : action])
+                }
+            }
+        }
     }
     
     // foreground
@@ -39,12 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     // background // this is called when user taps on the notification
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        let userInfo = response.notification.request.content.userInfo
-        if let action = userInfo["action"] as? String {
-            NotificationCenter.default.post(name: Notification.Name("notificationFetched"), object: ["action" : action])
-        }
-        
         completionHandler()
     }
 }

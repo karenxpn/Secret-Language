@@ -11,14 +11,6 @@ import Combine
 import SwiftUI
 import UserNotifications
 
-struct NotificationAlertModel: Codable {
-    var alert: AlertModel
-}
-
-struct AlertModel: Codable {
-    var action: String
-}
-
 class NotificationsViewModel: NSObject, UNUserNotificationCenterDelegate, ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""

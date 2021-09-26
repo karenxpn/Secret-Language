@@ -49,7 +49,7 @@ struct ContentView: View {
             
         }.edgesIgnoringSafeArea(.bottom)
         .onAppear {
-            notificationsVM.requestPermission()
+//            notificationsVM.requestPermission()
             paymentVM.checkSubscriptionStatus()
         }.fullScreenCover(item: $shared) { value in
             
@@ -74,8 +74,8 @@ struct ContentView: View {
             }
         }).onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "notificationFetched"))) { action in
             
-            print(action)
-            if let val = action.userInfo?["action"] as? String {
+            
+            if let decodedAction = action.object as? [String : String], let val = decodedAction["action"] {
                 switch val {
                 case Credentials.notificationsOpenChatAction:
                     currentTab = 3
