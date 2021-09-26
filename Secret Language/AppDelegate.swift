@@ -31,4 +31,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             break
         }
     }
+    
+    // foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.badge, .list, .sound])
+    }
+    
+    // background // this is called when user taps on the notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        let userInfo = response.notification.request.content.userInfo
+        if let action = userInfo["action"] as? String {
+            NotificationCenter.default.post(name: Notification.Name("notificationFetched"), object: ["action" : action])
+        }
+        
+        completionHandler()
+    }
 }
