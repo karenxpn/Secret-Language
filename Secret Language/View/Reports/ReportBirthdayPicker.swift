@@ -48,7 +48,9 @@ struct ReportBirthdayPicker: View {
                     .font(.custom("times", size: 26))
                 
                 Button {
-                    showYear.toggle()
+                    withAnimation {
+                        showYear.toggle()
+                    }
                     if !showYear {
                         localYear = 1
                     } else {
