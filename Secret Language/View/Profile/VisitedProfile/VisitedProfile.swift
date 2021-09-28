@@ -135,7 +135,7 @@ struct VisitedProfile: View {
                         Text( NSLocalizedString("relationshipPersonality", comment: ""))
                             .font(.custom("times", size: 18))
                             .foregroundColor(AppColors.accentColor)
-
+                        
                         Text( profileVM.visitedProfile!.report )
                             .foregroundColor(.white)
                             .font(.custom("times", size: 16))
@@ -144,7 +144,7 @@ struct VisitedProfile: View {
                         Text( NSLocalizedString("advice", comment: ""))
                             .font(.custom("times", size: 18))
                             .foregroundColor(AppColors.accentColor)
-
+                        
                         Text( profileVM.visitedProfile!.advice )
                             .foregroundColor(.white)
                             .font(.custom("times", size: 16))
@@ -169,45 +169,70 @@ struct VisitedProfile: View {
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
         }.navigationBarTitle("")
-        .navigationBarTitleView(SearchNavBar(title: userName))
-        .navigationBarItems(trailing: HStack( spacing: 10 ) {
-            
-            Button(action: {
-                profileVM.shareProfile(userID: userID)
-            }, label: {
-                Image( "shareIcon" )
-                    .frame( width: 40, height: 40)
+            .navigationBarTitleView(SearchNavBar(title: userName))
+            .navigationBarItems(trailing: HStack( spacing: 10 ) {
+                
+                Button(action: {
+                    profileVM.shareProfile(userID: userID)
+                }, label: {
+                    Image( "shareIcon" )
+                        .frame( width: 40, height: 40)
+                })
+                
+                Button(action: {
+                    actionSheet.toggle()
+                }, label: {
+                    Image("moreIcon")
+                        .frame( width: 35, height: 35)
+                })
             })
-            
-            Button(action: {
-                actionSheet.toggle()
-            }, label: {
-                Image("moreIcon")
-                    .frame( width: 35, height: 35)
-            })
-        })
-        .onAppear {
-            profileVM.getVisitedProfile(userID: userID)
-        }.actionSheet(isPresented: $actionSheet) {
-            ActionSheet(title: Text( NSLocalizedString("action", comment: "")), message: nil,
-                        buttons: [ .default(Text( NSLocalizedString("reportUser", comment: ""))
+            .onAppear {
+                profileVM.getVisitedProfile(userID: userID)
+            }.actionSheet(isPresented: $actionSheet) {
+                ActionSheet(title: Text( NSLocalizedString("action", comment: "")), message: nil,
+                            buttons: profileVM.visitedProfile?.friendStatus == 2 ?
+                            [ .default(Text( NSLocalizedString("reportUser", comment: ""))
+                                        .foregroundColor(.white), action: {
+                    profileVM.reportVisitedProfile(userID: userID)
+                }),
+                              .default(Text( NSLocalizedString("flag", comment: ""))
+                                        .foregroundColor(.white), action: {
+                    profileVM.flagVisitedProfile(userID: userID)
+                }),
+                              .destructive(Text( NSLocalizedString("blockUser", comment: ""))
+                                            .foregroundColor(.white), action: {
+                    profileVM.blockVisitedProfile(userID: userID)
+                }),
+                              .destructive(Text( NSLocalizedString("deleteFriend", comment: ""))
+                                            .foregroundColor(.white), action: {
+                    profileVM.askDelete()
+                }),
+                              .cancel()]  :
+                                [ .default(Text( NSLocalizedString("reportUser", comment: ""))
+                                            .foregroundColor(.white), action: {
+                    profileVM.reportVisitedProfile(userID: userID)
+                }),
+                                  .default(Text( NSLocalizedString("flag", comment: ""))
+                                            .foregroundColor(.white), action: {
+                    profileVM.flagVisitedProfile(userID: userID)
+                }),
+                                  .destructive(Text( NSLocalizedString("blockUser", comment: ""))
                                                 .foregroundColor(.white), action: {
-                                                    profileVM.reportVisitedProfile(userID: userID)
-                                                }),
-                                   .default(Text( NSLocalizedString("flag", comment: ""))
-                                                .foregroundColor(.white), action: {
-                                                    profileVM.flagVisitedProfile(userID: userID)
-                                                }),
-                                   .destructive(Text( NSLocalizedString("blockUser", comment: ""))
-                                                    .foregroundColor(.white), action: {
-                                                        profileVM.blockVisitedProfile(userID: userID)
-                                                    }),
-                                   .cancel()])
-        }.alert(isPresented: $profileVM.reportedOrBlockedAlert) {
-            Alert(title: Text( "Done" ), message: Text(profileVM.reportedOrBlockedAlertMessage), dismissButton: .default(Text( "OK" ), action: {
-                presentationMode.wrappedValue.dismiss()
-            }))
-        }
+                    profileVM.blockVisitedProfile(userID: userID)
+                }),
+                                  .cancel()])
+            }.alert(isPresented: $profileVM.reportedOrBlockedAlert) {
+                
+                if profileVM.alertType == .report {
+                    return Alert(title: Text( "Done" ), message: Text(profileVM.reportedOrBlockedAlertMessage), dismissButton: .default(Text( "OK" ), action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }))
+                } else {
+                    return Alert(title: Text( "Delete Friend" ), message: Text(profileVM.reportedOrBlockedAlertMessage), primaryButton: .default(Text( "OK" )), secondaryButton: .destructive(Text( "Delete" ), action: {
+                        profileVM.deleteFriend(userID: userID)
+                    }))
+                }
+            }
     }
 }
 
