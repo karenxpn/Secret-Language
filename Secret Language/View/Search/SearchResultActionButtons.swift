@@ -66,7 +66,7 @@ struct SearchResultActionButtons: View {
                         searchVM.acceptFriendRequest(userID: userID)
                     }, label: {
                         Text(NSLocalizedString("accept", comment: ""))
-                            .foregroundColor( .accentColor )
+                            .foregroundColor( AppColors.accentColor )
                             .font(.custom("Avenir", size: 14))
                             .padding(.vertical, 4)
                             .frame(width: 140)

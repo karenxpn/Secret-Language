@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct VisitedProfile: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var profileVM = ProfileViewModel()
+    @ObservedObject var profileVM = VisitedProfileViewModel()
     @State private var actionSheet: Bool = false
     
     let userID: Int
@@ -28,7 +28,7 @@ struct VisitedProfile: View {
                     
                     ZStack( alignment: .bottomTrailing ) {
                         
-                        TapImagesCarousel(images: profileVM.visitedProfile!.images, x: .constant( 0 ))
+                        TapImagesCarousel(images: profileVM.visitedProfile!.images.map{ $0.image }, x: .constant( 0 ))
                         
                         if !profileVM.visitedProfile!.instagram.isEmpty {
                             Button(action: {
@@ -53,7 +53,7 @@ struct VisitedProfile: View {
                             .foregroundColor(.gray)
                             .font(.custom("avenir", size: 14))
                         
-                        Text(profileVM.visitedProfile!.ideal)
+                        Text(profileVM.visitedProfile!.ideal_for)
                             .foregroundColor(AppColors.accentColor)
                             .font(.custom("avenir", size: 14))
                         
@@ -63,6 +63,9 @@ struct VisitedProfile: View {
                         .font(.custom("times", size: 16))
                         .foregroundColor(.white)
                     
+                    VisitedProfileFriendStatus(status: profileVM.visitedProfile!.friendStatus, userID: profileVM.visitedProfile!.id)
+                        .environmentObject(profileVM)
+                    
                     Text( "..." )
                         .foregroundColor(.white)
                         .font(.title2)
@@ -70,7 +73,7 @@ struct VisitedProfile: View {
                     
                     HStack {
                         VStack( alignment: .leading) {
-                            Text( profileVM.visitedProfile!.myBirthday )
+                            Text( profileVM.visitedProfile!.my_birthday )
                                 .font(.custom("times", size: 16))
                                 .foregroundColor(.white)
                             
@@ -79,7 +82,7 @@ struct VisitedProfile: View {
                                     .foregroundColor(.gray)
                                     .font(.custom("Avenir", size: 12))
                                 
-                                Text( profileVM.visitedProfile!.myBirthdayWeek )
+                                Text( profileVM.visitedProfile!.my_birthday_name )
                                     .foregroundColor(AppColors.accentColor)
                                     .font(.custom("Avenir", size: 12))
                             }
@@ -88,7 +91,7 @@ struct VisitedProfile: View {
                         Spacer()
                         
                         VStack( alignment: .trailing) {
-                            Text( profileVM.visitedProfile!.partnerBirthday )
+                            Text( profileVM.visitedProfile!.user_birthday )
                                 .font(.custom("times", size: 16))
                                 .foregroundColor(.white)
                             
@@ -97,21 +100,21 @@ struct VisitedProfile: View {
                                     .foregroundColor(.gray)
                                     .font(.custom("Avenir", size: 12))
                                 
-                                Text( profileVM.visitedProfile!.partnerBirthdayWeek )
+                                Text( profileVM.visitedProfile!.user_birthday_name )
                                     .foregroundColor(AppColors.accentColor)
                                     .font(.custom("Avenir", size: 12))
                             }
                         }
                     }.padding(.horizontal)
                     
-                    ImageHelper(image: profileVM.visitedProfile!.illustration, contentMode: .fit, progressViewTintColor: .black)
+                    ImageHelper(image: profileVM.visitedProfile!.rel_image, contentMode: .fit, progressViewTintColor: .black)
                         .frame(width: 130, height: 130)
                         .padding()
                         .background(.white)
                         .clipShape(Circle())
                     
                     VStack {
-                        Text( profileVM.visitedProfile!.title )
+                        Text( profileVM.visitedProfile!.sln )
                             .foregroundColor(.white)
                             .font(.custom("times", size: 24))
                             .fontWeight(.bold)
@@ -148,7 +151,7 @@ struct VisitedProfile: View {
                             .multilineTextAlignment(.center)
                             .padding(8)
                         
-                        Text("\(profileVM.visitedProfile!.registrationDate)")
+                        Text("\(profileVM.visitedProfile!.signUpDate)")
                             .foregroundColor(.white)
                             .font(.custom("avenir", size: 14))
                             .padding()
@@ -156,8 +159,6 @@ struct VisitedProfile: View {
                     
                     AllRightsReservedMadeByDoejo()
                         .fixedSize(horizontal: false, vertical: true)
-                    
-                    Divider()
                         .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                     
                 }.padding(.top, 1)

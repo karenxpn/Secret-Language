@@ -25,6 +25,8 @@ protocol ProfileServiceProtocol {
     func fetchProfile( token: String ) -> AnyPublisher<DataResponse<UserModel, NetworkError>, Never>
     func fetchProfileWithPusher( channel: PusherChannel, completion: @escaping ( RequestsModel ) -> () )
     
+    func fetchVisitedProfile( token: String, userID: Int ) -> AnyPublisher<DataResponse<VisitedUserModel, NetworkError>, Never>
+    
     func reportUser( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func blockUser( token: String, userID: Int ) ->  AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
     func flagUser( token: String, userID: Int ) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never>
@@ -48,6 +50,27 @@ class ProfileService {
 }
 
 extension ProfileService: ProfileServiceProtocol {
+    
+    func fetchVisitedProfile(token: String, userID: Int) -> AnyPublisher<DataResponse<VisitedUserModel, NetworkError>, Never> {
+        let url = URL(string: "\(Credentials.BASE_URL)user/getUserProfile")!
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
+        
+        return AF.request(url,
+                          method: .post,
+                          parameters: ["id" : userID],
+                          encoder: JSONParameterEncoder.default,
+                          headers: headers)
+            .validate()
+            .publishDecodable(type: VisitedUserModel.self)
+            .map { response in
+                response.mapError { error in
+                    let backendError = response.data.flatMap { try? JSONDecoder().decode(BackendError.self, from: $0)}
+                    return NetworkError(initialError: error, backendError: backendError)
+                }
+            }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
     
     func fetchSharedProfile(userID: Int) -> AnyPublisher<DataResponse<SharedProfileModel, NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/sharedUser/\(userID)")!

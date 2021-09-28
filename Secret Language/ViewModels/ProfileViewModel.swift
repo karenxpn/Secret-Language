@@ -13,18 +13,12 @@ import PusherSwift
 class ProfileViewModel: ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
-    
-    @Published var searchText: String = ""
-    
+        
     @Published var loading: Bool = false
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
     @Published var profile: UserModel? = nil
-    @Published var visitedProfile: MatchViewModel? = nil
-    
-    @Published var reportedOrBlockedAlert: Bool = false
-    @Published var reportedOrBlockedAlertMessage: String = ""
     
     @Published var sharedProfile: SharedProfileModel? = nil
     
@@ -39,15 +33,12 @@ class ProfileViewModel: ObservableObject {
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ProfileServiceProtocol
-    var matchDataManager: MatchServiceProtocol
     var chatDataManager: ChatServiceProtocol
     var channel: PusherChannel
     
     init( dataManager: ProfileServiceProtocol = ProfileService.shared,
-          matchDataManager: MatchServiceProtocol = MatchService.shared,
           chatDataManager: ChatServiceProtocol = ChatService.shared ) {
         self.dataManager = dataManager
-        self.matchDataManager = matchDataManager
         self.chatDataManager = chatDataManager
         self.channel = PusherManager.shared.channel
     }
@@ -212,52 +203,6 @@ class ProfileViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
-    func getVisitedProfile( userID: Int ) {
-        loading = true
-        matchDataManager.fetchSingleMatch(token: token, userID: userID)
-            .sink { response in
-                self.loading = false
-                if response.error != nil {
-                    self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
-                } else {
-                    self.visitedProfile = MatchViewModel(match: response.value!)
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func reportVisitedProfile( userID: Int ) {
-        dataManager.reportUser(token: token, userID: userID)
-            .sink { response in
-                if response.error == nil {
-                    self.makeReportAlert(response: response.value!,
-                                         alert: &self.reportedOrBlockedAlert,
-                                         message: &self.reportedOrBlockedAlertMessage)
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func blockVisitedProfile( userID: Int ) {
-        dataManager.blockUser(token: token, userID: userID)
-            .sink { response in
-                if response.error == nil {
-                    self.makeReportAlert(response: response.value!,
-                                         alert: &self.reportedOrBlockedAlert,
-                                         message: &self.reportedOrBlockedAlertMessage)
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func flagVisitedProfile( userID: Int ) {
-        dataManager.flagUser(token: token, userID: userID)
-            .sink { response in
-                if response.error == nil {
-                    self.makeReportAlert(response: response.value!,
-                                         alert: &self.reportedOrBlockedAlert,
-                                         message: &self.reportedOrBlockedAlertMessage)
-                }
-            }.store(in: &cancellableSet)
-    }
-    
     func getSharedProfile(userID: Int) {
         loading = true
         dataManager.fetchSharedProfile(userID: userID)
@@ -301,11 +246,6 @@ class ProfileViewModel: ObservableObject {
         
     func makeAlert(with error: NetworkError, message: inout String, alert: inout Bool ) {
         message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
-        alert.toggle()
-    }
-    
-    func makeReportAlert( response: GlobalResponse, alert: inout Bool, message: inout String ) {
-        message = response.message
         alert.toggle()
     }
 }
