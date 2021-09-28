@@ -9,12 +9,19 @@ import Foundation
 import SwiftUI
 import Combine
 
+enum UserStatusChangeAlert {
+    case report
+    case removeFriend
+}
+
 class VisitedProfileViewModel: ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     
     @Published var loading: Bool = false
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    
+    @Published var alertType: UserStatusChangeAlert? = .none
     
     @Published var reportedOrBlockedAlert: Bool = false
     @Published var reportedOrBlockedAlertMessage: String = ""
@@ -50,7 +57,7 @@ class VisitedProfileViewModel: ObservableObject {
                 if response.error == nil {
                     self.makeReportAlert(response: response.value!,
                                          alert: &self.reportedOrBlockedAlert,
-                                         message: &self.reportedOrBlockedAlertMessage)
+                                         message: &self.reportedOrBlockedAlertMessage, type: &self.alertType)
                 }
             }.store(in: &cancellableSet)
     }
@@ -61,7 +68,7 @@ class VisitedProfileViewModel: ObservableObject {
                 if response.error == nil {
                     self.makeReportAlert(response: response.value!,
                                          alert: &self.reportedOrBlockedAlert,
-                                         message: &self.reportedOrBlockedAlertMessage)
+                                         message: &self.reportedOrBlockedAlertMessage, type: &self.alertType)
                 }
             }.store(in: &cancellableSet)
     }
@@ -72,7 +79,7 @@ class VisitedProfileViewModel: ObservableObject {
                 if response.error == nil {
                     self.makeReportAlert(response: response.value!,
                                          alert: &self.reportedOrBlockedAlert,
-                                         message: &self.reportedOrBlockedAlertMessage)
+                                         message: &self.reportedOrBlockedAlertMessage, type: &self.alertType)
                 }
             }.store(in: &cancellableSet)
     }
@@ -113,6 +120,21 @@ class VisitedProfileViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
+    func deleteFriend( userID: Int ) {
+        dataManager.deleteFriend(token: token, userID: userID)
+            .sink { response in
+                if response.error == nil {
+                    self.visitedProfile?.friendStatus = 1
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func askDelete() {
+        self.reportedOrBlockedAlertMessage =  "All your data with this user will be deleted( included chat messages )"
+        self.alertType = .removeFriend
+        self.reportedOrBlockedAlert.toggle()
+    }
+    
     func shareProfile( userID: Int ) {
         let url = URL(string: "https://secretlanguage.network/v1/profile/share?id=\(userID)")!
         let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
@@ -139,8 +161,9 @@ class VisitedProfileViewModel: ObservableObject {
         alert.toggle()
     }
     
-    func makeReportAlert( response: GlobalResponse, alert: inout Bool, message: inout String ) {
+    func makeReportAlert( response: GlobalResponse, alert: inout Bool, message: inout String, type: inout UserStatusChangeAlert? ) {
         message = response.message
+        type = .report
         alert.toggle()
     }
 }
