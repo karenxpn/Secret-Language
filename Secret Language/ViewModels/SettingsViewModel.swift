@@ -42,10 +42,16 @@ class SettingsViewModel: ObservableObject {
     @Published var loadingInterests: Bool = false
     @Published var interestedInText: String = ""
     
+    @Published var locationText: String = ""
+    @Published var locationsPage: Int = 1
+    @Published var locations = [LocationListItemModel]()
+    @Published var loadingLocations: Bool = false
+    
     @Published var navigateToGenders: Bool = false
     @Published var navigateToBirthdayPicker: Bool = false
     @Published var navigateToGenderPreferencePicker: Bool = false
     @Published var navigateToInterests: Bool = false
+    @Published var navigateToLocation: Bool = false
         
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     
@@ -138,6 +144,18 @@ class SettingsViewModel: ObservableObject {
                 self.loadingInterests = false
                 if response.error == nil {
                     self.allInterests = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
+    func getAllLocations() {
+        loadingLocations = true
+        dataManager.fetchAllLocations(token: token)
+            .sink { response in
+                self.loadingLocations = false
+                if response.error != nil {
+                    self.locations = response.value!
+                    self.locationsPage += 1
                 }
             }.store(in: &cancellableSet)
     }

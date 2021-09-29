@@ -108,7 +108,25 @@ struct Settings: View {
                             }.padding()
                         }
                         
-                        SettingsListCell( title: NSLocalizedString("location", comment: ""), content: settingsVM.location)
+                        Button {
+                            settingsVM.navigateToLocation.toggle()
+                        } label: {
+                            SettingsListCell( title: NSLocalizedString("location", comment: ""), content: settingsVM.location)
+                        }.background (
+                            ZStack {
+                                
+                                NavigationLink(destination: EmptyView()) {
+                                    EmptyView()
+                                }
+                                
+                                NavigationLink(destination: SettingsLocation()
+                                                .environmentObject(settingsVM),
+                                               isActive: $settingsVM.navigateToLocation) {
+                                    EmptyView()
+                                }.hidden()
+                            }
+                        )
+                        
                         
                         Button {
                             settingsVM.navigateToBirthdayPicker.toggle()

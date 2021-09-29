@@ -6,13 +6,64 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct SettingsLocation: View {
     
-    
+    @EnvironmentObject var settingsVM: SettingsViewModel
+    @State private var selectedLocation: Int?
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Background()
+            
+            ScrollView( showsIndicators: false ) {
+                LazyVStack {
+                    
+                    // search text field
+                    
+                    ForEach( settingsVM.locations, id: \.id ) { location in
+                        Button {
+                            self.selectedLocation = location.id
+                        } label: {
+                            Text( location.name )
+                                .foregroundColor(Color.white)
+                                .font(.custom("Aveir", size: 18))
+                                .frame( width: .greedy)
+                                .multilineTextAlignment(.leading)
+                        }.onAppear {
+                            if location.id == settingsVM.locations.last?.id && !settingsVM.loadingLocations {
+                                settingsVM.getAllLocations()
+                            }
+                        }
+                    }
+                    
+                    if settingsVM.loadingLocations {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
+                    }
+                }
+            }
+            
+            HStack {
+                Spacer()
+                
+                Button(action: {
+                    // do action here
+                }, label: {
+                    Image("proceed")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 50, height: 50)
+                })
+            }
+            
+        }.onAppear {
+            settingsVM.getAllLocations()
+        }
     }
 }
 
