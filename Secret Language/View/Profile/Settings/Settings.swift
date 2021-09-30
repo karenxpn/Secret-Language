@@ -108,7 +108,26 @@ struct Settings: View {
                             }.padding()
                         }
                         
-                        SettingsListCell( title: NSLocalizedString("location", comment: ""), content: settingsVM.location)
+                        Button {
+                            settingsVM.navigateToLocation.toggle()
+                        } label: {
+                            SettingsListCell( title: NSLocalizedString("location", comment: ""), content: settingsVM.location)
+                        }.disabled(!settingsVM.canEditLocation)
+                        .background (
+                            ZStack {
+                                
+                                NavigationLink(destination: EmptyView()) {
+                                    EmptyView()
+                                }
+                                
+                                NavigationLink(destination: SettingsLocation()
+                                                .environmentObject(settingsVM),
+                                               isActive: $settingsVM.navigateToLocation) {
+                                    EmptyView()
+                                }.hidden()
+                            }
+                        )
+                        
                         
                         Button {
                             settingsVM.navigateToBirthdayPicker.toggle()
@@ -192,7 +211,7 @@ struct Settings: View {
         })
         .alert(isPresented: $showForm, self.formType == .name ?
                 TextFieldAlert(title: NSLocalizedString("fullName", comment: ""), message: "") { (text) in
-                    if text != nil && ( text?.count ?? 0 ) >= 3 && ( text?.count ?? 0 ) < 20 {
+                    if text != nil && ( text?.count ?? 0 ) >= 2 && ( text?.count ?? 0 ) <= 30 {
                         settingsVM.fullName = text!
                         settingsVM.updateFields(updatedFrom: "")
                     }

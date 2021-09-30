@@ -42,10 +42,18 @@ class SettingsViewModel: ObservableObject {
     @Published var loadingInterests: Bool = false
     @Published var interestedInText: String = ""
     
+    @Published var locationText: String = ""
+    @Published var locations = [LocationListItemModel]()
+    @Published var loadingLocations: Bool = false
+    @Published var updatableLocation: Int?
+    
     @Published var navigateToGenders: Bool = false
     @Published var navigateToBirthdayPicker: Bool = false
     @Published var navigateToGenderPreferencePicker: Bool = false
     @Published var navigateToInterests: Bool = false
+    
+    @Published var canEditLocation: Bool = false
+    @Published var navigateToLocation: Bool = false
         
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
     
@@ -77,6 +85,17 @@ class SettingsViewModel: ObservableObject {
         self.authDataManager = authDataManager
         self.profileDataManager = profileDataManager
         self.matchDataManager = matchDataManager
+        
+        $locationText
+            .removeDuplicates()
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .sink { (text) in
+                if !text.isEmpty {
+                    self.getAllLocations(text: text)
+                } else {
+                    self.locations.removeAll(keepingCapacity: false)
+                }
+            }.store(in: &cancellableSet)
     }
     
     func getSettingsFields() {
@@ -99,6 +118,7 @@ class SettingsViewModel: ObservableObject {
                     self.instagramUsername = settings.instagram
                     self.genderPreference = settings.gender_preference
                     self.interestedIn = settings.interested_in.id
+                    self.canEditLocation = settings.canEditLocation
 
                     self.locallyStoredGenderPreference = settings.gender_preference
                     self.locallyStoredInterestedIn = settings.interested_in.id
@@ -142,6 +162,17 @@ class SettingsViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
+    func getAllLocations(text: String) {
+        loadingLocations = true
+        dataManager.fetchLocations(token: token, text: text)
+            .sink { response in
+                self.loadingLocations = false
+                if response.error == nil {
+                    self.locations = response.value!
+                }
+            }.store(in: &cancellableSet)
+    }
+    
     func updateFields(updatedFrom: String) {        
         let parameters = SettingsFieldsUpdateModel(date_name: dateFormatter.string(from: self.birthdayDate), name: fullName, gender: gender.id, country_name: location, instagram: instagramUsername, gender_preference: genderPreference, interested_in: interestedIn)
         
@@ -164,6 +195,16 @@ class SettingsViewModel: ObservableObject {
                     self.makeAlert(with: response.error!, showAlert: &self.updateAlert, alertMessage: &self.updateAlertMessage)
                 }
                 
+            }.store(in: &cancellableSet)
+    }
+    
+    func updateLocation(id: Int) {
+        dataManager.updateLocation(token: token, id: id)
+            .sink { response in
+                if response.error == nil {
+                    self.navigateToLocation.toggle()
+                    self.getSettingsFields()
+                }
             }.store(in: &cancellableSet)
     }
     

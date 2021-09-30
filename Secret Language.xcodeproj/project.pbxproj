@@ -126,6 +126,8 @@
 		FFB1EA972703A2D9005FA30C /* VisitedProfileFriendStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EA962703A2D9005FA30C /* VisitedProfileFriendStatus.swift */; };
 		FFB1EA992703A48E005FA30C /* VisitedUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EA982703A48E005FA30C /* VisitedUserModel.swift */; };
 		FFB1EA9B2703ACFA005FA30C /* VisitedProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1EA9A2703ACFA005FA30C /* VisitedProfileViewModel.swift */; };
+		FFB4C35E27051C5E0017380E /* SettingsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4C35D27051C5E0017380E /* SettingsLocation.swift */; };
+		FFB4C360270521840017380E /* LocationListItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB4C35F270521840017380E /* LocationListItemModel.swift */; };
 		FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */; };
 		FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBEA67F2664E4290033B2ED /* ContentView.swift */; };
 		FFBEA6822664E42A0033B2ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFBEA6812664E42A0033B2ED /* Assets.xcassets */; };
@@ -328,6 +330,8 @@
 		FFB1EA962703A2D9005FA30C /* VisitedProfileFriendStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedProfileFriendStatus.swift; sourceTree = "<group>"; };
 		FFB1EA982703A48E005FA30C /* VisitedUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedUserModel.swift; sourceTree = "<group>"; };
 		FFB1EA9A2703ACFA005FA30C /* VisitedProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedProfileViewModel.swift; sourceTree = "<group>"; };
+		FFB4C35D27051C5E0017380E /* SettingsLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLocation.swift; sourceTree = "<group>"; };
+		FFB4C35F270521840017380E /* LocationListItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListItemModel.swift; sourceTree = "<group>"; };
 		FFBEA67A2664E4290033B2ED /* Secret Language.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret Language.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBEA67D2664E4290033B2ED /* Secret_LanguageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret_LanguageApp.swift; sourceTree = "<group>"; };
 		FFBEA67F2664E4290033B2ED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -495,6 +499,7 @@
 				FFAD920D26B0533D007984ED /* SettingsGenderPicker.swift */,
 				FFB1CC2826D5943500FC1AE2 /* SettingsGenderPreferencePicker.swift */,
 				FF53CC0426E7F2A5002F8DBC /* SettingsInterests.swift */,
+				FFB4C35D27051C5E0017380E /* SettingsLocation.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -691,6 +696,7 @@
 				FFAD920F26B07F90007984ED /* SettingsFieldsUpdateModel.swift */,
 				FF8AD98526D6D6C500EC1DB8 /* ProfileGalleryResponse.swift */,
 				FFA62CF126E677EF008A14F9 /* SearchRequestModel.swift */,
+				FFB4C35F270521840017380E /* LocationListItemModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1088,6 +1094,7 @@
 				FF997E91268A60150057B731 /* VisitedProfile.swift in Sources */,
 				FF18DC32269CF4BF004BE946 /* PaymentOrReportDetectionView.swift in Sources */,
 				FF10811626A76A7C00387ED9 /* AppDelegate.swift in Sources */,
+				FFB4C35E27051C5E0017380E /* SettingsLocation.swift in Sources */,
 				FF10811F26A9B9FE00387ED9 /* SharedRelationshipReport.swift in Sources */,
 				FF8AD98426D6D5D000EC1DB8 /* ProfileImageGallerySingleItem.swift in Sources */,
 				FF79FAC826D154C400525661 /* BirthdayReportInnerView.swift in Sources */,
@@ -1140,6 +1147,7 @@
 				FF997E862689DAB20057B731 /* SearchViewModel.swift in Sources */,
 				FF10811026A70C6500387ED9 /* MonthlySubscriptionView.swift in Sources */,
 				FF18DC3C269F61AF004BE946 /* ChatViewModel.swift in Sources */,
+				FFB4C360270521840017380E /* LocationListItemModel.swift in Sources */,
 				FFCEDDF1266E642C0073BE20 /* SignUpRequest.swift in Sources */,
 				FF3727EE26A5051C00B20925 /* SendingMessageModel.swift in Sources */,
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,

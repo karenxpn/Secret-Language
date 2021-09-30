@@ -44,6 +44,9 @@ struct VisitedProfile: View {
                         }
                     }
                     
+                    VisitedProfileFriendStatus(status: profileVM.visitedProfile!.friendStatus, userID: profileVM.visitedProfile!.id)
+                        .environmentObject(profileVM)
+                    
                     Text( "\(profileVM.visitedProfile!.name), \(profileVM.visitedProfile!.age)" )
                         .foregroundColor(.white)
                         .font(.custom("times", size: 20))
@@ -62,9 +65,6 @@ struct VisitedProfile: View {
                     Text( profileVM.visitedProfile!.distance )
                         .font(.custom("times", size: 16))
                         .foregroundColor(.white)
-                    
-                    VisitedProfileFriendStatus(status: profileVM.visitedProfile!.friendStatus, userID: profileVM.visitedProfile!.id)
-                        .environmentObject(profileVM)
                     
                     Text( "..." )
                         .foregroundColor(.white)

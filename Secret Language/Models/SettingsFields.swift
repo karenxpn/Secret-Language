@@ -14,4 +14,5 @@ struct SettingsFields: Codable {
     var instagram: String
     var gender_preference: Int
     var interested_in: ConnectionTypeModel
+    var canEditLocation: Bool
 }
