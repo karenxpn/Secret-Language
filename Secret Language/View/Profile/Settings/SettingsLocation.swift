@@ -14,7 +14,7 @@ struct SettingsLocation: View {
     @State private var selectedLocation: Int?
     
     var body: some View {
-        ZStack {
+        ZStack( alignment: .bottomTrailing) {
             Background()
             
             ScrollView( showsIndicators: false ) {
@@ -37,47 +37,49 @@ struct SettingsLocation: View {
                     
                     ForEach( settingsVM.locations, id: \.id ) { location in
                         Button {
-                            self.selectedLocation = location.id
+                            withAnimation {
+                                self.selectedLocation = location.id
+                            }
                         } label: {
                             
-                            HStack {
-                                Text( location.name )
-                                    .foregroundColor(Color.white)
-                                    .font(.custom("Aveir", size: 18))
-                                    .frame( width: .greedy)
-                                    .multilineTextAlignment(.leading)
-                                    
-                                
-                                Spacer()
-                                
-                                if location.id == selectedLocation {
-                                    Image(systemName: "checkmark")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
+                            VStack {
+                                HStack {
+                                    Text( location.name )
                                         .foregroundColor(Color.white)
-                                        .frame( width: 18, height: 18)
+                                        .font(.custom("Aveir", size: 18))
+                                    
+                                    Spacer()
+                                    
+                                    if location.id == selectedLocation {
+                                        Image(systemName: "checkmark")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .foregroundColor(Color.white)
+                                            .frame( width: 18, height: 18)
+                                    }
                                 }
-                            }.padding([.top, .horizontal])
+                                Divider()
+                            }
+                            .padding([.top, .horizontal])
                         }
                     }
                 }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
-            }
-            
-            HStack {
-                Spacer()
+            }.padding(.top, 1)
+
                 
                 Button(action: {
                     // do action here
-                    settingsVM.updatableLocation = selectedLocation
-                    settingsVM.updateFields(updatedFrom: "location")
+                    if let location = selectedLocation {
+                        settingsVM.updateLocation(id: location)
+                    }
                 }, label: {
                     Image("proceed")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 50, height: 50)
-                })
-            }.padding()
-            .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+                }).padding()
+            .padding(.bottom, UIScreen.main.bounds.size.height * 0.1)
+            
         }.gesture(DragGesture().onChanged({ _ in
             UIApplication.shared.endEditing()
         }))

@@ -112,7 +112,8 @@ struct Settings: View {
                             settingsVM.navigateToLocation.toggle()
                         } label: {
                             SettingsListCell( title: NSLocalizedString("location", comment: ""), content: settingsVM.location)
-                        }.background (
+                        }.disabled(!settingsVM.canEditLocation)
+                        .background (
                             ZStack {
                                 
                                 NavigationLink(destination: EmptyView()) {

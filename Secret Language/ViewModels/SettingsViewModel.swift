@@ -51,6 +51,8 @@ class SettingsViewModel: ObservableObject {
     @Published var navigateToBirthdayPicker: Bool = false
     @Published var navigateToGenderPreferencePicker: Bool = false
     @Published var navigateToInterests: Bool = false
+    
+    @Published var canEditLocation: Bool = false
     @Published var navigateToLocation: Bool = false
         
     @Published var birthdayDate: Date = Calendar.current.date(byAdding: .year, value: -18, to: Date()) ?? Date()
@@ -116,6 +118,7 @@ class SettingsViewModel: ObservableObject {
                     self.instagramUsername = settings.instagram
                     self.genderPreference = settings.gender_preference
                     self.interestedIn = settings.interested_in.id
+                    self.canEditLocation = settings.canEditLocation
 
                     self.locallyStoredGenderPreference = settings.gender_preference
                     self.locallyStoredInterestedIn = settings.interested_in.id
@@ -161,7 +164,7 @@ class SettingsViewModel: ObservableObject {
     
     func getAllLocations(text: String) {
         loadingLocations = true
-        dataManager.fetchAllLocations(token: token)
+        dataManager.fetchLocations(token: token, text: text)
             .sink { response in
                 self.loadingLocations = false
                 if response.error == nil {
@@ -185,8 +188,6 @@ class SettingsViewModel: ObservableObject {
                         self.navigateToGenderPreferencePicker.toggle()
                     } else if updatedFrom == "interestedIn" {
                         self.navigateToInterests.toggle()
-                    } else if updatedFrom == "location" {
-                        self.navigateToLocation.toggle()
                     }
                     
                     self.getSettingsFields()
@@ -194,6 +195,16 @@ class SettingsViewModel: ObservableObject {
                     self.makeAlert(with: response.error!, showAlert: &self.updateAlert, alertMessage: &self.updateAlertMessage)
                 }
                 
+            }.store(in: &cancellableSet)
+    }
+    
+    func updateLocation(id: Int) {
+        dataManager.updateLocation(token: token, id: id)
+            .sink { response in
+                if response.error == nil {
+                    self.navigateToLocation.toggle()
+                    self.getSettingsFields()
+                }
             }.store(in: &cancellableSet)
     }
     
