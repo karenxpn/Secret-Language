@@ -210,7 +210,7 @@ struct Settings: View {
         })
         .alert(isPresented: $showForm, self.formType == .name ?
                 TextFieldAlert(title: NSLocalizedString("fullName", comment: ""), message: "") { (text) in
-                    if text != nil && ( text?.count ?? 0 ) >= 3 && ( text?.count ?? 0 ) < 20 {
+                    if text != nil && ( text?.count ?? 0 ) >= 2 && ( text?.count ?? 0 ) <= 30 {
                         settingsVM.fullName = text!
                         settingsVM.updateFields(updatedFrom: "")
                     }

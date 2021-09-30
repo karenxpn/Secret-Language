@@ -43,9 +43,9 @@ class SettingsViewModel: ObservableObject {
     @Published var interestedInText: String = ""
     
     @Published var locationText: String = ""
-    @Published var locationsPage: Int = 1
     @Published var locations = [LocationListItemModel]()
     @Published var loadingLocations: Bool = false
+    @Published var updatableLocation: Int?
     
     @Published var navigateToGenders: Bool = false
     @Published var navigateToBirthdayPicker: Bool = false
@@ -83,6 +83,17 @@ class SettingsViewModel: ObservableObject {
         self.authDataManager = authDataManager
         self.profileDataManager = profileDataManager
         self.matchDataManager = matchDataManager
+        
+        $locationText
+            .removeDuplicates()
+            .debounce(for: 0.3, scheduler: DispatchQueue.main)
+            .sink { (text) in
+                if !text.isEmpty {
+                    self.getAllLocations(text: text)
+                } else {
+                    self.locations.removeAll(keepingCapacity: false)
+                }
+            }.store(in: &cancellableSet)
     }
     
     func getSettingsFields() {
@@ -148,14 +159,13 @@ class SettingsViewModel: ObservableObject {
             }.store(in: &cancellableSet)
     }
     
-    func getAllLocations() {
+    func getAllLocations(text: String) {
         loadingLocations = true
         dataManager.fetchAllLocations(token: token)
             .sink { response in
                 self.loadingLocations = false
-                if response.error != nil {
+                if response.error == nil {
                     self.locations = response.value!
-                    self.locationsPage += 1
                 }
             }.store(in: &cancellableSet)
     }
@@ -175,6 +185,8 @@ class SettingsViewModel: ObservableObject {
                         self.navigateToGenderPreferencePicker.toggle()
                     } else if updatedFrom == "interestedIn" {
                         self.navigateToInterests.toggle()
+                    } else if updatedFrom == "location" {
+                        self.navigateToLocation.toggle()
                     }
                     
                     self.getSettingsFields()

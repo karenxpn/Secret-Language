@@ -12,6 +12,26 @@ import PusherSwift
 @testable import Secret_Language
 
 class MockProfileService: ProfileServiceProtocol {
+    func fetchVisitedProfile(token: String, userID: Int) -> AnyPublisher<DataResponse<VisitedUserModel, NetworkError>, Never> {
+        
+        let result = Result<VisitedUserModel, NetworkError>.failure(networkError)
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<VisitedUserModel, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
+        
+    }
+    
+    func deleteFriend(token: String, userID: Int) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
+        var result: Result<GlobalResponse, NetworkError>
+        
+        if deleteFriendError    { result = Result<GlobalResponse, NetworkError>.failure(networkError)}
+        else                    { result = Result<GlobalResponse, NetworkError>.success(globalResponse)}
+        
+        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
+        let publisher = CurrentValueSubject<DataResponse<GlobalResponse, NetworkError>, Never>(response)
+        return publisher.eraseToAnyPublisher()
+    }
+    
     
     func deactivateAccount(token: String) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         
@@ -71,6 +91,8 @@ class MockProfileService: ProfileServiceProtocol {
     var blockUserError: Bool = false
     var flagUserError: Bool = false
     var fetchSharedProfileError: Bool = false
+    var fetchVisitedProfileError: Bool = false
+    var deleteFriendError: Bool = false
     
     let sharedProfile = SharedProfileModel(id: 1, name: "karen mirakyan", age: 21, images: [ProfileGalleryItem(id: 1, image: "")], user_birthday: "", user_birthday_name: "", sln: "", sln_description: "", report: "", advice: "", famous_years: "", distance: "", instagram: "karenmirakyan")
     let profileGalleryResponse = ProfileGalleryResponse(canAdd: true, avatar: ProfileGalleryItem(id: 1, image: ""), images: [ProfileGalleryItem(id: 2, image: "")])

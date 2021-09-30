@@ -19,8 +19,21 @@ struct SettingsLocation: View {
             
             ScrollView( showsIndicators: false ) {
                 LazyVStack {
+                                        
+                    TextField("Chicago, USA", text: $settingsVM.locationText)
+                        .font(.custom("times", size: 20))
+                        .foregroundColor(.white)
+                        .padding([.top, .horizontal])
                     
-                    // search text field
+                    Divider()
+                    
+                    if settingsVM.loadingLocations {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
+                    }
                     
                     ForEach( settingsVM.locations, id: \.id ) { location in
                         Button {
@@ -31,21 +44,10 @@ struct SettingsLocation: View {
                                 .font(.custom("Aveir", size: 18))
                                 .frame( width: .greedy)
                                 .multilineTextAlignment(.leading)
-                        }.onAppear {
-                            if location.id == settingsVM.locations.last?.id && !settingsVM.loadingLocations {
-                                settingsVM.getAllLocations()
-                            }
+                                .padding()
                         }
                     }
-                    
-                    if settingsVM.loadingLocations {
-                        HStack {
-                            Spacer()
-                            ProgressView()
-                            Spacer()
-                        }
-                    }
-                }
+                }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
             }
             
             HStack {
@@ -53,22 +55,25 @@ struct SettingsLocation: View {
                 
                 Button(action: {
                     // do action here
+                    settingsVM.updatableLocation = selectedLocation
+                    settingsVM.updateFields(updatedFrom: "location")
                 }, label: {
                     Image("proceed")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 50, height: 50)
                 })
-            }
-            
-        }.onAppear {
-            settingsVM.getAllLocations()
-        }
+            }.padding()
+            .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
+        }.gesture(DragGesture().onChanged({ _ in
+            UIApplication.shared.endEditing()
+        }))
     }
 }
 
 struct SettingsLocation_Previews: PreviewProvider {
     static var previews: some View {
         SettingsLocation()
+            .environmentObject(SettingsViewModel())
     }
 }
