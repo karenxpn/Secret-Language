@@ -16,6 +16,8 @@ struct Secret_LanguageApp: App {
     
     @AppStorage( "newRelease" ) private var newRelease: Bool = true
     @AppStorage( "token" ) private var token = ""
+    @State private var currentTab: Int = 2
+
     
     init() {
         let newAppearance = UINavigationBarAppearance()
@@ -35,7 +37,7 @@ struct Secret_LanguageApp: App {
     var body: some Scene {
         WindowGroup {
             if token != "" {
-                ContentView()
+                ContentView(currentTab: $currentTab)
             } else {
                 Introduction()
             }
@@ -45,6 +47,10 @@ struct Secret_LanguageApp: App {
                 UIApplication.shared.applicationIconBadgeNumber = 0
             default:
                 break
+            }
+        }.onChange(of: token) { newValue in
+            if !newValue.isEmpty {
+                currentTab = 4
             }
         }
     }
