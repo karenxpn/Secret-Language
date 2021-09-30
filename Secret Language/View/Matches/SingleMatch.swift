@@ -34,9 +34,12 @@ struct SingleMatch: View {
                 }
                 
                 Text( match.distance )
-                    .font(.custom("times", size: 16))
+                    .font(.custom("times", size: 14))
                     .foregroundColor(.white)
                 
+                Text( match.lookingFor)
+                    .foregroundColor(AppColors.accentColor)
+                    .font(.custom("avenir", size: 14))
                 
                 Text( "..." )
                     .foregroundColor(.white)
@@ -126,8 +129,6 @@ struct SingleMatch: View {
                 }.fixedSize(horizontal: false, vertical: true)
                 
                 AllRightsReservedMadeByDoejo()
-
-                Spacer()
                     .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
                 
             }.padding(.top, 1)

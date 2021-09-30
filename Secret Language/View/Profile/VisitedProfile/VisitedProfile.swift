@@ -47,24 +47,29 @@ struct VisitedProfile: View {
                     VisitedProfileFriendStatus(status: profileVM.visitedProfile!.friendStatus, userID: profileVM.visitedProfile!.id)
                         .environmentObject(profileVM)
                     
-                    Text( "\(profileVM.visitedProfile!.name), \(profileVM.visitedProfile!.age)" )
-                        .foregroundColor(.white)
-                        .font(.custom("times", size: 20))
-                    
-                    HStack( spacing: 0) {
-                        Text( NSLocalizedString("idealFor", comment: ""))
-                            .foregroundColor(.gray)
-                            .font(.custom("avenir", size: 14))
+                    VStack {
+                        Text( "\(profileVM.visitedProfile!.name), \(profileVM.visitedProfile!.age)" )
+                            .foregroundColor(.white)
+                            .font(.custom("times", size: 20))
                         
-                        Text(profileVM.visitedProfile!.ideal_for)
+                        HStack( spacing: 0) {
+                            Text( NSLocalizedString("idealFor", comment: ""))
+                                .foregroundColor(.gray)
+                                .font(.custom("avenir", size: 14))
+                            
+                            Text(profileVM.visitedProfile!.ideal_for)
+                                .foregroundColor(AppColors.accentColor)
+                                .font(.custom("avenir", size: 14))
+                        }
+                        
+                        Text( profileVM.visitedProfile!.distance )
+                            .font(.custom("times", size: 14))
+                            .foregroundColor(.white)
+                        
+                        Text( profileVM.visitedProfile!.looking_for)
                             .foregroundColor(AppColors.accentColor)
                             .font(.custom("avenir", size: 14))
-                        
                     }
-                    
-                    Text( profileVM.visitedProfile!.distance )
-                        .font(.custom("times", size: 16))
-                        .foregroundColor(.white)
                     
                     Text( "..." )
                         .foregroundColor(.white)

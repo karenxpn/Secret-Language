@@ -31,6 +31,7 @@ struct MatchModel: Identifiable, Codable {
     var distance: String
     var instagram: String
     var signUpDate: String
+    var looking_for: String
 }
 
 struct MatchViewModel: Identifiable {
@@ -117,6 +118,10 @@ struct MatchViewModel: Identifiable {
     
     var registrationDate: String {
         self.match.signUpDate
+    }
+    
+    var lookingFor: String {
+        self.match.looking_for
     }
     
     // Card x position

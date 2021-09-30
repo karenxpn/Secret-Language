@@ -31,4 +31,5 @@ struct VisitedUserModel: Codable, Identifiable {
     var signUpDate: String
     var friendStatus: Int
     var chatId: Int?
+    var looking_for: String
 }
