@@ -39,12 +39,25 @@ struct SettingsLocation: View {
                         Button {
                             self.selectedLocation = location.id
                         } label: {
-                            Text( location.name )
-                                .foregroundColor(Color.white)
-                                .font(.custom("Aveir", size: 18))
-                                .frame( width: .greedy)
-                                .multilineTextAlignment(.leading)
-                                .padding()
+                            
+                            HStack {
+                                Text( location.name )
+                                    .foregroundColor(Color.white)
+                                    .font(.custom("Aveir", size: 18))
+                                    .frame( width: .greedy)
+                                    .multilineTextAlignment(.leading)
+                                    
+                                
+                                Spacer()
+                                
+                                if location.id == selectedLocation {
+                                    Image(systemName: "checkmark")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .foregroundColor(Color.white)
+                                        .frame( width: 18, height: 18)
+                                }
+                            }.padding([.top, .horizontal])
                         }
                     }
                 }.padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
