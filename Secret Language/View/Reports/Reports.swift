@@ -35,7 +35,7 @@ struct Reports: View {
                         
                         Text( "Find Yourself, Connect With Others." )
                             .foregroundColor(.gray )
-                            .font(.custom("times", size: 22))
+                            .font(.custom("SignPainter", size: 22))
                             .fontWeight(.bold)
                             .multilineTextAlignment(.center)
                         
