@@ -47,21 +47,38 @@ struct ReportBirthdayPicker: View {
                     .foregroundColor(.white)
                     .font(.custom("times", size: 26))
                 
-                Button {
-                    withAnimation {
-                        showYear.toggle()
-                    }
-                    if !showYear {
+                HStack {
+                    Button {
+                        withAnimation {
+                            showYear = false
+                        }
                         localYear = 1
-                    } else {
-                        localYear = 2000
+                    } label: {
+                        Text( "Hide Year" )
+                            .foregroundColor(showYear ? Color.white : Color.black )
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 20)
+                            .background(RoundedRectangle(cornerRadius: 25)
+                                            .fill(showYear ? Color.clear : AppColors.accentColor))
+                            .font(.custom("times", size: 16))
                     }
-                } label: {
-                    Text( showYear ? "Hide Year" : "Show Year")
-                        .foregroundColor(AppColors.accentColor)
-                        .font(.custom("Avenir", size: 20))
+                    
+                    Button {
+                        withAnimation {
+                            showYear = true
+                        }
+                        localYear = 2000
+                    } label: {
+                        Text( "Show Year" )
+                            .foregroundColor(showYear ? Color.black : Color.white)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 20)
+                            .background(RoundedRectangle(cornerRadius: 25)
+                                            .fill(showYear ? AppColors.accentColor : Color.clear))
+                            .font(.custom("times", size: 16))
+                            
+                    }
                 }
-                
                 
                 Spacer()
                 
@@ -70,7 +87,7 @@ struct ReportBirthdayPicker: View {
                         ForEach( months, id: \.self ) { value in
                             Text( value ).tag(value)
                                 .foregroundColor(month == value ? AppColors.accentColor : .gray)
-                                .font(.custom("times", size: 28))
+                                .font(.custom("times", size: 30))
                         }
                     }.labelsHidden()
                     .pickerStyle(WheelPickerStyle())
@@ -82,7 +99,7 @@ struct ReportBirthdayPicker: View {
                         ForEach( 1...( ( localYear % 4 == 0  && month == "February") ? pickerData[month]! - 1 : pickerData[month]!), id: \.self ) { day in
                             Text( "\(day)" ).tag(day)
                                 .foregroundColor(self.day == day ? AppColors.accentColor : .gray)
-                                .font(.custom("times", size: 28))
+                                .font(.custom("times", size: 30))
                         }
                     }.labelsHidden()
                     .pickerStyle(WheelPickerStyle())
@@ -95,7 +112,7 @@ struct ReportBirthdayPicker: View {
                             ForEach( 1700...2027, id: \.self ) { value in
                                 Text( "\(value)" ).tag(value)
                                     .foregroundColor(localYear == value ? AppColors.accentColor : .gray)
-                                    .font(.custom("times", size: 28))
+                                    .font(.custom("times", size: 30))
                             }
                         }.labelsHidden()
                         .pickerStyle(WheelPickerStyle())
