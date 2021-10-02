@@ -28,10 +28,19 @@ struct CheckVerificationCode: View {
                 
                 Spacer()
                 
-                OTPTextFieldView { otp, completionHandler in
-                    UIApplication.shared.endEditing()
-                    authVM.singUpVerificationCode = otp
-                    authVM.checkVerificationCode()
+                if #available(iOS 15.0, *) {
+                    
+                    OTPTextFieldNewIOS { otp, completionHandler in
+                        UIApplication.shared.endEditing()
+                        authVM.singUpVerificationCode = otp
+                        authVM.checkVerificationCode()
+                    }
+                } else {
+                    OTPTextFieldView { otp, completionHandler in
+                        UIApplication.shared.endEditing()
+                        authVM.singUpVerificationCode = otp
+                        authVM.checkVerificationCode()
+                    }
                 }
                 
                 Spacer()

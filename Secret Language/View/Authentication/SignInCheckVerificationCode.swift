@@ -32,11 +32,19 @@ struct SignInCheckVerificationCode: View {
                 Spacer()
                 
                 
-                OTPTextFieldView { otp, completionHandler in
-                    UIApplication.shared.endEditing()
-                    authVM.signInVerificationCode = otp
-                    authVM.checkSignInVerificationCode()
-                    // do smth with otp
+                if #available(iOS 15.0, *) {
+                    OTPTextFieldNewIOS { otp, completionHandler in
+                        UIApplication.shared.endEditing()
+                        authVM.signInVerificationCode = otp
+                        authVM.checkSignInVerificationCode()
+                    }
+                } else {
+                    OTPTextFieldView { otp, completionHandler in
+                        UIApplication.shared.endEditing()
+                        authVM.signInVerificationCode = otp
+                        authVM.checkSignInVerificationCode()
+                        // do smth with otp
+                    }
                 }
                 
                 Spacer()
@@ -79,9 +87,9 @@ struct SignInCheckVerificationCode: View {
                                 .underline()
                         }).disabled(timeRemaining != 0)
                     }
-                                        
+                    
                     Spacer()
-                }                
+                }
             }.padding()
             
             CustomAlert(isPresented: $authVM.showCheckVerificationCodeAlert, alertMessage: authVM.checkVerificationCodeAlertMessage, alignment: .bottom)
@@ -89,11 +97,11 @@ struct SignInCheckVerificationCode: View {
                 .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
             
         }.navigationBarTitle("")
-        .navigationBarTitleView(AuthNavTitle(title: NSLocalizedString("verification", comment: "")), displayMode: .inline)
-        .onAppear(perform: {
-            hideNavBar = false
-            hideBackButton = false
-        })
+            .navigationBarTitleView(AuthNavTitle(title: NSLocalizedString("verification", comment: "")), displayMode: .inline)
+            .onAppear(perform: {
+                hideNavBar = false
+                hideBackButton = false
+            })
     }
 }
 
