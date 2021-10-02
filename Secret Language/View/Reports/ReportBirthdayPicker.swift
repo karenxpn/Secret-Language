@@ -110,7 +110,7 @@ struct ReportBirthdayPicker: View {
                     if showYear {
                         Picker("", selection: $localYear) {
                             ForEach( 1700...2027, id: \.self ) { value in
-                                Text( "\(value)" ).tag(value)
+                                Text( String( value ) ).tag(value)
                                     .foregroundColor(localYear == value ? AppColors.accentColor : .gray)
                                     .font(.custom("times", size: 30))
                             }
