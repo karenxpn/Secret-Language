@@ -12,6 +12,5 @@ struct GetMatchesRequest: Codable {
     var idealFor: [String]
     var minAge: Int
     var maxAge: Int
-    var minDistance: Int
-    var maxDistance: Int
+    var distance: Int
 }

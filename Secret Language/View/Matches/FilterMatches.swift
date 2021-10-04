@@ -13,7 +13,7 @@ struct FilterMatches: View {
     @EnvironmentObject var matchesVM: MatchesViewModel
     
     @State private var ageRange = 18...150
-    @State private var distanceRange = 0...100000
+    @State private var distance = 100000
     
     var body: some View {
         
@@ -90,8 +90,8 @@ struct FilterMatches: View {
                                 
                                 FilterSliders(title: NSLocalizedString("ageRange", comment: ""), bounds: 18...150, range: $ageRange)
                                 
-                                FilterSliders(title: NSLocalizedString("distanceRange", comment: ""), bounds: 0...100000, range: $distanceRange)
-                                
+                                DistanceSlider(title: NSLocalizedString("distanceRange", comment: ""), distance: $distance)
+                                                                
                                 Text( NSLocalizedString("idealForOptional", comment: ""))
                                     .font(.custom("times", size: 16))
                                     .foregroundColor(.gray)
@@ -135,8 +135,7 @@ struct FilterMatches: View {
                             matchesVM.matchPage = 1
                             matchesVM.ageLowerBound = ageRange.lowerBound
                             matchesVM.ageUppwerBound = ageRange.upperBound
-                            matchesVM.distanceLowerBound = distanceRange.lowerBound
-                            matchesVM.distanceUpperBound = distanceRange.upperBound
+                            matchesVM.distance = distance
                             matchesVM.getMatches()
                             
                             presentationMode.wrappedValue.dismiss()
@@ -163,7 +162,7 @@ struct FilterMatches: View {
             })).onAppear(perform: {
                 matchesVM.getFilterCategoriesWithItems()
                 ageRange = matchesVM.ageLowerBound...matchesVM.ageUppwerBound
-                distanceRange = matchesVM.distanceLowerBound...matchesVM.distanceUpperBound
+                distance = matchesVM.distance
             })
         }
     }

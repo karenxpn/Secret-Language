@@ -17,8 +17,7 @@ class MatchesViewModel: ObservableObject {
     
     @AppStorage( "ageLowerBound" ) var ageLowerBound: Int = 18
     @AppStorage( "ageUpperBound" ) var ageUppwerBound: Int = 150
-    @AppStorage( "distanceLowerBound" ) var distanceLowerBound: Int = 0
-    @AppStorage( "distanceUpperBound" ) var distanceUpperBound: Int = 100000
+    @AppStorage( "distance" ) var distance: Int = 100000
 
     @Published var matches = [MatchViewModel]()
     
@@ -59,10 +58,9 @@ class MatchesViewModel: ObservableObject {
                                  params: GetMatchesRequest(gender: dataFilterGender,
                                                            interestedIn: dataFilterCategory,
                                                            idealFor: selectedCategories,
-                                                          minAge: ageLowerBound,
-                                                          maxAge: ageUppwerBound,
-                                                          minDistance: distanceLowerBound,
-                                                          maxDistance: distanceUpperBound))
+                                                           minAge: ageLowerBound,
+                                                           maxAge: ageUppwerBound,
+                                                           distance: distance))
             .sink { response in
                 self.loadingMatches = false
                 if response.error != nil {

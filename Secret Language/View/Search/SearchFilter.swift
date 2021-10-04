@@ -15,7 +15,7 @@ struct SearchFilter: View {
     @State private var chosenGender: Int = 0
     @State private var chosenCategory: Int = 0
     @State private var ageRange = 18...150  // initialize this property using locally stored values
-    @State private var distanceRange = 0...100000
+    @State private var distance = 100000
     
     var body: some View {
         NavigationView {
@@ -80,8 +80,8 @@ struct SearchFilter: View {
                             
                             FilterSliders(title: NSLocalizedString("ageRange", comment: ""), bounds: 18...150, range: $ageRange)
                             
-                            FilterSliders(title: NSLocalizedString("distanceRange", comment: ""), bounds: 0...100000, range: $distanceRange)
-
+                            DistanceSlider(title: NSLocalizedString("distanceRange", comment: ""), distance: $distance)
+                            
                         }.padding()
                         
                     }.padding(.top, 1)
@@ -91,7 +91,7 @@ struct SearchFilter: View {
                         searchVM.dataFilterGender = chosenGender
                         searchVM.dataFilterCategory = chosenCategory
                         searchVM.ageRange = ageRange
-                        searchVM.distanceRange = distanceRange
+                        searchVM.distance = distance
                         searchVM.getSearchUsers(search: searchVM.search)
                         presentationMode.wrappedValue.dismiss()
                     }, label: {

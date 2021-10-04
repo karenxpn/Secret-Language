@@ -12,6 +12,5 @@ struct SearchRequestModel: Codable {
     var interestedIn : Int
     var minAge: Int
     var maxAge: Int
-    var minDistance: Int
-    var maxDistance: Int
+    var distance: Int
 }
