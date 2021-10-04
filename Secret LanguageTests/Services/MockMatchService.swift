@@ -12,18 +12,6 @@ import Combine
 
 class MockMatchService: MatchServiceProtocol {
     
-    func fetchSingleMatch(token: String, userID: Int) -> AnyPublisher<DataResponse<MatchModel, NetworkError>, Never> {
-        var result: Result<MatchModel, NetworkError>
-        
-        if fetchSingleMatchError    { result = Result<MatchModel, NetworkError>.failure(networkError)}
-        else                        { result = Result<MatchModel, NetworkError>.success(singleMatch)}
-        
-        let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)
-        let publisher = CurrentValueSubject<DataResponse<MatchModel, NetworkError>, Never>(response)
-        return publisher.eraseToAnyPublisher()
-    }
-    
-
     func sendLocation(token: String, location: Location) -> AnyPublisher<DataResponse<GlobalResponse, NetworkError>, Never> {
         let result: Result<GlobalResponse, NetworkError> = Result<GlobalResponse, NetworkError>.success(globalResponse)
         let response = DataResponse(request: nil, response: nil, data: nil, metrics: nil, serializationDuration: 0, result: result)

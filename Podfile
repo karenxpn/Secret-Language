@@ -11,7 +11,7 @@ target 'Secret Language' do
 	pod 'SDWebImageSVGCoder'
 	pod 'ActivityIndicatorView'
 	pod 'Introspect'
-	pod 'PusherSwift', '~> 9.0'
+	pod 'PusherSwift', '~> 10.0'
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Crashlytics'
 

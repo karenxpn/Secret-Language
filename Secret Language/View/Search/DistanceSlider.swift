@@ -33,7 +33,6 @@ struct DistanceSlider: View {
                         options: .interactiveTrack
                     )
                 )
-            
         }
     }
 }
