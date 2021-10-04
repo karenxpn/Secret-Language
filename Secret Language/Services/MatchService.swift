@@ -86,7 +86,7 @@ extension MatchService: MatchServiceProtocol {
     func fetchMatches(token: String, page: Int, params: GetMatchesRequest) -> AnyPublisher<DataResponse<[MatchModel], NetworkError>, Never> {
         let url = URL(string: "\(Credentials.BASE_URL)user/searchUsers/\(page)")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
-        
+                
         return AF.request(url,
                           method: .post,
                           parameters: params,

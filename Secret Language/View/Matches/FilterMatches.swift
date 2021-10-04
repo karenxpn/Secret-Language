@@ -11,6 +11,10 @@ struct FilterMatches: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var matchesVM: MatchesViewModel
+    
+    @State private var ageRange = 18...150
+    @State private var distanceRange = 0...100000
+    
     var body: some View {
         
         NavigationView {
@@ -84,6 +88,10 @@ struct FilterMatches: View {
                                     }
                                 }
                                 
+                                FilterSliders(title: NSLocalizedString("ageRange", comment: ""), bounds: 18...150, range: $ageRange)
+                                
+                                FilterSliders(title: NSLocalizedString("distanceRange", comment: ""), bounds: 0...100000, range: $distanceRange)
+                                
                                 Text( NSLocalizedString("idealForOptional", comment: ""))
                                     .font(.custom("times", size: 16))
                                     .foregroundColor(.gray)
@@ -125,7 +133,12 @@ struct FilterMatches: View {
                         Button(action: {
                             // perform api request and close the view
                             matchesVM.matchPage = 1
+                            matchesVM.ageLowerBound = ageRange.lowerBound
+                            matchesVM.ageUppwerBound = ageRange.upperBound
+                            matchesVM.distanceLowerBound = distanceRange.lowerBound
+                            matchesVM.distanceUpperBound = distanceRange.upperBound
                             matchesVM.getMatches()
+                            
                             presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Image("proceed")
@@ -149,6 +162,8 @@ struct FilterMatches: View {
                 
             })).onAppear(perform: {
                 matchesVM.getFilterCategoriesWithItems()
+                ageRange = matchesVM.ageLowerBound...matchesVM.ageUppwerBound
+                distanceRange = matchesVM.distanceLowerBound...matchesVM.distanceUpperBound
             })
         }
     }

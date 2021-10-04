@@ -14,6 +14,11 @@ class MatchesViewModel: ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "interestedInCategory" ) private var interestedInCategory: Int = 0
     @AppStorage( "genderPreference" ) private var genderPreference: Int = 0
+    
+    @AppStorage( "ageLowerBound" ) var ageLowerBound: Int = 18
+    @AppStorage( "ageUpperBound" ) var ageUppwerBound: Int = 150
+    @AppStorage( "distanceLowerBound" ) var distanceLowerBound: Int = 0
+    @AppStorage( "distanceUpperBound" ) var distanceUpperBound: Int = 100000
 
     @Published var matches = [MatchViewModel]()
     
@@ -49,7 +54,15 @@ class MatchesViewModel: ObservableObject {
     func getMatches() {
         loadingMatches = true
         
-        dataManager.fetchMatches(token: token, page: matchPage, params: GetMatchesRequest(gender: dataFilterGender, interestedIn: dataFilterCategory, idealFor: selectedCategories))
+        dataManager.fetchMatches(token: token,
+                                 page: matchPage,
+                                 params: GetMatchesRequest(gender: dataFilterGender,
+                                                           interestedIn: dataFilterCategory,
+                                                           idealFor: selectedCategories,
+                                                          minAge: ageLowerBound,
+                                                          maxAge: ageUppwerBound,
+                                                          minDistance: distanceLowerBound,
+                                                          maxDistance: distanceUpperBound))
             .sink { response in
                 self.loadingMatches = false
                 if response.error != nil {

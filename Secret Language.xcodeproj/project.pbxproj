@@ -685,11 +685,12 @@
 				FFCEDDF0266E642C0073BE20 /* SignUpRequest.swift */,
 				FFCEDDF2266FB0350073BE20 /* AuthResponse.swift */,
 				FFE0E4132677E6F6008FA78C /* MatchModel.swift */,
+				FF99A0412681354500F234CD /* GetMatchesRequest.swift */,
 				FFE0E42726794F97008FA78C /* CategoryItemModel.swift */,
 				FF42BD9A267BCE1F000DCA6D /* Location.swift */,
 				FF99A0332680C5C000F234CD /* UserPreviewModel.swift */,
 				FF997E98268CDAC80057B731 /* SearchUserModel.swift */,
-				FF99A0412681354500F234CD /* GetMatchesRequest.swift */,
+				FFA62CF126E677EF008A14F9 /* SearchRequestModel.swift */,
 				FF4AB0F5268503530085EA9A /* UserModel.swift */,
 				FFB1EA982703A48E005FA30C /* VisitedUserModel.swift */,
 				FF38C8B326DACA8B00BE43E4 /* RequestsModel.swift */,
@@ -704,7 +705,6 @@
 				FFAD920726AF6EF2007984ED /* SettingsFields.swift */,
 				FFAD920F26B07F90007984ED /* SettingsFieldsUpdateModel.swift */,
 				FF8AD98526D6D6C500EC1DB8 /* ProfileGalleryResponse.swift */,
-				FFA62CF126E677EF008A14F9 /* SearchRequestModel.swift */,
 				FFB4C35F270521840017380E /* LocationListItemModel.swift */,
 			);
 			path = Models;
