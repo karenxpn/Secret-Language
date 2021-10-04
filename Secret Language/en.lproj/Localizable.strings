@@ -155,4 +155,4 @@
 "hideYear" = "Hide Year";
 "deleteFriend" = "Delete Friend";
 "ageRange" = "Age Range:";
-"distanceRange" = "Distance Range:";
+"distanceRange" = "Distance Range(miles):";
