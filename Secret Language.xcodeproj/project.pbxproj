@@ -940,6 +940,7 @@
 			mainGroup = FFBEA6712664E4290033B2ED;
 			packageReferences = (
 				FFDB15A12666576900341E8F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				FFF5366C270AFF7700729A2D /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
 			);
 			productRefGroup = FFBEA67B2664E4290033B2ED /* Products */;
 			projectDirPath = "";
@@ -1627,6 +1628,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.0.6;
+			};
+		};
+		FFF5366C270AFF7700729A2D /* XCRemoteSwiftPackageReference "swiftui-sliders" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spacenation/swiftui-sliders";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
