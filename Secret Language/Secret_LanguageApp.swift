@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Firebase
 
 @main
 struct Secret_LanguageApp: App {
@@ -28,6 +29,7 @@ struct Secret_LanguageApp: App {
         UINavigationBar.appearance().standardAppearance = newAppearance
         
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor(.white)
+        FirebaseApp.configure()
         
         if newRelease {
             self.token = ""

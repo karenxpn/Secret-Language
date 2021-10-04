@@ -92,3 +92,4 @@ Credentials.swift
 Pods
 Podfile.lock
 Secret Language.xcworkspace/
+GoogleService-Info.plist

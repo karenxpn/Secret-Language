@@ -12,6 +12,9 @@ target 'Secret Language' do
 	pod 'ActivityIndicatorView'
 	pod 'Introspect'
 	pod 'PusherSwift'
+	pod 'Firebase/Analytics'
+	pod 'Firebase/Crashlytics'
+
 
 
   target 'Secret LanguageTests' do
