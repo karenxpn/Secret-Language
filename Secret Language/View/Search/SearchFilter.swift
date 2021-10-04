@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Sliders
 
 struct SearchFilter: View {
     @Environment(\.presentationMode) var presentationMode
@@ -13,6 +14,7 @@ struct SearchFilter: View {
     
     @State private var chosenGender: Int = 0
     @State private var chosenCategory: Int = 0
+    @State var ageRange = 18...150     // using this value should remember to use multiple 100
     
     var body: some View {
         NavigationView {
@@ -74,6 +76,32 @@ struct SearchFilter: View {
                                     }
                                 }
                             }
+                            
+                            VStack( alignment: .leading, spacing: 0) {
+                                Text("\( NSLocalizedString("ageRange", comment: "")) \(Int(ageRange.lowerBound))-\(Int(ageRange.upperBound))")
+                                    .font(.custom("Gilroy-Regular", size: 12))
+                                    .foregroundColor(.gray)
+                                    .padding(.vertical)
+                                
+                                RangeSlider(range: $ageRange,
+                                            in: 18...150)
+                                    .rangeSliderStyle(
+                                            HorizontalRangeSliderStyle(
+                                                track:
+                                                    HorizontalRangeTrack(
+                                                        view: Capsule().foregroundColor(AppColors.accentColor)
+                                                    )
+                                                    .background(Capsule().foregroundColor(AppColors.accentColor.opacity(0.25)))
+                                                    .frame(height: 5),
+                                                lowerThumb: Circle().foregroundColor(AppColors.accentColor),
+                                                upperThumb: Circle().foregroundColor(AppColors.accentColor),
+                                                lowerThumbSize: CGSize(width: 24, height: 24),
+                                                upperThumbSize: CGSize(width: 24, height: 24),
+                                                options: .forceAdjacentValue
+                                            )
+                                        )
+                            }
+
                         }.padding()
                         
                     }.padding(.top, 1)
