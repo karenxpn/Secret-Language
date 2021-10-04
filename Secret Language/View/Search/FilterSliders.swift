@@ -16,7 +16,7 @@ struct FilterSliders: View {
     
     var body: some View {
         VStack( alignment: .leading, spacing: 0) {
-            Text("\(title) \(Int(range.lowerBound))-\(Int(range.upperBound))")
+            Text("\(title) \(String(range.lowerBound))-\(String(range.upperBound))")
                 .font(.custom("Gilroy-Regular", size: 12))
                 .foregroundColor(.gray)
                 .padding(.vertical)

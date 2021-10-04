@@ -11,7 +11,7 @@ import PusherSwift
 import Combine
 
 protocol SearchServiceProtocol {
-    func fetchSearchedUsers( token: String, searchText: String, idealFor: Int, gender: Int ) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never>
+    func fetchSearchedUsers( token: String, searchText: String, idealFor: Int, gender: Int, ageRange: ClosedRange<Int>, distanceRange: ClosedRange<Int> ) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never>
     func fetchPopularUsers( token: String, interestedIn: Int ) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never>
 }
 
@@ -46,12 +46,18 @@ extension SearchService: SearchServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func fetchSearchedUsers( token: String, searchText: String, idealFor: Int, gender: Int) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never> {
+    func fetchSearchedUsers( token: String, searchText: String, idealFor: Int, gender: Int, ageRange: ClosedRange<Int>, distanceRange: ClosedRange<Int>) -> AnyPublisher<DataResponse<[SearchUserModel], NetworkError>, Never> {
 
         let url = URL(string: "\(Credentials.BASE_URL)user/searchAllUsers")!
         let headers: HTTPHeaders = ["Authorization": "Bearer \(token)"]
 
-        let parameters = SearchRequestModel(input: searchText, gender: gender, interestedIn: idealFor)
+        let parameters = SearchRequestModel(input: searchText,
+                                            gender: gender,
+                                            interestedIn: idealFor,
+                                            minAge: ageRange.lowerBound,
+                                            maxAge: ageRange.upperBound,
+                                            minDistance: distanceRange.lowerBound,
+                                            maxDistance: distanceRange.upperBound)
 
         return AF.request(url,
                           method: .post,

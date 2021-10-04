@@ -90,6 +90,8 @@ struct SearchFilter: View {
                         // perform api request and close the view
                         searchVM.dataFilterGender = chosenGender
                         searchVM.dataFilterCategory = chosenCategory
+                        searchVM.ageRange = ageRange
+                        searchVM.distanceRange = distanceRange
                         searchVM.getSearchUsers(search: searchVM.search)
                         presentationMode.wrappedValue.dismiss()
                     }, label: {

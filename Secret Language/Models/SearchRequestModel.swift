@@ -10,4 +10,8 @@ struct SearchRequestModel: Codable {
     var input : String
     var gender : Int
     var interestedIn : Int
+    var minAge: Int
+    var maxAge: Int
+    var minDistance: Int
+    var maxDistance: Int
 }
