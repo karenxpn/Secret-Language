@@ -6,12 +6,12 @@ target 'Secret Language' do
   use_frameworks!
 
   # Pods for Secret Language
-	pod 'Alamofire', '~> 5.2'
+	pod 'Alamofire', '~> 5.4'
 	pod 'SDWebImageSwiftUI'
 	pod 'SDWebImageSVGCoder'
 	pod 'ActivityIndicatorView'
 	pod 'Introspect'
-	pod 'PusherSwift'
+	pod 'PusherSwift', '~> 9.0'
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Crashlytics'
 
