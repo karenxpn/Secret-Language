@@ -185,6 +185,7 @@
 		FFE0E42426794ECC008FA78C /* MatchesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E42326794ECC008FA78C /* MatchesViewModelTests.swift */; };
 		FFE0E42826794F97008FA78C /* CategoryItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE0E42726794F97008FA78C /* CategoryItemModel.swift */; };
 		FFF5366A270AE71500729A2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFF53669270AE71500729A2D /* GoogleService-Info.plist */; };
+		FFF5366F270B022200729A2D /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = FFF5366E270B022200729A2D /* Sliders */; };
 		FFF72EE72708683D00D64977 /* OTPTextFieldNewIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF72EE62708683D00D64977 /* OTPTextFieldNewIOS.swift */; };
 /* End PBXBuildFile section */
 
@@ -405,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF3D63D92697902F00799E72 /* StoreKit.framework in Frameworks */,
+				FFF5366F270B022200729A2D /* Sliders in Frameworks */,
 				FFDB15A32666576900341E8F /* SwiftUIX in Frameworks */,
 				7EB06162527A95AB17CD8CBB /* Pods_Secret_Language.framework in Frameworks */,
 			);
@@ -863,6 +865,7 @@
 			name = "Secret Language";
 			packageProductDependencies = (
 				FFDB15A22666576900341E8F /* SwiftUIX */,
+				FFF5366E270B022200729A2D /* Sliders */,
 			);
 			productName = "Secret Language";
 			productReference = FFBEA67A2664E4290033B2ED /* Secret Language.app */;
@@ -940,7 +943,7 @@
 			mainGroup = FFBEA6712664E4290033B2ED;
 			packageReferences = (
 				FFDB15A12666576900341E8F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
-				FFF5366C270AFF7700729A2D /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
+				FFF5366D270B022200729A2D /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
 			);
 			productRefGroup = FFBEA67B2664E4290033B2ED /* Products */;
 			projectDirPath = "";
@@ -1630,12 +1633,12 @@
 				minimumVersion = 0.0.6;
 			};
 		};
-		FFF5366C270AFF7700729A2D /* XCRemoteSwiftPackageReference "swiftui-sliders" */ = {
+		FFF5366D270B022200729A2D /* XCRemoteSwiftPackageReference "swiftui-sliders" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/spacenation/swiftui-sliders";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1645,6 +1648,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FFDB15A12666576900341E8F /* XCRemoteSwiftPackageReference "SwiftUIX" */;
 			productName = SwiftUIX;
+		};
+		FFF5366E270B022200729A2D /* Sliders */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFF5366D270B022200729A2D /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
+			productName = Sliders;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
