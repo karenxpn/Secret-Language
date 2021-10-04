@@ -44,8 +44,10 @@ struct VisitedProfile: View {
                         }
                     }
                     
-                    VisitedProfileFriendStatus(status: profileVM.visitedProfile!.friendStatus, userID: profileVM.visitedProfile!.id)
-                        .environmentObject(profileVM)
+                    if profileVM.visitedProfile!.friendStatus != 3 {
+                        VisitedProfileFriendStatus(status: profileVM.visitedProfile!.friendStatus, userID: profileVM.visitedProfile!.id)
+                            .environmentObject(profileVM)
+                    }
                     
                     VStack {
                         Text( "\(profileVM.visitedProfile!.name), \(profileVM.visitedProfile!.age)" )
@@ -156,12 +158,17 @@ struct VisitedProfile: View {
                             .multilineTextAlignment(.center)
                             .padding(8)
                         
+                        if profileVM.visitedProfile!.friendStatus == 3 {
+                            VisitedProfileFriendStatus(status: profileVM.visitedProfile!.friendStatus, userID: profileVM.visitedProfile!.id)
+                                .environmentObject(profileVM)
+                        }
+                        
                         Text("\(profileVM.visitedProfile!.signUpDate)")
                             .foregroundColor(.white)
                             .font(.custom("avenir", size: 14))
                             .padding()
                     }.fixedSize(horizontal: false, vertical: true)
-                    
+                                        
                     AllRightsReservedMadeByDoejo()
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
