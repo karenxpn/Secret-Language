@@ -23,9 +23,10 @@ struct DistanceSlider: View {
                 .valueSliderStyle(
                     HorizontalValueSliderStyle(
                         track:
-                            HorizontalTrack(view:
-                                                Capsule().foregroundColor(AppColors.accentColor)
-                                           )
+                            HorizontalTrack(
+                                view:
+                                    Capsule().foregroundColor(AppColors.accentColor)
+                            )
                             .background(Capsule().foregroundColor(AppColors.accentColor.opacity(0.25)))
                             .frame(height: 5),
                         thumb: Circle().foregroundColor(AppColors.accentColor),
