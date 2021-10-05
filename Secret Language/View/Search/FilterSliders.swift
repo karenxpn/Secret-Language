@@ -44,6 +44,6 @@ struct FilterSliders: View {
 
 struct FilterSliders_Previews: PreviewProvider {
     static var previews: some View {
-        FilterSliders(title: "Age Range:", bounds: 18...150, range: .constant(18...100))
+        FilterSliders(title: "Age Range:", bounds: 18...99, range: .constant(18...100))
     }
 }

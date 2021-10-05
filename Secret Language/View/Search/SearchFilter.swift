@@ -14,8 +14,8 @@ struct SearchFilter: View {
     
     @State private var chosenGender: Int = 0
     @State private var chosenCategory: Int = 0
-    @State private var ageRange = 18...150  // initialize this property using locally stored values
-    @State private var distance = 100000
+    @State private var ageRange = 18...99  // initialize this property using locally stored values
+    @State private var distance = 15000
     
     var body: some View {
         NavigationView {
@@ -78,7 +78,7 @@ struct SearchFilter: View {
                                 }
                             }
                             
-                            FilterSliders(title: NSLocalizedString("ageRange", comment: ""), bounds: 18...150, range: $ageRange)
+                            FilterSliders(title: NSLocalizedString("ageRange", comment: ""), bounds: 18...99, range: $ageRange)
                             
                             DistanceSlider(title: NSLocalizedString("distanceRange", comment: ""), distance: $distance)
                             

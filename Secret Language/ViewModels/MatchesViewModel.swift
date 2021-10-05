@@ -16,8 +16,8 @@ class MatchesViewModel: ObservableObject {
     @AppStorage( "genderPreference" ) private var genderPreference: Int = 0
     
     @AppStorage( "ageLowerBound" ) var ageLowerBound: Int = 18
-    @AppStorage( "ageUpperBound" ) var ageUppwerBound: Int = 150
-    @AppStorage( "distance" ) var distance: Int = 100000
+    @AppStorage( "ageUpperBound" ) var ageUppwerBound: Int = 99
+    @AppStorage( "distance" ) var distance: Int = 15000
 
     @Published var matches = [MatchViewModel]()
     

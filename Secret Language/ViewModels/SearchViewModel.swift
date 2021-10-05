@@ -32,8 +32,8 @@ class SearchViewModel: ObservableObject {
     
     @Published var dataFilterCategories = [ConnectionTypeModel]()
     @Published var dataFilterCategory: Int = 0
-    @Published var ageRange = 18...150
-    @Published var distance = 100000
+    @Published var ageRange = 18...99
+    @Published var distance = 15000
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: SearchServiceProtocol

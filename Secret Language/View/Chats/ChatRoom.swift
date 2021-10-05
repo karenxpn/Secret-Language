@@ -94,6 +94,9 @@ struct ChatRoom: View {
             }
         }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             if appeared {
+                roomVM.removePusherHandlers()
+                roomVM.getChatRoomMessagesWithPusher()
+                roomVM.getTypingStatus()
                 roomVM.getChatRoomMessages( lastMessageID: 0)
             }
         }

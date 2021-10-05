@@ -19,7 +19,7 @@ struct DistanceSlider: View {
                 .foregroundColor(.gray)
                 .padding(.vertical)
             
-            ValueSlider(value: $distance, in: 1...100000)
+            ValueSlider(value: $distance, in: 10...15000)
                 .valueSliderStyle(
                     HorizontalValueSliderStyle(
                         track:

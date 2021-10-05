@@ -12,8 +12,8 @@ struct FilterMatches: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var matchesVM: MatchesViewModel
     
-    @State private var ageRange = 18...150
-    @State private var distance = 100000
+    @State private var ageRange = 18...99
+    @State private var distance = 15000
     
     var body: some View {
         
@@ -88,7 +88,7 @@ struct FilterMatches: View {
                                     }
                                 }
                                 
-                                FilterSliders(title: NSLocalizedString("ageRange", comment: ""), bounds: 18...150, range: $ageRange)
+                                FilterSliders(title: NSLocalizedString("ageRange", comment: ""), bounds: 18...99, range: $ageRange)
                                 
                                 DistanceSlider(title: NSLocalizedString("distanceRange", comment: ""), distance: $distance)
                                                                 
