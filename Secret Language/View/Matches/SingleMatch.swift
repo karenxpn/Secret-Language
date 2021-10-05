@@ -177,7 +177,7 @@ struct SingleMatch: View {
                         case 0...100:
                             match.x = 0; match.degree = 0;
                         case let x where x > 100:
-                            if match.id == matchesVM.matches[0].id {
+                            if match.id == matchesVM.matches.first?.id {
                                 matchesVM.matchPage += 1
                                 matchesVM.getMatches()
                             }
@@ -186,7 +186,7 @@ struct SingleMatch: View {
                         case (-100)...(-1):
                             match.x = 0; match.degree = 0;
                         case let x where x < -100:
-                            if match.id == matchesVM.matches[0].id {
+                            if match.id == matchesVM.matches.first?.id {
                                 matchesVM.matchPage += 1
                                 matchesVM.getMatches()
                             }

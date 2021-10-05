@@ -91,6 +91,7 @@ class MessageRoomViewModel: ObservableObject {
     
     func removePusherHandlers() {
         channel.unbindAll(forEventName: "chatMessage\(roomID)")
+        channel.unbindAll(forEventName: "typing\(roomID)")
     }
     
     func removeChatListPusherHandlers() {
