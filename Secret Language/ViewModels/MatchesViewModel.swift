@@ -60,7 +60,7 @@ class MatchesViewModel: ObservableObject {
                                                            idealFor: selectedCategories,
                                                            minAge: ageLowerBound,
                                                            maxAge: ageUppwerBound,
-                                                           distance: distance))
+                                                           range: distance))
             .sink { response in
                 self.loadingMatches = false
                 if response.error != nil {
