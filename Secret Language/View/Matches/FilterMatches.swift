@@ -11,6 +11,10 @@ struct FilterMatches: View {
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var matchesVM: MatchesViewModel
+    
+    @State private var ageRange = 18...99
+    @State private var distance = 15000
+    
     var body: some View {
         
         NavigationView {
@@ -84,6 +88,10 @@ struct FilterMatches: View {
                                     }
                                 }
                                 
+                                FilterSliders(title: NSLocalizedString("ageRange", comment: ""), bounds: 18...99, range: $ageRange)
+                                
+                                DistanceSlider(title: NSLocalizedString("distanceRange", comment: ""), distance: $distance)
+                                                                
                                 Text( NSLocalizedString("idealForOptional", comment: ""))
                                     .font(.custom("times", size: 16))
                                     .foregroundColor(.gray)
@@ -125,7 +133,11 @@ struct FilterMatches: View {
                         Button(action: {
                             // perform api request and close the view
                             matchesVM.matchPage = 1
+                            matchesVM.ageLowerBound = ageRange.lowerBound
+                            matchesVM.ageUppwerBound = ageRange.upperBound
+                            matchesVM.distance = distance
                             matchesVM.getMatches()
+                            
                             presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Image("proceed")
@@ -149,6 +161,8 @@ struct FilterMatches: View {
                 
             })).onAppear(perform: {
                 matchesVM.getFilterCategoriesWithItems()
+                ageRange = matchesVM.ageLowerBound...matchesVM.ageUppwerBound
+                distance = matchesVM.distance
             })
         }
     }

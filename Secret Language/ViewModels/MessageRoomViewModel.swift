@@ -51,10 +51,12 @@ class MessageRoomViewModel: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ChatServiceProtocol
     var channel: PusherChannel
+    var pusher: Pusher
     
     init(dataManager: ChatServiceProtocol = ChatService.shared) {
         self.dataManager = dataManager
         channel = PusherManager.shared.channel
+        pusher = PusherManager.shared.pusher
     }
     
     func getChatRoomMessages( lastMessageID: Int ) {
@@ -91,6 +93,7 @@ class MessageRoomViewModel: ObservableObject {
     
     func removePusherHandlers() {
         channel.unbindAll(forEventName: "chatMessage\(roomID)")
+        channel.unbindAll(forEventName: "typing\(roomID)")
     }
     
     func removeChatListPusherHandlers() {

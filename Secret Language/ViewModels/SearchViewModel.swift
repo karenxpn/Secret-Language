@@ -32,6 +32,7 @@ class SearchViewModel: ObservableObject {
     
     @Published var dataFilterCategories = [ConnectionTypeModel]()
     @Published var dataFilterCategory: Int = 0
+    @Published var ageRange = 18...99
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: SearchServiceProtocol
@@ -74,7 +75,7 @@ class SearchViewModel: ObservableObject {
     
     func getSearchUsers(search: String) {
         loading = true
-        dataManager.fetchSearchedUsers(token: token, searchText: search, idealFor: dataFilterCategory, gender: dataFilterGender)
+        dataManager.fetchSearchedUsers(token: token, searchText: search, idealFor: dataFilterCategory, gender: dataFilterGender, ageRange: ageRange)
             .sink { response in
                 self.loading = false
                 if response.error == nil {

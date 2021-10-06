@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Sliders
 
 struct SearchFilter: View {
     @Environment(\.presentationMode) var presentationMode
@@ -13,6 +14,7 @@ struct SearchFilter: View {
     
     @State private var chosenGender: Int = 0
     @State private var chosenCategory: Int = 0
+    @State private var ageRange = 18...99
     
     var body: some View {
         NavigationView {
@@ -74,6 +76,9 @@ struct SearchFilter: View {
                                     }
                                 }
                             }
+                            
+                            FilterSliders(title: NSLocalizedString("ageRange", comment: ""), bounds: 18...99, range: $ageRange)
+                            
                         }.padding()
                         
                     }.padding(.top, 1)
@@ -82,6 +87,7 @@ struct SearchFilter: View {
                         // perform api request and close the view
                         searchVM.dataFilterGender = chosenGender
                         searchVM.dataFilterCategory = chosenCategory
+                        searchVM.ageRange = ageRange
                         searchVM.getSearchUsers(search: searchVM.search)
                         presentationMode.wrappedValue.dismiss()
                     }, label: {

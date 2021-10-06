@@ -10,4 +10,7 @@ struct GetMatchesRequest: Codable {
     var gender: Int
     var interestedIn: Int
     var idealFor: [String]
+    var minAge: Int
+    var maxAge: Int
+    var range: Int
 }
