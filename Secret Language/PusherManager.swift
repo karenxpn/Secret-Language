@@ -9,13 +9,13 @@ import Foundation
 import PusherSwift
 import SwiftUI
 
-class PusherManager {
-
+class PusherManager: PusherDelegate {
+    
     static let shared = PusherManager()
     
     var pusher: Pusher!
     let channel: PusherChannel!
-
+    
     private init() {
         @AppStorage( "username" ) var username: String = ""
         
@@ -27,5 +27,14 @@ class PusherManager {
         self.pusher = Pusher(key: Credentials.pusher_key, options: options)
         pusher.connect()
         self.channel = pusher.subscribe(username)
+        pusher.connection.delegate = self
+    }
+    
+    func debugLog(message: String) {
+        print(message)
+    }
+    
+    func changedConnectionState(from old: ConnectionState, to new: ConnectionState) {
+        print("State changed from \(old.stringValue()) to \(new.stringValue())")
     }
 }
