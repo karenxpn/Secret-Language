@@ -10,6 +10,7 @@ import SDWebImageSwiftUI
 
 struct DayReport: View {
     let report: DayReportModel
+    @EnvironmentObject var shareReportVM: ShareReportViewModel
     @State private var selection: String = "Personality"
     
     var body: some View {

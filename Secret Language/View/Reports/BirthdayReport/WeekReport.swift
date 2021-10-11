@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct WeekReport: View {
     
     let report: WeekReportModel
+    @EnvironmentObject var shareReportVM: ShareReportViewModel
     @State private var selection: String = "Personality"
     
     var body: some View {

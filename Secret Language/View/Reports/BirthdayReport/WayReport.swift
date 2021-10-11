@@ -10,6 +10,7 @@ import SwiftUI
 struct WayReport: View {
     
     let report: WayReportModel
+    @EnvironmentObject var shareReportVM: ShareReportViewModel
     @State private var selection: String = "Personality"
     
     var body: some View {

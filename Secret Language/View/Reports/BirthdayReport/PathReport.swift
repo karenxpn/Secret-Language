@@ -9,7 +9,9 @@ import SwiftUI
 
 struct PathReport: View {
     
+    @EnvironmentObject var shareReportVM: ShareReportViewModel
     let report: PathReportModel
+
     
     var body: some View {
         ZStack {
