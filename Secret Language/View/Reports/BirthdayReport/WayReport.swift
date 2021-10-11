@@ -72,6 +72,15 @@ struct WayReport: View {
             }.padding(.top, 1)
         }.navigationBarTitle( "" )
         .navigationBarTitleView(SearchNavBar(title: report.name), displayMode: .inline)
+        .navigationBarItems(trailing:
+                                Button(action: {
+                                    shareReportVM.shareReport(type: "way",
+                                                              reportID: report.id)
+                                }, label: {
+                                    Image( "shareIcon" )
+                                        .frame( width: 40, height: 40)
+                                })
+                            )
     }
 }
 

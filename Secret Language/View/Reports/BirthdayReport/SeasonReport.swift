@@ -51,6 +51,15 @@ struct SeasonReport: View {
 
         }.navigationBarTitle( "" )
         .navigationBarTitleView(SearchNavBar(title: report.name), displayMode: .inline)
+        .navigationBarItems(trailing:
+                                Button(action: {
+                                    shareReportVM.shareReport(type: "season",
+                                                              reportID: report.id)
+                                }, label: {
+                                    Image( "shareIcon" )
+                                        .frame( width: 40, height: 40)
+                                })
+                            )
     }
 }
 

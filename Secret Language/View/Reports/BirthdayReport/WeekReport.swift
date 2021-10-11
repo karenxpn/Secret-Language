@@ -60,6 +60,15 @@ struct WeekReport: View {
             }.padding(.top, 1)
         }.navigationBarTitle( "" )
         .navigationBarTitleView(SearchNavBar(title: report.date_span), displayMode: .inline)
+        .navigationBarItems(trailing:
+                                Button(action: {
+                                    shareReportVM.shareReport(type: "week",
+                                                              reportID: report.id)
+                                }, label: {
+                                    Image( "shareIcon" )
+                                        .frame( width: 40, height: 40)
+                                })
+                            )
     }
 }
 
