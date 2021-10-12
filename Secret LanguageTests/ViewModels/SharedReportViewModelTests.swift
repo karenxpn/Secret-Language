@@ -45,4 +45,69 @@ class SharedReportViewModelTests: XCTestCase {
         
         XCTAssertTrue(viewModel.alertMessage.isEmpty)
     }
+    
+    
+    func testGetDayReportWithError() {
+        service.fetchSharedDayReportError = true
+        viewModel.getSharedDayReport(reportID: 1)
+        
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+        XCTAssertTrue(viewModel.dayReport == nil)
+    }
+    
+    func testGetDayReportWithSuccess() {
+        service.fetchSharedDayReportError = false
+        viewModel.getSharedDayReport(reportID: 1)
+        
+        XCTAssertTrue(viewModel.alertMessage.isEmpty)
+        XCTAssertFalse(viewModel.dayReport == nil)
+    }
+    
+    func testGetWeekReportWithError() {
+        service.fetchSharedWeekReportError = true
+        viewModel.getSharedWeekReport(reportID: 1)
+        
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+        XCTAssertTrue(viewModel.weekReport == nil)
+    }
+    
+    func testGetWeekReportWithSuccess() {
+        service.fetchSharedWeekReportError = false
+        viewModel.getSharedWeekReport(reportID: 1)
+        
+        XCTAssertTrue(viewModel.alertMessage.isEmpty)
+        XCTAssertFalse(viewModel.weekReport == nil)
+    }
+    
+    func testGetMonthReportWithError() {
+        service.fetchSharedMonthReportError = true
+        viewModel.getSharedMonthReport(reportID: 1)
+        
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+        XCTAssertTrue(viewModel.monthReport == nil)
+    }
+    
+    func testGetMonthReportWithSuccess() {
+        service.fetchSharedMonthReportError = false
+        viewModel.getSharedMonthReport(reportID: 1)
+        
+        XCTAssertTrue(viewModel.alertMessage.isEmpty)
+        XCTAssertFalse(viewModel.monthReport == nil)
+    }
+    
+    func testGetSeasonReportWithError() {
+        service.fetchSharedSeasonReportError = true
+        viewModel.getSharedSeasonReport(reportID: 1)
+        
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+        XCTAssertTrue(viewModel.seasonReport == nil)
+    }
+    
+    func testGetSeasonReportWithSuccess() {
+        service.fetchSharedSeasonReportError = false
+        viewModel.getSharedSeasonReport(reportID: 1)
+        
+        XCTAssertTrue(viewModel.alertMessage.isEmpty)
+        XCTAssertFalse(viewModel.seasonReport == nil)
+    }
 }
