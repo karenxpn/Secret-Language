@@ -55,6 +55,7 @@
 		FF4220272715B46600FD0796 /* MonthReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4220262715B46600FD0796 /* MonthReportInnerView.swift */; };
 		FF4220292715B4D400FD0796 /* SeasonReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4220282715B4D400FD0796 /* SeasonReportInnerView.swift */; };
 		FF42202B2715B52D00FD0796 /* WayReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42202A2715B52D00FD0796 /* WayReportInnerView.swift */; };
+		FF42202D2715B61700FD0796 /* PathReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42202C2715B61700FD0796 /* PathReportInnerView.swift */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF456F8226939576008F219E /* RelationshipReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F8126939576008F219E /* RelationshipReport.swift */; };
@@ -270,6 +271,7 @@
 		FF4220262715B46600FD0796 /* MonthReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthReportInnerView.swift; sourceTree = "<group>"; };
 		FF4220282715B4D400FD0796 /* SeasonReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonReportInnerView.swift; sourceTree = "<group>"; };
 		FF42202A2715B52D00FD0796 /* WayReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayReportInnerView.swift; sourceTree = "<group>"; };
+		FF42202C2715B61700FD0796 /* PathReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathReportInnerView.swift; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF456F8126939576008F219E /* RelationshipReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReport.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				FF3D63D62697281E00799E72 /* WayReport.swift */,
 				FF42202A2715B52D00FD0796 /* WayReportInnerView.swift */,
 				FF3D63D42697273F00799E72 /* PathReport.swift */,
+				FF42202C2715B61700FD0796 /* PathReportInnerView.swift */,
 				FF3D63C82694910700799E72 /* FamousList.swift */,
 				FF3D63CA2694914400799E72 /* FamousListCell.swift */,
 				FF3D63CE269507FB00799E72 /* SWViewHelper.swift */,
@@ -1208,6 +1211,7 @@
 				FF18DC3C269F61AF004BE946 /* ChatViewModel.swift in Sources */,
 				FFB4C360270521840017380E /* LocationListItemModel.swift in Sources */,
 				FFCEDDF1266E642C0073BE20 /* SignUpRequest.swift in Sources */,
+				FF42202D2715B61700FD0796 /* PathReportInnerView.swift in Sources */,
 				FF3727EE26A5051C00B20925 /* SendingMessageModel.swift in Sources */,
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,
 				FF18DC40269F669E004BE946 /* ChatService.swift in Sources */,
