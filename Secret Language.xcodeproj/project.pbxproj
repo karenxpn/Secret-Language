@@ -58,6 +58,8 @@
 		FF42202D2715B61700FD0796 /* PathReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42202C2715B61700FD0796 /* PathReportInnerView.swift */; };
 		FF42202F27161C0600FD0796 /* SharedDayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42202E27161C0600FD0796 /* SharedDayReport.swift */; };
 		FF42203127161C7F00FD0796 /* SharedWeekReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203027161C7F00FD0796 /* SharedWeekReport.swift */; };
+		FF42203327161DD400FD0796 /* SharedMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203227161DD400FD0796 /* SharedMonthReport.swift */; };
+		FF42203527161E3100FD0796 /* SharedSeasonReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203427161E3100FD0796 /* SharedSeasonReport.swift */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF456F8226939576008F219E /* RelationshipReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F8126939576008F219E /* RelationshipReport.swift */; };
@@ -276,6 +278,8 @@
 		FF42202C2715B61700FD0796 /* PathReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathReportInnerView.swift; sourceTree = "<group>"; };
 		FF42202E27161C0600FD0796 /* SharedDayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDayReport.swift; sourceTree = "<group>"; };
 		FF42203027161C7F00FD0796 /* SharedWeekReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedWeekReport.swift; sourceTree = "<group>"; };
+		FF42203227161DD400FD0796 /* SharedMonthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedMonthReport.swift; sourceTree = "<group>"; };
+		FF42203427161E3100FD0796 /* SharedSeasonReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSeasonReport.swift; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF456F8126939576008F219E /* RelationshipReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReport.swift; sourceTree = "<group>"; };
@@ -485,6 +489,8 @@
 				FF10811E26A9B9FE00387ED9 /* SharedRelationshipReport.swift */,
 				FF42202E27161C0600FD0796 /* SharedDayReport.swift */,
 				FF42203027161C7F00FD0796 /* SharedWeekReport.swift */,
+				FF42203227161DD400FD0796 /* SharedMonthReport.swift */,
+				FF42203427161E3100FD0796 /* SharedSeasonReport.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1154,6 +1160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF3D63D72697281E00799E72 /* WayReport.swift in Sources */,
+				FF42203327161DD400FD0796 /* SharedMonthReport.swift in Sources */,
 				FF10811D26A9B9F300387ED9 /* SharedBirthdayReport.swift in Sources */,
 				FFDB15A02666571A00341E8F /* OTPTextFieldView.swift in Sources */,
 				FF997E91268A60150057B731 /* VisitedProfile.swift in Sources */,
@@ -1205,6 +1212,7 @@
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,
 				FFAD920C26B04859007984ED /* SettingsBirthdayPicker.swift in Sources */,
 				FF99A0422681354500F234CD /* GetMatchesRequest.swift in Sources */,
+				FF42203527161E3100FD0796 /* SharedSeasonReport.swift in Sources */,
 				FFB1EA972703A2D9005FA30C /* VisitedProfileFriendStatus.swift in Sources */,
 				FF3D63C7269485EF00799E72 /* ReportSection.swift in Sources */,
 				FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */,

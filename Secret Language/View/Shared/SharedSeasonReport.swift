@@ -1,5 +1,5 @@
 //
-//  SharedWeekReport.swift
+//  SharedSeasonReport.swift
 //  Secret Language
 //
 //  Created by Karen Mirakyan on 12.10.21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SharedWeekReport: View {
+struct SharedSeasonReport: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var reportVM = ReportViewModel()
     let reportID: Int
@@ -20,8 +20,8 @@ struct SharedWeekReport: View {
                 
                 if reportVM.loading {
                     ProgressView()
-                } else if reportVM.weekReport != nil {
-                    WeekReportInnerView(report: reportVM.weekReport!)
+                } else if reportVM.seasonReport != nil {
+                    SeasonReportInnerView(report: reportVM.seasonReport!)
                 }
                 
                 CustomAlert(isPresented: $reportVM.showAlert, alertMessage: reportVM.alertMessage, alignment: .center)
@@ -29,7 +29,7 @@ struct SharedWeekReport: View {
                     .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
                 
             }.navigationBarTitle( "" )
-            .navigationBarTitleView(SearchNavBar(title: "Week Report"), displayMode: .inline)
+            .navigationBarTitleView(SearchNavBar(title: "Season Report"), displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
@@ -40,7 +40,7 @@ struct SharedWeekReport: View {
                     .padding([.leading, .top, .bottom])
                 
             })).onAppear {
-                reportVM.getSharedWeekReport(reportID: reportID)
+                reportVM.getSharedSeasonReport(reportID: reportID)
             }
         }.navigationViewStyle(StackNavigationViewStyle())
     }
