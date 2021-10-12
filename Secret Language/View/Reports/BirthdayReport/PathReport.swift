@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PathReport: View {
     
-    @EnvironmentObject var shareReportVM: ShareReportViewModel
+    @EnvironmentObject var shareReportVM: SharedReportViewModel
     let report: PathReportModel
     
     var body: some View {

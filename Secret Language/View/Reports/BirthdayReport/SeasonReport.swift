@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct SeasonReport: View {
     
-    @EnvironmentObject var shareReportVM: ShareReportViewModel
+    @EnvironmentObject var shareReportVM: SharedReportViewModel
     let report: SeasonReportModel
     
     var body: some View {

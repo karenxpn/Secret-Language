@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BirthdayReport: View {
     
-    @StateObject var shareReportVM = ShareReportViewModel()
+    @StateObject var shareReportVM = SharedReportViewModel()
     @Binding var report: BirthdayReportModel?
     
     var body: some View {

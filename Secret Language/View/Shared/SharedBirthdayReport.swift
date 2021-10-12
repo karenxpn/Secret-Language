@@ -10,7 +10,7 @@ import SwiftUI
 struct SharedBirthdayReport: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var reportVM = ReportViewModel()
+    @ObservedObject var reportVM = SharedReportViewModel()
     let reportID: Int
     
     var body: some View {

@@ -10,7 +10,7 @@ import SwiftUI
 struct WayReport: View {
     
     let report: WayReportModel
-    @EnvironmentObject var shareReportVM: ShareReportViewModel
+    @EnvironmentObject var shareReportVM: SharedReportViewModel
     
     var body: some View {
         ZStack {

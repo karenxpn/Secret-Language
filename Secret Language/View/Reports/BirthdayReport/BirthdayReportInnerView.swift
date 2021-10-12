@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BirthdayReportInnerView: View {
     
-    @EnvironmentObject var shareReportVM: ShareReportViewModel
+    @EnvironmentObject var shareReportVM: SharedReportViewModel
     let report: BirthdayReportModel
     
     var body: some View {

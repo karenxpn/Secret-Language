@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct SharedRelationshipReport: View {
     
-    @ObservedObject var reportVM = ReportViewModel()
+    @ObservedObject var reportVM = SharedReportViewModel()
     @Environment(\.presentationMode) var presentationMode
     let reportID: Int
     

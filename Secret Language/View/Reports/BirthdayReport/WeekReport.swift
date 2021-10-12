@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct WeekReport: View {
     
     let report: WeekReportModel
-    @EnvironmentObject var shareReportVM: ShareReportViewModel
+    @EnvironmentObject var shareReportVM: SharedReportViewModel
     
     var body: some View {
         

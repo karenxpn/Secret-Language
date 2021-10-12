@@ -201,7 +201,7 @@
 		FFF53671270B07DA00729A2D /* FilterSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF53670270B07DA00729A2D /* FilterSliders.swift */; };
 		FFF53673270B3A8900729A2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFF53672270B3A8900729A2D /* GoogleService-Info.plist */; };
 		FFF72EE72708683D00D64977 /* OTPTextFieldNewIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF72EE62708683D00D64977 /* OTPTextFieldNewIOS.swift */; };
-		FFFD6A3B2714C2FA00F2134A /* ShareReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD6A3A2714C2FA00F2134A /* ShareReportViewModel.swift */; };
+		FFFD6A3B2714C2FA00F2134A /* SharedReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD6A3A2714C2FA00F2134A /* SharedReportViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -427,7 +427,7 @@
 		FFF53670270B07DA00729A2D /* FilterSliders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSliders.swift; sourceTree = "<group>"; };
 		FFF53672270B3A8900729A2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FFF72EE62708683D00D64977 /* OTPTextFieldNewIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextFieldNewIOS.swift; sourceTree = "<group>"; };
-		FFFD6A3A2714C2FA00F2134A /* ShareReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareReportViewModel.swift; sourceTree = "<group>"; };
+		FFFD6A3A2714C2FA00F2134A /* SharedReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedReportViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -689,12 +689,12 @@
 				FFB1EA9A2703ACFA005FA30C /* VisitedProfileViewModel.swift */,
 				FF997E852689DAB20057B731 /* SearchViewModel.swift */,
 				FF997E94268C96C10057B731 /* ReportViewModel.swift */,
+				FFFD6A3A2714C2FA00F2134A /* SharedReportViewModel.swift */,
 				FF3D63DB269791C200799E72 /* PaymentViewModel.swift */,
 				FF18DC3B269F61AF004BE946 /* ChatViewModel.swift */,
 				FF8AA6D826A098EC000C6B41 /* MessageRoomViewModel.swift */,
 				FF10811126A7699200387ED9 /* NotificationsViewModel.swift */,
 				FFAD920326AF6418007984ED /* SettingsViewModel.swift */,
-				FFFD6A3A2714C2FA00F2134A /* ShareReportViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1191,7 +1191,7 @@
 				FF53CC0526E7F2A5002F8DBC /* SettingsInterests.swift in Sources */,
 				FFCEDDFF267235FB0073BE20 /* Chat.swift in Sources */,
 				FFCAA21426A61409002054DC /* CameraView.swift in Sources */,
-				FFFD6A3B2714C2FA00F2134A /* ShareReportViewModel.swift in Sources */,
+				FFFD6A3B2714C2FA00F2134A /* SharedReportViewModel.swift in Sources */,
 				FF4220292715B4D400FD0796 /* SeasonReportInnerView.swift in Sources */,
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
 				FF3727F026A5074500B20925 /* Gallery.swift in Sources */,

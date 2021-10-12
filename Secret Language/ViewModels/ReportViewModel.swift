@@ -26,6 +26,7 @@ class ReportViewModel: ObservableObject {
     @Published var firstReportYear: Int? = nil
     @Published var secondReportYear: Int? = nil
     
+    @Published var loading: Bool = false
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
@@ -33,17 +34,7 @@ class ReportViewModel: ObservableObject {
     
     @Published var relationshipReport: RelationshipReportModel? = nil
     @Published var birthdayReport: BirthdayReportModel? = nil
-    
-    // shared
-    @Published var dayReport: DayReportModel? = nil
-    @Published var weekReport: WeekReportModel? = nil
-    @Published var monthReport: MonthReportModel? = nil
-    @Published var seasonReport: SeasonReportModel? = nil
-    @Published var wayReport: WayReportModel? = nil
-    @Published var pathReport: PathReportModel? = nil
-    
-    @Published var loading: Bool = false
-    
+
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ReportServiceProtocol
     
@@ -85,111 +76,6 @@ class ReportViewModel: ObservableObject {
                     self.relationshipReport = response.value!
                     self.shouldPurchase = false
                     self.navigate = true
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    // shared reports
-    func getSharedBirthdayReport( reportID: Int ) {
-        loading = true
-        dataManager.fetchSharedBirthdayReport(reportID: reportID)
-            .sink { response in
-                self.loading = false
-                if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
-                } else {
-                    self.birthdayReport = response.value!
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func getSharedRelationshipReport( reportID: Int ) {
-        loading = true
-        dataManager.fetchSharedRelationshipReport(reportID: reportID)
-            .sink { response in
-                self.loading = false
-                if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
-                } else {
-                    self.relationshipReport = response.value!
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func getSharedDayReport( reportID: Int ) {
-        loading = true
-        dataManager.fetchSharedDayReport(reportID: reportID)
-            .sink { response in
-                self.loading = false
-                if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
-                } else {
-                    self.dayReport = response.value!
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func getSharedWeekReport( reportID: Int ) {
-        loading = true
-        dataManager.fetchSharedWeekReport(reportID: reportID)
-            .sink { response in
-                self.loading = false
-                if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
-                } else {
-                    self.weekReport = response.value!
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func getSharedMonthReport( reportID: Int ) {
-        loading = true
-        dataManager.fetchSharedMonthReport(reportID: reportID)
-            .sink { response in
-                self.loading = false
-                if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
-                } else {
-                    self.monthReport = response.value!
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func getSharedSeasonReport( reportID: Int ) {
-        loading = true
-        dataManager.fetchSharedSeasonReport(reportID: reportID)
-            .sink { response in
-                self.loading = false
-                if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
-                } else {
-                    self.seasonReport = response.value!
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func getSharedWayReport( reportID: Int ) {
-        loading = true
-        dataManager.fetchSharedWayReport(reportID: reportID)
-            .sink { response in
-                self.loading = false
-                if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
-                } else {
-                    self.wayReport = response.value!
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func getSharedPathReport( reportID: Int ) {
-        loading = true
-        dataManager.fetchSharedPathReport(reportID: reportID)
-            .sink { response in
-                self.loading = false
-                if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
-                } else {
-                    self.pathReport = response.value!
                 }
             }.store(in: &cancellableSet)
     }

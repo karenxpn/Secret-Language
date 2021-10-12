@@ -53,12 +53,27 @@ struct ContentView: View {
             paymentVM.checkSubscriptionStatus()
         }.fullScreenCover(item: $shared) { value in
             
-            if value.type == "profile" {
-                SharedProfile( userID: value.id )
-            } else if value.type == "birthday" {
+            switch value.type {
+            case "profile":
+                SharedProfile(userID: value.id)
+            case "birthday":
                 SharedBirthdayReport( reportID: value.id )
-            } else {
+            case "relationship":
                 SharedRelationshipReport( reportID: value.id )
+            case "day":
+                SharedDayReport(reportID: value.id)
+            case "week":
+                SharedWeekReport(reportID: value.id)
+            case "month":
+                SharedMonthReport(reportID: value.id)
+            case "season":
+                SharedSeasonReport(reportID: value.id)
+            case "way":
+                SharedWayReport(reportID: value.id)
+            case "path":
+                SharedPathReport(reportID: value.id)
+            default:
+                EmptyView()
             }
         }.onOpenURL(perform: { (url) in
             
@@ -71,6 +86,18 @@ struct ContentView: View {
                 shared = SharedURL(id: sharedID, type: "birthday" )
             } else if URL.contains("relationship") {
                 shared = SharedURL(id: sharedID, type: "relationship" )
+            } else if URL.contains("day") {
+                shared = SharedURL(id: sharedID, type: "day")
+            } else if URL.contains("week") {
+                shared = SharedURL(id: sharedID, type: "week")
+            } else if URL.contains("month") {
+                shared = SharedURL(id: sharedID, type: "month")
+            } else if URL.contains("season") {
+                shared = SharedURL(id: sharedID, type: "season")
+            } else if URL.contains("way") {
+                shared = SharedURL(id: sharedID, type: "way")
+            } else if URL.contains("path") {
+                shared = SharedURL(id: sharedID, type: "path")
             }
         }).onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "notificationFetched"))) { action in
             
