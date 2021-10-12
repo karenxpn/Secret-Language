@@ -24,6 +24,7 @@ struct SharedBirthdayReport: View {
                 } else if reportVM.birthdayReport != nil {
                     ScrollView( showsIndicators: false ) {
                         BirthdayReportInnerView(report: reportVM.birthdayReport!)
+                            .environmentObject(reportVM)
                     }.padding(.top, 1)
                 }
                 
