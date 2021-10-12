@@ -110,4 +110,36 @@ class SharedReportViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.alertMessage.isEmpty)
         XCTAssertFalse(viewModel.seasonReport == nil)
     }
+    
+    func testGetWayReportWithError() {
+        service.fetchSharedWayReportError = true
+        viewModel.getSharedWayReport(reportID: 1)
+        
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+        XCTAssertTrue(viewModel.wayReport == nil)
+    }
+    
+    func testGetWayReportWithSuccess() {
+        service.fetchSharedWayReportError = false
+        viewModel.getSharedWayReport(reportID: 1)
+        
+        XCTAssertTrue(viewModel.alertMessage.isEmpty)
+        XCTAssertFalse(viewModel.wayReport == nil)
+    }
+    
+    func testGetPathReportWithError() {
+        service.fetchSharedPathReportError = true
+        viewModel.getSharedPathReport(reportID: 1)
+        
+        XCTAssertFalse(viewModel.alertMessage.isEmpty)
+        XCTAssertTrue(viewModel.pathReport == nil)
+    }
+    
+    func testGetPathReportWithSuccess() {
+        service.fetchSharedPathReportError = false
+        viewModel.getSharedPathReport(reportID: 1)
+        
+        XCTAssertTrue(viewModel.alertMessage.isEmpty)
+        XCTAssertFalse(viewModel.pathReport == nil)
+    }
 }
