@@ -63,6 +63,7 @@
 		FF42203727161E9900FD0796 /* SharedWayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203627161E9900FD0796 /* SharedWayReport.swift */; };
 		FF42203927161ECB00FD0796 /* SharedPathReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203827161ECB00FD0796 /* SharedPathReport.swift */; };
 		FF42203B271625C500FD0796 /* SharedReportViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203A271625C500FD0796 /* SharedReportViewModelTests.swift */; };
+		FF42203D2716368700FD0796 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203C2716368700FD0796 /* AlertViewModel.swift */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF456F8226939576008F219E /* RelationshipReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F8126939576008F219E /* RelationshipReport.swift */; };
@@ -286,6 +287,7 @@
 		FF42203627161E9900FD0796 /* SharedWayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedWayReport.swift; sourceTree = "<group>"; };
 		FF42203827161ECB00FD0796 /* SharedPathReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedPathReport.swift; sourceTree = "<group>"; };
 		FF42203A271625C500FD0796 /* SharedReportViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedReportViewModelTests.swift; sourceTree = "<group>"; };
+		FF42203C2716368700FD0796 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF456F8126939576008F219E /* RelationshipReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReport.swift; sourceTree = "<group>"; };
@@ -684,6 +686,7 @@
 		FFBEA6AC2664E62E0033B2ED /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				FF42203C2716368700FD0796 /* AlertViewModel.swift */,
 				FFDB157C2664FDBC00341E8F /* AuthViewModel.swift */,
 				FFE0E41D2678090D008FA78C /* MatchesViewModel.swift */,
 				FF42BD98267B8B1D000DCA6D /* LocationManager.swift */,
@@ -1261,6 +1264,7 @@
 				FF99A0382680C65300F234CD /* FriendsNavBar.swift in Sources */,
 				FF4220232715AF1400FD0796 /* DayReportInnerView.swift in Sources */,
 				FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */,
+				FF42203D2716368700FD0796 /* AlertViewModel.swift in Sources */,
 				FF4AB0F6268503530085EA9A /* UserModel.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,
 				FF3D63CF269507FB00799E72 /* SWViewHelper.swift in Sources */,

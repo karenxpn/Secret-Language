@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-class SharedReportViewModel: ObservableObject {
+class SharedReportViewModel: AlertViewModel, ObservableObject {
     
     @Published var loading: Bool = false
     @Published var showAlert: Bool = false
@@ -38,7 +38,9 @@ class SharedReportViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                    self.makeAlert(with: response.error!,
+                                   message: &self.alertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.birthdayReport = response.value!
                 }
@@ -51,7 +53,9 @@ class SharedReportViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                    self.makeAlert(with: response.error!,
+                                   message: &self.alertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.relationshipReport = response.value!
                 }
@@ -64,7 +68,9 @@ class SharedReportViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                    self.makeAlert(with: response.error!,
+                                   message: &self.alertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.dayReport = response.value!
                 }
@@ -77,7 +83,9 @@ class SharedReportViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                    self.makeAlert(with: response.error!,
+                                   message: &self.alertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.weekReport = response.value!
                 }
@@ -90,7 +98,9 @@ class SharedReportViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                    self.makeAlert(with: response.error!,
+                                   message: &self.alertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.monthReport = response.value!
                 }
@@ -103,7 +113,9 @@ class SharedReportViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                    self.makeAlert(with: response.error!,
+                                   message: &self.alertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.seasonReport = response.value!
                 }
@@ -116,7 +128,9 @@ class SharedReportViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                    self.makeAlert(with: response.error!,
+                                   message: &self.alertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.wayReport = response.value!
                 }
@@ -129,16 +143,13 @@ class SharedReportViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                    self.makeAlert(with: response.error!,
+                                   message: &self.alertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.pathReport = response.value!
                 }
             }.store(in: &cancellableSet)
-    }
-    
-    func makeAlert( showAlert: inout Bool, message: inout String, error: NetworkError ) {
-        message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
-        showAlert.toggle()
     }
     
     func shareReport( type: String, reportID: Int ) {

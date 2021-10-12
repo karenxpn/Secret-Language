@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 import PusherSwift
 
-class ProfileViewModel: ObservableObject {
+class ProfileViewModel: AlertViewModel, ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
         
@@ -41,6 +41,7 @@ class ProfileViewModel: ObservableObject {
         self.dataManager = dataManager
         self.chatDataManager = chatDataManager
         self.channel = PusherManager.shared.channel
+        
     }
     
     func getFriends() {
@@ -242,10 +243,5 @@ class ProfileViewModel: ObservableObject {
             self.profile?.pending = profile.pending
             self.profile?.friends = profile.friends
         }
-    }
-        
-    func makeAlert(with error: NetworkError, message: inout String, alert: inout Bool ) {
-        message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
-        alert.toggle()
     }
 }

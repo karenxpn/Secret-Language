@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class ReportViewModel: ObservableObject {
+class ReportViewModel: AlertViewModel, ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "shouldPurchaseReport" ) private var shouldPurchase: Bool = false
@@ -50,7 +50,9 @@ class ReportViewModel: ObservableObject {
                         self.shouldPurchase = true
                         self.navigate = true
                     } else {
-                        self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                        self.makeAlert(with: response.error!,
+                                       message: &self.alertMessage,
+                                       alert: &self.showAlert)
                     }
                 } else {
                     self.birthdayReport = response.value!
@@ -70,7 +72,9 @@ class ReportViewModel: ObservableObject {
                         self.shouldPurchase = true
                         self.navigate = true
                     } else {
-                        self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                        self.makeAlert(with: response.error!,
+                                       message: &self.alertMessage,
+                                       alert: &self.showAlert)
                     }
                 } else {
                     self.relationshipReport = response.value!
@@ -78,11 +82,6 @@ class ReportViewModel: ObservableObject {
                     self.navigate = true
                 }
             }.store(in: &cancellableSet)
-    }
-    
-    func makeAlert( showAlert: inout Bool, message: inout String, error: NetworkError ) {
-        message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
-        showAlert.toggle()
     }
     
     func returnDate(month: String, day: Int, year: Int?) -> String {
