@@ -50,6 +50,7 @@
 		FF3D63DC269791C200799E72 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63DB269791C200799E72 /* PaymentViewModel.swift */; };
 		FF3D63E22697AD1800799E72 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63E12697AD1800799E72 /* PaymentService.swift */; };
 		FF3D63E4269924DC00799E72 /* PreviewParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63E3269924DC00799E72 /* PreviewParameters.swift */; };
+		FF4220232715AF1400FD0796 /* DayReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4220222715AF1400FD0796 /* DayReportInnerView.swift */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF456F8226939576008F219E /* RelationshipReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F8126939576008F219E /* RelationshipReport.swift */; };
@@ -260,6 +261,7 @@
 		FF3D63DB269791C200799E72 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		FF3D63E12697AD1800799E72 /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
 		FF3D63E3269924DC00799E72 /* PreviewParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewParameters.swift; sourceTree = "<group>"; };
+		FF4220222715AF1400FD0796 /* DayReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayReportInnerView.swift; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF456F8126939576008F219E /* RelationshipReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReport.swift; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 				FF79FAC726D154C400525661 /* BirthdayReportInnerView.swift */,
 				FF3D63CC2694951D00799E72 /* PersonalityAndFamousTab.swift */,
 				FF456F892693C7EC008F219E /* DayReport.swift */,
+				FF4220222715AF1400FD0796 /* DayReportInnerView.swift */,
 				FF3D63C02693C98B00799E72 /* WeekReport.swift */,
 				FF3D63C22693C99500799E72 /* MonthReport.swift */,
 				FF3D63C42693C99E00799E72 /* SeasonReport.swift */,
@@ -1213,6 +1216,7 @@
 				FFAD920626AF6E8F007984ED /* SettingsService.swift in Sources */,
 				FF4AB0FB268504A20085EA9A /* Settings.swift in Sources */,
 				FF99A0382680C65300F234CD /* FriendsNavBar.swift in Sources */,
+				FF4220232715AF1400FD0796 /* DayReportInnerView.swift in Sources */,
 				FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */,
 				FF4AB0F6268503530085EA9A /* UserModel.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,
