@@ -56,6 +56,8 @@
 		FF4220292715B4D400FD0796 /* SeasonReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4220282715B4D400FD0796 /* SeasonReportInnerView.swift */; };
 		FF42202B2715B52D00FD0796 /* WayReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42202A2715B52D00FD0796 /* WayReportInnerView.swift */; };
 		FF42202D2715B61700FD0796 /* PathReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42202C2715B61700FD0796 /* PathReportInnerView.swift */; };
+		FF42202F27161C0600FD0796 /* SharedDayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42202E27161C0600FD0796 /* SharedDayReport.swift */; };
+		FF42203127161C7F00FD0796 /* SharedWeekReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203027161C7F00FD0796 /* SharedWeekReport.swift */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF456F8226939576008F219E /* RelationshipReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F8126939576008F219E /* RelationshipReport.swift */; };
@@ -272,6 +274,8 @@
 		FF4220282715B4D400FD0796 /* SeasonReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonReportInnerView.swift; sourceTree = "<group>"; };
 		FF42202A2715B52D00FD0796 /* WayReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayReportInnerView.swift; sourceTree = "<group>"; };
 		FF42202C2715B61700FD0796 /* PathReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathReportInnerView.swift; sourceTree = "<group>"; };
+		FF42202E27161C0600FD0796 /* SharedDayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDayReport.swift; sourceTree = "<group>"; };
+		FF42203027161C7F00FD0796 /* SharedWeekReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedWeekReport.swift; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF456F8126939576008F219E /* RelationshipReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReport.swift; sourceTree = "<group>"; };
@@ -479,6 +483,8 @@
 				FF10811A26A9B9BE00387ED9 /* SharedProfile.swift */,
 				FF10811C26A9B9F300387ED9 /* SharedBirthdayReport.swift */,
 				FF10811E26A9B9FE00387ED9 /* SharedRelationshipReport.swift */,
+				FF42202E27161C0600FD0796 /* SharedDayReport.swift */,
+				FF42203027161C7F00FD0796 /* SharedWeekReport.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1219,6 +1225,7 @@
 				FFAD920426AF6418007984ED /* SettingsViewModel.swift in Sources */,
 				FF3D63E22697AD1800799E72 /* PaymentService.swift in Sources */,
 				FF997EA5268FCCF80057B731 /* RelationshipReportModel.swift in Sources */,
+				FF42202F27161C0600FD0796 /* SharedDayReport.swift in Sources */,
 				FF997E9F268E74D60057B731 /* BirthdayReport.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
 				FF3D63C12693C98B00799E72 /* WeekReport.swift in Sources */,
@@ -1290,6 +1297,7 @@
 				FFCEDE082672367B0073BE20 /* Reports.swift in Sources */,
 				FF8AA6DF26A09EB2000C6B41 /* Message.swift in Sources */,
 				FFF53671270B07DA00729A2D /* FilterSliders.swift in Sources */,
+				FF42203127161C7F00FD0796 /* SharedWeekReport.swift in Sources */,
 				FF99A03A2680C6CE00F234CD /* FriendListCell.swift in Sources */,
 				FF8AD97C26D66C3C00EC1DB8 /* TapImagesCarousel.swift in Sources */,
 				FFDB15772664EE9800341E8F /* Background.swift in Sources */,

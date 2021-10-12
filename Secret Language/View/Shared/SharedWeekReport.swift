@@ -1,14 +1,13 @@
 //
-//  SharedBirthdayReport.swift
+//  SharedWeekReport.swift
 //  Secret Language
 //
-//  Created by Karen Mirakyan on 22.07.21.
+//  Created by Karen Mirakyan on 12.10.21.
 //
 
 import SwiftUI
 
-struct SharedBirthdayReport: View {
-    
+struct SharedWeekReport: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var reportVM = ReportViewModel()
     let reportID: Int
@@ -21,10 +20,8 @@ struct SharedBirthdayReport: View {
                 
                 if reportVM.loading {
                     ProgressView()
-                } else if reportVM.birthdayReport != nil {
-                    ScrollView( showsIndicators: false ) {
-                        BirthdayReportInnerView(report: reportVM.birthdayReport!)
-                    }.padding(.top, 1)
+                } else if reportVM.weekReport != nil {
+                    WeekReportInnerView(report: reportVM.weekReport!)
                 }
                 
                 CustomAlert(isPresented: $reportVM.showAlert, alertMessage: reportVM.alertMessage, alignment: .center)
@@ -32,7 +29,7 @@ struct SharedBirthdayReport: View {
                     .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
                 
             }.navigationBarTitle( "" )
-            .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("birthdayReport", comment: "")), displayMode: .inline)
+            .navigationBarTitleView(SearchNavBar(title: "Week Report"), displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
@@ -44,14 +41,8 @@ struct SharedBirthdayReport: View {
                 
             })
             ).onAppear {
-                reportVM.getSharedBirthdayReport(reportID: reportID)
+                reportVM.getSharedWeekReport(reportID: reportID)
             }
         }.navigationViewStyle(StackNavigationViewStyle())
-    }
-}
-
-struct SharedBirthdayReport_Previews: PreviewProvider {
-    static var previews: some View {
-        SharedBirthdayReport(reportID: 1)
     }
 }

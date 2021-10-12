@@ -28,6 +28,11 @@ struct SharedRelationshipReport: View {
                         RelationshipReportInnerView(report: reportVM.relationshipReport!)
                     }.padding(.top, 1)
                 }
+                
+                CustomAlert(isPresented: $reportVM.showAlert, alertMessage: reportVM.alertMessage, alignment: .center)
+                    .offset(y: reportVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+                    .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
+                
             }.navigationBarTitle("")
             .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("relationshipBetween", comment: "")), displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
