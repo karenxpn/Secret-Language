@@ -62,6 +62,7 @@
 		FF42203527161E3100FD0796 /* SharedSeasonReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203427161E3100FD0796 /* SharedSeasonReport.swift */; };
 		FF42203727161E9900FD0796 /* SharedWayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203627161E9900FD0796 /* SharedWayReport.swift */; };
 		FF42203927161ECB00FD0796 /* SharedPathReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203827161ECB00FD0796 /* SharedPathReport.swift */; };
+		FF42203B271625C500FD0796 /* SharedReportViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203A271625C500FD0796 /* SharedReportViewModelTests.swift */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF456F8226939576008F219E /* RelationshipReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F8126939576008F219E /* RelationshipReport.swift */; };
@@ -284,6 +285,7 @@
 		FF42203427161E3100FD0796 /* SharedSeasonReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSeasonReport.swift; sourceTree = "<group>"; };
 		FF42203627161E9900FD0796 /* SharedWayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedWayReport.swift; sourceTree = "<group>"; };
 		FF42203827161ECB00FD0796 /* SharedPathReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedPathReport.swift; sourceTree = "<group>"; };
+		FF42203A271625C500FD0796 /* SharedReportViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedReportViewModelTests.swift; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF456F8126939576008F219E /* RelationshipReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReport.swift; sourceTree = "<group>"; };
@@ -862,6 +864,7 @@
 				FFE0E42326794ECC008FA78C /* MatchesViewModelTests.swift */,
 				FF99A0452681DB4E00F234CD /* ProfileViewModelTests.swift */,
 				FF997EA8268FD3090057B731 /* ReportsViewModelTests.swift */,
+				FF42203A271625C500FD0796 /* SharedReportViewModelTests.swift */,
 				FF18DC43269F8EEF004BE946 /* ChatViewModelTests.swift */,
 				FF6AF6E626ABA974007A902F /* RoomViewModelTests.swift */,
 			);
@@ -1340,6 +1343,7 @@
 				FF997EA7268FD0900057B731 /* MockReportService.swift in Sources */,
 				FF997EA9268FD3090057B731 /* ReportsViewModelTests.swift in Sources */,
 				FF6AF6E726ABA974007A902F /* RoomViewModelTests.swift in Sources */,
+				FF42203B271625C500FD0796 /* SharedReportViewModelTests.swift in Sources */,
 				FFBEA6902664E42A0033B2ED /* Secret_LanguageTests.swift in Sources */,
 				FF99A0482681DB6400F234CD /* MockProfileService.swift in Sources */,
 				FF99A0462681DB4E00F234CD /* ProfileViewModelTests.swift in Sources */,
