@@ -54,6 +54,7 @@
 		FF4220252715B39F00FD0796 /* WeekReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4220242715B39F00FD0796 /* WeekReportInnerView.swift */; };
 		FF4220272715B46600FD0796 /* MonthReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4220262715B46600FD0796 /* MonthReportInnerView.swift */; };
 		FF4220292715B4D400FD0796 /* SeasonReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4220282715B4D400FD0796 /* SeasonReportInnerView.swift */; };
+		FF42202B2715B52D00FD0796 /* WayReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42202A2715B52D00FD0796 /* WayReportInnerView.swift */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF456F8226939576008F219E /* RelationshipReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F8126939576008F219E /* RelationshipReport.swift */; };
@@ -268,6 +269,7 @@
 		FF4220242715B39F00FD0796 /* WeekReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekReportInnerView.swift; sourceTree = "<group>"; };
 		FF4220262715B46600FD0796 /* MonthReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthReportInnerView.swift; sourceTree = "<group>"; };
 		FF4220282715B4D400FD0796 /* SeasonReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonReportInnerView.swift; sourceTree = "<group>"; };
+		FF42202A2715B52D00FD0796 /* WayReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayReportInnerView.swift; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF456F8126939576008F219E /* RelationshipReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReport.swift; sourceTree = "<group>"; };
@@ -502,13 +504,14 @@
 				FF4220262715B46600FD0796 /* MonthReportInnerView.swift */,
 				FF3D63C42693C99E00799E72 /* SeasonReport.swift */,
 				FF4220282715B4D400FD0796 /* SeasonReportInnerView.swift */,
-				FF3D63C6269485EF00799E72 /* ReportSection.swift */,
 				FF3D63D62697281E00799E72 /* WayReport.swift */,
+				FF42202A2715B52D00FD0796 /* WayReportInnerView.swift */,
 				FF3D63D42697273F00799E72 /* PathReport.swift */,
 				FF3D63C82694910700799E72 /* FamousList.swift */,
 				FF3D63CA2694914400799E72 /* FamousListCell.swift */,
 				FF3D63CE269507FB00799E72 /* SWViewHelper.swift */,
 				FF3D63D226965F7A00799E72 /* ReportGridItem.swift */,
+				FF3D63C6269485EF00799E72 /* ReportSection.swift */,
 			);
 			path = BirthdayReport;
 			sourceTree = "<group>";
@@ -1276,6 +1279,7 @@
 				FFAD920A26B02D89007984ED /* TextFieldAlert.swift in Sources */,
 				FFDB158726653E8900341E8F /* NetworkError.swift in Sources */,
 				FFDB158F2665607000341E8F /* AppColors.swift in Sources */,
+				FF42202B2715B52D00FD0796 /* WayReportInnerView.swift in Sources */,
 				FF456F8226939576008F219E /* RelationshipReport.swift in Sources */,
 				FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */,
 				FFE0E41C2678082B008FA78C /* MatchService.swift in Sources */,

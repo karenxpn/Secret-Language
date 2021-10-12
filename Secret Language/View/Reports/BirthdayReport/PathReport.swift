@@ -69,9 +69,3 @@ struct PathReport: View {
                             )
     }
 }
-
-//struct PathReport_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PathReport()
-//    }
-//}
