@@ -14,7 +14,7 @@ enum UserStatusChangeAlert {
     case removeFriend
 }
 
-class VisitedProfileViewModel: ObservableObject {
+class VisitedProfileViewModel: AlertViewModel, ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     
     @Published var loading: Bool = false
@@ -153,17 +153,5 @@ class VisitedProfileViewModel: ObservableObject {
             let webURL = URL(string: "https://instagram.com/\(username)")!
             application.open(webURL)
         }
-    }
-    
-    
-    func makeAlert(with error: NetworkError, message: inout String, alert: inout Bool ) {
-        message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
-        alert.toggle()
-    }
-    
-    func makeReportAlert( response: GlobalResponse, alert: inout Bool, message: inout String, type: inout UserStatusChangeAlert? ) {
-        message = response.message
-        type = .report
-        alert.toggle()
     }
 }

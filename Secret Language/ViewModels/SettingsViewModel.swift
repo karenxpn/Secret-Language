@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-class SettingsViewModel: ObservableObject {
+class SettingsViewModel: AlertViewModel, ObservableObject {
     @AppStorage("token") private var token: String = ""
     @AppStorage("username") private var username: String = ""
     @AppStorage( "userID" ) private var userID: Int = 0
@@ -85,6 +85,7 @@ class SettingsViewModel: ObservableObject {
         self.authDataManager = authDataManager
         self.profileDataManager = profileDataManager
         self.matchDataManager = matchDataManager
+        super.init()
         
         $locationText
             .removeDuplicates()
@@ -106,8 +107,8 @@ class SettingsViewModel: ObservableObject {
                 
                 if response.error != nil {
                     self.makeAlert(with: response.error!,
-                                   showAlert: &self.showAlert,
-                                   alertMessage: &self.alertMessage)
+                                   message: &self.alertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     let settings = response.value!
                     
@@ -192,7 +193,9 @@ class SettingsViewModel: ObservableObject {
                     
                     self.getSettingsFields()
                 } else {
-                    self.makeAlert(with: response.error!, showAlert: &self.updateAlert, alertMessage: &self.updateAlertMessage)
+                    self.makeAlert(with: response.error!,
+                                   message: &self.updateAlertMessage,
+                                   alert: &self.updateAlert)
                 }
                 
             }.store(in: &cancellableSet)
@@ -212,9 +215,10 @@ class SettingsViewModel: ObservableObject {
         authDataManager.logout(token: token)
             .sink { response in
                 if response.error != nil {
+                    
                     self.makeAlert(with: response.error!,
-                                   showAlert: &self.showAlert,
-                                   alertMessage: &self.alertMessage)
+                                   message: &self.alertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.token = ""
                     self.username = ""
@@ -228,8 +232,8 @@ class SettingsViewModel: ObservableObject {
             .sink { response in
                 if response.error != nil {
                     self.makeAlert(with: response.error!,
-                                   showAlert: &self.showAlert,
-                                   alertMessage: &self.alertMessage)
+                                   message: &self.alertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.token = ""
                     self.username = ""
@@ -237,14 +241,5 @@ class SettingsViewModel: ObservableObject {
                 }
             }.store(in: &cancellableSet)
     }
-    
-    func makeAlert( with error: NetworkError, showAlert: inout Bool, alertMessage: inout String ) {
-        alertMessage = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
-        showAlert.toggle()
-    }
-    
-    func makeSuccessAlert( with response: GlobalResponse, showAlert: inout Bool, alertMessage: inout String ) {
-        alertMessage = response.message
-        showAlert.toggle()
-    }
+
 }

@@ -1,17 +1,15 @@
 //
-//  SharedRelationshipReport.swift
+//  SharedMonthReport.swift
 //  Secret Language
 //
-//  Created by Karen Mirakyan on 22.07.21.
+//  Created by Karen Mirakyan on 12.10.21.
 //
 
 import SwiftUI
-import SDWebImageSwiftUI
 
-struct SharedRelationshipReport: View {
-    
-    @ObservedObject var reportVM = SharedReportViewModel()
+struct SharedMonthReport: View {
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var reportVM = SharedReportViewModel()
     let reportID: Int
     
     var body: some View {
@@ -22,19 +20,16 @@ struct SharedRelationshipReport: View {
                 
                 if reportVM.loading {
                     ProgressView()
-                } else if reportVM.relationshipReport != nil {
-                    
-                    ScrollView( showsIndicators: false ) {
-                        RelationshipReportInnerView(report: reportVM.relationshipReport!)
-                    }.padding(.top, 1)
+                } else if reportVM.monthReport != nil {
+                    MonthReportInnerView(report: reportVM.monthReport!)
                 }
                 
                 CustomAlert(isPresented: $reportVM.showAlert, alertMessage: reportVM.alertMessage, alignment: .center)
                     .offset(y: reportVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
                     .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
                 
-            }.navigationBarTitle("")
-            .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("relationshipBetween", comment: "")), displayMode: .inline)
+            }.navigationBarTitle( "" )
+            .navigationBarTitleView(SearchNavBar(title: "Month Report"), displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
@@ -43,16 +38,10 @@ struct SharedRelationshipReport: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 16, height: 16)
                     .padding([.leading, .top, .bottom])
+                
             })).onAppear {
-                reportVM.getSharedRelationshipReport(reportID: reportID)
+                reportVM.getSharedMonthReport(reportID: reportID)
             }
-        }
-        
-    }
-}
-
-struct SharedRelationshipReport_Previews: PreviewProvider {
-    static var previews: some View {
-        SharedRelationshipReport(reportID: 1)
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class ReportViewModel: ObservableObject {
+class ReportViewModel: AlertViewModel, ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "shouldPurchaseReport" ) private var shouldPurchase: Bool = false
@@ -26,6 +26,7 @@ class ReportViewModel: ObservableObject {
     @Published var firstReportYear: Int? = nil
     @Published var secondReportYear: Int? = nil
     
+    @Published var loading: Bool = false
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
@@ -33,9 +34,7 @@ class ReportViewModel: ObservableObject {
     
     @Published var relationshipReport: RelationshipReportModel? = nil
     @Published var birthdayReport: BirthdayReportModel? = nil
-    
-    @Published var loading: Bool = false
-    
+
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ReportServiceProtocol
     
@@ -51,7 +50,9 @@ class ReportViewModel: ObservableObject {
                         self.shouldPurchase = true
                         self.navigate = true
                     } else {
-                        self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                        self.makeAlert(with: response.error!,
+                                       message: &self.alertMessage,
+                                       alert: &self.showAlert)
                     }
                 } else {
                     self.birthdayReport = response.value!
@@ -71,7 +72,9 @@ class ReportViewModel: ObservableObject {
                         self.shouldPurchase = true
                         self.navigate = true
                     } else {
-                        self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
+                        self.makeAlert(with: response.error!,
+                                       message: &self.alertMessage,
+                                       alert: &self.showAlert)
                     }
                 } else {
                     self.relationshipReport = response.value!
@@ -79,38 +82,6 @@ class ReportViewModel: ObservableObject {
                     self.navigate = true
                 }
             }.store(in: &cancellableSet)
-    }
-    
-    
-    func getSharedBirthdayReport( reportID: Int ) {
-        loading = true
-        dataManager.fetchSharedBirthdayReport(reportID: reportID)
-            .sink { response in
-                self.loading = false
-                if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
-                } else {
-                    self.birthdayReport = response.value!
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func getSharedRelationshipReport( reportID: Int ) {
-        loading = true
-        dataManager.fetchSharedRelationshipReport(reportID: reportID)
-            .sink { response in
-                self.loading = false
-                if response.error != nil {
-                    self.makeAlert(showAlert: &self.showAlert, message: &self.alertMessage, error: response.error!)
-                } else {
-                    self.relationshipReport = response.value!
-                }
-            }.store(in: &cancellableSet)
-    }
-    
-    func makeAlert( showAlert: inout Bool, message: inout String, error: NetworkError ) {
-        message = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
-        showAlert.toggle()
     }
     
     func returnDate(month: String, day: Int, year: Int?) -> String {

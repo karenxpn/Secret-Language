@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class SearchViewModel: ObservableObject {
+class SearchViewModel: AlertViewModel, ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "interestedInCategory" ) private var interestedInCategory: Int = 0
@@ -52,6 +52,8 @@ class SearchViewModel: ObservableObject {
         self.userDataManager = userDataManager
         self.profileDataManager = profileDataManager
         self.chatDataManager = chatDataManager
+        super.init()
+        
         self.ideal = self.interestedInCategory == 0 ? 1 : self.interestedInCategory
         
         $search
@@ -101,8 +103,9 @@ class SearchViewModel: ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error != nil {
-                    self.alertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message
-                    self.showAlert.toggle()
+                    self.makeAlert(with: response.error!,
+                                   message: &self.alertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.ideals = response.value!
                     self.dataFilterCategories =  [ConnectionTypeModel(id: 0, name: "Everyone", description: "")] + response.value!

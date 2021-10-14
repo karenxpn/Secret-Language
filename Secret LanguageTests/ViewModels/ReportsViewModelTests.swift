@@ -45,32 +45,4 @@ class ReportsViewModelTests: XCTestCase {
         
         XCTAssertTrue(viewModel.navigate)
     }
-    
-    func testGetSharedBirthdayReportWithError() {
-        service.fetchSharedBirthdayReportError = true
-        viewModel.getSharedBirthdayReport(reportID: 1)
-        
-        XCTAssertFalse(viewModel.alertMessage.isEmpty)
-    }
-    
-    func testGetSharedBirthdayReportWithSuccess() {
-        service.fetchSharedBirthdayReportError = false
-        viewModel.getSharedBirthdayReport(reportID: 1)
-        
-        XCTAssertTrue(viewModel.alertMessage.isEmpty)
-    }
-    
-    func testGetSharedRelationshipReportWithError() {
-        service.fetchSharedRelationshipReportError = true
-        viewModel.getSharedRelationshipReport(reportID: 1)
-        
-        XCTAssertFalse(viewModel.alertMessage.isEmpty)
-    }
-    
-    func testGetSharedRelationshipReportWithSuccess() {
-        service.fetchSharedRelationshipReportError = false
-        viewModel.getSharedRelationshipReport(reportID: 1)
-        
-        XCTAssertTrue(viewModel.alertMessage.isEmpty)
-    }
 }

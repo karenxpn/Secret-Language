@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-class MatchesViewModel: ObservableObject {
+class MatchesViewModel: AlertViewModel, ObservableObject {
     
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "interestedInCategory" ) private var interestedInCategory: Int = 0
@@ -46,6 +46,7 @@ class MatchesViewModel: ObservableObject {
           userDataManager: UserServiceProtocol = UserService.shared) {
         self.dataManager = dataManager
         self.userDataManager = userDataManager
+        super.init()
         self.dataFilterCategory = self.interestedInCategory
         self.dataFilterGender = self.genderPreference
     }
@@ -65,8 +66,10 @@ class MatchesViewModel: ObservableObject {
                 self.loadingMatches = false
                 if response.error != nil {
                     self.matches.removeAll(keepingCapacity: false)
-                    self.alertMessage = response.error!.backendError == nil ? response.error!.initialError.localizedDescription : response.error!.backendError!.message
-                    self.showAlert.toggle()
+                    
+                    self.makeAlert(with: response.error!,
+                                   message: &self.alertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.matches = response.value!.map{ MatchViewModel(match: $0 )}
                 }

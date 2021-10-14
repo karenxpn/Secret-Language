@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-class AuthViewModel: ObservableObject {
+class AuthViewModel: AlertViewModel, ObservableObject {
     
     @AppStorage( "newRelease" ) private var newRelease: Bool = true
     @AppStorage( "initialToken" ) private var initialToken: String = ""
@@ -36,7 +36,7 @@ class AuthViewModel: ObservableObject {
     @Published var signInVerificationCode: String = ""
     
     @Published var navigateToSignInVerificationCode: Bool = false
-        
+    
     // alerts
     @Published var showAlert: Bool = false
     @Published var sendVerificationCodeAlertMessage: String = ""
@@ -46,7 +46,7 @@ class AuthViewModel: ObservableObject {
     
     @Published var showCheckVerificationCodeAlert: Bool = false
     @Published var checkVerificationCodeAlertMessage: String = ""
-        
+    
     @Published var navigateToCheckVerificationCode: Bool = false
     @Published var navigateToFullNamePage: Bool = false
     @Published var navigateToChooseGender: Bool = false
@@ -63,7 +63,7 @@ class AuthViewModel: ObservableObject {
     
     @Published var loadingConnectionTypes: Bool = false
     @Published var connectionTypes = [ConnectionTypeModel]()
-
+    
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -77,7 +77,8 @@ class AuthViewModel: ObservableObject {
     
     init( dataManager: AuthServiceProtocol = AuthService.shared) {
         self.dataManager = dataManager
-        
+        super.init()
+
         isSignUpPhoneNumberValidPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.isSendVerificationCodeClickable, on: self)
@@ -98,8 +99,9 @@ class AuthViewModel: ObservableObject {
         dataManager.sendVerificationCode(phoneNumber: Credentials.countryCodeList[signUpCountryCode]! + signUpPhoneNumber, birthday: dateFormatter.string(from: birthdayDate))
             .sink { response in
                 if response.error != nil {
-                    self.sendVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
-                    self.showAlert.toggle()
+                    self.makeAlert(with: response.error!,
+                                   message: &self.sendVerificationCodeAlertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.initialToken = response.value!.token
                     self.navigateToCheckVerificationCode.toggle()
@@ -117,8 +119,9 @@ class AuthViewModel: ObservableObject {
         dataManager.checkVerificationCode(token: initialToken, phoneNumber: Credentials.countryCodeList[signUpCountryCode]! + signUpPhoneNumber, code: singUpVerificationCode)
             .sink { response in
                 if response.error != nil {
-                    self.checkVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
-                    self.showCheckVerificationCodeAlert.toggle()
+                    self.makeAlert(with: response.error!,
+                                   message: &self.checkVerificationCodeAlertMessage,
+                                   alert: &self.showCheckVerificationCodeAlert)
                     
                     self.singUpVerificationCode = ""
                 } else {
@@ -131,8 +134,9 @@ class AuthViewModel: ObservableObject {
         dataManager.signUp(token: initialToken, fullName: signUpFullName, gender: signUpGender ?? 0, connectionType: connectionType ?? 0, genderPreference: genderPreference)
             .sink { response in
                 if response.error != nil {
-                    self.signUpAlertMessage = self.createErrorMessage(error: response.error!)
-                    self.showSignUpAlert.toggle()
+                    self.makeAlert(with: response.error!,
+                                   message: &self.signUpAlertMessage,
+                                   alert: &self.showSignUpAlert)
                 } else {
                     self.newRelease = false
                     self.token = response.value!.token
@@ -150,8 +154,9 @@ class AuthViewModel: ObservableObject {
         dataManager.sendSignInVerificationCode(phoneNumber: Credentials.countryCodeList[signInCountryCode]! + signInPhoneNumber)
             .sink { response in
                 if response.error != nil {
-                    self.sendVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
-                    self.showAlert.toggle()
+                    self.makeAlert(with: response.error!,
+                                   message: &self.sendVerificationCodeAlertMessage,
+                                   alert: &self.showAlert)
                 } else {
                     self.navigateToSignInVerificationCode.toggle()
                 }
@@ -162,8 +167,9 @@ class AuthViewModel: ObservableObject {
         dataManager.checkSignInVerificationCode(phoneNumber: Credentials.countryCodeList[signInCountryCode]! + signInPhoneNumber, code: signInVerificationCode)
             .sink { response in
                 if response.error != nil {
-                    self.checkVerificationCodeAlertMessage = self.createErrorMessage(error: response.error!)
-                    self.showCheckVerificationCodeAlert.toggle()
+                    self.makeAlert(with: response.error!,
+                                   message: &self.checkVerificationCodeAlertMessage,
+                                   alert: &self.showCheckVerificationCodeAlert)
                     
                     self.signInVerificationCode = ""
                 } else {
@@ -173,7 +179,7 @@ class AuthViewModel: ObservableObject {
                     self.userID = response.value!.id
                     self.interestedInCategory = response.value!.interestedIn
                     self.locallyStoredGenderPreference = response.value!.gender_preference
-
+                    
                 }
             }.store(in: &cancellableSet)
     }
@@ -225,9 +231,5 @@ class AuthViewModel: ObservableObject {
         $signInPhoneNumber
             .map { !$0.isEmpty }
             .eraseToAnyPublisher()
-    }
-    
-    func createErrorMessage( error: NetworkError ) -> String {
-        return error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
     }
 }

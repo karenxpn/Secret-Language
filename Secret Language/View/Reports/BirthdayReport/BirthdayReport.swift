@@ -10,6 +10,7 @@ import SwiftUI
 
 struct BirthdayReport: View {
     
+    @StateObject var shareReportVM = SharedReportViewModel()
     @Binding var report: BirthdayReportModel?
     
     var body: some View {
@@ -20,6 +21,7 @@ struct BirthdayReport: View {
                 ScrollView( showsIndicators: false ) {
 
                     BirthdayReportInnerView(report: report!)
+                        .environmentObject(shareReportVM)
                 }.padding(.top, 1)
             }
             
@@ -27,19 +29,13 @@ struct BirthdayReport: View {
         .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("birthdayReport", comment: "")), displayMode: .inline)
         .navigationBarItems(trailing:
                                 Button(action: {
-                                    self.shareReport(id: report!.shareId)
+                                    shareReportVM.shareReport(type: "birthday",
+                                                              reportID: report!.shareId)
                                 }, label: {
                                     Image( "shareIcon" )
                                         .frame( width: 40, height: 40)
                                 }).disabled(report == nil)
         )
-    }
-    
-    func shareReport( id: Int ) {
-        let url = URL(string: "https://secretlanguage.network/v1/birthday/share?id=\(id)")!
-        let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-        
-        UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
     }
 }
 

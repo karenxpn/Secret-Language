@@ -10,7 +10,7 @@ import SwiftUI
 struct SharedBirthdayReport: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var reportVM = ReportViewModel()
+    @ObservedObject var reportVM = SharedReportViewModel()
     let reportID: Int
     
     var body: some View {
@@ -24,8 +24,13 @@ struct SharedBirthdayReport: View {
                 } else if reportVM.birthdayReport != nil {
                     ScrollView( showsIndicators: false ) {
                         BirthdayReportInnerView(report: reportVM.birthdayReport!)
+                            .environmentObject(reportVM)
                     }.padding(.top, 1)
                 }
+                
+                CustomAlert(isPresented: $reportVM.showAlert, alertMessage: reportVM.alertMessage, alignment: .center)
+                    .offset(y: reportVM.showAlert ? 0 : UIScreen.main.bounds.size.height)
+                    .animation(.interpolatingSpring(mass: 0.3, stiffness: 100.0, damping: 50, initialVelocity: 0))
                 
             }.navigationBarTitle( "" )
             .navigationBarTitleView(SearchNavBar(title: NSLocalizedString("birthdayReport", comment: "")), displayMode: .inline)

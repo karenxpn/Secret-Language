@@ -50,6 +50,20 @@
 		FF3D63DC269791C200799E72 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63DB269791C200799E72 /* PaymentViewModel.swift */; };
 		FF3D63E22697AD1800799E72 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63E12697AD1800799E72 /* PaymentService.swift */; };
 		FF3D63E4269924DC00799E72 /* PreviewParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D63E3269924DC00799E72 /* PreviewParameters.swift */; };
+		FF4220232715AF1400FD0796 /* DayReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4220222715AF1400FD0796 /* DayReportInnerView.swift */; };
+		FF4220252715B39F00FD0796 /* WeekReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4220242715B39F00FD0796 /* WeekReportInnerView.swift */; };
+		FF4220272715B46600FD0796 /* MonthReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4220262715B46600FD0796 /* MonthReportInnerView.swift */; };
+		FF4220292715B4D400FD0796 /* SeasonReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4220282715B4D400FD0796 /* SeasonReportInnerView.swift */; };
+		FF42202B2715B52D00FD0796 /* WayReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42202A2715B52D00FD0796 /* WayReportInnerView.swift */; };
+		FF42202D2715B61700FD0796 /* PathReportInnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42202C2715B61700FD0796 /* PathReportInnerView.swift */; };
+		FF42202F27161C0600FD0796 /* SharedDayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42202E27161C0600FD0796 /* SharedDayReport.swift */; };
+		FF42203127161C7F00FD0796 /* SharedWeekReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203027161C7F00FD0796 /* SharedWeekReport.swift */; };
+		FF42203327161DD400FD0796 /* SharedMonthReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203227161DD400FD0796 /* SharedMonthReport.swift */; };
+		FF42203527161E3100FD0796 /* SharedSeasonReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203427161E3100FD0796 /* SharedSeasonReport.swift */; };
+		FF42203727161E9900FD0796 /* SharedWayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203627161E9900FD0796 /* SharedWayReport.swift */; };
+		FF42203927161ECB00FD0796 /* SharedPathReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203827161ECB00FD0796 /* SharedPathReport.swift */; };
+		FF42203B271625C500FD0796 /* SharedReportViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203A271625C500FD0796 /* SharedReportViewModelTests.swift */; };
+		FF42203D2716368700FD0796 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42203C2716368700FD0796 /* AlertViewModel.swift */; };
 		FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD98267B8B1D000DCA6D /* LocationManager.swift */; };
 		FF42BD9B267BCE1F000DCA6D /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42BD9A267BCE1F000DCA6D /* Location.swift */; };
 		FF456F8226939576008F219E /* RelationshipReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF456F8126939576008F219E /* RelationshipReport.swift */; };
@@ -189,6 +203,7 @@
 		FFF53671270B07DA00729A2D /* FilterSliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF53670270B07DA00729A2D /* FilterSliders.swift */; };
 		FFF53673270B3A8900729A2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFF53672270B3A8900729A2D /* GoogleService-Info.plist */; };
 		FFF72EE72708683D00D64977 /* OTPTextFieldNewIOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF72EE62708683D00D64977 /* OTPTextFieldNewIOS.swift */; };
+		FFFD6A3B2714C2FA00F2134A /* SharedReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD6A3A2714C2FA00F2134A /* SharedReportViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -259,6 +274,20 @@
 		FF3D63DB269791C200799E72 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
 		FF3D63E12697AD1800799E72 /* PaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentService.swift; sourceTree = "<group>"; };
 		FF3D63E3269924DC00799E72 /* PreviewParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewParameters.swift; sourceTree = "<group>"; };
+		FF4220222715AF1400FD0796 /* DayReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayReportInnerView.swift; sourceTree = "<group>"; };
+		FF4220242715B39F00FD0796 /* WeekReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekReportInnerView.swift; sourceTree = "<group>"; };
+		FF4220262715B46600FD0796 /* MonthReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthReportInnerView.swift; sourceTree = "<group>"; };
+		FF4220282715B4D400FD0796 /* SeasonReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonReportInnerView.swift; sourceTree = "<group>"; };
+		FF42202A2715B52D00FD0796 /* WayReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayReportInnerView.swift; sourceTree = "<group>"; };
+		FF42202C2715B61700FD0796 /* PathReportInnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathReportInnerView.swift; sourceTree = "<group>"; };
+		FF42202E27161C0600FD0796 /* SharedDayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDayReport.swift; sourceTree = "<group>"; };
+		FF42203027161C7F00FD0796 /* SharedWeekReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedWeekReport.swift; sourceTree = "<group>"; };
+		FF42203227161DD400FD0796 /* SharedMonthReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedMonthReport.swift; sourceTree = "<group>"; };
+		FF42203427161E3100FD0796 /* SharedSeasonReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSeasonReport.swift; sourceTree = "<group>"; };
+		FF42203627161E9900FD0796 /* SharedWayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedWayReport.swift; sourceTree = "<group>"; };
+		FF42203827161ECB00FD0796 /* SharedPathReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedPathReport.swift; sourceTree = "<group>"; };
+		FF42203A271625C500FD0796 /* SharedReportViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedReportViewModelTests.swift; sourceTree = "<group>"; };
+		FF42203C2716368700FD0796 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		FF42BD98267B8B1D000DCA6D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF42BD9A267BCE1F000DCA6D /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FF456F8126939576008F219E /* RelationshipReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipReport.swift; sourceTree = "<group>"; };
@@ -402,6 +431,7 @@
 		FFF53670270B07DA00729A2D /* FilterSliders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSliders.swift; sourceTree = "<group>"; };
 		FFF53672270B3A8900729A2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FFF72EE62708683D00D64977 /* OTPTextFieldNewIOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextFieldNewIOS.swift; sourceTree = "<group>"; };
+		FFFD6A3A2714C2FA00F2134A /* SharedReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedReportViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -465,6 +495,12 @@
 				FF10811A26A9B9BE00387ED9 /* SharedProfile.swift */,
 				FF10811C26A9B9F300387ED9 /* SharedBirthdayReport.swift */,
 				FF10811E26A9B9FE00387ED9 /* SharedRelationshipReport.swift */,
+				FF42202E27161C0600FD0796 /* SharedDayReport.swift */,
+				FF42203027161C7F00FD0796 /* SharedWeekReport.swift */,
+				FF42203227161DD400FD0796 /* SharedMonthReport.swift */,
+				FF42203427161E3100FD0796 /* SharedSeasonReport.swift */,
+				FF42203627161E9900FD0796 /* SharedWayReport.swift */,
+				FF42203827161ECB00FD0796 /* SharedPathReport.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -485,16 +521,22 @@
 				FF79FAC726D154C400525661 /* BirthdayReportInnerView.swift */,
 				FF3D63CC2694951D00799E72 /* PersonalityAndFamousTab.swift */,
 				FF456F892693C7EC008F219E /* DayReport.swift */,
+				FF4220222715AF1400FD0796 /* DayReportInnerView.swift */,
 				FF3D63C02693C98B00799E72 /* WeekReport.swift */,
+				FF4220242715B39F00FD0796 /* WeekReportInnerView.swift */,
 				FF3D63C22693C99500799E72 /* MonthReport.swift */,
+				FF4220262715B46600FD0796 /* MonthReportInnerView.swift */,
 				FF3D63C42693C99E00799E72 /* SeasonReport.swift */,
-				FF3D63C6269485EF00799E72 /* ReportSection.swift */,
+				FF4220282715B4D400FD0796 /* SeasonReportInnerView.swift */,
 				FF3D63D62697281E00799E72 /* WayReport.swift */,
+				FF42202A2715B52D00FD0796 /* WayReportInnerView.swift */,
 				FF3D63D42697273F00799E72 /* PathReport.swift */,
+				FF42202C2715B61700FD0796 /* PathReportInnerView.swift */,
 				FF3D63C82694910700799E72 /* FamousList.swift */,
 				FF3D63CA2694914400799E72 /* FamousListCell.swift */,
 				FF3D63CE269507FB00799E72 /* SWViewHelper.swift */,
 				FF3D63D226965F7A00799E72 /* ReportGridItem.swift */,
+				FF3D63C6269485EF00799E72 /* ReportSection.swift */,
 			);
 			path = BirthdayReport;
 			sourceTree = "<group>";
@@ -644,6 +686,7 @@
 		FFBEA6AC2664E62E0033B2ED /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				FF42203C2716368700FD0796 /* AlertViewModel.swift */,
 				FFDB157C2664FDBC00341E8F /* AuthViewModel.swift */,
 				FFE0E41D2678090D008FA78C /* MatchesViewModel.swift */,
 				FF42BD98267B8B1D000DCA6D /* LocationManager.swift */,
@@ -651,6 +694,7 @@
 				FFB1EA9A2703ACFA005FA30C /* VisitedProfileViewModel.swift */,
 				FF997E852689DAB20057B731 /* SearchViewModel.swift */,
 				FF997E94268C96C10057B731 /* ReportViewModel.swift */,
+				FFFD6A3A2714C2FA00F2134A /* SharedReportViewModel.swift */,
 				FF3D63DB269791C200799E72 /* PaymentViewModel.swift */,
 				FF18DC3B269F61AF004BE946 /* ChatViewModel.swift */,
 				FF8AA6D826A098EC000C6B41 /* MessageRoomViewModel.swift */,
@@ -823,6 +867,7 @@
 				FFE0E42326794ECC008FA78C /* MatchesViewModelTests.swift */,
 				FF99A0452681DB4E00F234CD /* ProfileViewModelTests.swift */,
 				FF997EA8268FD3090057B731 /* ReportsViewModelTests.swift */,
+				FF42203A271625C500FD0796 /* SharedReportViewModelTests.swift */,
 				FF18DC43269F8EEF004BE946 /* ChatViewModelTests.swift */,
 				FF6AF6E626ABA974007A902F /* RoomViewModelTests.swift */,
 			);
@@ -1127,6 +1172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF3D63D72697281E00799E72 /* WayReport.swift in Sources */,
+				FF42203327161DD400FD0796 /* SharedMonthReport.swift in Sources */,
 				FF10811D26A9B9F300387ED9 /* SharedBirthdayReport.swift in Sources */,
 				FFDB15A02666571A00341E8F /* OTPTextFieldView.swift in Sources */,
 				FF997E91268A60150057B731 /* VisitedProfile.swift in Sources */,
@@ -1138,6 +1184,7 @@
 				FF79FAC826D154C400525661 /* BirthdayReportInnerView.swift in Sources */,
 				FFDB158526653DC500341E8F /* GlobalResponse.swift in Sources */,
 				FF99A03C2680E98B00F234CD /* FriendRequestList.swift in Sources */,
+				FF4220272715B46600FD0796 /* MonthReportInnerView.swift in Sources */,
 				FF456F8A2693C7EC008F219E /* DayReport.swift in Sources */,
 				FFDB157B2664F2C800341E8F /* BirthdayPicker.swift in Sources */,
 				FF42BD99267B8B1D000DCA6D /* LocationManager.swift in Sources */,
@@ -1150,9 +1197,12 @@
 				FF53CC0526E7F2A5002F8DBC /* SettingsInterests.swift in Sources */,
 				FFCEDDFF267235FB0073BE20 /* Chat.swift in Sources */,
 				FFCAA21426A61409002054DC /* CameraView.swift in Sources */,
+				FFFD6A3B2714C2FA00F2134A /* SharedReportViewModel.swift in Sources */,
+				FF4220292715B4D400FD0796 /* SeasonReportInnerView.swift in Sources */,
 				FFBEA6802664E4290033B2ED /* ContentView.swift in Sources */,
 				FF3727F026A5074500B20925 /* Gallery.swift in Sources */,
 				FF3D63D52697273F00799E72 /* PathReport.swift in Sources */,
+				FF42203727161E9900FD0796 /* SharedWayReport.swift in Sources */,
 				FF997E882689DCDF0057B731 /* SearchNavBar.swift in Sources */,
 				FFDB158926653F5600341E8F /* Credentials.swift in Sources */,
 				FFB1CC2726D58D9A00FC1AE2 /* MatchesIntroduction.swift in Sources */,
@@ -1175,6 +1225,7 @@
 				FFDB157F26650A0E00341E8F /* Extensions.swift in Sources */,
 				FFAD920C26B04859007984ED /* SettingsBirthdayPicker.swift in Sources */,
 				FF99A0422681354500F234CD /* GetMatchesRequest.swift in Sources */,
+				FF42203527161E3100FD0796 /* SharedSeasonReport.swift in Sources */,
 				FFB1EA972703A2D9005FA30C /* VisitedProfileFriendStatus.swift in Sources */,
 				FF3D63C7269485EF00799E72 /* ReportSection.swift in Sources */,
 				FFDB15AF2666C0E100341E8F /* SingleConnectionType.swift in Sources */,
@@ -1187,6 +1238,7 @@
 				FF18DC3C269F61AF004BE946 /* ChatViewModel.swift in Sources */,
 				FFB4C360270521840017380E /* LocationListItemModel.swift in Sources */,
 				FFCEDDF1266E642C0073BE20 /* SignUpRequest.swift in Sources */,
+				FF42202D2715B61700FD0796 /* PathReportInnerView.swift in Sources */,
 				FF3727EE26A5051C00B20925 /* SendingMessageModel.swift in Sources */,
 				FFCEDDF726722A050073BE20 /* CustomTabBar.swift in Sources */,
 				FF18DC40269F669E004BE946 /* ChatService.swift in Sources */,
@@ -1194,6 +1246,7 @@
 				FFAD920426AF6418007984ED /* SettingsViewModel.swift in Sources */,
 				FF3D63E22697AD1800799E72 /* PaymentService.swift in Sources */,
 				FF997EA5268FCCF80057B731 /* RelationshipReportModel.swift in Sources */,
+				FF42202F27161C0600FD0796 /* SharedDayReport.swift in Sources */,
 				FF997E9F268E74D60057B731 /* BirthdayReport.swift in Sources */,
 				FFDB157D2664FDBC00341E8F /* AuthViewModel.swift in Sources */,
 				FF3D63C12693C98B00799E72 /* WeekReport.swift in Sources */,
@@ -1209,7 +1262,9 @@
 				FFAD920626AF6E8F007984ED /* SettingsService.swift in Sources */,
 				FF4AB0FB268504A20085EA9A /* Settings.swift in Sources */,
 				FF99A0382680C65300F234CD /* FriendsNavBar.swift in Sources */,
+				FF4220232715AF1400FD0796 /* DayReportInnerView.swift in Sources */,
 				FF99A04E268367C500F234CD /* PendingRequestsList.swift in Sources */,
+				FF42203D2716368700FD0796 /* AlertViewModel.swift in Sources */,
 				FF4AB0F6268503530085EA9A /* UserModel.swift in Sources */,
 				FFDB156B2664E97E00341E8F /* Introduction.swift in Sources */,
 				FF3D63CF269507FB00799E72 /* SWViewHelper.swift in Sources */,
@@ -1229,6 +1284,7 @@
 				FFAD920226AF6299007984ED /* SettingsListCell.swift in Sources */,
 				FF18DC3E269F658D004BE946 /* ChatRoom.swift in Sources */,
 				FFDB158B26655DD500341E8F /* CheckVerificationCode.swift in Sources */,
+				FF4220252715B39F00FD0796 /* WeekReportInnerView.swift in Sources */,
 				FF18DC3A269F61A7004BE946 /* ChatListCell.swift in Sources */,
 				FF456F842693BD01008F219E /* FamousModel.swift in Sources */,
 				FF58C40C2667B9C300BD3838 /* ConnectionTypeModel.swift in Sources */,
@@ -1256,12 +1312,15 @@
 				FFAD920A26B02D89007984ED /* TextFieldAlert.swift in Sources */,
 				FFDB158726653E8900341E8F /* NetworkError.swift in Sources */,
 				FFDB158F2665607000341E8F /* AppColors.swift in Sources */,
+				FF42202B2715B52D00FD0796 /* WayReportInnerView.swift in Sources */,
+				FF42203927161ECB00FD0796 /* SharedPathReport.swift in Sources */,
 				FF456F8226939576008F219E /* RelationshipReport.swift in Sources */,
 				FFBEA67E2664E4290033B2ED /* Secret_LanguageApp.swift in Sources */,
 				FFE0E41C2678082B008FA78C /* MatchService.swift in Sources */,
 				FFCEDE082672367B0073BE20 /* Reports.swift in Sources */,
 				FF8AA6DF26A09EB2000C6B41 /* Message.swift in Sources */,
 				FFF53671270B07DA00729A2D /* FilterSliders.swift in Sources */,
+				FF42203127161C7F00FD0796 /* SharedWeekReport.swift in Sources */,
 				FF99A03A2680C6CE00F234CD /* FriendListCell.swift in Sources */,
 				FF8AD97C26D66C3C00EC1DB8 /* TapImagesCarousel.swift in Sources */,
 				FFDB15772664EE9800341E8F /* Background.swift in Sources */,
@@ -1288,6 +1347,7 @@
 				FF997EA7268FD0900057B731 /* MockReportService.swift in Sources */,
 				FF997EA9268FD3090057B731 /* ReportsViewModelTests.swift in Sources */,
 				FF6AF6E726ABA974007A902F /* RoomViewModelTests.swift in Sources */,
+				FF42203B271625C500FD0796 /* SharedReportViewModelTests.swift in Sources */,
 				FFBEA6902664E42A0033B2ED /* Secret_LanguageTests.swift in Sources */,
 				FF99A0482681DB6400F234CD /* MockProfileService.swift in Sources */,
 				FF99A0462681DB4E00F234CD /* ProfileViewModelTests.swift in Sources */,
@@ -1469,7 +1529,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.2.1;
+				MARKETING_VERSION = 3.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sln.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1496,7 +1556,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.2.1;
+				MARKETING_VERSION = 3.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sln.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

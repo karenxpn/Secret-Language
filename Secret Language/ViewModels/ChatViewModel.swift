@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 import PusherSwift
 
-class ChatViewModel: ObservableObject {
+class ChatViewModel: AlertViewModel, ObservableObject {
     @AppStorage( "token" ) private var token: String = ""
     @AppStorage( "shouldSubscribe" ) private var shouldSubscribe: Bool = false
     
@@ -41,7 +41,9 @@ class ChatViewModel: ObservableObject {
                     if response.error!.initialError.responseCode == Credentials.paymentErrorCode {
                         self.shouldSubscribe = true
                     } else {
-                        self.makeAlert(with: response.error!, for: &self.alertMessage, showAlert: &self.showAlert)
+                        self.makeAlert(with: response.error!,
+                                       message: &self.alertMessage,
+                                       alert: &self.showAlert)
                     }
                 } else {
                     self.shouldSubscribe = false
@@ -62,10 +64,5 @@ class ChatViewModel: ObservableObject {
             self.page = 2
             self.chats = chats
         }
-    }
-    
-    func makeAlert( with error: NetworkError, for alertMessage: inout String, showAlert: inout Bool) {
-        alertMessage = error.backendError == nil ? error.initialError.localizedDescription : error.backendError!.message
-        showAlert.toggle()
     }
 }
