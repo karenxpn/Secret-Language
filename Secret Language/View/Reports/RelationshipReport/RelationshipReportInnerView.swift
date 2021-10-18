@@ -115,6 +115,7 @@ struct RelationshipReportInnerView: View {
             
         }.padding(.top)
         .padding(.bottom)
+        .fixedSize(horizontal: false, vertical: true)
         
         AllRightsReservedMadeByDoejo()
             .padding(.bottom, UIScreen.main.bounds.size.height * 0.15)
