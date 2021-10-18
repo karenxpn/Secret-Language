@@ -176,11 +176,9 @@ struct Settings: View {
                             settingsVM.logout()
                         } label: {
                             Text( "Log Out" )
-                                .foregroundColor(.black)
+                                .foregroundColor(AppColors.accentColor)
                                 .font(.custom("Avenir", size: 18))
-                                .frame(width: UIScreen.main.bounds.size.width * 0.9, height: 50)
-                                .background(AppColors.accentColor)
-                                .cornerRadius(25)
+                                .frame(height: 50)
                         }.padding(.bottom)
                         
                         Button {
