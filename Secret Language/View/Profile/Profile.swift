@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct Profile: View {
     
     @ObservedObject var profileVM = ProfileViewModel()
+    @StateObject var shareReportVM = SharedReportViewModel()
     @State private var navigateToGallery: Bool = false
     @State private var navigateToSettings: Bool = false
     
@@ -111,6 +112,7 @@ struct Profile: View {
                                 .padding(.top, 20)
                             
                             BirthdayReportInnerView(report: profileVM.profile!.birthday_report)
+                                .environmentObject(shareReportVM)
                             
                         }.padding(.top, 1)
                     }

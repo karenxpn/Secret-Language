@@ -81,16 +81,25 @@ struct Reports: View {
                                 birthdayOrRelationship = false
                                 reportVM.getBirthdayReport()
                             } label: {
-                                Text( NSLocalizedString("showBirthdayReport", comment: ""))
-                                    .frame( width: .greedy, height: 50 )
-                                    .foregroundColor(.black)
-                                    .font(.custom("times", size: 16))
-                                    .background(AppColors.accentColor)
-                                    .cornerRadius(25)
+                                
+                                if reportVM.loadingBirthdayReport {
+                                    ProgressView()
+                                        .frame(width: .greedy, height: 50)
+                                        .background(AppColors.accentColor)
+                                        .cornerRadius(25)
+                                } else {
+                                    Text( NSLocalizedString("showBirthdayReport", comment: ""))
+                                        .frame( width: .greedy, height: 50 )
+                                        .foregroundColor(.black)
+                                        .font(.custom("times", size: 16))
+                                        .background(AppColors.accentColor)
+                                        .cornerRadius(25)
+                                }
                             }
                             
                         }.background(RoundedRectangle(cornerRadius: 25)
                                         .fill(AppColors.birthdayBoxBG))
+                            .disabled(reportVM.loadingBirthdayReport)
                         
                         Divider()
                         
@@ -168,13 +177,21 @@ struct Reports: View {
                                 birthdayOrRelationship = true
                                 reportVM.getRelationshipReport()
                             } label: {
-                                Text( NSLocalizedString("showRelationshipReport", comment: ""))
-                                    .frame( width: .greedy, height: 50 )
-                                    .foregroundColor(.black)
-                                    .font(.custom("times", size: 16))
-                                    .background(AppColors.accentColor)
-                                    .cornerRadius(25)
-                            }
+                                
+                                if reportVM.loadingRelationshipReport {
+                                    ProgressView()
+                                        .frame(width: .greedy, height: 50)
+                                        .background(AppColors.accentColor)
+                                        .cornerRadius(25)
+                                } else {
+                                    Text( NSLocalizedString("showRelationshipReport", comment: ""))
+                                        .frame( width: .greedy, height: 50 )
+                                        .foregroundColor(.black)
+                                        .font(.custom("times", size: 16))
+                                        .background(AppColors.accentColor)
+                                        .cornerRadius(25)
+                                }
+                            }.disabled(reportVM.loadingRelationshipReport)
                         }
                         
                         AllRightsReservedMadeByDoejo()

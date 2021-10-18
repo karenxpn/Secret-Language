@@ -22,11 +22,13 @@ class ReportViewModel: AlertViewModel, ObservableObject {
     @Published var firstReportDay: Int = 1
     @Published var secondReportDay: Int = 2
     
+    @Published var loadingBirthdayReport: Bool = false
+    @Published var loadingRelationshipReport: Bool = false
+    
     @Published var birthdayYear: Int? = nil
     @Published var firstReportYear: Int? = nil
     @Published var secondReportYear: Int? = nil
     
-    @Published var loading: Bool = false
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
@@ -43,8 +45,10 @@ class ReportViewModel: AlertViewModel, ObservableObject {
     }
     
     func getBirthdayReport() {
+        loadingBirthdayReport = true
         dataManager.fetchBirthdayReport(token: token, date: returnDate(month: birthdayMonth, day: birthday, year: birthdayYear))
             .sink { response in
+                self.loadingBirthdayReport = false
                 if response.error != nil {
                     if response.error!.initialError.responseCode == Credentials.paymentErrorCode {
                         self.shouldPurchase = true
@@ -63,10 +67,16 @@ class ReportViewModel: AlertViewModel, ObservableObject {
     }
     
     func getRelationshipReport() {
+        loadingRelationshipReport = true
         dataManager.fetchRelationshipReport(token: token,
-                                            firstDate: returnDate(month: firstReportMonth, day: firstReportDay, year: firstReportYear),
-                                            secondDate: returnDate(month: secondReportMonth, day: secondReportDay, year: secondReportYear))
+                                            firstDate: returnDate(month: firstReportMonth,
+                                                                  day: firstReportDay,
+                                                                  year: firstReportYear),
+                                            secondDate: returnDate(month: secondReportMonth,
+                                                                   day: secondReportDay,
+                                                                   year: secondReportYear))
             .sink { response in
+                self.loadingRelationshipReport = false
                 if response.error != nil {
                     if response.error!.initialError.responseCode == Credentials.paymentErrorCode {
                         self.shouldPurchase = true
