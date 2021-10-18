@@ -10,7 +10,6 @@ import SwiftUI
 struct SignUp: View {
     @StateObject var authVM = AuthViewModel()
     @State private var fullscreen: Bool = false
-    @State private var login: Bool = false
     @State private var openCountryCodeList: Bool = false
     @State private var animate: Bool = false
     
