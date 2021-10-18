@@ -245,6 +245,7 @@ struct Profile: View {
                                 .padding(.top, 20)
                             
                             BirthdayReportInnerView(report: profileVM.profile!.birthday_report)
+                                .environmentObject(shareReportVM)
                             
                         }.padding(.top, 1)
                     }

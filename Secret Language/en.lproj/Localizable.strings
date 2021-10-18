@@ -151,6 +151,8 @@
 "memberSince" = "Member Singe";
 "accountDeactivation" = "Account Deactivation";
 "areYouSureToDeactivate" = "Are you sure you want to deactivate your account. In case you do, all your data will be deleted";
+"logOutAlertTitle" = "Log Out";
+"areYouSureToLogOut" = "Are you sure you want to log out?";
 "showYear" = "Show Year";
 "hideYear" = "Hide Year";
 "deleteFriend" = "Delete Friend";

@@ -12,11 +12,17 @@ enum FormType {
     case instagram
 }
 
+enum SettingsAlertType: Identifiable {
+    var id: Self { self }
+    case logout
+    case deactivate
+}
+
 struct Settings: View {
     @ObservedObject var settingsVM = SettingsViewModel()
     @State private var showForm: Bool = false
     @State private var formType: FormType? = .none
-    @State private var showDeactivateAlert: Bool = false
+    @State private var alertType: SettingsAlertType? = .none
     
     var body: some View {
         ZStack {
@@ -173,18 +179,17 @@ struct Settings: View {
                         }
                         
                         Button {
-                            settingsVM.logout()
+                            alertType = .logout
+//                            settingsVM.logout()
                         } label: {
                             Text( "Log Out" )
-                                .foregroundColor(.black)
+                                .foregroundColor(AppColors.accentColor)
                                 .font(.custom("Avenir", size: 18))
-                                .frame(width: UIScreen.main.bounds.size.width * 0.9, height: 50)
-                                .background(AppColors.accentColor)
-                                .cornerRadius(25)
+                                .frame(height: 50)
                         }.padding(.bottom)
                         
                         Button {
-                            showDeactivateAlert.toggle()
+                            alertType = .deactivate
                         } label: {
                             Text( "Deactivate account" )
                                 .foregroundColor(.red)
@@ -222,10 +227,21 @@ struct Settings: View {
                         settingsVM.updateFields(updatedFrom: "")
                     }
                })
-        .alert(isPresented: $showDeactivateAlert, content: {
-            Alert(title: Text( NSLocalizedString("accountDeactivation", comment: "") ), message: Text( NSLocalizedString("areYouSureToDeactivate", comment: "") ), primaryButton: .destructive(Text( "Deactivate" ), action: {
-                settingsVM.deactivateAccount()
-            }), secondaryButton: .default(Text( "Cancel" )))
+        .alert(item: $alertType, content: { value in
+            
+            if value == .deactivate {
+                return Alert(title: Text( NSLocalizedString("accountDeactivation", comment: "") ),
+                             message: Text( NSLocalizedString("areYouSureToDeactivate", comment: "") ),
+                             primaryButton: .destructive(Text( "Deactivate" ), action: {
+                    settingsVM.deactivateAccount()
+                }), secondaryButton: .default(Text( "Cancel" )))
+            } else {
+                return Alert(title: Text( NSLocalizedString("logOutAlertTitle", comment: "") ),
+                             message: Text( NSLocalizedString("areYouSureToLogOut", comment: "") ),
+                             primaryButton: .destructive(Text( "Log Out" ), action: {
+                    settingsVM.logout()
+                }), secondaryButton: .default(Text( "Cancel" )))
+            }
         })
     }
 }
