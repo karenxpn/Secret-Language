@@ -12,12 +12,15 @@ struct SingleMatch: View {
     
     @EnvironmentObject var matchesVM: MatchesViewModel
     @State var match: MatchViewModel
+    @State private var blure: CGFloat = 0
+    
     var body: some View {
         
-        ZStack ( alignment: .top, content: {
+        ZStack ( alignment: .center, content: {
             ScrollView( showsIndicators: false ) {
                 
                 TapImagesCarousel(images: match.images, x: $match.x)
+                    .blur(radius: blure)
                 
                 Text( "\(match.name), \(match.age)" )
                     .foregroundColor(.white)
@@ -141,17 +144,26 @@ struct SingleMatch: View {
                 .frame( width: 50, height: 50)
                 .padding()
                 .opacity(match.x < -50 ? 1 : 0)
-                .brightness(-0.2)
-                .offset(y: 10)
             
-            Image( "rightSwipeIcon" )
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame( width: 50, height: 50)
-                .padding()
-                .brightness(-0.2)
+            VStack {
+                Image( "rightSwipeIcon" )
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame( width: 50, height: 50)
+                
+                Text( NSLocalizedString("idealFor", comment: ""))
+                    .foregroundColor(.white)
+                    .font(.custom("avenir", size: 17))
+                    .fontWeight(.semibold) +
+                Text ( "\n" ) +
+                
+                Text(match.ideal)
+                    .foregroundColor(AppColors.accentColor)
+                    .font(.custom("avenir", size: 17))
+                    .fontWeight(.semibold)
+                
+            }.padding()
                 .opacity(match.x > 50 ? 10 : 0)
-                .offset(y: 10)
 
         }).background(Background())
         .cornerRadius(15)
@@ -165,6 +177,7 @@ struct SingleMatch: View {
                             value.translation.width < -50 {
                             match.x = value.translation.width
                             match.degree = 7 * (value.translation.width > 0 ? 1 : -1)
+                            blure += 1
                         } else {
                             match.x = 0
                             match.degree = 0
@@ -175,7 +188,9 @@ struct SingleMatch: View {
                     withAnimation(.interpolatingSpring(mass: 1.0, stiffness: 50, damping: 8, initialVelocity: 0)) {
                         switch value.translation.width {
                         case 0...100:
-                            match.x = 0; match.degree = 0;
+                            match.x = 0
+                            match.degree = 0
+                            blure = 0
                         case let x where x > 100:
                             if match.id == matchesVM.matches.first?.id {
                                 matchesVM.matchPage += 1
@@ -184,7 +199,9 @@ struct SingleMatch: View {
                             match.x = 500; match.degree = 12
                             matchesVM.sendFriendRequest(matchID: match.id)
                         case (-100)...(-1):
-                            match.x = 0; match.degree = 0;
+                            match.x = 0
+                            match.degree = 0
+                            blure = 0
                         case let x where x < -100:
                             if match.id == matchesVM.matches.first?.id {
                                 matchesVM.matchPage += 1
@@ -194,6 +211,7 @@ struct SingleMatch: View {
                             matchesVM.removeMatch(matchID: match.id)
                         default:
                             match.x = 0;
+                            blure = 0
                         }
                     }
                 })
