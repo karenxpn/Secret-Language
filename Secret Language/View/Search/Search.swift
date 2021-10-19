@@ -52,7 +52,6 @@ struct Search: View {
                                     Button {
                                         withAnimation {
                                             searchVM.ideal = ideal.id
-                                            
                                         }
                                     } label: {
                                         Text( ideal.name )
@@ -108,8 +107,7 @@ struct Search: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 20, height: 20)
                     .padding([.leading, .top, .bottom])
-            }))
-            .fullScreenCover(isPresented: $showFilter, content: {
+            })).fullScreenCover(isPresented: $showFilter, content: {
                 SearchFilter()
                     .environmentObject(searchVM)
             })
