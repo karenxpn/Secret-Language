@@ -154,8 +154,7 @@ struct SingleMatch: View {
                 Text( NSLocalizedString("idealFor", comment: ""))
                     .foregroundColor(.white)
                     .font(.custom("avenir", size: 17))
-                    .fontWeight(.semibold) +
-                Text ( "\n" ) +
+                    .fontWeight(.semibold)
                 
                 Text(match.ideal)
                     .foregroundColor(AppColors.accentColor)
@@ -177,7 +176,7 @@ struct SingleMatch: View {
                             value.translation.width < -50 {
                             match.x = value.translation.width
                             match.degree = 7 * (value.translation.width > 0 ? 1 : -1)
-                            blure += 1
+                            blure += 0.4
                         } else {
                             match.x = 0
                             match.degree = 0
