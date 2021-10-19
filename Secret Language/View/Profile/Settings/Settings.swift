@@ -180,13 +180,12 @@ struct Settings: View {
                         
                         Button {
                             alertType = .logout
-//                            settingsVM.logout()
                         } label: {
                             Text( "Log Out" )
                                 .foregroundColor(AppColors.accentColor)
                                 .font(.custom("Avenir", size: 18))
                                 .frame(height: 50)
-                        }.padding(.bottom)
+                        }
                         
                         Button {
                             alertType = .deactivate
@@ -194,9 +193,7 @@ struct Settings: View {
                             Text( "Deactivate account" )
                                 .foregroundColor(.red)
                                 .font(.custom("Avenir", size: 18))
-                                .frame(width: UIScreen.main.bounds.size.width * 0.9, height: 50)
-                                .background(RoundedRectangle(cornerRadius: 25).stroke(Color.red, lineWidth: 2))
-                                .cornerRadius(25)
+                                .frame(height: 50)
                         }.padding(.bottom)
                         
                         AllRightsReservedMadeByDoejo()
