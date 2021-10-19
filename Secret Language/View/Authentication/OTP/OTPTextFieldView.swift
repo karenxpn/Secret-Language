@@ -13,9 +13,8 @@ struct OTPTextFieldView: View {
     var maxDigits: Int = 6
     
     @State var pin: String = ""
-    @State var isDisabled = false
     
-    var handler: (String, (Bool) -> Void) -> Void
+    var handler: (String) -> Void
     
     var body: some View {
         ZStack {
@@ -60,17 +59,8 @@ struct OTPTextFieldView: View {
         }
         
         if pin.count == maxDigits {
-            isDisabled = true
             
-            handler(pin) { isSuccess in
-                if isSuccess {
-                    print("pin matched, go to next page, no action to perfrom here")
-                } else {
-                    pin = ""
-                    isDisabled = false
-                    print("this has to called after showing toast why is the failure")
-                }
-            }
+            handler(pin)
         }
         
         // this code is never reached under  normal circumstances. If the user pastes a text with count higher than the
@@ -94,6 +84,6 @@ struct OTPTextFieldView: View {
 
 struct PasscodeField_Previews: PreviewProvider {
     static var previews: some View {
-        OTPTextFieldView { otp, completionHandler in }
+        OTPTextFieldView { otp in }
     }
 }

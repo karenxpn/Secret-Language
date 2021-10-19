@@ -30,13 +30,13 @@ struct CheckVerificationCode: View {
                 
                 if #available(iOS 15.0, *) {
                     
-                    OTPTextFieldNewIOS { otp, completionHandler in
+                    OTPTextFieldNewIOS { otp in
                         UIApplication.shared.endEditing()
                         authVM.singUpVerificationCode = otp
                         authVM.checkVerificationCode()
                     }
                 } else {
-                    OTPTextFieldView { otp, completionHandler in
+                    OTPTextFieldView { otp in
                         UIApplication.shared.endEditing()
                         authVM.singUpVerificationCode = otp
                         authVM.checkVerificationCode()
