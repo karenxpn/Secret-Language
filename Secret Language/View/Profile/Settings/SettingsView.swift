@@ -18,7 +18,7 @@ enum SettingsAlertType: Identifiable {
     case deactivate
 }
 
-struct Settings: View {
+struct SettingsView: View {
     @ObservedObject var settingsVM = SettingsViewModel()
     @State private var showForm: Bool = false
     @State private var formType: FormType? = .none
@@ -245,6 +245,6 @@ struct Settings: View {
 
 struct Settings_Previews: PreviewProvider {
     static var previews: some View {
-        Settings()
+        SettingsView()
     }
 }

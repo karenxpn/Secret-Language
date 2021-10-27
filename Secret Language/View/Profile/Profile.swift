@@ -142,7 +142,7 @@ struct Profile: View {
                                 .frame(width: 20, height: 20)
                                 .padding([.leading, .top, .bottom])
                         }.background(
-                            NavigationLink( destination: Settings(), isActive: $navigateToSettings, label: {
+                            NavigationLink( destination: SettingsView(), isActive: $navigateToSettings, label: {
                                 EmptyView()
                             }).hidden()
                         )
@@ -275,7 +275,7 @@ struct Profile: View {
                                 .frame(width: 20, height: 20)
                                 .padding([.leading, .top, .bottom])
                         }.background(
-                            NavigationLink( destination: Settings(), isActive: $navigateToSettings, label: {
+                            NavigationLink( destination: SettingsView(), isActive: $navigateToSettings, label: {
                                 EmptyView()
                             }).hidden()
                         )

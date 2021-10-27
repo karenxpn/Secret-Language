@@ -7,7 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
-import Firebase
+import FirebaseCore
 
 @main
 struct Secret_LanguageApp: App {
@@ -30,7 +30,7 @@ struct Secret_LanguageApp: App {
         
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor(.white)
         FirebaseApp.configure()
-        
+
         if newRelease {
             self.token = ""
         }

@@ -21,18 +21,20 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>com.sln.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>secretlanguageapp</string>
+				<string>fb613574923009692</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FacebookAppID</key>
+	<string>613574923009692</string>
+	<key>FacebookDisplayName</key>
+	<string>Secret Language</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<true/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>instagram</string>
@@ -87,19 +89,5 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Dark</string>
-    
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb613574923009692</string>
-      </array>
-      </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>613574923009692</string>
-    <key>FacebookDisplayName</key>
-    <string>Secret Language</string>
 </dict>
 </plist>
