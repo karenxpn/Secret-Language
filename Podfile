@@ -15,8 +15,6 @@ target 'Secret Language' do
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Crashlytics'
 
-
-
   target 'Secret LanguageTests' do
     inherit! :search_paths
     # Pods for testing

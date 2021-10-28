@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     @ObservedObject var notificationsVM = NotificationsViewModel()
