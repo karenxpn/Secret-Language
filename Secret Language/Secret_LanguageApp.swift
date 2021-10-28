@@ -8,6 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 import FirebaseCore
+import FacebookCore
 
 @main
 struct Secret_LanguageApp: App {
@@ -18,7 +19,6 @@ struct Secret_LanguageApp: App {
     @AppStorage( "newRelease" ) private var newRelease: Bool = true
     @AppStorage( "token" ) private var token = ""
     @State private var currentTab: Int = 2
-
     
     init() {
         let newAppearance = UINavigationBarAppearance()
@@ -30,7 +30,7 @@ struct Secret_LanguageApp: App {
         
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor(.white)
         FirebaseApp.configure()
-
+        
         if newRelease {
             self.token = ""
         }
