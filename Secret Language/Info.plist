@@ -18,6 +18,8 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
+    <key>CFBundleVersion</key>
+    <string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>instagram</string>
@@ -72,13 +74,22 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Dark</string>
-    
     <key>CFBundleURLTypes</key>
     <array>
         <dict>
             <key>CFBundleURLSchemes</key>
             <array>
                 <string>fb613574923009692</string>
+            </array>
+        </dict>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>com.sln.app</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>secretlanguageapp</string>
             </array>
         </dict>
     </array>
