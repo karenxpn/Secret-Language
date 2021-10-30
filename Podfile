@@ -14,6 +14,8 @@ target 'Secret Language' do
 	pod 'PusherSwift', '~> 10.0'
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Crashlytics'
+ 	pod 'FBSDKCoreKit', '~> 12.0'
+
 
   target 'Secret LanguageTests' do
     inherit! :search_paths

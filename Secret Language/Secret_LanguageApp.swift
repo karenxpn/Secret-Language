@@ -8,7 +8,6 @@
 import SwiftUI
 import SDWebImageSwiftUI
 import FirebaseCore
-import FacebookCore
 
 @main
 struct Secret_LanguageApp: App {
