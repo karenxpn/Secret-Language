@@ -86,6 +86,7 @@ class MessageRoomViewModel: ObservableObject {
             if self.messages.first?.id != message.id {
                 withAnimation {
                     self.messages.insert(message, at: 0)
+                    self.lastMessageID = message.id
                 }
             }
         }
