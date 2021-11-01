@@ -58,7 +58,7 @@ struct MatchViewModel: Identifiable {
     }
     
     var images: [String] {
-        self.match.images.map{ $0.image }
+        self.match.images.map{ $0.image + "?tr=w-\(UIScreen.main.bounds.size.width - 24),h-\(UIScreen.main.bounds.size.height * 0.7)" }
     }
     
     var illustration: String {

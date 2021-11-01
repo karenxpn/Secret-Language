@@ -24,7 +24,7 @@ class ChatViewModel: AlertViewModel, ObservableObject {
     var dataManager: ChatServiceProtocol
     var channel: PusherChannel
     
-    @Published var chats = [ChatModel]()
+    @Published var chats = [ChatModelViewModel]()
     
     init(dataManager: ChatServiceProtocol = ChatService.shared) {
         self.dataManager = dataManager
@@ -48,7 +48,7 @@ class ChatViewModel: AlertViewModel, ObservableObject {
                 } else {
                     self.shouldSubscribe = false
                     self.page += 1
-                    self.chats.append(contentsOf: response.value!)
+                    self.chats.append(contentsOf: response.value!.map(ChatModelViewModel.init))
                 }
             }.store(in: &cancellableSet)
     }
@@ -62,7 +62,7 @@ class ChatViewModel: AlertViewModel, ObservableObject {
     func getChatsWithPusher() {
         dataManager.fetchChatListWithPusher(channel: channel) { chats in
             self.page = 2
-            self.chats = chats
+            self.chats = chats.map(ChatModelViewModel.init)
         }
     }
 }

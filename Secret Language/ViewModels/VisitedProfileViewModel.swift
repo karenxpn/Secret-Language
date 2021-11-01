@@ -26,7 +26,7 @@ class VisitedProfileViewModel: AlertViewModel, ObservableObject {
     @Published var reportedOrBlockedAlert: Bool = false
     @Published var reportedOrBlockedAlertMessage: String = ""
     
-    @Published var visitedProfile: VisitedUserModel? = nil
+    @Published var visitedProfile: VisitedUserViewModel? = nil
     
     private var cancellableSet: Set<AnyCancellable> = []
     var dataManager: ProfileServiceProtocol
@@ -46,7 +46,8 @@ class VisitedProfileViewModel: AlertViewModel, ObservableObject {
                 if response.error != nil {
                     self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
-                    self.visitedProfile = response.value!
+                    self.visitedProfile = VisitedUserViewModel(user: response.value!)
+                    
                 }
             }.store(in: &cancellableSet)
     }

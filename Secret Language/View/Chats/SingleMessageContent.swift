@@ -32,7 +32,7 @@ struct SingleMessageContent: View {
                         roomVM.actionItem = message
                     }
             } else if message.content[0].type == "image" {
-                MessageImageHelper(image: message.content[0].message,progressViewTintColor: .white)
+                MessageImageHelper(image: "\(message.content[0].message)?tr=w-\(UIScreen.main.bounds.size.width * 0.6),h-\(UIScreen.main.bounds.size.height * 0.5)",progressViewTintColor: .white)
                     .frame( width: UIScreen.main.bounds.size.width * 0.6,
                             height: UIScreen.main.bounds.size.height * 0.5)
                     .clipShape(RoundedRectangle(cornerRadius: 8))

@@ -12,3 +12,16 @@ struct UserPreviewModel: Identifiable, Codable {
     var image: String
     var ideal: String
 }
+
+struct UserPreviewViewModel: Identifiable {
+    
+    var user: UserPreviewModel
+    init( user: UserPreviewModel ) {
+        self.user = user
+    }
+    
+    var id: Int { self.user.id }
+    var image: String { user.image + "?tr=w-50,h-50" }
+    var name: String { user.name }
+    var ideal: String { user.ideal }
+}

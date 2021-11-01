@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct SingleSearchResult: View {
     
     @EnvironmentObject var searchVM: SearchViewModel
-    let user: SearchUserModel
+    let user: SearchUserViewModel
     
     var body: some View {
         VStack( spacing: 5 ) {
@@ -57,7 +57,7 @@ struct SingleSearchResult: View {
 
 struct SingleSearchResult_Previews: PreviewProvider {
     static var previews: some View {
-        SingleSearchResult(user: SearchUserModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business", friendStatus: 1))
+        SingleSearchResult(user: SearchUserViewModel(user: SearchUserModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business", friendStatus: 1)))
             .environmentObject(SearchViewModel())
     }
 }
