@@ -31,5 +31,5 @@ struct ProfileGalleryItemViewModel: Identifiable {
     }
     
     var id: Int { self.item.id}
-    var image: String { self.item.image + "?tr=w-\(self.width),h-\(self.height)" }
+    var image: String { self.item.image + "?tr=w-\(Int(self.width)),h-\(Int(self.height))" }
 }
