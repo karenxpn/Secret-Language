@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct PendingListCell: View {
     
     @EnvironmentObject var profileVM: ProfileViewModel
-    let pendingRequest: UserPreviewModel
+    let pendingRequest: UserPreviewViewModel
     
     var body: some View {
         
@@ -64,7 +64,7 @@ struct PendingListCell: View {
 
 struct PendingListCell_Previews: PreviewProvider {
     static var previews: some View {
-        PendingListCell(pendingRequest: UserPreviewModel(id: 1, name: "John Smith", image: "", ideal: "Business"))
+        PendingListCell(pendingRequest: UserPreviewViewModel(user: UserPreviewModel(id: 1, name: "John Smith", image: "", ideal: "Business")))
             .environmentObject(ProfileViewModel())
     }
 }

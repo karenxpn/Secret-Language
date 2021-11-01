@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct FriendRequestCell: View {
     
     @EnvironmentObject var profileVM: ProfileViewModel
-    let request: UserPreviewModel
+    let request: UserPreviewViewModel
     @State private var active: Bool = false
     
     var body: some View {
@@ -82,7 +82,7 @@ struct FriendRequestCell: View {
 
 struct FriendRequestCell_Previews: PreviewProvider {
     static var previews: some View {
-        FriendRequestCell( request: UserPreviewModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business"))
+        FriendRequestCell( request: UserPreviewViewModel(user: UserPreviewModel(id: 1, name: "John Smith", image: "https://sln-storage.s3.us-east-2.amazonaws.com/user/default.png", ideal: "Business")))
             .environmentObject(ProfileViewModel())
     }
 }

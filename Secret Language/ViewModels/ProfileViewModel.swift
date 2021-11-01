@@ -22,9 +22,9 @@ class ProfileViewModel: AlertViewModel, ObservableObject {
     
     @Published var sharedProfile: SharedProfileModel? = nil
     
-    @Published var friendsList = [UserPreviewModel]()
-    @Published var requestsList = [UserPreviewModel]()
-    @Published var pendingList = [UserPreviewModel]()
+    @Published var friendsList = [UserPreviewViewModel]()
+    @Published var requestsList = [UserPreviewViewModel]()
+    @Published var pendingList = [UserPreviewViewModel]()
     
     @Published var loadingImages: Bool = false
     @Published var profileImages: ProfileGalleryResponse? = nil
@@ -52,7 +52,7 @@ class ProfileViewModel: AlertViewModel, ObservableObject {
                 if response.error != nil {
                     self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
-                    self.friendsList.append(contentsOf: response.value!)
+                    self.friendsList.append(contentsOf: response.value!.map(UserPreviewViewModel.init))
                 }
             }.store(in: &cancellableSet)
     }
@@ -65,7 +65,7 @@ class ProfileViewModel: AlertViewModel, ObservableObject {
                 if response.error != nil {
                     self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
-                    self.requestsList.append(contentsOf: response.value!)
+                    self.requestsList.append(contentsOf: response.value!.map(UserPreviewViewModel.init))
                 }
             }.store(in: &cancellableSet)
     }
@@ -78,7 +78,7 @@ class ProfileViewModel: AlertViewModel, ObservableObject {
                 if response.error != nil {
                     self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
-                    self.pendingList.append(contentsOf: response.value!)
+                    self.pendingList.append(contentsOf: response.value!.map(UserPreviewViewModel.init))
                 }
             }.store(in: &cancellableSet)
     }
