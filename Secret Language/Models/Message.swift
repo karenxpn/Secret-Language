@@ -6,11 +6,7 @@
 //
 
 import Foundation
-struct Message: Identifiable, Codable, Equatable {
-    static func == (lhs: Message, rhs: Message) -> Bool {
-        lhs.created_at < rhs.created_at
-    }
-    
+struct Message: Identifiable, Codable {
     var id: Int
     var content: [ContentModel]
     var user: MessageUserModel
