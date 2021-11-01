@@ -35,3 +35,20 @@ struct ChatUserModel: Codable, Identifiable {
     var ideal_for: String
     var age: Int
 }
+
+
+struct ChatModelViewModel: Identifiable, Codable {
+    var chat: ChatModel
+    
+    init( chat: ChatModel ) {
+        self.chat = chat
+    }
+    
+    var id: Int                         { self.chat.id }
+    var chatName: String                { self.chat.chatName }
+    var image: String                   { self.chat.image + "?tr=w-55,h-55"}
+    var unread_messages_count: String   { self.chat.unread_messages_count}
+    var read: Bool                      { self.chat.read }
+    var message: ChatPreveiwMessage?    { self.chat.message}
+    var user: ChatUserModel             { self.chat.user }
+}

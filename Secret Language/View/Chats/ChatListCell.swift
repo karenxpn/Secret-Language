@@ -10,7 +10,7 @@ import SDWebImageSwiftUI
 
 struct ChatListCell: View {
     
-    let chat: ChatModel
+    let chat: ChatModelViewModel
     @State private var isActive: Bool = false
     
     var messageCreatedAt: some View {
@@ -116,6 +116,6 @@ struct ChatListCell: View {
 
 struct ChatListCell_Previews: PreviewProvider {
     static var previews: some View {
-        ChatListCell(chat: PreviewParameters.chatList[0])
+        ChatListCell(chat: ChatModelViewModel(chat: PreviewParameters.chatList[0] ))
     }
 }
