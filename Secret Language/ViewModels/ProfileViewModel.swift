@@ -18,7 +18,7 @@ class ProfileViewModel: AlertViewModel, ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
-    @Published var profile: UserModel? = nil
+    @Published var profile: UserViewModel? = nil
     
     @Published var sharedProfile: SharedProfileModel? = nil
     
@@ -147,7 +147,7 @@ class ProfileViewModel: AlertViewModel, ObservableObject {
                 if response.error != nil {
                     self.makeAlert(with: response.error!, message: &self.alertMessage, alert: &self.showAlert)
                 } else {
-                    self.profile = response.value!
+                    self.profile = UserViewModel(user: response.value!)
                 }
             }.store(in: &cancellableSet)
     }
