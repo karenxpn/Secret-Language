@@ -20,15 +20,8 @@ struct UserPreviewViewModel: Identifiable {
         self.user = user
     }
     
-    var id: Int {
-        self.user.id
-    }
-    
-    var image: String {
-        print(user.image + "?tr=w-50,h-50")
-        return user.image + "?tr=w-50,h-50"
-        
-    }
+    var id: Int { self.user.id }
+    var image: String { user.image + "?tr=w-50,h-50" }
     var name: String { user.name }
     var ideal: String { user.ideal }
 }

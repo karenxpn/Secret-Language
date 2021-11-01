@@ -16,7 +16,7 @@ class SearchViewModel: AlertViewModel, ObservableObject {
     @AppStorage( "genderPreference" ) private var genderPreference: Int = 0
 
     @Published var search: String = ""
-    @Published var searchResults = [SearchUserModel]()
+    @Published var searchResults = [SearchUserViewModel]()
     @Published var ideal: Int = 1
     
     @Published var loading: Bool = false
@@ -81,7 +81,7 @@ class SearchViewModel: AlertViewModel, ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error == nil {
-                    self.searchResults = response.value!
+                    self.searchResults = response.value!.map(SearchUserViewModel.init)
                 }
             }.store(in: &cancellableSet)
     }
@@ -92,7 +92,7 @@ class SearchViewModel: AlertViewModel, ObservableObject {
             .sink { response in
                 self.loading = false
                 if response.error == nil {
-                    self.searchResults = response.value!
+                    self.searchResults = response.value!.map(SearchUserViewModel.init)
                 }
             }.store(in: &cancellableSet)
     }
