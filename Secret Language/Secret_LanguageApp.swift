@@ -8,6 +8,8 @@
 import SwiftUI
 import SDWebImageSwiftUI
 import FirebaseCore
+import FBSDKCoreKit
+import AppTrackingTransparency
 
 @main
 struct Secret_LanguageApp: App {
@@ -29,6 +31,15 @@ struct Secret_LanguageApp: App {
         
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor(.white)
         FirebaseApp.configure()
+        
+        Settings.shared.enableLoggingBehavior(.appEvents)
+        Settings.shared.enableLoggingBehavior(.networkRequests)
+        Settings.shared.enableLoggingBehavior(.developerErrors)
+        Settings.shared.enableLoggingBehavior(.graphAPIDebugInfo)
+        Settings.shared.enableLoggingBehavior(.accessTokens)
+        
+        Settings.shared.isAutoLogAppEventsEnabled = true
+        Settings.shared.isAdvertiserIDCollectionEnabled = true
         
         if newRelease {
             self.token = ""

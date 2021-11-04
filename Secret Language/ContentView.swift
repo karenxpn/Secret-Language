@@ -54,21 +54,22 @@ struct ContentView: View {
         .onAppear {
             notificationsVM.requestPermission()
             paymentVM.checkSubscriptionStatus()
-            
-            ATTrackingManager.requestTrackingAuthorization { status in
-                print(status.rawValue)
-                Settings.shared.isAutoLogAppEventsEnabled = true
-                Settings.shared.isAdvertiserIDCollectionEnabled = true
-                
-                switch status {
+
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { (status) in
+                print("karen mirakyan")
+                print( status.rawValue )
+
+                switch status{
                 case .authorized:
-                    print("Allowed")
                     Settings.shared.isAdvertiserTrackingEnabled = true
+                    break
+                case .denied:
+                    Settings.shared.isAdvertiserTrackingEnabled = false
                 default:
-                    print("not allowed")
                     break
                 }
-            }
+            })
+            
         }.fullScreenCover(item: $shared) { value in
             self.sharedView(value: value)
         }.onOpenURL(perform: { (url) in
