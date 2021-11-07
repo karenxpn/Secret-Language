@@ -32,19 +32,19 @@ struct SignInCheckVerificationCode: View {
                 Spacer()
                 
                 
-                if #available(iOS 15.0, *) {
-                    OTPTextFieldNewIOS { otp in
-                        UIApplication.shared.endEditing()
-                        authVM.signInVerificationCode = otp
-                        authVM.checkSignInVerificationCode()
-                    }
-                } else {
+//                if #available(iOS 15.0, *) {
+//                    OTPTextFieldNewIOS { otp in
+//                        UIApplication.shared.endEditing()
+//                        authVM.signInVerificationCode = otp
+//                        authVM.checkSignInVerificationCode()
+//                    }
+//                } else {
                     OTPTextFieldView { otp in
                         UIApplication.shared.endEditing()
                         authVM.signInVerificationCode = otp
                         authVM.checkSignInVerificationCode()
                     }
-                }
+//                }
                 
                 Spacer()
                 
