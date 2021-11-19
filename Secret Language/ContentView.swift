@@ -54,10 +54,8 @@ struct ContentView: View {
         .onAppear {
             notificationsVM.requestPermission()
             paymentVM.checkSubscriptionStatus()
-
+            
             ATTrackingManager.requestTrackingAuthorization(completionHandler: { (status) in
-                print("karen mirakyan")
-                print( status.rawValue )
 
                 switch status{
                 case .authorized:
