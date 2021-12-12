@@ -8,8 +8,6 @@
 import SwiftUI
 import PusherSwift
 import SwiftUIX
-import AppTrackingTransparency
-import FBSDKCoreKit
 
 struct SharedURL: Identifiable {
     var id: Int
@@ -54,19 +52,6 @@ struct ContentView: View {
         .onAppear {
             notificationsVM.requestPermission()
             paymentVM.checkSubscriptionStatus()
-            
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { (status) in
-
-                switch status{
-                case .authorized:
-                    Settings.shared.isAdvertiserTrackingEnabled = true
-                    break
-                case .denied:
-                    Settings.shared.isAdvertiserTrackingEnabled = false
-                default:
-                    break
-                }
-            })
             
         }.fullScreenCover(item: $shared) { value in
             self.sharedView(value: value)

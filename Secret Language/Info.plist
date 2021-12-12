@@ -77,12 +77,6 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb765297124870521</string>
-			</array>
-		</dict>
-		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
@@ -93,16 +87,5 @@
 			</array>
 		</dict>
 	</array>
-	<key>FacebookAppID</key>
-	<string>765297124870521</string>
-	<key>FacebookDisplayName</key>
-	<string>Secret Language</string>
-    
-    <key>FacebookAutoLogAppEventsEnabled</key>
-    <true/>
-    <key>FacebookAdvertiserIDCollectionEnabled</key>
-    <true/>
-    <key>NSUserTrackingUsageDescription</key>
-    <string>Please allow so that we can serve you personalized data</string>
 </dict>
 </plist>
