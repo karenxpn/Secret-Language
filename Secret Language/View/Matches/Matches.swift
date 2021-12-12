@@ -21,6 +21,10 @@ struct Matches: View {
     
     @State var userLocation: Location?
     
+    init() {
+        matchesVM.getMatches()
+    }
+    
     var body: some View {
         
         NavigationView {
@@ -57,9 +61,7 @@ struct Matches: View {
                 }
                 
             }.edgesIgnoringSafeArea(.bottom)
-            .onAppear(perform: {
-                matchesVM.getMatches()
-            }).onChange(of: location, perform: { _ in
+           .onChange(of: location, perform: { _ in
                 if !locationChanged {
                     locationChanged = true
                     matchesVM.sendLocation(location: location)
